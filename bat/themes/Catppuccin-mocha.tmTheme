@@ -1,0 +1,963 @@
+<?xml version="1.0" encoding="UTF-8"?>
+CTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+st version="1.0">
+  ict>
+    >name</key>
+    ing>Catppuccin</string>
+    >settings</key>
+    ay>
+      ict>
+        >settings</key>
+        t>
+          oreground</key>
+          g>#cdd6f4</string>
+          ackground</key>
+          g>#1e1e2e</string>
+          aret</key>
+          g>#bac2de</string>
+          nvisibles</key>
+          g>#a6adc8</string>
+          utterForeground</key>
+          g>#9399b2</string>
+          utterForegroundHighlight</key>
+          g>#a6e3a1</string>
+          ineHighlight</key>
+          g>#585b70</string>
+          election</key>
+          g>#6c7086</string>
+          electionBorder</key>
+          g>#1e1e2e</string>
+          ctiveGuide</key>
+          g>#fab387</string>
+          indHighlightForeground</key>
+          g>#181825</string>
+          indHighlight</key>
+          g>#f9e2af</string>
+          racketsForeground</key>
+          g>#9399b2</string>
+          racketContentsForeground</key>
+          g>#9399b2</string>
+        ct>
+      dict>
+      
+        e</key>
+        Comment</string>
+        pe</key>
+        comment</string>
+        tings</key>
+        
+          round</key>
+          c7086</string>
+          tyle</key>
+          alic</string>
+        
+      
+      
+        e</key>
+        String</string>
+        pe</key>
+        string</string>
+        tings</key>
+        
+          round</key>
+          6e3a1</string>
+          tyle</key>
+          string>
+        
+      
+      
+        e</key>
+        String regex</string>
+        pe</key>
+        string.regexp</string>
+        tings</key>
+        
+          round</key>
+          ab387</string>
+          tyle</key>
+          string>
+        
+      
+      
+        e</key>
+        Number</string>
+        pe</key>
+        constant.numeric</string>
+        tings</key>
+        
+          round</key>
+          ab387</string>
+          tyle</key>
+          string>
+        
+      
+      
+        e</key>
+        Boolean</string>
+        pe</key>
+        constant.language.boolean</string>
+        tings</key>
+        
+          round</key>
+          ab387</string>
+          tyle</key>
+          ld italic</string>
+        
+      
+      
+        e</key>
+        Built-in constant</string>
+        pe</key>
+        constant.language</string>
+        tings</key>
+        
+          round</key>
+          4befe</string>
+          tyle</key>
+          alic</string>
+        
+      
+      
+        e</key>
+        Built-in function</string>
+        pe</key>
+        support.function.builtin</string>
+        tings</key>
+        
+          round</key>
+          ab387</string>
+          tyle</key>
+          alic</string>
+        
+      
+      
+        e</key>
+        User-defined constant</string>
+        pe</key>
+        variable.other.constant</string>
+        tings</key>
+        
+          round</key>
+          ab387</string>
+          tyle</key>
+          string>
+        
+      
+      
+        e</key>
+        Variable</string>
+        pe</key>
+        variable</string>
+        tings</key>
+        dict>
+        
+      
+      >name<
+        Keyword</string
+        pe</key>
+        keyword</string>
+        tings</key>
+        
+        oregro
+          38ba8</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        Conditional/loo
+        pe</key>
+        keyword.control.
+        tings</key>
+        
+        oregro
+          ba6f7</string>
+          tyle</key>
+          ld</string>
+          
+        
+      
+      >name<
+        Return</string>
+        pe</key>
+        keyword.control.
+        tings</key>
+        
+        oregro
+          5c2e7</string>
+          tyle</key>
+          ld</string>
+          
+        
+      
+      >name<
+        Exception</stri
+        pe</key>
+        support.type.exc
+        tings</key>
+        
+        oregro
+          ab387</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        Operator</strin
+        pe</key>
+        keyword.operator
+        tings</key>
+        
+        oregro
+          9dceb</string>
+          tyle</key>
+          ld</string>
+          
+        
+      
+      >name<
+        Punctuation sep
+        pe</key>
+        punctuation.sepa
+        tings</key>
+        
+        oregro
+          4e2d5</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Punctuation ter
+        pe</key>
+        punctuation.term
+        tings</key>
+        
+        oregro
+          4e2d5</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Punctuation bra
+        pe</key>
+        punctuation.sect
+        tings</key>
+        
+        oregro
+          399b2</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Include</string
+        pe</key>
+        keyword.control.
+        tings</key>
+        
+        oregro
+          4e2d5</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        Storage</string
+        pe</key>
+        storage</string>
+        tings</key>
+        
+        oregro
+          38ba8</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Storage type</s
+        pe</key>
+        storage.type</st
+        tings</key>
+        
+        oregro
+          9e2af</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        Storage modifie
+        pe</key>
+        storage.modifier
+        tings</key>
+        
+        oregro
+          38ba8</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Storage type na
+        pe</key>
+        entity.name.name
+        tings</key>
+        
+        oregro
+          5e0dc</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        Storage type cl
+        pe</key>
+        storage.type.cla
+        tings</key>
+        
+        oregro
+          5e0dc</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        Label</string>
+        pe</key>
+        entity.name.labe
+        tings</key>
+        
+        oregro
+          9b4fa</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Keyword class</
+        pe</key>
+        keyword.declarat
+        tings</key>
+        
+        oregro
+          38ba8</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        Class name</str
+        pe</key>
+        entity.name.clas
+        tings</key>
+        
+        oregro
+          9dceb</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Inherited class
+        pe</key>
+        entity.other.inh
+        tings</key>
+        
+        oregro
+          9dceb</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        Function name</
+        pe</key>
+        entity.name.func
+        tings</key>
+        
+        oregro
+          9b4fa</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        Function macro<
+        pe</key>
+        entity.name.func
+        tings</key>
+        
+        oregro
+          38ba8</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Macro directive
+        pe</key>
+        keyword.control.
+        tings</key>
+        
+        oregro
+          38ba8</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Constructor</st
+        pe</key>
+        entity.name.func
+        tings</key>
+        
+        oregro
+          4befe</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Function argume
+        pe</key>
+        variable.paramet
+        tings</key>
+        
+        oregro
+          5e0dc</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        Function declar
+        pe</key>
+        keyword.declarat
+        tings</key>
+        
+        oregro
+          ba0ac</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        Library functio
+        pe</key>
+        support.function
+        tings</key>
+        
+        oregro
+          9dceb</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Library constan
+        pe</key>
+        support.constant
+        tings</key>
+        
+        oregro
+          9b4fa</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Library class/t
+        pe</key>
+        support.type, su
+        tings</key>
+        
+        oregro
+          9b4fa</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        Library variabl
+        pe</key>
+        support.other.va
+        tings</key>
+        
+        ontSty
+          string>
+          
+        
+      
+      >name<
+        Variable functi
+        pe</key>
+        variable.functio
+        tings</key>
+        
+        oregro
+          9b4fa</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        Variable parame
+        pe</key>
+        variable.paramet
+        tings</key>
+        
+        oregro
+          5e0dc</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        Variable other<
+        pe</key>
+        variable.other</
+        tings</key>
+        
+        oregro
+          dd6f4</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        Variable field<
+        pe</key>
+        variable.other.m
+        tings</key>
+        
+        oregro
+          5e0dc</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Variable langua
+        pe</key>
+        variable.languag
+        tings</key>
+        
+        oregro
+          4e2d5</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Tag name</strin
+        pe</key>
+        entity.name.tag<
+        tings</key>
+        
+        oregro
+          ab387</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Tag attribute</
+        pe</key>
+        entity.other.att
+        tings</key>
+        
+        oregro
+          ba6f7</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        Tag delimiter</
+        pe</key>
+        punctuation.defi
+        tings</key>
+        
+        oregro
+          ba0ac</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Markdown URL</s
+        pe</key>
+        markup.underline
+        tings</key>
+        
+        oregro
+          5e0dc</string>
+          tyle</key>
+          alic underline</stri
+          
+        
+      
+      >name<
+        Markdown refere
+        pe</key>
+        meta.link.inline
+        tings</key>
+        
+        oregro
+          4befe</string>
+          tyle</key>
+          ld</string>
+          
+        
+      
+      >name<
+        Markdown litera
+        pe</key>
+        comment.block.ma
+        tings</key>
+        
+        oregro
+          4e2d5</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        Markdown title<
+        pe</key>
+        punctuation.defi
+        tings</key>
+        
+        oregro
+          9b4fa</string>
+          tyle</key>
+          ld</string>
+          
+        
+      
+      >name<
+        Markdown emphas
+        pe</key>
+        markup.italic</s
+        tings</key>
+        
+        oregro
+          ba0ac</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        Markdown strong
+        pe</key>
+        markup.bold</str
+        tings</key>
+        
+        oregro
+          ba0ac</string>
+          tyle</key>
+          ld</string>
+          
+        
+      
+      >name<
+        Escape</string>
+        pe</key>
+        constant.charact
+        tings</key>
+        
+        oregro
+          5c2e7</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Bash built-in f
+        pe</key>
+        source.shell.bas
+        tings</key>
+          
+        
+        oregro
+          5c2e7</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Bash parameter<
+        pe</key>
+        variable.languag
+        tings</key>
+        
+        oregro
+          38ba8</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        Lua field</stri
+        pe</key>
+        source.lua meta.
+        tings</key>
+          
+        
+        oregro
+          4befe</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        Lua constructor
+        pe</key>
+        source.lua meta.
+        tings</key>
+          
+        
+        oregro
+          2cdcd</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Java constant</
+        pe</key>
+        entity.name.cons
+        tings</key>
+        
+        oregro
+          4e2d5</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        CSS property</s
+        pe</key>
+        support.type.pro
+        tings</key>
+        
+        oregro
+          2cdcd</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        CSS constant</s
+        pe</key>
+        support.constant
+        tings</key>
+        
+        oregro
+          dd6f4</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        CSS suffix</str
+        pe</key>
+        constant.numeric
+        tings</key>
+        
+        oregro
+          4e2d5</string>
+          tyle</key>
+          alic</string>
+          
+        
+      
+      >name<
+        CSS variable pr
+        pe</key>
+        variable.other.c
+        tings</key>
+          
+        
+        oregro
+          4e2d5</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        SCSS tag</strin
+        pe</key>
+        entity.name.tag.
+        tings</key>
+        
+        oregro
+          4befe</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        SASS variable</
+        pe</key>
+        variable.other.s
+        tings</key>
+        
+        oregro
+          4e2d5</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Invalid</string
+        pe</key>
+        invalid</string>
+        tings</key>
+        
+        oregro
+          dd6f4</string>
+          round</key>
+          38ba8</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Invalid depreca
+        pe</key>
+        invalid.deprecat
+        tings</key>
+        
+        oregro
+          dd6f4</string>
+          round</key>
+          ba6f7</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Diff header</st
+        pe</key>
+        meta.diff, meta.
+        tings</key>
+        
+        oregro
+          c7086</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Diff deleted</s
+        pe</key>
+        markup.deleted</
+        tings</key>
+        
+        oregro
+          38ba8</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Diff inserted</
+        pe</key>
+        markup.inserted<
+        tings</key>
+        
+        oregro
+          6e3a1</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Diff changed</s
+        pe</key>
+        markup.changed</
+        tings</key>
+        
+        oregro
+          9e2af</string>
+          tyle</key>
+          string>
+          
+        
+      
+      >name<
+        Message error</
+        pe</key>
+        message.error</s
+        tings</key>
+        
+        oregro
+          38ba8</string>
+          tyle</key>
+          string>
+          
+        
+      
+    >uuid</k
+    ing>4d0379b5-ef
+    >colorSpaceName</key>
+    ing>sRGB</string>
+    >semanticClass</key>
+    ing>theme.dark.Catppucci
+    >author</key>
+    ing>BrunDerSchwar
+    >
+  ist>

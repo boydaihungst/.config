@@ -1,0 +1,3 @@
+[filechooser]
+cmd=/home/huyhoang/.config/xdg-desktop-portal-termfilechooser/ranger-wrapper.sh
+default_dir=/home/huyhoang/Downloads

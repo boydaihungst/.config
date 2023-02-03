@@ -1,0 +1,54 @@
+# Assign workspaces
+assign [app_id="btop|htop"] workspace 1
+assign [app_id="kitty|lvim|vim|nvim"] workspace 1
+assign [app_id="firefox"] workspace 2
+assign [app_id="ranger|lfcd|lf|vifm"] workspace 3
+assign [app_id="ranger|lfcd|lf|vifm"] workspace 3
+assign [app_id="thunderbird"] workspace 4
+assign [app_id="telegramDesktop|skype|pidgin|discord"] workspace 5
+# fallback all other program
+#assign [all] $ws4
+
+# automatic set focus new window if it opens on another workspace then the current:
+for_window [app_id=kitty|lvim|vim|nvim|btop] focus
+for_window [app_id=firefox] focus
+for_window [app_id=ranger|lfcd|lf|vifm] focus
+for_window [app_id=thunderbird] focus
+for_window [app_id=telegramDesktop] focus
+for_window [app_id=discord] focus
+
+# set floating (nontiling)for apps needing it:
+for_window [class="Yad" instance="yad"] floating enable
+for_window [app_id="yad"] floating enable
+for_window [app_id="blueman-manager"] floating enable
+
+# set floating (nontiling) for special apps:
+for_window [class="Xsane" instance="xsane"] floating enable
+for_window [app_id="pavucontrol" ] floating enable
+for_window [class="qt5ct" instance="qt5ct"] floating enable
+for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
+for_window [app_id="pamac-manager"] floating enable
+for_window [class="Lxappearance"] floating enable
+
+# set floating for window roles
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [window_role="About"] floating enable
+for_window [title="File Operation Progress"] floating enable, sticky enable
+for_window [app_id="firefox" title="Library"] floating enable
+for_window [app_id="floating_shell_portrait"] floating enable, sticky enable
+for_window [title="Picture in picture"] floating enable, sticky enable
+# for_window [app_id="nmtui"] floating enable, sticky enable, resize set width 50 ppt height 70 ppt
+
+for_window [app_id="xsensors"] floating enable
+for_window [title="Save File"] floating enable
+for_window [app_id="firefox" title="Firefox — Sharing Indicator"] kill
+
+# Inhibit idle
+for_window [app_id="firefox|firefox-nightly"] inhibit_idle fullscreen
+for_window [app_id="io.github.celluloid_player.Celluloid"] inhibit_idle fullscreen
+for_window [app_id="Chromium|Brave|Chrome"] inhibit_idle fullscreen

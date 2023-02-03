@@ -1,0 +1,25 @@
+# Auth with polkit-gnome:
+# exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# Desktop notifications
+# exec dbus-launch --exit-with-session dunst --config ~/.config/dunst/dunstrc
+
+# Network Applet
+# exec nm-applet --indicator
+
+# GTK3 applications take a long time to start
+# exec systemctl --user import-environment DBUS_SESSION_BUS_ADDRESS DISPLAY WAYLAND_DISPLAY SWAYSOCK
+# exec dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY WAYLAND_DISPLAY SWAYSOCK
+     
+# exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+# Welcome App
+# exec dex -a --term kitty
+
+# Sway Fader
+# exec python3 ~/.config/sway/scripts/swayfader.py      
+
+# clipman
+# exec wl-paste -n -t text --watch clipman store --histpath="~/.cache/clipman.json" >> /tmp/clipman-log.txt 2>&1 &
+
+# exec fcitx5 -d -r
+# exec_always autotiling

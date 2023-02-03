@@ -1,0 +1,6 @@
+# style name or JSON path (default "auto")
+style: "~/.config/glow/gruvbox-dark.json"
+# show local files only; no network (TUI-mode only)
+# mouse support (TUI-mode only)
+# use pager to display markdown
+# word-wrap at width
