@@ -1,0 +1,10 @@
+[submodule "ranger/ranger_udisk_menu"]
+	path = ranger/ranger_udisk_menu
+	url = https://github.com/SL-RU/ranger_udisk_menu
+	branch = master
+[submodule "ranger/plugins/ranger-archives"]
+	path = ranger/plugins/ranger-archives
+	url = https://github.com/maximtrp/ranger-archives
+[submodule "ranger/plugins/ranger-fzf-filter"]
+	path = ranger/plugins/ranger-fzf-filter
+	url = https://github.com/MuXiu1997/ranger-fzf-filter
