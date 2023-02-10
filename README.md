@@ -8,9 +8,9 @@
    > [i3wm setup](https://github.com/endeavouros-team/endeavouros-i3wm-setup#tutorial-to-install-endeavouros-i3-setup-from-scratch)
 - Install packages
 ```sh
-yay -S bat bluetuith-bin kitty kvantum jamesdsp mpd mpv ncmpcpp polybar ranger rofi rofi-greenclip smplayer smplayer-skins picom-git starship glow 
+yay -S bat bluetuith-bin kitty kvantum jamesdsp mpd mpv ncmpcpp polybar ranger rofi rofi-greenclip smplayer smplayer-skins picom-git starship glow betterlockscreen xidlehook playerctl light scrot autotiling wmfocus xclip 
 # Optional
-yay -S ibus ibus-bamboo fish
+yay -S ibus ibus-bamboo fish calibre
 ```
 
 
@@ -58,3 +58,25 @@ yay -S ibus ibus-bamboo fish
          # Install lvim
          LV_BRANCH='release-1.2/neovim-0.8' bash <(curl -s https://raw.githubusercontent.com/boydaihungst/LunarVim/master/utils/installer/install.sh)
       ```
+
+## Gallery
+
+Firefox
+![image](https://user-images.githubusercontent.com/38396158/218135398-19652200-a4e2-4978-a341-de2434465b55.png)
+Ranger
+![image](https://user-images.githubusercontent.com/38396158/218135484-d4252b81-740c-4432-9914-1ea7bc4059c9.png)
+Btop
+![image](https://user-images.githubusercontent.com/38396158/218136687-bc60d830-c5c8-475f-be06-0bbeeade0dbd.png)
+Kitty
+![image](https://user-images.githubusercontent.com/38396158/218136811-1bb524c3-72ae-47bc-acd9-5fb24c3ac3e2.png)
+Lvim
+![image](https://user-images.githubusercontent.com/38396158/218137035-4c14d5e9-20b2-40b4-95ad-85972255fc40.png)
+Ncmpcpp
+![image](https://user-images.githubusercontent.com/38396158/218137589-6e72de3f-f5ac-4f78-bc2d-86897f4d3cea.png)
+Calibre E-book viewer
+![image](https://user-images.githubusercontent.com/38396158/218137735-9ca29fa4-6c24-4644-9220-cc520882a106.png)
+Smplayer 
+![image](https://user-images.githubusercontent.com/38396158/218137951-253dc956-b726-4c91-a42d-67c46c90fd3c.png)
+
+
+
