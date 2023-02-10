@@ -39,7 +39,7 @@ FILE_EXTENSION_LOWER=$(echo ${FILE_EXTENSION} | tr '[:upper:]' '[:lower:]')
 # Settings
 HIGHLIGHT_SIZE_MAX=262143 # 256KiB
 HIGHLIGHT_TABWIDTH=2
-HIGHLIGHT_STYLE=$(echo $HOME'/.config/highlight/themes/catppuccin.theme')
+HIGHLIGHT_STYLE=$(echo $HOME'/.config/highlight/themes/norddark.theme')
 PYGMENTIZE_STYLE='gruvbox-dark'
 
 handle_extension() {

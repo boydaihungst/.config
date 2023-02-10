@@ -1,5 +1,21 @@
 lvim.leader = "space"
 local which_key_mappings = {
+  ['r'] = {
+    name = "Search and Replace",
+
+    ["o"] = { "<CMD>SearchReplaceSingleBufferOpen<CR>", "[o]pen" },
+    ["w"] = { "<CMD>SearchReplaceSingleBufferCWord<CR>", "[w]ord" },
+    ["W"] = { "<CMD>SearchReplaceSingleBufferCWORD<CR>", "[W]ORD" },
+    ["p"] = { "<CMD>SearchReplaceSingleBufferCFile<CR>", "[p]ath file" },
+    ["m"] = {
+      name = "Multiple Buffer",
+      ["o"] = { "<CMD>SearchReplaceMultiBufferOpen<CR>", "[o]pen" },
+      ["w"] = { "<CMD>SearchReplaceMultiBufferCWord<CR>", "[w]ord" },
+      ["W"] = { "<CMD>SearchReplaceMultiBufferCWORD<CR>", "[W]ORD" },
+      ["p"] = { "<CMD>SearchReplaceMultiBufferCFile<CR>", "[p]ath file" },
+    }
+  },
+
   ["S"] = {
     name = "Session",
     s = { "<CMD>SearchSession<CR>", " Find Session" },
@@ -7,6 +23,7 @@ local which_key_mappings = {
   },
   ["s"] = {
     s = { "<CMD>SearchSession<CR>", " Find Session" },
+    l = { "<CMD>Telescope filetypes<CR>", "Change file language (type)" }
   },
   ["t"] = {
     name = "Testing",
@@ -35,6 +52,16 @@ local which_key_mappings = {
       "Stop test",
     },
   },
+  ['T'] = {
+    ['t'] = {
+      "<cmd>TSPlaygroundToggle<CR>",
+      "Toggle playground"
+    },
+    ['c'] = {
+      "<cmd>TSHighlightCapturesUnderCursor<CR>",
+      "Highlight Under Cursor"
+    },
+  }
 }
 local which_key_vmappings = {
   ["S"] = {
@@ -44,6 +71,7 @@ local which_key_vmappings = {
   },
   ["s"] = {
     s = { "<ESC><CMD>SearchSession<CR>", " Find Session" },
+    l = { "<CMD>Telescope filetypes<CR>", "Change file language (type)" }
   },
   ["t"] = {
     name = "Testing",
@@ -72,6 +100,16 @@ local which_key_vmappings = {
       "Stop test",
     },
   },
+  ['T'] = {
+    ['t'] = {
+      "<ESC><cmd>TSPlaygroundToggle<CR>",
+      "Toggle playground"
+    },
+    ['c'] = {
+      "<ESC><cmd>TSHighlightCapturesUnderCursor<CR>",
+      "Highlight Under Cursor"
+    },
+  }
 }
 lvim.builtin.which_key.opts.silent = false
 lvim.builtin.which_key.vopts.silent = false
@@ -83,14 +121,11 @@ local keymappings = {
     ["<C-s>"] = { ":w<CR>" },
     ["f"] = { ":HopChar2<CR>", { silent = true } },
     ["F"] = { ":HopWord<CR>", { silent = true } },
-    -- ["gbb"] = {
-    --   "<Plug>comment_toggle_blockwise_current", { silent = true, desc = "Comment toggle blockwise" }
-    -- },
-    -- ["gbc"] = {
-    --   ":Neogen class<CR>", { silent = true, desc = "Comment Class" }
-    -- },
     ["gbf"] = {
       ":Neogen func<CR>", { silent = true, desc = "Comment Function" }
+    },
+    ["gbC"] = {
+      ":Neogen class<CR>", { silent = true, desc = "Comment Class" }
     },
 
   },
@@ -99,14 +134,11 @@ local keymappings = {
   },
   visual_mode = {
     -- vmap
-    -- ["gbb"] = {
-    --   "<Plug>comment_toggle_blockwise_current", { silent = true, desc = "Comment toggle blockwise" }
-    -- },
-    -- ["gbc"] = {
-    --   "<ESC>:Neogen class<CR>", { silent = true, desc = "Comment Class" }
-    -- },
     ["gbf"] = {
       "<ESC>:Neogen func<CR>", { silent = true, desc = "Comment Function" }
+    },
+    ["gbC"] = {
+      "<ESC>:Neogen class<CR>", { silent = true, desc = "Comment Class" }
     },
   },
   term_mode = {
@@ -117,19 +149,24 @@ local keymappings = {
     },
   },
   visual_block_mode = {
-    -- vmap block
-    -- ["gbb"] = {
-    --   "<Plug>comment_toggle_blockwise_current", { silent = true, desc = "Comment toggle blockwise" }
-    -- },
-    -- ["gbc"] = {
-    --   "<ESC>:Neogen class<CR>", { silent = true, desc = "Comment Class" }
-    -- },
     ["gbf"] = {
       "<ESC>:Neogen func<CR>", { silent = true, desc = "Comment Function" }
     },
+    ["gbC"] = {
+      "<ESC>:Neogen class<CR>", { silent = true, desc = "Comment Class" }
+    },
+    -- replace selected text
+    ["<C-r>"] = { [[<CMD>SearchReplaceSingleBufferVisualSelection<CR>]] },
+    -- replace in selected block
+    ["<C-s>"] = { [[<CMD>SearchReplaceWithinVisualSelection<CR>]] },
+    -- replace in selected block with word under cursor
+    ["<C-b>"] = { [[<CMD>SearchReplaceWithinVisualSelectionCWord<CR>]] },
   },
   command_mode = {
     --cmap
   },
 }
 lvim.keys = vim.tbl_deep_extend("force", lvim.keys, keymappings)
+lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Telescope lsp_references<cr>", "Go to Definiton" }
+lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Telescope lsp_references<cr>", "Go to Definiton" }
+lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Telescope lsp_references<cr>", "Go to Definiton" }

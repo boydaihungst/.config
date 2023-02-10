@@ -180,6 +180,7 @@
     "discord:discord": 6,
     "kitty:kitty": 6,
     "lvim,lvim:lvim,lvim": 7,
-    "ranger:ranger": 7
+    "ranger:ranger": 7,
+    "kotatogram-desktop:kotatogram-desktop": 6
   }
 }

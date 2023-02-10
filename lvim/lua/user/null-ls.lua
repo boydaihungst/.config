@@ -3,7 +3,7 @@ local code_actions = require("lvim.lsp.null-ls.code_actions")
 local linters = require("lvim.lsp.null-ls.linters")
 
 formatters.setup({
-	{ name = "deno_fmt" },
+	-- { name = "deno_fmt" },
 	{ name = "prettier", filetypes = { "html", "css", "yaml", "handlebars" } },
 	-- { name = "eslint_d" },
 	{ name = "rustywind" },
