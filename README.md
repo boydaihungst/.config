@@ -57,6 +57,12 @@ yay -S bob
 bob install 0.8.0 && bob use 0.8.0
 # Install lvim
 LV_BRANCH='release-1.2/neovim-0.8' bash <(curl -s https://raw.githubusercontent.com/boydaihungst/LunarVim/master/utils/installer/install.sh)
+# Copy config
+cp -r ./lvim ~/.config/
+mkdir -p ~/.cache/lvim/snapshots/
+cp -r ./lvim/snapshots/* ~/.cache/lvim/snapshots/
+# Open lvim and run:
+:PackerSnapshotRollback lastest
 ```
 
 ## Gallery
