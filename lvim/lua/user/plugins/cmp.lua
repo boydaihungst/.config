@@ -7,11 +7,10 @@ lvim.builtin.cmp.cmdline.enable = true
 -- lvim.builtin.cmp.experimental.ghost_text = true
 lvim.builtin.cmp.preselect      = cmp.PreselectMode.None
 
-
 lvim.builtin.cmp.mapping["<Tab>"] = cmp.mapping(function(fallback)
   if cmp.visible() then
     local selectBehavior = (
-        luasnip.jumpable(-1) or luasnip.jumpable(1) or vim.api.nvim_call_function("exists", { 'b:visual_multi' })) and
+        luasnip.jumpable(-1) or luasnip.jumpable(1) or vim.b.visual_multi) and
         cmp.SelectBehavior.Select or
         cmp.SelectBehavior.Insert
     cmp.select_next_item({ behavior = selectBehavior })
@@ -30,7 +29,7 @@ end, { "i", "s" })
 lvim.builtin.cmp.mapping["<S-Tab>"]      = cmp.mapping(function(fallback)
   if cmp.visible() then
     local selectBehavior = (
-        luasnip.jumpable(-1) or luasnip.jumpable(1) or vim.api.nvim_call_function("exists", { 'b:visual_multi' })) and
+        luasnip.jumpable(-1) or luasnip.jumpable(1) or vim.b.visual_multi) and
         cmp.SelectBehavior.Select or
         cmp.SelectBehavior.Insert
     cmp.select_prev_item({ behavior = selectBehavior })
@@ -53,7 +52,7 @@ lvim.builtin.cmp.mapping['<CR>']         = cmp.mapping(function(fallback)
       return -- success, exit early
     end
     -- when no selected any entry
-  elseif luasnip.jumpable(1) then
+  elseif jumpable(1) then
     luasnip.jump(1)
     return
   end

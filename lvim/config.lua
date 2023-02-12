@@ -10,7 +10,6 @@ require("user.plugins.nvimtree")
 require("user.plugins.which-key")
 ---------------------------- Global ---------------------------
 vim.g.netrw_browsex_viewer = "xdg-open"
-vim.g.catppuccin_flavour   = "mocha"
 ----------------------------- Option
 vim.opt["foldenable"]      = true
 vim.opt.foldlevelstart     = 99
@@ -18,7 +17,7 @@ vim.opt["foldlevel"]       = 99
 vim.opt.foldcolumn         = '1'
 vim.opt.scrolloff          = 8
 vim.opt.wrap               = true
-vim.opt.list               = true
+vim.opt.list               = false
 vim.opt.termguicolors      = true
 vim.opt.sessionoptions     = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 vim.opt.fillchars          = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
@@ -27,8 +26,10 @@ vim.opt.fillchars          = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:
 lvim.format_on_save                              = false
 lvim.builtin.terminal.active                     = true
 lvim.builtin.dap.active                          = true
-lvim.builtin.alpha.active                        = true
+lvim.builtin.alpha.active                        = false
 lvim.builtin.project.active                      = true
+-- lvim.builtin.project.detection_methods           = { "lsp" }
+-- lvim.builtin.project.exclude_dirs                = { "**/node_modules/*" }
 lvim.builtin.breadcrumbs.active                  = false
 lvim.builtin.alpha.mode                          = "dashboard"
 lvim.builtin.terminal.shell                      = "fish"
@@ -47,6 +48,7 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "help" },
   command = "wincmd L",
 })
+
 ------------------------------- Plugins ---------------------------
 lvim.plugins = {
   {
@@ -292,12 +294,14 @@ lvim.plugins = {
         auto_restore_enabled = true,
         auto_session_enable_last_session = true,
         auto_session_allowed_dirs = { "~/git/*" },
-        post_save_cmds = {
+        pre_save_cmds = {
           "tabdo NvimTreeClose",
           function()
             local _, dapui = pcall(require, "dapui")
             local _, neotest = pcall(require, "neotest")
             local _, terms = pcall(require, "toggleterm.terminal")
+            local bufferDelete = require('bufdelete')
+
             if dapui then
               dapui.close()
             end
@@ -309,12 +313,24 @@ lvim.plugins = {
               local terminals = terms.get_all()
               for _, term in pairs(terminals) do
                 term:close()
-                term:send('exit')
                 if vim.api.nvim_buf_is_loaded(term.bufnr) then
                   vim.api.nvim_buf_delete(term.bufnr, { force = true })
                 end
               end
             end
+            local buffer_filter = function(buf)
+              if vim.api.nvim_buf_is_valid(buf) and not vim.api.nvim_buf_get_option(buf, 'buflisted')
+              then
+                return true
+              end
+              return false
+            end
+
+            local unlistedBuffers = vim.tbl_filter(buffer_filter, vim.api.nvim_list_bufs())
+            for _, buf in pairs(unlistedBuffers) do
+              bufferDelete.bufwipeout(buf, true)
+            end
+
           end,
         },
       })

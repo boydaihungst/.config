@@ -2,6 +2,7 @@ vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {
   "volar",
   "tsserver",
 })
+local util = require 'lspconfig.util'
 
 require("lvim.lsp.manager").setup("eslint", {
   on_attach = function(client, bufnr)
@@ -17,7 +18,13 @@ require("lvim.lsp.manager").setup("eslint", {
       },
     }, { prefix = "<leader>" })
   end,
-  settings = {
+  root_dir  = function(filename, bufnr)
+    if string.find(filename, "node_modules/") then
+      return nil
+    end
+    return require("lspconfig.server_configurations.eslint").default_config.root_dir(filename, bufnr)
+  end,
+  settings  = {
     codeAction = {
       disableRuleComment = {
         enable = true,
@@ -51,18 +58,18 @@ require("lvim.lsp.manager").setup("eslint", {
   },
 })
 
-lvim.lsp.on_attach_callback = function(client, bufnr)
-  -- show hint
-  require("lsp_signature").on_attach({
-    bind = true, -- This is mandatory, otherwise border config won't get registered.
-    hint_prefix = " ",
-    -- floating_window = false,
-    hint_enable = false,
-    hi_parameter = "LspDiagnosticsHint",
-    handler_opts = {
-      border = "rounded",
-    },
-    max_width = 80,
-  }, bufnr)
+-- lvim.lsp.on_attach_callback = function(client, bufnr)
+--   -- show hint
+--   require("lsp_signature").on_attach({
+--     bind = true, -- This is mandatory, otherwise border config won't get registered.
+--     hint_prefix = " ",
+--     -- floating_window = false,
+--     hint_enable = false,
+--     hi_parameter = "LspDiagnosticsHint",
+--     handler_opts = {
+--       border = "rounded",
+--     },
+--     max_width = 80,
+--   }, bufnr)
 
-end
+-- end
