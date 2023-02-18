@@ -1,8 +1,7 @@
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {
   "volar",
-  "tsserver",
+  "tsserver"
 })
-local util = require 'lspconfig.util'
 
 require("lvim.lsp.manager").setup("eslint", {
   on_attach = function(client, bufnr)
@@ -57,19 +56,3 @@ require("lvim.lsp.manager").setup("eslint", {
     },
   },
 })
-
--- lvim.lsp.on_attach_callback = function(client, bufnr)
---   -- show hint
---   require("lsp_signature").on_attach({
---     bind = true, -- This is mandatory, otherwise border config won't get registered.
---     hint_prefix = " ",
---     -- floating_window = false,
---     hint_enable = false,
---     hi_parameter = "LspDiagnosticsHint",
---     handler_opts = {
---       border = "rounded",
---     },
---     max_width = 80,
---   }, bufnr)
-
--- end

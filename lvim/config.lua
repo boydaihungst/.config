@@ -9,28 +9,29 @@ require("user.plugins.lspconfig")
 require("user.plugins.nvimtree")
 require("user.plugins.which-key")
 ---------------------------- Global ---------------------------
-vim.g.netrw_browsex_viewer = "xdg-open"
+vim.g.netrw_browsex_viewer                       = "xdg-open"
 ----------------------------- Option
-vim.opt["foldenable"]      = true
-vim.opt.foldlevelstart     = 99
-vim.opt["foldlevel"]       = 99
-vim.opt.foldcolumn         = '1'
-vim.opt.scrolloff          = 8
-vim.opt.wrap               = true
-vim.opt.list               = false
-vim.opt.termguicolors      = true
-vim.opt.sessionoptions     = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
-vim.opt.fillchars          = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-
+vim.opt["foldenable"]                            = true
+vim.opt.foldlevelstart                           = 99
+vim.opt["foldlevel"]                             = 99
+vim.opt.foldcolumn                               = '1'
+vim.opt.scrolloff                                = 8
+vim.opt.wrap                                     = true
+vim.opt.list                                     = false
+vim.opt.termguicolors                            = true
+vim.opt.sessionoptions                           = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+vim.opt.fillchars                                = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.g.navic_silence                              = true
 ------------------------------- Lvim -------------------------
+lvim.log.level                                   = 'error'
 lvim.format_on_save                              = false
 lvim.builtin.terminal.active                     = true
 lvim.builtin.dap.active                          = true
 lvim.builtin.alpha.active                        = false
 lvim.builtin.project.active                      = true
--- lvim.builtin.project.detection_methods           = { "lsp" }
--- lvim.builtin.project.exclude_dirs                = { "**/node_modules/*" }
-lvim.builtin.breadcrumbs.active                  = false
+lvim.builtin.project.detection_methods           = { "lsp" }
+lvim.builtin.project.exclude_dirs                = { "**/node_modules/*" }
+lvim.builtin.breadcrumbs.active                  = true
 lvim.builtin.alpha.mode                          = "dashboard"
 lvim.builtin.terminal.shell                      = "fish"
 lvim.builtin.terminal.auto_scroll                = false
@@ -66,7 +67,6 @@ lvim.plugins = {
         max_width = 80,
         select_signature_key = "<C-tab>"
       })
-
     end
   },
   -- theme
@@ -132,7 +132,7 @@ lvim.plugins = {
   },
   -- multiple cursors position
   { "mg979/vim-visual-multi" },
-  { "p00f/nvim-ts-rainbow", event = "BufRead", requires = { "nvim-treesitter" } },
+  { "p00f/nvim-ts-rainbow",  event = "BufRead", requires = { "nvim-treesitter" } },
 
   -- move motion
   {
@@ -254,7 +254,7 @@ lvim.plugins = {
   { "tpope/vim-surround" },
   { "famiu/bufdelete.nvim" },
   {
-    "tpope/vim-abolish",
+    "tpope/vim-abolish"
   },
   {
     "mxsdev/nvim-dap-vscode-js",
@@ -330,7 +330,6 @@ lvim.plugins = {
             for _, buf in pairs(unlistedBuffers) do
               bufferDelete.bufwipeout(buf, true)
             end
-
           end,
         },
       })

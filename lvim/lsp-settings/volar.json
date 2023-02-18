@@ -1,0 +1,8 @@
+{
+  "volar.autoCompleteRefs": true,
+  "volar.codeLens.pugTools": true,
+  "volar.updateImportsOnFileMove.enabled": true,
+  "volar.completion.normalizeComponentAutoImportName": true,
+  "volar.vueserver.maxOldSpaceSize": 4096,
+  "volar.vueserver.textDocumentSync": "full"
+}

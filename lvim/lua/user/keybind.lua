@@ -170,3 +170,23 @@ lvim.keys = vim.tbl_deep_extend("force", lvim.keys, keymappings)
 lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Telescope lsp_references<cr>", "Go to Definiton" }
 lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Telescope lsp_references<cr>", "Go to Definiton" }
 lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Telescope lsp_references<cr>", "Go to Definiton" }
+
+local function telescope_find_files(_)
+  require("lvim.core.nvimtree").start_telescope "find_files"
+end
+
+local function telescope_live_grep(_)
+  require("lvim.core.nvimtree").start_telescope "live_grep"
+end
+
+lvim.builtin.nvimtree.setup.view.mappings.list = {
+  { key = { "l", "<CR>", "o" }, action = "edit", mode = "n" },
+  { key = "h", action = "close_node" },
+  { key = "v", action = "vsplit" },
+  { key = "C", action = "cd" },
+  { key = "gtf", action = "telescope_find_files", action_cb = telescope_find_files },
+  { key = "gtg", action = "telescope_live_grep", action_cb = telescope_live_grep },
+  -- Use d as trash, use D as remove permanently
+  { key = 'D', action = 'remove' },
+  { key = 'd', action = 'trash' }
+}

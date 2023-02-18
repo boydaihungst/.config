@@ -10,6 +10,8 @@
   "typescript.updateImportsOnFileMove.enabled": "prompt",
   "typescript.preferences.useAliasesForRenames": false,
   "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.tsserver.maxTsServerMemory": 8192,
+  "typescript.tsserver.useSyntaxServer": "always",
   "javascript.format.enable": false,
   "javascript.suggest.paths": true,
   "javascript.autoClosingTags": true,
