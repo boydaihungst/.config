@@ -1,5 +1,8 @@
 lvim.leader = "space"
 local which_key_mappings = {
+  ["n"] = {
+    "<CMD>enew<CR>", "New buffer"
+  },
   ['r'] = {
     name = "Search and Replace",
 
@@ -15,7 +18,6 @@ local which_key_mappings = {
       ["p"] = { "<CMD>SearchReplaceMultiBufferCFile<CR>", "[p]ath file" },
     }
   },
-
   ["S"] = {
     name = "Session",
     s = { "<CMD>SearchSession<CR>", " Find Session" },
@@ -180,13 +182,12 @@ local function telescope_live_grep(_)
 end
 
 lvim.builtin.nvimtree.setup.view.mappings.list = {
-  { key = { "l", "<CR>", "o" }, action = "edit", mode = "n" },
-  { key = "h", action = "close_node" },
-  { key = "v", action = "vsplit" },
-  { key = "C", action = "cd" },
-  { key = "gtf", action = "telescope_find_files", action_cb = telescope_find_files },
-  { key = "gtg", action = "telescope_live_grep", action_cb = telescope_live_grep },
+  { key = { "l", "<CR>", "o" }, action = "edit",                 mode = "n" },
+  { key = "h",                  action = "close_node" },
+  { key = "v",                  action = "vsplit" },
+  { key = "C",                  action = "cd" },
+  { key = "gtf",                action = "telescope_find_files", action_cb = telescope_find_files },
+  { key = "gtg",                action = "telescope_live_grep",  action_cb = telescope_live_grep },
   -- Use d as trash, use D as remove permanently
-  { key = 'D', action = 'remove' },
-  { key = 'd', action = 'trash' }
+  { key = 'd',                  action = 'trash' }
 }

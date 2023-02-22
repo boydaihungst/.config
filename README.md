@@ -48,21 +48,19 @@ chsh -s $(which fish)
 
 ```
    
-- Install neovim 0.8.0 + lvim
+- Install neovim 0.9.0+ and lvim
 
 ```sh
 # Neovim version manager (optional)
 yay -S bob 
-# Install neovim 0.8.0 and use 
-bob install 0.8.0 && bob use 0.8.0
+# Install neovim nightly and use 
+bob install nightly && bob use nightly
 # Install lvim
-LV_BRANCH='release-1.2/neovim-0.8' bash <(curl -s https://raw.githubusercontent.com/boydaihungst/LunarVim/master/utils/installer/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/boydaihungst/LunarVim/master/utils/installer/install.sh)
 # Copy config
 cp -r ./lvim ~/.config/
-mkdir -p ~/.cache/lvim/snapshots/
-cp -r ./lvim/snapshots/* ~/.cache/lvim/snapshots/
 # Open lvim and run:
-:PackerSnapshotRollback lastest
+:Lazy restore
 ```
 
 ## Gallery

@@ -1,16 +1,17 @@
-local luasnip          = require('luasnip')
-local cmp              = require("cmp")
-local jumpable         = require("lvim.core.cmp").methods.jumpable
-local has_words_before = require("lvim.core.cmp").methods.has_words_before
+local luasnip                            = require('luasnip')
+local cmp                                = require("cmp")
+local lvim_core_cmp                      = require('lvim.core.cmp')
+local jumpable                           = lvim_core_cmp.methods.jumpable
+local has_words_before                   = lvim_core_cmp.methods.has_words_before
 
-lvim.builtin.cmp.cmdline.enable = true
+lvim.builtin.cmp.cmdline.enable          = true
 -- lvim.builtin.cmp.experimental.ghost_text = true
-lvim.builtin.cmp.preselect      = cmp.PreselectMode.None
+lvim.builtin.cmp.preselect               = cmp.PreselectMode.None
 
-lvim.builtin.cmp.mapping["<Tab>"] = cmp.mapping(function(fallback)
+lvim.builtin.cmp.mapping["<Tab>"]        = cmp.mapping(function(fallback)
   if cmp.visible() then
     local selectBehavior = (
-        luasnip.jumpable(-1) or luasnip.jumpable(1) or vim.b.visual_multi) and
+        luasnip.jumpable( -1) or luasnip.jumpable(1) or vim.b.visual_multi) and
         cmp.SelectBehavior.Select or
         cmp.SelectBehavior.Insert
     cmp.select_next_item({ behavior = selectBehavior })
@@ -29,12 +30,12 @@ end, { "i", "s" })
 lvim.builtin.cmp.mapping["<S-Tab>"]      = cmp.mapping(function(fallback)
   if cmp.visible() then
     local selectBehavior = (
-        luasnip.jumpable(-1) or luasnip.jumpable(1) or vim.b.visual_multi) and
+        luasnip.jumpable( -1) or luasnip.jumpable(1) or vim.b.visual_multi) and
         cmp.SelectBehavior.Select or
         cmp.SelectBehavior.Insert
     cmp.select_prev_item({ behavior = selectBehavior })
-  elseif luasnip.jumpable(-1) then
-    luasnip.jump(-1)
+  elseif luasnip.jumpable( -1) then
+    luasnip.jump( -1)
   else
     fallback()
   end

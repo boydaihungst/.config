@@ -9,7 +9,8 @@ require("user.plugins.lspconfig")
 require("user.plugins.nvimtree")
 require("user.plugins.which-key")
 ---------------------------- Global ---------------------------
-vim.g.netrw_browsex_viewer                       = "xdg-open"
+vim.g.netrw_browsex_viewer = "xdg-open"
+vim.g.navic_silence        = true
 ----------------------------- Option
 vim.opt["foldenable"]                            = true
 vim.opt.foldlevelstart                           = 99
@@ -21,7 +22,6 @@ vim.opt.list                                     = false
 vim.opt.termguicolors                            = true
 vim.opt.sessionoptions                           = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 vim.opt.fillchars                                = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-vim.g.navic_silence                              = true
 ------------------------------- Lvim -------------------------
 lvim.log.level                                   = 'error'
 lvim.format_on_save                              = false
@@ -29,7 +29,7 @@ lvim.builtin.terminal.active                     = true
 lvim.builtin.dap.active                          = true
 lvim.builtin.alpha.active                        = false
 lvim.builtin.project.active                      = true
-lvim.builtin.project.detection_methods           = { "lsp" }
+-- lvim.builtin.project.detection_methods           = { "lsp" }
 lvim.builtin.project.exclude_dirs                = { "**/node_modules/*" }
 lvim.builtin.breadcrumbs.active                  = true
 lvim.builtin.alpha.mode                          = "dashboard"
@@ -49,7 +49,6 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "help" },
   command = "wincmd L",
 })
-
 ------------------------------- Plugins ---------------------------
 lvim.plugins = {
   {
@@ -60,12 +59,12 @@ lvim.plugins = {
         hint_prefix = " ",
         -- floating_window = false,
         hint_enable = false,
-        hi_parameter = "LspSignatureActiveParameter",
+        hi_parameter = "@text.underline",
         handler_opts = {
           border = "rounded",
         },
         max_width = 80,
-        select_signature_key = "<C-tab>"
+        select_signature_key = "<C-Tab>"
       })
     end
   },
@@ -107,7 +106,9 @@ lvim.plugins = {
           EndOfBuffer = { fg = "#BCC4C9", bg = "#080A0E" },
           FoldColumn = { fg = "#BCC4C9", bg = "#080A0E" },
           Folded = { fg = "#BCC4C9", bg = "#282c34" },
-          MatchParen = { fg = "NONE", bg = "#292C34" }
+          MatchParen = { fg = "NONE", bg = "#292C34" },
+          NormalFloat = { fg = "#BCC4C9", bg = "#080A0E" },
+          FloatBorder = { fg = "#BCC4C9", bg = "#080A0E" }
         }
       })
 
@@ -131,26 +132,24 @@ lvim.plugins = {
     end,
   },
   -- multiple cursors position
-  { "mg979/vim-visual-multi" },
-  { "p00f/nvim-ts-rainbow",  event = "BufRead", requires = { "nvim-treesitter" } },
+  { "mg979/vim-visual-multi", keys = "<C-n>" },
+  { "p00f/nvim-ts-rainbow",   dependencies = { "nvim-treesitter" } },
 
   -- move motion
   {
     "phaazon/hop.nvim",
     event = "BufRead",
-    setup = function()
-      vim.api.nvim_set_keymap("n", "f", ":HopChar2<cr>", { silent = true })
-      vim.api.nvim_set_keymap("n", "F", ":HopWord<cr>", { silent = true })
-    end,
     config = function()
       require("hop").setup()
+      vim.api.nvim_set_keymap("n", "f", ":HopChar2<cr>", { silent = true })
+      vim.api.nvim_set_keymap("n", "F", ":HopWord<cr>", { silent = true })
     end,
   },
   {
     "andymass/vim-matchup",
-    event = "VimEnter",
-    after = { "nvim-treesitter" },
-    setup = function()
+    event = "BufRead",
+    -- after = { "nvim-treesitter" },
+    init = function()
       vim.g.matchup_matchparen_offscreen = { method = "popup" }
       vim.g.loaded_matchit = 1
       vim.g.matchup_matchparen_deferred = 1
@@ -159,6 +158,7 @@ lvim.plugins = {
     end,
   },
   { "chentoast/marks.nvim",
+    event = "BufRead",
     config = function()
       require 'marks'.setup {
         builtin_marks = { ".", "<", ">", "^" },
@@ -168,6 +168,7 @@ lvim.plugins = {
   },
   {
     "roobert/search-replace.nvim",
+    event = "BufRead",
     config = function()
       require("search-replace").setup({
         -- optionally override defaults
@@ -196,8 +197,8 @@ lvim.plugins = {
   -- Show current focused function at top
   {
     "romgrk/nvim-treesitter-context",
-    run = ":TSUpdateSync",
-    after = "nvim-treesitter",
+    build = ":TSUpdateSync",
+    -- after = "nvim-treesitter",
     config = function()
       require("treesitter-context").setup({
         enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
@@ -220,19 +221,19 @@ lvim.plugins = {
     end,
   },
   -- support missing lsp colorscheme supports
-  { "folke/lsp-colors.nvim", event = "BufRead" },
+  { "folke/lsp-colors.nvim" },
   {
     "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
+    build = "cd app && npm install",
     ft = "markdown",
     cmd = "MarkdownPreview",
-    setup = function()
+    init = function()
       vim.g.mkdp_filetypes = { "markdown" }
       -- auto open preview in browser when enter md buf
       vim.g.mkdp_auto_start = false
     end,
   },
-  { "tpope/vim-repeat" },
+  -- { "tpope/vim-repeat" },
   {
     "ethanholz/nvim-lastplace",
     config = function()
@@ -258,18 +259,24 @@ lvim.plugins = {
   },
   {
     "mxsdev/nvim-dap-vscode-js",
+    keys = { '<leader>d' },
     config = function()
       require("user.dap").setup()
     end,
   },
+  { "haydenmeade/neotest-jest",
+    -- module = { "neotest" }
+  },
   {
     "nvim-neotest/neotest",
-    requires = {
+    dependencies = {
       "haydenmeade/neotest-jest",
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
     },
+    keys = { "<leader>t" },
+    -- module = { "neotest" },
     config = function()
       require("neotest").setup({
         adapters = {
@@ -297,19 +304,19 @@ lvim.plugins = {
         pre_save_cmds = {
           "tabdo NvimTreeClose",
           function()
-            local _, dapui = pcall(require, "dapui")
-            local _, neotest = pcall(require, "neotest")
-            local _, terms = pcall(require, "toggleterm.terminal")
+            local dapuiLoaded, dapui = pcall(require, "dapui")
+            local neotestLoaded, neotest = pcall(require, "neotest")
+            local terminalLoaded, terms = pcall(require, "toggleterm.terminal")
             local bufferDelete = require('bufdelete')
 
-            if dapui then
+            if dapui and dapuiLoaded then
               dapui.close()
             end
-            if neotest then
+            if neotest and neotestLoaded then
               neotest.summary.close()
               neotest.output_panel.close()
             end
-            if terms then
+            if terms and terminalLoaded then
               local terminals = terms.get_all()
               for _, term in pairs(terminals) do
                 term:close()
@@ -337,7 +344,8 @@ lvim.plugins = {
   },
   {
     "rmagatti/session-lens",
-    requires = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
+    dependencies = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
+    cmd = { "SearchSession" },
     config = function()
       require("session-lens").setup({
         prompt_title = "Restore Session",
@@ -347,6 +355,7 @@ lvim.plugins = {
   },
   {
     "danymat/neogen",
+    event = { "BufRead" },
     config = function()
       require('neogen').setup {
         snippet_engine = "luasnip",
@@ -374,24 +383,78 @@ lvim.plugins = {
   {
     "kevinhwang91/nvim-ufo",
     -- opt = true,
-    -- event = { "BufReadPre" },
-    wants = { "promise-async" },
-    requires = { "kevinhwang91/promise-async" },
+    event = { "BufRead" },
+    -- wants = { "promise-async" },
+    dependencies = { "kevinhwang91/promise-async" },
     config = function()
-      require("ufo").setup {
-        provider_selector = function(bufnr, filetype, buftype)
+      local _, ufo = pcall(require, 'ufo');
+      ufo.setup {
+        provider_selector = function()
           return { 'treesitter', 'indent' }
         end
       }
-      vim.keymap.set("n", "zR", require("ufo").openAllFolds)
-      vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+      vim.keymap.set("n", "zR", ufo.openAllFolds)
+      vim.keymap.set("n", "zM", ufo.closeAllFolds)
     end,
   },
   {
     "nvim-treesitter/playground",
+    cmd = { "TSPlaygroundToggle" }
   },
   {
-    "nvim-telescope/telescope-symbols.nvim"
+    "nvim-telescope/telescope-symbols.nvim",
+    cmd = { "Telescope symbols" }
   },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    -- after = "nvim-treesitter",
+    event = { "BufRead" },
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require 'nvim-treesitter.configs'.setup {
+        textobjects = {
+          select = {
+            enable = true,
+            -- Automatically jump forward to textobj, similar to targets.vim
+            lookahead = true,
 
+            keymaps = {
+              -- You can use the capture groups defined in textobjects.scm
+              ["am"] = { query = "@function.outer", desc = "Function region" },
+              ["im"] = { query = "@function.inner", desc = "Function region" },
+              ["ac"] = { query = "@class.outer", desc = "Class region" },
+              ["ic"] = { query = "@class.inner", desc = "Class region" },
+            },
+            include_surrounding_whitespace = true,
+          },
+          move = {
+            enable = true,
+            set_jumps = true, -- whether to set jumps in the jumplist
+            -- Below will go to either the start or the end, whichever is closer.
+            -- Use if you want more granular movements
+            -- Make it even more gradual by adding multiple queries and regex.
+            goto_next = {
+              ["]]"] = { query = { "@function.inner", "@function.outer", "@class.inner", "@class.outer" }, desc = "Next function or class" },
+            },
+            goto_previous = {
+              ["[["] = { query = { "@function.inner", "@function.outer", "@class.inner", "@class.outer" }, desc = "Previous function or class" },
+            }
+          },
+        },
+      }
+      local loadedTextObjectPlugin, ts_repeat_move = pcall(require, "nvim-treesitter.textobjects.repeatable_move")
+      if loadedTextObjectPlugin then
+        -- Repeat movement with ; and ,
+        -- ensure ; goes forward and , goes backward regardless of the last direction
+        vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
+        vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
+
+        -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
+        vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f)
+        vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
+        vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
+        vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T)
+      end
+    end
+  }
 }
