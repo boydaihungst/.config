@@ -6,6 +6,30 @@ lvim.builtin.bufferline.options.offsets                 = {
     highlight = "Directory",
     text_align = "center",
   },
+  {
+    filetype = "lspsagaoutline",
+    text = "Outline",
+    highlight = "@text",
+    text_align = "center",
+  },
+  {
+    filetype = "neotest-summary",
+    text = "Testing",
+    highlight = "@text",
+    text_align = "center",
+  },
+  {
+    filetype = "dapui_scopes",
+    text = "Debugger",
+    highlight = "@text",
+    text_align = "center",
+  },
+  {
+    filetype = "tsplayground",
+    text = "Treesitter playground",
+    highlight = "@text",
+    text_align = "center",
+  },
 }
 lvim.builtin.bufferline.highlights                      = {
   fill = {
@@ -124,7 +148,6 @@ lvim.builtin.bufferline.highlights                      = {
   duplicate = {
     bg = 'NONE',
   },
-
   separator_selected = {
     bg = "#29303D",
   },

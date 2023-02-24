@@ -63,7 +63,31 @@ local which_key_mappings = {
       "<cmd>TSHighlightCapturesUnderCursor<CR>",
       "Highlight Under Cursor"
     },
-  }
+  },
+  ["l"] = {
+    name = "LSP",
+    a = { "<cmd>Lspsaga code_action<cr>", "Code Action" },
+    d = { "<cmd>Lspsaga show_line_diagnostics ++unfocus<cr>", "Diagnostics in line" },
+    w = { "<cmd>Lspsaga show_buf_diagnostics<cr>", "Diagnostics in buffer" },
+    f = { "<cmd>lua require('lvim.lsp.utils').format()<cr>", "Format" },
+    i = { "<cmd>LspInfo<cr>", "Info" },
+    I = { "<cmd>Mason<cr>", "Mason Info" },
+    j = {
+      "<cmd>Lspsaga diagnostic_jump_next<cr>",
+      "Next Diagnostic",
+    },
+    k = {
+      "<cmd>Lspsaga diagnostic_jump_prev<cr>",
+      "Prev Diagnostic",
+    },
+    l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+    q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
+    r = { "<cmd>Lspsaga rename<cr>", "Rename" },
+    o = { "<cmd>Lspsaga outline<cr>", "Document Outline" },
+    S = {},
+    e = {},
+  },
+  [";"] = {}
 }
 local which_key_vmappings = {
   ["S"] = {
@@ -129,7 +153,7 @@ local keymappings = {
     ["gbC"] = {
       ":Neogen class<CR>", { silent = true, desc = "Comment Class" }
     },
-
+    ["<F2>"] = { ":Alpha<CR>", { silent = true, desc = "Dashboard" } }
   },
   insert_mode = {
     -- imap
@@ -169,10 +193,22 @@ local keymappings = {
   },
 }
 lvim.keys = vim.tbl_deep_extend("force", lvim.keys, keymappings)
-lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Telescope lsp_references<cr>", "Go to Definiton" }
-lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Telescope lsp_references<cr>", "Go to Definiton" }
-lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Telescope lsp_references<cr>", "Go to Definiton" }
-
+-- lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Telescope lsp_references<cr>", "Go to Definiton" }
+-- lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Telescope lsp_references<cr>", "Go to Definiton" }
+-- lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Telescope lsp_references<cr>", "Go to Definiton" }
+lvim.lsp.buffer_mappings = {
+  normal_mode = {
+    ["K"] = { "<cmd>Lspsaga hover_doc ++quiet<cr>", "Show hover" },
+    ["gd"] = { "<cmd>Lspsaga peek_definition<cr>", "Peak Definition" },
+    ["gD"] = { "<cmd>Lspsaga goto_definition<cr>", "Goto Definition" },
+    ["gr"] = { "<cmd>Lspsaga lsp_finder<cr>", "Goto References" },
+    ["gI"] = { "<cmd>Lspsaga lsp_finder<cr>", "Goto Implementation" },
+    ["gs"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "show signature help" },
+    ["gl"] = { "<cmd>Lspsaga show_line_diagnostics<cr>", "Show line diagnostics" },
+  },
+  insert_mode = {},
+  visual_mode = {},
+}
 local function telescope_find_files(_)
   require("lvim.core.nvimtree").start_telescope "find_files"
 end
