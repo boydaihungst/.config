@@ -16,7 +16,7 @@ yay -S ibus ibus-bamboo fish calibre
 
 ## Installation
    
-- Copy to ~/.config/ folder
+### Copy to ~/.config/ folder
 ```sh
 git clone https://github.com/boydaihungst/.config
 cd .config && cp -r ./* ~/.config/
@@ -48,7 +48,7 @@ chsh -s $(which fish)
 
 ```
    
-- Install neovim 0.9.0+ and lvim
+### Install neovim 0.9.0+ and lvim
 
 ```sh
 # Neovim version manager (optional)
@@ -61,6 +61,9 @@ bash <(curl -s https://raw.githubusercontent.com/boydaihungst/LunarVim/master/ut
 cp -r ./lvim ~/.config/
 # Open lvim and run:
 :Lazy restore
+
+# After all plugins installed, run:
+:TSInstall all
 ```
 
 ## Gallery
