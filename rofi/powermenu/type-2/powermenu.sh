@@ -70,7 +70,7 @@ run_cmd() {
 		elif [[ $1 == '--hibernate' ]]; then
 			# playerctl pause
 			# amixer set Master mute
-			systemctl hibernate
+			systemctl suspend-then-hibernate
 		elif [[ $1 == '--logout' ]]; then
 			if [[ "$DESKTOP_SESSION" == 'openbox' ]]; then
 				openbox --exit

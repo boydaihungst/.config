@@ -145,8 +145,8 @@ local keymappings = {
   normal_mode = {
     -- nmap
     ["<C-s>"] = { ":w<CR>" },
-    ["f"] = { ":HopChar2<CR>", { silent = true } },
-    ["F"] = { ":HopWord<CR>", { silent = true } },
+    ["F"] = { ":HopChar2<CR>", { silent = true } },
+    -- ["f"] = { ":HopWord<CR>", { silent = true } },
     ["gbf"] = {
       ":Neogen func<CR>", { silent = true, desc = "Comment Function" }
     },

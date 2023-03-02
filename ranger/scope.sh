@@ -34,13 +34,15 @@ IMAGE_CACHE_PATH="${4}" # Full path that should be used to cache image preview
 PV_IMAGE_ENABLED="${5}" # 'True' if image previews are enabled, 'False' otherwise.
 
 FILE_EXTENSION="${FILE_PATH##*.}"
-FILE_EXTENSION_LOWER=$(echo ${FILE_EXTENSION} | tr '[:upper:]' '[:lower:]')
+FILE_EXTENSION_LOWER="$(printf "%s" "${FILE_EXTENSION}" | tr '[:upper:]' '[:lower:]')"
 
 # Settings
 HIGHLIGHT_SIZE_MAX=262143 # 256KiB
 HIGHLIGHT_TABWIDTH=2
-HIGHLIGHT_STYLE=$(echo $HOME'/.config/highlight/themes/norddark.theme')
-PYGMENTIZE_STYLE='gruvbox-dark'
+HIGHLIGHT_STYLE=$("${HOME}/.config/highlight/themes/norddark.theme")
+PYGMENTIZE_STYLE=${PYGMENTIZE_STYLE:-autumn}
+OPENSCAD_IMGSIZE=${RNGR_OPENSCAD_IMGSIZE:-1000,1000}
+OPENSCAD_COLORSCHEME=${RNGR_OPENSCAD_COLORSCHEME:-Tomorrow Night}
 
 handle_extension() {
 	case "${FILE_EXTENSION_LOWER}" in
@@ -74,7 +76,7 @@ handle_extension() {
 		exit 1
 		;;
 	md)
-		glow -s "$HOME/.config/glow/gruvbox-dark.json" "${FILE_PATH}" && exit 5
+		glow -s auto -- "${FILE_PATH}" && exit 5
 		exit 1
 		;;
 	# PDF
@@ -95,7 +97,7 @@ handle_extension() {
 	odt | ods | odp | sxw)
 		# Preview as text conversion
 		odt2txt "${FILE_PATH}" && exit 5
-		(pandoc -s -t markdown -- "${FILE_PATH}" | glow - -s "$HOME/.config/glow/gruvbox-dark.json") && exit 5
+    (pandoc -s -t markdown -- "${FILE_PATH}" | glow -s auto -) && exit 5
 		exit 1
 		;;
 
@@ -125,7 +127,7 @@ handle_extension() {
 		w3m -dump "${FILE_PATH}" && exit 5
 		lynx -dump -- "${FILE_PATH}" && exit 5
 		elinks -dump "${FILE_PATH}" && exit 5
-		(pandoc -s -t markdown -- "${FILE_PATH}" | glow - -s "$HOME/.config/glow/gruvbox-dark.json") && exit 5
+    # (pandoc -s -t markdown -- "${FILE_PATH}" | glow -s auto -)  && exit 5
 		;; # Continue with next handler on failure
 
 	## Direct Stream Digital/Transfer (DSDIFF) and wavpack aren't detected
@@ -164,9 +166,10 @@ handle_image() {
 
 	# Video
 	video/*)
-		if [[ $(du -s "${FILE_PATH}" | awk '{ print $1}') -ge 1048576 ]]; then
-			exit 1
-		fi
+    # Max size to render thumbnail.
+		# if [[ $(du -s "${FILE_PATH}" | awk '{ print $1}') -ge 1048576 ]]; then
+		# 	exit 1
+		# fi
 		# Thumbnail
 		ffmpegthumbnailer -i "${FILE_PATH}" -o "${IMAGE_CACHE_PATH}" -s 0 && exit 6
 		exit 1
@@ -217,7 +220,7 @@ handle_mime() {
 	## uncommented other methods to preview those formats
 	*wordprocessingml.document)
 		## Preview as markdown conversion
-		(pandoc -s -t markdown -- "${FILE_PATH}" | glow - -s "$HOME/.config/glow/gruvbox-dark.json") && exit 5
+    (pandoc -s -t markdown -- "${FILE_PATH}" | glow -s auto -)  && exit 5
 		exit 1
 		;;
 
@@ -231,7 +234,7 @@ handle_mime() {
 		;;
 
 	# Text
-	text/* | */xml)
+	text/* | */xml | application/x-subrip)
 		# Syntax highlight
 		if [[ "$(stat --printf='%s' -- "${FILE_PATH}")" -gt "${HIGHLIGHT_SIZE_MAX}" ]]; then
 			exit 2

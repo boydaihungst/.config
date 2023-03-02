@@ -1,5 +1,4 @@
 local lsp_manager = require("lvim.lsp.manager")
--- local util = require "lspconfig.util"
 local lvim_lsp = require("lvim.lsp")
 
 local function organize_imports()
@@ -33,8 +32,10 @@ end
 --   )
 -- end
 
+
 lsp_manager.setup("tsserver", {
   filetypes = { "typescriptreact", "javascriptreact", "typescript", "javascript" },
+  cmd = { Lsp_get_cmd_path("typescript-language-server"), "--stdio" },
   on_attach = function(client, bufnr)
     -- local bufPath = vim.fn.expand('%:p:h')
     -- -- Get volar clients that attached to this buffer
@@ -79,6 +80,7 @@ lsp_manager.setup("tsserver", {
 })
 
 lsp_manager.setup("tailwindcss", {
+  cmd = { Lsp_get_cmd_path("tailwindcss-language-server"), "--stdio" },
   filetypes = {
     "aspnetcorerazor",
     "astro",
@@ -126,6 +128,7 @@ lsp_manager.setup("tailwindcss", {
   },
 })
 
--- lsp_manager.setup("graphql", {
---   filetypes = { "graphql", "typescriptreact", "javascriptreact", "typescript", "javascript" },
--- })
+lsp_manager.setup("graphql", {
+  cmd = { Lsp_get_cmd_path("graphql-lsp"), "server", "-m", "stream" },
+  filetypes = { "graphql", "typescriptreact", "javascriptreact", "typescript", "javascript" },
+})

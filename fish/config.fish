@@ -40,3 +40,4 @@ alias sudo="sudo -E -s"
 fish_vi_key_bindings
 bind yy fish_clipboard_copy
 bind p fish_clipboard_paste
+

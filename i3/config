@@ -199,7 +199,7 @@ bindsym $mod+r mode "resize"
 ######################################
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+q kill
@@ -388,7 +388,7 @@ exec --no-startup-id dex --autostart --environment i3 --term kitty
 
 # configure multiple keyboard layouts and hotkey to switch (Alt+CAPSLOCK in this example)
 exec --no-startup-id setxkbmap -layout 'us' -option 'caps:shiftlock' 
-exec --no-startup-id xset r rate 300 50
+exec --no-startup-id xset r rate 200 50
 # start conky:
 #exec_always --no-startup-id conky
 
@@ -409,8 +409,7 @@ exec --no-startup-id xset s 480 dpms 600 600 600
 # use xautolock to use autosuspend rules for mobile devices
 # https://wiki.archlinux.org/title/Session_lock#xautolock
 #exec --no-startup-id xautolock -time 60 -locker "systemctl suspend"
-exec_always --no-startup-id xidlehook --detect-sleep --not-when-audio --not-when-fullscreen --timer 600 "betterlockscreen -l --off 60" ""
-
+exec_always --no-startup-id ~/.config/i3/scripts/xidlehook.sh
 # xscreensaver
 # https://www.jwz.org/xscreensaver
 #exec --no-startup-id xscreensaver --no-splash
@@ -424,7 +423,6 @@ exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 # https://github.com/nwg-piotr/autotiling
 # `yay -S autotiling ;) (it is in AUR)
 exec_always --no-startup-id autotiling
-exec --no-startup-id ibus-daemon -drR --desktop=i3
 exec --no-startup-id ibus engine BambooUs
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 # Autostart apps as you like
@@ -553,5 +551,5 @@ bindsym $mod+t exec rofi -show window
 
 ## rofi bindings to manage clipboard (install rofi-greenclip from the AUR)
 
-#exec --no-startup-id greenclip daemon>/dev/null
+exec --no-startup-id greenclip daemon>/dev/null
 bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -theme ~/.config/rofi/clipboard.rasi

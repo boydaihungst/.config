@@ -37,6 +37,12 @@ lvim.builtin.alpha.mode                          = "dashboard"
 lvim.builtin.terminal.shell                      = "fish"
 lvim.builtin.terminal.auto_scroll                = false
 lvim.builtin.autopairs.enable_check_bracket_line = true
+lvim.builtin.autopairs.ts_config                 = {
+  lua = { "string", "source" },
+  javascript = { "string", "template_string" },
+  java = false,
+  typescript = { "string", "template_string" },
+}
 
 ------------------------------- Autocmd --------------------------
 vim.cmd([[
@@ -46,6 +52,7 @@ vim.cmd([[
     autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
     autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
   augroup END
+  autocmd VimLeavePre * SaveSession
 ]])
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "help" },
@@ -59,7 +66,7 @@ lvim.plugins = {
   {
     "ray-x/lsp_signature.nvim",
     lazy = true,
-    event = "User FileOpened",
+    event = "BufEnter",
     config = function()
       require('lsp_signature').setup({
         bind = true, -- This is mandatory, otherwise border config won't get registered.
@@ -200,7 +207,7 @@ lvim.plugins = {
           exec = "<CR>",
           mark = "x",
           confirm = "<CR>",
-          in_select = true,
+          in_select = false,
         },
         outline = {
           win_position = "right",
@@ -258,7 +265,7 @@ lvim.plugins = {
   {
     "norcalli/nvim-colorizer.lua",
     lazy = true,
-    event = "User FileOpened",
+    event = "VimEnter",
     config = function()
       require("colorizer").setup({ "*" }, {
         RGB = true, -- #RGB hex codes
@@ -272,10 +279,8 @@ lvim.plugins = {
     end,
   },
   -- multiple cursors position
-  { "mg979/vim-visual-multi", keys = "<C-n>" },
-  { "p00f/nvim-ts-rainbow",   event = "User FileOpened", dependencies = { "nvim-treesitter" } },
-
-  -- move motion
+  { "mg979/vim-visual-multi", event = "BufEnter" },
+  { "p00f/nvim-ts-rainbow",   event = "BufEnter", dependencies = { "nvim-treesitter" } },
   {
     "phaazon/hop.nvim",
     -- event = "BufRead",
@@ -286,7 +291,7 @@ lvim.plugins = {
   },
   {
     "andymass/vim-matchup",
-    event = "User FileOpened",
+    event = "BufEnter",
     after = { "nvim-treesitter" },
     init = function()
       vim.g.matchup_matchparen_offscreen = { method = "popup" }
@@ -297,7 +302,7 @@ lvim.plugins = {
     end,
   },
   { "chentoast/marks.nvim",
-    event = "User FileOpened",
+    event = "BufEnter",
     config = function()
       require 'marks'.setup {
         builtin_marks = { ".", "<", ">", "^" },
@@ -307,7 +312,7 @@ lvim.plugins = {
   },
   {
     "roobert/search-replace.nvim",
-    event = "User FileOpened",
+    event = "BufEnter",
     config = function()
       require("search-replace").setup({
         -- optionally override defaults
@@ -319,7 +324,7 @@ lvim.plugins = {
   -- jump to lines
   {
     "nacro90/numb.nvim",
-    event = "User FileOpened",
+    event = "BufEnter",
     config = function()
       require("numb").setup({
         show_numbers = true, -- Enable 'number' for the window while peeking
@@ -338,7 +343,7 @@ lvim.plugins = {
   {
     "romgrk/nvim-treesitter-context",
     build = ":TSUpdateSync",
-    event = "User FileOpened",
+    event = "BufEnter",
     config = function()
       require("treesitter-context").setup({
         enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
@@ -375,7 +380,7 @@ lvim.plugins = {
   },
   {
     "ethanholz/nvim-lastplace",
-    event = "User FileOpened",
+    event = "BufEnter",
     config = function()
       require("nvim-lastplace").setup({
         lastplace_ignore_buftype = { "quickfix", "nofile", "help", "terminal" },
@@ -392,7 +397,7 @@ lvim.plugins = {
       })
     end,
   },
-  { "tpope/vim-surround", event = "User FileOpened",
+  { "tpope/vim-surround", event = "BufEnter",
   },
   { "famiu/bufdelete.nvim", lazy = true, cmd = { "BDeletePre", "BDeletePost", } },
   {
@@ -405,12 +410,6 @@ lvim.plugins = {
       require("user.dap").setup()
     end,
   },
-  -- { "haydenmeade/neotest-jest",
-  --   keys = { "<leader>t" },
-  -- },
-  -- { "marilari88/neotest-vitest",
-  --   keys = { "<leader>t" },
-  -- },
   {
     "nvim-neotest/neotest",
     dependencies = {
@@ -421,9 +420,29 @@ lvim.plugins = {
       "antoinemadec/FixCursorHold.nvim",
     },
     keys = { "<leader>t" },
-    -- module = { "neotest" },
     config = function()
       require("neotest").setup({
+        summary = {
+          mappings = {
+            attach = "a",
+            clear_marked = "M",
+            clear_target = "T",
+            debug = "d",
+            debug_marked = "D",
+            expand = { "<CR>", "<2-LeftMouse>" },
+            expand_all = "e",
+            jumpto = "l",
+            mark = "m",
+            next_failed = "]]",
+            output = "o",
+            prev_failed = "[[",
+            run = "r",
+            run_marked = "R",
+            short = "O",
+            stop = "u",
+            target = "t"
+          }
+        },
         adapters = {
           require('neotest-vitest'),
           -- require("neotest-jest")({
@@ -451,7 +470,7 @@ lvim.plugins = {
         auto_save_enabled = true,
         auto_restore_enabled = true,
         auto_session_enable_last_session = true,
-        auto_session_allowed_dirs = { "~/git/*" },
+        -- auto_session_allowed_dirs = { "~/git/*" },
         -- cwd_change_handling = {
         --   restore_upcoming_session = false,
         -- },
@@ -496,18 +515,18 @@ lvim.plugins = {
               end
               return false
             end
-            -- close floating windows
-            for _, win in ipairs(vim.api.nvim_list_wins()) do
-              local config = vim.api.nvim_win_get_config(win)
-              if config.relative ~= '' then
-                vim.api.nvim_win_close(win, false)
-              end
-            end
             -- close unlisted buffers
             local unlistedBuffers = vim.tbl_filter(buffer_filter, vim.api.nvim_list_bufs())
             for _, buf in pairs(unlistedBuffers) do
               if bufferDeleteLoaded then
                 bufferDelete.bufwipeout(buf, true)
+              end
+            end
+            -- close floating windows
+            for _, win in ipairs(vim.api.nvim_list_wins()) do
+              local config = vim.api.nvim_win_get_config(win)
+              if config.relative ~= '' then
+                vim.api.nvim_win_close(win, false)
               end
             end
           end,
@@ -560,7 +579,7 @@ lvim.plugins = {
   },
   {
     "kevinhwang91/nvim-ufo",
-    event = "User FileOpened",
+    event = "BufEnter",
     dependencies = { "kevinhwang91/promise-async" },
     config = function()
       local _, ufo = pcall(require, 'ufo');
@@ -584,7 +603,7 @@ lvim.plugins = {
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     -- after = "nvim-treesitter",
-    event = "User FileOpened",
+    event = "BufEnter",
     dependencies = "nvim-treesitter/nvim-treesitter",
     config = function()
       require 'nvim-treesitter.configs'.setup {

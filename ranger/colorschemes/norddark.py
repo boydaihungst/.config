@@ -7,7 +7,7 @@ class Scheme(Default):
 		fg, bg, attr = Default.use(self, context)
 
 		if context.directory and not context.marked and not context.link:
-			fg = white
+			fg = blue
 			attr |= bold
 
 		if context.in_titlebar:
@@ -23,7 +23,7 @@ class Scheme(Default):
 			return default_colors
 
 		if context.border:
-			fg = blue
+			fg = white
 			
 		if context.in_taskview:
 			fg = green

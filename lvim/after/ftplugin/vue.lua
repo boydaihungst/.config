@@ -19,15 +19,15 @@ local function get_typescript_server_path(root_dir)
   end
 end
 
-local function check_package_json_contain_vue_package(path)
-  local found_package_json = util.path.join(path, 'package.json')
-  if util.path.exists(found_package_json) then
-    local packageJson = vim.fn.json_decode(vim.fn.readfile(found_package_json))
-    if packageJson and packageJson.dependencies and (packageJson.dependencies.vue or packageJson.devDependencies.vue) then
-      return true
-    end
-  end
-end
+-- local function check_package_json_contain_vue_package(path)
+--   local found_package_json = util.path.join(path, 'package.json')
+--   if util.path.exists(found_package_json) then
+--     local packageJson = vim.fn.json_decode(vim.fn.readfile(found_package_json))
+--     if packageJson and packageJson.dependencies and (packageJson.dependencies.vue or packageJson.devDependencies.vue) then
+--       return true
+--     end
+--   end
+-- end
 
 -- local function detachLspClient(clientId, bufnr)
 --   vim.schedule(function()
@@ -42,9 +42,10 @@ end
 -- end
 lsp_manager.setup("volar", {
   filetypes = { "vue", "json" },
-  root_dir = function(fname)
-    return util.search_ancestors(fname, check_package_json_contain_vue_package)
-  end,
+  cmd = { Lsp_get_cmd_path("vue-language-server"), "--stdio" },
+  -- root_dir = function(fname)
+  --   return util.search_ancestors(fname, check_package_json_contain_vue_package)
+  -- end,
   on_attach = function(client, bufnr)
     lvim_lsp.common_on_attach(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
@@ -56,6 +57,7 @@ lsp_manager.setup("volar", {
 })
 
 lsp_manager.setup("tailwindcss", {
+    cmd = { Lsp_get_cmd_path("tailwindcss-language-server"), "--stdio" },
   filetypes = {
     "aspnetcorerazor",
     "astro",
@@ -104,5 +106,6 @@ lsp_manager.setup("tailwindcss", {
 })
 
 lsp_manager.setup("graphql", {
+  cmd = { Lsp_get_cmd_path("graphql-lsp"), "server", "-m", "stream" },
   filetypes = { "graphql", "typescriptreact", "javascriptreact", "typescript", "javascript" },
 })
