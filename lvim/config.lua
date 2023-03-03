@@ -1,3 +1,4 @@
+require("user.plugins.bigfile")
 require("user.null-ls")
 require("user.keybind")
 require("user.plugins.cmp")
@@ -9,39 +10,53 @@ require("user.plugins.lspconfig")
 require("user.plugins.nvimtree")
 require("user.plugins.which-key")
 ---------------------------- Global ---------------------------
-vim.g.netrw_browsex_viewer                       = "xdg-open"
-vim.g.navic_silence                              = true
-vim.env.LVIM_DEV_MODE                            = false
+vim.g.netrw_browsex_viewer              = "xdg-open"
+vim.g.navic_silence                     = true
+vim.env.LVIM_DEV_MODE                   = false
 ----------------------------- Option
-vim.opt["foldenable"]                            = true
-vim.opt.foldlevelstart                           = 99
-vim.opt["foldlevel"]                             = 99
-vim.opt.foldcolumn                               = '1'
-vim.opt.scrolloff                                = 8
-vim.opt.wrap                                     = true
-vim.opt.list                                     = false
-vim.opt.termguicolors                            = true
-vim.opt.sessionoptions                           = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
-vim.opt.fillchars                                = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+vim.opt["foldenable"]                   = true
+vim.opt.foldlevelstart                  = 99
+vim.opt["foldlevel"]                    = 99
+vim.opt.foldcolumn                      = '1'
+vim.opt.scrolloff                       = 8
+vim.opt.wrap                            = true
+vim.opt.list                            = false
+vim.opt.termguicolors                   = true
+vim.opt.sessionoptions                  = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+vim.opt.fillchars                       = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 ------------------------------- Lvim -------------------------
-lvim.log.level                                   = 'error'
-lvim.format_on_save                              = false
-lvim.builtin.terminal.active                     = true
-lvim.builtin.dap.active                          = true
-lvim.builtin.alpha.active                        = true
-lvim.builtin.project.active                      = true
+lvim.log.level                          = 'error'
+lvim.format_on_save                     = false
+lvim.builtin.terminal.active            = true
+lvim.builtin.dap.active                 = true
+lvim.builtin.alpha.active               = true
+lvim.builtin.project.active             = true
 -- lvim.builtin.project.detection_methods           = { "lsp" }
-lvim.builtin.project.exclude_dirs                = { "**/node_modules/*" }
-lvim.builtin.breadcrumbs.active                  = false
-lvim.builtin.alpha.mode                          = "dashboard"
-lvim.builtin.terminal.shell                      = "fish"
-lvim.builtin.terminal.auto_scroll                = false
-lvim.builtin.autopairs.enable_check_bracket_line = true
-lvim.builtin.autopairs.ts_config                 = {
+lvim.builtin.project.exclude_dirs       = { "**/node_modules/*" }
+lvim.builtin.breadcrumbs.active         = false
+lvim.builtin.alpha.mode                 = "dashboard"
+lvim.builtin.terminal.shell             = "fish"
+lvim.builtin.terminal.auto_scroll       = false
+lvim.builtin.telescope.defaults.preview = {
+  treesitter = false,
+  -- filesize_limit = 1,
+  timeout = 250,
+  -- truncate for preview
+  filesize_hook = function(filepath, bufnr, opts)
+    local path = require("plenary.path"):new(filepath)
+    -- opts exposes winid
+    local height = vim.api.nvim_win_get_height(opts.winid)
+    local lines = vim.split(path:head(height), "[\r]?\n")
+    vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
+  end,
+}
+-- lvim.builtin.autopairs.enable_check_bracket_line = true
+lvim.builtin.autopairs.ts_config        = {
   lua = { "string", "source" },
   javascript = { "string", "template_string" },
   java = false,
   typescript = { "string", "template_string" },
+  vue = { "string", "template_string" },
 }
 
 ------------------------------- Autocmd --------------------------
@@ -122,7 +137,7 @@ lvim.plugins = {
           EndOfBuffer = { fg = "#BCC4C9", bg = "#080A0E" },
           FoldColumn = { fg = "#BCC4C9", bg = "#080A0E" },
           Folded = { fg = "#BCC4C9", bg = "#282c34" },
-          MatchParen = { fg = "NONE", bg = "#282c34" },
+          MatchParen = { fg = "NONE", bg = "#282c34", fmt = "underline" },
           NormalFloat = { fg = "#BCC4C9", bg = "#080A0E" },
           FloatBorder = { fg = "#BCC4C9", bg = "#080A0E" }
         }
@@ -263,24 +278,31 @@ lvim.plugins = {
   },
   -- background color for RGB hex codes
   {
-    "norcalli/nvim-colorizer.lua",
+    "NvChad/nvim-colorizer.lua",
     lazy = true,
     event = "VimEnter",
     config = function()
-      require("colorizer").setup({ "*" }, {
-        RGB = true, -- #RGB hex codes
-        RRGGBB = true, -- #RRGGBB hex codes
-        RRGGBBAA = true, -- #RRGGBBAA hex codes
-        rgb_fn = true, -- CSS rgb() and rgba() functions
-        hsl_fn = true, -- CSS hsl() and hsla() functions
-        css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-        css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-      })
+      require("colorizer").setup {
+        filetypes = { "*" },
+        user_default_options = { RGB = true, -- #RGB hex codes
+          RRGGBB = true, -- #RRGGBB hex codes
+          RRGGBBAA = true, -- #RRGGBBAA hex codes
+          rgb_fn = true, -- CSS rgb() and rgba() functions
+          hsl_fn = true, -- CSS hsl() and hsla() functions
+          css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+          css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+        }
+
+      }
     end,
   },
   -- multiple cursors position
   { "mg979/vim-visual-multi", event = "BufEnter" },
-  { "p00f/nvim-ts-rainbow",   event = "BufEnter", dependencies = { "nvim-treesitter" } },
+  { "p00f/nvim-ts-rainbow",
+    event = "BufEnter",
+    -- lazy = false,
+    dependencies = { "nvim-treesitter/nvim-treesitter", "xiaoxin-sky/tree-sitter-vue" },
+  },
   {
     "phaazon/hop.nvim",
     -- event = "BufRead",
@@ -334,10 +356,7 @@ lvim.plugins = {
   },
   {
     "windwp/nvim-ts-autotag",
-    event = "InsertEnter",
-    config = function()
-      require("nvim-ts-autotag").setup()
-    end,
+    event = "BufEnter",
   },
   -- Show current focused function at top
   {
@@ -470,7 +489,7 @@ lvim.plugins = {
         auto_save_enabled = true,
         auto_restore_enabled = true,
         auto_session_enable_last_session = true,
-        -- auto_session_allowed_dirs = { "~/git/*" },
+        auto_session_allowed_dirs = { os.getenv('HOME') .. "/git/*" },
         -- cwd_change_handling = {
         --   restore_upcoming_session = false,
         -- },

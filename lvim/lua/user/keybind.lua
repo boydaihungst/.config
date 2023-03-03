@@ -25,7 +25,9 @@ local which_key_mappings = {
   },
   ["s"] = {
     s = { "<CMD>SearchSession<CR>", " Find Session" },
-    l = { "<CMD>Telescope filetypes<CR>", "Change file language (type)" }
+    l = { "<CMD>Telescope filetypes<CR>", "Change file language (type)" },
+    -- f = { "<cmd>Telescope fd<cr>", "Find File" },
+    -- t = { "<cmd>Telescope live_grep<cr>", "Text" },
   },
   ["t"] = {
     name = "Testing",
@@ -210,7 +212,7 @@ lvim.lsp.buffer_mappings = {
   visual_mode = {},
 }
 local function telescope_find_files(_)
-  require("lvim.core.nvimtree").start_telescope "find_files"
+  require("lvim.core.nvimtree").start_telescope "fd"
 end
 
 local function telescope_live_grep(_)
