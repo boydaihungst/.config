@@ -1,0 +1,12 @@
+[Unit]
+Description=ftp mount service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/curlftpfs -o user='huyhoang:Anhhoang123@' boydaihungst.ddns.net /run/media/huyhoang/remote/ftp/ -f
+ExecStop=/bin/fusermount -u /run/media/huyhoang/remote/ftp/
+
+[Install]
+WantedBy=default.target

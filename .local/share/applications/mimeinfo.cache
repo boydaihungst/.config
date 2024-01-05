@@ -1,0 +1,17 @@
+[MIME Cache]
+application/x-shellscript=lvim.desktop;nvim.desktop;
+inode/directory=ncmpcpp.desktop;ranger.desktop;
+text/english=lvim.desktop;nvim.desktop;
+text/plain=lvim.desktop;nvim.desktop;
+text/x-c=lvim.desktop;nvim.desktop;
+text/x-c++=lvim.desktop;nvim.desktop;
+text/x-c++hdr=lvim.desktop;nvim.desktop;
+text/x-c++src=lvim.desktop;nvim.desktop;
+text/x-chdr=lvim.desktop;nvim.desktop;
+text/x-csrc=lvim.desktop;nvim.desktop;
+text/x-java=lvim.desktop;nvim.desktop;
+text/x-makefile=lvim.desktop;nvim.desktop;
+text/x-moc=lvim.desktop;nvim.desktop;
+text/x-pascal=lvim.desktop;nvim.desktop;
+text/x-tcl=lvim.desktop;nvim.desktop;
+text/x-tex=lvim.desktop;nvim.desktop;
