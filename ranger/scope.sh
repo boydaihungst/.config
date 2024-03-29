@@ -57,14 +57,6 @@ handle_extension() {
 		exit 1
 		;;
 
-	# # Archive
-	# a | ace | alz | arc | arj | bz | bz2 | cab | cpio | deb | gz | jar | lha | lz | lzh | lzma | lzo | \
-	# 	rpm | rz | t7z | tar | tbz | tbz2 | tgz | tlz | txz | tZ | tzo | war | xpi | xz | Z | zip)
-	# 	atool --list -- "${FILE_PATH}" && exit 5
-	# 	bsdtar --list --file "${FILE_PATH}" && exit 5
-	# 	exit 1
-	# 	;;
-
 	rar)
 		# Avoid password prompt by providing empty password
 		unrar lt -p- -- "${FILE_PATH}" && exit 5
@@ -97,7 +89,7 @@ handle_extension() {
 	odt | ods | odp | sxw)
 		# Preview as text conversion
 		odt2txt "${FILE_PATH}" && exit 5
-    (pandoc -s -t markdown -- "${FILE_PATH}" | glow -s auto -) && exit 5
+		(pandoc -s -t markdown -- "${FILE_PATH}" | glow -s auto -) && exit 5
 		exit 1
 		;;
 
@@ -127,7 +119,7 @@ handle_extension() {
 		w3m -dump "${FILE_PATH}" && exit 5
 		lynx -dump -- "${FILE_PATH}" && exit 5
 		elinks -dump "${FILE_PATH}" && exit 5
-    # (pandoc -s -t markdown -- "${FILE_PATH}" | glow -s auto -)  && exit 5
+		# (pandoc -s -t markdown -- "${FILE_PATH}" | glow -s auto -)  && exit 5
 		;; # Continue with next handler on failure
 
 	## Direct Stream Digital/Transfer (DSDIFF) and wavpack aren't detected
@@ -166,7 +158,7 @@ handle_image() {
 
 	# Video
 	video/*)
-    # Max size to render thumbnail.
+		# Max size to render thumbnail.
 		# if [[ $(du -s "${FILE_PATH}" | awk '{ print $1}') -ge 1048576 ]]; then
 		# 	exit 1
 		# fi
@@ -220,7 +212,7 @@ handle_mime() {
 	## uncommented other methods to preview those formats
 	*wordprocessingml.document)
 		## Preview as markdown conversion
-    (pandoc -s -t markdown -- "${FILE_PATH}" | glow -s auto -)  && exit 5
+		(pandoc -s -t markdown -- "${FILE_PATH}" | glow -s auto -) && exit 5
 		exit 1
 		;;
 
@@ -234,7 +226,7 @@ handle_mime() {
 		;;
 
 	# Text
-	text/* | */xml | application/x-subrip)
+	text/* | */xml | application/x-subrip | application/x-wine-extension-ini)
 		# Syntax highlight
 		if [[ "$(stat --printf='%s' -- "${FILE_PATH}")" -gt "${HIGHLIGHT_SIZE_MAX}" ]]; then
 			exit 2

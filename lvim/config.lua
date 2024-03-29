@@ -32,8 +32,8 @@ lvim.log.level                    = 'error'
 lvim.format_on_save               = false
 lvim.builtin.terminal.active      = true
 lvim.builtin.dap.active           = true
-lvim.builtin.alpha.active         = false
-lvim.builtin.project.active       = false
+lvim.builtin.alpha.active         = true
+lvim.builtin.project.active       = true
 -- lvim.builtin.project.detection_methods           = { "lsp" }
 lvim.builtin.project.exclude_dirs = { "**/node_modules/*" }
 lvim.builtin.breadcrumbs.active   = true
@@ -64,7 +64,14 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "help" },
   command = "wincmd L",
 })
-
+local group = vim.api.nvim_create_augroup("__env", { clear = true })
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = ".env*",
+  group = group,
+  callback = function(args)
+    vim.diagnostic.disable(args.buf)
+  end
+})
 lvim.colorscheme = "onedark"
 
 ------------------------------- Plugins ---------------------------
@@ -135,9 +142,9 @@ lvim.plugins = {
           NormalFloat = { fg = "#BCC4C9", bg = "#080A0E" },
           FloatBorder = { fg = "#BCC4C9", bg = "#080A0E" },
           NvimSurroundHighlight = { fg = "#080A0E", bg = "#8ebd6b" },
-          TelescopeMatching = { fg = "#8ebd6b", bg="NONE", fmt = "bold" },
-          TelescopeSelectionCaret = { fg = "#BCC4C9", bg="NONE" },
-          TelescopeMultiSelection = { fg = "#BCC4C9", bg="NONE" },
+          TelescopeMatching = { fg = "#8ebd6b", bg = "NONE", fmt = "bold" },
+          TelescopeSelectionCaret = { fg = "#BCC4C9", bg = "NONE" },
+          TelescopeMultiSelection = { fg = "#BCC4C9", bg = "NONE" },
         }
       })
       vim.api.nvim_create_autocmd('ColorScheme', {
@@ -265,7 +272,7 @@ lvim.plugins = {
           -- ignore_patterns = {},
           hide_keyword = true,
           show_file = true,
-          folder_level = 1,
+          folder_level = 0,
           respect_root = true,
           color_mode = true,
         },
@@ -282,8 +289,8 @@ lvim.plugins = {
           expand = "",
           collapse = "",
           code_action = "💡",
-          incoming = " ",
-          outgoing = " ",
+          incoming = "󰏷 ",
+          outgoing = "󰏻 ",
           hover = ' ',
           -- kind = {},
         },
@@ -729,6 +736,67 @@ lvim.plugins = {
           hint = lvim.icons.diagnostics.Hint
         },
         max_filename_length = 30,
+      })
+    end
+  },
+  {
+    'ibhagwan/smartyank.nvim',
+    lazy = true,
+    event = { "BufEnter" },
+    config = function()
+      require('smartyank').setup({
+        highlight = {
+          enabled = false,       -- highlight yanked text
+          higroup = "IncSearch", -- highlight group of yanked text
+          timeout = 2000,        -- timeout for clearing the highlight
+        },
+        clipboard = {
+          enabled = true
+        },
+        tmux = {
+          enabled = true,
+          -- remove `-w` to disable copy to host client's clipboard
+          cmd = { 'tmux', 'set-buffer', '-w' }
+        },
+        osc52 = {
+          enabled = true,
+          -- escseq = 'tmux',     -- use tmux escape sequence, only enable if
+          -- you're using tmux and have issues (see #4)
+          ssh_only = false,      -- false to OSC52 yank also in local sessions
+          silent = true,         -- true to disable the "n chars copied" echo
+          echo_hl = "Directory", -- highlight group of the OSC52 echo message
+        },
+        -- By default copy is only triggered by "intentional yanks" where the
+        -- user initiated a `y` motion (e.g. `yy`, `yiw`, etc). Set to `false`
+        -- if you wish to copy indiscriminately:
+        -- validate_yank = false,
+        --
+        -- For advanced customization set to a lua function returning a boolean
+        -- for example, the default condition is:
+        -- validate_yank = function() return vim.v.operator == "y" end,
+      })
+    end
+  },
+  {
+    'tzachar/cmp-tabnine',
+    build = './install.sh',
+    dependencies = 'hrsh7th/nvim-cmp',
+    config = function()
+      local tabnine = require('cmp_tabnine.config')
+
+      tabnine:setup({
+        max_lines = 1000,
+        max_num_results = 20,
+        sort = true,
+        run_on_every_keystroke = true,
+        snippet_placeholder = '..',
+        ignored_file_types = {
+          -- default is not to ignore
+          -- uncomment to ignore in lua:
+          -- lua = true
+        },
+        show_prediction_strength = true,
+        min_percent = 0
       })
     end
   }

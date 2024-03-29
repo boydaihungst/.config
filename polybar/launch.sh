@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
 # Terminate already running bar instances
-# If all your bars have ipc enabled, you can use 
+# If all your bars have ipc enabled, you can use
 # polybar-msg cmd quit
 # Otherwise you can use the nuclear option:
 killall -q polybar
-while pgrep -u $UID -x polybar > /dev/null; do sleep 1; done
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+sleep 1
+primary_display=$(polybar --list-monitors | grep "primary" | cut -d":" -f1)
 for m in $(polybar --list-monitors | cut -d":" -f1); do
-  if [ $m == 'eDP-1' ] 
-	then
-		MONITOR=$m polybar --reload mybar -c ~/.config/polybar/config.ini &	
-	elif [ $m == 'HDMI-1' ]
-	then
-		MONITOR=$m polybar --reload mybar -c ~/.config/polybar/config.ini &
+	if [ "$m" == "$primary_display" ]; then
+		MONITOR=$m polybar -c ~/.config/polybar/config.ini primarybar &
+	else
+		MONITOR=$m polybar -c ~/.config/polybar/config.ini secondarybar &
 	fi
 done
 

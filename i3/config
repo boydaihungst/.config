@@ -55,6 +55,7 @@ smart_borders on
 # Set inner/outer gaps
 gaps inner 6
 gaps outer 3
+gaps top 34
 
 # show window title bars (not officially supported with i3gaps)
 #default_border normal
@@ -219,27 +220,31 @@ bindsym $mod+Shift+c reload
 #
 # Volume
 #
-    bindsym XF86AudioMute exec ~/.config/i3/scripts/volumectl togmute
-    bindsym  XF86AudioRaiseVolume exec ~/.config/i3/scripts/volumectl --volume-step 1 up 
-    bindsym  XF86AudioLowerVolume exec ~/.config/i3/scripts/volumectl --volume-step 1 down 
+bindsym XF86AudioMute exec ~/.config/i3/scripts/volumectl togmute
+bindsym  XF86AudioRaiseVolume exec ~/.config/i3/scripts/volumectl --volume-step 1 up 
+bindsym  XF86AudioLowerVolume exec ~/.config/i3/scripts/volumectl --volume-step 1 down 
 
 #
 # Player
 #
-    bindsym XF86AudioPlay exec playerctl play
-    bindsym XF86AudioPause exec playerctl pause
-    bindsym XF86AudioNext exec playerctl next
-    bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 #
 # Backlight
 #
-    bindsym XF86MonBrightnessUp exec light -A 5 && notify-send.sh -a brightness -i "brightnesssettings" --replace-file=/tmp/notification_brightness "Brightness" "Brightness - $(light -G)%"
-    bindsym XF86MonBrightnessDown exec light -U 5 && notify-send.sh -a brightness -i "brightnesssettings" --replace-file=/tmp/notification_brightness "Brightness" "Brightness - $(light -G)%"
-
+bindsym XF86MonBrightnessUp exec ~/.config/i3/scripts/brightness-change.sh 5%+
+bindsym XF86MonBrightnessDown exec ~/.config/i3/scripts/brightness-change.sh 5%-
 #
 # Toggle touchpad
 #
-    bindsym --release Mod4+control+XF86TouchpadToggle exec ~/.config/sway/scripts/touchpad-toggle.sh
+bindsym --release Mod4+control+XF86TouchpadToggle exec ~/.config/i3/scripts/touchpad-toggle.sh
+
+#
+# Screen output
+#
+bindsym --release $mod+p exec ~/.config/i3/scripts/display-output 
 
 # change focus
 bindsym $mod+j focus down
@@ -285,7 +290,7 @@ bindsym $mod+Shift+f floating toggle
 
 ## App shortcuts
 bindsym $mod+w exec firefox
-bindsym $mod+e exec "kitty --class 'lvim' lvim"
+bindsym $mod+e exec "kitty --class 'lvim' fish -c 'lvim'"
 bindsym $mod+n exec "kitty --class 'ranger' fish -c 'ranger'"
 
 # Screenshot
@@ -306,8 +311,8 @@ set $ws2 "2:"
 set $ws3 "3:"
 set $ws4 "4:"
 set $ws5 "5:"
-set $ws6 "6:󱎓"
-set $ws7 "7"
+set $ws6 "6:"
+set $ws7 "7:󱎓"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
@@ -315,11 +320,12 @@ set $ws10 "10"
 # use workspaces on different displays:
 # where you have to replace VGA-0/HDMI-0 with the names for your displays
 # you can get from xrandr command
-#workspace $ws1 output VGA-0
-#workspace $ws2 output VGA-0
-#workspace $ws3 output HDMI-0
-#workspace $ws4 output HDMI-0
-#workspace $ws5 output HDMI-0
+workspace $ws1 output eDP-1
+workspace $ws2 output HDMI-1
+workspace $ws3 output eDP-1
+workspace $ws4 output HDMI-1
+workspace $ws5 output HDMI-1
+workspace $ws6 output HDMI-1
 
 # bind program to workspace and focus to them on startup:
 assign [class="btop|htop|kitty|lvim|vim|lvim"] $ws1
@@ -327,8 +333,8 @@ assign [class="(?i)firefox"] $ws2
 assign [class="Thunar|ranger|lfcd|lf|vifm"] $ws3
 assign [class="Thunderbird"] $ws4
 assign [class="TelegramDesktop|skype|pidgin|discord"] $ws5
-assign [class="calibre-ebook-viewer|calibre"] $ws7
-assign [class="bottles"] $ws6
+assign [class="calibre-ebook-viewer|calibre"] $ws6
+assign [class="bottles|steam|lutris"] $ws7
 # automatic set focus new window if it opens on another workspace than the current:
 
 for_window [class=kitty|lvim|vim|lvim|btop] focus
@@ -389,13 +395,13 @@ exec --no-startup-id dex --autostart --environment i3 --term kitty
 
 # configure multiple keyboard layouts and hotkey to switch (Alt+CAPSLOCK in this example)
 exec --no-startup-id setxkbmap -layout 'us' -option 'caps:shiftlock' 
-exec --no-startup-id xset r rate 200 50
+exec --no-startup-id xset r rate 300 50
 # start conky:
 #exec_always --no-startup-id conky
 
 # start a script to setup displays
 # uncomment the next line, use arandr to setup displays and save the file as monitor:
-# exec --no-startup-id ~/.screenlayout/monitor.sh
+exec --no-startup-id autorandr -c
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
@@ -427,7 +433,7 @@ exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 # `yay -S autotiling ;) (it is in AUR)
 exec_always --no-startup-id autotiling
 # exec --no-startup-id ibus engine BambooUs
-exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec --no-startup-id sleep 1 && ~/.config/polybar/launch.sh
 # Autostart apps as you like
 #exec --no-startup-id sleep 2 && xfce4-terminal
 # exec --no-startup-id sleep 7 && firefox https://github.com/endeavouros-team/endeavouros-i3wm-setup/blob/main/force-knowledge.md
@@ -456,6 +462,7 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 for_window [class="Yad" instance="yad"] floating enable
 for_window [class="Galculator" instance="galculator"] floating enable
 for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
+for_window [class="Advanced Sub Station Alpha styles" instance="Advanced Sub Station Alpha styles"] floating enable
 
 # set floating (nontiling) for special apps
 for_window [class="Xsane" instance="xsane"] floating enable
@@ -492,7 +499,7 @@ set $fground #BCC4C9
 
 # define colors for windows:
 #class		        	border		bground		text		indicator	child_border
-client.focused          $bground $bground $fground $blue   $blue
+client.focused          $bground $bground $fground $red   $red
 client.focused_inactive $bground $bground $fground $bground   $bground
 client.unfocused        $bground $bground $fground $bground   $bground
 client.urgent           $bground $bground $fground $bground   $red

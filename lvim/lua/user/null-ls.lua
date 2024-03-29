@@ -6,7 +6,7 @@ formatters.setup({
   -- { name = "deno_fmt" },
   {
     name = "prettier",
-    filetypes = { "html", "css", "scss", "less", "yaml", "handlebars" },
+    filetypes = { "css", "scss", "less", "yaml", "handlebars" },
     extra_filetypes = {
       "toml"
     }
@@ -23,15 +23,20 @@ formatters.setup({
   -- { name = "fish_indent" },
 })
 code_actions.setup({
+  { name = "shellcheck" },
   -- { name = "eslint_d", filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" } },
 })
+
 linters.setup({
   { name = "vint" },
-  -- { name = "eslint_d" },
-  -- { name = "luacheck" },
-  -- { name = "shellcheck" },
+  { name = "dotenv_linter" },
+  -- {
+  --   name = "luacheck",
+  -- },
   { name = "markdownlint" },
-  -- { name = "pylint" },
+  {
+    name = "shellcheck",
+  },
   -- { name = "yamllint" },
   -- { name = "commitlint" },
   -- { name = "hadolint" },

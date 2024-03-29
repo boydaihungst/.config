@@ -57,15 +57,15 @@ fi
 
 # Discharging
 if [[ $percentage -ge 5 ]] && [[ $percentage -le 19 ]]; then
-    ICON_DISCHRG=""
+    ICON_DISCHRG="󰁺"
 elif [[ $percentage -ge 20 ]] && [[ $percentage -le 39 ]]; then
-    ICON_DISCHRG=""
+    ICON_DISCHRG="󰁼"
 elif [[ $percentage -ge 40 ]] && [[ $percentage -le 59 ]]; then
-    ICON_DISCHRG=""
+    ICON_DISCHRG="󰁾"
 elif [[ $percentage -ge 60 ]] && [[ $percentage -le 79 ]]; then
-    ICON_DISCHRG=""
+    ICON_DISCHRG="󰂀"
 elif [[ $percentage -ge 80 ]] && [[ $percentage -le 100 ]]; then
-    ICON_DISCHRG=""
+    ICON_DISCHRG="󰁹"
 fi
 
 # Options

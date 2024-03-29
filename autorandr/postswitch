@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sleep 3
+i3-msg exec ~/.config/polybar/launch.sh
+i3-msg exec feh --bg-fill /home/huyhoang/Pictures/Wallpapers/landscapes/Clearday.jpg
+

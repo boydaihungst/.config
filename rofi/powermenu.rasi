@@ -1,24 +1,24 @@
 /*******************************************************
  * ROFI configs i3 powermenu for EndeavourOS
- * Maintainer: joekamprad <joekamprad@endeavouros.com>
+ * Maintainer: joekamprad [joekamprad //a_t// endeavouros.com]
  *******************************************************/
 configuration {
-    font:            "Hack Nerd Font 14";
+    font:            "Noto Sans Regular 10";
     show-icons:      false;
-    icon-theme:          "Papirus-Dark";
+    icon-theme:      "Qogir";
     scroll-method:   0;
     disable-history: false;
     sidebar-mode:    false;
 }
 
-@import "~/.config/rofi/arc_dark_colors.rasi"
+@import "~/.config/rofi/arc_dark_transparent_colors.rasi"
 
 window {
     background-color: @background;
     border:           0;
     padding:          10;
     transparency:     "real";
-    width:            150px;
+    width:            120px;
     location:         east;
     /*y-offset:       18;*/
     /*x-offset:       850;*/

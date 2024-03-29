@@ -35,19 +35,19 @@ fi
 case $WEATHER_CONDITION in
   'Clouds')
     if [ "$DAYTIME" == "d" ]; then
-        WEATHER_ICON=""
+        WEATHER_ICON="󰇅"
     else
-        WEATHER_ICON=""
+        WEATHER_ICON="󰇄"
     fi
     ;;
   'Rain')
-    WEATHER_ICON=""
+    WEATHER_ICON="󰉁"
     ;;
   'Drizzle')
     if [ "$DAYTIME" == "d" ]; then
-        WEATHER_ICON="" 
+        WEATHER_ICON="󰉄" 
     else
-        WEATHER_ICON=""
+        WEATHER_ICON="󰈽"
     fi
     ;;
   'Thunderstorm')

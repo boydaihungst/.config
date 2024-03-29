@@ -31,10 +31,12 @@ set fish_cursor_visual block
 set fzf_fd_opts --hidden
 starship init fish | source
 set FZF_DEFAULT_OPTS "--preview-window=wrap --marker="*" --cycle --layout=reverse --border --height=40% --color 'bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8,fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc,marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8'"
+set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket
+fish_add_path -aP ~/bin ~/.bun/bin ~/.local/bin ~/.cargo/bin $GEM_HOME/bin ~/.local/share/neovim/bin ~/.local/share/bob/nvim-bin /usr/local/go/bin
+# set EDITOR lvim
+# set VISUAL lvim
+# set COLORTERM truecolor
 set fish_greeting
-fish_add_path $(yarn global bin)
-fish_add_path ~/.yarn/bin
-fish_add_path ~/.config/yarn/global/node_modules/.bin
 alias ssh="kitty +kitten ssh"
 alias sudo="sudo -E -s"
 fish_vi_key_bindings

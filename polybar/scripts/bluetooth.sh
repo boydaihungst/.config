@@ -21,7 +21,7 @@ bluetooth_print() {
 			done
 			echo "$display_text"
 		else
-			echo " off"
+			echo "󰂲 off"
 		fi
 	done
 }

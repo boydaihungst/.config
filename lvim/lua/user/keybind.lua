@@ -147,7 +147,7 @@ local keymappings = {
     -- Save buffer
     ["<C-s>"] = { ":w<CR>" },
     -- Hop word
-    -- ["s"] = { ":HopChar1<CR>", { silent = false } },
+    ["s"] = { ":HopChar1<CR>", { silent = false } },
     -- comment
     ["gbf"] = {
       ":Neogen func<CR>", { silent = true, desc = "Comment Function" }
@@ -155,7 +155,7 @@ local keymappings = {
     ["gbC"] = {
       ":Neogen class<CR>", { silent = true, desc = "Comment Class" }
     },
-    -- ["<F2>"] = { ":Alpha<CR>", { silent = true, desc = "Dashboard" } }
+    ["<F2>"] = { ":Alpha<CR>", { silent = true, desc = "Dashboard" } }
   },
   insert_mode = {
     -- imap

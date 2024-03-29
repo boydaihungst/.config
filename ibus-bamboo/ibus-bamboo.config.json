@@ -176,11 +176,13 @@
   ],
   "DefaultInputMode": 6,
   "InputModeMapping": {
+    "Navigator:firefox": 1,
     "aegisub:aegisub": 5,
     "discord:discord": 6,
     "kitty:kitty": 6,
     "kotatogram-desktop:kotatogram-desktop": 6,
     "lvim,lvim:lvim,lvim": 1,
+    "lvim:lvim": 1,
     "ranger:ranger": 7
   }
 }

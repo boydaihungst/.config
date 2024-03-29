@@ -60,42 +60,40 @@ lvim.builtin.cmp.mapping['<CR>']         = cmp.mapping(function(fallback)
   fallback() -- if not exited early, always fallback
 end)
 lvim.builtin.cmp.sources                 = cmp.config.sources({
-    {
-      name = "nvim_lsp",
-      entry_filter = function(entry, ctx)
-        local kind = require("cmp.types").lsp.CompletionItemKind[entry:get_kind()]
-        if kind == "Snippet" and ctx.prev_context.filetype == "java" then
-          return false
-        end
-        if kind == "Text" then
-          return false
-        end
-        return true
-      end,
-    },
-    {
-      name = "async_path",
-      option = {
-        trailing_slash = true,
-      }
-    },
-    { name = "luasnip" },
-    { name = 'npm',        keyword_length = 3 },
-    { name = "cmp_tabnine" },
-    { name = "nvim_lua" },
-    { name = "calc" },
-    { name = "git" },
-    {
-      name = "emoji",
-      trigger_characters = { ":" },
-    },
-    { name = "treesitter" },
-    { name = "crates" },
-    { name = "tmux" },
+  {
+    name = "nvim_lsp",
+    entry_filter = function(entry, ctx)
+      local kind = require("cmp.types").lsp.CompletionItemKind[entry:get_kind()]
+      if kind == "Snippet" and ctx.prev_context.filetype == "java" then
+        return false
+      end
+      if kind == "Text" then
+        return false
+      end
+      return true
+    end,
   },
   {
-    { name = 'buffer' },
-  }
+    name = "async_path",
+    option = {
+      trailing_slash = true,
+    }
+  },
+  { name = "luasnip" },
+  { name = "npm",        keyword_length = 3 },
+  { name = "cmp_tabnine" },
+  { name = "nvim_lua" },
+  { name = "calc" },
+  { name = "git" },
+  {
+    name = "emoji",
+    trigger_characters = { ":" },
+  },
+  { name = "treesitter" },
+  { name = "crates" },
+  { name = "tmux" },
+  { name = 'buffer' },
+}
 )
 lvim.builtin.cmp.formatting.source_names = {
   treesitter = "(TreeSitter)",
@@ -108,7 +106,8 @@ lvim.builtin.cmp.formatting.source_names = {
   luasnip = "(Snippet)",
   buffer = "(Buffer)",
   tmux = "(TMUX)",
-  git = "(Git)"
+  git = "(Git)",
+  crates = "(Crates)",
 }
 lvim.builtin.cmp.completion.autocomplete = {
   require("cmp.types").cmp.TriggerEvent.TextChanged,

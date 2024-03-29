@@ -1,0 +1,1265 @@
+﻿-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Unable to load 'libvlc.so.19' (also check libc.so.6 + libdl.so.2)
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Not all required methods was found in libvlc
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Unable to load 'libvlc.so.19' (also check libc.so.6 + libdl.so.2)
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:51:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Not all required methods was found in libvlc
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Unable to load 'libvlc.so.19' (also check libc.so.6 + libdl.so.2)
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Not all required methods was found in libvlc
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Unable to load 'libvlc.so.19' (also check libc.so.6 + libdl.so.2)
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:12
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Not all required methods was found in libvlc
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Unable to load 'libvlc.so.19' (also check libc.so.6 + libdl.so.2)
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Not all required methods was found in libvlc
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Unable to load 'libvlc.so.19' (also check libc.so.6 + libdl.so.2)
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:53:43
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Not all required methods was found in libvlc
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Unable to load 'libvlc.so.19' (also check libc.so.6 + libdl.so.2)
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Not all required methods was found in libvlc
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Unable to load 'libvlc.so.19' (also check libc.so.6 + libdl.so.2)
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:32
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Not all required methods was found in libvlc
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Unable to load 'libvlc.so.19' (also check libc.so.6 + libdl.so.2)
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Not all required methods was found in libvlc
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Unable to load 'libvlc.so.19' (also check libc.so.6 + libdl.so.2)
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:55:47
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Not all required methods was found in libvlc
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Unable to load 'libvlc.so.19' (also check libc.so.6 + libdl.so.2)
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Not all required methods was found in libvlc
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Unable to load 'libvlc.so.19' (also check libc.so.6 + libdl.so.2)
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Required method was found in libvlc: method
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:56:39
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Not all required methods was found in libvlc
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:58:49
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Batch convert took 151
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 10:59:04
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Batch convert took 128
+
+-----------------------------------------------------------------------------
+Date: 03/19/2024 11:10:59
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Batch convert took 1873
+
+-----------------------------------------------------------------------------
+Date: 03/20/2024 22:29:02
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Batch convert took 2796
+
+-----------------------------------------------------------------------------
+Date: 03/20/2024 22:34:44
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Batch convert took 1604
+
+-----------------------------------------------------------------------------
+Date: 03/20/2024 22:36:57
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Batch convert took 1523
+
+-----------------------------------------------------------------------------
+Date: 03/23/2024 13:49:17
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Batch convert took 148
+
+-----------------------------------------------------------------------------
+Date: 03/24/2024 08:52:45
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Batch convert took 1957
+
+-----------------------------------------------------------------------------
+Date: 03/24/2024 18:45:10
+SE: 4.0.4.0 - Unix 6.7.5.1 - 64-bit
+Message: Batch convert took 162
+
+-----------------------------------------------------------------------------
+Date: 03/26/2024 09:18:09
+SE: 4.0.4.0 - Unix 6.8.1.1 - 64-bit
+Message: Batch convert took 1163
+
+-----------------------------------------------------------------------------
+Date: 03/26/2024 23:56:48
+SE: 4.0.4.0 - Unix 6.8.1.1 - 64-bit
+Message: Batch convert took 1337
+
+-----------------------------------------------------------------------------
+Date: 03/27/2024 08:15:59
+SE: 4.0.4.0 - Unix 6.8.1.1 - 64-bit
+Message: Batch convert took 2666
+
+-----------------------------------------------------------------------------
+Date: 03/29/2024 09:28:37
+SE: 4.0.4.0 - Unix 6.8.1.1 - 64-bit
+Message: Batch convert took 456
+
