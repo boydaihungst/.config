@@ -1,21 +1,23 @@
 if status is-interactive
 
-    set -l onedark_options '-b'
+    set -l onedark_options -b
 
     if set -q VIM
         # Using from vim/neovim.
-        set onedark_options "-256"
+        set onedark_options -256
     else if string match -iq "eterm*" $TERM
         # Using from emacs.
-        function fish_title; true; end
-        set onedark_options "-256"
+        function fish_title
+            true
+        end
+        set onedark_options -256
     end
     set_onedark_color black 080A0E current
     set_onedark_color white BCC4C9 current
     set_onedark_color red A24F5F current
     set_onedark_color green 98c379 current
     set_onedark_color blue 597A9A current
-    set_onedark $onedark_options    # Commands to run in interactive sessions can go here
+    set_onedark $onedark_options # Commands to run in interactive sessions can go here
 end
 # Emulates vim's cursor shape behavior
 # Set the normal and visual mode cursors to a block
@@ -31,11 +33,11 @@ set fish_cursor_visual block
 set fzf_fd_opts --hidden
 starship init fish | source
 set FZF_DEFAULT_OPTS "--preview-window=wrap --marker="*" --cycle --layout=reverse --border --height=40% --color 'bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8,fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc,marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8'"
-set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket
-fish_add_path -aP ~/bin ~/.bun/bin ~/.local/bin ~/.cargo/bin $GEM_HOME/bin ~/.local/share/neovim/bin ~/.local/share/bob/nvim-bin /usr/local/go/bin
-# set EDITOR lvim
-# set VISUAL lvim
-# set COLORTERM truecolor
+# set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-tpm-agent.sock
+fish_add_path -aP ~/bin ~/.bun/bin ~/.local/bin ~/.cargo/bin $GEM_HOME/bin ~/.local/share/neovim/bin ~/.local/share/bob/nvim-bin /usr/local/go/bin ~/.pyenv/bin
+set EDITOR nvim
+set VISUAL nvim
+set COLORTERM truecolor
 set fish_greeting
 alias ssh="kitty +kitten ssh"
 alias sudo="sudo -E -s"
@@ -43,3 +45,7 @@ fish_vi_key_bindings
 bind yy fish_clipboard_copy
 bind p fish_clipboard_paste
 
+
+set -x N_PREFIX "$HOME/n"
+contains "$N_PREFIX/bin" $PATH; or set -a PATH "$N_PREFIX/bin" # Added by n-install (see http://git.io/n-install-repo).
+pyenv init - | source

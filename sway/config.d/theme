@@ -1,0 +1,46 @@
+# Apply gtk theming
+exec_always ~/.config/sway/scripts/import-gsettings
+
+workspace_layout default
+# Set inner/outer gaps
+gaps inner 6
+gaps outer 3
+# gaps top 34
+
+# Hide titlebar on windows:
+default_border pixel 2
+
+# Default Font
+font pango: Hack Nerd Font 12
+
+# Thin borders:
+smart_borders on
+
+# Set wallpaper:
+exec swaybg -i /usr/share/endeavouros/backgrounds/eos_wallpapers_community/APOLLO-MOON.png
+
+# Title format for windows
+for_window [shell="xdg_shell"] title_format "%title (%app_id)"
+for_window [shell="x_wayland"] title_format "%class - %title"
+
+set $red #A24F5F
+set $blue #597A9A
+set $bground #080A0E
+set $fground #BCC4C9
+
+# define colors for windows:
+#class		        	border		bground		text		indicator	child_border
+client.focused          $bground $bground $fground $blue   $blue
+client.focused_inactive $bground $bground $fground $bground   $bground
+client.unfocused        $bground $bground $fground $bground   $bground
+client.urgent           $bground $bground $fground $bground   $red
+client.placeholder      $bground $bground $fground $bground   $bground
+client.background       $bground
+
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    swaybar_command waybar
+}

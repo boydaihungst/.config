@@ -15,7 +15,7 @@ configuration {
     display-run:                " Run";
     display-filebrowser:        " Files";
     display-window:             " Windows";
-    display-clipboard:             "󱛣 Clipboard";
+    display-clipboard:          "󱛣 Clipboard";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
 }
@@ -115,7 +115,7 @@ prompt {
 }
 textbox-prompt-colon {
     enabled:                     true;
-    padding:                     5px 0px;
+    padding:                     5px 5px;
     expand:                      false;
     str:                         "";
     background-color:            inherit;
@@ -127,7 +127,7 @@ entry {
     background-color:            inherit;
     text-color:                  inherit;
     cursor:                      text;
-    placeholder:                 "Search...";
+    placeholder:                 "Clipboard";
     placeholder-color:           inherit;
 }
 num-filtered-rows {
@@ -159,10 +159,10 @@ case-indicator {
 listview {
     enabled:                     true;
     columns:                     1;
-    lines:                       8;
+    lines:                       10;
     cycle:                       true;
     dynamic:                     true;
-    scrollbar:                   false;
+    scrollbar:                   true;
     layout:                      vertical;
     reverse:                     false;
     fixed-height:                true;
@@ -171,7 +171,7 @@ listview {
     spacing:                     5px;
     margin:                      0px;
     padding:                     10px;
-    border:                      0px 2px 2px 2px ;
+    border:                      2px 2px 2px 2px ;
     border-radius:               0px 0px 0px 0px;
     border-color:                @border-colour;
     background-color:            transparent;

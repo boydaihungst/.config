@@ -138,9 +138,9 @@ playlist_editor_display_mode = "classic"
 
 ##### connection settings #####
 #
-#mpd_host = localhost
+mpd_host = "~/.config/mpd/socket"
 #
-#mpd_port = 6600
+mpd_port = 6600
 #
 #mpd_connection_timeout = 5
 #

@@ -1,6 +1,7 @@
-sw_volume: 96
+sw_volume: 100
 audio_device_state:1:PipeWire Sound Server
 state: stop
+current: 10
 random: 1
 repeat: 0
 single: 0
@@ -9,4 +10,26 @@ crossfade: 0
 mixrampdb: 0.000000
 mixrampdelay: -1.000000
 playlist_begin
+0:YOASOBI/夜に駆ける (2019)/YOASOBI - 夜に駆ける - 01 - 夜に駆ける.flac
+1:YOASOBI/E-SIDE (2021)/YOASOBI - E-SIDE - 01 - Into The Night.flac
+2:YOASOBI/E-SIDE (2021)/YOASOBI - E-SIDE - 02 - Haven't.flac
+3:YOASOBI/E-SIDE (2021)/YOASOBI - E-SIDE - 03 - Monster.flac
+4:YOASOBI/E-SIDE (2021)/YOASOBI - E-SIDE - 04 - Comet.flac
+5:YOASOBI/E-SIDE (2021)/YOASOBI - E-SIDE - 05 - RGB.flac
+6:YOASOBI/E-SIDE (2021)/YOASOBI - E-SIDE - 06 - Encore.flac
+7:YOASOBI/E-SIDE (2021)/YOASOBI - E-SIDE - 07 - Blue.flac
+8:YOASOBI/E-SIDE (2021)/YOASOBI - E-SIDE - 08 - Tracing A Dream.flac
+9:YOASOBI/ラブレター (2021)/YOASOBI - ラブレター - 01 - ラブレター.flac
+10:YOASOBI/アイドル (2023)/YOASOBI - アイドル - 01 - アイドル.flac
+11:YOASOBI/E-SIDE (2021)/YOASOBI - E-SIDE - 01 - Into The Night.flac
+12:YOASOBI/E-SIDE (2021)/YOASOBI - E-SIDE - 02 - Haven't.flac
+13:YOASOBI/E-SIDE (2021)/YOASOBI - E-SIDE - 03 - Monster.flac
+14:YOASOBI/E-SIDE (2021)/YOASOBI - E-SIDE - 04 - Comet.flac
+15:YOASOBI/E-SIDE (2021)/YOASOBI - E-SIDE - 05 - RGB.flac
+16:YOASOBI/E-SIDE (2021)/YOASOBI - E-SIDE - 06 - Encore.flac
+17:YOASOBI/E-SIDE (2021)/YOASOBI - E-SIDE - 07 - Blue.flac
+18:YOASOBI/E-SIDE (2021)/YOASOBI - E-SIDE - 08 - Tracing A Dream.flac
+19:YOASOBI/アイドル (2023)/YOASOBI - アイドル - 01 - アイドル.flac
+20:YOASOBI/ラブレター (2021)/YOASOBI - ラブレター - 01 - ラブレター.flac
+21:YOASOBI/夜に駆ける (2019)/YOASOBI - 夜に駆ける - 01 - 夜に駆ける.flac
 playlist_end

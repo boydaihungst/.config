@@ -1,0 +1,9 @@
+profile Default {
+	output eDP-1 enable mode 1920x1080 position 0,0
+}
+
+profile Hdmi_Top {
+	output HDMI-A-1 enable adaptive_sync on position 0,0
+	output eDP-1 mode 1920x1080 position 0,1080
+}
+

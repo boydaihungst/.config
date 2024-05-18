@@ -1,6 +1,6 @@
 [MIME Cache]
 application/x-shellscript=lvim.desktop;nvim.desktop;
-inode/directory=ncmpcpp.desktop;ranger.desktop;
+inode/directory=ncmpcpp.desktop;
 text/english=lvim.desktop;nvim.desktop;
 text/plain=lvim.desktop;nvim.desktop;
 text/x-c=lvim.desktop;nvim.desktop;

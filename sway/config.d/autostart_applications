@@ -1,0 +1,19 @@
+# Auth with polkit-gnome:
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# Desktop notifications
+# exec mako
+
+# Network Applet
+# exec nm-applet --indicator
+
+
+     
+# Welcome App
+# exec dex --autostart --environment sway --term kitty
+
+exec_always autotiling
+exec_always shikane
+exec batsignal -b -a battery -I "battery-charged" -e -n BAT1 -w 15 -c 10 -d 5 -W "Battery is low" -C "Battery is low. System will shutdown soon" -D "systemctl hibernate"
+# Sway Fader
+# exec python3 ~/.config/sway/scripts/swayfader.py      

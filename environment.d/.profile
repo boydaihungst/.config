@@ -1,0 +1,47 @@
+export MOZ_ENABLE_WAYLAND=1
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_TYPE=wayland
+export WLR_NO_HARDWARE_CURSORS=1
+# export SDL_VIDEODRIVER="wayland,x11"
+# export QT_QPA_PLATFORM="wayland;xcb"
+# export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json
+# export CLUTTER_BACKEND=wayland
+#export WLR_NO_HARDWARE_CURSORS=0
+export WLR_RENDERER_ALLOW_SOFTWARE=1
+export WLR_DRM_NO_ATOMIC=1 
+# export XWAYLAND_NO_GLAMOR=1
+# export WLR_RENDERER=vulkan
+export ELECTRON_OZONE_PLATFORM_HINT=wayland
+export MOZ_USE_XINPUT2=1
+export GDK_DPI_SCALE=1
+export GTK_USE_PORTAL=1
+export GLFW_IM_MODULE=ibus
+export SDL_IM_MODULE=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export QT4_IM_MODULE=fcitx
+export CLUTTER_IM_MODULE=fcitx
+export GDK_DEBUG=portals
+export QT_STYLE_OVERRIDE=kvantum
+# export MOZ_DISABLE_RDD_SANDBOX=1
+export PATH="$PATH:$HOME/bin:$HOME/.bun/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GEM_HOME/bin:$HOME/.local/share/neovim/bin:$HOME/.local/share/bob/nvim-bin:$HOME/.pyenv/bin"
+export npm_config_prefix="$HOME/.local"
+export JAVA_HOME=/usr/lib/jvm/default
+# export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+export EDITOR=nvim
+export VISUAL=nvim
+export TERMINAL=kitty
+export TERM=xterm-kitty
+# export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-tpm-agent.sock"
+export SSH_AUTH_SOCK="$(ssh-tpm-agent --print-socket)"
+# export TPM2_PKCS11_TCTI=tabrmd:
+# export TSS2_LOG=fapi+NONE
+export WMFOCUS_OPTS='--textcolor "#cdd6f4" --bgcolor "#1e1e2e" --textcolorcurrent "#f38ba8" --bgcolorcurrent "#1e1e2e" --chars "hlkj"'
+export COLORTERM=truecolor
+export AVFSBASE=$XDG_RUNTIME_DIR/avfs
+export USE_CCACHE=1
+export CCACHE_COMPRESS=1
+export CCACHE_MAXSIZE=50G # 50 GB
+# ssh-tpm-add ~/.ssh/id_rsa.tpm
+mountavfs

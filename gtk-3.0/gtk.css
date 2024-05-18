@@ -20,17 +20,17 @@
 	/*box-shadow: inset 2px 0 #597999;*/
 } 
 
-.tasklist { -XfceTasklist-max-button-length: 160; }
+/* .tasklist { -XfceTasklist-max-button-length: 160; } */
 #pulseaudio-button image {}
 #xfce4-power-manager-plugin {}
 
-#clock-button { padding: 3; }
+#clock-button { padding: 3px; }
 #clock-button:hover, #clock-button:checked
 {
 	background-color: transparent;
 	box-shadow: none;
 }
-#separator-12, #separator-2, #separator-3 { color: rgba(255,255,255,0.3) }
+#separator-12, #separator-2, #separator-3 { color: rgba(255,255,255,0.3); }
 #pager-4 grid {
 	background-color: rgba(255,255,255,0.07);
 	margin: 3px 3px 3px 4px;
@@ -38,7 +38,7 @@
 }
 #pager-4 button {
 	padding: 3px;
-	margin: 4 4 4 5;
+	margin: 4px 4px 4px 5px;
 	font-size: 12px;
 }
 #pager-4 button:checked
@@ -66,10 +66,10 @@ window#whiskermenu-window scrolledwindow { margin: 2px; }
 #whiskermenu-window iconview { font-size: 12px; padding: 5px 0; /*background-color: #22252C;*/ }
 #whiskermenu-window iconview:hover { background-color: rgba(255,255,255,0.1); }
 
-* {
-	-ThunarAbstractIconView-row-spacing: 10;
-	-ThunarAbstractIconView-column-spacing: 20;
-}
+/* * { */
+	/* -ThunarAbstractIconView-row-spacing: 10; */
+	/* -ThunarAbstractIconView-column-spacing: 20; */
+/* } */
 
 .thunar .standard-view .view
 {

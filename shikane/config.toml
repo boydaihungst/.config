@@ -1,0 +1,27 @@
+[[profile]]
+name = "HDMI TOP"
+exec = ["notify-send.sh -a display_output_profile -i disper --replace-file=/tmp/notification_display_output_profile \"$SHIKANE_PROFILE_NAME\""]
+    [[profile.output]]
+    match = "/eDP-[1-9]/"
+    enable = true
+    position = { x = 0, y = 0 }
+    scale = 1
+
+    [[profile.output]]
+    match = "/.*LG Electronics MP59G*/"
+    enable = true
+    position = { x = 0, y = -1080 }
+
+[[profile]]
+name = "Default"
+exec = ["notify-send.sh -a display_output_profile -i disper --replace-file=/tmp/notification_display_output_profile \"$SHIKANE_PROFILE_NAME\""]
+    [[profile.output]]
+    match = "/eDP-[1-9]/"
+    enable = true
+    position = { x = 0, y = 0 }
+    scale = 1
+
+    [[profile.output]]
+    match = "/HDMI-[ABC]-[1-9]/"
+    enable = false
+
