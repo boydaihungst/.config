@@ -1,0 +1,65 @@
+
+Description = "NordDark"
+
+Categories = {"dark", "norddark"}
+
+Default	= { Colour="#BCC4C9" }
+Canvas	= { Colour="#080A0E" }
+Number	= { Colour="#CC9057" }
+-- fix
+Escape	= { Colour="#e5c07b" }
+
+String	= { Colour="#8EBD6B" }
+BlockComment	= { Colour="#45475A" }
+StringPreProc = { Colour="#B464CD"}
+LineComment   = BlockComment
+Operator      = { Colour="#CDD6F4" }
+LineNum      = { Colour="#45475A" } 
+PreProcessor      = StringPreProc
+-- fix
+Interpolation  = { Colour="#8EBD6B" }
+Keywords = {
+
+  { Colour="#B464CD" },
+
+  { Colour="#CC9057" },
+
+  { Colour="#F2CDCD" },
+
+  { Colour="#4FA6ED" },
+
+  { Colour= "#F2CDCD" },
+
+  { Colour= "#A0444D" },
+
+}
+
+
+-- new LSP based elements:
+
+
+SemanticTokenTypes  = {
+
+  { Type = 'keyword', Style = Keywords[1] },
+
+  { Type = 'type', Style = Keywords[2] },
+
+  { Type = 'function', Style = Keywords[4] },
+
+  { Type = 'method', Style = Keywords[4] },
+
+  { Type = 'class', Style =  Keywords[1] },
+
+  { Type = 'struct', Style = Keywords[2] },
+
+  { Type = 'parameter', Style = Keywords[6] },
+
+  { Type = 'variable', Style = Keywords[1] },
+
+  { Type = 'number', Style = Number },
+
+  { Type = 'regexp', Style = String },
+
+  { Type = 'operator', Style = Operator },
+
+}

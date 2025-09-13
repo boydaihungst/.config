@@ -1,0 +1,307 @@
+// Global 
+{
+  "layer": "top",
+  "position": "top",
+  // If height property would be not present, it'd be calculated dynamically
+  "height": 32,
+  "modules-left": [
+    "clock",
+    "cpu",
+    "memory",
+    "temperature",
+    //"mpd",
+    "hyprland/workspaces",
+    "hyprland/submap",
+  ],
+  "modules-center": [
+    "hyprland/window",
+  ],
+  "modules-right": [
+    "pulseaudio",
+    "backlight",
+    "network",
+    "bluetooth",
+    "battery",
+    "custom/ibus-bamboo",
+    "power-profiles-daemon",
+    "idle_inhibitor",
+    // "custom/discord",
+    "tray",
+  ],
+  "font": "Hack Nerd Font 12",
+  // Modules
+  "idle_inhibitor": {
+    "format": "{icon} ",
+    "format-icons": {
+      "activated": "󰒳",
+      "deactivated": "󰒲",
+    },
+    "tooltip-format-activated": "Disabled Sleep mode",
+    "tooltip-format-deactivated": "Enabled Sleep mode",
+  },
+  "battery": {
+    "interval": 10,
+    "states": {
+      // "good": 95,
+      "40": 40,
+      "60": 60,
+      "80": 80,
+      "100": 100,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging-critial": "󰂆 {capacity}%",
+    "format-charging-20": "󰂇 {capacity}%",
+    "format-charging-warning": "󰂇 {capacity}%",
+    "format-charging-40": "󰂇 {capacity}%",
+    "format-charging-60": "󰂉 {capacity}%",
+    "format-charging-80": "󰂊 {capacity}%",
+    "format-charging-100": "󰂄 {capacity}%",
+    "format-plugged": "󰂄 {capacity}%",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": [
+      "󰁺",
+      "󰁼",
+      "󰁾",
+      "󰂀",
+      "󰁹",
+    ]
+  },
+  "clock": {
+    "interval": 1,
+    "format": " {:%H:%M:%S  %e %b}",
+    "tooltip": true,
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "smooth-scrolling-threshold": 20,
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#BCC4C9'><b>{}</b></span>",
+        "days": "<span color='#BCC4C9'><b>{}</b></span>",
+        "weeks": "<span color='#597A9A'><b>W{}</b></span>",
+        "weekdays": "<span color='#597A9A'><b>{}</b></span>",
+        "today": "<span color='#A24F5F'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+  "cpu": {
+    "interval": 2,
+    "format": "󰄧 {usage}%", // Icon: microchip
+    "states": {
+      "warning": 70,
+      "critical": 90,
+    },
+    // "on-click": "kitty --class 'btop' fish -c 'btop'",
+  },
+  "memory": {
+    "interval": 2,
+    "format": " {used:0.1f}G", // Icon: memory
+    // "on-click": "kitty --class 'btop' fish -c 'btop'",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    },
+    "tooltip-format": "Swap {swapUsed:0.1f}/{swapTotal:0.1f}"
+  },
+  "temperature": {
+    "interval": 5,
+    "thermal-zone": 0,
+    "critical-threshold": 90,
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+    ]
+  },
+  "mpd": {
+    "server": "/home/huyhoang/.config/mpd/socket",
+    "port": 6600,
+    "password": "",
+    "interval": 2,
+    "format-stopped": "{stateIcon} {title}",
+    "format-paused": "{stateIcon} {title}",
+    "format-disconnected": "{stateIcon} MPD",
+    "format": "{stateIcon} {title} {randomIcon}{repeatIcon}{singleIcon}",
+    "title-len": 10,
+    "max-length": 20,
+    "unknown-tag": "",
+    "random-icons": {
+      "on": "<span color=\"#45475A\"></span> "
+    },
+    "repeat-icons": {
+      "on": "<span color=\"#45475A\"></span> "
+    },
+    "single-icons": {
+      "on": "<span color=\"#45475A\">1</span> "
+    },
+    "state-icons": {
+      "paused": "<span color=\"#45475A\"></span>",
+      "playing": "",
+      "stopped": "<span color=\"#45475A\"></span>",
+      "disconnected": "<span color=\"#45475A\">󰯡</span>",
+    },
+    "tooltip-format": "({elapsedTime:%M:%S}/{totalTime:%M:%S}) - {artist} - {album}",
+    "tooltip-format-disconnected": "MPD (disconnected)",
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl stop",
+    "on-click-middle": "kitty --class 'ncmpcpp' fish -c 'ncmpcpp'",
+    // "on-click-middle": "wezterm start --class 'ncmpcpp' -- 'ncmpcpp'",
+    //"smooth-scrolling-threshold": 20,
+    "on-scroll-up": "playerctl previous",
+    "on-scroll-down": "playerctl next",
+  },
+  "hyprland/window": {
+    "format": "{title}",
+    "separate-outputs": true,
+    "rewrite": {
+      "(.*) — Waterfox": "$1",
+      "(.*) - Mozilla Firefox": "$1",
+      "(.*) - vim": "$1",
+      "(.*) - Nvim": "$1",
+      "(.*) - zsh": "$1",
+      "(.*) - fish": "$1",
+      "(.*) - (Thunar)": "$1",
+      "(Yazi): (.*)": "$2",
+      "(yazi)": "~",
+      "Bulk Rename - Rename Multiple Files": "Bulk Rename",
+      "(.*) - Blender (.*)": "$1",
+      "(.*) - Aegisub (.*)": "$1",
+    },
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "6": "",
+      "7": "󰺵",
+      "empty": "󰧨",
+      "special": "󰐃",
+      "default": "",
+    }
+  },
+  "hyprland/submap": {
+    "format": "{}",
+    "tooltip": false
+  },
+  "pulseaudio": {
+    "scroll-step": 1, // %, can be a float
+    "format": " {icon} {volume}%",
+    "format-bluetooth": " {icon} {volume}% ()",
+    "format-muted": "  {volume}%",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "󱡏",
+      "headset": "  ",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        ""
+      ]
+    },
+    "on-click-middle": "pavucontrol",
+    "on-click-right": "~/.config/hypr/scripts/volumectl --sink-blacklist 'jamesdsp_sink,easyeffects_sink' next-sink",
+    "on-click": "~/.config/hypr/scripts/volumectl --sink-blacklist 'jamesdsp_sink,easyeffects_sink' togmute",
+    "on-scroll-up": "~/.config/hypr/scripts/volumectl --sink-blacklist 'jamesdsp_sink,easyeffects_sink'  --volume-step 1 up",
+    "on-scroll-down": "~/.config/hypr/scripts/volumectl --sink-blacklist 'jamesdsp_sink,easyeffects_sink' --volume-step 1 down",
+    "reverse-scrolling": true,
+    "ignored-sinks": [
+      "Easy Effects Sink",
+      "jamesdsp_sink"
+    ]
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10,
+  },
+  "backlight": {
+    "format": "{icon} {percent}%",
+    "format-icons": [
+      "󰃚",
+      "󰃛",
+      "󰃜",
+      "󰃝",
+      "󰃞",
+      "󰃟",
+      "󰃠",
+    ],
+    "on-scroll-down": "~/.config/hypr/scripts/brightness-change.sh 1%-",
+    "on-scroll-up": "~/.config/hypr/scripts/brightness-change.sh 1%+",
+    "reverse-scrolling": true
+  },
+  "network": {
+    "interval": 5,
+    "format-wifi": "  {essid} ({signalStrength}%)", // Icon: wifi
+    "format-ethernet": " {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
+    "format-disconnected": "󰯡 Disconnected",
+    "tooltip-format": "{ifname}: {ipaddr}",
+    "on-click-right": "kitty --class 'nmtui' fish -c 'nmtui'",
+    // "on-click-right": "wezterm start --class 'nmtui' -- 'nmtui'",
+  },
+  "bluetooth": {
+    "format": " {status}",
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias}",
+    // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}% 󰥉"
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
+  "custom/ibus-bamboo": {
+    "exec": "~/.config/ibus-bamboo/ibus_waybar.sh",
+    "return-type": "json",
+    "on-click": "~/.config/ibus-bamboo/ibus_switch.sh",
+    "on-click-middle": "~/.config/ibus-bamboo/ibus_switch.sh",
+    "on-click-right": "~/.config/ibus-bamboo/ibus_switch.sh",
+    "exec-on-event": false,
+    "interval": "once",
+    "signal": 30,
+    "format": "󰌌 {text}",
+  },
+  "custom/discord": {
+    "exec": "~/.venv/bin/python3 /home/huyhoang/discord_notification.py",
+    "return-type": "json",
+    "on-click": "xdg-open https://discord.com/channels/@me",
+    "interval": "once",
+    "signal": 31,
+    "hide-empty-text": true,
+    "format": "{icon}",
+    "format-icons": {
+      "has-notification": "",
+      "default": "",
+    }
+  }
+}

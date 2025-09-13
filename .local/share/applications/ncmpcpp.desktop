@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=ncmpcpp
+Comment=Music player Terminal
+Icon=mpdevil
+Terminal=false
+Exec=kitty --app-id "ncmpcpp" -e ncmpcpp
+Categories=ConsoleOnly;System;Music
+MimeType=inode/directory;
+Keywords=Music;Song;Mpd;Player

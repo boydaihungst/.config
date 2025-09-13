@@ -1,0 +1,12 @@
+# https://taplo.tamasfe.dev/configuration/formatter-options.html
+[formatting]
+  align_entries         = true
+  array_auto_collapse   = false
+  array_auto_expand     = false
+  compact_arrays        = false
+  compact_entries       = false
+  compact_inline_tables = false
+  indent_entries        = true
+  indent_tables         = true
+  reorder_inline_tables = false
+  reorder_keys          = true

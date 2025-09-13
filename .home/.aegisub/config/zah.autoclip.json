@@ -1,0 +1,7 @@
+{
+  "disable_layer_mismatch": false,
+  "disable_version_notify": false,
+  "python": "python",
+  "vsrepo": "vsrepo",
+  "vsrepo_mode": "vsrepo in PATH (`$ vsrepo --help`)"
+}

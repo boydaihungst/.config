@@ -1,0 +1,25 @@
+[[profile]]
+  exec = [ "notify-send.sh -a display_output_profile -i disper --replace-file=/tmp/notification_display_output_profile \"$SHIKANE_PROFILE_NAME\"" ]
+  name = "HDMI ONLY"
+  [[profile.output]]
+    adaptive_sync = true
+    enable        = true
+    position      = "0,1080"
+    scale         = 1
+    search        = [ "/eDP-[1-9]" ]
+
+  [[profile.output]]
+    adaptive_sync = true
+    enable        = true
+    position      = "0,0"
+    search        = [ "/HDMI-A-[1-9]" ]
+
+[[profile]]
+  exec = [ "notify-send.sh -a display_output_profile -i disper --replace-file=/tmp/notification_display_output_profile \"$SHIKANE_PROFILE_NAME\"" ]
+  name = "Default"
+  [[profile.output]]
+    adaptive_sync = true
+    enable        = true
+    position      = "0,0"
+    scale         = 1
+    search        = [ "/eDP-[1-9]" ]

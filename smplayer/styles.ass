@@ -1,0 +1,7 @@
+[Script Info]
+ScriptType: v4.00+
+Collisions: Normal
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, BackColour, OutlineColour, Bold, Italic, Alignment, BorderStyle, Outline, Shadow, MarginL, MarginR, MarginV
+Style: Default,UVN Sach Vo,20,&H00ffffff,&H00393939,&H00151515,-1,0,2,1,0.75,0.25,20,20,20

@@ -1,0 +1,7 @@
+{
+  "setup": {
+    "prefix": ["toc", "markdown-toc", "doc"],
+    "body": ["<!-- toc -->"],
+    "description": "markdown-toc"
+  }
+}

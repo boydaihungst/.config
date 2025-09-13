@@ -1,0 +1,13 @@
+[Unit]
+Description=Waydroid session start
+PartOf=graphical-session.target
+After=graphical-session.target waydroid-container.service
+ConditionEnvironment=WAYLAND_DISPLAY
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/waydroid session start
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

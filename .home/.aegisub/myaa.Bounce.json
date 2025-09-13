@@ -1,0 +1,1 @@
+{"__version":"0.0.2","main":{"delay":100,"maximumOffset":100,"finalOffset":30,"duration":200,"split":"|","layout":"Vertical","characterDistance":40,"invertDirection":false,"columnDistance":100,"spaceEven":true,"hideCharacters":false}}

@@ -1,0 +1,8 @@
+## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
+## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
+
+Net/ThemeName "Catppuccin-blue"
+Net/IconThemeName "Papirus-Dark"
+Gtk/CursorThemeName "PearWhiteCursors"
+Net/EnableEventSounds "1"
+Net/EnableInputFeedbackSounds "0"

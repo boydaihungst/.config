@@ -1,0 +1,65 @@
+
+Description = "catppuccin"
+
+Categories = {"dark", "catppuccin"}
+
+Default	= { Colour="#CDD6F4" }
+Canvas	= { Colour="#1E1E2E" }
+Number	= { Colour="#FAB387" }
+-- fix
+Escape	= { Colour="#FFEEA6" }
+
+String	= { Colour="#A6E3A1" }
+BlockComment	= { Colour="#585B70" }
+StringPreProc = { Colour="#F5C2E7"}
+LineComment   = BlockComment
+Operator      = { Colour="#CDD6F4" }
+LineNum      = { Colour="#45475A" } 
+PreProcessor      = StringPreProc
+-- fix
+Interpolation  = { Colour="#CEFF9F" }
+Keywords = {
+
+  { Colour="#F5C2E7" },
+
+  { Colour="#89B4FA" },
+
+  { Colour="#F2CDCD" },
+
+  { Colour="#CDD6F4" },
+
+  { Colour= "#F2CDCD" },
+
+  { Colour= "#CDD6F4" },
+
+}
+
+
+-- new LSP based elements:
+
+
+SemanticTokenTypes  = {
+
+  { Type = 'keyword', Style = Keywords[1] },
+
+  { Type = 'type', Style = Keywords[2] },
+
+  { Type = 'function', Style = Keywords[4] },
+
+  { Type = 'method', Style = Keywords[4] },
+
+  { Type = 'class', Style =  Keywords[1] },
+
+  { Type = 'struct', Style = Keywords[2] },
+
+  { Type = 'parameter', Style = Keywords[6] },
+
+  { Type = 'variable', Style = Keywords[1] },
+
+  { Type = 'number', Style = Number },
+
+  { Type = 'regexp', Style = String },
+
+  { Type = 'operator', Style = Operator },
+
+}

@@ -1,0 +1,346 @@
+[mgr]
+  linemode       = "size"
+  mouse_events   = [ "click", "scroll", "drag", "touch", "move" ]
+  ratio          = [ 1, 3, 3 ]
+  scrolloff      = 10
+  show_hidden    = false
+  show_symlink   = true
+  sort_by        = "natural"
+  sort_dir_first = true
+  sort_reverse   = false
+  sort_sensitive = false
+  sort_translit  = false
+  title_format   = "Yazi: {cwd}"
+
+[preview]
+  cache_dir       = "~/.cache/yazi/"
+  image_delay     = 10
+  image_filter    = "lanczos3"
+  image_quality   = 75
+  max_height      = 900
+  max_width       = 960
+  tab_size        = 2
+  ueberzug_offset = [ 25.5, 6, 0, 0 ]
+  ueberzug_scale  = 1
+  wrap            = "yes"
+
+[opener]
+
+  bulk-rename = [
+    { run = 'nvim "$@"', block = true },
+  ]
+
+  mount_remote = [
+    { run = 'clear && sudo mount -t nfs4 -o acl "home:/mnt/hdd" "$1"', block = true, desc = "Mount NFS server Ubuntu server home", for = "linux" },
+    { run = 'sshfs huyhoang@home:/mnt/hdd $1', desc = "Mount SSHFS server Ubuntu server home", orphan = true, for = "linux" },
+    { run = 'clear && sudo umount "$1"', block = true, desc = "Unmount", for = "linux" },
+  ]
+
+  subtitle_editor_ass = [
+    { run = 'aegisub "$1"', desc = "Aegisub", orphan = true, for = "linux" },
+    { run = 'clear && $HOME/.venv/bin/python $HOME/git/subtitle-signs-transfer/main.py "$@"; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Transfer signs", for = "linux" },
+    { run = 'clear && $HOME/.venv/bin/python $HOME/git/crunchy-subs/subtitle_processor.py "$@"', orphan = true, desc = "Subtitle: Clean", for = "linux" },
+    { run = 'clear && assfonts -i "$@"; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Embed fonts", for = "linux" },
+    { run = 'clear && $HOME/git/scripts/vtt-srt-to-ass.sh "$@"; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Convert to ASS", for = "linux" },
+  ]
+  subtitle_editor_srt = [
+    { run = 'aegisub "$1"', desc = "Aegisub", orphan = true, for = "linux" },
+    { run = 'clear && $HOME/git/scripts/vtt-srt-to-ass.sh "$@"; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Convert to ASS", for = "linux" },
+  ]
+  subtitle_editor_vtt = [
+    { run = 'clear && $HOME/git/scripts/vtt-srt-to-ass.sh "$@"; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Convert to ASS", for = "linux" },
+  ]
+  subtitle_processor_folder = [
+    { run = 'clear && $HOME/git/scripts/extract_sub.sh "$@"', orphan = true, desc = "Subtitle: Extract", for = "linux" },
+    { run = 'clear && $HOME/.venv/bin/python $HOME/git/subtitle-signs-transfer/main.py "$@"; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Transfer signs", for = "linux" },
+    { run = 'clear && $HOME/.venv/bin/python $HOME/git/crunchy-subs/subtitle_processor.py "$@"', orphan = true, desc = "Subtitle: Clean", for = "linux" },
+    { run = 'kitty -- "$HOME/git/OCR/batch.sh" "$@"', orphan = true, desc = "Subtitle: OCR", for = "linux" },
+    # { run = 'wezterm start -- "$HOME/git/OCR/batch.sh" "$@"', orphan = true, desc = "Subtitle: OCR", for = "linux" },
+    { run = 'clear && assfonts -i "$@/"*.ass; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Embed fonts", for = "linux" },
+  ]
+
+  torrent_editor = [
+    { run = 'torrent-file-editor "$1"', desc = "Torrent file editor", orphan = true, for = "linux" },
+  ]
+
+  manpage = [ { run = 'man "$1"', orphan = true, desc = "Manpage", for = "linux" } ]
+
+  wine = [ { run = 'wine64 "$1"', orphan = true, desc = "Wine64", for = "linux" } ]
+
+  audio = [
+    { run = 'ncmpcpp "$@"', orphan = true, desc = "Ncmpcpp", for = "linux" },
+  ]
+
+  video = [
+    { run = 'smplayer "$@"', orphan = true, desc = "Smplayer", for = "linux" },
+    # { run = 'vlc "$@"', orphan = true, desc = "Vlc", for = "linux" },
+    # { run = 'mpv "$@"', orphan = true, desc = "Mpv", for = "linux" },
+    { run = '$HOME/git/scripts/extract_sub.sh "$@"', orphan = true, desc = "Extract subtitle", for = "linux" },
+  ]
+
+  document = [
+    { run = 'libreoffice "$@"', orphan = true, desc = "Libreoffice", for = "linux" },
+  ]
+
+  ebook_viewer = [
+    { run = 'ebook-viewer "$@"', orphan = true, desc = "Ebook-viewer", for = "linux" },
+    { run = 'calibre "$@"', orphan = true, desc = "Calibre", for = "linux" },
+
+  ]
+  image = [
+    { run = 'gthumb "$@"', orphan = true, desc = "Gthumb", for = "linux" },
+    { run = 'gimp "$@"', orphan = true, desc = "Gimp", for = "linux" },
+    { run = 'inkscape "$@"', orphan = true, desc = "Inkscape", for = "linux" },
+    { run = 'cp "$1" $HOME/.config/hypr/wallpaper && systemctl restart --user hyprpaper.service', orphan = false, block = false, desc = "Set as wallpaper", for = "linux" },
+  ]
+
+  terminal = [
+    { run = 'kitty "$1"', orphan = true, desc = "Kitty", for = "linux" },
+    # { run = 'wezterm start --cwd "$1"', orphan = true, desc = "Wezterm", for = "linux" },
+  ]
+
+  edit = [
+    { run = 'kitty --app-id "nvim" -- nvim "$@"', orphan = true, desc = "Nvim", for = "linux" },
+    # { run = 'wezterm start --class "nvim" -- nvim "$@"', orphan = true, desc = "Nvim", for = "linux" },
+    { run = 'xed "$@"', desc = "Xed", orphan = true, for = "linux" },
+  ]
+
+  open = [
+    { run = 'xdg-open "$1"', desc = "Xdg-open", orphan = true, for = "linux" },
+  ]
+
+  reveal = [
+    { run = 'xdg-open "$(dirname "$1")"', desc = "Reveal", for = "linux" },
+    { run = 'open -R "$1"', desc = "Reveal", for = "macos" },
+    { run = 'explorer /select,"%1"', orphan = true, desc = "Reveal", for = "windows" },
+    { run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
+  ]
+
+  execute = [ { run = '"$1"', desc = "Run", for = "linux" } ]
+
+  archive = [
+    { run = 'ya pub extract --list "$@"', desc = "Extract to dir", for = "unix" },
+    { run = 'ya pub extract --list %*', desc = "Extract to dir", for = "windows" },
+    { run = 'file-roller "$@"', orphan = true, desc = "File-roller", for = "linux" },
+    { run = '7zFM "$@"', orphan = true, desc = "7z GUI", for = "linux" },
+  ]
+
+[open]
+  rules = [
+    { url = "bulk-rename.txt", use = [ "bulk-rename" ], block = true },
+    # Folder
+    { url = "/mnt/remote/", use = [ "mount_remote", "terminal" ] },
+    { url = "*/", use = [ "terminal", "subtitle_processor_folder" ] },
+
+    # subtitle
+    { url = "*.ass", use = [ "edit", "subtitle_editor_ass" ] },
+    { url = "*.srt", use = [ "edit", "subtitle_editor_srt" ] },
+    { url = "*.vtt", use = [ "edit", "subtitle_editor_vtt" ] },
+
+    # Torrent files
+    { url = "*.{torrent}", use = [ "torrent_editor", "edit" ] },
+
+    # html
+    { url = "*.{html,htm,xhtml,xhtm,shtml}", use = [ "open", "edit" ] },
+
+    # manpage
+    { url = "*.1", use = [ "manpage" ] },
+
+    # wine64
+    { url = "*.{exe,msi}", use = [ "wine" ] },
+
+    # Audio
+    { mime = "audio/*", use = [ "audio" ] },
+    { mime = "*/ogg", use = [ "audio" ] },
+
+    # Video
+    { mime = "video/*", use = [ "video" ] },
+
+    #Document
+    { url = "*.pdf", use = [ "open" ] },
+    { url = "*.{pttx,ptt,odd,odf,odg,odp,ods,odt,doc,docx,sxc,xls,xlsx,xtl,gnm,gnumeric,csv}", use = [ "open", "document" ] },
+    { url = "*.{azw,cbc,cbr,cbz,epub,fb2,htm,html,lit,lrf,mobi,opf,rb,pdb,pdf,pml,pmlz,prc,recipe,rtf,shtm,shtml,tcr}", use = [ "ebook-viewer" ] },
+    # Text
+    { mime = "text/*", use = [ "edit" ] },
+
+    # Image
+    { mime = "image/*", use = [ "image" ] },
+    { url = "*.xcf", use = [ "image" ] },
+    # Archive
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [ "archive" ] },
+
+    # JSON
+    { mime = "application/{json,ndjson,msdownload}", use = [ "edit" ] },
+    { mime = "*/javascript", use = [ "edit" ] },
+
+    # Empty file
+    { mime = "inode/empty", use = [ "edit" ] },
+    { mime = "application/executable", use = [ "execute", "edit" ] },
+
+    # Fallback
+    { url = "*", use = [ "open" ] },
+  ]
+
+[tasks]
+  bizarre_retry    = 5
+  image_alloc      = 1073741824       # 1024MB
+  image_bound      = [ 10000, 10000 ]
+  macro_workers    = 25
+  micro_workers    = 10
+  suppress_preload = true
+
+[plugin]
+
+  fetchers = [
+    # Mimetype
+    { id = "mime", url = "*", run = "mime-ext", prio = "high" },
+    { id = "simple-tag", url = "*", run = "simple-tag" },
+    { id = "simple-tag", url = "*/", run = "simple-tag" },
+  ]
+  preloaders = [
+    # Do not preload these paths
+    { url = "/mnt/**/*", run = "noop", prio = "high" },
+    { url = "/run/user/1000/gvfs/google-drive:host=gmail.com*/**/*", run = "noop", prio = "high" },
+    { url = "/home/huyhoang/Media/**/*", run = "noop", prio = "high" },
+    # Audio + Video + Image
+    { mime = "application/postscript", run = "mediainfo" },
+    { mime = "{audio,video,image}/*", run = "mediainfo" },
+    # { mime = "application/subrip", run = "mediainfo" },
+    # PDF
+    { mime = "application/pdf", run = "pdf" },
+    # Font
+    { mime = "{font/*,application/ms-opentype}", run = "better-font" },
+  ]
+
+  spotters = [
+    { url = "*/", run = "folder" },
+    { url = "/mnt/**/*", run = "file-extra-metadata", prio = "high" },
+    # Code
+    # { mime = "text/*", run = "code" },
+    # { mime = "application/{mbox,javascript,wine-extension-ini,apple.mpegurl}", run = "code" },
+    # Image
+    { mime = "image/xcursor", run = "file-extra-metadata" },
+    { mime = "image/svg+xml", run = "svg" },
+    { mime = "image/{avif,hei?,jxl}", run = "magick" },
+    { mime = "image/*", run = "image" },
+    # Video
+    { mime = "video/*", run = "video" },
+    # Fallback
+    # { url = "*", run = "file" },
+    { url = "*", run = "file-extra-metadata" },
+  ]
+
+  previewers = [
+    { url = "*/", run = "smart-truncate" },
+    # Do not preview these paths
+    { url = "/home/huyhoang/Media/**/*", run = "noop" },
+    # Markdown
+    # { mime = "text/markdown", run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
+    { mime = "text/markdown", run = 'enhance-piper --cache-max-lines=100000 --cache-limit=1000 -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
+    # Code
+    { mime = "text/*", run = 'enhance-piper  --cache-max-lines=100000 --cache-limit=1000 -- bat -p --color=always --theme=base16 "$1"' },
+    # { mime = "text/*", run = 'piper -- bat -p --color=always --theme=base16 "$1"' },
+    # Torrent
+    { mime = "application/bittorrent", run = 'enhance-piper -- transmission-show "$1" --no-header | CLICOLOR_FORCE=1 glow -w=$w -s=dark -' },
+    # Do not preview these paths except text file
+    { mime = "application/{mbox,javascript,wine-extension-ini,subrip,apple.mpegurl,xml}", run = 'enhance-piper -- bat -p --color=always --theme=base16 "$1"' },
+    { url = "/mnt/**/*", run = "noop" },
+    # Xresources linux
+    { mime = "image/xcursor", run = 'enhance-piper -- bat -p --color=always --theme=base16 "$1"' },
+    # JSON
+    # Audio + Video + Image
+    { mime = "application/postscript", run = "mediainfo" },
+    { mime = "{video,audio,image}/*", run = "mediainfo" },
+    { mime = "application/{json,ndjson}", run = "json" },
+    # PDF
+    { mime = "application/pdf", run = "pdf" },
+    # Archive
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", run = "archive" },
+    { mime = "application/{debian-package,redhat-package-manager,rpm}", run = "archive" },
+    { mime = "application/debian.binary-package", run = "archive" },
+    { mime = "application/android.package-archive", run = "archive" },
+    { url = "*.{AppImage,appimage}", run = "archive" },
+    # Virtual Disk / Disk Image
+    { mime = "application/{iso9660-image,qemu-disk,ms-wim,apple-diskimage}", run = "archive" },
+    { mime = "application/virtualbox-{vhd,vhdx}", run = "archive" },
+    { url = "*.{img,fat,ext,ext2,ext3,ext4,squashfs,ntfs,hfs,hfsx}", run = "archive" },
+    # Font
+    { mime = "{font/*,application/ms-opentype}", run = "better-font" },
+    # Empty file
+    { mime = "inode/empty", run = "empty" },
+    # Fallback
+    # { url = "*", run = "file" },
+    { url = "*", run = "file-extra-metadata" },
+  ]
+
+[input]
+  cursor_blink = false
+
+  # cd
+  cd_offset = [ 0, 0, 50, 3 ]
+  cd_origin = "center"
+  cd_title  = "Change directory:"
+
+  # create
+  create_offset = [ 0, 0, 50, 3 ]
+  create_origin = "center"
+  create_title  = [ "Create:", "Create (dir):" ]
+
+  # rename
+  rename_offset = [ 0, 1, 50, 3 ]
+  rename_origin = "hovered"
+  rename_title  = "Rename:"
+
+  # filter
+  filter_offset = [ 0, 0, 50, 3 ]
+  filter_origin = "center"
+  filter_title  = "Filter:"
+
+  # find
+  find_offset = [ 0, 0, 50, 3 ]
+  find_origin = "center"
+  find_title  = [ "Find next:", "Find previous:" ]
+
+  # search
+  search_offset = [ 0, 0, 50, 3 ]
+  search_origin = "center"
+  search_title  = "Search via {n}:"
+
+  # shell
+  shell_offset = [ 0, 0, 50, 3 ]
+  shell_origin = "center"
+  shell_title  = [ "Shell:", "Shell (block):" ]
+
+[confirm]
+  # trash
+  trash_offset = [ 0, 0, 70, 40 ]
+  trash_origin = "center"
+  trash_title  = "Trash {n} selected file{s}?"
+
+  # delete
+  delete_offset = [ 0, 0, 70, 40 ]
+  delete_origin = "center"
+  delete_title  = "Permanently delete {n} selected file{s}?"
+
+  # overwrite
+  overwrite_body   = "Will overwrite the following file:"
+  overwrite_offset = [ 0, 0, 50, 40 ]
+  overwrite_origin = "center"
+  overwrite_title  = "Overwrite file?"
+
+  # quit
+  quit_body   = "The following task is still running, are you sure you want to quit?"
+  quit_offset = [ 0, 0, 50, 15 ]
+  quit_origin = "center"
+  quit_title  = "Quit?"
+
+[pick]
+  open_offset = [ 0, 1, 50, 7 ]
+  open_origin = "hovered"
+  open_title  = "Open with:"
+
+[which]
+  sort_by        = "desc"
+  sort_reverse   = false
+  sort_sensitive = false
+  sort_translit  = false

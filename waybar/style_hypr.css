@@ -1,0 +1,223 @@
+/* =============================================================================
+ *
+ * Waybar configuration
+ *
+ * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+ *
+ * =========================================================================== */
+
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+/*
+Color Scheme
+*/
+@define-color background #16202A;
+@define-color background-alt #202228;
+@define-color foreground #BCC4C9;
+@define-color primary #597A9A;
+@define-color secondary #597A9A;
+@define-color warning #e5c07b;
+@define-color alert #A24F5F;
+@define-color disabled #45475A;
+
+@keyframes blink-warning {
+  70% {
+    color: @foreground;
+  }
+
+  to {
+    color: @background;
+    background-color: @warning;
+  }
+}
+
+@keyframes blink-critical {
+  70% {
+    color: @foreground;
+  }
+
+  to {
+    color: @background;
+    background-color: @alert;
+  }
+}
+
+@keyframes blink-attention {
+  70% {
+    color: @foreground;
+  }
+
+  to {
+    color: @warning;
+  }
+}
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+
+/* Reset all styles */
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  margin: 0px;
+  padding: 0;
+}
+
+/* The whole bar */
+#waybar {
+  background: transparent;
+  color: @foreground;
+  /* background-color: @background; */
+  font-family: Hack Nerd Font;
+  font-size: 16px;
+}
+
+/* Every modules */
+
+#pulseaudio,
+#backlight,
+#network,
+#bluetooth,
+#battery,
+#power-profiles-daemon,
+#idle_inhibitor,
+#tray,
+#mpd,
+#workspaces,
+#sway,
+#cpu,
+#memory,
+#temperature,
+#custom-ibus-bamboo,
+#custom-discord {
+  margin-left: 1em;
+}
+
+/* -----------------------------------------------------------------------------
+ * Modules styles
+ * -------------------------------------------------------------------------- */
+
+#battery {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.discharging.warning {
+  color: @warning;
+}
+
+#battery.discharging.critical {
+  color: @alert;
+}
+
+#battery.discharging.warning {
+  animation-name: blink-warning;
+  animation-duration: 3s;
+}
+
+#battery.discharging.critical {
+  animation-name: blink-critical;
+  animation-duration: 2s;
+}
+
+#clock {
+  margin-left: 1em;
+}
+#cpu.warning {
+  color: @warning;
+}
+
+#cpu.critical {
+  color: @alert;
+}
+
+#memory {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#memory.warning {
+  color: @warning;
+}
+
+#memory.critical {
+  color: @alert;
+  /* animation-name: blink-critical; */
+  /* animation-duration: 2s; */
+  /* padding-left: 5px; */
+  /* padding-right: 5px; */
+}
+
+#mode {
+  background: @warning;
+  color: @background-alt;
+  margin-left: 5px;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+#submap {
+  background: @warning;
+  color: @background-alt;
+  margin-left: 5px;
+  padding-left: 7px;
+  padding-right: 7px;
+  /* padding: 0px 7px; */
+}
+
+#network.disconnected {
+  color: @disabled;
+}
+
+#pulseaudio.muted {
+  color: @disabled;
+}
+
+#temperature.critical {
+  color: @alert;
+}
+
+#window {
+  font-weight: bold;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#workspaces {
+  font-size: 16px;
+}
+
+#workspaces button {
+  border-bottom: 3px solid transparent;
+  padding-left: 9px;
+  padding-right: 14px;
+}
+
+#workspaces button.active {
+  border-bottom: 3px solid @primary;
+  color: @primary;
+}
+
+#workspaces button.urgent {
+  border-bottom: 3px solid @alert;
+  color: @alert;
+}
+
+#tray {
+  color: @foreground;
+  margin-right: 1em;
+}
+
+#tray > .needs-attention {
+  animation-name: blink-attention;
+  animation-duration: 2s;
+}
+
+#custom-discord.has-notification {
+  color: @warning;
+}

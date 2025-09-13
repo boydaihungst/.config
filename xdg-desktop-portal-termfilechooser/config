@@ -1,0 +1,2 @@
+[filechooser]
+cmd=$XDG_CONFIG_HOME/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh

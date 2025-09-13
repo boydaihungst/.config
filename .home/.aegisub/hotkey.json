@@ -1,0 +1,608 @@
+{
+	"Always" : {
+		"audio/commit" : [
+			"KP_Enter"
+		],
+		"audio/play/selection" : [
+			"KP_5"
+		],
+		"audio/play/selection/after" : [
+			"KP_3"
+		],
+		"audio/play/selection/before" : [
+			"KP_1"
+		],
+		"audio/stop" : [
+			"KP_8"
+		],
+		"automation/lua/ILL.Shapery/: Shapery macros :/Shape to clip" : [
+			"Ctrl-L"
+		],
+		"automation/lua/arch.AegisubChain/AegisubChain/Actions/Chain Slot 1" : [
+			"F1"
+		],
+		"automation/lua/arch.AegisubChain/AegisubChain/Actions/Chain Slot 2" : [
+			"F2"
+		],
+		"automation/lua/arch.AegisubChain/AegisubChain/Actions/Chain Slot 3" : [
+			"F3"
+		],
+		"automation/lua/arch.AegisubChain/AegisubChain/Actions/Chain Slot 4" : [
+			"F4"
+		],
+		"time/length/decrease" : [
+			"KP_7"
+		],
+		"time/length/increase" : [
+			"KP_9"
+		],
+		"time/next" : [
+			"KP_2"
+		],
+		"time/prev" : [
+			"KP_0"
+		]
+	},
+	"Audio" : {
+		"app/toggle/global_hotkeys" : [
+			"Ctrl-KP_Multiply"
+		],
+		"audio/commit" : [
+			"Enter",
+			"G"
+		],
+		"audio/commit/default" : [
+			"Shift-G"
+		],
+		"audio/play/line" : [
+			"R"
+		],
+		"audio/play/selection/after" : [
+			"W"
+		],
+		"audio/play/selection/before" : [
+			"Q"
+		],
+		"audio/play/selection/begin" : [
+			"E"
+		],
+		"audio/play/to_end" : [
+			"T"
+		],
+		"audio/play/toggle" : [
+			"B"
+		],
+		"audio/stop" : [
+			"H"
+		],
+		"automation/lua/select-overlaps/Select overlaps" : [
+			"Shift-F"
+		],
+		"automation/lua/ua.JumpToNext/Jump to Next/Text" : [
+			"Tab",
+			"Tab"
+		],
+		"automation/lua/ua.JumpToNext/Jump to Previous/Text" : [
+			"Shift-Tab",
+			"Shift-Tab"
+		],
+		"time/lead/in" : [
+			"C"
+		],
+		"time/lead/out" : [
+			"V"
+		],
+		"time/length/decrease" : [
+			"-"
+		],
+		"time/length/increase" : [
+			"="
+		],
+		"time/next" : [
+			"X"
+		],
+		"time/prev" : [
+			"Z"
+		],
+		"time/shift" : [
+			"Ctrl-`"
+		],
+		"time/tap/connect" : [
+			"I"
+		],
+		"time/tap/no_connect" : [
+			"O"
+		],
+		"tool/style/manager" : [
+			"Shift-~"
+		],
+		"video/frame/next" : [
+			"F",
+			"Right"
+		],
+		"video/frame/prev" : [
+			"A",
+			"Left"
+		],
+		"video/jump/end" : [
+			"D"
+		],
+		"video/jump/start" : [
+			"S"
+		],
+		"video/play/line" : [
+			"Space"
+		]
+	},
+	"Default" : {
+		"app/exit" : [
+			"Ctrl-Q"
+		],
+		"app/options" : [
+			"Alt-O"
+		],
+		"automation/lua/FontCycler/Font Cycler/Font Cycler: Next" : [
+			"Ctrl-2"
+		],
+		"automation/lua/FontCycler/Font Cycler/Font Cycler: Previous" : [
+			"Ctrl-1"
+		],
+		"automation/lua/a-mo.Aegisub-Motion/Aegisub-Motion/Apply" : [
+			"Alt-M"
+		],
+		"automation/lua/arch.PerspectiveMotion/Aegisub Perspective-Motion" : [
+			"Alt-P"
+		],
+		"automation/lua/lyger.FbfTransform/Frame-by-frame transform/Frame-by-frame transform" : [
+			"Alt-T"
+		],
+		"automation/lua/lyger.GradientEverything/Gradient Everything/Gradient Everything" : [
+			"Alt-G"
+		],
+		"automation/lua/perspective/Perspective/Transform for target org" : [
+			"Alt-Q"
+		],
+		"automation/lua/petzku.Phantom/Phantom/Phantom/By cursor" : [
+			"Ctrl-P"
+		],
+		"automation/lua/petzku.SplitTimer/SplitTimer/N frames..." : [
+			"Alt-S"
+		],
+		"automation/lua/phos.FoldOperations/Fold Operations/01. Select Fold" : [
+			"Alt-Shift-A"
+		],
+		"automation/lua/phos.FoldOperations/Fold Operations/04. Comment or Uncomment Fold" : [
+			"Alt-."
+		],
+		"automation/lua/phos.FoldOperations/Fold Operations/11. Create Fold Around Selected Lines" : [
+			"Alt-Z"
+		],
+		"automation/lua/phos.FoldOperations/Fold Operations/GUI" : [
+			"Alt-A"
+		],
+		"automation/lua/ua.BlurAndGlow/Blur and Glow" : [
+			"Alt-B"
+		],
+		"automation/lua/ua.FadeWorks/FadeWorkS" : [
+			"Alt-F"
+		],
+		"automation/lua/ua.HYDRA/HYDRA" : [
+			"Alt-H"
+		],
+		"automation/lua/ua.Masquerade/Masquerade" : [
+			"Alt-X"
+		],
+		"automation/lua/ua.MultiCopy/MultiCopy" : [
+			"Alt-V"
+		],
+		"automation/lua/ua.MultiLineEditor/Multi-Line Editor" : [
+			"Alt-E"
+		],
+		"automation/lua/ua.Recalculator/Recalculator" : [
+			"Ctrl-R"
+		],
+		"automation/lua/ua.Relocator/Hyperdimensional Relocator" : [
+			"Alt-R"
+		],
+		"automation/lua/ua.ScriptCleanup/Script Cleanup" : [
+			"Alt-D"
+		],
+		"automation/lua/ua.ShiftCut/ShiftCut" : [
+			"Alt-W"
+		],
+		"automation/lua/ua.iBus/iBus/Italics" : [
+			"Alt-I"
+		],
+		"automation/lua/zah.aegi-color-track/Aegisub-Color-Tracking" : [
+			"Alt-C"
+		],
+		"automation/lua/zf.allCharsTo/All Characters To/Lower-case" : [
+			"Alt-L"
+		],
+		"automation/lua/zf.allCharsTo/All Characters To/Upper-case" : [
+			"Alt-U"
+		],
+		"edit/find_replace" : [
+			"Ctrl-H"
+		],
+		"edit/line/copy" : [
+			"Ctrl-C"
+		],
+		"edit/line/cut" : [
+			"Ctrl-X"
+		],
+		"edit/line/delete" : [
+			"Ctrl-Delete"
+		],
+		"edit/line/paste" : [
+			"Ctrl-V"
+		],
+		"edit/line/paste/over" : [
+			"Ctrl-Shift-V"
+		],
+		"edit/line/split/after" : [
+			"Ctrl-Shift-D"
+		],
+		"edit/line/split/before" : [
+			"Ctrl-D"
+		],
+		"edit/redo" : [
+			"Ctrl-Y"
+		],
+		"edit/undo" : [
+			"Ctrl-Z"
+		],
+		"grid/line/next" : [
+			"Ctrl-KP_2"
+		],
+		"grid/line/prev" : [
+			"Ctrl-KP_8"
+		],
+		"grid/move/down" : [
+			"Alt-Down"
+		],
+		"grid/move/up" : [
+			"Alt-Up"
+		],
+		"subtitle/find" : [
+			"Ctrl-F"
+		],
+		"subtitle/new" : [
+			"Ctrl-N"
+		],
+		"subtitle/open" : [
+			"Ctrl-O"
+		],
+		"subtitle/save" : [
+			"Ctrl-S"
+		],
+		"subtitle/save/as" : [
+			"Ctrl-Shift-S"
+		],
+		"time/frame/current" : [
+			"Ctrl-6"
+		],
+		"time/snap/end_video" : [
+			"Ctrl-4"
+		],
+		"time/snap/scene" : [
+			"Ctrl-5"
+		],
+		"time/snap/start_video" : [
+			"Ctrl-3"
+		],
+		"tool/line/select" : [
+			"Ctrl-Shift-F"
+		],
+		"video/frame/next" : [
+			"Ctrl-KP_6"
+		],
+		"video/frame/prev" : [
+			"Ctrl-KP_4"
+		],
+		"video/jump" : [
+			"Ctrl-G"
+		],
+		"video/open" : [
+			"Ctrl-Shift-O"
+		],
+		"video/stop" : [
+			"Ctrl-Space"
+		],
+		"video/zoom/in" : [
+			"Ctrl-="
+		],
+		"video/zoom/out" : [
+			"Ctrl--"
+		]
+	},
+	"Styling Assistant" : {
+		"audio/play/selection" : [
+			"End"
+		],
+		"automation/lua/ua.JumpToNext/Jump to Next/Text" : [
+			"Tab"
+		],
+		"automation/lua/ua.JumpToNext/Jump to Previous/Text" : [
+			"Shift-Tab"
+		],
+		"time/next" : [
+			"Down",
+			"X"
+		],
+		"time/prev" : [
+			"Up",
+			"Z"
+		],
+		"tool/style/manager" : [
+			"Shift-~"
+		],
+		"tool/styling_assistant/commit" : [
+			"Enter",
+			"KP_Enter"
+		],
+		"tool/styling_assistant/preview" : [
+			"F8"
+		],
+		"video/play/line" : [
+			"Space"
+		]
+	},
+	"Subtitle Edit Box" : {
+		"" : [
+			"Escape"
+		],
+		"edit/color/outline" : [
+			"Alt-3"
+		],
+		"edit/color/primary" : [
+			"Alt-1"
+		],
+		"edit/color/secondary" : [
+			"Alt-2"
+		],
+		"edit/color/shadow" : [
+			"Alt-4"
+		],
+		"grid/line/next/create" : [
+			"KP_Enter"
+		],
+		"time/next" : [
+			"Tab"
+		],
+		"time/prev" : [
+			"Shift-Tab"
+		]
+	},
+	"Subtitle Grid" : {
+		"automation/lua/a-mo.Aegisub-Motion/Aegisub-Motion/Apply" : [
+			"Alt-M"
+		],
+		"automation/lua/a-mo.Aegisub-Motion/Aegisub-Motion/Trim" : [
+			"Ctrl-M"
+		],
+		"automation/lua/lyger.FbfTransform/Frame-by-frame transform/Frame-by-frame transform" : [
+			"Alt-T"
+		],
+		"automation/lua/lyger.GradientEverything/Gradient Everything/Gradient Everything" : [
+			"Alt-G"
+		],
+		"automation/lua/phos.FoldOperations/Fold Operations/11. Create Fold Around Selected Lines" : [
+			"Alt-Z"
+		],
+		"automation/lua/select-overlaps/Select overlaps" : [
+			"Shift-F"
+		],
+		"automation/lua/ua.BlurAndGlow/Blur and Glow" : [
+			"Alt-B"
+		],
+		"automation/lua/ua.FadeWorks/FadeWorkS" : [
+			"Alt-F"
+		],
+		"automation/lua/ua.HYDRA/HYDRA" : [
+			"Alt-H"
+		],
+		"automation/lua/ua.JoinSplitSnap/Join-Split-Snap/Join" : [
+			"Alt-J"
+		],
+		"automation/lua/ua.JumpToNext/Jump to Next/Text" : [
+			"Tab"
+		],
+		"automation/lua/ua.JumpToNext/Jump to Previous/Text" : [
+			"Shift-Tab"
+		],
+		"automation/lua/ua.MultiLineEditor/Multi-Line Editor" : [
+			"Alt-E"
+		],
+		"automation/lua/ua.Relocator/Hyperdimensional Relocator" : [
+			"Alt-R"
+		],
+		"automation/lua/zah.aegi-color-track/Aegisub-Color-Tracking" : [
+			"Alt-C"
+		],
+		"automation/lua/zf.allCharsTo/All Characters To/Lower-case" : [
+			"Alt-L"
+		],
+		"automation/lua/zf.allCharsTo/All Characters To/Upper-case" : [
+			"Alt-U"
+		],
+		"grid/fold/toggle" : [
+			"Enter"
+		],
+		"subtitle/find/next" : [
+			"N"
+		],
+		"subtitle/insert/after" : [
+			"Shift-Enter"
+		],
+		"subtitle/select/all" : [
+			"Ctrl-A"
+		],
+		"time/align" : [
+			"KP_TAB"
+		],
+		"time/next" : [
+			"X"
+		],
+		"time/prev" : [
+			"Z"
+		],
+		"tool/style/manager" : [
+			"Shift-~"
+		],
+		"video/frame/next" : [
+			"Right"
+		],
+		"video/frame/next/boundary" : [
+			"Ctrl-Right"
+		],
+		"video/frame/next/keyframe" : [
+			"Shift-Right"
+		],
+		"video/frame/next/large" : [
+			"Alt-Right"
+		],
+		"video/frame/prev" : [
+			"Left"
+		],
+		"video/frame/prev/boundary" : [
+			"Ctrl-Left"
+		],
+		"video/frame/prev/keyframe" : [
+			"Shift-Left"
+		],
+		"video/frame/prev/large" : [
+			"Alt-Left"
+		],
+		"video/play/line" : [
+			"Space"
+		],
+		"video/tool/cross" : [
+			"1"
+		],
+		"video/tool/drag" : [
+			"2"
+		],
+		"video/tool/perspective" : [
+			"3"
+		],
+		"video/tool/vclip/bicubic" : [
+			"6"
+		],
+		"video/tool/vclip/drag" : [
+			"5"
+		],
+		"video/tool/vclip/line" : [
+			"4"
+		]
+	},
+	"Translation Assistant" : {
+		"audio/play/selection" : [
+			"End"
+		],
+		"time/shift" : [
+			"Ctrl-`"
+		],
+		"tool/translation_assistant/commit" : [
+			"Enter",
+			"KP_Enter"
+		],
+		"tool/translation_assistant/insert_original" : [
+			"Insert"
+		],
+		"tool/translation_assistant/next" : [
+			"PageDown"
+		],
+		"tool/translation_assistant/prev" : [
+			"PageUp"
+		],
+		"tool/translation_assistant/preview" : [
+			"F8"
+		],
+		"video/play/line" : [
+			"Home"
+		]
+	},
+	"Video" : {
+		"automation/lua/select-overlaps/Select overlaps" : [
+			"Shift-F"
+		],
+		"automation/lua/ua.HYDRA/: Non-GUI macros :/HYDRA: Comment on-off" : [
+			"C"
+		],
+		"automation/lua/ua.JumpToNext/Jump to Next/Text" : [
+			"Tab"
+		],
+		"automation/lua/ua.JumpToNext/Jump to Previous/Text" : [
+			"Shift-Tab"
+		],
+		"time/next" : [
+			"X"
+		],
+		"time/prev" : [
+			"Z"
+		],
+		"time/shift" : [
+			"Ctrl-`"
+		],
+		"tool/style/manager" : [
+			"Shift-~"
+		],
+		"video/frame/next" : [
+			"F",
+			"Right"
+		],
+		"video/frame/next/boundary" : [
+			"Ctrl-Right"
+		],
+		"video/frame/next/keyframe" : [
+			"Shift-Right"
+		],
+		"video/frame/next/large" : [
+			"Alt-Right"
+		],
+		"video/frame/prev" : [
+			"A",
+			"Left"
+		],
+		"video/frame/prev/boundary" : [
+			"Ctrl-Left"
+		],
+		"video/frame/prev/keyframe" : [
+			"Shift-Left"
+		],
+		"video/frame/prev/large" : [
+			"Alt-Left"
+		],
+		"video/jump/end" : [
+			"D"
+		],
+		"video/jump/start" : [
+			"S"
+		],
+		"video/pan_reset" : [
+			"Escape"
+		],
+		"video/play/line" : [
+			"Space"
+		],
+		"video/tool/cross" : [
+			"1"
+		],
+		"video/tool/drag" : [
+			"2"
+		],
+		"video/tool/perspective" : [
+			"3"
+		],
+		"video/tool/vclip/bicubic" : [
+			"6"
+		],
+		"video/tool/vclip/drag" : [
+			"5"
+		],
+		"video/tool/vclip/line" : [
+			"4"
+		]
+	}
+}

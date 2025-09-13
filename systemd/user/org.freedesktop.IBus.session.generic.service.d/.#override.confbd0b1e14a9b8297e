@@ -1,0 +1,23 @@
+### Editing /home/huyhoang/.config/systemd/user/org.freedesktop.IBus.session.generic.service.d/override.conf
+### Anything between here and the comment below will become the new contents of the file
+
+
+
+### Lines below this comment will be discarded
+
+### /usr/lib/systemd/user/org.freedesktop.IBus.session.generic.service
+# [Unit]
+# Description=IBus Daemon for generic sessions
+# CollectMode=inactive-or-failed
+# 
+# # Never run in GNOME
+# Conflicts=gnome-session-initialized.target
+# 
+# [Service]
+# Type=dbus
+# # Only pull --xim in X11 session, it is done via Xwayland-session.d on Wayland
+# ExecStart=sh -c '/usr/bin/ibus-daemon $IBUS_DAEMON_ARGS'
+# Restart=on-abnormal
+# BusName=org.freedesktop.IBus
+# TimeoutStopSec=5
+# Slice=session.slice

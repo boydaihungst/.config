@@ -1,0 +1,107 @@
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "d7588f6"
+hash = "3996fc74044bc44144b323686f887e1"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:mime-ext"
+rev = "d7588f6"
+hash = "4c49c446328c4553a4ccab7facc10b21"
+
+[[plugin.deps]]
+use = "MasouShizuka/projects"
+rev = "a5e33db"
+hash = "3de26efded35814ba3e55e28f1c389a4"
+
+[[plugin.deps]]
+use = "boydaihungst/restore"
+rev = "dc40509"
+hash = "e7e377f9b1bbaca4a2e5d9ec9709ac4d"
+
+[[plugin.deps]]
+use = "boydaihungst/fuse-archive"
+rev = "754a544"
+hash = "faf90560ebe4b65b7e435a8dc43cc3d8"
+
+[[plugin.deps]]
+use = "boydaihungst/file-extra-metadata"
+rev = "116a460"
+hash = "e65cd1dea5feb9ca58c33b870ca3070"
+
+[[plugin.deps]]
+use = "boydaihungst/thunar-bulk-rename"
+rev = "159c62a"
+hash = "3a8c45cd04a095a97c256e19ffea0cf3"
+
+[[plugin.deps]]
+use = "boydaihungst/pref-by-location"
+rev = "882e752"
+hash = "f45cf212024c85b5f0ea0423e27196a"
+
+[[plugin.deps]]
+use = "boydaihungst/relative-motions"
+rev = "9ce3800"
+hash = "2af8e3190bc26aae1247c4d82a9f58cd"
+
+[[plugin.deps]]
+use = "boydaihungst/mediainfo"
+rev = "2093ab7"
+hash = "16a10359fc2a3cd8cc8bcfbe00f744d3"
+
+[[plugin.deps]]
+use = "boydaihungst/simple-tag"
+rev = "ebcbc9e"
+hash = "fc8d977f168df8ac6db8b5c1167ec777"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:toggle-pane"
+rev = "d7588f6"
+hash = "d6f60c24d8c0cf57a855bf46115b2502"
+
+[[plugin.deps]]
+use = "boydaihungst/compress"
+rev = "837c7cd"
+hash = "6bdbf82166fd4e9f6bc7a8cd22682854"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:vcs-files"
+rev = "d7588f6"
+hash = "cc8da55f1deda45ee3787cc97b58ffc9"
+
+[[plugin.deps]]
+use = "boydaihungst/smart-truncate"
+rev = "142c11c"
+hash = "b013a4d29ce69eee29745cb00958745b"
+
+[[plugin.deps]]
+use = "boydaihungst/save-clipboard-to-file"
+rev = "40de82f"
+hash = "f79197930f23924827e81fa51a1413d0"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:types"
+rev = "d7588f6"
+hash = "1e047e1b13b5e3fc6ab1f5d0d04a14e2"
+
+[[plugin.deps]]
+use = "boydaihungst/gvfs"
+rev = "b58c305"
+hash = "92dc8bdc3d9cbb36e03111b4cad231fc"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:piper"
+rev = "d7588f6"
+hash = "2143a53182dbbe935a1abd1623424aa5"
+
+[[plugin.deps]]
+use = "boydaihungst/enhance-piper"
+rev = "d959a86"
+hash = "93be89f83033b3f1af07a696e8ec50a8"
+
+[[plugin.deps]]
+use = "boydaihungst/yamb"
+rev = "0e7bcc6"
+hash = "94f05badda90a115130a7fd3c283244c"
+
+[flavor]
+deps = []

@@ -1,0 +1,25 @@
+### Editing /home/huyhoang/.config/systemd/user/batsignal.service.d/override.conf
+### Anything between here and the comment below will become the contents of the drop-in file
+
+[Service]
+Type=simple
+ExecStart=batsignal -a battery -I "battery-charged" -e -n BAT1 -w 15 -c 10 -d 5 -W "Battery is low" -C "Battery is low. System will shutdown soon" -D "systemctl hibernate"
+Restart=on-failure
+RestartSec=1
+
+### Edits below this comment will be discarded
+
+
+### /usr/lib/systemd/user/batsignal.service
+# [Unit]
+# Description=Battery monitor daemon
+# Documentation=man:batsignal(1)
+# 
+# [Service]
+# Type=simple
+# ExecStart=batsignal
+# Restart=on-failure
+# RestartSec=1
+# 
+# [Install]
+# WantedBy=default.target

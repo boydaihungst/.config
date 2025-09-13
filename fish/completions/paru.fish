@@ -1,0 +1,1 @@
+/usr/share/fish/vendor_completions.d/paru.fish

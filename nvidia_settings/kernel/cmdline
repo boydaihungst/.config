@@ -1,0 +1,1 @@
+nvidia-drm.modeset=1 nvidia.NVreg_PreserveVideoMemoryAllocations=1 nvme_load=YES nowatchdog rw rootflags=subvol=/@ rd.luks.uuid=e71ad0f2-b04f-495e-876f-4685a1cf633d root=/dev/mapper/luks-e71ad0f2-b04f-495e-876f-4685a1cf633d rd.luks.uuid=57f49960-9f66-4c0b-8b19-b882f67ea51c resume=/dev/mapper/luks-57f49960-9f66-4c0b-8b19-b882f67ea51c psi=1

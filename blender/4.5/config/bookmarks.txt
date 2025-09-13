@@ -1,0 +1,6 @@
+[Bookmarks]
+[Recent]
+/home/huyhoang/Videos/test/
+/home/huyhoang/Videos/
+!Home
+/home/huyhoang/

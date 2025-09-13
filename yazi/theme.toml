@@ -1,0 +1,187 @@
+# A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config. If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
+# "$schema" = "https://yazi-rs.github.io/schemas/theme.json"# If the user's terminal is in dark mode, Yazi will use the content from `theme-base.toml` + `theme+dark.toml` as the default theme;
+# if it's in light mode, use `theme-base.toml` + `theme+light.toml` instead.
+# Users can always override and adjust the default theme in their own `theme.toml` configuration file.
+
+# vim:fileencoding=utf-8:foldmethod=marker
+
+# : Flavor {{{
+
+[flavor]
+  dark  = ""
+  light = ""
+
+  # : }}}
+
+# : Manager {{{
+[mgr]
+  # NOTE: can combined with tmTheme (sublime colorshceme file) for preview code highlight
+  # highlight = "path/to/tmTheme"
+
+  cwd = { fg = "#494D56" }
+
+  # Hovered
+  hovered         = { bg = "#26343F" }
+  preview_hovered = { bg = "#26343F" }
+
+  # Find
+  find_keyword  = { fg = "#1A1D23", bg = "#bf68d9", bold = true }
+  find_position = { fg = "#4fa6ed", bg = "#26343F", bold = true }
+
+  # Marker
+  marker_copied   = { fg = "#8ebd6b", bg = "#8ebd6b" }
+  marker_cut      = { fg = "#e55561", bg = "#e55561" }
+  marker_marked   = { fg = "#CC83E3", bg = "#CC83E3" }
+  marker_selected = { fg = "#4fa6ed", bg = "#4fa6ed" }
+
+  # Count
+  count_copied   = { fg = "#080A0E", bg = "#8ebd6b" }
+  count_cut      = { fg = "#080A0E", bg = "#e55561" }
+  count_selected = { fg = "#080A0E", bg = "#4fa6ed" }
+  # Border
+  border_style  = { fg = "#3A3E47" }
+  border_symbol = "│"
+
+  # : }}}
+  # : Tabs {{{
+
+[tabs]
+  # Tab
+  active   = { fg = "#ADB0BB", bg = "#1A1D23" }
+  inactive = { fg = "#494D56", bg = "#111317" }
+
+  # Separator
+  sep_inner = { open = "", close = "" }
+  sep_outer = { open = "", close = "" }
+
+  # : }}}  # : Mode {{{
+
+[mode]
+  normal_alt  = { fg = "#BCC4C9", bg = "#080A0E" }
+  normal_main = { fg = "#1A1D23", bg = "#4fa6ed", bold = true }
+  # Select mode
+  select_alt  = { fg = "#BCC4C9", bg = "#080A0E" }
+  select_main = { fg = "#1A1D23", bg = "#CC83E3", bold = true }
+  # Unset mode
+  unset_alt  = { fg = "#BCC4C9", bg = "#080A0E" }
+  unset_main = { fg = "#1A1D23", bg = "#e55561", bold = true }
+
+  # : }}}
+
+[status]
+  separator_close = ""
+  separator_open  = ""
+
+  # Progress
+  progress_error  = { fg = "#e55561", bg = "#111317" }
+  progress_label  = { fg = "#434750", bold = true }
+  progress_normal = { fg = "#1A1D23", bg = "#111317" }
+
+  # Permissions
+  perm_exec  = { fg = "#e55561" }
+  perm_read  = { fg = "#e55561" }
+  perm_sep   = { fg = "#e55561" }
+  perm_type  = { fg = "#e55561" }
+  perm_write = { fg = "#e55561" }
+
+  # : Pick {{{
+
+[pick]
+  active   = { fg = "#9B9FA9", bg = "#26343F" }
+  border   = { fg = "#494D56" }
+  inactive = { fg = "#9B9FA9" }
+
+# : }}}
+# Input
+[input]
+  border   = { fg = "#4fa6ed" }
+  selected = { bg = "#26343F" }
+  title    = { fg = "#4fa6ed" }
+  value    = { fg = "#BCC4C9" }
+
+
+  # : Confirm {{{
+
+[confirm]
+  body       = {}
+  border     = { fg = "blue" }
+  btn_labels = [ "  [Y]es  ", "  (N)o  " ]
+  btn_no     = {}
+  btn_yes    = { reversed = true }
+  list       = { fg = "blue" }
+  title      = { fg = "blue" }
+
+# : }}}
+# Completion
+[completion]
+  active   = { fg = "#9B9FA9", bg = "#26343F" }
+  border   = { fg = "#4fa6ed" }
+  inactive = { fg = "#494D56" }
+
+# Tasks
+[tasks]
+  border  = { fg = "#3A3E47" }
+  hovered = { fg = "#9B9FA9", bg = "#26343F" }
+  title   = { fg = "#4fa6ed" }
+
+# Which
+[which]
+  cand            = { fg = "#48b0bd" }
+  cols            = 2
+  desc            = { fg = "#bf68d9" }
+  mask            = { bg = "#080A0E" }
+  rest            = { fg = "#3A3E47" }
+  separator       = "  "
+  separator_style = { fg = "#3A3E47" }
+
+[spot]
+  border = { fg = "#4fa6ed" }
+  title  = { fg = "#4fa6ed" }
+  # Table
+  tbl_cell = { fg = "#4fa6ed", reversed = true }
+  tbl_col  = { fg = "#4fa6ed" }
+
+# Notify
+[notify]
+  title_error = { fg = "#e55561" }
+  title_info  = { fg = "#4fa6ed" }
+  title_warn  = { fg = "#e2b86b" }
+  # Icons
+  icon_error = ""
+  icon_info  = ""
+  icon_warn  = ""
+
+# Help
+[help]
+  footer  = { fg = "#9B9FA9", bg = "#1A1D23" }
+  hovered = { bg = "#26343F" }
+  on      = { fg = "#8ebd6b" }
+  run     = { fg = "#CC83E3" }
+
+[filetype]
+  rules = [
+    # Images
+    { mime = "image/*", fg = "#DD97F1" },
+
+    # Media
+    { mime = "{audio,video}/*", fg = "#a6e3a1" },
+
+    # Archives
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#FF838B" },
+    { mime = "application/{tar,bzip*,7z-compressed,xz,rar}", fg = "#FF838B" },
+
+    # Documents
+    { mime = "application/{pdf,doc,rtf,vnd.*}", fg = "#4AC2B8" },
+
+    { url = "*.{vtt,srt,sup}", fg = "#9B9FA9" },
+    { url = "*.{ass}", fg = "#fab387" },
+    # Empty files
+    # { mime = "inode/empty", fg = "#FF838B" },
+
+    # Special files
+    { url = "*", is = "orphan", bg = "#FF838B", fg = "#080A0E", crossed = true },
+    { url = "*", is = "exec", fg = "#87C05F" },
+
+    # Fallback
+    { url = "*/", fg = "#5EB7FF" },
+  ]
