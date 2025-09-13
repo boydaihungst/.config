@@ -23,20 +23,6 @@ return {
         },
         ["<Leader>q"] = { "<Cmd>confirm qall<CR>", desc = "Exit AstroNvim" },
         ["<Leader>Q"] = { "<Cmd>confirm q<CR>", desc = "Quit Window" },
-        -- -- toggle quickfix
-        -- ["<C-Q>"] = {
-        --   function() require("qf").toggle_qf "q" end,
-        --   desc = "Toggle Quickfix",
-        -- },
-        -- ["<Leader>xq"] = {
-        --   function() require("qf").toggle_qf "q" end,
-        --   desc = "Quickfix List",
-        -- },
-        -- -- toggle quicklist
-        -- ["<Leader>xl"] = {
-        --   function() require("qf").toggle_qf "l" end,
-        --   desc = "Location List",
-        -- },
       },
       v = {},
     },
@@ -44,56 +30,6 @@ return {
     commands = {},
     autocmds = {
       auto_quit = {},
-      -- Overwrite default auto_quit: https://github.com/AstroNvim/AstroNvim/blob/2bb2fa9a01311ae7f9bfebf7b3ae996bcc4717be/lua/astronvim/plugins/_astrocore_autocmds.lua#L25
-      -- auto_quit = {
-      --   {
-      --     event = "BufEnter",
-      --     desc = "Quit AstroNvim if more than one window is open and only sidebar windows are list",
-      --     callback = function()
-      --       local wins = vim.api.nvim_tabpage_list_wins(0)
-      --       local sidebar_fts = {
-      --         aerial = true,
-      --         ["neo-tree"] = true,
-      --         undotree = true,
-      --         dapui_scopes = true,
-      --         dapui_breakpoints = true,
-      --         dapui_stacks = true,
-      --         dapui_watches = true,
-      --         ["dap-repl"] = true,
-      --         dapui_console = true,
-      --         ["neotest-summary"] = true,
-      --         ["neotest-output-panel"] = true,
-      --         dbui = true,
-      --         codecompanion = true,
-      --         -- Still not work as expected
-      --         OverseerList = true,
-      --         ["comment-box"] = true,
-      --         ["grug-far"] = true,
-      --         ["qf"] = true,
-      --       }
-      --       for _, winid in ipairs(wins) do
-      --         if vim.api.nvim_win_is_valid(winid) then
-      --           local bufnr = vim.api.nvim_win_get_buf(winid)
-      --           local filetype = vim.bo[bufnr].filetype
-      --           local buftype = vim.api.nvim_get_option_value("buftype", { buf = bufnr })
-      --           -- If any visible windows are not sidebars, early return
-      --           if not sidebar_fts[filetype] and buftype ~= "nofile" then
-      --             return
-      --             -- If the visible window is a sidebar
-      --           else
-      --             -- only count filetypes once, so remove a found sidebar from the detection
-      --             sidebar_fts[filetype] = nil
-      --           end
-      --         end
-      --       end
-      --       if #vim.api.nvim_list_tabpages() > 1 then
-      --         vim.cmd.tabclose()
-      --       else
-      --         vim.cmd.qall()
-      --       end
-      --     end,
-      --   },
-      -- },
       disable_diagnostic_environment = {
         {
           event = "BufReadPost",

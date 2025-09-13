@@ -32,10 +32,10 @@ return {
 
         -- code action
         -- NOTE: Bug use aznhe21/actions-preview.nvim instead
-        -- maps.n["<Leader>la"] =
-        --   { "<Cmd>Lspsaga code_action<CR>", desc = "Code action", cond = "textDocument/codeAction" }
-        -- maps.x["<Leader>la"] =
-        --   { ":<C-U>Lspsaga code_action<CR>", desc = "Code action", cond = "textDocument/codeAction" }
+        maps.n["<Leader>la"] =
+          { "<Cmd>Lspsaga code_action<CR>", desc = "Code action", cond = "textDocument/codeAction" }
+        maps.x["<Leader>la"] =
+          { ":<C-U>Lspsaga code_action<CR>", desc = "Code action", cond = "textDocument/codeAction" }
 
         -- diagnostic
         maps.n["<Leader>ld"] =

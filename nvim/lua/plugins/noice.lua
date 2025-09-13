@@ -15,14 +15,21 @@ return {
     },
     presets = {
       bottom_search = false, -- use a classic bottom cmdline for search
-      command_palette = false, -- If you're using a command palette (e.g., dressing.nvim)
-      long_message_to_split = false, -- long messages will be sent to a split
+      command_palette = true, -- If you're using a command palette (e.g., dressing.nvim)
+      long_message_to_split = true, -- long messages will be sent to a split
     },
     messages = {
       enabled = true, -- Ensure messages are enabled
       view_search = false, -- view for search count messages. Set to `false` to disable
     },
     routes = {
+      {
+        filter = {
+          event = "msg_show",
+          kind = "search_count",
+        },
+        opts = { skip = true },
+      },
       {
         filter = {
           event = "msg_show",

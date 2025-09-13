@@ -56,7 +56,25 @@ return {
             require("snacks").picker {
               items = filetypes,
               source = "filetypes",
-              layout = "select", -- or vscode
+              layout = {
+                layout = {
+                  backdrop = false,
+                  row = 1,
+                  width = 0.4,
+                  min_width = 30,
+                  height = 0.9,
+                  border = "none",
+                  box = "vertical",
+                  {
+                    win = "input",
+                    height = 1,
+                    border = "rounded",
+                    title = "{title} {live} {flags}",
+                    title_pos = "center",
+                  },
+                  { win = "list", border = "rounded" },
+                },
+              },
               format = function(item)
                 local icon, icon_hl = require("snacks.util").icon(item.text, "filetype")
                 return {
@@ -100,68 +118,110 @@ return {
               icon_sources = { "nerd_fonts", "emoji" },
               finder = "icons",
               format = "icon",
-              layout = { preset = "vscode" },
+              layout = {
+                layout = {
+                  backdrop = false,
+                  row = 1,
+                  width = 0.4,
+                  min_width = 30,
+                  height = 0.9,
+                  border = "none",
+                  box = "vertical",
+                  {
+                    win = "input",
+                    height = 1,
+                    border = "rounded",
+                    title = "{title} {live} {flags}",
+                    title_pos = "center",
+                  },
+                  { win = "list", border = "rounded" },
+                },
+              },
               confirm = { "copy", "close" },
             }
           end,
           desc = "Find icons",
         }
-        -- maps.n["<Leader>fI"] = {
-        --   function()
-        --     local icons = {}
-        --     for kind, icon in pairs(require("astroui").config["icons"]) do
-        --       if type(icon) == "string" then table.insert(icons, { text = kind, glyph = icon }) end
-        --     end
-        --     if require("astrocore").is_available "mini.icons" then
-        --       local function add_cat(categories)
-        --         for _, cat in ipairs(categories) do
-        --           for _, kind in ipairs(require("mini.icons").list(cat)) do
-        --             table.insert(icons, { text = kind, cat = cat })
-        --           end
-        --         end
-        --       end
-        --       add_cat { "directory", "extension", "file", "filetype", "lsp", "os" }
-        --     end
-        --
-        --     require("snacks").picker {
-        --       items = icons,
-        --       source = "Astro_UI_Icons",
-        --       layout = "vscode", -- or select
-        --       format = function(item)
-        --         local icon, icon_hl
-        --         if item.cat then
-        --           icon, icon_hl = require("snacks.util").icon(item.text, item.cat)
-        --         else
-        --           icon, icon_hl = item.glyph, "MiniIconsGreen"
-        --         end
-        --         return {
-        --           { icon .. " ", icon_hl },
-        --           { item.text, icon_hl },
-        --         }
-        --       end,
-        --       -- Paste selected icon to cursor and icon + icon text to clipboard
-        --       confirm = {
-        --         "copy",
-        --         function(picker, item)
-        --           -- Copy icon
-        --           local icon = item.glyph
-        --           if item.cat then
-        --             icon, _ = require("snacks.util").icon(item.text, item.cat)
-        --           end
-        --           vim.fn.setreg("+", icon)
-        --           local buf = item.buf or vim.api.nvim_win_get_buf(picker.main)
-        --           local ft = vim.bo[buf].filetype
-        --           require("snacks").notify(
-        --             ("Yanked to register `%s`:\n```%s\n%s\n```"):format("+", ft, icon),
-        --             { title = "Snacks Picker" }
-        --           )
-        --         end,
-        --         "close",
-        --       },
-        --     }
-        --   end,
-        --   desc = "Find Nvim icons",
-        -- }
+        maps.n["<Leader>fI"] = {
+          function()
+            local icons = {}
+            for kind, icon in pairs(require("astroui").config["icons"]) do
+              if type(icon) == "string" then table.insert(icons, { text = kind, glyph = icon, cat = "Astro_UI" }) end
+            end
+            if require("astrocore").is_available "mini.icons" then
+              local function add_cat(categories)
+                for _, cat in ipairs(categories) do
+                  for _, kind in ipairs(require("mini.icons").list(cat)) do
+                    table.insert(icons, { text = kind, cat = cat, is_mini_icon = true })
+                  end
+                end
+              end
+              add_cat { "directory", "extension", "file", "filetype", "lsp", "os" }
+            end
+
+            require("snacks").picker {
+              items = icons,
+              source = "Astro_UI_Icons",
+              layout = {
+                layout = {
+                  backdrop = false,
+                  row = 1,
+                  width = 0.4,
+                  min_width = 30,
+                  height = 0.9,
+                  border = "none",
+                  box = "vertical",
+                  {
+                    win = "input",
+                    height = 1,
+                    border = "rounded",
+                    title = "{title} {live} {flags}",
+                    title_pos = "center",
+                  },
+                  { win = "list", border = "rounded" },
+                },
+              },
+              format = function(item)
+                local icon, icon_hl
+                local text_hl = "SnacksPickerIconName"
+                if item.is_mini_icon then
+                  icon, icon_hl = require("snacks.util").icon(item.text, item.cat)
+                  text_hl = icon_hl or "SnacksPickerIconName"
+                else
+                  icon, icon_hl = item.glyph, "SnacksPickerIcon"
+                end
+                local a = require("snacks").picker.util.align
+                local ret = {} ---@type snacks.picker.Highlight[]
+                ret[#ret + 1] = { a(icon, 2), icon_hl }
+                ret[#ret + 1] = { " " }
+                ret[#ret + 1] = { a(item.text, 30), text_hl }
+                ret[#ret + 1] = { " " }
+                ret[#ret + 1] = { a(item.cat, 20), "SnacksPickerIconCategory" }
+                return ret
+              end,
+              -- Paste selected icon to cursor and icon + icon text to clipboard
+              confirm = {
+                "copy",
+                function(picker, item)
+                  -- Copy icon
+                  local icon = item.glyph
+                  if item.is_mini_icon then
+                    icon, _ = require("snacks.util").icon(item.text, item.cat)
+                  end
+                  vim.fn.setreg("+", icon)
+                  local buf = item.buf or vim.api.nvim_win_get_buf(picker.main)
+                  local ft = vim.bo[buf].filetype
+                  require("snacks").notify(
+                    ("Yanked to register `%s`:\n```%s\n%s\n```"):format("+", ft, icon),
+                    { title = "Snacks Picker" }
+                  )
+                end,
+                "close",
+              },
+            }
+          end,
+          desc = "Find Nvim icons",
+        }
         maps.n["<Leader>fo"] = {
           function()
             require("snacks").picker.smart {
@@ -232,6 +292,7 @@ return {
     },
     quickfile = {},
     lazygit = {},
+    ---@type snacks.picker.Config
     picker = {
       win = {
         input = {
