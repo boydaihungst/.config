@@ -1,4 +1,4 @@
--- if vim.fn.has "nvim-0.12" == 1 then vim.lsp.on_type_formatting.enable() end
+if vim.fn.has "nvim-0.12" == 1 then vim.lsp.on_type_formatting.enable() end
 
 ---@type LazySpec
 return {
@@ -16,13 +16,16 @@ return {
       signature_help = true,
       linked_editing_range = true,
     },
-    -- capabilities = vim.fn.has "nvim-0.12" == 1 and {
-    --   textDocument = {
-    --     -- TODO: python won't work Wait till this PR is merged https://github.com/neovim/neovim/pull/35578
-    --     -- This is because require('blink.cmp').get_lsp_capabilities() doesn't set the necessary capability for onTypeFormatting.
-    --     onTypeFormatting = { dynamicRegistration = false },
-    --   },
-    -- },
+    capabilities = vim.fn.has "nvim-0.12" == 1 and {
+      textDocument = {
+        -- TODO: python won't work Wait till this PR is merged https://github.com/neovim/neovim/pull/35578
+        -- This is because require('blink.cmp').get_lsp_capabilities() doesn't set the necessary capability for onTypeFormatting.
+        onTypeFormatting = { dynamicRegistration = false },
+        callHierarchy = {
+          dynamicRegistration = true,
+        },
+      },
+    },
     -- customize lsp formatting options
     formatting = {
       -- use conform-nvim

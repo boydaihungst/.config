@@ -15,6 +15,7 @@ return {
         "yaml-language-server",
 
         -- install formatters
+        "rust-analyzer",
         "stylua",
         "markdown-toc",
         "isort",

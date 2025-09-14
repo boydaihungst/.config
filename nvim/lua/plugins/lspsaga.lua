@@ -1,8 +1,8 @@
 ---@type LazySpec
 return {
-  -- "glepnir/lspsaga.nvim",
-  "leeguooooo/lspsaga.nvim",
-  branch = "fix-client-method-deprecations",
+  -- Miniumum version of nvim = 0.13
+  "boydaihungst/lspsaga.nvim",
+  branch = "main",
   event = "LspAttach",
   cmd = "Lspsaga",
   enabled = true,
@@ -31,19 +31,15 @@ return {
           { "<Cmd>Lspsaga outgoing_calls<CR>", desc = "Outgoing calls", cond = "callHierarchy/outgoingCalls" }
 
         -- code action
-        -- NOTE: Bug use aznhe21/actions-preview.nvim instead
         maps.n["<Leader>la"] =
           { "<Cmd>Lspsaga code_action<CR>", desc = "Code action", cond = "textDocument/codeAction" }
         maps.x["<Leader>la"] =
           { ":<C-U>Lspsaga code_action<CR>", desc = "Code action", cond = "textDocument/codeAction" }
 
         -- diagnostic
-        maps.n["<Leader>ld"] =
-          { "<Cmd>Lspsaga show_line_diagnostics ++unfocus<CR>", desc = "Diagnostics in line", cond = "" }
+        maps.n["<Leader>ld"] = { "<Cmd>Lspsaga show_line_diagnostics ++unfocus<CR>", desc = "Diagnostics in line" }
 
         -- definition
-        -- maps.n["<Leader>lp"] =
-        --   { "<Cmd>Lspsaga peek_definition<CR>", desc = "Peek definition", cond = "textDocument/definition" }
         maps.n["gd"] =
           { "<Cmd>Lspsaga peek_definition<CR>", desc = "Peek definition", cond = "textDocument/definition" }
         maps.n["gy"] = {
@@ -56,33 +52,65 @@ return {
           desc = "Peek type definition",
           cond = "textDocument/typeDefinition",
         }
+        maps.n["<Leader>li"] = {
+          function()
+            -- Recursive function to flatten capabilities table
+            local function flatten_table(tbl, prefix, result)
+              result = result or {}
+              prefix = prefix or ""
+
+              for k, v in pairs(tbl) do
+                local key = prefix ~= "" and (prefix .. "." .. k) or k
+                if type(v) == "table" then
+                  flatten_table(v, key, result)
+                else
+                  table.insert(result, key)
+                end
+              end
+
+              return result
+            end
+
+            -- Get client capabilities
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+            -- Flatten and print all capability names
+            local all_caps = flatten_table(capabilities)
+            table.sort(all_caps)
+
+            print "All LSP capability names:"
+            for _, name in ipairs(all_caps) do
+              print(name)
+            end
+          end,
+          desc = "Lsp infomation",
+        }
 
         -- outline
-        -- use aerial
+        -- NOTE: BUG use aerial instead
         -- maps.n["<Leader>ls"] =
         --   { "<Cmd>Lspsaga outline<CR>", desc = "Symbols outline", cond = "textDocument/documentSymbol" }
 
         -- references
-        -- NOTE: BUG
-        -- maps.n["<Leader>lR"] = {
-        --   "<Cmd>Lspsaga finder<CR>",
-        --   desc = "Search references",
-        --   cond = function(client)
-        --     return client.supports_method "textDocument/references"
-        --       or client.supports_method "textDocument/implementation"
-        --   end,
-        -- }
+        maps.n["<Leader>lR"] = {
+          "<Cmd>Lspsaga finder<CR>",
+          desc = "Search references",
+          cond = function(client)
+            return client.supports_method "textDocument/references"
+              or client.supports_method "textDocument/implementation"
+          end,
+        }
 
         -- rename
         maps.n["<Leader>lr"] =
           { "<Cmd>Lspsaga rename<CR>", desc = "Rename current symbol", cond = "textDocument/rename" }
         -- Close rename popup if press Esc in normal mode
-        vim.api.nvim_create_autocmd("FileType", {
-          pattern = "sagarename",
-          callback = function(event)
-            vim.keymap.set("n", "<Esc>", "<cmd>confirm q<cr>", { buffer = event.buf, silent = true })
-          end,
-        })
+        -- vim.api.nvim_create_autocmd("FileType", {
+        --   pattern = "sagarename",
+        --   callback = function(event)
+        --     vim.keymap.set("n", "<Esc>", "<cmd>confirm q<cr>", { buffer = event.buf, silent = true })
+        --   end,
+        -- })
       end,
     },
   },
@@ -91,16 +119,17 @@ return {
     local get_icon = function(icon) return astroui.get_icon(icon, 0, true) end
     opts.request_timeout = 2000
     opts.finder = {
-      layout = "normal",
+      layout = "float",
       keys = {
         shuttle = "p",
-        tabnew = "",
-        quit = "q",
+        quit = { "q", "<Esc>" },
         edit = "<C-c>o",
         vsplit = "<C-c>v",
         split = "<C-c>i",
         tabe = "<C-c>t",
-        close = "<ESC>",
+        close = { "q", "<Esc>" },
+        go_peek = "l",
+        toggle_or_open = "<CR>",
       },
     }
     opts.definition = {
