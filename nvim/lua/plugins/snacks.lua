@@ -93,7 +93,7 @@ return {
               end,
             }
           end,
-          desc = "File language (filetype)",
+          desc = "Find & Set language (filetype)",
         }
         maps.n["<Leader>fn"] = {
           function()
@@ -263,6 +263,7 @@ return {
   opts = {
     dashboard = {
       sections = {
+        -- BUG: https://github.com/folke/snacks.nvim/pull/1643
         {
           section = "terminal",
           cmd = "fortune -s | cowsay",

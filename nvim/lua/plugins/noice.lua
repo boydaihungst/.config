@@ -16,7 +16,7 @@ return {
     presets = {
       bottom_search = false, -- use a classic bottom cmdline for search
       command_palette = true, -- If you're using a command palette (e.g., dressing.nvim)
-      long_message_to_split = true, -- long messages will be sent to a split
+      long_message_to_split = false, -- long messages will be sent to a split
     },
     messages = {
       enabled = true, -- Ensure messages are enabled

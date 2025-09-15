@@ -1,4 +1,4 @@
-if vim.fn.has "nvim-0.12" == 1 then vim.lsp.on_type_formatting.enable() end
+-- if vim.fn.has "nvim-0.12" == 1 then vim.lsp.on_type_formatting.enable() end
 
 ---@type LazySpec
 return {
@@ -20,7 +20,9 @@ return {
       textDocument = {
         -- TODO: python won't work Wait till this PR is merged https://github.com/neovim/neovim/pull/35578
         -- This is because require('blink.cmp').get_lsp_capabilities() doesn't set the necessary capability for onTypeFormatting.
-        onTypeFormatting = { dynamicRegistration = false },
+        -- onTypeFormatting = { dynamicRegistration = false },
+
+        -- Force enable callHierarchy
         callHierarchy = {
           dynamicRegistration = true,
         },
@@ -113,16 +115,5 @@ return {
       -- this would disable semanticTokensProvider for all clients
       -- client.server_capabilities.semanticTokensProvider = nil
     end,
-    file_operations = {
-      timeout = 10000, -- default timeout in ms for completing LSP operations
-      operations = { -- enable all of the file operations
-        willCreate = true,
-        didCreate = true,
-        willRename = true,
-        didRename = true,
-        willDelete = true,
-        didDelete = true,
-      },
-    },
   },
 }

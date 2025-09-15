@@ -18,7 +18,6 @@ return {
     { "xzbdmw/colorful-menu.nvim", lazy = true },
     -- ... other dependencies
   },
-
   opts = {
     sources = {
       -- add 'git' to the list
@@ -93,6 +92,12 @@ return {
           ---@type blink-cmp-conventional-commits.Options
           opts = {}, -- none so far
         },
+        -- Path completion from cwd instead of current buffer's directory
+        path = {
+          opts = {
+            get_cwd = function(_) return vim.fn.getcwd() end,
+          },
+        },
       },
     },
     cmdline = {
@@ -142,9 +147,14 @@ return {
         show_documentation = true,
       },
     },
+    -- APIs: https://github.com/Saghen/blink.cmp/blob/main/lua/blink/cmp/init.lua
     keymap = {
       ["<Tab>"] = {
-        function(cmp) return cmp.select_next { auto_insert = vim.b.visual_multi ~= 1 } end,
+        function(cmp)
+          return cmp.select_next {
+            auto_insert = vim.b.visual_multi ~= 1,
+          }
+        end,
         "snippet_forward",
         function(cmp)
           if has_words_before() or vim.api.nvim_get_mode().mode == "c" then return cmp.show() end
@@ -204,8 +214,10 @@ return {
         draw = function(opts)
           if opts.item and opts.item.documentation then
             local hover_parser = require "pretty_hover.parser"
-            local parsed_ok, result = pcall(function() return hover_parser.parse(opts.item.documentation.value) end)
-            if parsed_ok and result then opts.item.documentation.value = result:string() end
+            local docs = type(opts.item.documentation) == "string" and opts.item.documentation
+              or opts.item.documentation.value
+            local parsed_ok, result = pcall(function() return hover_parser.parse(docs) end)
+            if parsed_ok and result then docs = result:string() end
           end
 
           opts.default_implementation(opts)

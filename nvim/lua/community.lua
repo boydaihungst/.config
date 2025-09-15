@@ -39,6 +39,7 @@ return {
   { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.pack.eslint" },
+  { import = "astrocommunity.pack.kotlin" },
   { import = "astrocommunity.pack.fish" },
   -- { import = "astrocommunity.pack.full-dadbod" },
   { import = "astrocommunity.pack.html-css" },

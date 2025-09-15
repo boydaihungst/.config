@@ -65,9 +65,8 @@ return {
     },
 
     ui = {
-      override = true, -- override vim.ui.select, requires `snacks.nvim` to be included in dependencies or installed separately
-      group_actions = false, -- group actions by group
-      keymaps = { filter = "<C-b>", open_group = "<C-l>", close_group = "<C-h>" },
+      -- Use lspsaga code action
+      override = false, -- override vim.ui.select, requires `snacks.nvim` to be included in dependencies or installed separately
     },
 
     debug = false, -- extra debug info

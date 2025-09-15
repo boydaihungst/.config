@@ -33,6 +33,14 @@ return {
             ]]
         end,
       },
+      {
+        event = "neo_tree_popup_input_ready",
+        handler = function(args)
+          -- map <esc> to enter normal mode (by default closes prompt)
+          -- don't forget `opts.buffer` to specify the buffer of the popup.
+          vim.keymap.set("i", "<esc>", vim.cmd.stopinsert, { noremap = true, buffer = args.bufnr })
+        end,
+      },
     },
     default_component_configs = {
       indent = {
@@ -65,33 +73,11 @@ return {
         ["/"] = "",
         ["H"] = "prev_source",
         ["L"] = "next_source",
+        ["<M-h>"] = "toggle_hidden",
       },
     },
 
-    nesting_rules = {
-      ["package.json"] = {
-        pattern = "^package%.json$", -- <-- Lua pattern
-        files = { "package-lock.json", "yarn*" }, -- <-- glob pattern
-      },
-      ["go"] = {
-        pattern = "(.*)%.go$", -- <-- Lua pattern with capture
-        files = { "%1_test.go" }, -- <-- glob pattern with capture
-      },
-      ["js-extended"] = {
-        pattern = "(.+)%.js$",
-        files = { "%1.js.map", "%1.min.js", "%1.d.ts" },
-      },
-      ["docker"] = {
-        pattern = "^dockerfile$",
-        ignore_case = true,
-        files = { ".dockerignore", "docker-compose.*", "dockerfile*" },
-      },
-      ["env"] = {
-        pattern = "(.*)%.env$",
-        ignore_case = true,
-        files = { ".env*" },
-      },
-    },
+    nesting_rules = {},
     filesystem = {
       window = {
         mappings = {

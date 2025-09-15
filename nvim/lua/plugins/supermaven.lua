@@ -3,7 +3,7 @@ return {
   "supermaven-nvim",
   optional = true,
   opts = {
-    ignore_filetypes = { "sql", "grug-far" },
+    ignore_filetypes = { "sql", "grug-far", "snacks_picker_input", "neo-tree-popup" },
     -- color = {
     --   suggestion_color = "#ffffff",
     --   cterm = 244,
@@ -11,22 +11,22 @@ return {
     condition = function() return require("astrocore.buffer").is_large() end,
     log_level = "off",
   },
-  specs = {
-    {
-      "saghen/blink.cmp",
-      optional = true,
-      opts = {
-        sources = {
-          default = { "supermaven" },
-          providers = {
-            supermaven = {
-              name = "supermaven",
-              module = "blink.compat.source",
-              -- score_offset = 100,
-            },
-          },
-        },
-      },
-    },
-  },
+  -- specs = {
+  --   {
+  --     "saghen/blink.cmp",
+  --     optional = true,
+  --     opts = {
+  --       sources = {
+  --         default = { "supermaven" },
+  --         providers = {
+  --           supermaven = {
+  --             name = "supermaven",
+  --             module = "blink.compat.source",
+  --             -- score_offset = 100,
+  --           },
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
 }

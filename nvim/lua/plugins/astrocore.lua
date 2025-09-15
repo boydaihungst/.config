@@ -35,7 +35,6 @@ return {
           event = "BufReadPost",
           pattern = { ".env", ".env.*" },
           desc = "Disable diagnostic for environment files",
-          -- group = "disable_diagnostic_environment",
           callback = function(args) vim.diagnostic.enable(false, { bufnr = args.buf }) end,
         },
       },
@@ -69,7 +68,6 @@ return {
       },
       autochdir = true,
     },
-    -- https://github.com/folke/lazydev.nvim
     -- Configure core features of AstroNvim
     features = {
       large_buf = { size = 1024 * 500, lines = 10000, enabled = true }, -- set global limits for large files for disabling features like treesitter
@@ -100,23 +98,28 @@ return {
       o = {
         exrc = true,
         secure = true,
+        -- winborder = "rounded",
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
-        -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
-        -- This can be found in the `lua/lazy_setup.lua` file
-        mkdp_filetypes = { "markdown" },
-        -- auto open preview in browser when enter md buf
-        mkdp_auto_start = false,
         -- netrw_browsex_viewer = "xdg-open",
-        matchup_surround_enabled = 1,
+        health = { style = "float" },
+        -- Fix for noice.nvim
         cmdheight = 1,
       },
     },
-    -- Mappings can be configured through AstroCore as well.
-    -- NOTE: keycodes follow the casing in the vimdocs. For example, `<Leader>` must be capitalized
     filetypes = {
-      pattern = {},
+
+      -- see `:h vim.filetype.add` for usage
+      extension = {
+        -- foo = "fooscript",
+      },
+      filename = {
+        -- [".foorc"] = "fooscript",
+      },
+      pattern = {
+        -- [".*/etc/foo/.*"] = "fooscript",
+      },
     },
   },
 }

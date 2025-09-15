@@ -1,9 +1,7 @@
 ---@type LazySpec
 return {
-  "iamcco/markdown-preview.nvim",
+  "andymass/vim-matchup",
   optional = true,
-  build = ":call mkdp#util#install()",
-  ft = { "markdown", "markdown.mdx" },
   specs = {
     {
       "AstroNvim/astrocore",
@@ -11,7 +9,9 @@ return {
       opts = {
         options = {
           g = {
-            mkdp_auto_start = false,
+            matchup_matchparen_nomode = "i",
+            matchup_matchparen_deferred = 1,
+            matchup_surround_enabled = 1,
           },
         },
       },

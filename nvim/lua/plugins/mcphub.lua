@@ -4,7 +4,7 @@ local prefix = "<Leader>A"
 return {
   "ravitemer/mcphub.nvim",
   optional = true,
-  enabled = true,
+  enabled = false,
   dependencies = {
     "nvim-lua/plenary.nvim",
     { "Joakker/lua-json5", build = "./install.sh" },
