@@ -152,6 +152,12 @@ return {
         quit = { "q", "<ESC>" },
         exec = "<CR>",
       },
+      -- code action will display from high > low priority
+      server_priority = {
+        default = 1000,
+        gitsigns = 100,
+        ["dev-tools"] = 400,
+      },
     }
     opts.lightbulb = {
       enable = true,
