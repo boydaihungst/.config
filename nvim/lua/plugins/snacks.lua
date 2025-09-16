@@ -361,7 +361,6 @@ return {
               end
             end
           end
-          vim.notify(vim.inspect(checks))
           for f in pairs(checks) do
             if vim.fn.filereadable(f) == 1 then
               img_src = uv.fs_realpath(f) or f
