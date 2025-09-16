@@ -42,7 +42,7 @@
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "lazydev.nvim": { "branch": "main", "commit": "2367a6c0a01eb9edb0464731cc0fb61ed9ab9d2c" },
   "lensline.nvim": { "branch": "main", "commit": "a5a4d9daf556318ec7211222352c00a8a148afa1" },
-  "lspsaga.nvim": { "branch": "main", "commit": "dff6999f4c617f74edf16ab44eb46ee1d98a4efe" },
+  "lspsaga.nvim": { "branch": "main", "commit": "49cce286baa8753497955dcc3629dbe1cab6fdaf" },
   "lua-json5": { "branch": "master", "commit": "d710c494586f369eba787902e665fa0bcb5705ba" },
   "markdown-preview.nvim": { "branch": "master", "commit": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "7f9a39fcd2ac6e979001f857727d606888f5909c" },
@@ -119,7 +119,6 @@
   "vim-illuminate": { "branch": "master", "commit": "0d1e93684da00ab7c057410fecfc24f434698898" },
   "vim-matchup": { "branch": "master", "commit": "b23ba393ee600f4f637999f2c02b06a17838e2f0" },
   "vim-visual-multi": { "branch": "master", "commit": "a6975e7c1ee157615bbc80fc25e4392f71c344d4" },
-  "wezterm-types": { "branch": "main", "commit": "e1084ee3e9e9ef9da94aa9a876c2a79ab3660cbc" },
   "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" },
   "yanky.nvim": { "branch": "main", "commit": "04775cc6e10ef038c397c407bc17f00a2f52b378" },
   "yazi.nvim": { "branch": "main", "commit": "586c4510c521a4a122f7c8def2ca811b42bfe27f" }

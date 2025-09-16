@@ -219,6 +219,8 @@ return {
           },
         },
       }
+      -- disable winbar
+      -- opts.winbar = nil
     end,
   },
 }

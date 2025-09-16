@@ -4,6 +4,7 @@ return {
   event = "LspAttach",
   cmd = "Lspsaga",
   lazy = true,
+  enabled = true,
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
     {
@@ -13,6 +14,13 @@ return {
     {
       "ThePrimeagen/refactoring.nvim",
       dependencies = { "nvim-lua/plenary.nvim" },
+    },
+    {
+      "kosayoda/nvim-lightbulb",
+      optional = true,
+      opts = {
+        ignore = { clients = { "dev-tools" } },
+      },
     },
   },
 
@@ -71,25 +79,5 @@ return {
 
     debug = false, -- extra debug info
     cache = true, -- cache the actions on start
-  },
-  specs = {
-    {
-      "boydaihungst/lspsaga.nvim",
-      optional = true,
-      opts = {
-        lightbulb = {
-          ignore = {
-            clients = "dev-tools",
-          },
-        },
-      },
-    },
-    {
-      "kosayoda/nvim-lightbulb",
-      optional = true,
-      opts = {
-        ignore = { clients = { "dev-tools" } },
-      },
-    },
   },
 }

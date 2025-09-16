@@ -11,8 +11,9 @@ return {
     {
       "AstroNvim/astrolsp",
       opts = function(_, opts)
+        local astrocore = require "astrocore"
         -- disabl default mapping
-        if not opts.mappings then opts.mappings = require("astrocore").empty_map_table() end
+        if not opts.mappings then opts.mappings = astrocore.empty_map_table() end
         local maps = opts.mappings
         -- maps.n["<Leader>lA"] = nil
         -- maps.n["<Leader>lG"] = nil
@@ -93,11 +94,12 @@ return {
 
         -- references
         maps.n["<Leader>lR"] = {
-          "<Cmd>Lspsaga finder<CR>",
-          desc = "Search references",
+          "<Cmd>Lspsaga finder def+ref+imp+tyd<CR>",
+          desc = "Search Def+Imp+Ref+typeDef",
           cond = function(client)
             return client.supports_method "textDocument/references"
               or client.supports_method "textDocument/implementation"
+              or client.supports_method "textDocument/typeDefinition"
           end,
         }
 
@@ -115,6 +117,7 @@ return {
     },
   },
   opts = function(_, opts)
+    local astrocore = require "astrocore"
     local astroui = require "astroui"
     local get_icon = function(icon) return astroui.get_icon(icon, 0, true) end
     opts.request_timeout = 2000
@@ -122,14 +125,19 @@ return {
       layout = "float",
       keys = {
         shuttle = "p",
-        quit = { "q", "<Esc>" },
+        quit = { "q", "<ESC>" },
         edit = "<C-c>o",
         vsplit = "<C-c>v",
         split = "<C-c>i",
         tabe = "<C-c>t",
-        close = { "q", "<Esc>" },
+        close = { "q", "<ESC>" },
         go_peek = "l",
         toggle_or_open = "<CR>",
+      },
+      default = "disabledef+ref+imp+tyd",
+      filter = {},
+      methods = {
+        ["tyd"] = "textDocument/typeDefinition",
       },
     }
     opts.definition = {
@@ -146,7 +154,7 @@ return {
     opts.code_action = {
       num_shortcut = true,
       show_server_name = true,
-      extend_gitsigns = require("astrocore").is_available "gitsigns.nvim",
+      extend_gitsigns = astrocore.is_available "gitsigns.nvim",
       keys = {
         -- string | table type
         quit = { "q", "<ESC>" },
@@ -165,24 +173,45 @@ return {
       sign = false,
       sign_priority = 40,
       virtual_text = true,
+      ignore = {
+        clients = {
+          astrocore.is_available "dev-tools.nvim" and "dev-tools",
+        },
+        ft = {},
+      },
     }
     opts.diagnostic = {
       show_code_action = true,
       show_source = true,
       jump_num_shortcut = true,
-      --1 is max
+      auto_preview = true,
+      show_layout = "float",
+      show_normal_height = 10,
       max_width = 0.8,
+      max_height = 0.6,
+      max_show_width = 0.9,
+      max_show_height = 0.6,
+      wrap_long_lines = true,
+      diagnostic_only_current = false,
       extend_relatedInformation = true,
-      -- text_hl_follow = false,
-      -- border_follow = false,
       keys = {
+        focus_code_action = "<C-c>o",
         exec_action = "o",
         quit = "q",
-        go_action = "g",
         toggle_or_jump = "<CR>",
         quit_in_show = { "q", "<ESC>" },
       },
     }
+    -- NOTE: Need to set symbols_in_winbar.enable = true
+    opts.implement = {
+      enable = false,
+      sign = true,
+      -- code language/filetype
+      -- lang = { "typescript" },
+      virtual_text = false,
+      priority = 100,
+    }
+
     opts.rename = {
       keys = {
         quit = "<C-k>",
@@ -207,18 +236,20 @@ return {
       },
     }
     opts.symbol_in_winbar = {
-      enable = false,
+      enable = true,
       separator = "  ",
       -- ignore_patterns = {},
       hide_keyword = true,
-      show_file = true,
+      show_file = false,
       folder_level = 0,
       -- respect_root = true,
       color_mode = true,
     }
+    -- Blink highlight after jump
     opts.beacon = {
       enable = true,
-      frequency = 7,
+      -- Higher value means shorter blink, 1-10
+      frequency = 8,
     }
     opts.ui = {
       title = true,
@@ -234,5 +265,6 @@ return {
       },
       -- imp_sign = get_icon "",
     }
+    if opts.symbol_in_winbar and opts.symbol_in_winbar.enable then astrocore.plugin_opts("heirline").winbar = nil end
   end,
 }

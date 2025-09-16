@@ -50,6 +50,7 @@ return {
           find = "recording",
         },
         view = "mini",
+        skip = true,
       },
       {
         filter = {

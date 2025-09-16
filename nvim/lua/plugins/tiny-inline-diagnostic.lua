@@ -4,16 +4,18 @@ return {
   optional = true,
   event = "User AstroFile",
   opts = {
-    preset = "amongus",
-    -- signs = {
-    --   left = "",
-    --   right = "",
-    --   diag = "●",
-    --   arrow = "    ",
-    --   up_arrow = "    ",
-    --   vertical = " │",
-    --   vertical_end = " └",
-    -- },
+    preset = "minimal",
+    signs = {
+      -- left = "",
+      -- right = "",
+      left = "",
+      right = "",
+      diag = "ඞ",
+      arrow = "    ",
+      up_arrow = "    ",
+      vertical = " │",
+      vertical_end = " └",
+    },
     hi = {
       error = "DiagnosticError",
       warn = "DiagnosticWarn",
@@ -34,7 +36,7 @@ return {
       -- You can increase it if you have performance issues.
       -- Or set it to 0 to have better visuals.
       -- 20
-      throttle = 0,
+      throttle = 20,
 
       -- The minimum length of the message, otherwise it will be on a new line.
       softwrap = 15,
@@ -42,8 +44,21 @@ return {
       -- If multiple diagnostics are under the cursor, display all of them.
       multiple_diag_under_cursor = true,
 
-      -- Enable diagnostic message on all lines.
-      multilines = false,
+      -- Configuration for multiline diagnostics
+      -- Can be a boolean or a table with detailed options
+      multilines = {
+        -- Enable multiline diagnostic messages
+        enabled = false,
+
+        -- Always show messages on all lines for multiline diagnostics
+        always_show = false,
+
+        -- Trim whitespaces from the start/end of each line
+        trim_whitespaces = false,
+
+        -- Replace tabs with this many spaces in multiline diagnostics
+        tabstop = 4,
+      },
 
       -- Show all diagnostics on the cursor line.
       show_all_diags_on_cursorline = false,
@@ -51,12 +66,19 @@ return {
       -- Enable diagnostics on Insert mode. You should also se the `throttle` option to 0, as some artefacts may appear.
       enable_on_insert = false,
 
+      -- Enable diagnostics in Select mode (e.g., when auto-completing with Blink)
+      enable_on_select = false,
+
       overflow = {
         -- Manage the overflow of the message.
         --    - wrap: when the message is too long, it is then displayed on multiple lines.
         --    - none: the message will not be truncated.
         --    - oneline: message will be displayed entirely on one line.
         mode = "wrap",
+
+        -- Trigger wrapping this many characters earlier when mode == "wrap"
+        -- Increase if the last few characters of wrapped diagnostics are obscured
+        padding = 0,
       },
 
       -- Format the diagnostic message.

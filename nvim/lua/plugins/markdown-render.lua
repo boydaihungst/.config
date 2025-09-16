@@ -2,7 +2,7 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
   optional = true,
-  enabled = false,
+  enabled = true,
   opts = {
     max_file_size = 2.0,
     preset = "obsidian",

@@ -1,3 +1,5 @@
+local uv = vim.uv or vim.loop
+
 ---@type LazySpec
 return {
   "folke/snacks.nvim",
@@ -290,6 +292,87 @@ return {
       doc = {
         enabled = true,
       },
+      formats = {
+        "png",
+        "jpg",
+        "jpeg",
+        "gif",
+        "bmp",
+        "webp",
+        "tiff",
+        "heic",
+        "avif",
+        "mp4",
+        "mov",
+        "avi",
+        "mkv",
+        "webm",
+        "pdf",
+        "svg",
+      },
+      img_dirs = { "img", "images", "assets", "static", "public", "media", "attachments" },
+
+      -- Support 3 types.
+      -- img_src_maps = { ["^@assets"] = { "src/assets", "src/assets2" } },  -- Use string:gsub, so make sure to escape if you need litteral string.
+      img_src_maps = { ["^@assets"] = "src/assets" },
+      -- img_src_maps = function(buf_path, img_src) end
+
+      -- The 3rd type can return 2 types above or string. If return string = "XXX" -> img_src = "XXX".
+      -- img_src is relative source of the image.
+      -- In the example of vue above img_src is src attribute in <img> tag = "@assets/logo.svg"
+
+      -- img_src_maps = function(buf_path, img_src) return { ["^@assets"] = "src/assets" } end,
+      -- img_src_maps = function(buf_path, img_src) return "src/assets/logo.svg" end,
+      env = {
+        placeholders = true,
+      },
+      ---@param buf_path string
+      ---@param img_src string
+      resolve = function(buf_path, img_src)
+        local Snacks = require "snacks"
+        if not img_src:find "^%w%w+://" then
+          local img_src_maps = Snacks.image.config.img_src_maps
+          local cwd = uv.cwd() or "."
+          local checks = { [img_src] = true }
+          local srcs = { img_src }
+
+          if type(Snacks.image.config.img_src_maps) == "function" then
+            img_src_maps = Snacks.image.config.img_src_maps(buf_path, img_src)
+            if type(img_src_maps) == "string" then img_src = img_src_maps end
+          end
+          if type(img_src_maps) == "table" then
+            for pattern, replacement in pairs(img_src_maps) do
+              if type(replacement) == "string" then
+                srcs[#srcs + 1] = img_src:gsub(pattern, replacement)
+              elseif type(replacement) == "table" then
+                for _, r in ipairs(replacement) do
+                  srcs[#srcs + 1] = img_src:gsub(pattern, r)
+                end
+              end
+            end
+          end
+
+          for _, root in ipairs { cwd, vim.fs.dirname(buf_path) } do
+            for _, new_src in ipairs(srcs) do
+              checks[root .. "/" .. new_src] = true
+              for _, dir in ipairs(Snacks.image.config.img_dirs) do
+                dir = root .. "/" .. dir
+                if Snacks.image.doc.is_dir(dir) then checks[dir .. "/" .. new_src] = true end
+              end
+            end
+          end
+          vim.notify(vim.inspect(checks))
+          for f in pairs(checks) do
+            if vim.fn.filereadable(f) == 1 then
+              img_src = uv.fs_realpath(f) or f
+              break
+            end
+          end
+        end
+        img_src = vim.fs.normalize(img_src)
+        return img_src
+      end,
+      max_height = 20,
     },
     quickfile = {},
     lazygit = {},

@@ -40,6 +40,7 @@
    .exrc
    .lazy.lua
    .nvim/*
+   .nvim
    ```
 
 6. Content of `.nvim/lsp/*.lua` is vary according to the lsp server:
