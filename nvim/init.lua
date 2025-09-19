@@ -10,7 +10,6 @@ local project_root = vim.fs.root(0, { ".lazy.lua", ".nvim.lua", ".nvimrc", ".exr
 if project_root then vim.cmd.cd(project_root) end
 
 vim.opt.rtp:prepend(lazypath)
-
 -- validate that lazy is available
 if not pcall(require, "lazy") then
   -- stylua: ignore

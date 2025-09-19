@@ -241,16 +241,6 @@ return {
           end,
           desc = "Find old files",
         }
-        maps.n["<Leader>fO"] = {
-          function()
-            require("snacks").picker.recent {
-              filter = {
-                cwd = true,
-              },
-            }
-          end,
-          desc = "Find old files (cwd)",
-        }
         maps.n["<Leader>fh"] = {
           function()
             require("snacks").picker.help {

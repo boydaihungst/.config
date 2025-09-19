@@ -27,10 +27,11 @@ return {
 
         -- install debuggers
         "debugpy",
+        "local-lua-debugger-vscode",
+        "firefox-debug-adapter",
 
         -- install any other package
         "tree-sitter-cli",
-        "firefox-debug-adapter",
         "fish-lsp",
         "gh-actions-language-server",
       },

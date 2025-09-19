@@ -62,6 +62,16 @@ return {
           winbar = true,
         },
       },
+
+      -- Configure enabling/disabling of winbar
+      winbar = {
+        -- enabled = { -- whitelist buffer patterns
+        --   filetype = { "gitsigns.blame" },
+        -- },
+        -- disabled = { -- blacklist buffer patterns
+        --   buftype = { "nofile", "terminal" },
+        -- },
+      },
     },
   },
 }

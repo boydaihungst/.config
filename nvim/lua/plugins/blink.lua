@@ -152,7 +152,7 @@ return {
       ["<Tab>"] = {
         function(cmp)
           return cmp.select_next {
-            auto_insert = vim.b.visual_multi ~= 1,
+            auto_insert = true,
           }
         end,
         "snippet_forward",
@@ -162,7 +162,11 @@ return {
         "fallback",
       },
       ["<S-Tab>"] = {
-        function(cmp) return cmp.select_prev { auto_insert = vim.b.visual_multi ~= 1 } end,
+        function(cmp)
+          return cmp.select_prev {
+            auto_insert = true,
+          }
+        end,
         "snippet_backward",
         function(cmp)
           if vim.api.nvim_get_mode().mode == "c" then return cmp.show() end
@@ -170,12 +174,12 @@ return {
         "fallback",
       },
       ["<C-j>"] = {
-        function(cmp) return cmp.select_prev { auto_insert = vim.b.visual_multi ~= 1 } end,
+        function(cmp) return cmp.select_prev { auto_insert = true } end,
         "snippet_backward",
         "fallback",
       },
       ["<C-k>"] = {
-        function(cmp) return cmp.select_next { auto_insert = vim.b.visual_multi ~= 1 } end,
+        function(cmp) return cmp.select_next { auto_insert = true } end,
         "snippet_forward",
         "fallback",
       },

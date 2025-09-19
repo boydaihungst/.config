@@ -1,11 +1,11 @@
 ---@type LazySpec
 return {
-  -- Miniumum version of nvim = 0.13
   "boydaihungst/lspsaga.nvim",
   branch = "main",
   event = "LspAttach",
   cmd = "Lspsaga",
-  enabled = true,
+  -- Miniumum version of nvim = 0.12
+  enabled = function() return vim.version().minor >= 12 end,
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
     {
@@ -238,7 +238,9 @@ return {
     opts.symbol_in_winbar = {
       enable = true,
       separator = "  ",
-      -- ignore_patterns = {},
+      ignore_patterns = {
+        "^oil$",
+      },
       hide_keyword = true,
       show_file = false,
       folder_level = 0,
@@ -265,6 +267,5 @@ return {
       },
       -- imp_sign = get_icon "",
     }
-    if opts.symbol_in_winbar and opts.symbol_in_winbar.enable then astrocore.plugin_opts("heirline").winbar = nil end
   end,
 }

@@ -4,6 +4,8 @@ return {
   optional = true,
   opts = {
     handlers = {
+      -- Default adapters: https://github.com/jay-babu/mason-nvim-dap.nvim/tree/main/lua/mason-nvim-dap/mappings/adapters
+      -- Default adapters configurations: https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/configurations.lua
       firefox = function(source_name)
         local dap = require "dap"
         dap.configurations.firefox = {

@@ -10,10 +10,6 @@ return {
       opts = function(_, opts)
         local maps, prefix = opts.mappings, "<Leader>"
 
-        maps.n[prefix .. "-"] = {
-          "<cmd>Yazi cwd<cr>",
-          desc = "Open yazi - CWD",
-        }
         maps.n[prefix .. "o"] = {
           "<cmd>Yazi<cr>",
           desc = "Open yazi - current file",
@@ -31,7 +27,7 @@ return {
       open_file_in_tab = "<c-t>",
       grep_in_directory = "<c-f>",
       replace_in_directory = "<c-g>",
-      cycle_open_buffers = "<tab>",
+      cycle_open_buffers = "<C-l>",
       copy_relative_path_to_selected_files = "<c-y>",
       send_to_quickfix_list = "<c-q>",
       change_working_directory = "<c-\\>",

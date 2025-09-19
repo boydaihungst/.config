@@ -94,18 +94,20 @@ return {
         whichwrap = "lh",
         scrolloff = 10,
         shada = { "!", "'1000", "<1000", "s10", "h" },
+        -- Fix for noice.nvim
+        cmdheight = 1,
       },
       o = {
         exrc = true,
         secure = true,
+        clipboard = "unnamed,unnamedplus",
         -- winborder = "rounded",
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
         -- netrw_browsex_viewer = "xdg-open",
         health = { style = "float" },
-        -- Fix for noice.nvim
-        cmdheight = 1,
+        clipboard = os.getenv "SSH_TTY" and "osc52",
       },
     },
     filetypes = {
