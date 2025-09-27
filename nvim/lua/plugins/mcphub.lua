@@ -4,7 +4,7 @@ local prefix = "<Leader>A"
 return {
   "ravitemer/mcphub.nvim",
   optional = true,
-  enabled = false,
+  enabled = true,
   dependencies = {
     "nvim-lua/plenary.nvim",
     { "Joakker/lua-json5", build = "./install.sh" },
@@ -46,7 +46,7 @@ return {
     },
   },
   opts = {
-    port = 37373,
+    -- port = 37373,
     -- cmd = os.getenv "HOME" .. "/.yarn/bin/mcp-hub",
     config = vim.fn.expand "~/.vscode/mcp.json",
     json_decode = "json5",
@@ -62,7 +62,7 @@ return {
       look_for = { ".mcphub/servers.json", ".vscode/mcp.json", ".cursor/mcp.json" },
       reload_on_dir_changed = true, -- Auto-switch on directory change
       port_range = { min = 40000, max = 41000 }, -- Port range for workspace hubs
-      get_port = nil, -- Optional function for custom port assignment
+      -- get_port = nil, -- Optional function for custom port assignment
     },
     auto_approve = function(params)
       -- Auto-approve GitHub issue reading
@@ -109,7 +109,7 @@ return {
       return false -- Show confirmation prompt
     end,
     log = {
-      level = vim.log.levels.WARN,
+      level = vim.log.levels.ERROR,
       to_file = false,
       file_path = nil,
       prefix = "MCPHub",

@@ -4,6 +4,15 @@ local prefix = "<Leader>A"
 return {
   "olimorris/codecompanion.nvim",
   optional = true,
+  build = function()
+    local plugin_path = vim.fn.stdpath "data" .. "/lazy/codecompanion.nvim"
+    local patch_file = vim.fn.stdpath "config" .. "/codecompanion_skip_oauth.patch"
+    vim.system({ "patch", "-d", plugin_path, "-p1", "-i", patch_file }, { text = true }, function(obj)
+      vim.schedule(function()
+        if obj.code == 0 then vim.notify("Patched codecompanion.nvim successfully", vim.log.levels.INFO) end
+      end)
+    end)
+  end,
   dependencies = {
     "ravitemer/codecompanion-history.nvim",
     -- Add mcphub.nvim as a dependency
@@ -112,8 +121,22 @@ return {
           --   }
           -- end
           return require("codecompanion.adapters").extend("gemini_cli", {
+            commands = {
+              flash = {
+                "gemini",
+                "--experimental-acp",
+                "-m",
+                "gemini-2.5-flash",
+              },
+              pro = {
+                "gemini",
+                "--experimental-acp",
+                "-m",
+                "gemini-2.5-pro",
+              },
+            },
             defaults = {
-              auth_method = "gemini-api-key",
+              auth_method = "oauth-personal",
               -- mcpServers = mcpServers,
               timeout = 20000, -- 20 seconds
             },

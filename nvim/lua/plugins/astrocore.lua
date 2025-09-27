@@ -96,6 +96,7 @@ return {
         shada = { "!", "'1000", "<1000", "s10", "h" },
         -- Fix for noice.nvim
         cmdheight = 1,
+        conceallevel = 2,
       },
       o = {
         exrc = true,
@@ -113,6 +114,7 @@ return {
     filetypes = {
 
       -- see `:h vim.filetype.add` for usage
+      filetype = {},
       extension = {
         -- foo = "fooscript",
       },

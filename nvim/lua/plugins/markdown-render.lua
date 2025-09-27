@@ -7,7 +7,14 @@ return {
     max_file_size = 2.0,
     preset = "obsidian",
     render_modes = { "n", "c", "t" },
-    file_types = { "saga_codeaction", "markdown", "Avante", "codecompanion", "help", "checkhealth" },
+    file_types = {
+      "saga_codeaction",
+      "markdown",
+      "Avante",
+      "codecompanion",
+      "help",
+      "checkhealth",
+    },
     anti_conceal = {
       -- This enables hiding any added text on the line the cursor is on.
       enabled = false,

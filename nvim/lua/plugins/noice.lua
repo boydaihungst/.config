@@ -17,6 +17,7 @@ return {
       bottom_search = false, -- use a classic bottom cmdline for search
       command_palette = true, -- If you're using a command palette (e.g., dressing.nvim)
       long_message_to_split = false, -- long messages will be sent to a split
+      lsp_doc_border = true,
     },
     messages = {
       enabled = true, -- Ensure messages are enabled
