@@ -7,8 +7,6 @@ return {
       ensure_installed = {
         -- install language servers
         "taplo",
-        "docker-compose-language-service",
-        "dockerfile-language-server",
         "emmet-ls",
         "marksman",
         "sqls",
