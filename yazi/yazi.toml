@@ -127,6 +127,7 @@
 
 [open]
   rules = [
+    { mime = "text/shellscript", use = [ "execute" ], block = true },
     { url = "bulk-rename.txt", use = [ "bulk-rename" ], block = true },
     # Folder
     { url = "/mnt/remote/", use = [ "mount_remote", "terminal" ] },
@@ -225,6 +226,8 @@
     { mime = "image/*", run = "image" },
     # Video
     { mime = "video/*", run = "video" },
+    # Virtual file system
+    { mime = "vfs/*", run = "vfs" },
     # Fallback
     # { url = "*", run = "file" },
     { url = "*", run = "file-extra-metadata" },
@@ -268,6 +271,8 @@
     { mime = "{font/*,application/ms-opentype}", run = "better-font" },
     # Empty file
     { mime = "inode/empty", run = "empty" },
+    # Virtual file system
+    { mime = "vfs/*", run = "vfs" },
     # Fallback
     # { url = "*", run = "file" },
     { url = "*", run = "file-extra-metadata" },

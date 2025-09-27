@@ -124,13 +124,13 @@ return {
     opts.finder = {
       layout = "float",
       keys = {
-        shuttle = "p",
-        quit = { "q", "<ESC>" },
+        shuttle = "[w",
         edit = "<C-c>o",
         vsplit = "<C-c>v",
         split = "<C-c>i",
         tabe = "<C-c>t",
-        close = { "q", "<ESC>" },
+        close = "<C-c>k",
+        quit = { "q", "<ESC>" },
         go_peek = "l",
         toggle_or_open = "<CR>",
       },
@@ -165,6 +165,7 @@ return {
         default = 1000,
         gitsigns = 100,
         ["dev-tools"] = 400,
+        eslint = 500,
       },
     }
     opts.lightbulb = {
@@ -210,6 +211,34 @@ return {
       -- lang = { "typescript" },
       virtual_text = false,
       priority = 100,
+    }
+    opts.callhierarchy = {
+      layout = "float",
+      left_width = 0.2,
+      keys = {
+        edit = "e",
+        vsplit = "s",
+        split = "i",
+        tabe = "t",
+        close = "<C-c>k",
+        quit = { "q", "<ESC>" },
+        shuttle = "[w",
+        toggle_or_req = "u",
+      },
+    }
+    opts.typehierarchy = {
+      layout = "float",
+      left_width = 0.2,
+      keys = {
+        edit = "e",
+        vsplit = "s",
+        split = "i",
+        tabe = "t",
+        close = "<C-c>k",
+        quit = { "q", "<ESC>" },
+        shuttle = "[w",
+        toggle_or_req = "u",
+      },
     }
 
     opts.rename = {

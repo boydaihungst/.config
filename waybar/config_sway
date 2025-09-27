@@ -9,12 +9,12 @@
     "cpu",
     "memory",
     "temperature",
-    //"mpd",
-    "hyprland/workspaces",
-    "hyprland/submap",
+    "mpd",
+    "sway/workspaces",
+    "sway/mode",
   ],
   "modules-center": [
-    "hyprland/window",
+    "sway/window",
   ],
   "modules-right": [
     "pulseaudio",
@@ -23,9 +23,8 @@
     "bluetooth",
     "battery",
     "custom/ibus-bamboo",
-    "power-profiles-daemon",
+    // "power-profiles-daemon",
     "idle_inhibitor",
-    // "custom/discord",
     "tray",
   ],
   "font": "Hack Nerd Font 12",
@@ -71,7 +70,7 @@
   },
   "clock": {
     "interval": 1,
-    "format": " {:%H:%M:%S  %e %b}",
+    "format": "󰥔 {:%H:%M:%S %e %b}",
     "tooltip": true,
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "smooth-scrolling-threshold": 20,
@@ -138,8 +137,8 @@
     "format-paused": "{stateIcon} {title}",
     "format-disconnected": "{stateIcon} MPD",
     "format": "{stateIcon} {title} {randomIcon}{repeatIcon}{singleIcon}",
-    "title-len": 10,
-    "max-length": 20,
+    //"title-len": 10,
+    //"max-length": 20,
     "unknown-tag": "",
     "random-icons": {
       "on": "<span color=\"#45475A\"></span> "
@@ -161,28 +160,9 @@
     "on-click": "playerctl play-pause",
     "on-click-right": "playerctl stop",
     "on-click-middle": "kitty --class 'ncmpcpp' fish -c 'ncmpcpp'",
-    // "on-click-middle": "wezterm start --class 'ncmpcpp' -- 'ncmpcpp'",
     //"smooth-scrolling-threshold": 20,
     "on-scroll-up": "playerctl previous",
     "on-scroll-down": "playerctl next",
-  },
-  "hyprland/window": {
-    "format": "{title}",
-    "separate-outputs": true,
-    "rewrite": {
-      "(.*) — Waterfox": "$1",
-      "(.*) - Mozilla Firefox": "$1",
-      "(.*) - vim": "$1",
-      "(.*) - Nvim": "$1",
-      "(.*) - zsh": "$1",
-      "(.*) - fish": "$1",
-      "(.*) - (Thunar)": "$1",
-      "(Yazi): (.*)": "$2",
-      "(yazi)": "~",
-      "Bulk Rename - Rename Multiple Files": "Bulk Rename",
-      "(.*) - Blender (.*)": "$1",
-      "(.*) - Aegisub (.*)": "$1",
-    },
   },
   "hyprland/workspaces": {
     "format": "{icon}",
@@ -194,14 +174,51 @@
       "5": "",
       "6": "",
       "7": "󰺵",
-      "empty": "󰧨",
+      "active": "󰧨",
       "special": "󰐃",
       "default": "",
     }
   },
-  "hyprland/submap": {
+  "sway/mode": {
     "format": "{}",
     "tooltip": false
+  },
+  "sway/window": {
+    "swap-icon-label": false,
+    "format": "{title}",
+    "max-length": 50,
+    "rewrite": {
+      "(.*) — Waterfox": "  $1",
+      "(.*) - Mozilla Firefox": "  $1",
+      "(.*) - vim": " $1",
+      "(.*) - Nvim": " $1",
+      "(.*) - zsh": " $1",
+      "(.*) - fish": "  $1",
+      "(.*) - (Thunar)": "  $1",
+      "(Yazi): (.*)": "  $2",
+      "(yazi)": "  ~",
+      "Bulk Rename - Rename Multiple Files": "  Bulk Rename",
+      "(.*) - Blender (.*)": " $1",
+      "(.*) - Aegisub (.*)": "󰨖 $1",
+    },
+  },
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "disable-markup": false,
+    "numeric-first": true,
+    "all-outputs": false,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "6": "",
+      "7": "󰺵",
+      "active": "󰧨",
+      "default": "",
+    }
   },
   "pulseaudio": {
     "scroll-step": 1, // %, can be a float
@@ -221,10 +238,10 @@
       ]
     },
     "on-click-middle": "pavucontrol",
-    "on-click-right": "~/.config/hypr/scripts/volumectl --sink-blacklist 'jamesdsp_sink,easyeffects_sink' next-sink",
-    "on-click": "~/.config/hypr/scripts/volumectl --sink-blacklist 'jamesdsp_sink,easyeffects_sink' togmute",
-    "on-scroll-up": "~/.config/hypr/scripts/volumectl --sink-blacklist 'jamesdsp_sink,easyeffects_sink'  --volume-step 1 up",
-    "on-scroll-down": "~/.config/hypr/scripts/volumectl --sink-blacklist 'jamesdsp_sink,easyeffects_sink' --volume-step 1 down",
+    "on-click-right": "~/.config/sway/scripts/volumectl --sink-blacklist 'jamesdsp_sink' next-sink",
+    "on-click": "~/.config/sway/scripts/volumectl togmute",
+    "on-scroll-up": "~/.config/sway/scripts/volumectl --volume-step 1 up",
+    "on-scroll-down": "~/.config/sway/scripts/volumectl --volume-step 1 down",
     "reverse-scrolling": true,
     "ignored-sinks": [
       "Easy Effects Sink",
@@ -246,8 +263,8 @@
       "󰃟",
       "󰃠",
     ],
-    "on-scroll-down": "~/.config/hypr/scripts/brightness-change.sh 1%-",
-    "on-scroll-up": "~/.config/hypr/scripts/brightness-change.sh 1%+",
+    "on-scroll-down": "brightnessctl -c backlight set 5%-",
+    "on-scroll-up": "brightnessctl -c backlight set +5%",
     "reverse-scrolling": true
   },
   "network": {
@@ -255,9 +272,8 @@
     "format-wifi": "  {essid} ({signalStrength}%)", // Icon: wifi
     "format-ethernet": " {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
     "format-disconnected": "󰯡 Disconnected",
-    "tooltip-format": "{ifname}: {ipaddr}\nFrequency: {frequency} Ghz\n: {bandwidthUpBytes}\n: {bandwidthDownBytes}",
-    "on-click-right": "kitty --class 'nmtui' fish -c 'nmtui'",
-    // "on-click-right": "wezterm start --class 'nmtui' -- 'nmtui'",
+    "tooltip-format": "{ifname}: {ipaddr}",
+    "on-click": "kitty --class 'nmtui' fish -c 'nmtui'",
   },
   "bluetooth": {
     "format": " {status}",
@@ -267,7 +283,8 @@
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}% 󰥉"
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}% 󰥉",
+    "on-click": "kitty --class 'bluetuith' fish -c 'bluetuith'",
   },
   "power-profiles-daemon": {
     "format": "{icon}",
@@ -290,18 +307,5 @@
     "interval": "once",
     "signal": 30,
     "format": "󰌌 {text}",
-  },
-  "custom/discord": {
-    "exec": "~/.venv/bin/python3 /home/huyhoang/discord_notification.py",
-    "return-type": "json",
-    "on-click": "xdg-open https://discord.com/channels/@me",
-    "interval": "once",
-    "signal": 31,
-    "hide-empty-text": true,
-    "format": "{icon}",
-    "format-icons": {
-      "has-notification": "",
-      "default": "",
-    }
   }
 }

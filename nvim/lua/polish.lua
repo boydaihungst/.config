@@ -8,6 +8,7 @@ vim.filetype.add {
     [".*/waybar/config.*"] = "jsonc",
     [".*/mako/config"] = "dosini",
     [".*/dunst/dunstrc"] = "dosini",
+    [".*/ghostty/.*"] = "toml",
     [".*/kitty/.+%.conf"] = "kitty",
     -- [".*/hypr/.+%.conf"] = "hyprlang",
     [".*/sway/.+%.conf"] = "swayconfig",

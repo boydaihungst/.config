@@ -43,8 +43,8 @@ quote_string() {
   echo "'${input//\'/\'\\\'\'}'"
 }
 
-termcmd="${TERMCMD:-/usr/bin/prime-run /usr/bin/wezterm start --class 'yazi' --workspace $(quote_string "$TITLE")}"
-# termcmd="${TERMCMD:-'/usr/bin/prime-run' /usr/bin/kitty --app-id 'yazi' --title $(quote_string "$TITLE")}"
+# termcmd="${TERMCMD:-/usr/bin/wezterm start --class 'yazi' --workspace $(quote_string "$TITLE")}"
+termcmd="${TERMCMD:-/usr/bin/prime-run /usr/bin/kitty --app-id 'yazi-selector' --title $(quote_string "$TITLE")}"
 
 cleanup() {
   if [ -f "$tmpfile" ]; then

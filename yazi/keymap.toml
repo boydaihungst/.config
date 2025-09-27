@@ -153,7 +153,7 @@
     # Goto
     { on = [ "g", "r" ], run = "cd /", desc = "cd /" },
     { on = [ "g", "e" ], run = "cd /etc", desc = "cd /etc" },
-    # { on = [ "g", "m" ], run = "cd /run/media", desc = "cd /run/media" },
+    # { on = [ "'", "a" ], run = "cd /mnt/remote/Media/Anime", desc = "cd /mnt/remote/Media/Anime" },
     { on = [ "g", "M" ], run = "cd /mnt", desc = "cd /mnt" },
     { on = [ "g", "o" ], run = "cd /opt", desc = "cd /opt" },
     { on = [ "g", "u" ], run = "cd /usr", desc = "cd /usr" },

@@ -328,7 +328,8 @@ function Status:name()
 	end
 	local left_width = ui.Line(left_lines):width()
 
-	local max_width = math.floor(self._area.w - right_width - left_width)
+	-- Progress bar width
+	local max_width = math.floor(self._area.w - right_width - left_width - 26)
 
 	file_name = smart_truncate:shorten(max_width, file_name, tail, always_show_patterns)
 	local style = self:style()

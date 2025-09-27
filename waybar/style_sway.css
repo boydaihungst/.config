@@ -13,7 +13,7 @@
 /*
 Color Scheme
 */
-@define-color background #16202A;
+@define-color background #080A0E;
 @define-color background-alt #202228;
 @define-color foreground #BCC4C9;
 @define-color primary #597A9A;
@@ -70,7 +70,7 @@ Color Scheme
 #waybar {
   background: transparent;
   color: @foreground;
-  /* background-color: @background; */
+  background-color: rgba(8, 10, 14, 0.8);
   font-family: Hack Nerd Font;
   font-size: 16px;
 }
@@ -86,13 +86,11 @@ Color Scheme
 #idle_inhibitor,
 #tray,
 #mpd,
-#workspaces,
 #sway,
 #cpu,
 #memory,
 #temperature,
-#custom-ibus-bamboo,
-#custom-discord {
+#custom-ibus-bamboo {
   margin-left: 1em;
 }
 
@@ -155,18 +153,17 @@ Color Scheme
 
 #mode {
   background: @warning;
+  border-bottom: 3px transparent;
   color: @background-alt;
   margin-left: 5px;
-  padding-left: 7px;
-  padding-right: 7px;
+  /* padding: 7px; */
 }
 
 #submap {
   background: @warning;
+  border-bottom: 3px transparent;
   color: @background-alt;
   margin-left: 5px;
-  padding-left: 7px;
-  padding-right: 7px;
   /* padding: 0px 7px; */
 }
 
@@ -184,8 +181,6 @@ Color Scheme
 
 #window {
   font-weight: bold;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 
 #workspaces {
@@ -198,7 +193,7 @@ Color Scheme
   padding-right: 14px;
 }
 
-#workspaces button.active {
+#workspaces button.focused {
   border-bottom: 3px solid @primary;
   color: @primary;
 }
@@ -216,8 +211,4 @@ Color Scheme
 #tray > .needs-attention {
   animation-name: blink-attention;
   animation-duration: 2s;
-}
-
-#custom-discord.has-notification {
-  color: @warning;
 }

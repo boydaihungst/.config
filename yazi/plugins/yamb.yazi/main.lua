@@ -109,9 +109,9 @@ local action_jump = function(bookmarks, path, jump_notify)
 	end
 	local tag = bookmarks[path].tag
 	if string.sub(path, -1) == path_sep then
-		ya.emit("cd", { path })
+		ya.emit("cd", { path, raw = true })
 	else
-		ya.emit("reveal", { path })
+		ya.emit("reveal", { path, no_dummy = true, raw = true })
 	end
 	if jump_notify then
 		ya.notify({
