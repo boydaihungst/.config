@@ -40,7 +40,6 @@ return {
   { import = "astrocommunity.pack.eslint" },
   { import = "astrocommunity.pack.kotlin" },
   { import = "astrocommunity.pack.fish" },
-  { import = "astrocommunity.pack.diff-keybindings" },
   -- { import = "astrocommunity.pack.full-dadbod" },
   { import = "astrocommunity.pack.html-css" },
   { import = "astrocommunity.pack.hyprlang" },
