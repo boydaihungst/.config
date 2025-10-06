@@ -1,0 +1,1 @@
+nvme_load=YES nowatchdog rw rootflags=subvol=/@ rd.luks.uuid=bbfc5677-a960-4c05-bce6-308635333043 root=/dev/mapper/luks-bbfc5677-a960-4c05-bce6-308635333043 resume=UUID=c9e3e688-8dfb-45ea-95d9-949b4b44618b amdgpu.dcdebugmask=0x10 nvidia_drm.modeset=1 acpi_osi=! "acpi_osi=Windows 2015" gpiolib_acpi.ignore_interrupt=AMDI0030:00@4,AMDI0030:00@89

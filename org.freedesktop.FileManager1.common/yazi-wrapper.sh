@@ -26,8 +26,8 @@ for arg in "$@"; do
 done
 
 cmd="/usr/bin/yazi"
-# termcmd="${TERMCMD:-'/usr/bin/prime-run' /usr/bin/kitty --app-id 'yazi'}"
-termcmd="${TERMCMD:-/usr/bin/prime-run /usr/bin/wezterm start --class 'yazi'}"
+termcmd="${TERMCMD:-/usr/bin/kitty --app-id 'yazi-selector'}"
+# termcmd="${TERMCMD:-prime-run /usr/bin/wezterm start --class 'yazi'}"
 
 case "$BDUS_METHOD" in
 # Since yazi can handle both files, folders

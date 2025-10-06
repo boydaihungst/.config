@@ -63,10 +63,10 @@ local DEVICE_CONNECT_STATUS = {
 
 ---@enum SCHEME
 local SCHEME = {
-	SSH = "ssh",
 	MTP = "mtp",
 	SMB = "smb",
 	SFTP = "sftp",
+	SSH = "ssh", -- Alias for sftp
 	NFS = "nfs",
 	GPHOTO2 = "gphoto2",
 	FTP = "ftp",

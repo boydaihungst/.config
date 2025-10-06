@@ -1,0 +1,4 @@
+.nvim.lua
+.lazy.lua
+.nvim/*
+.nvim

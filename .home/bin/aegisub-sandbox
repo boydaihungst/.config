@@ -1,0 +1,31 @@
+#!/bin/bash
+exec bwrap \
+  --ro-bind /usr /usr \
+  --ro-bind /usr/local /usr/local \
+  --ro-bind /lib /lib \
+  --ro-bind /lib64 /lib64 \
+  --ro-bind /etc /etc \
+  --ro-bind /bin /bin \
+  --proc /proc \
+  --dev-bind /dev /dev \
+  --ro-bind /home/huyhoang/.local/share/vietnamese-font /usr/share/fonts \
+  --ro-bind /run /run \
+  --bind "$XDG_RUNTIME_DIR"/"$WAYLAND_DISPLAY" "$XDG_RUNTIME_DIR"/"$WAYLAND_DISPLAY" \
+  --setenv WAYLAND_DISPLAY "$WAYLAND_DISPLAY" \
+  --setenv GDK_BACKEND "x11" \
+  --ro-bind /tmp/.X11-unix /tmp/.X11-unix \
+  --setenv DISPLAY "$DISPLAY" \
+  --bind "$XDG_RUNTIME_DIR"/dconf "$XDG_RUNTIME_DIR"/dconf \
+  --bind ~/.local/aegisub-fontcache/fontconfig "$HOME"/.cache/fontconfig \
+  --bind "$XDG_RUNTIME_DIR"/bus "$XDG_RUNTIME_DIR"/bus \
+  --setenv DBUS_SESSION_BUS_ADDRESS "unix:path=$XDG_RUNTIME_DIR/bus" \
+  --setenv HOME "$HOME" \
+  --setenv XDG_RUNTIME_DIR "$XDG_RUNTIME_DIR" \
+  --setenv LIBGL_ALWAYS_SOFTWARE 1 \
+  --bind "$HOME" "$HOME" \
+  --bind "$XDG_RUNTIME_DIR"/pulse "$XDG_RUNTIME_DIR"/pulse \
+  --bind /mnt/remote /mnt/remote \
+  --bind /tmp /tmp \
+  --setenv PULSE_SERVER unix:"$XDG_RUNTIME_DIR"/pulse/native \
+  --dev-bind /dev/dri /dev/dri \
+  /usr/bin/aegisub "$@"

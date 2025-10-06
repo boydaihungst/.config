@@ -1,0 +1,23 @@
+{
+    "createdBy": "Redirector v3.5.3",
+    "createdAt": "2025-10-06T10:08:59.687Z",
+    "redirects": [
+        {
+            "description": "https://discord.com/",
+            "exampleUrl": "https://discord.com/",
+            "exampleResult": "https://discord.com/channels/@me",
+            "error": null,
+            "includePattern": "https://discord.com/",
+            "excludePattern": "",
+            "patternDesc": "https://discord.com/",
+            "redirectUrl": "https://discord.com/channels/@me",
+            "patternType": "W",
+            "processMatches": "noProcessing",
+            "disabled": false,
+            "grouped": false,
+            "appliesTo": [
+                "main_frame"
+            ]
+        }
+    ]
+}

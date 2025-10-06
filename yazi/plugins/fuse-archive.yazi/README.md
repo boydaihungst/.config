@@ -121,7 +121,7 @@ This plugin supports MacOS, but you need to install `macfuse` instead of `fuse3`
   ```sh
   git clone https://github.com/google/fuse-archive
   cd "fuse-archive"
-  # Not tested yet, please confirm it works.
+  # Not tested yet, please confirm if it works.
   sudo CXXFLAGS=-DFUSE_DARWIN_ENABLE_EXTENSIONS=0 make STD=gnu++20a install
   ```
 

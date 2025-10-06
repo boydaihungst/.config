@@ -1,1 +1,0 @@
-/home/huyhoang/.config/hypr/scripts/touchpad-toggle.sh

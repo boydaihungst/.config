@@ -37,15 +37,13 @@ A Yazi plugin that compresses selected files to an archive. Supporting yazi vers
 ```bash
 # with yazi plugin manager
 ya pkg add boydaihungst/compress
-# or
-ya pack -a boydaihungst/compress
 ```
 
 - Add this to your `keymap.toml`:
 - Check default keymaps to prevent conflict https://github.com/sxyazi/yazi/blob/main/yazi-config/preset/keymap-default.toml
 
 ```toml
-[manager]
+[manager] # or [mgr] if you use yazi >= 25.6.11
   prepend_keymap = [
     { on = [ "e", "c" ], run = "plugin compress", desc = "Compress file(s)" },
     # If you input empty password, it will make an archive without password

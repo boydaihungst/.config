@@ -6,18 +6,10 @@ return {
     {
       "AstroNvim/astrocore",
       opts = function(_, opts)
+        if not opts.mappings then opts.mappings = require("astrocore").empty_map_table() end
         local maps = opts.mappings
-        -- maps.n["<Leader>e"] = { "<Cmd>Neotree toggle reveal_force_cwd<CR>", desc = "Toggle Explorer" }
-        maps.n["<Leader>e"] = {
-          function()
-            if vim.bo.filetype == "neo-tree" then
-              vim.cmd.Neotree "close"
-            else
-              vim.cmd "Neotree toggle reveal_force_cwd"
-            end
-          end,
-          desc = "Toggle Explorer",
-        }
+        maps.n["<Leader>e"] = { "<Cmd>Neotree toggle reveal_force_cwd<CR>", desc = "Toggle Explorer" }
+        maps.n["<Leader>ge"] = { "<Cmd>Neotree toggle git_status<CR>", desc = "Toggle Explorer" }
       end,
     },
   },

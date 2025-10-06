@@ -18,13 +18,13 @@ export CLUTTER_IM_MODULE=fcitx
 # export INPUT_METHOD=ibus
 # export GDK_DEBUG=portals
 export QT_STYLE_OVERRIDE=kvantum
-export PATH="$PATH:$HOME/bin:$HOME/.bun/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GEM_HOME/bin:$HOME/.local/share/neovim/bin:$HOME/.local/share/bob/nvim-bin:$HOME/.pyenv/bin:$HOME/android_root/platform-tools/adb:/opt/cuda/bin:/usr/local/VideoSubFinder"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:/usr/lib/safe-rm:$PATH:$HOME/bin:$HOME/.bun/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GEM_HOME/bin:$HOME/.local/share/neovim/bin:$HOME/.local/share/bob/nvim-bin:$HOME/.pyenv/bin:$HOME/android_root/platform-tools/adb:/opt/cuda/bin:/usr/local/VideoSubFinder:$HOME/.yarn/bin:$HOME/go/bin"
 export npm_config_prefix="$HOME/.local"
 export JAVA_HOME=/usr/lib/jvm/default
 export EDITOR=nvim
 export VISUAL=nvim
 export TERMINAL=kitty
-export TERM=xterm-kitty
+# export TERM=xterm-kitty
 export COLORTERM=truecolor
 export USE_CCACHE=1
 export CCACHE_COMPRESS=1
@@ -33,3 +33,4 @@ if [ -f "$HOME"/.ssh/cf_llm ]; then
   source "$HOME"/.ssh/cf_llm
 fi
 export CUDAToolkit_ROOT=/opt/cuda
+export GPG_TTY=$(tty)
