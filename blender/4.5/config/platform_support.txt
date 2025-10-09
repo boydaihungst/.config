@@ -18,3 +18,6 @@
 {Intel/Mesa Intel(R) UHD Graphics (CML GT2)/4.6 (Core Profile) Mesa 25.1.5-arch1.1}=SUPPORTED
 {Intel/Mesa Intel(R) UHD Graphics (CML GT2)/4.6 (Core Profile) Mesa 25.1.6-arch1.1}=SUPPORTED
 {Intel/Mesa Intel(R) UHD Graphics (CML GT2)/4.6 (Core Profile) Mesa 25.1.7-arch1.1}=SUPPORTED
+{Intel/Mesa Intel(R) UHD Graphics (CML GT2)/4.6 (Core Profile) Mesa 25.2.1-arch1.5}=SUPPORTED
+{Intel/Mesa Intel(R) UHD Graphics (CML GT2)/4.6 (Core Profile) Mesa 25.2.2-arch1.2}=SUPPORTED
+{Intel/Mesa Intel(R) UHD Graphics (CML GT2)/4.6 (Core Profile) Mesa 25.2.3-arch1.2}=SUPPORTED

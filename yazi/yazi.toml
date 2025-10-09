@@ -26,106 +26,104 @@ wrap = "yes"
 
 [opener]
 
-bulk-rename = [{ run = 'nvim "$@"', block = true }]
+bulk-rename = [{ run = 'nvim %s', block = true }]
 
 mount_remote = [
-  { run = 'clear && sudo mount -t nfs4 -o acl "home:/mnt/hdd" "$1"', block = true, desc = "Mount NFS server Ubuntu server home", for = "linux" },
-  { run = 'sshfs huyhoang@home:/mnt/hdd $1', desc = "Mount SSHFS server Ubuntu server home", orphan = true, for = "linux" },
-  { run = 'clear && sudo umount "$1"', block = true, desc = "Unmount", for = "linux" },
+  { run = 'clear && sudo mount -t nfs4 -o acl "home:/mnt/hdd" %s', block = true, desc = "Mount NFS server Ubuntu server home", for = "linux" },
+  { run = 'sshfs huyhoang@home:/mnt/hdd %s', desc = "Mount SSHFS server Ubuntu server home", orphan = true, for = "linux" },
+  { run = 'clear && sudo umount %s', block = true, desc = "Unmount", for = "linux" },
 ]
 
 subtitle_editor_ass = [
-  { run = 'gtk-launch aegisub "$1"', desc = "Aegisub", orphan = true, for = "linux" },
-  { run = 'clear && $HOME/git/subtitle-signs-transfer/.venv/bin/python $HOME/git/subtitle-signs-transfer/main.py "$@"; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Transfer signs", for = "linux" },
-  { run = 'clear && $HOME/git/crunchy-subs/.venv/bin/python $HOME/git/crunchy-subs/subtitle_processor.py "$@"', orphan = true, desc = "Subtitle: Clean", for = "linux" },
-  { run = 'clear && assfonts -i "$@"; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Embed fonts", for = "linux" },
-  { run = 'clear && $HOME/git/scripts/vtt-srt-to-ass.sh "$@"; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Convert to ASS", for = "linux" },
+  { run = 'gtk-launch aegisub %s1', desc = "Aegisub", orphan = true, for = "linux" },
+  { run = 'clear && $HOME/git/subtitle-signs-transfer/.venv/bin/python $HOME/git/subtitle-signs-transfer/main.py %s; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Transfer signs", for = "linux" },
+  { run = 'clear && $HOME/git/crunchy-subs/.venv/bin/python $HOME/git/crunchy-subs/subtitle_processor.py %s', orphan = true, desc = "Subtitle: Clean", for = "linux" },
+  { run = 'clear && assfonts -i %s; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Embed fonts", for = "linux" },
+  { run = 'clear && $HOME/git/scripts/vtt-srt-to-ass.sh %s; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Convert to ASS", for = "linux" },
 ]
 subtitle_editor_srt = [
-  { run = 'gtk-launch aegisub "$1"', desc = "Aegisub", orphan = true, for = "linux" },
-  { run = 'clear && $HOME/git/scripts/vtt-srt-to-ass.sh "$@"; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Convert to ASS", for = "linux" },
+  { run = 'gtk-launch aegisub %s1', desc = "Aegisub", orphan = true, for = "linux" },
+  { run = 'clear && $HOME/git/scripts/vtt-srt-to-ass.sh %s; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Convert to ASS", for = "linux" },
 ]
 subtitle_editor_vtt = [
-  { run = 'clear && $HOME/git/scripts/vtt-srt-to-ass.sh "$@"; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Convert to ASS", for = "linux" },
+  { run = 'clear && $HOME/git/scripts/vtt-srt-to-ass.sh %s; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Convert to ASS", for = "linux" },
 ]
 subtitle_processor_folder = [
-  { run = 'clear && $HOME/git/scripts/extract_sub.sh "$@"', orphan = true, desc = "Subtitle: Extract", for = "linux" },
-  { run = 'clear && $HOME/git/subtitle-signs-transfer/.venv/bin/python $HOME/git/subtitle-signs-transfer/main.py "$@"; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Transfer signs", for = "linux" },
-  { run = 'clear && $HOME/git/subtitle-signs-transfer/.venv/bin/python $HOME/git/crunchy-subs/subtitle_processor.py "$@"', orphan = true, desc = "Subtitle: Clean", for = "linux" },
-  { run = 'kitty -- "$HOME/git/OCR/batch.sh" "$@"', orphan = true, desc = "Subtitle: OCR", for = "linux" },
-  # { run = 'wezterm start -- "$HOME/git/OCR/batch.sh" "$@"', orphan = true, desc = "Subtitle: OCR", for = "linux" },
-  { run = 'clear && assfonts -i "$@/"*.ass; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Embed fonts", for = "linux" },
+  { run = 'clear && $HOME/git/scripts/extract_sub.sh %s', orphan = true, desc = "Subtitle: Extract", for = "linux" },
+  { run = 'clear && $HOME/git/subtitle-signs-transfer/.venv/bin/python $HOME/git/subtitle-signs-transfer/main.py %s; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Transfer signs", for = "linux" },
+  { run = 'clear && $HOME/git/subtitle-signs-transfer/.venv/bin/python $HOME/git/crunchy-subs/subtitle_processor.py %s', orphan = true, desc = "Subtitle: Clean", for = "linux" },
+  { run = 'kitty -- "$HOME/git/OCR/batch.sh" %s', orphan = true, desc = "Subtitle: OCR", for = "linux" },
+  # { run = 'wezterm start -- "$HOME/git/OCR/batch.sh" %s', orphan = true, desc = "Subtitle: OCR", for = "linux" },
+  { run = 'clear && assfonts -i %s1/*.ass; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Embed fonts", for = "linux" },
 ]
 
 torrent_editor = [
-  { run = 'torrent-file-editor "$1"', desc = "Torrent file editor", orphan = true, for = "linux" },
+  { run = 'torrent-file-editor %s1', desc = "Torrent file editor", orphan = true, for = "linux" },
 ]
 
-manpage = [{ run = 'man "$1"', orphan = true, desc = "Manpage", for = "linux" }]
+manpage = [{ run = 'man %s1', orphan = true, desc = "Manpage", for = "linux" }]
 
-wine = [{ run = 'wine64 "$1"', orphan = true, desc = "Wine64", for = "linux" }]
+wine = [{ run = 'wine64 %s1', orphan = true, desc = "Wine64", for = "linux" }]
 
-audio = [
-  { run = 'ncmpcpp "$@"', orphan = true, desc = "Ncmpcpp", for = "linux" },
-]
+audio = [{ run = 'ncmpcpp %s', orphan = true, desc = "Ncmpcpp", for = "linux" }]
 
 video = [
-  { run = 'smplayer "$@"', orphan = true, desc = "Smplayer", for = "linux" },
-  # { run = 'vlc "$@"', orphan = true, desc = "Vlc", for = "linux" },
-  # { run = 'mpv "$@"', orphan = true, desc = "Mpv", for = "linux" },
-  { run = '$HOME/git/scripts/extract_sub.sh "$@"', orphan = true, desc = "Extract subtitle", for = "linux" },
+  { run = "smplayer %s", orphan = true, desc = "Smplayer", for = "linux" },
+  # { run = 'vlc %s', orphan = true, desc = "Vlc", for = "linux" },
+  # { run = 'mpv %s', orphan = true, desc = "Mpv", for = "linux" },
+  { run = '$HOME/git/scripts/extract_sub.sh %s', orphan = true, desc = "Extract subtitle", for = "linux" },
 ]
 
 document = [
-  { run = 'libreoffice "$@"', orphan = true, desc = "Libreoffice", for = "linux" },
+  { run = 'libreoffice %s', orphan = true, desc = "Libreoffice", for = "linux" },
 ]
 
 ebook_viewer = [
-  { run = 'ebook-viewer "$@"', orphan = true, desc = "Ebook-viewer", for = "linux" },
-  { run = 'calibre "$@"', orphan = true, desc = "Calibre", for = "linux" },
+  { run = 'ebook-viewer %s', orphan = true, desc = "Ebook-viewer", for = "linux" },
+  { run = 'calibre %s', orphan = true, desc = "Calibre", for = "linux" },
 
 ]
 image = [
-  { run = 'gthumb "$@"', orphan = true, desc = "Gthumb", for = "linux" },
-  { run = 'gimp "$@"', orphan = true, desc = "Gimp", for = "linux" },
-  { run = 'inkscape "$@"', orphan = true, desc = "Inkscape", for = "linux" },
-  { run = 'cp "$1" $HOME/.config/hypr/wallpaper && systemctl restart --user hyprpaper.service', orphan = false, block = false, desc = "Set as wallpaper", for = "linux" },
+  { run = 'gthumb %s', orphan = true, desc = "Gthumb", for = "linux" },
+  { run = 'gimp %s', orphan = true, desc = "Gimp", for = "linux" },
+  { run = 'inkscape %s', orphan = true, desc = "Inkscape", for = "linux" },
+  { run = 'cp %s1 $HOME/.config/hypr/wallpaper && systemctl restart --user hyprpaper.service', orphan = false, block = false, desc = "Set as wallpaper", for = "linux" },
 ]
 
 terminal = [
-  { run = 'kitty "$1"', orphan = true, desc = "Kitty", for = "linux" },
-  # { run = 'wezterm start --cwd "$1"', orphan = true, desc = "Wezterm", for = "linux" },
+  { run = 'kitty %s1', orphan = true, desc = "Kitty", for = "linux" },
+  # { run = 'wezterm start --cwd %s1', orphan = true, desc = "Wezterm", for = "linux" },
 ]
 
 edit = [
-  { run = 'kitty --app-id "nvim" -- nvim "$@"', orphan = true, desc = "Nvim", for = "linux" },
-  # { run = 'wezterm start --class "nvim" -- nvim "$@"', orphan = true, desc = "Nvim", for = "linux" },
-  { run = 'xed "$@"', desc = "Xed", orphan = true, for = "linux" },
+  { run = 'kitty --app-id "nvim" -- nvim %s', orphan = true, desc = "Nvim", for = "linux" },
+  # { run = 'wezterm start --class "nvim" -- nvim %s', orphan = true, desc = "Nvim", for = "linux" },
+  { run = 'xed %s', desc = "Xed", orphan = true, for = "linux" },
 ]
 
 open = [
-  { run = 'xdg-open "$1"', desc = "Xdg-open", orphan = true, for = "linux" },
+  { run = 'xdg-open %s1', desc = "Xdg-open", orphan = true, for = "linux" },
 ]
 
 reveal = [
-  { run = 'xdg-open "$(dirname "$1")"', desc = "Reveal", for = "linux" },
-  { run = 'open -R "$1"', desc = "Reveal", for = "macos" },
-  { run = 'explorer /select,"%1"', orphan = true, desc = "Reveal", for = "windows" },
-  { run = '''exiftool "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
+  { run = 'xdg-open "$(dirname %s1)"', desc = "Reveal", for = "linux" },
+  { run = 'open -R %s1', desc = "Reveal", for = "macos" },
+  { run = 'explorer /select,%1', orphan = true, desc = "Reveal", for = "windows" },
+  { run = '''exiftool %s1; echo "Press enter to exit"; read _''', block = true, desc = "Show EXIF", for = "unix" },
 ]
 
-execute = [{ run = '"$1"', desc = "Run", for = "linux" }]
+execute = [{ run = '%s1', desc = "Run", for = "linux" }]
 
 archive = [
-  { run = 'ya pub extract --list "$@"', desc = "Extract to dir", for = "unix" },
+  { run = 'ya pub extract --list %s', desc = "Extract to dir", for = "unix" },
   { run = 'ya pub extract --list %*', desc = "Extract to dir", for = "windows" },
-  { run = 'file-roller "$@"', orphan = true, desc = "File-roller", for = "linux" },
-  { run = '7zFM "$@"', orphan = true, desc = "7z GUI", for = "linux" },
+  { run = 'file-roller %s', orphan = true, desc = "File-roller", for = "linux" },
+  { run = '7zFM %s', orphan = true, desc = "7z GUI", for = "linux" },
 ]
 download = [
-  { run = 'ya emit download --open "$@"', desc = "Download and open", for = "unix" },
+  { run = 'ya emit download --open %s', desc = "Download and open", for = "unix" },
   { run = 'ya emit download --open %*', desc = "Download and open", for = "windows" },
-  { run = 'ya emit download "$@"', desc = "Download", for = "unix" },
+  { run = 'ya emit download %s', desc = "Download", for = "unix" },
   { run = 'ya emit download %*', desc = "Download", for = "windows" },
 ]
 

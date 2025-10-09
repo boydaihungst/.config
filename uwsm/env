@@ -6,7 +6,7 @@ export OZONE_PLATFORM=wayland
 export ELECTRON_OZONE_PLATFORM_HINT=wayland
 export GDK_DPI_SCALE=1
 export GDK_DEBUG=portals
-export QT_STYLE_OVERRIDE=kvantum
+export QT_QPA_PLATFORMTHEME=qt5ct
 
 export XDG_CURRENT_DESKTOP=Hyprland
 export XDG_SESSION_TYPE=wayland

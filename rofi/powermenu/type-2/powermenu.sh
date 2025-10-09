@@ -70,8 +70,7 @@ run_cmd() {
 		elif [[ $1 == '--hibernate' ]]; then
 			playerctl pause
 			# amixer set Master mute
-			# systemctl hybrid-sleep
-			systemctl suspend
+			systemctl hybrid-sleep
 		elif [[ $1 == '--logout' ]]; then
 			if command -v uwsm &>/dev/null; then
 				uwsm stop

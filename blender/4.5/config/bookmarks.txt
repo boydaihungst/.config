@@ -1,6 +1,12 @@
 [Bookmarks]
 [Recent]
-/home/huyhoang/Videos/test/
-/home/huyhoang/Videos/
-!Home
-/home/huyhoang/
+/home/huyhoang/Videos/test/34190-34285/
+/home/huyhoang/Videos/test/34094-34189/
+/home/huyhoang/Videos/test/26181-26240/
+/home/huyhoang/Videos/test/18939-19013/
+/home/huyhoang/Videos/test/12463-12621/
+/home/huyhoang/Videos/test/28670-28755/
+/home/huyhoang/Videos/test/26487-26570/
+/home/huyhoang/Videos/test/5030-5120/
+/home/huyhoang/Videos/test/5675-5720/
+/home/huyhoang/Videos/test/10463-10582/

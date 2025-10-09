@@ -39,7 +39,7 @@
 		"Save Charset" : "UTF-8",
 		"Save UI State" : true,
 		"Show Toolbar" : true,
-		"Toolbar Icon Size" : 24
+		"Toolbar Icon Size" : 36
 	},
 	"Audio" : {
 		"Auto" : {
@@ -72,13 +72,13 @@
 			},
 			"Waveform Style" : 0
 		},
-		"Display Height" : 176,
+		"Display Height" : 237,
 		"Downmixer" : "None",
 		"Drag Timing" : false,
 		"Inactive Lines Display Mode" : 3,
 		"Karaoke" : {
 			"Font Face" : "Verdana",
-			"Font Size" : 12
+			"Font Size" : 18
 		},
 		"Lead" : {
 			"IN" : 100,
@@ -282,10 +282,10 @@
 			"Active Border" : "rgb(0, 255, 29)",
 			"Background" : {
 				"Background" : "rgb(14, 16, 19)",
-				"Closed Fold" : "rgb(11, 14, 34)",
+				"Closed Fold" : "rgb(200, 200, 200)",
 				"Comment" : "rgb(63, 20, 95)",
 				"Inframe" : "rgb(34, 70, 34)",
-				"Open Fold" : "rgb(15, 13, 126)",
+				"Open Fold" : "rgb(235, 235, 235)",
 				"Selected Comment" : "rgb(96, 37, 140)",
 				"Selection" : "rgb(33, 35, 43)"
 			},
@@ -329,9 +329,9 @@
 			"Audio" : "/mnt/remote/Media/Anime/Makina-san's a Love Bot!! (2025) [tvdbid-449914]/Season 01",
 			"Automation" : "",
 			"Keyframes" : "",
-			"Subtitles" : "/mnt/remote/Media/Anime/Akiba Maid War (2022) [tvdbid-421676]/Season 01",
+			"Subtitles" : "/mnt/remote/Media/Anime/The Shiunji Family Children (2025) [tvdbid-446141]/Season 01",
 			"Timecodes" : "",
-			"Video" : "/mnt/remote/Media/Anime/Akiba Maid War (2022) [tvdbid-421676]/Season 01"
+			"Video" : "/mnt/remote/Media/Anime/The Shiunji Family Children (2025) [tvdbid-446141]/Season 01"
 		},
 		"Screenshot" : "?video"
 	},
@@ -363,7 +363,7 @@
 			},
 			"FFmpegSource" : {
 				"Decode Error Handling" : "Ignore",
-				"Downmix" : true
+				"Downmix" : false
 			},
 			"VapourSynth" : {
 				"Default Script" : "# This default script will load an audio file using BestSource.\n# It requires the `bs` plugin.\n\nimport vapoursynth as vs\nimport aegisub_vs as a\na.set_paths(locals())\n\na.ensure_plugin(\"bs\", \"BestSource\", \"To use Aegisub's default audio loader, the `bs` plugin for VapourSynth must be installed\")\nvs.core.bs.AudioSource(source=filename).set_output()"
@@ -408,8 +408,8 @@
 				"Unsafe Seeking" : false
 			},
 			"VapourSynth" : {
-				"Default Script" : "# This default script will load a video file using LWLibavSource.\n# It requires the `lsmas` plugin.\n# See ?data/automation/vapoursynth/aegisub_vs.py for more information.\n\nimport vapoursynth as vs\nimport time\nimport aegisub_vs as a\na.set_paths(locals())\n\nclip, videoinfo = a.wrap_lwlibavsource(filename)\nclip.set_output()\n__aegi_timecodes = videoinfo[\"timecodes\"]\n__aegi_keyframes = videoinfo[\"keyframes\"]\n\n# Uncomment this line to make Aegisub look for a keyframes file for the video, or ask to detect keyframes on scene changes if no file was found.\n# You can also change the GenKeyframesMode. Valid values are NEVER, ALWAYS, and ASK.\n#__aegi_keyframes = a.get_keyframes(filename, clip, __aegi_keyframes, generate=a.GenKeyframesMode.ALWAYS)\n\n# Check if the file has an audio track. This requires the `bs` plugin.\n__aegi_hasaudio = 1 if a.check_audio(filename) else 0",
-				"Log Level" : "Critical"
+				"Default Script" : "# This default script will load a video file using LWLibavSource.\n# It requires the `lsmas` plugin.\n# See ?data/automation/vapoursynth/aegisub_vs.py for more information.\n\nimport vapoursynth as vs\nimport time\nimport aegisub_vs as a\na.set_paths(locals())\n\nclip, videoinfo = a.wrap_lwlibavsource(filename)\nclip.set_output()\n__aegi_timecodes = videoinfo[\"timecodes\"]\n__aegi_keyframes = videoinfo[\"keyframes\"]\n\n# Uncomment this line to make Aegisub look for a keyframes file for the video, or ask to detect keyframes on scene changes if no file was found.\n# You can also change the GenKeyframesMode. Valid values are NEVER, ALWAYS, and ASK.\n#__aegi_keyframes = a.get_keyframes(filename, clip, __aegi_keyframes, generate=a.GenKeyframesMode.ASK)\n\n# Check if the file has an audio track. This requires the `bs` plugin.\n__aegi_hasaudio = 1 if a.check_audio(filename) else 0",
+				"Log Level" : "Information"
 			}
 		}
 	},
@@ -427,8 +427,8 @@
 			"Width" : 1920
 		},
 		"Edit Box" : {
-			"Font Face" : "CodeNewRoman Nerd Font",
-			"Font Size" : 10,
+			"Font Face" : "Hack Nerd Font",
+			"Font Size" : 30,
 			"Soft Line Break" : false
 		},
 		"Grid" : {
@@ -474,8 +474,8 @@
 				}
 			],
 			"Focus Allow" : true,
-			"Font Face" : "CodeNewRoman Nerd Font",
-			"Font Size" : 16,
+			"Font Face" : "Hack Nerd Font",
+			"Font Size" : 20,
 			"Hide Overrides" : 0,
 			"Hide Overrides Char" : "☀",
 			"Highlight Subtitles in Frame" : true
@@ -541,97 +541,97 @@
 					"color" : "rgb(255, 0, 0)"
 				},
 				{
-					"color" : "rgb(181, 28, 16)"
+					"color" : "rgb(0, 4, 255)"
 				},
 				{
-					"color" : "rgb(189, 32, 66)"
+					"color" : "rgb(111, 69, 49)"
 				},
 				{
-					"color" : "rgb(107, 154, 214)"
+					"color" : "rgb(254, 237, 219)"
 				},
 				{
-					"color" : "rgb(6, 195, 0)"
+					"color" : "rgb(101, 60, 42)"
 				},
 				{
-					"color" : "rgb(66, 101, 222)"
+					"color" : "rgb(226, 154, 64)"
 				},
 				{
-					"color" : "rgb(214, 40, 99)"
+					"color" : "rgb(220, 143, 57)"
 				},
 				{
-					"color" : "rgb(57, 105, 231)"
+					"color" : "rgb(102, 52, 37)"
 				},
 				{
-					"color" : "rgb(255, 0, 0)"
+					"color" : "rgb(118, 62, 34)"
 				},
 				{
-					"color" : "rgb(41, 89, 219)"
+					"color" : "rgb(154, 86, 52)"
 				},
 				{
-					"color" : "rgb(0, 0, 0)"
+					"color" : "rgb(157, 90, 54)"
 				},
 				{
-					"color" : "rgb(0, 0, 0)"
+					"color" : "rgb(255, 233, 213)"
 				},
 				{
-					"color" : "rgb(87, 87, 91)"
+					"color" : "rgb(124, 66, 42)"
 				},
 				{
-					"color" : "rgb(0, 189, 255)"
+					"color" : "rgb(107, 55, 26)"
 				},
 				{
-					"color" : "rgb(198, 124, 28)"
+					"color" : "rgb(251, 237, 223)"
 				},
 				{
-					"color" : "rgb(87, 87, 91)"
+					"color" : "rgb(228, 168, 97)"
 				},
 				{
-					"color" : "rgb(198, 124, 28)"
+					"color" : "rgb(211, 121, 58)"
 				},
 				{
-					"color" : "rgb(0, 189, 255)"
+					"color" : "rgb(191, 101, 52)"
 				},
 				{
-					"color" : "rgb(87, 87, 91)"
+					"color" : "rgb(42, 64, 61)"
 				},
 				{
-					"color" : "rgb(16, 20, 33)"
+					"color" : "rgb(113, 133, 115)"
 				},
 				{
-					"color" : "rgb(123, 133, 137)"
+					"color" : "rgb(181, 152, 162)"
 				},
 				{
-					"color" : "rgb(0, 0, 0)"
+					"color" : "rgb(102, 76, 82)"
 				},
 				{
-					"color" : "rgb(97, 162, 214)"
+					"color" : "rgb(144, 144, 144)"
 				},
 				{
-					"color" : "rgb(239, 211, 148)"
+					"color" : "rgb(255, 252, 255)"
 				},
 				{
-					"color" : "rgb(0, 0, 0)"
+					"color" : "rgb(189, 48, 190)"
 				},
 				{
-					"color" : "rgb(66, 89, 140)"
+					"color" : "rgb(255, 252, 255)"
 				},
 				{
-					"color" : "rgb(173, 85, 107)"
+					"color" : "rgb(132, 130, 132)"
 				},
 				{
-					"color" : "rgb(99, 150, 74)"
+					"color" : "rgb(82, 113, 148)"
 				},
 				{
-					"color" : "rgb(181, 154, 66)"
+					"color" : "rgb(123, 134, 165)"
 				},
 				{
-					"color" : "rgb(140, 73, 41)"
+					"color" : "rgb(222, 215, 198)"
 				},
 				{
-					"color" : "rgb(140, 73, 41)"
+					"color" : "rgb(140, 142, 156)"
 				},
 				{
-					"color" : "rgb(66, 73, 90)"
+					"color" : "rgb(156, 154, 165)"
 				}
 			],
 			"Restrict to Window" : false
@@ -652,12 +652,6 @@
 		"Paste Lines Over" : {
 			"Fields" : [
 				{
-					"bool" : false
-				},
-				{
-					"bool" : false
-				},
-				{
 					"bool" : true
 				},
 				{
@@ -670,35 +664,41 @@
 					"bool" : false
 				},
 				{
-					"bool" : false
+					"bool" : true
 				},
 				{
-					"bool" : false
+					"bool" : true
 				},
 				{
-					"bool" : false
+					"bool" : true
 				},
 				{
-					"bool" : false
+					"bool" : true
 				},
 				{
-					"bool" : false
+					"bool" : true
+				},
+				{
+					"bool" : true
+				},
+				{
+					"bool" : true
 				}
 			]
 		},
 		"Preferences" : {
-			"Page" : 7
+			"Page" : 2
 		},
 		"Search Replace" : {
 			"Affect" : 0,
 			"Field" : 0,
-			"Match Case" : false,
-			"RegExp" : false,
+			"Match Case" : true,
+			"RegExp" : true,
 			"Skip Comments" : false,
 			"Skip Tags" : false
 		},
 		"Select Lines" : {
-			"Action" : 2,
+			"Action" : 3,
 			"Condition" : 0,
 			"Field" : 0,
 			"Match" : {
@@ -707,14 +707,14 @@
 				"Dialogue" : true
 			},
 			"Mode" : 1,
-			"Text" : "{"
+			"Text" : "\\i1"
 		},
 		"Shift Times" : {
 			"Affect" : 0,
-			"ByTime" : false,
+			"ByTime" : true,
 			"Direction" : true,
 			"Frames" : 24,
-			"Time" : 15000,
+			"Time" : 5000,
 			"Type" : 0
 		},
 		"Spell Checker" : {
@@ -725,8 +725,8 @@
 		},
 		"Style Editor" : {
 			"Last" : {
-				"Height" : 346,
-				"Width" : 1118,
+				"Height" : 424,
+				"Width" : 1322,
 				"X" : 0,
 				"Y" : 0
 			},
@@ -786,8 +786,8 @@
 			"Autohide" : false,
 			"Perspective" : {
 				"Grid" : false,
-				"Org Mode" : 16,
-				"Outer" : true,
+				"Org Mode" : 0,
+				"Outer" : false,
 				"Outer Locked" : false
 			},
 			"Shape Handle Size" : 3
@@ -798,7 +798,7 @@
 		"Next Check" : 1738940302
 	},
 	"Video" : {
-		"Default Zoom" : 3,
+		"Default Zoom" : 4,
 		"Default to Video Zoom" : false,
 		"Detached" : {
 			"Enabled" : false,

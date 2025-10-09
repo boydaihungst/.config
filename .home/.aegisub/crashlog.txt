@@ -1,0 +1,76 @@
+--- 25-10-02 21:58:15 ------------------
+VER - 9844-makepkg-9bfd5008d
+FTL - Beginning stack dump for "Fatal exception": 
+000 - 0x5597699097b4: 
+001 - 0x7fdd9218f114: 
+002 - 0x7fdd8dc3e540: 
+003 - 0x7fdd8b838fcd: 
+004 - 0x7fdd8b85deb2: gtk_text_layout_cursors_changed
+005 - 0x7fdd8b83b5ae: 
+006 - 0x7fdd8b845b69: gtk_text_buffer_select_range
+007 - 0x7fdd929bb701: wxTextCtrl::SetInsertionPoint(long)
+008 - 0x7fdd929cc846: wxTextEntry::DoSetValue(wxString const&, int)
+009 - 0x559769998c90: 
+010 - 0x559769998d39: 
+011 - 0x7fdd921642b1: wxEvtHandler::ProcessEventIfMatchesId(wxEventTableEntryBase const&, wxEvtHandler*, wxEvent&)
+012 - 0x7fdd92166be9: wxEvtHandler::SearchDynamicEventTable(wxEvent&)
+013 - 0x7fdd92166f3e: wxEvtHandler::TryHereOnly(wxEvent&)
+014 - 0x7fdd92166ff0: wxEvtHandler::ProcessEventLocally(wxEvent&)
+015 - 0x7fdd9216711a: wxEvtHandler::ProcessEvent(wxEvent&)
+016 - 0x7fdd92167523: wxEvtHandler::SafelyProcessEvent(wxEvent&)
+017 - 0x7fdd929864cb: 
+018 - 0x7fdd916e297c: g_closure_invoke
+019 - 0x7fdd91701aab: 
+020 - 0x7fdd91703b0f: 
+021 - 0x7fdd91703d89: g_signal_emit_valist
+022 - 0x7fdd91703e44: g_signal_emit
+023 - 0x7fdd8b87f53f: 
+024 - 0x7fdd91703c77: 
+025 - 0x7fdd91703d89: g_signal_emit_valist
+026 - 0x7fdd91703e44: g_signal_emit
+027 - 0x7fdd8b63ba66: 
+028 - 0x7fdd91703c77: 
+029 - 0x7fdd91703d89: g_signal_emit_valist
+030 - 0x7fdd91703e44: g_signal_emit
+031 - 0x7fdd8b63b8ae: 
+032 - 0x7fdd8b5f6518: 
+033 - 0x7fdd91703c77: 
+034 - 0x7fdd91703d89: g_signal_emit_valist
+035 - 0x7fdd91703e44: g_signal_emit
+036 - 0x7fdd8b71f925: 
+037 - 0x7fdd916e6c13: g_cclosure_marshal_VOID__BOXEDv
+038 - 0x7fdd91703c77: 
+039 - 0x7fdd91703d89: g_signal_emit_valist
+040 - 0x7fdd91703e44: g_signal_emit
+041 - 0x7fdd8b716a2e: 
+042 - 0x7fdd8b71f2bb: 
+043 - 0x7fdd8b722bef: 
+044 - 0x7fdd8b6d8c41: gtk_event_controller_handle_event
+045 - 0x7fdd8b8df5bd: 
+046 - 0x7fdd8b5f9a8b: 
+047 - 0x7fdd916e297c: g_closure_invoke
+048 - 0x7fdd91701fb3: 
+049 - 0x7fdd917032db: 
+050 - 0x7fdd91703d89: g_signal_emit_valist
+051 - 0x7fdd91703e44: g_signal_emit
+052 - 0x7fdd8b8ef2fe: 
+053 - 0x7fdd8b770415: 
+054 - 0x7fdd8b7711cb: gtk_main_do_event
+055 - 0x7fdd8fd3b1c7: 
+056 - 0x7fdd8fd76c10: 
+057 - 0x7fdd8e306f4d: 
+058 - 0x7fdd8e308617: 
+059 - 0x7fdd8e3089d7: g_main_loop_run
+060 - 0x7fdd8b76b88f: gtk_main
+061 - 0x7fdd92923116: wxGUIEventLoop::DoRun()
+062 - 0x7fdd920ac80b: wxEventLoopBase::Run()
+063 - 0x7fdd920853e6: wxAppConsoleBase::MainLoop()
+064 - 0x559769906c24: 
+065 - 0x7fdd920ec2b1: wxEntry(int&, wchar_t**)
+066 - 0x559769672ec9: main
+067 - 0x7fdd8dc27675: 
+068 - 0x7fdd8dc27729: __libc_start_main
+069 - 0x559769677ad5: 
+End of stack dump.
+----------------------------------------
+

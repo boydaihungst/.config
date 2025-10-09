@@ -56,7 +56,7 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       800px;
+    width:                       1000px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -158,7 +158,7 @@ case-indicator {
 listview {
     enabled:                     true;
     columns:                     1;
-    lines:                       8;
+    lines:                       10;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;

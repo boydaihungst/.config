@@ -1,5 +1,6 @@
 Xcursor.theme: Qogir-dark
 Xcursor.size: 16
+Xft.dpi: 120
 *background: #1E1E2E
 *foreground: #CDD6F4
 

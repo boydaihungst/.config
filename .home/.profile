@@ -5,6 +5,7 @@
 # export WLR_RENDERER_ALLOW_SOFTWARE=1
 # export WLR_DRM_NO_ATOMIC=1
 # export ELECTRON_OZONE_PLATFORM_HINT=wayland
+export QT_QPA_PLATFORMTHEME=qt5ct
 export MOZ_USE_XINPUT2=1
 # export GDK_DPI_SCALE=1
 export GTK_USE_PORTAL=1
@@ -17,14 +18,14 @@ export QT4_IM_MODULE=fcitx
 export CLUTTER_IM_MODULE=fcitx
 # export INPUT_METHOD=ibus
 # export GDK_DEBUG=portals
-export QT_STYLE_OVERRIDE=kvantum
-export PATH="/usr/lib/safe-rm:$PATH:$HOME/bin:$HOME/.bun/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GEM_HOME/bin:$HOME/.local/share/neovim/bin:$HOME/.local/share/bob/nvim-bin:$HOME/.pyenv/bin:$HOME/android_root/platform-tools/adb:/opt/cuda/bin:/usr/local/VideoSubFinder:$HOME/.yarn/bin:$HOME/go/bin"
+# export QT_STYLE_OVERRIDE=kvantum
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:/usr/lib/safe-rm:$PATH:$HOME/bin:$HOME/.bun/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GEM_HOME/bin:$HOME/.local/share/neovim/bin:$HOME/.local/share/bob/nvim-bin:$HOME/.pyenv/bin:$HOME/android_root/platform-tools/adb:/opt/cuda/bin:/usr/local/VideoSubFinder:$HOME/.yarn/bin:$HOME/go/bin"
 export npm_config_prefix="$HOME/.local"
 export JAVA_HOME=/usr/lib/jvm/default
 export EDITOR=nvim
 export VISUAL=nvim
 export TERMINAL=kitty
-export TERM=xterm-kitty
+# export TERM=xterm-kitty
 export COLORTERM=truecolor
 export USE_CCACHE=1
 export CCACHE_COMPRESS=1
@@ -33,3 +34,4 @@ if [ -f "$HOME"/.ssh/cf_llm ]; then
   source "$HOME"/.ssh/cf_llm
 fi
 export CUDAToolkit_ROOT=/opt/cuda
+export GPG_TTY=$(tty)

@@ -28,7 +28,6 @@
     // "custom/discord",
     "tray",
   ],
-  "font": "Hack Nerd Font 14",
   // Modules
   "idle_inhibitor": {
     "format": "{icon} ",

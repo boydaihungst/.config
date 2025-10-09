@@ -19,7 +19,7 @@ for _, m in ipairs(wezterm.glob("*.lua", wezterm.config_dir)) do
 end
 
 config.default_cursor_style = "SteadyBlock"
-config.scrollback_lines = 5000
+config.scrollback_lines = 2000
 config.audible_bell = "SystemBeep"
 config.visual_bell = {
 	fade_in_function = "EaseIn",
@@ -47,19 +47,19 @@ config.enable_kitty_keyboard = true
 config.enable_scroll_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 config.enable_wayland = true
-config.animation_fps = 1
-config.max_fps = 60
+-- config.animation_fps = 1
+config.max_fps = 75
 config.front_end = "OpenGL"
 
 -- for _, gpu in ipairs(wezterm.gui.enumerate_gpus()) do
--- 	if gpu.backend == "Vulkan" and gpu.driver == "NVIDIA" then
+-- 	if gpu.backend == "Vulkan" and gpu.driver == "NVK" then
 -- 		config.webgpu_preferred_adapter = gpu
 -- 		config.front_end = "WebGpu"
 -- 		break
 -- 	end
 -- end
-config.webgpu_power_preference = "HighPerformance"
-config.ime_preedit_rendering = "Builtin"
+-- config.webgpu_power_preference = "HighPerformance"
+-- config.ime_preedit_rendering = "Builtin"
 config.show_close_tab_button_in_tabs = false
 config.show_new_tab_button_in_tab_bar = false
 config.show_tab_index_in_tab_bar = false
