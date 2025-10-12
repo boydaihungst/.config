@@ -6,7 +6,7 @@ Before=systemd-hybrid-sleep.service
 Type=oneshot
 ExecStart=/usr/bin/logger -t suspend -s "nvidia-hybrid-sleep.service"
 ExecStart=/usr/bin/nvidia-sleep.sh "is-suspend-then-hibernate-supported"
-ExecStart=/usr/bin/nvidia-sleep.sh "suspend"
+ExecStart=/usr/bin/nvidia-sleep.sh "hibernate"
 
 [Install]
 WantedBy=systemd-hybrid-sleep.service
