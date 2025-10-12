@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
   "yelog/i18n.nvim",
-  enabled = false,
+  enabled = true,
   lazy = true,
   ft = { "json", "vue", "typescript", "javascript", "tsx", "jsx" },
   dependencies = {
@@ -9,12 +9,17 @@ return {
     "nvim-treesitter/nvim-treesitter",
   },
   opts = {
-    show_translation = true,
-    show_origin = false,
-    diagnostic = false,
+    show_mode = "both",
+    diagnostic = true,
     -- Locales to parse; first is the default locale
     -- Use I18nNextLocale command to switch the default locale in real time
     locales = { "en", "vn", "jp", "zh" },
+    usage = {
+      -- Popup provider used when choosing between multiple usage locations
+      -- Available values: 'vim_ui', 'telescope', 'fzf-lua', 'snacks'
+      popup_type = "snacks",
+    },
+    -- func_pattern = { "t", "$t" },
     -- sources can be string or table { pattern = "...", prefix = "..." }
     -- Project-level configuration files
     -- .i18nrc.json
@@ -25,6 +30,9 @@ return {
       "src/lang/{locales}.json",
       -- { pattern = "src/locales/lang/{locales}/{module}.ts",            prefix = "{module}." },
       -- { pattern = "src/views/{bu}/locales/lang/{locales}/{module}.ts", prefix = "{bu}.{module}." },
+    },
+    i18n_keys = {
+      popup_type = "snacks",
     },
   },
   specs = {

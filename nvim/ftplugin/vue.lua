@@ -16,3 +16,4 @@ if astrocore then
     vim.keymap.set({ "n", "v" }, "<Leader>lt", "<cmd>TSC<cr>", { desc = "TSC: Type checking", buffer = 0 })
   end
 end
+vim.lsp.inlay_hint.enable(false, { bufnr = 0 })

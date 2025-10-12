@@ -51,7 +51,7 @@ subtitle_editor_vtt = [
 subtitle_processor_folder = [
   { run = 'clear && $HOME/git/scripts/extract_sub.sh %s', orphan = true, desc = "Subtitle: Extract", for = "linux" },
   { run = 'clear && $HOME/git/subtitle-signs-transfer/.venv/bin/python $HOME/git/subtitle-signs-transfer/main.py %s; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Transfer signs", for = "linux" },
-  { run = 'clear && $HOME/git/subtitle-signs-transfer/.venv/bin/python $HOME/git/crunchy-subs/subtitle_processor.py %s', orphan = true, desc = "Subtitle: Clean", for = "linux" },
+  { run = 'clear && $HOME/git/crunchy-subs/.venv/bin/python $HOME/git/crunchy-subs/subtitle_processor.py %s', orphan = true, desc = "Subtitle: Clean", for = "linux" },
   { run = 'kitty -- "$HOME/git/OCR/batch.sh" %s', orphan = true, desc = "Subtitle: OCR", for = "linux" },
   # { run = 'wezterm start -- "$HOME/git/OCR/batch.sh" %s', orphan = true, desc = "Subtitle: OCR", for = "linux" },
   { run = 'clear && assfonts -i %s1/*.ass; read -rp "Press Enter to exit..."', block = true, desc = "Subtitle: Embed fonts", for = "linux" },

@@ -1,7 +1,3 @@
--- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
--- Customize Telescope
-
 local base_color = "#080A0E"
 ---@type LazySpec
 return {

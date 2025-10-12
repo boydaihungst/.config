@@ -174,13 +174,11 @@ return {
         "fallback",
       },
       ["<C-j>"] = {
-        function(cmp) return cmp.select_prev { auto_insert = true } end,
-        "snippet_backward",
+        "snippet_forward",
         "fallback",
       },
       ["<C-k>"] = {
-        function(cmp) return cmp.select_next { auto_insert = true } end,
-        "snippet_forward",
+        "snippet_backward",
         "fallback",
       },
       ["<CR>"] = {
