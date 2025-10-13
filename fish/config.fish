@@ -109,3 +109,4 @@ end
 if type -q zoxide
     zoxide init fish | source
 end
+set -x DOCKER_HOST unix://$XDG_RUNTIME_DIR/docker.sock
