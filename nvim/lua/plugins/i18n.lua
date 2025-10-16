@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
   "yelog/i18n.nvim",
-  enabled = true,
+  enabled = false,
   lazy = true,
   ft = { "json", "vue", "typescript", "javascript", "tsx", "jsx" },
   dependencies = {
