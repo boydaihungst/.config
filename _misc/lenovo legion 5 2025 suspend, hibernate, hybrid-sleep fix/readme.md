@@ -58,7 +58,7 @@ For other swap type: https://discovery.endeavouros.com/storage-and-partitions/ad
 
 ### Step 3: Copy files under `etc` to `/etc`, except `kernel/cmdline.example`
 
-### Step 4: Enable hybrid-sleep service:
+### Step 4: Enable nvidia services:
 
 - Copy folder `usr` to `/usr`: `sudo cp -r usr /usr`
 
