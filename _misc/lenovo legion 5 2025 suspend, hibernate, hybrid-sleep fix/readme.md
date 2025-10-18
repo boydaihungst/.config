@@ -190,6 +190,7 @@ bindl = $mod, p, exec, notify-send "Switch Video Mode key pressed"
 
 Copy easyeffects folder to ~/.config. Open EasyEffects > Presets > load `Laptop` preset.  
 Autoload presets when using speaker: > select tab `Pipewire` > Presets Autoloading > select speaker device + `Laptop` preset > press `+` button
+Auto disable effects when using headphone: > select tab `Pipewire` > Presets Autoloading > select headphone device + `Headphone` preset > press `+` button
 
 Credits:
 
