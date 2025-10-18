@@ -52,7 +52,7 @@ For other swap type: https://discovery.endeavouros.com/storage-and-partitions/ad
 
 - Get UUID of swap partition which is created in step 1 using Gparted (right mount click to the partition): `c9e3e688-8dfb-45ea-95d9-949b4b44618b` => `resume=UUID=c9e3e688-8dfb-45ea-95d9-949b4b44618b`
 
-- Final result, append this to `/etc/kernel/cmdline` file (For dracut + systemd-boot only only, mkinitcpio user should ask AI for help how to add kernel parameters):
+- Final result, append this to `/etc/kernel/cmdline` file (For dracut + systemd-boot only only, grub + mkinitcpio user should ask AI for help how to add kernel parameters):
 
   `resume=UUID=c9e3e688-8dfb-45ea-95d9-949b4b44618b amdgpu.dcdebugmask=0x10 nvidia_drm.modeset=1 acpi_osi=! "acpi_osi=Windows 2015" gpiolib_acpi.ignore_interrupt=AMDI0030:00@4,AMDI0030:00@89`
 
