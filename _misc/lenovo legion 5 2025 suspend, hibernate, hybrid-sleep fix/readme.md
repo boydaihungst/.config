@@ -185,3 +185,11 @@ bindl = $mod, p, exec, notify-send "Switch Video Mode key pressed"
 > If you decide to use uwsm + hyprland + waybar from this dotfiles repo,
 > don't forget applied guide this https://wiki.hypr.land/Configuring/Multi-GPU/#telling-hyprland-which-gpu-to-use
 > or you can remove the `AQ_DRM_DEVICES` line from `~/.config/uwsm/env-hyprland` file.
+
+## Get better audio quality
+
+Use EasyEffects's Convolver effect with `music-balanced.irs` import from this link: https://www.mediafire.com/file/qt9znutry7fgzk7/dolby.zip/file
+
+Open EasyEffects > Select Output Tab (top) and Effects Tab (bottom) > Click Add Effect button > Select Convolver > Click Convolver under Players section (right under Add Effect button) > Click Impulses button (Top Right) > Select `music-balanced.irs` downloaded from mediafire link above. You may need to reset firefox, music player, or even reset after that.
+
+Credits: https://www.reddit.com/r/thinkpad/comments/q5pt38/x1_extreme_gen_4_dolby_atmos_setup_for_linux/
