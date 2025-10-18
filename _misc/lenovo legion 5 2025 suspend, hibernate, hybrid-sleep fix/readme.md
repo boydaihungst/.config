@@ -188,8 +188,10 @@ bindl = $mod, p, exec, notify-send "Switch Video Mode key pressed"
 
 ## Get better audio quality
 
-Use EasyEffects's Convolver effect with `music-balanced.irs` import from this link: https://www.mediafire.com/file/qt9znutry7fgzk7/dolby.zip/file
+Copy easyeffects folder to ~/.config. Open EasyEffects > Presets > load `Laptop` preset.  
+Autoload presets when using speaker: > select tab `Pipewire` > Presets Autoloading > select speaker device + `Laptop` preset > press `+` button
 
-Open EasyEffects > Select Output Tab (top) and Effects Tab (bottom) > Click Add Effect button > Select Convolver > Click Convolver under Players section (right under Add Effect button) > Click Impulses button (Top Right) > Select `music-balanced.irs` downloaded from mediafire link above. You may need to reset firefox, music player, or even reset after that.
+Credits:
 
-Credits: https://www.reddit.com/r/thinkpad/comments/q5pt38/x1_extreme_gen_4_dolby_atmos_setup_for_linux/
+https://www.reddit.com/r/thinkpad/comments/q5pt38/x1_extreme_gen_4_dolby_atmos_setup_for_linux/
+https://github.com/JackHack96/EasyEffects-Presets
