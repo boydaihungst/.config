@@ -58,6 +58,8 @@ For other swap type: https://discovery.endeavouros.com/storage-and-partitions/ad
 
 ### Step 3: Copy files under `etc` to `/etc`, except `kernel/cmdline.example`
 
+For dracut + systemd-boot only only, grub + mkinitcpio user should ask AI for help how to omit drivers from early loading (in file `etc/dracut.conf.d/resume.conf`):
+
 ### Step 4: Enable nvidia services:
 
 - Copy folder `usr` to `/usr`: `sudo cp -r usr /usr`
