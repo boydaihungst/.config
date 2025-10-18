@@ -170,7 +170,7 @@ bindl = , XF86AudioPrev, exec, playerctl previous
 bindl = , XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 bindl = , XF86WLAN, exec, nmcli radio wifi toggle
 # Lenovo legion 5 copilot AI button
-bindl = $mode SHIFT, XF86TouchpadOff, exec, $toggle_gemini
+bindl = $mod SHIFT, XF86TouchpadOff, exec, $toggle_gemini
 # Edit this with your script, I personally don't have a script to switch hdmi output
 bindl = $mod, p, exec, notify-send "Switch Video Mode key pressed"
 ```
