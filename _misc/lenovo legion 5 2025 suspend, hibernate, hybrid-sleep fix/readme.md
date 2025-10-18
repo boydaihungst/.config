@@ -15,7 +15,9 @@ For other swap type: https://discovery.endeavouros.com/storage-and-partitions/ad
 
 - Get UUID of swap partition from Gparted: `c9e3e688-8dfb-45ea-95d9-949b4b44618b`
 
-- ADD swap to `/etc/fstab`: `UUID=c9e3e688-8dfb-45ea-95d9-949b4b44618b none swap defaults 0 0`
+- ADD swap to `/etc/fstab`: `UUID=c9e3e688-8dfb-45ea-95d9-949b4b44618b none swap sw,nofail 0 0`
+
+- Disable systemd-swap (It's current have bug when you shutdown [`Failed deactivating swap`](https://github.com/Nefelim4ag/systemd-swap/issues/199)): `sudo systemctl disable systemd-swap.service`
 
 - Enable swap: `sudo swapon -a`
 
