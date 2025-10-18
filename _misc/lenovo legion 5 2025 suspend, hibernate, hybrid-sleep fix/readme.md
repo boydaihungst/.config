@@ -129,3 +129,8 @@ bindl = $mode SHIFT, XF86TouchpadOff, exec, $toggle_gemini
 # Edit this with your script, I personally don't have a script to switch hdmi output
 bindl = $mod, p, exec, notify-send "Switch Video Mode key pressed"
 ```
+
+> [!IMPORTANT]
+> If you decide to use uwsm + hyprland + waybar from this dotfiles repo,
+> don't forget applied guide this https://wiki.hypr.land/Configuring/Multi-GPU/#telling-hyprland-which-gpu-to-use
+> or you can remove the `AQ_DRM_DEVICES` line from `~/.config/uwsm/env-hyprland` file.
