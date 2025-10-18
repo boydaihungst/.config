@@ -6,9 +6,10 @@ WINDOW_ADDRESS=$(hyprctl clients -j | jq -r '.[] | select(.class == "gemini") | 
 
 # Check if a window address was found
 if [ -n "$WINDOW_ADDRESS" ]; then
-    # If the window exists, toggle the workspace special.
-    hyprctl dispatch togglespecialworkspace
+    # If the window exists, focus it using its address.
+    hyprctl dispatch focuswindow address:"$WINDOW_ADDRESS"
 else
     # If the window does not exist, run the specified kitty command.
-    hyprctl dispatch exec [workspace special] "kitty --app-id 'gemini' -- gemini"
+    # The '&' at the end runs the command in the background.
+    hyprctl dispatch exec "kitty --app-id 'gemini' -- gemini"
 fi
