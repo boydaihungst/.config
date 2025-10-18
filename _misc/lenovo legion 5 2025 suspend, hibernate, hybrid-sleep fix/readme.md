@@ -144,6 +144,10 @@ Credits to the original author of acpicaller: https://github.com/adramaxxx/dotfi
 
 ```dosini
 # Check hypr/conf/bind.conf file
+$volumectl = ~/.config/hypr/scripts/volumectl
+$brightnesschange = ~/.config/hypr/scripts/brightness-change.sh
+$toggle_gemini = ~/.config/hypr/scripts/toggle_gemini.sh
+
 # Volume Controls
 bindl = , XF86AudioMute, exec, $volumectl togmute
 bindle = , XF86AudioRaiseVolume, exec, $volumectl --volume-step 1 up
