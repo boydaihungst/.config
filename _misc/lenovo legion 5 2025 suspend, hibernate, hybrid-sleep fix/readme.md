@@ -9,17 +9,19 @@
 
 Making a swap partition with Gparted
 
-Boot your machine with the Live ISO and open Gparted. Select the last partition on your HDD (this can either be the Root partition or the Home partition, depending on how you partitioned your disk) and shrink the partition by leaving a disk space free equal to the size of your RAM or double the size, that’s up to you. Then select the free space and mark it as a swap partition, let Gparted do its work, and boot back into your installed system and swap should be recognized by systemd.
+Boot your machine with the Live ISO and open Gparted. Select the last partition on your HDD (this can either be the Root partition or the Home partition, depending on how you partitioned your disk) and shrink the partition by leaving a disk space free equal to the size of your RAM or double the size, that’s up to you. Then select the free space and mark it as a swap partition, let Gparted do its work, and boot back into your installed system.
 
 For other swap type: https://discovery.endeavouros.com/storage-and-partitions/adding-swap-after-installation/2021/03/
 
 - Get UUID of swap partition from Gparted: `c9e3e688-8dfb-45ea-95d9-949b4b44618b`
 
-- ADD swap to `/etc/fstab`: `UUID=c9e3e688-8dfb-45ea-95d9-949b4b44618b none swap sw,nofail 0 0`
+- Add swap to `/etc/fstab`: `UUID=c9e3e688-8dfb-45ea-95d9-949b4b44618b none swap sw,nofail 0 0`
 
-- Disable systemd-swap (It's current have bug when you shutdown [`Failed deactivating swap`](https://github.com/Nefelim4ag/systemd-swap/issues/199)): `sudo systemctl disable systemd-swap.service`
+- Disable systemd-swap service, as we already use fstab to mount swap partition (It's current have bug when you shutdown [`Failed deactivating swap`](https://github.com/Nefelim4ag/systemd-swap/issues/199)): `sudo systemctl disable --now systemd-swap.service`
 
 - Enable swap: `sudo swapon -a`
+
+- Check swap status: `swapon --show`
 
 ### Step 2: Edit `/etc/kernel/cmdline`:
 
