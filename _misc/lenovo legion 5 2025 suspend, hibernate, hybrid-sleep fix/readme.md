@@ -79,6 +79,47 @@ For other swap type: https://discovery.endeavouros.com/storage-and-partitions/ad
 
 If the power button led blink, it means it works.
 
+### Step 5: (Optional) Enable suspend-then-hibernate when close lid
+
+Use `sudo` and any file editor to edit `/etc/systemd/logind.conf` file, to uncomment and edit these lines:
+
+```bash
+sudo
+LidSwitchIgnoreInhibited=yes
+HandleLidSwitch=suspend-then-hibernate
+HandleLidSwitchExternalPower=suspend-then-hibernate
+```
+
+Use this command to understand the meaning of those line:
+
+```bash
+man 5 logind.conf
+```
+
+### Step 6: (Optional) Go to Hibernate after 30 minutes of inactivity when in Sleep mode
+
+Use `sudo` and any file editor to edit `/etc/systemd/sleep.conf` file, to uncomment and edit these lines:
+
+```bash
+sudo
+[Sleep]
+AllowSuspend=yes
+AllowHibernation=yes
+AllowSuspendThenHibernate=yes
+SuspendState=mem freeze disk
+HibernateMode=platform shutdown
+HibernateDelaySec=30min
+# This will go to hibernate after 30 minutes of inactivity even if the AC is plugged in
+HibernateOnACPower=yes
+SuspendEstimationSec=30min
+```
+
+Use this command to understand the meaning of those line:
+
+```bash
+man 5 systemd-sleep.conf
+```
+
 ## Lenovo Vantage for legion 5 2025, other legion 5 versions should works, I guess.
 
 For now only battery conservation works, not sure about rapid charging.
