@@ -1,11 +1,11 @@
-Fix suspend-then-hibernate and hybrid-sleep lenovo legion 5 2025 cpu AMD + iGPU amd + eGPU Nvidia
+## Fix suspend-then-hibernate and hybrid-sleep lenovo legion 5 2025 cpu AMD + iGPU amd + eGPU Nvidia
 
-Prerequisites:
+### Prerequisites:
 
 - Installed Nvidia drivers: `yay -S lib32-nvidia-utils libvdpau linux-firmware-nvidia nvidia-hook nvidia-open nvidia-prime nvidia-settings nvidia-utils`
   Then reboot.
 
-Step 1: Create a swap partition:
+### Step 1: Create a swap partition:
 
 Making a swap partition with Gparted
 
@@ -19,7 +19,7 @@ For other swap type: https://discovery.endeavouros.com/storage-and-partitions/ad
 
 - Enable swap: `sudo swapon -a`
 
-Step 2: Edit `/etc/kernel/cmdline`:
+### Step 2: Edit `/etc/kernel/cmdline`:
 
 - Get GPIO pins that interrupt the ACPI from suspend: https://wiki.archlinux.org/title/Power_management/Wakeup_triggers#Ryzen_7000_Series
 
@@ -52,8 +52,9 @@ Step 2: Edit `/etc/kernel/cmdline`:
 
   `resume=UUID=c9e3e688-8dfb-45ea-95d9-949b4b44618b amdgpu.dcdebugmask=0x10 nvidia_drm.modeset=1 acpi_osi=! "acpi_osi=Windows 2015" gpiolib_acpi.ignore_interrupt=AMDI0030:00@4,AMDI0030:00@89`
 
-Step 3: Copy files under `etc` to `/etc`, except `kernel/cmdline.example`
-Step 4: Enable hybrid-sleep service:
+### Step 3: Copy files under `etc` to `/etc`, except `kernel/cmdline.example`
+
+### Step 4: Enable hybrid-sleep service:
 
 - Copy folder `usr` to `/usr`: `sudo cp -r usr /usr`
 
@@ -66,9 +67,26 @@ Step 4: Enable hybrid-sleep service:
 - Now reboot and test it:
 
   ```bash
-  systemctl sleep-then-hibernate
-  # or
+  systemctl suspend-then-hibernate
+  # This may not works as expected, consider using suspend-then-hibernate instead
+
   systemctl hybrid-sleep
   ```
 
-If the power botton led blink, it means it works.
+If the power button led blink, it means it works.
+
+## Lenovo Vantage for legion 5 2025, other legion 5 versions should works, I guess.
+
+Prerequisites: Installed `acpi_call acpi`.  
+For Archlinux: `sudo pacman -S acpi_call acpi`
+
+```bash
+chmod +x ./hypr/scripts/acpicaller/acpicaller.sh
+sudo ./hypr/scripts/acpicaller/acpicaller.sh --powermode --batteryconservation --rapidcharge
+```
+
+Then select whatever mode you want to use. But keep in mind that rapid charge mode should be disable when using battery conservation mode on.
+
+Battery Conservation Mode is a feature that limits battery charging to 55-60% (70-80% for legion 5 2025 R7000P) of its capacity to improve battery life, being most useful when the laptop tends to run on external power much of the time.
+
+Credits to the original author of acpicaller: https://github.com/adramaxxx/dotfiles
