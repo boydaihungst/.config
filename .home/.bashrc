@@ -80,7 +80,6 @@ _open_files_for_editing() {
 ## Uncomment an alias if you want to use it.
 ##
 . <(asdf completion bash)
-export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 # alias ef='_open_files_for_editing'     # 'ef' opens given file(s) for editing
 # alias pacdiff=eos-pacdiff
 ################################################################################

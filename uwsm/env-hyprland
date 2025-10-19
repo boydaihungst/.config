@@ -1,3 +1,1 @@
-export HYPRCURSOR_THEME=Qogir-dark
-export HYPRCURSOR_SIZE=16
 export AQ_DRM_DEVICES=/dev/dri/amd-igpu
