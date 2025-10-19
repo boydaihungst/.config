@@ -194,5 +194,6 @@ Auto disable effects when using headphone: > select tab `Pipewire` > Presets Aut
 
 Credits:
 
-https://www.reddit.com/r/thinkpad/comments/q5pt38/x1_extreme_gen_4_dolby_atmos_setup_for_linux/
-https://github.com/JackHack96/EasyEffects-Presets
+music-balance.irs: https://www.reddit.com/r/thinkpad/comments/q5pt38/x1_extreme_gen_4_dolby_atmos_setup_for_linux/
+music_tuned.irs: https://github.com/flakyferr/atmos-impulse-response
+other effects: https://github.com/JackHack96/EasyEffects-Presets

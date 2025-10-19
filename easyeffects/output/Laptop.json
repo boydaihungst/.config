@@ -37,7 +37,7 @@
             "bypass": false,
             "input-gain": 0.0,
             "ir-width": 100,
-            "kernel-name": "music-balanced",
+            "kernel-name": "music_tuned",
             "output-gain": 0.0
         },
         "equalizer#0": {
