@@ -689,9 +689,21 @@ keymap = [
     "m",
   ], run = "plugin gvfs -- select-then-mount --jump", desc = "Mount GVFS" },
   { on = [
+    "g",
+    "T",
+  ], run = "cd '/run/user/1000/gvfs/mtp:host=nubia_LAHAINA-MTP__SN%3A419C305A_9f1126ed'", desc = "Mount GVFS" },
+  { on = [
     "M",
     "R",
   ], run = "plugin gvfs -- remount-current-cwd-device", desc = "Re-mount current GVFS" },
+  { on = [
+    "M",
+    "t",
+  ], run = "plugin gvfs -- automount-when-cd", desc = "Enable automount when cd" },
+  { on = [
+    "M",
+    "T",
+  ], run = "plugin gvfs -- automount-when-cd --disabled", desc = "Disable automount when cd" },
   { on = [
     "M",
     "u",
@@ -911,8 +923,12 @@ keymap = [
   { on = "p", run = "paste", desc = "Paste copied characters after the cursor" },
   { on = "P", run = "paste --before", desc = "Paste copied characters before the cursor" },
 
-  # Undo/Redo
-  { on = "u", run = "undo", desc = "Undo the last operation" },
+  # Undo/Redo/Casefy
+  { on = "u", run = [
+    "undo",
+    "casefy lower",
+  ], desc = "Undo, or lowercase if in visual mode" },
+  { on = "U", run = "casefy upper", desc = "Uppercase" },
   { on = "<C-r>", run = "redo", desc = "Redo the last operation" },
 
   # Help

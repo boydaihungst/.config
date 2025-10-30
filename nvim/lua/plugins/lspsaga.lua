@@ -38,7 +38,14 @@ return {
           { ":<C-U>Lspsaga code_action<CR>", desc = "Code action", cond = "textDocument/codeAction" }
 
         -- diagnostic
-        maps.n["<Leader>ld"] = { "<Cmd>Lspsaga show_line_diagnostics ++unfocus<CR>", desc = "Diagnostics in line" }
+        maps.n["<Leader>ld"] = {
+          "<Cmd>Lspsaga show_buffer_diagnostics ++float<CR>",
+          desc = "Diagnostics in buffer",
+        }
+        maps.n["<Leader>lD"] = {
+          "<Cmd>Lspsaga show_workspace_diagnostics ++float<CR>",
+          desc = "Diagnostics in workspace",
+        }
 
         -- definition
         maps.n["gd"] =
@@ -169,11 +176,11 @@ return {
       },
     }
     opts.lightbulb = {
-      enable = false,
+      enable = true,
       enable_in_insert = true,
-      sign = false,
+      sign = true,
       sign_priority = 40,
-      virtual_text = true,
+      virtual_text = false,
       ignore = {
         clients = {
           astrocore.is_available "dev-tools.nvim" and "dev-tools",
@@ -199,6 +206,7 @@ return {
         focus_code_action = "<C-c>o",
         exec_action = "o",
         quit = "q",
+        send_to_quickfix = "<C-q>",
         toggle_or_jump = "<CR>",
         quit_in_show = { "q", "<ESC>" },
       },

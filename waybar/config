@@ -22,8 +22,8 @@
     "network",
     "bluetooth",
     "battery",
-    "custom/ibus-bamboo",
-    "power-profiles-daemon",
+    // "custom/ibus-bamboo",
+    // "power-profiles-daemon",
     "idle_inhibitor",
     // "custom/discord",
     "tray",
@@ -115,7 +115,8 @@
     "tooltip-format": "Swap {swapUsed:0.1f}/{swapTotal:0.1f}"
   },
   "temperature": {
-    "hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon7/temp1_input",
+    "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
+    "input-filename": "temp1_input",
     "interval": 5,
     "critical-threshold": 90,
     "format": "{icon} {temperatureC}°C",

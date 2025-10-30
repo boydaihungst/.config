@@ -4,15 +4,15 @@ local prefix = "<Leader>A"
 return {
   "olimorris/codecompanion.nvim",
   optional = true,
-  build = function()
-    local plugin_path = vim.fn.stdpath "data" .. "/lazy/codecompanion.nvim"
-    local patch_file = vim.fn.stdpath "config" .. "/codecompanion_skip_oauth.patch"
-    vim.system({ "patch", "-d", plugin_path, "-p1", "-i", patch_file }, { text = true }, function(obj)
-      vim.schedule(function()
-        if obj.code == 0 then vim.notify("Patched codecompanion.nvim successfully", vim.log.levels.INFO) end
-      end)
-    end)
-  end,
+  -- build = function()
+  --   local plugin_path = vim.fn.stdpath "data" .. "/lazy/codecompanion.nvim"
+  --   local patch_file = vim.fn.stdpath "config" .. "/codecompanion_skip_oauth.patch"
+  --   vim.system({ "patch", "-d", plugin_path, "-p1", "-i", patch_file }, { text = true }, function(obj)
+  --     vim.schedule(function()
+  --       if obj.code == 0 then vim.notify("Patched codecompanion.nvim successfully", vim.log.levels.INFO) end
+  --     end)
+  --   end)
+  -- end,
   dependencies = {
     "ravitemer/codecompanion-history.nvim",
     -- Add mcphub.nvim as a dependency
@@ -136,7 +136,7 @@ return {
               },
             },
             defaults = {
-              auth_method = "oauth-personal",
+              -- auth_method = "oauth-personal",
               -- mcpServers = mcpServers,
               timeout = 20000, -- 20 seconds
             },

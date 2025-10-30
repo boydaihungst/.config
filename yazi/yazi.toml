@@ -159,7 +159,7 @@ rules = [
     "subtitle_editor_vtt",
   ] },
   # Virtual file system
-  { mime = "vfs/*", use = "download" },
+  { mime = "vfs/{absent,stale}", use = "download" },
 
   # Torrent files
   { url = "*.{torrent}", use = [
@@ -260,7 +260,8 @@ suppress_preload = true
 fetchers = [
   # Mimetype
   { id = "mime", url = "*/", run = "mime.dir", prio = "high" },
-  { id = "mime", url = "*", run = "mime.file", prio = "high" },
+  { id = "mime", url = "local://*", run = "mime.local", prio = "high" },
+  { id = "mime", url = "remote://*", run = "mime.remote", prio = "high" },
   { id = "simple-tag", url = "*", run = "simple-tag" },
   { id = "simple-tag", url = "*/", run = "simple-tag" },
 ]

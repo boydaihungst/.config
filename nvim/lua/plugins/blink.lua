@@ -16,7 +16,6 @@ return {
     },
     { "disrupted/blink-cmp-conventional-commits", lazy = true },
     { "xzbdmw/colorful-menu.nvim", lazy = true },
-    -- ... other dependencies
   },
   opts = {
     sources = {

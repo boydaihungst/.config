@@ -88,7 +88,7 @@ return {
         relativenumber = true, -- sets vim.opt.relativenumber
         number = true, -- sets vim.opt.number
         spell = false, -- sets vim.opt.spell
-        signcolumn = "auto", -- sets vim.opt.signcolumn to auto
+        signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = true, -- sets vim.opt.wrap
         mouse = "h",
         whichwrap = "lh",
@@ -102,7 +102,6 @@ return {
         exrc = true,
         secure = true,
         clipboard = "unnamed,unnamedplus",
-        -- winborder = "rounded",
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)

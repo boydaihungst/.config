@@ -255,7 +255,6 @@ return {
   opts = {
     dashboard = {
       sections = {
-        -- BUG: https://github.com/folke/snacks.nvim/pull/1643
         {
           section = "terminal",
           cmd = "fortune -s | cowsay",
