@@ -46,7 +46,8 @@ For other swap type: https://discovery.endeavouros.com/storage-and-partitions/ad
   kernel: GPIO 89 is active: 0x30047ce0
   ```
 
-  We get 2 pins 4 and 89 that are active, so we can ignore them: `gpiolib_acpi.ignore_interrupt=AMDI0030:00@4,AMDI0030:00@89`. If there are more pins, just add them to the list: `gpiolib_acpi.ignore_interrupt=AMDI0030:00@4,AMDI0030:00@89,AMDI0030:00@10,AMDI0030:00@11`
+  We get 2 pins 4 and 89 that are active, so we can ignore them: `gpiolib_acpi.ignore_interrupt=AMDI0030:00@4,AMDI0030:00@89`. If there are more pins, just add them to the list: `gpiolib_acpi.ignore_interrupt=AMDI0030:00@4,AMDI0030:00@89,AMDI0030:00@10,AMDI0030:00@11`  
+  Most of the time, it's USB ports, so you should plugin a USB mouse or keyboard to each port, and then test it again to add more pins to the list.
 
   Now you get this `gpiolib_acpi.ignore_interrupt=AMDI0030:00@4,AMDI0030:00@89`
 
@@ -59,6 +60,8 @@ For other swap type: https://discovery.endeavouros.com/storage-and-partitions/ad
 ### Step 3: Copy files under `etc` to `/etc`, except `kernel/cmdline.example`
 
 For dracut + systemd-boot only only, grub + mkinitcpio user should ask AI for help how to omit drivers from early loading (in file `etc/dracut.conf.d/resume.conf`):
+
+Then reinstall kernels: `sudo reinstall-kernels`
 
 ### Step 4: Enable nvidia services:
 
