@@ -18,7 +18,8 @@
   # NOTE: can combined with tmTheme (sublime colorshceme file) for preview code highlight
   # highlight = "path/to/tmTheme"
 
-  cwd = { fg = "#494D56" }
+  # cwd = { fg = "#494D56" }
+  cwd = { fg = "cyan" }
 
   # Hovered
   hovered         = { bg = "#26343F" }
