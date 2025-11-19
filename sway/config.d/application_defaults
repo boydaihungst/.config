@@ -1,0 +1,59 @@
+focus_on_window_activation focus
+for_window [title=".*"] focus, inhibit_idle fullscreen
+
+# fix ibus
+no_focus [class="^Ibus-ui-gtk2$"]
+no_focus [class="^Ibus-ui-gtk3$"]
+no_focus [class="^Ibus-ui-gtk4$"]
+no_focus [class="^Ibus-ui-gtk5$"]
+
+# Assign applications to workspaces
+assign [app_id="^(btop|htop|kitty|lvim|vim|nvim|org.wezfurlong.wezterm|com.mitchellh.ghostty)$"] 1
+assign [app_id="^(?i)(waterfox-default|waterfox|firefox|firefox-default)$"] 2
+assign [app_id="^(thunar|ranger|lfcd|lf|vifm|yazi)$"] 3
+assign [app_id="^thunderbird$"] 4
+assign [app_id="^(org.telegram.desktop|pidgin|discord|blender|gimp|org.inkscape.Inkscape)$"] 5
+assign [app_id="^(calibre-ebook-viewer|calibre-gui)$"] 6
+assign [app_id="^(bottles|lutris)$"] 7
+assign [title="steam"] 7
+
+# Floating windows
+for_window [app_id="^yazi-selector$"] floating enable, resize set 80ppt 90ppt
+for_window [class="^yad"] floating enable, resize set 40ppt 40ppt
+for_window [app_id="^yad"] floating enable, resize set 40ppt 40ppt
+for_window [app_id="^galculator$"] floating enable
+for_window [app_id="^blueman-manager$"] floating enable, resize set 40ppt 30ppt
+for_window [app_id="^xsane$"] floating enable
+for_window [app_id="^org.pulseaudio.pavucontrol$"] floating enable
+for_window [app_id="^qt5ct$"] floating enable
+for_window [app_id="^qt6ct$"] floating enable
+for_window [app_id="^bluetooth-sendto$"] floating enable
+for_window [app_id="^pamac-manager$"] floating enable, resize set 80ppt 70ppt
+for_window [app_id="^lxappearance$"] floating enable
+for_window [app_id="^nmtui$"] floating enable, resize set 800px 1000px, move position mouse
+for_window [app_id="^btop$"] floating enable, resize set 80ppt 90ppt
+for_window [app_id="^(?i)waydroid.*$"] floating enable, resize set width 576px height 1024px
+for_window [title="^(pop-up|bubble|task_dialog|Preferences|About)$"] floating enable
+for_window [title="^File Operation Progress$"] floating enable
+for_window [title="^Picture-in-Picture$"] floating enable, sticky enable
+for_window [title="^Picture in picture$"] floating enable, sticky enable
+for_window [title="^Floating Window - Show Me The Key$"] sticky enable
+for_window [title="^Save File$"] floating enable
+for_window [app_id="^it.catboy.ripdrag$"] floating enable
+for_window [app_id="^thunar$" title="^Bulk Rename - Rename Multiple Files$"] floating enable, resize set width 1500px height 1000px
+for_window [app_id="^aegisub$" title="^Styling Assistant$"] floating enable, move position 1012px 576px
+for_window [app_id="^aegisub$" title="^Select Color$"] floating enable, move position 1022px 376px
+for_window [app_id="^aegisub$" title="^Styles Manager$"] floating enable
+for_window [app_id="^aegisub$" title="^Style Editor$"] floating enable, move position 793px 727px
+for_window [app_id="^aegisub$" title="^Open subtitles file|Automation Manager|Preferences$"] floating enable
+for_window [app_id="^org\.inkscape\.Inkscape$" title="^Convert to ASS$"] floating enable
+for_window [app_id="^aegisub$" title="^Choose font$"] floating enable
+for_window [app_id="^(firefox-default|firefox)$" title="Library"] floating enable, resize set 60ppt 60ppt
+for_window [app_id="^(firefox-default|firefox)$" title="^Extension:\ \(DownThemAll!\)\ -\ DownThemAll!\ -\ Select\ your\ Downloads\ —\ Firefox$"] floating enable
+for_window [app_id="^floating_shell_portrait$"] floating enable, resize set 60ppt 60ppt
+for_window [app_id="com\.sammy-t\.avda"] floating enable, resize set 60ppt 60ppt
+for_window [app_id="^showmethekey-gtk$"] floating enable, resize set width 651px height 70px
+
+for_window [title="^Batch convert$"] floating disable
+for_window [title="^Open subtitle...$"] floating disable
+

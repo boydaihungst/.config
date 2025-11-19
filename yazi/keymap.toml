@@ -6,6 +6,7 @@
 
   keymap = [
     { on = "<Esc>", run = "escape", desc = "Exit visual mode, clear selected, or cancel search" },
+    { on = "+", run = "plugin mediainfo -- toggle-metadata", desc = "Toggle media previewer metadata" },
     { on = "q", run = [
       "plugin fuse-archive -- unmount",
       "plugin projects -- quit",

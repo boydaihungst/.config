@@ -17,8 +17,8 @@
   image_delay     = 10
   image_filter    = "lanczos3"
   image_quality   = 75
-  max_height      = 900
-  max_width       = 960
+  max_height      = 1600
+  max_width       = 2560
   tab_size        = 2
   ueberzug_offset = [ 25.5, 6, 0, 0 ]
   ueberzug_scale  = 1
@@ -258,7 +258,7 @@
     # JSON
     # Audio + Video + Image
     { mime = "application/postscript", run = "mediainfo" },
-    { mime = "{video,audio,image}/*", run = "mediainfo" },
+    { mime = "{video,image,audio}/*", run = "mediainfo" },
     { mime = "application/{json,ndjson}", run = "json" },
     # PDF
     { mime = "application/pdf", run = "pdf" },

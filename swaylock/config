@@ -1,0 +1,21 @@
+ignore-empty-password
+show-failed-attempts
+daemonize
+hide-keyboard-layout
+indicator-caps-lock
+image=~/.config/sway/wallpaper
+scaling=fit
+font=Hack Nerd Font
+font-size=20
+indicator-thickness=15
+
+inside-wrong-color=#e06c75
+inside-ver-color=#e5c07b
+ring-color=#979eab
+ring-wrong-color=#e06c75
+ring-ver-color=#e5c07b
+key-hl-color=#61afef
+caps-lock-key-hl-color=#61afef
+layout-border-color=#61afef00
+bs-hl-color=#e06c75
+caps-lock-bs-hl-color=#e06c75
