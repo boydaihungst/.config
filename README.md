@@ -1,5 +1,8 @@
 # .config
 
+> [!IMPORTANT]
+> Outdated guide, don't use this anymore
+
 ## prerequisite
 
 - Using arch based distro (endeavourOS)
