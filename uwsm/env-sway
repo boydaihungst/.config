@@ -1,0 +1,6 @@
+export WLR_DRM_DEVICES=/dev/dri/amd-igpu:/dev/dri/nvidia-egpu
+export WLR_RENDERER=vulkan
+export ENABLE_HDR_WSI=1
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=sway

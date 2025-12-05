@@ -6,6 +6,7 @@
 
   keymap = [
     { on = "<Esc>", run = "escape", desc = "Exit visual mode, clear selected, or cancel search" },
+    { on = "<F9>", run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"', desc = "Toggle media previewer metadata" },
     { on = "+", run = "plugin mediainfo -- toggle-metadata", desc = "Toggle media previewer metadata" },
     { on = "q", run = [
       "plugin fuse-archive -- unmount",
@@ -73,7 +74,7 @@
     { on = "<Enter>", run = "open", desc = "Open selected files" },
     { on = "<S-Enter>", run = "open --interactive", desc = "Open selected files interactively" },
     { on = "a", run = "create", desc = "Create a file (ends with / for directories)" },
-    { on = "r", run = [ "escape --visual", "plugin thunar-bulk-rename" ], desc = "Rename selected file(s) (via thunar)" },
+    { on = "r", run = [ "plugin thunar-bulk-rename" ], desc = "Rename selected file(s) (via thunar)" },
     { on = "R", run = "rename --cursor=before_ext", desc = "Rename selected file(s)" },
     # { on = "R", run = '''
     #             shell --block -- FILENAMES="" && FILENAMES+="$(printf '%s\0' %s | xargs -0 -n1 basename)" && echo -ne "$FILENAMES" | vimv -s

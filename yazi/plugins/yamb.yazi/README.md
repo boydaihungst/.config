@@ -29,7 +29,6 @@ local home_path = ya.target_family() == "windows" and os.getenv("USERPROFILE") o
 if ya.target_family() == "windows" then
   table.insert(bookmarks, {
     tag = "Scoop Local",
-
     path = (os.getenv("SCOOP") or home_path .. "\\scoop") .. "\\",
     key = "p"
   })

@@ -1,0 +1,6 @@
+[providers.home]
+  host     = "home"
+  key_file = "~/.ssh/id_ecdsa"
+  port     = 22
+  type     = "sftp"
+  user     = "huyhoang"

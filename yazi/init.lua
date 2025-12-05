@@ -336,7 +336,10 @@ function Status:name()
 	local style = self:style()
 	return ui.Line({
 		ui.Span(" " .. icon.text):style(icon.style):bg("#26343F"),
-		ui.Span(" " .. file_name:gsub("\r", "?", 1) .. " "):fg(style.alt:fg()):bg("#26343F"),
+		-- TODO: Modify this after next yazi released
+		ui.Span(" " .. (ui.printable and ui.printable(file_name) or file_name:gsub("\r", "?", 1)) .. " ")
+			:fg(style.alt:fg())
+			:bg("#26343F"),
 		ui.Span(""):fg("#26343F"):bg(style.alt:bg()),
 	})
 end

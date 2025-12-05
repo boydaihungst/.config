@@ -2,7 +2,7 @@
 
 local M = {}
 local MAX_ITEMS_IN_CACHE = 100
-local MAX_OUTPUT_LINES_TO_CACHE = 100000
+local MAX_OUTPUT_LINES_TO_CACHE = 1000000
 
 local STATE_KEY = {
 	CACHED_COMMAND_OUTPUT = "CACHED_COMMAND_OUTPUT",
@@ -48,7 +48,7 @@ function M:peek(job)
 		local args = "--cmd="
 			.. ya.quote(job.args[1])
 			.. " --url="
-			.. ya.quote(tostring(job.file.url))
+			.. ya.quote(tostring(job.file.cache or job.file.url))
 			.. " --w="
 			.. ya.quote(job.area.w)
 			.. " --h="

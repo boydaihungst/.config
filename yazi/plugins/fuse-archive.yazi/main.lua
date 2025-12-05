@@ -108,7 +108,7 @@ local current_file = ya.sync(function()
 end)
 
 local current_dir = ya.sync(function()
-	return tostring(cx.active.current.cwd)
+	return cx.active.current.cwd
 end)
 
 local current_dir_name = ya.sync(function()
@@ -134,6 +134,8 @@ end
 ---@return integer|nil, Output|nil
 local function run_command(cmd, args, _stdin)
 	local cwd = current_dir()
+	cwd = tostring(cwd.scheme and cwd.scheme.is_virtual and Url(cwd.scheme.cache .. tostring(cwd.path)).parent or cwd)
+
 	local stdin = _stdin or Command.PIPED
 	local child, cmd_err =
 		Command(cmd):arg(args):cwd(cwd):stdin(stdin):stdout(Command.PIPED):stderr(Command.PIPED):spawn()
@@ -516,12 +518,19 @@ return {
 
 		if action == "mount" then
 			local hovered_url, is_dir = current_file()
+			local hovered_url_raw = tostring(hovered_url)
 			if hovered_url == nil then
 				return
 			end
 			local VALID_EXTENSIONS = get_state("global", "valid_extensions")
 			if is_dir or is_dir == nil or (is_dir == false and not VALID_EXTENSIONS[hovered_url.ext]) then
 				enter(hovered_url, is_dir)
+				return
+			end
+			local is_virtual = hovered_url.scheme and hovered_url.scheme.is_virtual
+			hovered_url = is_virtual and Url(hovered_url.scheme.cache .. tostring(hovered_url.path)) or hovered_url
+			if is_virtual and not fs.cha(hovered_url) then
+				ya.emit("download", { hovered_url_raw })
 				return
 			end
 			local tmp_fname = tmp_file_name(hovered_url)
@@ -537,7 +546,7 @@ return {
 					mount_options = get_state("global", "mount_options"),
 				})
 				if success then
-					set_state(tmp_fname, "cwd", current_dir())
+					set_state(tmp_fname, "cwd", tostring(current_dir()))
 					set_state(tmp_fname, "tmp", tostring(tmp_file_url))
 					ya.emit("cd", { tostring(tmp_file_url), raw = true })
 				end

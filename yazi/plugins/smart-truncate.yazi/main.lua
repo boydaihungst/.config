@@ -565,7 +565,8 @@ function M:init_default_callbacks(always_show_patterns)
 		-- override these resizeable components/children render function then re-render the whole entity with truncated/shortened value
 		local suffix = ""
 		local shortened_name
-		local name = entity_self._file.name:gsub("\r", "?", 1)
+		local p = ui.printable
+		local name = p and entity_self._file.name or entity_self._file.name:gsub("\r", "?", 1)
 
 		---------------------------
 		-- get max_length if highlight is resizable
@@ -581,7 +582,7 @@ function M:init_default_callbacks(always_show_patterns)
 
 		local highlights = entity_self._file:highlights()
 		if not highlights or #highlights == 0 then
-			return shortened_name
+			return p and p(shortened_name) or shortened_name
 		end
 
 		-- This will run when use find command
@@ -633,13 +634,13 @@ function M:init_default_callbacks(always_show_patterns)
 				-- Unmatched segment before the current match
 				if match_start_byte > current_byte_cursor then
 					local unmatched_segment = shortened_name:sub(current_byte_cursor, match_start_byte - 1)
-					table.insert(result_with_matched_highlighted, unmatched_segment)
+					table.insert(result_with_matched_highlighted, p and p(unmatched_segment) or unmatched_segment)
 				end
 
 				-- Matched segment
 				local matched_segment_text = shortened_name:sub(match_start_byte, match_end_byte_after - 1)
 				local styled_matched_segment = ui.Span(matched_segment_text):style(th.mgr.find_keyword)
-				table.insert(result_with_matched_highlighted, styled_matched_segment)
+				table.insert(result_with_matched_highlighted, p and p(styled_matched_segment) or styled_matched_segment)
 
 				current_byte_cursor = match_end_byte_after -- Move cursor to position after current match
 			end
@@ -647,17 +648,19 @@ function M:init_default_callbacks(always_show_patterns)
 			-- Add any remaining non-matching tail segment
 			if current_byte_cursor <= byte_input_len then
 				local tail_segment = shortened_name:sub(current_byte_cursor) -- from cursor to end
-				table.insert(result_with_matched_highlighted, tail_segment)
+				table.insert(result_with_matched_highlighted, p and p(tail_segment) or tail_segment)
 			end
 
 			if #result_with_matched_highlighted <= 1 then
-				return ui.Line(shortened_name)
+				return ui.Line(p and p(shortened_name) or shortened_name)
 			end
 			return ui.Line(result_with_matched_highlighted)
 		end
 	end)
 
 	thisPlugin:children_add("symlink", function(entity_self)
+		local p = ui.printable
+
 		-- override these resizeable components/children render function then re-render the whole entity with truncated/shortened value
 
 		-- override symlink Entity:symlink function
@@ -677,7 +680,7 @@ function M:init_default_callbacks(always_show_patterns)
 		local suffix = (not to_extension or to_extension == "") and "" or ("." .. to_extension)
 		local shortened = M:shorten(max_length, prefix .. tostring(link_to), suffix, always_show_patterns)
 
-		return ui.Span(shortened):style(th.mgr.symlink_target)
+		return ui.Span(p and p(shortened) or shortened):style(th.mgr.symlink_target)
 	end)
 end
 

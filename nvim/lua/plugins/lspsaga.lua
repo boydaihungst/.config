@@ -103,10 +103,10 @@ return {
         maps.n["<Leader>lR"] = {
           "<Cmd>Lspsaga finder def+ref+imp+tyd<CR>",
           desc = "Search Def+Imp+Ref+typeDef",
-          cond = function(client)
-            return client.supports_method "textDocument/references"
-              or client.supports_method "textDocument/implementation"
-              or client.supports_method "textDocument/typeDefinition"
+          cond = function(client, bufnr)
+            return client:supports_method("textDocument/references", bufnr)
+              or client:supports_method("textDocument/implementation", bufnr)
+              or client:supports_method("textDocument/typeDefinition", bufnr)
           end,
         }
 

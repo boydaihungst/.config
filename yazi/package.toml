@@ -1,107 +1,107 @@
 [[plugin.deps]]
-  hash = "3996fc74044bc44144b323686f887e1"
-  rev  = "d1c8baa"
-  use  = "yazi-rs/plugins:full-border"
+use = "yazi-rs/plugins:full-border"
+rev = "2301ff8"
+hash = "3996fc74044bc44144b323686f887e1"
 
 [[plugin.deps]]
-  hash = "4c49c446328c4553a4ccab7facc10b21"
-  rev  = "d1c8baa"
-  use  = "yazi-rs/plugins:mime-ext"
+use = "yazi-rs/plugins:mime-ext"
+rev = "2301ff8"
+hash = "4c49c446328c4553a4ccab7facc10b21"
 
 [[plugin.deps]]
-  hash = "3de26efded35814ba3e55e28f1c389a4"
-  rev  = "a5e33db"
-  use  = "MasouShizuka/projects"
+use = "MasouShizuka/projects"
+rev = "a5e33db"
+hash = "3de26efded35814ba3e55e28f1c389a4"
 
 [[plugin.deps]]
-  hash = "901741afba1979739b4650324265162e"
-  rev  = "2161735"
-  use  = "boydaihungst/restore"
+use = "boydaihungst/restore"
+rev = "2161735"
+hash = "901741afba1979739b4650324265162e"
 
 [[plugin.deps]]
-  hash = "2b496dd4dcba137e2423783c3c31a823"
-  rev  = "5f72801"
-  use  = "boydaihungst/fuse-archive"
+use = "boydaihungst/fuse-archive"
+rev = "5f72801"
+hash = "2b496dd4dcba137e2423783c3c31a823"
 
 [[plugin.deps]]
-  hash = "e65cd1dea5feb9ca58c33b870ca3070"
-  rev  = "116a460"
-  use  = "boydaihungst/file-extra-metadata"
+use = "boydaihungst/file-extra-metadata"
+rev = "b052d54"
+hash = "4be2c03287112bb645199c4331b746cc"
 
 [[plugin.deps]]
-  hash = "3a8c45cd04a095a97c256e19ffea0cf3"
-  rev  = "159c62a"
-  use  = "boydaihungst/thunar-bulk-rename"
+use = "boydaihungst/thunar-bulk-rename"
+rev = "159c62a"
+hash = "3a8c45cd04a095a97c256e19ffea0cf3"
 
 [[plugin.deps]]
-  hash = "f45cf212024c85b5f0ea0423e27196a"
-  rev  = "882e752"
-  use  = "boydaihungst/pref-by-location"
+use = "boydaihungst/pref-by-location"
+rev = "882e752"
+hash = "f45cf212024c85b5f0ea0423e27196a"
 
 [[plugin.deps]]
-  hash = "2af8e3190bc26aae1247c4d82a9f58cd"
-  rev  = "9ce3800"
-  use  = "boydaihungst/relative-motions"
+use = "boydaihungst/relative-motions"
+rev = "9ce3800"
+hash = "2af8e3190bc26aae1247c4d82a9f58cd"
 
 [[plugin.deps]]
-  hash = "16a10359fc2a3cd8cc8bcfbe00f744d3"
-  rev  = "2093ab7"
-  use  = "boydaihungst/mediainfo"
+use = "boydaihungst/mediainfo"
+rev = "1099409"
+hash = "77e78e16578e8f5a37475c04d8324619"
 
 [[plugin.deps]]
-  hash = "fc8d977f168df8ac6db8b5c1167ec777"
-  rev  = "ebcbc9e"
-  use  = "boydaihungst/simple-tag"
+use = "boydaihungst/simple-tag"
+rev = "466aa5a"
+hash = "4f0819d5270161b94ed694016011f607"
 
 [[plugin.deps]]
-  hash = "8a7c58225816a163a6e8730c0adafbc8"
-  rev  = "d1c8baa"
-  use  = "yazi-rs/plugins:toggle-pane"
+use = "yazi-rs/plugins:toggle-pane"
+rev = "2301ff8"
+hash = "8a7c58225816a163a6e8730c0adafbc8"
 
 [[plugin.deps]]
-  hash = "40cb4ac1041f7adaf565fd1ada61d3ac"
-  rev  = "73301d2"
-  use  = "boydaihungst/compress"
+use = "boydaihungst/compress"
+rev = "73301d2"
+hash = "40cb4ac1041f7adaf565fd1ada61d3ac"
 
 [[plugin.deps]]
-  hash = "4ee57085277d616acfa0ef1fef37dc00"
-  rev  = "d1c8baa"
-  use  = "yazi-rs/plugins:vcs-files"
+use = "yazi-rs/plugins:vcs-files"
+rev = "2301ff8"
+hash = "4ee57085277d616acfa0ef1fef37dc00"
 
 [[plugin.deps]]
-  hash = "b013a4d29ce69eee29745cb00958745b"
-  rev  = "142c11c"
-  use  = "boydaihungst/smart-truncate"
+use = "boydaihungst/smart-truncate"
+rev = "142c11c"
+hash = "b013a4d29ce69eee29745cb00958745b"
 
 [[plugin.deps]]
-  hash = "f79197930f23924827e81fa51a1413d0"
-  rev  = "40de82f"
-  use  = "boydaihungst/save-clipboard-to-file"
+use = "boydaihungst/save-clipboard-to-file"
+rev = "40de82f"
+hash = "f79197930f23924827e81fa51a1413d0"
 
 [[plugin.deps]]
-  hash = "1e047e1b13b5e3fc6ab1f5d0d04a14e2"
-  rev  = "d1c8baa"
-  use  = "yazi-rs/plugins:types"
+use = "yazi-rs/plugins:types"
+rev = "2301ff8"
+hash = "1e047e1b13b5e3fc6ab1f5d0d04a14e2"
 
 [[plugin.deps]]
-  hash = "162bf7326809fb2b831d7fac7525b067"
-  rev  = "f07b496"
-  use  = "boydaihungst/gvfs"
+use = "boydaihungst/gvfs"
+rev = "eeda243"
+hash = "b27659ad0a4bb37c27adeb30943c2d68"
 
 [[plugin.deps]]
-  hash = "a20327710c3a8d37ee0972128dcb6a31"
-  rev  = "d1c8baa"
-  use  = "yazi-rs/plugins:piper"
+use = "yazi-rs/plugins:piper"
+rev = "2301ff8"
+hash = "64713dcd74daf9ec644883a5895e5d1"
 
 [[plugin.deps]]
-  hash = "93be89f83033b3f1af07a696e8ec50a8"
-  rev  = "d959a86"
-  use  = "boydaihungst/enhance-piper"
+use = "boydaihungst/enhance-piper"
+rev = "d959a86"
+hash = "93be89f83033b3f1af07a696e8ec50a8"
 
 [[plugin.deps]]
-  hash = "77071d6461b623360223c444223001e0"
-  rev  = "1976a1f"
-  use  = "boydaihungst/yamb"
+use = "boydaihungst/yamb"
+rev = "741c05a"
+hash = "699fe07e0d2d1b4af8dafb84168eeb04"
 
 [flavor]
-  deps = [  ]
+deps = []

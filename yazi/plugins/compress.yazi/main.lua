@@ -22,6 +22,10 @@ local function quote(path)
 	return result
 end
 
+local function tmp_name(url)
+	return ".tmp_" .. ya.hash(string.format("compress//%s//%.10f", url, ya.time()))
+end
+
 local function run_command(cmd, cwd)
 	if cwd then
 		-- escape path if it contains spaces
@@ -43,30 +47,11 @@ end
 -- Check for windows
 local is_windows = ya.target_family() == "windows"
 
-local function pathJoin(...)
-	-- Detect OS path separator ('\' for Windows, '/' for Unix)
-	local separator = package.config:sub(1, 1)
-	local parts = { ... }
-	local filteredParts = {}
-	-- Remove empty strings or nil values
-	for _, part in ipairs(parts) do
-		if part and part ~= "" then
-			table.insert(filteredParts, part)
-		end
-	end
-	-- Join the remaining parts with the separator
-	local path = table.concat(filteredParts, separator)
-	-- Normalize any double separators (e.g., "folder//file" → "folder/file")
-	path = path:gsub(separator .. "+", separator)
-
-	return path
-end
-
 local get_cwd = ya.sync(function()
-	return tostring(cx.active.current.cwd)
+	return cx.active.current.cwd
 end)
 
-local selected_files = ya.sync(function()
+local selected_files_maybe_vfs = ya.sync(function()
 	local tab, raw_urls = cx.active, {}
 	for _, u in pairs(tab.selected) do
 		raw_urls[#raw_urls + 1] = tostring(u)
@@ -74,20 +59,33 @@ local selected_files = ya.sync(function()
 	return raw_urls
 end)
 
+local selected_files = ya.sync(function()
+	local tab, raw_urls = cx.active, {}
+	for _, u in pairs(tab.selected) do
+		local is_virtual = u.scheme and u.scheme.is_virtual
+		local u_real = is_virtual and Url(u.scheme.cache .. tostring(u.path)) or u
+		raw_urls[#raw_urls + 1] = { path = tostring(u_real), is_virtual = is_virtual }
+	end
+	return raw_urls
+end)
+
 local selected_or_hovered_files = ya.sync(function()
 	local tab, raw_urls = cx.active, selected_files()
 	if #raw_urls == 0 and tab.current.hovered then
-		raw_urls[1] = tostring(tab.current.hovered.url)
+		local hovered_url = tab.current.hovered.url
+		local is_virtual = hovered_url.scheme and hovered_url.scheme.is_virtual
+		hovered_url = is_virtual and Url(hovered_url.scheme.cache .. tostring(hovered_url.path)) or hovered_url
+		raw_urls[1] = { path = tostring(hovered_url), is_virtual = is_virtual }
 	end
 	return raw_urls
 end)
 
 local selected_or_hovered = function()
 	local result = {}
-	local paths = selected_or_hovered_files()
+	local files = selected_or_hovered_files()
 
-	for _, path in ipairs(paths) do
-		local url = Url(path)
+	for _, file in ipairs(files) do
+		local url = Url(file.path)
 		local cha, err = fs.cha(url)
 
 		if cha then
@@ -97,7 +95,11 @@ local selected_or_hovered = function()
 			end
 			table.insert(result[parent_path], quote(url.name))
 		else
-			notify_error(string.format("Failed to get metadata for %s: %s", path, err), "error")
+			if file.is_virtual then
+				notify_error(string.format("Remote VFS files need to be downloaded first: %s", file.path), "error")
+			else
+				notify_error(string.format("Failed to get metadata for %s: %s", file.path, err), "error")
+			end
 			return
 		end
 	end
@@ -183,10 +185,19 @@ return {
 			end
 		end
 
-		local output_fpath = pathJoin(get_cwd(), output_name)
-		local output_furl = Url(output_fpath)
-		local output_fcha, _ = fs.cha(output_furl)
-		local output_fname_without_ext = output_furl.stem
+		local cwd = get_cwd()
+
+		local path_separator = package.config:sub(1, 1)
+		local output_url_maybe_vfs = Url(cwd .. path_separator .. output_name)
+		local output_path_is_virtual = output_url_maybe_vfs.scheme and output_url_maybe_vfs.scheme.is_virtual
+
+		local output_path_cache = output_path_is_virtual
+				and Url(output_url_maybe_vfs.scheme.cache .. tostring(cwd.path .. path_separator .. output_name))
+			or output_url_maybe_vfs
+		local output_path_cha, _ = fs.cha(output_path_cache)
+		local output_path_cha_vfs, _ = fs.cha(output_url_maybe_vfs)
+		local output_url_maybe_vfs_no_extension = output_url_maybe_vfs.stem
+		local output_path_cache_no_extension = output_path_cache.stem
 
 		-- Use appropriate archive command
 		local archive_commands = {
@@ -362,13 +373,13 @@ return {
 
 		local overwrite_answer = true
 		local list_existed_files = {}
-		if output_fcha then
-			list_existed_files[#list_existed_files + 1] = ui.Span(output_name)
+		if output_path_cha or output_path_cha_vfs then
+			list_existed_files[#list_existed_files + 1] = output_name
 		end
 		if compress_cmd then
-			local output_fwithout_ext_cha = fs.cha(Url(pathJoin(get_cwd(), output_fname_without_ext)))
+			local output_fwithout_ext_cha = fs.cha(Url(cwd .. output_url_maybe_vfs_no_extension))
 			if output_fwithout_ext_cha then
-				list_existed_files[#list_existed_files + 1] = ui.Span(output_fname_without_ext)
+				list_existed_files[#list_existed_files + 1] = output_url_maybe_vfs_no_extension
 			end
 		end
 		if #list_existed_files > 0 then
@@ -376,19 +387,10 @@ return {
 				title = ui.Line("Create Archive File"),
 				body = ui.Text({
 					ui.Line(""),
-					ui.Line("The following file is existed, overwrite?"):fg("yellow"),
-					ui.Line(""),
-					ui.Line({
-						ui.Span(" "),
-						table.unpack(list_existed_files),
-					}):align(ui.Align.LEFT),
-				})
-					:align(ui.Align.LEFT)
-					:wrap(ui.Wrap.YES),
-				-- TODO: remove this after next yazi released
-				content = ui.Text({
-					ui.Line(""),
-					ui.Line("The following file is existed, overwrite?"):fg("yellow"),
+					ui.Line(
+						"The following file is existed, overwrite?"
+							.. (output_path_is_virtual and " (included cached file)" or "")
+					):fg("yellow"),
 					ui.Line(""),
 					ui.Line({
 						ui.Span(" "),
@@ -398,15 +400,37 @@ return {
 					:align(ui.Align.LEFT)
 					:wrap(ui.Wrap.YES),
 				pos = { "center", w = 70, h = 10 },
+				-- TODO: remove this after next yazi released
+				content = ui.Text({
+					ui.Line(""),
+					ui.Line(
+						"The following file is existed, overwrite?"
+							.. (output_path_is_virtual and " (included cached file)" or "")
+					):fg("yellow"),
+					ui.Line(""),
+					ui.Line({
+						ui.Span(" "),
+						table.unpack(list_existed_files),
+					}):align(ui.Align.LEFT),
+				})
+					:align(ui.Align.LEFT)
+					:wrap(ui.Wrap.YES),
 			})
 
 			if not overwrite_answer then
 				return -- If no overwrite selected, exit
 			end
-			local rm_status, rm_err = fs.remove("file", output_furl)
-			if not rm_status then
-				notify_error(string.format("Failed to remove %s, exit code %s", output_name, rm_err), "error")
-				return
+			if output_path_cha_vfs then
+				local rm_status, rm_err = fs.remove("file", output_url_maybe_vfs)
+				if not rm_status then
+					notify_error(string.format("Failed to remove %s, exit code %s", output_name, rm_err), "error")
+					return
+				end
+			end
+
+			-- Remove cached vfs file
+			if output_path_is_virtual and output_path_cha then
+				fs.remove("file", output_path_cache)
 			end
 		end
 
@@ -417,7 +441,7 @@ return {
 					.. " "
 					.. table.concat(archive_args, " ")
 					.. " "
-					.. quote(tostring(compress_cmd and output_fname_without_ext or output_fpath))
+					.. quote(tostring(compress_cmd and output_path_cache_no_extension or tostring(output_path_cache)))
 					.. " "
 					.. table.concat(fnames, " "),
 				parent_path
@@ -433,8 +457,8 @@ return {
 
 		if compress_cmd then
 			local compress_output, compress_success, compress_code = run_command(
-				compress_cmd .. " " .. table.concat(compress_args, " ") .. " " .. quote(output_fname_without_ext),
-				tostring(output_furl.parent)
+				compress_cmd .. " " .. table.concat(compress_args, " ") .. " " .. quote(output_path_cache_no_extension),
+				tostring(output_path_cache.parent)
 			)
 			if not compress_success then
 				notify_error(
@@ -443,6 +467,43 @@ return {
 				)
 				return
 			end
+		end
+		-- NOTE: Trick to upload compressed file to vfs remote path
+		output_path_cha, _ = fs.cha(output_path_cache)
+		if output_path_is_virtual and output_path_cha and output_path_cache ~= output_url_maybe_vfs then
+			local preserved_selected_files = selected_files_maybe_vfs()
+			local preserved_cwd = get_cwd()
+			local tmp_cache_path = tostring(output_path_cache.parent)
+				.. path_separator
+				.. tmp_name(tostring(output_path_cache))
+				.. path_separator
+				.. output_path_cache.name
+			fs.create("dir_all", Url(tmp_cache_path).parent)
+			os.rename(tostring(output_path_cache), tmp_cache_path)
+			ya.emit("escape", { select = true })
+			local valid_selected_files = {}
+			valid_selected_files[#valid_selected_files + 1] = tostring(tmp_cache_path)
+			valid_selected_files.state = "on"
+			ya.emit("toggle_all", valid_selected_files)
+			ya.emit("yank", { cut = true })
+			ya.emit("cd", { tostring(output_url_maybe_vfs.parent), raw = true })
+			ya.emit("paste", { force = true })
+
+			-- Restore selected files
+			ya.emit("escape", { select = true })
+			valid_selected_files = {}
+			for _, url_raw in ipairs(preserved_selected_files) do
+				local url = Url(url_raw)
+				local cha = fs.cha(url, {})
+				if cha then
+					valid_selected_files[#valid_selected_files + 1] = url_raw
+				end
+			end
+			if #valid_selected_files > 0 then
+				valid_selected_files.state = "on"
+				ya.emit("toggle_all", valid_selected_files)
+			end
+			ya.emit("cd", { tostring(preserved_cwd), raw = true })
 		end
 	end,
 }

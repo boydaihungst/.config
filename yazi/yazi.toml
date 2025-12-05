@@ -121,10 +121,8 @@
     { run = '7zFM %s', orphan = true, desc = "7z GUI", for = "linux" },
   ]
   download = [
-    { run = 'ya emit download --open %s', desc = "Download and open", for = "unix" },
-    { run = 'ya emit download --open %*', desc = "Download and open", for = "windows" },
-    { run = 'ya emit download %s', desc = "Download", for = "unix" },
-    { run = 'ya emit download %*', desc = "Download", for = "windows" },
+    { run = 'ya emit download --open %S', desc = "Download and open" },
+    { run = 'ya emit download %S', desc = "Download" },
   ]
 
 [open]
@@ -233,6 +231,8 @@
     { mime = "video/*", run = "video" },
     # Virtual file system
     { mime = "vfs/*", run = "vfs" },
+    # Error
+    { mime = "null/*", run = "null" },
     # Fallback
     # { url = "*", run = "file" },
     { url = "*", run = "file-extra-metadata" },
@@ -243,16 +243,15 @@
     # Do not preview these paths
     { url = "/home/huyhoang/Media/**/*", run = "noop" },
     # Markdown
-    # { mime = "text/markdown", run = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
-    { mime = "text/markdown", run = 'enhance-piper --cache-max-lines=100000 --cache-limit=1000 -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
+    # { mime = "text/plain", run = 'custom-code' },
+    { mime = "text/markdown", run = 'enhance-piper --cache-max-lines=1000000 --cache-limit=1000 -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
     # Code
-    { mime = "text/*", run = 'enhance-piper  --cache-max-lines=100000 --cache-limit=1000 -- bat -p --color=always --theme=base16 "$1"' },
-    # { mime = "text/*", run = 'piper -- bat -p --color=always --theme=base16 "$1"' },
+    { mime = "text/*", run = 'enhance-piper  --cache-max-lines=1000000 --cache-limit=1000 -- bat -p --color=always --theme=base16 "$1"' },
     # Torrent
     { mime = "application/bittorrent", run = 'enhance-piper -- transmission-show "$1" --no-header | CLICOLOR_FORCE=1 glow -w=$w -s=dark -' },
     # Do not preview these paths except text file
     { mime = "application/{mbox,javascript,wine-extension-ini,subrip,apple.mpegurl,xml}", run = 'enhance-piper -- bat -p --color=always --theme=base16 "$1"' },
-    { url = "/mnt/**/*", run = "noop" },
+    # { url = "/mnt/**/*", run = "noop" },
     # Xresources linux
     { mime = "image/xcursor", run = 'enhance-piper -- bat -p --color=always --theme=base16 "$1"' },
     # JSON
@@ -278,6 +277,8 @@
     { mime = "inode/empty", run = "empty" },
     # Virtual file system
     { mime = "vfs/*", run = "vfs" },
+    # Error
+    { mime = "null/*", run = "null" },
     # Fallback
     # { url = "*", run = "file" },
     { url = "*", run = "file-extra-metadata" },
