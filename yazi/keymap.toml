@@ -102,7 +102,7 @@
     # Copy, Yank, Paste, Remove Files
     { on = [ "y", "y" ], run = [
       '''
-     		shell -- bash $(CLIPBOARD=$( (command -v clipboard &>/dev/null && echo "clipboard  -t text/uri-list") || (command -v wl-copy &>/dev/null && echo "wl-copy -t text/uri-list") || (command -v xclip &>/dev/null && echo "xclip -i -selection clipboard -t text/uri-list") || (command -v xsel &>/dev/null && echo "xsel --clipboard --input" ) ) && ( ([[ "$CLIPBOARD" == "xclip"* ]] || [[ "$CLIPBOARD" == "xsel"* ]]) && [[ -z "$DISPLAY" ]]) && exit || URILIST="" && URILIST+="$(printf 'file://%s\r\n' %s)" && echo -ne "$URILIST" |  eval "$CLIPBOARD")
+     		shell -- bash $(CLIPBOARD=$( (command -v clipboard &>/dev/null && echo "clipboard  -t text/uri-list") || (command -v wl-copy &>/dev/null && echo "wl-copy -t text/uri-list") || (command -v xclip &>/dev/null && echo "xclip -i -selection clipboard -t text/uri-list") || (command -v xsel &>/dev/null && echo "xsel --clipboard --input" ) ) && ( ([[ "$CLIPBOARD" == "xclip"* ]] || [[ "$CLIPBOARD" == "xsel"* ]]) && [[ -z "$DISPLAY" ]]) && exit || URILIST="" && URILIST+="$(printf 'file://%%s\r\n' %s)" && echo -ne "$URILIST" |  eval "$CLIPBOARD")
      ''',
       "yank",
     ], desc = "Copy" },
