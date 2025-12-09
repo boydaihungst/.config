@@ -1,4 +1,4 @@
-[providers.home]
+[services.home]
   host     = "home"
   key_file = "~/.ssh/id_ecdsa"
   port     = 22

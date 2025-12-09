@@ -1,4 +1,5 @@
 Videos	/home/huyhoang/Videos/	v
+test	sftp://home//home/huyhoang/test/	f
 /mnt/remote	/mnt/remote/	m
 /mnt/hdd/remote/Anime	/mnt/remote/Media/Anime/	a
 .local/share	/home/huyhoang/.local/share/	l

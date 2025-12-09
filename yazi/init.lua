@@ -3,8 +3,6 @@ require("custom-dds"):setup()
 require("simple-tag"):setup({
 	ui_mode = "text",
 	colors = {
-		-- default theme is reversed color for hovered
-		reversed = false,
 		-- Default tag key = *
 		["*"] = "#bf68d9",
 		-- color for tag with key = "q"
@@ -204,6 +202,15 @@ require("projects"):setup({
 -------------------------- Root + Header + Status bar + linemode ------------------------------------
 --------------------------------------------------------------------------------------------
 
+-- Old hovered style
+function Entity:padding()
+	return " "
+end
+function Linemode:padding()
+	return " "
+end
+
+-- Old tab number
 function Root:drop(data)
 	-- Default download_cmd = 'curl -sSLOJ "$1"'
 	ya.emit("plugin", { "dragdrop", data })

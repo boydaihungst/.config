@@ -20,10 +20,6 @@
 
   cwd = { fg = "#494D56" }
 
-  # Hovered
-  hovered         = { bg = "#26343F" }
-  preview_hovered = { bg = "#26343F" }
-
   # Find
   find_keyword  = { fg = "#1A1D23", bg = "#bf68d9", bold = true }
   find_position = { fg = "#4fa6ed", bg = "#26343F", bold = true }
@@ -43,6 +39,17 @@
   border_symbol = "│"
 
   # : }}}
+
+  # : Indicator of hovered file {{{
+
+[indicator]
+  current = { reversed = false, bg = "#26343F" }
+  padding = { open = "", close = "" }
+  parent  = { reversed = false, bg = "#26343F" }
+  preview = { underline = false, bg = "#26343F" }
+
+  # : }}}
+
   # : Tabs {{{
 
 [tabs]
