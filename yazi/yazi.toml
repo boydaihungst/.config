@@ -22,7 +22,7 @@
   tab_size        = 2
   ueberzug_offset = [ 25.5, 6, 0, 0 ]
   ueberzug_scale  = 1
-  wrap            = "yes"
+  wrap            = "no"
 
 [opener]
 
@@ -68,9 +68,10 @@
   audio = [ { run = 'ncmpcpp %s', orphan = true, desc = "Ncmpcpp", for = "linux" } ]
 
   video = [
-    { run = "smplayer %s", orphan = true, desc = "Smplayer", for = "linux" },
+    # { run = "smplayer %s", orphan = true, desc = "Smplayer", for = "linux" },
+    # { run = "ya emit escape select && ya emit visual_mode && ya emit plugin simple-tag 'add-tag --key=`' && ya emit escape select && smplayer %s", orphan = true, desc = "Smplayer", for = "linux" },
+    { run = 'mpv %s', orphan = true, desc = "Mpv", for = "linux" },
     # { run = 'vlc %s', orphan = true, desc = "Vlc", for = "linux" },
-    # { run = 'mpv %s', orphan = true, desc = "Mpv", for = "linux" },
     { run = '$HOME/git/scripts/extract_sub.sh %s', orphan = true, desc = "Extract subtitle", for = "linux" },
   ]
 
@@ -128,6 +129,7 @@
 [open]
   rules = [
     { mime = "image/xcursor", use = [ "edit" ] },
+    { mime = "application/mbox", use = [ "edit" ] },
     { mime = "text/shellscript", use = [ "execute" ], block = true },
     { url = "bulk-rename.txt", use = [ "bulk-rename" ], block = true },
     # Folder

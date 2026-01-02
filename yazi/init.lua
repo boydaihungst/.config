@@ -10,6 +10,7 @@ require("simple-tag"):setup({
 		["`"] = "#4fa6ed",
 		["~"] = "#E55561",
 		["p"] = "red",
+		["w"] = "#4fa6ed",
 	},
 	icons = {
 		default = "󰚋",
@@ -22,6 +23,7 @@ require("simple-tag"):setup({
 		["`"] = "",
 		["~"] = "",
 		["p"] = "",
+		["w"] = "󱛻",
 	},
 })
 require("pref-by-location"):setup({

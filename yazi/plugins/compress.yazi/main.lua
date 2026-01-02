@@ -468,42 +468,18 @@ return {
 				return
 			end
 		end
-		-- NOTE: Trick to upload compressed file to vfs remote path
 		output_path_cha, _ = fs.cha(output_path_cache)
 		if output_path_is_virtual and output_path_cha and output_path_cache ~= output_url_maybe_vfs then
-			local preserved_selected_files = selected_files_maybe_vfs()
-			local preserved_cwd = get_cwd()
-			local tmp_cache_path = tostring(output_path_cache.parent)
-				.. path_separator
-				.. tmp_name(tostring(output_path_cache))
-				.. path_separator
-				.. output_path_cache.name
-			fs.create("dir_all", Url(tmp_cache_path).parent)
-			os.rename(tostring(output_path_cache), tmp_cache_path)
-			ya.emit("escape", { select = true })
-			local valid_selected_files = {}
-			valid_selected_files[#valid_selected_files + 1] = tostring(tmp_cache_path)
-			valid_selected_files.state = "on"
-			ya.emit("toggle_all", valid_selected_files)
-			ya.emit("yank", { cut = true })
-			ya.emit("cd", { tostring(output_url_maybe_vfs.parent), raw = true })
-			ya.emit("paste", { force = true })
+			local from = output_path_cache
+			local to = output_url_maybe_vfs
 
-			-- Restore selected files
-			ya.emit("escape", { select = true })
-			valid_selected_files = {}
-			for _, url_raw in ipairs(preserved_selected_files) do
-				local url = Url(url_raw)
-				local cha = fs.cha(url, {})
-				if cha then
-					valid_selected_files[#valid_selected_files + 1] = url_raw
+			local ok, err = fs.rename(from, to)
+			if not ok and err.kind == "CrossesDevices" then
+				local len, err = fs.copy(from, to)
+				if len and not err then
+					fs.remove("file", from)
 				end
 			end
-			if #valid_selected_files > 0 then
-				valid_selected_files.state = "on"
-				ya.emit("toggle_all", valid_selected_files)
-			end
-			ya.emit("cd", { tostring(preserved_cwd), raw = true })
 		end
 	end,
 }

@@ -45,6 +45,8 @@ return {
           --   delete = { n = "d", i = "<M-d>" },
           --   duplicate = { n = "<C-y>", i = "<C-y>" },
           -- },
+
+          auto_generate_title = true,
           ---On exiting and entering neovim, loads the last chat on opening chat
           continue_last_chat = true,
           ---When chat is cleared with `gx` delete the chat from history
@@ -53,7 +55,7 @@ return {
           dir_to_save = vim.fn.stdpath "data" .. "/codecompanion-history",
           title_generation_opts = {
             adapter = "nvidia",
-            model = "qwen/qwen3-235b-a22b",
+            model = "qwen/qwen3-coder-480b-a35b-instruct",
           },
 
           -- Summary system
@@ -65,7 +67,7 @@ return {
 
             generation_opts = {
               adapter = "nvidia",
-              model = "qwen/qwen3-235b-a22b",
+              model = "qwen/qwen3-coder-480b-a35b-instruct",
               context_size = 260000, -- max tokens that the model supports
               include_references = true, -- include slash command content
               include_tool_outputs = true, -- include tool execution results
@@ -86,7 +88,7 @@ return {
               default_num = 10,
             },
             -- Enable notifications for indexing progress
-            notify = false,
+            notify = true,
             -- Index all existing memories on startup
             -- (requires VectorCode 0.6.12+ for efficient incremental indexing)
             index_on_startup = true,
@@ -100,30 +102,19 @@ return {
       acp = {
         -- TODO: wait for the next update
         gemini_cli = function()
-          -- local MCPHub = require("mcphub").get_hub_instance()
-          -- local mcpServers = {}
-          -- if MCPHub then
-          --   mcpServers = {
-          --     {
-          --       MCPHub = {
-          --         url = "http://localhost:" .. MCPHub.port .. "/mcp",
-          --       },
-          --     },
-          --   }
-          -- end
           return require("codecompanion.adapters").extend("gemini_cli", {
             commands = {
               flash = {
                 "gemini",
                 "--experimental-acp",
                 "-m",
-                "gemini-2.5-flash",
+                "gemini-3-pro-preview",
               },
               pro = {
                 "gemini",
                 "--experimental-acp",
                 "-m",
-                "gemini-2.5-pro",
+                "gemini-3-pro-preview",
               },
             },
             defaults = {
@@ -134,9 +125,6 @@ return {
             env = {
               -- api_key = "GEMINI_API_KEY",
             },
-            -- env = {
-            --   api_key = "cmd:op read op://personal/Gemini/credential --no-newline",
-            -- },
           })
         end,
       },
@@ -154,7 +142,7 @@ return {
               model = {
                 -- default = "openai/gpt-oss-120b",
                 -- default = "deepseek-ai/deepseek-v3.1",
-                default = "validqwen3-coder-480b-a35b-instruct",
+                default = "qwen/qwen3-coder-480b-a35b-instruct",
                 -- default = "meta/llama-4-maverick-17b-128e-instruct",
               },
             },
@@ -164,19 +152,35 @@ return {
           return require("codecompanion.adapters").extend("gemini", {
             schema = {
               model = {
-                default = "gemini-2.5-flash",
+                default = "gemini-3-pro-preview",
               },
             },
           })
         end,
       },
     },
-    strategies = {
+    interactions = {
       chat = {
         adapter = "gemini_cli",
+        auto_scroll = false,
+        icons = {
+          chat_context = "📎️",
+        },
+        fold_context = true,
+        variables = {
+          ["buffer"] = {
+            opts = {
+              -- Always sync the buffer by sharing its "diff"
+              -- Or choose "all" to share the entire buffer
+              default_params = "diff",
+            },
+          },
+        },
+        default_rules = "default",
       },
       inline = {
         adapter = "gemini_cli",
+        default_rules = "default",
       },
       cmd = {
         adapter = "gemini_cli",

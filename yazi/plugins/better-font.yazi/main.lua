@@ -28,7 +28,7 @@ function M:preload(job)
 		"-gravity",
 		"center",
 		"-font",
-		tostring(job.file.url),
+		tostring((job.file.url.path or job.file.url)),
 		"-pointsize",
 		"50",
 		"xc:none",

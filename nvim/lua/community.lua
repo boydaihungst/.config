@@ -25,7 +25,7 @@ return {
   { import = "astrocommunity.git.gitlinker-nvim" },
   { import = "astrocommunity.git.octo-nvim" },
   { import = "astrocommunity.lsp.nvim-lint" },
-  { import = "astrocommunity.lsp.ts-error-translator-nvim" },
+  -- { import = "astrocommunity.lsp.ts-error-translator-nvim" },
   { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
   { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
   { import = "astrocommunity.media.img-clip-nvim" },

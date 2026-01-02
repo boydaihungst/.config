@@ -48,7 +48,7 @@ function M:peek(job)
 		local args = "--cmd="
 			.. ya.quote(job.args[1])
 			.. " --url="
-			.. ya.quote(tostring(job.file.cache or job.file.url))
+			.. ya.quote(tostring(job.file.path or job.file.cache or (job.file.url.path or job.file.url)))
 			.. " --w="
 			.. ya.quote(job.area.w)
 			.. " --h="

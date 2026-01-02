@@ -213,12 +213,9 @@ return {
       list = { selection = { preselect = false, auto_insert = true } },
       documentation = {
         draw = function(opts)
-          if opts.item and opts.item.documentation then
-            local hover_parser = require "pretty_hover.parser"
-            local docs = type(opts.item.documentation) == "string" and opts.item.documentation
-              or opts.item.documentation.value
-            local parsed_ok, result = pcall(function() return hover_parser.parse(docs) end)
-            if parsed_ok and result then docs = result:string() end
+          if opts.item and opts.item.documentation and opts.item.documentation.value then
+            local out = require("pretty_hover.parser").parse(opts.item.documentation.value)
+            opts.item.documentation.value = out:string()
           end
 
           opts.default_implementation(opts)
