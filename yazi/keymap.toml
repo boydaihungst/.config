@@ -8,9 +8,10 @@
     { on = "<Esc>", run = "escape", desc = "Exit visual mode, clear selected, or cancel search" },
     { on = "<F9>", run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"', desc = "Toggle media previewer metadata" },
     { on = "+", run = "plugin mediainfo -- toggle-metadata", desc = "Toggle media previewer metadata" },
+    { on = "-", run = "plugin vcs-files", desc = "plugin vcs-files" },
     { on = "q", run = [
       "plugin fuse-archive -- unmount",
-      "plugin projects -- quit",
+      "quit",
     ], desc = "Exit but save project" },
     { on = "Q", run = "quit --no-cwd-file", desc = "Exit the process without writing cwd-file" },
 
@@ -254,7 +255,7 @@
     # by selected key
     { on = [ "t", "t" ], run = "plugin simple-tag -- toggle-tag", desc = "Toggle tag by any key (press any key to tag)" },
     { on = [ "t", "T" ], run = "plugin simple-tag -- toggle-tag --input", desc = "Toggle tag by any key (press any key to tag)" },
-    { on = [ "t", "f" ], run = "plugin simple-tag -- filter", desc = "Filter files by tag key" },
+    { on = [ "t", "f" ], run = "plugin simple-tag -- filter --input --mode=not", desc = "Filter files by tag key" },
     # { on = [ "t", "f" ], run = "plugin simple-tag -- filter --keys=!", desc = "Filter files with tag key !" },
     # { on = [ "t", "f" ], run = "plugin simple-tag -- filter --keys=!1q", desc = "Filter files with tag keys ! or 1 or q" },
     # { on = [ "t", "F" ], run = "plugin simple-tag -- filter --input", desc = "Filter files with tagged key !" },

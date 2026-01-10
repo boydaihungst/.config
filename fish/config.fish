@@ -54,7 +54,7 @@ if not type -q safe-rm
     echo "safe-rm not found. Install through package manager!"
 end
 fish_add_path -p /usr/lib/safe-rm
-fish_add_path -aP ~/bin ~/.local/bin ~/.cargo/bin $GEM_HOME/bin ~/.local/share/neovim/bin /usr/local/go/bin ~/android_root/platform-tools /usr/include/vapoursynth ~/go/bin
+fish_add_path -aP ~/bin ~/.local/bin ~/.cargo/bin $GEM_HOME/bin ~/.local/share/neovim/bin /usr/local/go/bin ~/android_root/platform-tools /usr/include/vapoursynth ~/go/bin ~/.cache/.bun/bin
 
 if type -q nvim
     set EDITOR nvim

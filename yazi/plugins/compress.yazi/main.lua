@@ -22,10 +22,6 @@ local function quote(path)
 	return result
 end
 
-local function tmp_name(url)
-	return ".tmp_" .. ya.hash(string.format("compress//%s//%.10f", url, ya.time()))
-end
-
 local function run_command(cmd, cwd)
 	if cwd then
 		-- escape path if it contains spaces
@@ -51,19 +47,11 @@ local get_cwd = ya.sync(function()
 	return cx.active.current.cwd
 end)
 
-local selected_files_maybe_vfs = ya.sync(function()
-	local tab, raw_urls = cx.active, {}
-	for _, u in pairs(tab.selected) do
-		raw_urls[#raw_urls + 1] = tostring(u)
-	end
-	return raw_urls
-end)
-
 local selected_files = ya.sync(function()
 	local tab, raw_urls = cx.active, {}
 	for _, u in pairs(tab.selected) do
 		local is_virtual = u.scheme and u.scheme.is_virtual
-		local u_real = is_virtual and Url(u.scheme.cache .. tostring(u.path)) or u
+		local u_real = is_virtual and Url(u.scheme.cache .. tostring(u.path)) or u.path or u
 		raw_urls[#raw_urls + 1] = { path = tostring(u_real), is_virtual = is_virtual }
 	end
 	return raw_urls
@@ -74,7 +62,9 @@ local selected_or_hovered_files = ya.sync(function()
 	if #raw_urls == 0 and tab.current.hovered then
 		local hovered_url = tab.current.hovered.url
 		local is_virtual = hovered_url.scheme and hovered_url.scheme.is_virtual
-		hovered_url = is_virtual and Url(hovered_url.scheme.cache .. tostring(hovered_url.path)) or hovered_url
+		hovered_url = is_virtual and Url(hovered_url.scheme.cache .. tostring(hovered_url.path))
+			or hovered_url.path
+			or hovered_url
 		raw_urls[1] = { path = tostring(hovered_url), is_virtual = is_virtual }
 	end
 	return raw_urls
@@ -186,6 +176,9 @@ return {
 		end
 
 		local cwd = get_cwd()
+		if cwd.is_search then
+			cwd = cwd.path
+		end
 
 		local path_separator = package.config:sub(1, 1)
 		local output_url_maybe_vfs = Url(cwd .. path_separator .. output_name)

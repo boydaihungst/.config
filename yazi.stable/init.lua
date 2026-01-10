@@ -1,31 +1,31 @@
 -- require("hover-after-moved"):setup()
 -- require("custom-dds"):setup()
--- require("simple-tag"):setup({
--- 	ui_mode = "text",
--- 	colors = {
--- 		-- default theme is reversed color for hovered
--- 		reversed = false,
--- 		-- Default tag key = *
--- 		["*"] = "#bf68d9",
--- 		-- color for tag with key = "q"
--- 		["$"] = "green",
--- 		["`"] = "#4fa6ed",
--- 		["~"] = "#E55561",
--- 		["p"] = "red",
--- 	},
--- 	icons = {
--- 		default = "󰚋",
--- 		-- Add icon "*" tag for tag key = "*".
--- 		["*"] = "",
--- 		-- Add icon tag for tag key = "$"
--- 		["$"] = "",
--- 		-- Add icon tag for tag key = "!"
--- 		-- ["`"] = "",
--- 		["`"] = "",
--- 		["~"] = "",
--- 		["p"] = "",
--- 	},
--- })
+require("simple-tag"):setup({
+	ui_mode = "text",
+	colors = {
+		-- default theme is reversed color for hovered
+		reversed = false,
+		-- Default tag key = *
+		["*"] = "#bf68d9",
+		-- color for tag with key = "q"
+		["$"] = "green",
+		["`"] = "#4fa6ed",
+		["~"] = "#E55561",
+		["p"] = "red",
+	},
+	icons = {
+		default = "󰚋",
+		-- Add icon "*" tag for tag key = "*".
+		["*"] = "",
+		-- Add icon tag for tag key = "$"
+		["$"] = "",
+		-- Add icon tag for tag key = "!"
+		-- ["`"] = "",
+		["`"] = "",
+		["~"] = "",
+		["p"] = "",
+	},
+})
 require("pref-by-location"):setup({
 	-- no_notify = true,
 	disable_fallback_preference = false,

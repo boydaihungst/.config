@@ -74,3 +74,41 @@ FTL - Beginning stack dump for "Fatal exception":
 End of stack dump.
 ----------------------------------------
 
+--- 25-11-29 20:07:36 ------------------
+VER - 9844-makepkg-9bfd5008d
+FTL - Beginning stack dump for "Fatal exception": 
+000 - 0x55b21bbb0b82: 
+001 - 0x55b21ba27bbc: 
+002 - 0x55b21ba27f4b: 
+003 - 0x7fbf41b8f114: 
+004 - 0x7fbf4023e4d0: 
+005 - 0x7fbf4114159c: FT_Done_Face
+006 - 0x55b21bbf81a9: 
+007 - 0x55b21bc5ec52: 
+008 - 0x55b21bc5368e: 
+009 - 0x55b21bbf5d1b: 
+010 - 0x55b21bbe11f3: 
+011 - 0x55b21bbe18db: 
+012 - 0x55b21bbe5a1c: 
+013 - 0x55b21bbf6111: 
+014 - 0x55b21bbe5b55: 
+015 - 0x55b21b7d4a9f: 
+016 - 0x55b21b7d3a6a: 
+017 - 0x55b21b7d3afa: 
+018 - 0x55b21b7c3a98: 
+019 - 0x55b21b7c0dd3: 
+020 - 0x55b21b7c6fdd: 
+021 - 0x55b21b7c583a: 
+022 - 0x55b21b7c0b34: 
+023 - 0x55b21b7bf13e: 
+024 - 0x55b21b7d0eee: 
+025 - 0x55b21b7d0f0a: 
+026 - 0x55b21ba27466: 
+027 - 0x7fbf41aec30a: wxEntry(int&, wchar_t**)
+028 - 0x55b21ba253d8: main
+029 - 0x7fbf40227635: 
+030 - 0x7fbf402276e9: __libc_start_main
+031 - 0x55b21b6832e5: 
+End of stack dump.
+----------------------------------------
+

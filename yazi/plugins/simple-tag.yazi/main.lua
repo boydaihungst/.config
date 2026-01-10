@@ -9,6 +9,7 @@ local M = {}
 
 local TARGET_FAMILY = ya.target_family()
 
+local path_separator = package.config:sub(1, 1)
 -- stylua: ignore
 local CAND_TAG_KEYS = {
 	-- number + special characters
@@ -71,6 +72,9 @@ local UI_MODE = {
 local FILTER_MODE = {
 	["or"] = "or",
 	["and"] = "and",
+	["not"] = "not",
+	["nand"] = "nand",
+	["nor"] = "nor",
 }
 
 ---@enum SELECTION_MODE
@@ -122,8 +126,8 @@ local PUBSUB_KIND = {
 	files_trash = "trash",
 	file_renamed = "rename",
 	files_bulk_renamed = "bulk",
-	files_yank = "yank",
 	files_move = "move",
+	files_copy = "duplicate",
 }
 
 --          ╭─────────────────────────────────────────────────────────╮
@@ -218,8 +222,6 @@ local broadcast = ya.sync(function(_, pubsub_kind, data, to)
 end)
 
 local function pathJoin(...)
-	-- Detect OS path separator ('\' for Windows, '/' for Unix)
-	local separator = package.config:sub(1, 1)
 	local parts = { ... }
 	local filteredParts = {}
 	-- Remove empty strings or nil values
@@ -228,10 +230,10 @@ local function pathJoin(...)
 			table.insert(filteredParts, part)
 		end
 	end
-	-- Join the remaining parts with the separator
-	local path = table.concat(filteredParts, separator)
+	-- Join the remaining parts with the path_separator
+	local path = table.concat(filteredParts, path_separator)
 	-- Normalize any double separators (e.g., "folder//file" → "folder/file")
-	path = path:gsub(separator .. "+", separator)
+	path = path:gsub(path_separator .. "+", path_separator)
 
 	return path
 end
@@ -382,10 +384,19 @@ local get_cwd = ya.sync(function()
 	return cx.active.current.cwd
 end)
 
+local get_cwd_filenames = ya.sync(function(_, filtered_filenames)
+	local filenames = {}
+	for i = 1, #cx.active.current.files do
+		filenames[#filenames + 1] = cx.active.current.files[i].name
+	end
+	return tbl_subtract(filenames, filtered_filenames or {})
+end)
+
 local selected_files = ya.sync(function()
 	local tab, raw_urls = cx.active, {}
+	local is_search = get_cwd().is_search
 	for _, u in pairs(tab.selected) do
-		raw_urls[#raw_urls + 1] = tostring(u)
+		raw_urls[#raw_urls + 1] = tostring(is_search and u.path or u)
 	end
 	return raw_urls
 end)
@@ -393,7 +404,8 @@ end)
 local selected_or_hovered_files = ya.sync(function()
 	local tab, raw_urls = cx.active, selected_files()
 	if #raw_urls == 0 and tab.current.hovered then
-		raw_urls[1] = tostring(tab.current.hovered.url)
+		local is_search = get_cwd().is_search
+		raw_urls[1] = tostring(is_search and tab.current.hovered.url.path or tab.current.hovered.url)
 	end
 	return raw_urls
 end)
@@ -473,8 +485,9 @@ end
 
 function M:fetch(job)
 	local tags_db = get_state(STATE_KEY.tags_database)
+	local is_search = get_cwd().is_search
 	for _, file in ipairs(job.files) do
-		local tags_tbl = tostring(file.url.parent)
+		local tags_tbl = tostring(is_search and file.url.parent.path or file.url.parent)
 		if tags_db[tags_tbl] == nil then
 			tags_db[tags_tbl] = read_tags_tbl(tags_tbl)
 		end
@@ -491,7 +504,8 @@ function M:has_tags(file, filter_tags)
 	else
 		url = file.url
 	end
-	local tags_tbl = tostring(url.parent)
+	local is_search = get_cwd().is_search
+	local tags_tbl = tostring(is_search and url.parent.path or url.parent)
 	local fname = tostring(url.name)
 
 	local tags_database = get_state(STATE_KEY.tags_database)
@@ -563,7 +577,8 @@ function M:setup(opts)
 		if st[STATE_KEY.ui_mode] == UI_MODE.hidden then
 			return ""
 		end
-		local tags_tbl = tostring(_self._file.url.parent)
+		local is_search = get_cwd().is_search
+		local tags_tbl = tostring(is_search and _self._file.url.parent.path or _self._file.url.parent)
 		local fname = _self._file.name
 		local spans = {}
 		if st[STATE_KEY.tags_database][tags_tbl] and st[STATE_KEY.tags_database][tags_tbl][fname] then
@@ -602,12 +617,27 @@ function M:setup(opts)
 	ps.sub(PUBSUB_KIND.files_move, function(payload)
 		local changed_files = {}
 		for _, item in pairs(payload.items) do
-			local from = item.from
-			local to = item.to
-			changed_files[tostring(from)] = tostring(to)
+			local from = tostring(item.from)
+			local to = tostring(item.to)
+			changed_files[from] = to
 		end
 		enqueue_task(STATE_KEY.tasks_rename_tags, changed_files)
 		local args = ya.quote(TAG_ACTION.files_transferred)
+		ya.emit("plugin", {
+			self._id,
+			args,
+		})
+	end)
+
+	ps.sub(PUBSUB_KIND.files_copy, function(payload)
+		local changed_files = {}
+		for _, item in pairs(payload.items) do
+			local from = tostring(item.from)
+			local to = tostring(item.to)
+			changed_files[from] = to
+		end
+		enqueue_task(STATE_KEY.tasks_rename_tags, changed_files)
+		local args = ya.quote(TAG_ACTION.files_transferred) .. " " .. ya.quote("--mode=copy")
 		ya.emit("plugin", {
 			self._id,
 			args,
@@ -1024,7 +1054,8 @@ function M:entry(job)
 				table.insert(selected_tag_keys, key)
 			end
 
-			local tags_tbl = tostring(get_cwd())
+			local cwd = get_cwd()
+			local tags_tbl = tostring(cwd.is_search and cwd.path or cwd)
 			local tags_db = get_state(STATE_KEY.tags_database)
 			local tagged_filenames = tags_db[tags_tbl] or {}
 			for fname, tags in pairs(tagged_filenames) do
@@ -1032,7 +1063,7 @@ function M:entry(job)
 					(select_mode == SELECTION_MODE["and"] and tbl_is_subset(selected_tag_keys, tags))
 					or (select_mode == SELECTION_MODE["or"] and tbl_contains_any(tags, selected_tag_keys))
 				then
-					table.insert(new_selected_files, pathJoin(tags_tbl, fname))
+					table.insert(new_selected_files, (tags_tbl .. path_separator .. fname))
 				end
 			end
 			local preserve_selected_files = selected_files()
@@ -1061,7 +1092,7 @@ function M:entry(job)
 		local valid_selected_files = {}
 		for _, url_raw in ipairs(new_selected_files) do
 			local url = Url(url_raw)
-			local cha = fs.cha(url, {})
+			local cha = fs.cha(url, false)
 			if cha then
 				valid_selected_files[#valid_selected_files + 1] = url_raw
 			end
@@ -1072,51 +1103,93 @@ function M:entry(job)
 		local filter_tags = {}
 		local inputted_tags = job.args.tags or job.args.tags or job.args.keys or job.args.key
 		local filter_mode = job.args.mode or FILTER_MODE["and"]
-		local input_mode = job.args.input
-		local title = "Search tags" .. (filter_mode == FILTER_MODE["or"] and " (or)" or "") .. ":"
-		if not inputted_tags then
-			inputted_tags = show_cands_input_tags(title, input_mode)
-		end
-
-		if not inputted_tags then
+		if FILTER_MODE[filter_mode] == nil then
+			warn(
+				"Unsupported filter mode: %s, may be you are using an old configuration of simple-tag plugin, please check the documentation.",
+				filter_mode
+			)
 			return
 		end
+		local input_mode = job.args.input
+		local cwd = get_cwd()
+		local is_virtual = cwd.scheme and cwd.scheme.is_virtual
+		if is_virtual then
+			warn("Filtering by tags is not supported for virtual files")
+			return
+		end
+		local title = "Search tags"
+			.. (filter_mode ~= FILTER_MODE["and"] and " (" .. FILTER_MODE[filter_mode] .. ")" or "")
+			.. ":"
+		if not inputted_tags and filter_mode ~= FILTER_MODE["not"] then
+			inputted_tags = show_cands_input_tags(title, input_mode)
+			if not inputted_tags then
+				return
+			end
+		end
 
-		for _, code in utf8.codes(inputted_tags) do
+		for _, code in utf8.codes(inputted_tags or "") do
 			local key = utf8.char(code)
 			table.insert(filter_tags, key)
 		end
 
-		local tags_tbl = tostring(get_cwd())
+		local tags_tbl = tostring(cwd.is_search and cwd.path or cwd)
 		local tags_db = get_state(STATE_KEY.tags_database)
-		local tagged_filenames = tags_db[tags_tbl] or {}
-		local cwd = get_cwd()
+		local tagged_filenames_with_tags = tags_db[tags_tbl] or {}
 
 		local id = ya.id("ft")
 		local filter_title = "MODE=(" .. filter_mode .. ")" .. " Tags=(" .. table.concat(filter_tags, "") .. ")"
 		local _cwd = cwd:into_search(filter_title)
-		ya.emit("cd", { Url(_cwd) })
-		ya.emit("update_files", { op = fs.op("part", { id = id, url = Url(_cwd), files = {} }) })
-
 		local files = {}
-		for fname, tags in pairs(tagged_filenames) do
-			if
-				(filter_mode == FILTER_MODE["and"] and tbl_is_subset(filter_tags, tags))
-				or (filter_mode == FILTER_MODE["or"] and tbl_contains_any(tags, filter_tags))
-			then
-				local url = _cwd:join(fname)
-				local cha = fs.cha(url, true)
-				if cha then
-					files[#files + 1] = File({ url = url, cha = cha })
-				end
+		local function add_file(fname)
+			-- local url = _cwd:join(fname)
+			-- TODO: WORKAROUND: cwd prefix `search://` can't be joined
+			local url = Url(tostring(_cwd.path or _cwd) .. path_separator .. tostring(fname))
+			local cha = fs.cha(url, true)
+			if cha then
+				files[#files + 1] = File({ url = url, cha = cha })
 			end
 		end
 
+		if filter_mode == FILTER_MODE["and"] or filter_mode == FILTER_MODE["or"] then
+			for fname, tags in pairs(tagged_filenames_with_tags) do
+				if
+					(filter_mode == FILTER_MODE["and"] and tbl_is_subset(filter_tags, tags))
+					or (filter_mode == FILTER_MODE["or"] and tbl_contains_any(tags, filter_tags))
+				then
+					add_file(fname)
+				end
+			end
+		else
+			ya.emit("escape", { search = true })
+			local tagged_filenames = {}
+			for fname, tags in pairs(tagged_filenames_with_tags) do
+				if
+					(filter_mode == FILTER_MODE["nand"] and tbl_is_subset(filter_tags, tags))
+					or (filter_mode == FILTER_MODE["nor"] and tbl_contains_any(tags, filter_tags))
+					or (filter_mode == FILTER_MODE["not"])
+				then
+					tagged_filenames[#tagged_filenames + 1] = fname
+				end
+			end
+			for _, fname in ipairs(get_cwd_filenames(tagged_filenames)) do
+				add_file(fname)
+			end
+		end
+
+		ya.emit("cd", { Url(_cwd) })
+		ya.emit("update_files", { op = fs.op("part", { id = id, url = Url(_cwd), files = {} }) })
 		ya.emit("update_files", { op = fs.op("part", { id = id, url = Url(_cwd), files = files }) })
-		ya.emit("update_files", { op = fs.op("done", { id = id, url = _cwd, cha = Cha({ kind = 16 }) }) })
+		ya.emit("update_files", {
+			op = fs.op("done", {
+				id = id,
+				url = _cwd,
+				cha = Cha({ mode = tonumber("100644", 8) }),
+			}),
+		})
 	elseif action == TAG_ACTION.files_deleted then
 		delete_tags()
 	elseif action == TAG_ACTION.files_transferred then
+		local mode = job.args.mode
 		local changes = dequeue_task(STATE_KEY.tasks_rename_tags)
 		if changes then
 			local changed_tags_db = {}
@@ -1135,7 +1208,9 @@ function M:entry(job)
 							tags_db[new_tags_tbl] = {}
 						end
 						tags_db[new_tags_tbl][new_fname] = tags_db[old_tags_tbl][old_fname]
-						tags_db[old_tags_tbl][old_fname] = nil
+						if mode ~= "copy" then
+							tags_db[old_tags_tbl][old_fname] = nil
+						end
 						changed_tags_db[old_tags_tbl] = tags_db[old_tags_tbl]
 						changed_tags_db[new_tags_tbl] = tags_db[new_tags_tbl]
 					end

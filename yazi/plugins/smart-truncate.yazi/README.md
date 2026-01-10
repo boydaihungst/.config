@@ -6,7 +6,7 @@ A [Yazi](https://github.com/sxyazi/yazi) plugin to truncate any component when r
 
 ## Requirements
 
-- [Yazi](https://github.com/sxyazi/yazi) >= v25.5.31
+- [Yazi](https://github.com/sxyazi/yazi) >= v25.12.29
 
 ## Previews
 
@@ -30,8 +30,6 @@ A [Yazi](https://github.com/sxyazi/yazi) plugin to truncate any component when r
 
 ```sh
 ya pkg add boydaihungst/smart-truncate
-# or
-ya pack -a boydaihungst/smart-truncate
 ```
 
 ## Configuration
@@ -42,18 +40,14 @@ If you want to use this as a previewer, add this to your `yazi.toml`:
 This will replace `folder` previewer with `smart-truncate` previewer.
 More info: https://yazi-rs.github.io/docs/plugins/overview#previewer
 
-> [!IMPORTANT]
->
-> For yazi nightly replace `name` with `url`
-
 ```toml
   prepend_previewers = [
-    { name = "*/", run = "smart-truncate" },
+    { url = "*/", run = "smart-truncate" },
   ]
 
   # Or if you prefer to override the default previewer
   previewers = [
-    { name = "*/", run = "smart-truncate" },
+    { url = "*/", run = "smart-truncate" },
   ]
 ```
 

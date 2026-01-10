@@ -219,7 +219,7 @@ set $toggle_gemini ~/.config/hypr/scripts/toggle_gemini.sh
     bindsym $mod+e exec kitty --app-id 'nvim' -- nvim
 
     # Launch the browser
-    bindsym $mod+w exec firefox
+    bindsym $mod+w exec zen-browser
 
     # Launch color picker
     bindsym $mod+z exec hyprpicker -a -f hex -r -q

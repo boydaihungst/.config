@@ -21,3 +21,5 @@
 {Intel/Mesa Intel(R) UHD Graphics (CML GT2)/4.6 (Core Profile) Mesa 25.2.1-arch1.5}=SUPPORTED
 {Intel/Mesa Intel(R) UHD Graphics (CML GT2)/4.6 (Core Profile) Mesa 25.2.2-arch1.2}=SUPPORTED
 {Intel/Mesa Intel(R) UHD Graphics (CML GT2)/4.6 (Core Profile) Mesa 25.2.3-arch1.2}=SUPPORTED
+{AMD/AMD Radeon 610M (radeonsi, raphael_mendocino, LLVM 20.1.8, DRM 3.64, 6.17.1-arch1-1)/4.6 (Core Profile) Mesa 25.2.4-arch1.1}=SUPPORTED
+{AMD/AMD Radeon 610M (radeonsi, raphael_mendocino, LLVM 21.1.5, DRM 3.64, 6.17.8-arch1-1)/4.6 (Core Profile) Mesa 25.2.7-arch1.1}=SUPPORTED

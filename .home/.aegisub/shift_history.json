@@ -1,5 +1,75 @@
 [
 	{
+		"amount" : "12",
+		"fields" : 0,
+		"filename" : "Grimm (2011) - S01E01 - Pilot [Bluray-1080p Remux][DTS-HD MA 5.1][VC1]-EPSiLON.vi.srt",
+		"is backward" : false,
+		"is by time" : false,
+		"mode" : 2,
+		"selection" : [
+			{
+				"end" : 147,
+				"start" : 147
+			}
+		]
+	},
+	{
+		"amount" : "24",
+		"fields" : 0,
+		"filename" : "Grimm (2011) - S01E01 - Pilot [Bluray-1080p Remux][DTS-HD MA 5.1][VC1]-EPSiLON.vi.srt",
+		"is backward" : false,
+		"is by time" : false,
+		"mode" : 2,
+		"selection" : [
+			{
+				"end" : 114,
+				"start" : 114
+			}
+		]
+	},
+	{
+		"amount" : "24",
+		"fields" : 0,
+		"filename" : "Grimm (2011) - S01E01 - Pilot [Bluray-1080p Remux][DTS-HD MA 5.1][VC1]-EPSiLON.vi.srt",
+		"is backward" : true,
+		"is by time" : false,
+		"mode" : 2,
+		"selection" : [
+			{
+				"end" : 104,
+				"start" : 104
+			}
+		]
+	},
+	{
+		"amount" : "24",
+		"fields" : 0,
+		"filename" : "Grimm (2011) - S01E01 - Pilot [Bluray-1080p Remux][DTS-HD MA 5.1][VC1]-EPSiLON.vi.srt",
+		"is backward" : true,
+		"is by time" : false,
+		"mode" : 2,
+		"selection" : [
+			{
+				"end" : 104,
+				"start" : 104
+			}
+		]
+	},
+	{
+		"amount" : "24",
+		"fields" : 0,
+		"filename" : "My Status as an Assassin Obviously Exceeds the Hero's (2025) - S01E01 - 001 - The Assassin Eats Bread [HDTV-1080p][8bit][x264][AAC 2.0][JA]-SubsPlease.vi.ass",
+		"is backward" : true,
+		"is by time" : false,
+		"mode" : 0,
+		"selection" : [
+			{
+				"end" : 29,
+				"start" : 29
+			}
+		]
+	},
+	{
 		"amount" : "0:00:05.00",
 		"fields" : 0,
 		"filename" : "May I Ask for One Final Thing! (2025) - S01E02 - 002 - May I Offer You the Taste o... [HDTV-1080p][8bit][x264][AAC 2.0][JA]-SubsPlease.vi.ass",
@@ -626,76 +696,6 @@
 			{
 				"end" : 16,
 				"start" : 16
-			}
-		]
-	},
-	{
-		"amount" : "0:00:05.00",
-		"fields" : 0,
-		"filename" : "ORESUKI - Are you the only one who loves me! (2019) - S01E07 - 007 - I Discover an Unexpected Side [Bluray-1080p][10bit][x265][FLAC 2.0][JA]-CBT.vi.ass",
-		"is backward" : true,
-		"is by time" : true,
-		"mode" : 2,
-		"selection" : [
-			{
-				"end" : 16,
-				"start" : 16
-			}
-		]
-	},
-	{
-		"amount" : "0:00:05.00",
-		"fields" : 0,
-		"filename" : "ORESUKI - Are you the only one who loves me! (2019) - S01E07 - 007 - I Discover an Unexpected Side [Bluray-1080p][10bit][x265][FLAC 2.0][JA]-CBT.vi.ass",
-		"is backward" : true,
-		"is by time" : true,
-		"mode" : 2,
-		"selection" : [
-			{
-				"end" : 16,
-				"start" : 16
-			}
-		]
-	},
-	{
-		"amount" : "0:00:05.00",
-		"fields" : 0,
-		"filename" : "ORESUKI - Are you the only one who loves me! (2019) - S01E07 - 007 - I Discover an Unexpected Side [Bluray-1080p][10bit][x265][FLAC 2.0][JA]-CBT.vi.ass",
-		"is backward" : true,
-		"is by time" : true,
-		"mode" : 2,
-		"selection" : [
-			{
-				"end" : 1,
-				"start" : 1
-			}
-		]
-	},
-	{
-		"amount" : "10",
-		"fields" : 0,
-		"filename" : "ORESUKI - Are you the only one who loves me! (2019) - S01E06 - 006 - When I Need to Say Somethin... [Bluray-1080p][10bit][x265][FLAC 2.0][JA]-CBT.vi.ass",
-		"is backward" : false,
-		"is by time" : false,
-		"mode" : 2,
-		"selection" : [
-			{
-				"end" : 1,
-				"start" : 1
-			}
-		]
-	},
-	{
-		"amount" : "0:00:05.00",
-		"fields" : 0,
-		"filename" : "ORESUKI - Are you the only one who loves me! (2019) - S01E06 - 006 - When I Need to Say Somethin... [Bluray-1080p][10bit][x265][FLAC 2.0][JA]-CBT.vi.ass",
-		"is backward" : true,
-		"is by time" : true,
-		"mode" : 2,
-		"selection" : [
-			{
-				"end" : 1,
-				"start" : 1
 			}
 		]
 	}

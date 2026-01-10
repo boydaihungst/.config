@@ -22,5 +22,5 @@ while IFS= read -r B; do
 done <<<"$files_raw"
 
 if [[ -n "$selected_files" ]]; then
-  ya emit-to "$YAZI_ID" plugin rofi-img-gridview -- "$selected_files"
+  ya emit-to "$YAZI_ID" plugin rofi-img-gridview "$selected_files"
 fi

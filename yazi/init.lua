@@ -188,6 +188,7 @@ require("projects"):setup({
 	last = {
 		update_after_save = true,
 		update_after_load = true,
+		update_before_quit = true,
 		load_after_start = true,
 	},
 	merge = {
@@ -322,7 +323,7 @@ function Status:name()
 
 	local icon = h:icon()
 	local file_name = h.name
-	local tail = h.cha.is_dir and "" or ("." .. (h.url.ext or ""))
+	local tail = h.cha.is_dir and "" or (h.url.ext and ("." .. h.url.ext) or "")
 
 	if h.link_to ~= nil then
 		file_name = " " .. tostring(h.link_to)

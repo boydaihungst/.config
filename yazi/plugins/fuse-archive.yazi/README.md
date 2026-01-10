@@ -188,7 +188,7 @@ prepend_keymap = [
     { on   = [ "l" ], run = "plugin fuse-archive -- mount", desc = "Enter or Mount selected archive" },
     { on   = [ "h" ], run = "plugin fuse-archive -- leave", desc = "Leave selected archive without unmount it" },
 
-    # Over quit command for yazi <= v25.5.31 to unmount on quit. For nightly yazi, you don't need to add these lines.
+    # Over quit command for yazi <= v25.5.31 to unmount on quit. For (>=v25.12.29) yazi, you don't need to add these lines.
     { on   = [ "q" ], run = ["plugin fuse-archive -- unmount", "quit"], desc = "Quit the process" },
     { on   = [ "Q" ], run = ["plugin fuse-archive -- unmount", "quit --no-cwd-file"], desc = "Quit without outputting cwd-file" },
 

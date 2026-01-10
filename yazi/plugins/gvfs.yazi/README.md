@@ -87,7 +87,7 @@ https://github.com/user-attachments/assets/fb74a710-5f05-4bf4-b95f-10f40583c5a0
 ya pkg add boydaihungst/gvfs
 ```
 
-Modify your `~/.config/yazi/init.lua` to include:
+Modify your `~/.config/yazi/init.lua` to include (`setup` function is required):
 
 ```lua
 require("gvfs"):setup({
@@ -151,6 +151,7 @@ require("gvfs"):setup({
 >   For other protocols (smb, ftp, sftp, etc), use `add-mount` command to add [Schemes/Mount URI](<https://wiki.gnome.org/Projects(2f)gvfs(2f)schemes.html>).
 > - There is a bug in Yazi that prevents mounted folders from refreshing after they are mounted/unmounted.
 >   If you encounter this issue, try opening a new tab or moving the cursor up and down to trigger a refresh.
+> - Mount Windows bitlocker drives requires bitlocker password to unlock: https://aka.ms/myrecoverykey or https://support.microsoft.com/en-us/windows/find-your-bitlocker-recovery-key-6b71ad27-0b89-ea08-f143-056f5ab347d6
 
 Add this to your `~/.config/yazi/keymap.toml`:
 
@@ -235,7 +236,7 @@ Especially when you use `Google-drive` or `One-drive`.
 
 > [!IMPORTANT]
 >
-> For yazi nightly replace `name` with `url`
+> For yazi (>=v25.12.29) replace `name` with `url`
 
 ```toml
 [plugin]

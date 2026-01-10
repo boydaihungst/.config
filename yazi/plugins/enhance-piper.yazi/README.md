@@ -23,7 +23,7 @@ Enhance-piper is a wrapper for piper.yazi previewer - you can pass any shell com
 It accepts a string parameter, which is the shell command to be executed, for example:
 
 > [!IMPORTANT]
-> For yazi nightly, replace `name` with `url`
+> For yazi (>=v25.12.29), replace `name` with `url`
 
 ```toml
 # ~/.config/yazi/yazi.toml
@@ -52,7 +52,7 @@ Available arguments for `enhance-piper` command itself:
 Here are some configuration examples:
 
 > [!IMPORTANT]
-> For yazi nightly, replace `name` with `url`
+> For yazi (>=v25.12.29), replace `name` with `url`
 
 ### Preview CSV with [`bat`](https://github.com/sharkdp/bat)
 

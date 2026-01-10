@@ -9,7 +9,7 @@ no_focus [class="^Ibus-ui-gtk5$"]
 
 # Assign applications to workspaces
 assign [app_id="^(btop|htop|kitty|lvim|vim|nvim|org.wezfurlong.wezterm|com.mitchellh.ghostty)$"] 1
-assign [app_id="^(?i)(waterfox-default|waterfox|firefox|firefox-default)$"] 2
+assign [app_id="^(?i)(waterfox-default|waterfox|firefox|firefox-default|zen-browser)$"] 2
 assign [app_id="^(thunar|ranger|lfcd|lf|vifm|yazi)$"] 3
 assign [app_id="^thunderbird$"] 4
 assign [app_id="^(org.telegram.desktop|pidgin|discord|blender|gimp|org.inkscape.Inkscape)$"] 5
@@ -48,8 +48,8 @@ for_window [app_id="^aegisub$" title="^Style Editor$"] floating enable, move pos
 for_window [app_id="^aegisub$" title="^Open subtitles file|Automation Manager|Preferences$"] floating enable
 for_window [app_id="^org\.inkscape\.Inkscape$" title="^Convert to ASS$"] floating enable
 for_window [app_id="^aegisub$" title="^Choose font$"] floating enable
-for_window [app_id="^(firefox-default|firefox)$" title="Library"] floating enable, resize set 60ppt 60ppt
-for_window [app_id="^(firefox-default|firefox)$" title="^Extension:\ \(DownThemAll!\)\ -\ DownThemAll!\ -\ Select\ your\ Downloads\ —\ Firefox$"] floating enable
+for_window [app_id="^(firefox-default|firefox|zen-browser)$" title="Library"] floating enable, resize set 60ppt 60ppt
+for_window [app_id="^(firefox-default|firefox|zen-browser)$" title="^Extension:\ \(DownThemAll!\)\ -\ DownThemAll!\ -\ Select\ your\ Downloads\ —\ .*$"] floating enable
 for_window [app_id="^floating_shell_portrait$"] floating enable, resize set 60ppt 60ppt
 for_window [app_id="com\.sammy-t\.avda"] floating enable, resize set 60ppt 60ppt
 for_window [app_id="^showmethekey-gtk$"] floating enable, resize set width 651px height 70px
