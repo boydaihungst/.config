@@ -66,7 +66,6 @@ return {
         ["/"] = "",
         ["H"] = "prev_source",
         ["L"] = "next_source",
-        ["<M-h>"] = "toggle_hidden",
       },
     },
 
@@ -76,6 +75,7 @@ return {
         mappings = {
           ["f"] = nil,
           ["<ESC>"] = "clear_filter",
+          ["<M-h>"] = "toggle_hidden",
         },
       },
       filtered_items = {

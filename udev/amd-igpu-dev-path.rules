@@ -1,0 +1,2 @@
+KERNEL=="card*", SUBSYSTEM=="drm", ATTRS{vendor}=="0x1002", ATTRS{device}=="0x164e", SYMLINK+="dri/amd-igpu"
+KERNEL=="card*", SUBSYSTEM=="drm", ATTRS{vendor}=="0x10de", ATTRS{device}=="0x2d58", SYMLINK+="dri/nvidia-egpu"

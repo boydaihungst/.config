@@ -1,11 +1,61 @@
 -- Runs write-watch-later-config periodically
-
+local utils = require("mp.utils")
+local mp = require("mp")
 local options = require("mp.options")
-local o = { save_interval = 60 }
+local o = { save_interval = 60, yazi_simple_tag_keys = "w" }
 options.read_options(o)
+local function run(cmd)
+	local res = utils.subprocess({
+		args = cmd,
+		cancellable = false,
+	})
+
+	if res.status ~= 0 then
+		print("Command failed:", table.concat(cmd, " "))
+		print(res.stderr or "")
+	end
+
+	return res
+end
+
+local function trigger_yazi_simple_tag(path)
+	path = path or mp.get_property("path")
+
+	if path then
+		-- 1. Clear visual selection
+		run({
+			"ya",
+			"emit-to",
+			"0",
+			"escape",
+			"select",
+		})
+
+		-- 2. Trigger visual select a video file
+		run({
+			"ya",
+			"emit-to",
+			"0",
+			"toggle_all",
+			"--",
+			path,
+		})
+
+		-- 3. Add tag key = o.yazi_simple_tag_keys
+		run({
+			"ya",
+			"emit-to",
+			"0",
+			"plugin",
+			"simple-tag",
+			"add-tag --key=" .. o.yazi_simple_tag_keys,
+		})
+	end
+end
 
 local function save()
 	if mp.get_property_bool("save-position-on-quit") then
+		-- trigger_yazi_simple_tag()
 		mp.command("write-watch-later-config")
 	end
 end
@@ -35,6 +85,7 @@ local function delete_watch_later(event)
 		if not can_delete then
 			return
 		elseif eof then
+			print("path: " .. path)
 			print("Deleting state (eof-reached)")
 			mp.commandv("delete-watch-later-config", path)
 			mp.set_property("save-position-on-quit", "no")
@@ -50,6 +101,7 @@ local function delete_watch_later(event)
 		if not can_delete then
 			can_delete = true
 		elseif event["reason"] == "eof" or event["reason"] == "stop" then
+			trigger_yazi_simple_tag(path)
 			print("Deleting state (end-file " .. event["reason"] .. ")")
 			mp.commandv("delete-watch-later-config", path)
 		end
