@@ -116,7 +116,7 @@ require("gvfs"):setup({
 	key_grip = "A01E6EDD2819D82B3B4D6509F480D961CCBB0E1D",
 	blacklist_devices = { { name = "Wireless Device", scheme = "mtp" } },
 })
-require("mime-ext"):setup({ -- Expand the existing filename database (lowercase), for example:
+require("mime-ext.local"):setup({ -- Expand the existing filename database (lowercase), for example:
 	fallback_file1 = true,
 })
 
