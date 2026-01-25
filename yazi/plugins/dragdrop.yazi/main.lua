@@ -141,7 +141,7 @@ function M:entry(job)
 	local drop_type
 
 	for _, line in ipairs(raw_drop_data) do
-		line = line:match("^%s*(.-)%s*$")
+		local line = line:match("^%s*(.-)%s*$")
 		if line:match("^https?://") then
 			-- Handle URL
 			if not drop_type then

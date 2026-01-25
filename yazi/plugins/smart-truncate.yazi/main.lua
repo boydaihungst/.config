@@ -1,4 +1,4 @@
---- @since 25.5.31
+--- @since 25.12.29
 --- @sync peek
 
 local M = {}
@@ -448,16 +448,20 @@ function M:render_parent_entities()
 			return {}
 		end
 
-		local items = {}
+		local entities, linemodes = {}, {}
 		local parent_tab_window_w = self._area.w
 		for _, f in ipairs(self._folder.window) do
 			local entity = Entity:new(f)
-			thisPlugin:smart_truncate_entity(entity, parent_tab_window_w)
-			items[#items + 1] = ui.Line({ entity:redraw() }):style(entity:style())
+			local linemode_rendered = Linemode:new(f):redraw()
+			local linemode_char_length = linemode_rendered:align(ui.Align.RIGHT):width()
+			thisPlugin:smart_truncate_entity(entity, parent_tab_window_w - linemode_char_length)
+			entities[#entities + 1] = ui.Line({ entity:redraw() }):style(entity:style())
+			linemodes[#linemodes + 1] = linemode_rendered
 		end
 
 		return {
-			ui.List(items):area(self._area),
+			ui.List(entities):area(self._area),
+			ui.Text(linemodes):area(self._area):align(ui.Align.RIGHT),
 		}
 	end
 end
@@ -507,16 +511,21 @@ function M:peek(job)
 		return ya.preview_widget(job, ui.Line(s):area(job.area):align(ui.Align.CENTER))
 	end
 
-	local entities = {}
+	local entities, linemodes = {}, {}
 	for _, f in ipairs(folder.window) do
 		local entity = Entity:new(f)
+		local linemode_rendered = Linemode:new(f):redraw()
+		local linemode_char_length = linemode_rendered:align(ui.Align.RIGHT):width()
+
 		-- smart truncate
-		self:smart_truncate_entity(entity, job.area.w)
+		self:smart_truncate_entity(entity, job.area.w - linemode_char_length)
 		entities[#entities + 1] = ui.Line({ entity:redraw() }):style(entity:style())
+		linemodes[#linemodes + 1] = linemode_rendered
 	end
 
 	ya.preview_widget(job, {
 		ui.List(entities):area(job.area),
+		ui.Text(linemodes):area(job.area):align(ui.Align.RIGHT),
 		table.unpack(Marker:new(job.area, folder):redraw()),
 	})
 end

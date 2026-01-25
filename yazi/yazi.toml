@@ -260,7 +260,7 @@
     { mime = "application/bittorrent", run = 'enhance-piper -- transmission-show "$1" --no-header | CLICOLOR_FORCE=1 glow -w=$w -s=dark -' },
     # Do not preview these paths except text file
     { mime = "application/{mbox,javascript,wine-extension-ini,subrip,apple.mpegurl,xml}", run = 'enhance-piper -- bat -p --color=always --theme=base16 "$1"' },
-    # { url = "/mnt/**/*", run = "noop" },
+    { url = "/mnt/**/*", run = "noop" },
     # Xresources linux
     { mime = "image/xcursor", run = 'enhance-piper -- bat -p --color=always --theme=base16 "$1"' },
     # JSON

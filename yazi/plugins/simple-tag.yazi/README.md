@@ -139,6 +139,7 @@ require("simple-tag"):setup({
 	  -- Set this same value with `theme.toml` > [mgr] > hovered > reversed
 	  -- Default theme use "reversed = true".
 	  -- More info: https://github.com/sxyazi/yazi/blob/077faacc9a84bb5a06c5a8185a71405b0cb3dc8a/yazi-config/preset/theme-dark.toml#L25
+	  -- Only need to set this if you use shipped/stable yazi <= v25.5.31 or nightly yazi installed before 11/12/2025
 	  reversed = true, -- (Optional)
 
 	  -- More colors: https://yazi-rs.github.io/docs/configuration/theme#types.color
@@ -304,9 +305,12 @@ Or you can use `keymap` to replace all other keys
 
     #  ─────────────────────── FILTER FILES/FOLDERS BY TAGS: ───────────────────────
     # Available filter modes:
-    # and → Filter files which contain all of selected tags (Default if mode isn't specified).
-    # or → Filter files which contain at least one of selected tags.
-    # not → Filter files which doesn't contain any tags.
+    # and → Show files that contain all selected tags. (Default if mode isn't specified).
+    # or → Show files that contain at least one of the selected tags.
+
+    # nand → ("not and") Hide files that contain all selected tags. Inverse of the "and" mode.
+    # nor → ("not or") Hide files that contain at least one of the selected tags. Inverse of the "or" mode.
+    # not → Show only files that have no tags.
 
     # NOTE: Not available in vfs mode (Remote Virtual Filesystem)
 

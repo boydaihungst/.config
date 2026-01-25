@@ -76,8 +76,9 @@
   # : }}}
 
 [status]
-  separator_close = ""
-  separator_open  = ""
+  overall   = {}
+  sep_left  = { open = "", close = "" }
+  sep_right = { open = "", close = "" }
 
   # Progress
   progress_error  = { fg = "#e55561", bg = "#111317" }

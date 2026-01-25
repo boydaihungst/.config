@@ -109,13 +109,13 @@ require("fuse-archive"):setup({
 -- 	},
 -- })
 --
--- require("gvfs"):setup({
--- 	input_position = { "center", y = 0, w = 60 },
--- 	save_password_autoconfirm = false,
--- 	password_vault = "pass", -- "keyring", "pass", or nil
--- 	key_grip = "A01E6EDD2819D82B3B4D6509F480D961CCBB0E1D",
--- 	blacklist_devices = { { name = "Wireless Device", scheme = "mtp" } },
--- })
+require("gvfs"):setup({
+	input_position = { "center", y = 0, w = 60 },
+	save_password_autoconfirm = false,
+	password_vault = "pass", -- "keyring", "pass", or nil
+	key_grip = "A01E6EDD2819D82B3B4D6509F480D961CCBB0E1D",
+	blacklist_devices = { { name = "Wireless Device", scheme = "mtp" } },
+})
 -- require("mime-ext"):setup({ -- Expand the existing filename database (lowercase), for example:
 -- 	fallback_file1 = true,
 -- })

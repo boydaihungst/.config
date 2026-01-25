@@ -35,13 +35,15 @@ local DIRECTION_KEYS = {
 -----------------------------------------------
 
 local function warn(s, ...)
-	ya.notify { title = PackageName, content = string.format(s, ...), timeout = 5, level = "warn" }
+	ya.notify({ title = PackageName, content = string.format(s, ...), timeout = 5, level = "warn" })
 end
 
 local render_motion_setup = ya.sync(function(_)
 	(ui.render or ya.render)()
 
-	Status.motion = function() return ui.Span("") end
+	Status.motion = function()
+		return ui.Span("")
+	end
 
 	Status.children_redraw = function(self, side)
 		local lines = {}
@@ -71,7 +73,7 @@ local render_motion = ya.sync(function(_, motion_num, motion_cmd)
 		else
 			motion_span = ui.Span(string.format(" %d%s ", motion_num, motion_cmd)):style(style.main)
 		end
-		return ui.Line {
+		return ui.Line({
 			-- TODO: Remove type... == string check
 			ui.Span(th.status.sep_right.open):fg(type(style.main.bg) == "string" and style.main.bg or style.main:bg()),
 			motion_span,
@@ -79,7 +81,7 @@ local render_motion = ya.sync(function(_, motion_num, motion_cmd)
 				:fg(type(style.main.bg) == "string" and style.main.bg or style.main:bg())
 				:bg(type(style.alt.bg) == "string" and style.alt.bg or style.alt:bg()),
 			ui.Span(" "),
-		}
+		})
 	end
 end)
 
@@ -131,10 +133,12 @@ local render_numbers = ya.sync(function(state, mode, styles, resizable_entity_ch
 			return {}
 		end
 
-		local entities = {}
+		local entities, linemodes = {}, {}
 		local parent_tab_window_w = parent_self._area.w
 		for _, f in ipairs(parent_self._folder.window) do
 			local entity = Entity:new(f)
+			local linemode_rendered = Linemode:new(f):redraw()
+			local linemode_char_length = linemode_rendered:align(ui.Align.RIGHT):width()
 			if resizable_entity_children_ids then
 				if smart_truncate_entity_plugin_ok then
 					if not smart_truncate_entity_plugin:is_setup_loaded() then
@@ -145,7 +149,10 @@ local render_numbers = ya.sync(function(state, mode, styles, resizable_entity_ch
 							)
 						end
 					else
-						smart_truncate_entity_plugin:smart_truncate_entity(entity, parent_tab_window_w)
+						smart_truncate_entity_plugin:smart_truncate_entity(
+							entity,
+							parent_tab_window_w - linemode_char_length
+						)
 					end
 				else
 					if not state.warned_smart_truncate_missing then
@@ -157,20 +164,20 @@ local render_numbers = ya.sync(function(state, mode, styles, resizable_entity_ch
 					end
 				end
 			end
-			-- Fall back to default render behaviour
+
+			entities[#entities + 1] = ui.Line({ entity:redraw() }):style(entity:style())
+			linemodes[#linemodes + 1] = linemode_rendered
+
+			-- fallback to default render behaviour
 			if state.warned_smart_truncate_missing or not resizable_entity_children_ids then
-				entities[#entities + 1] = entity:redraw():truncate {
-					max = parent_self._area.w,
-					ellipsis = entity:ellipsis(parent_self._area.w),
-				}
-			else
-				-- Using smart truncate
-				entities[#entities + 1] = ui.Line({ entity:redraw() }):style(entity:style())
+				local max = math.max(0, parent_self._area.w - linemodes[#linemodes]:width())
+				entities[#entities]:truncate({ max = max, ellipsis = entity:ellipsis(max) })
 			end
 		end
 
 		return {
 			ui.List(entities):area(parent_self._area),
+			ui.Text(linemodes):area(parent_self._area):align(ui.Align.RIGHT),
 		}
 	end
 
@@ -229,7 +236,7 @@ local render_numbers = ya.sync(function(state, mode, styles, resizable_entity_ch
 			-- fallback to default render behaviour
 			if state.warned_smart_truncate_missing or not resizable_entity_children_ids then
 				local max = math.max(0, current_self._area.w - linemodes[#linemodes]:width())
-				entities[#entities]:truncate { max = max, ellipsis = entity:ellipsis(max) }
+				entities[#entities]:truncate({ max = max, ellipsis = entity:ellipsis(max) })
 			end
 		end
 
@@ -240,13 +247,17 @@ local render_numbers = ya.sync(function(state, mode, styles, resizable_entity_ch
 	end
 end)
 
-local function render_clear() render_motion() end
+local function render_clear()
+	render_motion()
+end
 
 -----------------------------------------------
 --------- C O M M A N D   P A R S E R ---------
 -----------------------------------------------
 
-local get_keys = ya.sync(function(state) return state._only_motions and MOTION_KEYS or MOTIONS_AND_OP_KEYS end)
+local get_keys = ya.sync(function(state)
+	return state._only_motions and MOTION_KEYS or MOTIONS_AND_OP_KEYS
+end)
 
 local function normal_direction(dir)
 	if dir == "<Down>" then
@@ -263,7 +274,7 @@ local function get_cmd(first_char, keys)
 
 	while true do
 		render_motion(tonumber(lines))
-		local key = ya.which { cands = keys, silent = true }
+		local key = ya.which({ cands = keys, silent = true })
 		if not key then
 			return nil, nil, nil
 		end
@@ -285,7 +296,7 @@ local function get_cmd(first_char, keys)
 		DIRECTION_KEYS[#DIRECTION_KEYS + 1] = {
 			on = last_key,
 		}
-		local direction_key = ya.which { cands = DIRECTION_KEYS, silent = true }
+		local direction_key = ya.which({ cands = DIRECTION_KEYS, silent = true })
 		if not direction_key then
 			return nil, nil, nil
 		end
@@ -307,7 +318,9 @@ local function is_tab_command(command)
 	return false
 end
 
-local get_active_tab = ya.sync(function(_) return cx.tabs.idx end)
+local get_active_tab = ya.sync(function(_)
+	return cx.tabs.idx
+end)
 
 -----------------------------------------------
 ---------- E N T R Y   /   S E T U P ----------

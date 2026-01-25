@@ -101,8 +101,8 @@ return {
 
         -- references
         maps.n["<Leader>lR"] = {
-          "<Cmd>Lspsaga finder def+ref+imp+tyd<CR>",
-          desc = "Search Def+Imp+Ref+typeDef",
+          "<Cmd>Lspsaga finder ref+imp+tyd<CR>",
+          desc = "Search Imp+Ref+typeDef",
           cond = function(client, bufnr)
             return client:supports_method("textDocument/references", bufnr)
               or client:supports_method("textDocument/implementation", bufnr)
@@ -131,7 +131,7 @@ return {
     opts.finder = {
       layout = "float",
       keys = {
-        shuttle = "[w",
+        shuttle = { "<C-l>", "<C-h>" },
         edit = "<C-c>o",
         vsplit = "<C-c>v",
         split = "<C-c>i",
