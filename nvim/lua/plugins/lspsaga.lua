@@ -113,13 +113,67 @@ return {
         -- rename
         maps.n["<Leader>lr"] =
           { "<Cmd>Lspsaga rename<CR>", desc = "Rename current symbol", cond = "textDocument/rename" }
-        -- Close rename popup if press Esc in normal mode
-        -- vim.api.nvim_create_autocmd("FileType", {
-        --   pattern = "sagarename",
-        --   callback = function(event)
-        --     vim.keymap.set("n", "<Esc>", "<cmd>confirm q<cr>", { buffer = event.buf, silent = true })
-        --   end,
-        -- })
+
+        -- Detecting LSP server request stuck
+        local log_file = vim.fn.stdpath "cache" .. "/lsp_stuck.log"
+        local TIMEOUT = 5000 -- ms
+
+        local pending = {}
+
+        local function log(msg)
+          local f = io.open(log_file, "a")
+          if f then
+            f:write(os.date "%Y-%m-%d %H:%M:%S " .. msg .. "\n")
+            f:close()
+          end
+        end
+
+        local function now() return vim.loop.now() end
+
+        vim.api.nvim_create_autocmd("LspRequest", {
+          callback = function(args)
+            local data = args.data
+            local client = vim.lsp.get_client_by_id(data.client_id)
+            if not client then return end
+
+            local key = data.client_id .. ":" .. data.request_id
+
+            -- REQUEST START
+            if data.type == "pending" then
+              pending[key] = {
+                start = now(),
+                method = data.request.method,
+                client = client.name,
+              }
+
+              -- Start timeout checker
+              vim.defer_fn(function()
+                local req = pending[key]
+                if req then
+                  log(
+                    string.format(
+                      "[STUCK] client=%s method=%s duration=%dms",
+                      req.client,
+                      req.method,
+                      now() - req.start
+                    )
+                  )
+                end
+              end, TIMEOUT)
+
+            -- REQUEST COMPLETE
+            elseif data.type == "complete" then
+              local req = pending[key]
+              if req then
+                local duration = now() - req.start
+
+                log(string.format("[DONE] client=%s method=%s duration=%dms", req.client, req.method, duration))
+
+                pending[key] = nil
+              end
+            end
+          end,
+        })
       end,
     },
   },

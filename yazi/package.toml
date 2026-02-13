@@ -1,12 +1,12 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "de33976"
+rev = "88990a6"
 hash = "3996fc74044bc44144b323686f887e1"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mime-ext"
-rev = "de33976"
-hash = "7b7dc677b58371da6fc63e4fcd134651"
+rev = "88990a6"
+hash = "8b177921e50732b2c8e9d71aa5956270"
 
 [[plugin.deps]]
 use = "MasouShizuka/projects"
@@ -40,22 +40,22 @@ hash = "b4e378df653fa211d22ed04d3c8c1c0a"
 
 [[plugin.deps]]
 use = "boydaihungst/relative-motions"
-rev = "3c90578"
-hash = "dac1b1442d6ba18e179d1186ae0f6aab"
+rev = "d720b1c"
+hash = "cb389a36241ada4893796d89dd5da7a0"
 
 [[plugin.deps]]
 use = "boydaihungst/mediainfo"
-rev = "7cd6b04"
-hash = "98b8276aa076284f5c4a5260cbe08549"
+rev = "8ab04b2"
+hash = "bdd196f71aa3e6aa02d1b1d6cad22424"
 
 [[plugin.deps]]
 use = "boydaihungst/simple-tag"
-rev = "00a0d2b"
-hash = "9f3d578af620111e844bc50c5ae86728"
+rev = "a971d5a"
+hash = "bd921661ea2be141a1ff182ed81d7012"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "de33976"
+rev = "88990a6"
 hash = "8a7c58225816a163a6e8730c0adafbc8"
 
 [[plugin.deps]]
@@ -65,13 +65,13 @@ hash = "f50b733cede531d5217cc9b90d633d07"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:vcs-files"
-rev = "de33976"
-hash = "5cfd9b2bd3f8ec4e3245e3426a967f82"
+rev = "88990a6"
+hash = "f69e4737c2fb8ceec58a2950faf13c46"
 
 [[plugin.deps]]
 use = "boydaihungst/smart-truncate"
-rev = "ed6b1e3"
-hash = "2c4b7cc422a30f4170eb4aa1e5c80cea"
+rev = "838dc34"
+hash = "7144ebc65b85092e4d3a5c28984e0166"
 
 [[plugin.deps]]
 use = "boydaihungst/save-clipboard-to-file"
@@ -80,18 +80,18 @@ hash = "d67c9d3df0b067be229fb526c77b08ae"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:types"
-rev = "de33976"
-hash = "6c4759ffad7b1caef81fafed85b4a132"
+rev = "88990a6"
+hash = "83b5b82b595c39a660bf2b170987e5e7"
 
 [[plugin.deps]]
 use = "boydaihungst/gvfs"
-rev = "1badf40"
-hash = "2467c9a0dc3aeacc11be375de873a78b"
+rev = "30440c7"
+hash = "211b7d22478b907e5f6fd4fe27a923e"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:piper"
-rev = "de33976"
-hash = "76ea4ff62db6ebe62e4653c2de95cbd"
+rev = "88990a6"
+hash = "25aee698dd1081001008ce0cb1cc4da3"
 
 [[plugin.deps]]
 use = "boydaihungst/enhance-piper"
@@ -100,8 +100,8 @@ hash = "ae593567aa576c7d2b92d885ae994ee0"
 
 [[plugin.deps]]
 use = "boydaihungst/yamb"
-rev = "a5d18ca"
-hash = "e90d9254c50a803ea94d733696613cad"
+rev = "0440de3"
+hash = "bafda73a9b5ea54189b89c125cfab8da"
 
 [flavor]
 deps = []

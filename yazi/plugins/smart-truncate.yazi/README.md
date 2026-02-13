@@ -1,6 +1,6 @@
-# smart-truncate.yazi (deprecated)
+# smart-truncate.yazi
 
-DEPRECATED: In favor of yazi official truncate method. I will still fix this plugin to compatible with future updates of yazi, but won't fix any issue.
+This is a little difference from yazi official truncate method. Because `Always_show_patterns` is not supported in official truncate method.
 
 A [Yazi](https://github.com/sxyazi/yazi) plugin to truncate any component when rendering using Entity.
 

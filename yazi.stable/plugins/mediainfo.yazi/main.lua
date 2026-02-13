@@ -246,14 +246,12 @@ function M:peek(job)
 			:wrap(is_wrap and ui.Wrap.YES or ui.Wrap.NO),
 	})
 	-- NOTE: Hacky way to prevent image overlap with old metadata area
-	if not hide_metadata then
-		set_state(STATE_KEY.prev_metadata_area, {
-			x = job.area.x,
-			y = job.area.y + image_height,
-			w = job.area.w,
-			h = job.area.h - image_height,
-		})
-	end
+	set_state(STATE_KEY.prev_metadata_area, not hide_metadata and {
+		x = job.area.x,
+		y = job.area.y + image_height,
+		w = job.area.w,
+		h = job.area.h - image_height,
+	} or nil)
 end
 
 function M:seek(job)
@@ -295,8 +293,6 @@ function M:preload(job)
 					"error",
 					"-threads",
 					1,
-					"-skip_frame",
-					"nokey",
 					"-an",
 					"-sn",
 					"-dn",
@@ -315,8 +311,12 @@ function M:preload(job)
 				}):output()
 				-- NOTE: Some audio types doesn't have cover image -> error ""
 				if
-					(audio_preload_output and audio_preload_output.stderr ~= nil and audio_preload_output.stderr ~= "")
-					or audio_preload_err
+					(
+						audio_preload_output
+						and audio_preload_output.stderr ~= nil
+						and audio_preload_output.stderr ~= ""
+						and not audio_preload_output.stderr:find("Output file does not contain any stream")
+					) or audio_preload_err
 				then
 					err_msg = err_msg
 						.. string.format("Failed to start `%s`, Do you have `%s` installed?\n", "ffmpeg", "ffmpeg")
@@ -349,11 +349,11 @@ function M:preload(job)
 			-- image
 			elseif string.find(job.mime, "^image/") or job.mime == "application/postscript" then
 				local svg_plugin_ok, svg_plugin = pcall(require, "svg")
-				local _, magick_plugin = pcall(require, "magick")
+				local magick_plugin_ok, magick_plugin = pcall(require, "magick")
 				local mime = job.mime:match(".*/(.*)$")
 
 				local image_plugin = magick_image_mimes[mime]
-						and ((mime == "svg+xml" and svg_plugin_ok) and svg_plugin or magick_plugin)
+						and ((mime == "svg+xml" and svg_plugin_ok) and svg_plugin or (magick_plugin_ok and magick_plugin))
 					or require("image")
 
 				local cache_img_status, image_preload_err

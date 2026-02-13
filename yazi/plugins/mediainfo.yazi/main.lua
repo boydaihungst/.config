@@ -293,8 +293,6 @@ function M:preload(job)
 					"error",
 					"-threads",
 					1,
-					"-skip_frame",
-					"nokey",
 					"-an",
 					"-sn",
 					"-dn",
@@ -313,8 +311,12 @@ function M:preload(job)
 				}):output()
 				-- NOTE: Some audio types doesn't have cover image -> error ""
 				if
-					(audio_preload_output and audio_preload_output.stderr ~= nil and audio_preload_output.stderr ~= "")
-					or audio_preload_err
+					(
+						audio_preload_output
+						and audio_preload_output.stderr ~= nil
+						and audio_preload_output.stderr ~= ""
+						and not audio_preload_output.stderr:find("Output file does not contain any stream")
+					) or audio_preload_err
 				then
 					err_msg = err_msg
 						.. string.format("Failed to start `%s`, Do you have `%s` installed?\n", "ffmpeg", "ffmpeg")
@@ -370,7 +372,8 @@ function M:preload(job)
 					if fs.cha(cache_img_url_tmp) then
 						fs.remove("file", cache_img_url_tmp)
 					end
-					local tmp_file_path, _ = fs.unique_name(cache_img_url_tmp)
+					local tmp_file_path, _ = type(fs.unique) == "function" and fs.unique("file", cache_img_url_tmp)
+						or fs.unique_name(cache_img_url_tmp)
 					cache_img_status, image_preload_err = magick_plugin
 						.with_limit()
 						:arg({
@@ -397,7 +400,8 @@ function M:preload(job)
 					if fs.cha(cache_img_url_tmp) then
 						fs.remove("file", cache_img_url_tmp)
 					end
-					local tmp_file_path, _ = fs.unique_name(cache_img_url_tmp)
+					local tmp_file_path, _ = type(fs.unique) == "function" and fs.unique("file", cache_img_url_tmp)
+						or fs.unique_name(cache_img_url_tmp)
 					-- svg under invalid utf8 path
 					cache_img_status, image_preload_err = magick_plugin
 						.with_limit()
@@ -441,15 +445,12 @@ function M:preload(job)
 			:output()
 	else
 		cmd = "cd "
-			.. path_quote(job.file.path or job.file.cache or (job.file.url.path or job.file.url).parent)
+			.. path_quote(tostring((job.file.path or job.file.cache or job.file.url.path or job.file.url).parent))
 			.. " && "
 			.. cmd
 			.. " "
-			.. path_quote(tostring(job.file.path or job.file.cache or job.file.url.name))
-		output, err = Command(SHELL)
-			:arg({ "-c", cmd })
-			:arg({ tostring(job.file.path or job.file.cache or (job.file.url.path or job.file.url)) })
-			:output()
+			.. path_quote(tostring((job.file.path or job.file.cache or job.file.url).name))
+		output, err = Command(SHELL):arg({ "-c", cmd }):output()
 	end
 	if err then
 		err_msg = err_msg .. string.format("Failed to start `%s`, Do you have `%s` installed?\n", cmd, cmd)

@@ -23,6 +23,16 @@ return {
         },
         ["<Leader>q"] = { "<Cmd>confirm qall<CR>", desc = "Exit AstroNvim" },
         ["<Leader>Q"] = { "<Cmd>confirm q<CR>", desc = "Quit Window" },
+
+        ["<Leader>bh"] = {
+          function() require("astrocore.buffer").close_left() end,
+          desc = "Close all buffers to the left",
+        },
+
+        ["<Leader>bl"] = {
+          function() require("astrocore.buffer").close_right() end,
+          desc = "Close all buffers to the right",
+        },
       },
       v = {},
     },

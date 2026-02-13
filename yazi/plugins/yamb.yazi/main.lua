@@ -82,9 +82,37 @@ local fzf_find = function(cli, mb_path)
 	return path
 end
 
+local generate_key = function(bookmarks)
+	local keys = get_state_attr("keys")
+	local key2rank = get_state_attr("key2rank")
+	local mb = {}
+	for _, item in pairs(bookmarks) do
+		if #item.key == 1 then
+			table.insert(mb, item.key)
+		end
+	end
+	if #mb == 0 then
+		return keys[1]
+	end
+	table.sort(mb, function(a, b)
+		return key2rank[a] < key2rank[b]
+	end)
+	local idx = 1
+	for _, key in ipairs(keys) do
+		if idx > #mb or key2rank[key] < key2rank[mb[idx]] then
+			return key
+		end
+		idx = idx + 1
+	end
+	return nil
+end
+
 local which_find = function(bookmarks)
 	local cands = {}
-	for path, item in pairs(bookmarks) do
+	for _, item in pairs(bookmarks) do
+		if not item.key or item.key == "" then
+			item.key = generate_key(bookmarks)
+		end
 		if #item.tag ~= 0 then
 			table.insert(cands, { desc = item.tag, on = item.key, path = item.path })
 		end
@@ -124,31 +152,6 @@ local action_jump = function(bookmarks, path, jump_notify)
 			level = "info",
 		})
 	end
-end
-
-local generate_key = function(bookmarks)
-	local keys = get_state_attr("keys")
-	local key2rank = get_state_attr("key2rank")
-	local mb = {}
-	for _, item in pairs(bookmarks) do
-		if #item.key == 1 then
-			table.insert(mb, item.key)
-		end
-	end
-	if #mb == 0 then
-		return keys[1]
-	end
-	table.sort(mb, function(a, b)
-		return key2rank[a] < key2rank[b]
-	end)
-	local idx = 1
-	for _, key in ipairs(keys) do
-		if idx > #mb or key2rank[key] < key2rank[mb[idx]] then
-			return key
-		end
-		idx = idx + 1
-	end
-	return nil
 end
 
 local action_save = function(mb_path, bookmarks, path)
@@ -211,9 +214,7 @@ local action_save = function(mb_path, bookmarks, path)
 		if event ~= 1 then
 			return
 		end
-		key = value or ""
-		if key == "" then
-			key = ""
+		if not value or value == "" then
 			break
 		elseif #key == 1 then
 			-- check the key
