@@ -26,7 +26,7 @@ Use built-in `exrc` variable and `lazy.nvim` plugin
 
    ```lua
    vim.opt.rtp:append(".nvim")
-   -- Other nvim settings here
+   -- Other nvim settings here or in .nvim/init.lua
    ```
 
    - In that `.nvim.lua` file, you can:
@@ -85,17 +85,27 @@ Use built-in `exrc` variable and `lazy.nvim` plugin
 
 ```
 myproject/
-  .git
-    info
+  .git/
+    info/
       exclude
-  .nvim.lua
-  .lazy.lua
-  .nvim/
+
+  .nvim/       # Local nvim config, any file or subfolder is optional
     lsp/
       LSP_SERVER_NAME.lua
       pyright.lua
       lua_ls.lua
       sqls.lua
+    plugin/     # Project-specific plugins
+    after/      # Overrides
+    ftplugin/   # Filetype configs
+    lua/        # Lua modules
+    colors/     # Local colorschemes
+    spell/      # Local spellfiles
+    init.lua    # Local nvim config
+
+  .nvim.lua
+  .lazy.lua
+
 ```
 
 #### This method only works if you start Neovim with `nvim /path/to/project` or `nvim /path/to/project/sub/folder/file`
