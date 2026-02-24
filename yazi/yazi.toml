@@ -7,10 +7,10 @@
   show_symlink   = true
   sort_by        = "natural"
   sort_dir_first = true
+  sort_fallback  = "alphabetical"
   sort_reverse   = false
   sort_sensitive = false
   sort_translit  = false
-  title_format   = "Yazi: {cwd}"
 
 [preview]
   cache_dir       = "~/.cache/yazi/"
@@ -189,11 +189,11 @@
 
 [tasks]
   bizarre_retry    = 5
+  fetch_workers    = 5
+  file_workers     = 3
   image_alloc      = 1073741824       # 1024MB
   image_bound      = [ 10000, 10000 ]
-  file_workers     = 3
   plugin_workers   = 5
-  fetch_workers    = 5
   preload_workers  = 2
   process_workers  = 5
   suppress_preload = true

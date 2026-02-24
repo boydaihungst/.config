@@ -17,11 +17,14 @@ function M:setup()
 				local is_virtual = Url(cx.active.current.cwd).scheme and Url(cx.active.current.cwd).scheme.is_virtual
 				if
 					cx.active.current.cwd
-					and Url(is_virtual and cx.active.current.cwd or cx.active.current.cwd.path)
+					and Url(
+							(is_virtual and cx.active.current.cwd or cx.active.current.cwd.path)
+								or cx.active.current.cwd
+						)
 						== payload.items[1].to.parent
 				then
 					ya.emit("reveal", {
-						payload.items[1].to,
+						tostring(payload.items[1].to),
 						no_dummy = true,
 						raw = true,
 						tab = cx.active.id.value,
@@ -42,11 +45,14 @@ function M:setup()
 				local is_virtual = Url(cx.active.current.cwd).scheme and Url(cx.active.current.cwd).scheme.is_virtual
 				if
 					cx.active.current.cwd
-					and Url(is_virtual and cx.active.current.cwd or cx.active.current.cwd.path)
+					and Url(
+							(is_virtual and cx.active.current.cwd or cx.active.current.cwd.path)
+								or cx.active.current.cwd
+						)
 						== payload.items[1].to.parent
 				then
 					ya.emit("reveal", {
-						payload.items[1].to,
+						tostring(payload.items[1].to),
 						no_dummy = true,
 						raw = true,
 						tab = cx.active.id.value,

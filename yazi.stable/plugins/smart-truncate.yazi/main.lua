@@ -1,4 +1,4 @@
---- @since 25.5.31
+--- @since 25.12.29
 --- @sync peek
 
 local M = {}
@@ -448,16 +448,20 @@ function M:render_parent_entities()
 			return {}
 		end
 
-		local items = {}
+		local entities, linemodes = {}, {}
 		local parent_tab_window_w = self._area.w
 		for _, f in ipairs(self._folder.window) do
 			local entity = Entity:new(f)
-			thisPlugin:smart_truncate_entity(entity, parent_tab_window_w)
-			items[#items + 1] = ui.Line({ entity:redraw() }):style(entity:style())
+			local linemode_rendered = Linemode:new(f):redraw()
+			local linemode_char_length = linemode_rendered:align(ui.Align.RIGHT):width()
+			thisPlugin:smart_truncate_entity(entity, parent_tab_window_w - linemode_char_length)
+			entities[#entities + 1] = ui.Line({ entity:redraw() }):style(entity:style())
+			linemodes[#linemodes + 1] = linemode_rendered
 		end
 
 		return {
-			ui.List(items):area(self._area),
+			ui.List(entities):area(self._area),
+			ui.Text(linemodes):area(self._area):align(ui.Align.RIGHT),
 		}
 	end
 end
@@ -507,16 +511,21 @@ function M:peek(job)
 		return ya.preview_widget(job, ui.Line(s):area(job.area):align(ui.Align.CENTER))
 	end
 
-	local entities = {}
+	local entities, linemodes = {}, {}
 	for _, f in ipairs(folder.window) do
 		local entity = Entity:new(f)
+		local linemode_rendered = Linemode:new(f):redraw()
+		local linemode_char_length = linemode_rendered:align(ui.Align.RIGHT):width()
+
 		-- smart truncate
-		self:smart_truncate_entity(entity, job.area.w)
+		self:smart_truncate_entity(entity, job.area.w - linemode_char_length)
 		entities[#entities + 1] = ui.Line({ entity:redraw() }):style(entity:style())
+		linemodes[#linemodes + 1] = linemode_rendered
 	end
 
 	ya.preview_widget(job, {
 		ui.List(entities):area(job.area),
+		ui.Text(linemodes):area(job.area):align(ui.Align.RIGHT),
 		table.unpack(Marker:new(job.area, folder):redraw()),
 	})
 end
@@ -565,7 +574,8 @@ function M:init_default_callbacks(always_show_patterns)
 		-- override these resizeable components/children render function then re-render the whole entity with truncated/shortened value
 		local suffix = ""
 		local shortened_name
-		local name = entity_self._file.name:gsub("\r", "?", 1)
+		local p = ui.printable
+		local name = p and entity_self._file.name or entity_self._file.name:gsub("\r", "?", 1)
 
 		---------------------------
 		-- get max_length if highlight is resizable
@@ -581,7 +591,7 @@ function M:init_default_callbacks(always_show_patterns)
 
 		local highlights = entity_self._file:highlights()
 		if not highlights or #highlights == 0 then
-			return shortened_name
+			return p and p(shortened_name) or shortened_name
 		end
 
 		-- This will run when use find command
@@ -633,13 +643,13 @@ function M:init_default_callbacks(always_show_patterns)
 				-- Unmatched segment before the current match
 				if match_start_byte > current_byte_cursor then
 					local unmatched_segment = shortened_name:sub(current_byte_cursor, match_start_byte - 1)
-					table.insert(result_with_matched_highlighted, unmatched_segment)
+					table.insert(result_with_matched_highlighted, p and p(unmatched_segment) or unmatched_segment)
 				end
 
 				-- Matched segment
 				local matched_segment_text = shortened_name:sub(match_start_byte, match_end_byte_after - 1)
 				local styled_matched_segment = ui.Span(matched_segment_text):style(th.mgr.find_keyword)
-				table.insert(result_with_matched_highlighted, styled_matched_segment)
+				table.insert(result_with_matched_highlighted, p and p(styled_matched_segment) or styled_matched_segment)
 
 				current_byte_cursor = match_end_byte_after -- Move cursor to position after current match
 			end
@@ -647,17 +657,19 @@ function M:init_default_callbacks(always_show_patterns)
 			-- Add any remaining non-matching tail segment
 			if current_byte_cursor <= byte_input_len then
 				local tail_segment = shortened_name:sub(current_byte_cursor) -- from cursor to end
-				table.insert(result_with_matched_highlighted, tail_segment)
+				table.insert(result_with_matched_highlighted, p and p(tail_segment) or tail_segment)
 			end
 
 			if #result_with_matched_highlighted <= 1 then
-				return ui.Line(shortened_name)
+				return ui.Line(p and p(shortened_name) or shortened_name)
 			end
 			return ui.Line(result_with_matched_highlighted)
 		end
 	end)
 
 	thisPlugin:children_add("symlink", function(entity_self)
+		local p = ui.printable
+
 		-- override these resizeable components/children render function then re-render the whole entity with truncated/shortened value
 
 		-- override symlink Entity:symlink function
@@ -677,7 +689,7 @@ function M:init_default_callbacks(always_show_patterns)
 		local suffix = (not to_extension or to_extension == "") and "" or ("." .. to_extension)
 		local shortened = M:shorten(max_length, prefix .. tostring(link_to), suffix, always_show_patterns)
 
-		return ui.Span(shortened):style(th.mgr.symlink_target)
+		return ui.Span(p and p(shortened) or shortened):style(th.mgr.symlink_target)
 	end)
 end
 

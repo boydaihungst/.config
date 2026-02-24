@@ -35,6 +35,7 @@ local STATE_KEY = {
 	disable_fallback_preference = "disable_fallback_preference",
 	tasks_write_prefs_running = "tasks_write_prefs_running",
 	tasks_write_prefs = "tasks_write_prefs",
+	supported_ind_sort = "supported_ind_sort",
 }
 
 -- Encode binary string to hex (e.g., "\xED" => "\\xED")
@@ -185,7 +186,7 @@ end
 local current_dir = ya.sync(function()
 	local is_virtual = Url(cx.active.current.cwd).scheme and Url(cx.active.current.cwd).scheme.is_virtual
 
-	return tostring(is_virtual and cx.active.current.cwd or cx.active.current.cwd.path)
+	return tostring((is_virtual and cx.active.current.cwd or cx.active.current.cwd.path) or cx.active.current.cwd)
 end)
 
 -- NOTE: can't use rt.mgr here because the value is not always the latest, unless set entry function as sync
@@ -291,7 +292,7 @@ local function save_prefs()
 	save_prefs()
 end
 
-local update_ui_pref = ya.sync(function(_, pref)
+local update_ui_pref = ya.sync(function(_, pref, return_sort_pref)
 	-- sort
 	local sort_pref = pref.sort
 	if sort_pref then
@@ -299,6 +300,9 @@ local update_ui_pref = ya.sync(function(_, pref)
 			tab = (type(cx.active.id) == "number" or type(cx.active.id) == "string") and cx.active.id
 				or cx.active.id.value,
 		})
+		if return_sort_pref then
+			return sort_pref
+		end
 		ya.emit("sort", sort_pref)
 	end
 
@@ -323,19 +327,27 @@ local update_ui_pref = ya.sync(function(_, pref)
 	end
 end)
 
--- This function trigger everytime user change cwd
-local change_pref = ya.sync(function()
+local get_ind_sort_pref = ya.sync(function()
 	local prefs = get_state(STATE_KEY.prefs)
-
 	local is_virtual = Url(cx.active.current.cwd).scheme and Url(cx.active.current.cwd).scheme.is_virtual
-
-	local cwd = tostring(is_virtual and cx.active.current.cwd or cx.active.current.cwd.path)
+	local cwd = tostring((is_virtual and cx.active.current.cwd or cx.active.current.cwd.path) or cx.active.current.cwd)
+	-- change pref based on location
+	for _, pref in ipairs(prefs) do
+		if string.match(cwd, pref.location .. "$") then
+			return update_ui_pref(pref, true)
+		end
+	end
+end)
+-- This function trigger everytime user change cwd
+local change_pref = ya.sync(function(_)
+	local prefs = get_state(STATE_KEY.prefs)
+	local is_virtual = Url(cx.active.current.cwd).scheme and Url(cx.active.current.cwd).scheme.is_virtual
+	local cwd = tostring((is_virtual and cx.active.current.cwd or cx.active.current.cwd.path) or cx.active.current.cwd)
 	-- change pref based on location
 	for _, pref in ipairs(prefs) do
 		if string.match(cwd, pref.location .. "$") then
 			update_ui_pref(pref)
 
-			--show_hidden
 			local show_hidden_pref = pref.show_hidden
 			if show_hidden_pref ~= nil then
 				-- Restore hovered hidden folder
@@ -355,16 +367,20 @@ local change_pref = ya.sync(function()
 						(last_hovered_folder.last_preview_folder == cwd)
 						and last_hovered_folder.last_preview_pane_hovered_folder
 							~= (cx.active.current.hovered and tostring(
-								is_virtual and cx.active.current.hovered.url or cx.active.current.hovered.url.path
+								(is_virtual and cx.active.current.hovered.url or cx.active.current.hovered.url.path)
+									or cx.active.current.hovered.url
 							))
 					then
-						ya.emit("reveal", {
-							last_hovered_folder.last_preview_pane_hovered_folder,
-							no_dummy = true,
-							raw = true,
-							tab = (type(cx.active.id) == "number" or type(cx.active.id) == "string") and cx.active.id
-								or cx.active.id.value,
-						})
+						if last_hovered_folder.last_preview_pane_hovered_folder then
+							ya.emit("reveal", {
+								last_hovered_folder.last_preview_pane_hovered_folder,
+								no_dummy = true,
+								raw = true,
+								tab = (type(cx.active.id) == "number" or type(cx.active.id) == "string")
+										and cx.active.id
+									or cx.active.id.value,
+							})
+						end
 					elseif
 						(last_hovered_folder.last_parent == cwd or not last_hovered_folder.last_parent)
 						and hover_histories
@@ -383,7 +399,9 @@ local change_pref = ya.sync(function()
 				-- Save parent cwd + parent hovered folder + preview hovered folder
 
 				local parent_folder = cx.active.parent
-					and tostring(is_virtual and cx.active.parent.cwd or cx.active.parent.cwd.path)
+					and tostring(
+						(is_virtual and cx.active.parent.cwd or cx.active.parent.cwd.path) or cx.active.parent.cwd
+					)
 				set_state(
 					STATE_KEY.last_hovered_folder
 						.. tostring(
@@ -395,13 +413,16 @@ local change_pref = ya.sync(function()
 						last_cwd = cwd,
 						--TODO: FIX ME
 						last_preview_folder = cx.active.preview.folder and tostring(
-							is_virtual and cx.active.preview.folder.cwd or cx.active.preview.folder.cwd.path
+							(is_virtual and cx.active.preview.folder.cwd or cx.active.preview.folder.cwd.path)
+								or cx.active.preview.folder.cwd
 						),
 						last_preview_pane_hovered_folder = cx.active.preview.folder
 							and cx.active.preview.folder.hovered
 							and tostring(
-								is_virtual and cx.active.preview.folder.hovered.url
+								(
+									is_virtual and cx.active.preview.folder.hovered.url
 									or cx.active.preview.folder.hovered.url.path
+								) or cx.active.preview.folder.hovered.url
 							),
 					}
 				)
@@ -459,6 +480,7 @@ end
 --- @param opts {prefs: table<{ location: string, sort: {[1]?: SORT_BY, reverse?: boolean, dir_first?: boolean, translit?: boolean, sensitive?: boolean }, linemode?: LINEMODE, show_hidden?: boolean, is_predefined?: boolean }>, save_path?: string, disabled?: boolean, no_notify?: boolean, project_plugin_load_event?: string }
 function M:setup(opts)
 	local prefs = type(opts.prefs) == "table" and opts.prefs or {}
+	set_state(STATE_KEY.supported_ind_sort, type(fs.copy) == "function")
 	set_state(
 		STATE_KEY.project_plugin_load_event,
 		type(opts.project_plugin_load_event) == "string" and opts.project_plugin_load_event or "@projects-load"
@@ -507,6 +529,24 @@ function M:setup(opts)
 	set_state(STATE_KEY.loaded, true)
 
 	-- dds subscribe on changed directory
+	if get_state(STATE_KEY.supported_ind_sort) then
+		ps.sub("ind-sort", function(opt)
+			if not get_state(STATE_KEY.disabled) then
+				local new_sort_pref = get_ind_sort_pref()
+				if new_sort_pref then
+					opt.by, opt.reverse, opt.dir_first, opt.translit, opt.sensitive =
+						new_sort_pref[1],
+						new_sort_pref.reverse,
+						new_sort_pref.dir_first,
+						new_sort_pref.translit,
+						new_sort_pref.sensitive
+				end
+			end
+
+			return opt
+		end)
+	end
+
 	ps.sub("cd", function(_)
 		if get_state(STATE_KEY.disabled) then
 			return
@@ -517,20 +557,6 @@ function M:setup(opts)
 		end
 	end)
 
-	ps.sub("hover", function(_)
-		if cx.active.current.hovered then
-			local is_virtual = Url(cx.active.current.hovered.url).scheme
-				and Url(cx.active.current.hovered.url).scheme.is_virtual
-			local hovered_url = is_virtual and cx.active.current.hovered.url or cx.active.current.hovered.url.path
-			add_hover_histories(STATE_KEY.hoverved_histories, tostring(hovered_url.parent), tostring(hovered_url), 10)
-		end
-	end)
-
-	-- NOTE: project.yazi compatibility
-	ps.sub_remote(get_state(STATE_KEY.project_plugin_load_event), function(_)
-		change_pref()
-	end)
-
 	ps.sub("load", function(body)
 		if get_state(STATE_KEY.disabled) then
 			return
@@ -539,6 +565,21 @@ function M:setup(opts)
 		if body.stage() and current_dir() == tostring(body.url) then
 			change_pref()
 		end
+	end)
+
+	ps.sub("hover", function(_)
+		if cx.active.current.hovered then
+			local is_virtual = Url(cx.active.current.hovered.url).scheme
+				and Url(cx.active.current.hovered.url).scheme.is_virtual
+			local hovered_url = (is_virtual and cx.active.current.hovered.url or cx.active.current.hovered.url.path)
+				or cx.active.current.hovered.url
+			add_hover_histories(STATE_KEY.hoverved_histories, tostring(hovered_url.parent), tostring(hovered_url), 10)
+		end
+	end)
+
+	-- NOTE: project.yazi compatibility
+	ps.sub_remote(get_state(STATE_KEY.project_plugin_load_event), function(_)
+		change_pref()
 	end)
 
 	ps.sub_remote(PUBSUB_KIND.prefs_changed, function(new_prefs)

@@ -1,36 +1,49 @@
 # AstroNvim dotfiles
 
-## To achieve project-local Plugins and LSP configurations:
+Only works with Nvim v0.12+
 
-### Use built-in `exrc` variable and `lazy.nvim` plugin
+<!-- toc -->
 
-#### Project configuration
+- [To achieve project-local Plugins and LSP configurations:](#to-achieve-project-local-plugins-and-lsp-configurations)
+- [Project configuration](#project-configuration)
+  - [Structure should be like this:](#structure-should-be-like-this)
+  - [This method only works if you start Neovim with `nvim /path/to/project` or `nvim /path/to/project/sub/folder/file`](#this-method-only-works-if-you-start-neovim-with-nvim-pathtoproject-or-nvim-pathtoprojectsubfolderfile)
+- [Alot of things need to be done manually](#alot-of-things-need-to-be-done-manually)
+  - [To generate TOC (Table of Contents) in markdown files:](#to-generate-toc-table-of-contents-in-markdown-files)
 
-1. Enable `exrc` in `astrocore.lua.opts.options.o.exrc = true`
-2. Place LSP configs at `.nvim/lsp/*.lua` in your project root.
-3. For locally settings:  
-   Create `.nvim.lua` in your project root directory with this line at the top:
+<!-- tocstop -->
+
+### To achieve project-local Plugins and LSP configurations:
+
+Use built-in `exrc` variable and `lazy.nvim` plugin
+
+### Project configuration
+
+1. Set `exrc = true` in astrocore.lua > opts > options > o > exrc = true
+2. Place LSP config files at `.nvim/lsp/*.lua` in your project root (replace \* with the name of the LSP server)
+3. For locally nvim settings:  
+   Create a `.nvim.lua` file in your project root directory and add this line below at the top:
 
    ```lua
    vim.opt.rtp:append(".nvim")
+   -- Other nvim settings here
    ```
 
-- In `.nvim.lua` inside the project, you can:
-  - Tweak an existing config
-  - Add new settings
-  - Enable the server only for this project
+   - In that `.nvim.lua` file, you can:
+     - Tweak an existing config
+     - Add new nvim settings
+     - Enable the server only for that project
 
-4. For locally plugins:  
-   Create `.lazy.lua` in your project root directory.  
-   Rememeber to `return {...}` like a normal lazy plugin file
-
-- In `.lazy.lua` inside the project, you can:
-  - Do anything .nvim.lua can do (`astrocore`, `astrocommunity`, `astroui`, `astrolsp`, etc)
-  - Tweak an existing plugins
-  - Add new plugins
-  - Enable the plugin only for this project
+4. For project-local plugins:  
+   Create `.lazy.lua` in your project root directory. This will have the same syntax as a lazy plugin file.  
+   Check [lua/plugins](lua/plugins) for an example.
+   - In `.lazy.lua` inside your project, you can:
+     - Do anything `.nvim.lua` can do (like modify existing plugins: `astrocore`, `astrocommunity`, `astroui`, `astrolsp`, etc)
+     - Add new plugin
+     - Enable/Disable any plugin
 
 5. (Optional) Ignore `.nvim.lua`, `.lazy.lua` files and `.nvim` folder from git:
+   So it won't show up in git status.
 
    ```gitignore
    # In your project root edit this file `PROJECT_ROOT/.git/info/exclude`
@@ -68,7 +81,7 @@
     }
    ```
 
-#### Strcuture should be like this:
+#### Structure should be like this:
 
 ```
 myproject/
@@ -90,4 +103,21 @@ myproject/
 The first time you open Neovim, it will ask you to trust `.nvim.lua` and `.lazy.lua` files. Open them and run command `:trust` to trust them and restart Neovim.
 
 > [!IMPORTANT]
-> Keep in mind that every those files are edited, you need to trust them again.
+> Keep in mind that every time one of those files is edited, you need to trust them again.
+
+### Alot of things need to be done manually
+
+- Activate AI supermaven to get inlay hint suggestion.
+- Some plugins in plugins folder are disabled.
+  You need to activate them, set enabled = true in the their config file.
+- VectorCode require uv installed. Disable it if you don't need it.
+- Codecompanion use google-cli by default.
+- i18n.nvim is heavy, so enable it only when you need it.
+- gitsigns.nvim use gh cli by default.
+- Install yazi if you want to use it.
+
+#### To generate TOC (Table of Contents) in markdown files:
+
+Disable marksman > [code_action] > toc.enable. Check [../marksman/config.toml](../marksman/config.toml)
+Add the content of [snippets/markdown.json > setup > body](snippets/markdown.json) to your markdown file.
+And then whenever you save the file, TOC will be generated.

@@ -29,6 +29,7 @@
   marker_cut      = { fg = "#e55561", bg = "#e55561" }
   marker_marked   = { fg = "#CC83E3", bg = "#CC83E3" }
   marker_selected = { fg = "#4fa6ed", bg = "#4fa6ed" }
+  marker_symbol   = "│"
 
   # Count
   count_copied   = { fg = "#080A0E", bg = "#8ebd6b" }

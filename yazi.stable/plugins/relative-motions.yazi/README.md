@@ -26,8 +26,6 @@ https://github.com/dedukun/relative-motions.yazi/assets/25795432/04fb186a-5efe-4
 
 ```sh
 ya pkg add boydaihungst/relative-motions
-# or
-ya pack -a boydaihungst/relative-motions
 ```
 
 ## Configuration

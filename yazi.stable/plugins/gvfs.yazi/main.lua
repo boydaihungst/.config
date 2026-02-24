@@ -924,6 +924,7 @@ local function get_gdrive_children_folder_info(parent_folder)
 					.. "/*",
 			})
 			:env("XDG_RUNTIME_DIR", XDG_RUNTIME_DIR)
+			:env("LC_ALL", "C")
 			:stderr(Command.PIPED)
 			:stdout(Command.PIPED)
 			:output()
@@ -1272,6 +1273,7 @@ local function mount_device(opts)
 				.. (device.uuid and ("-d " .. device.uuid) or path_quote(device.uri)),
 		})
 		:env("XDG_RUNTIME_DIR", XDG_RUNTIME_DIR)
+		:env("LC_ALL", "C")
 		:stderr(Command.PIPED)
 		:stdout(Command.PIPED)
 		:output()
@@ -1329,103 +1331,101 @@ local function mount_device(opts)
 		if res.stderr:match(".*is already mounted.*") then
 			return true
 		end
-		if res.stdout:find("Authentication Required") then
-			local stdout = res.stdout:match(".*Authentication Required(.*)") or ""
-			if stdout:find("\nUser: \n") or stdout:find("\nUser %[.*%]: \n") then
-				if retries < max_retry then
-					username, _ = show_input(
-						"Enter username "
-							.. (device.name and ("(" .. device.name .. ")") or (device.uri and ("(" .. device.uri .. ")") or ""))
-							.. ":",
-						false,
-						username or stdout:match("User %[(.*)%]:") or ""
-					)
-					if username == nil then
-						return false
-					end
-				else
-					error_msg = string.format(
-						NOTIFY_MSG.MOUNT_ERROR_USERNAME,
-						(device.name or "NO_NAME") .. " (" .. (device.scheme or "UNKNOWN_SCHEME") .. ")"
-					)
+
+		local stdout = res.stdout
+		if stdout:find("\nUser: \n") or stdout:find("\nUser %[.*%]: \n") then
+			if retries < max_retry then
+				username, _ = show_input(
+					"Enter username "
+						.. (device.name and ("(" .. device.name .. ")") or (device.uri and ("(" .. device.uri .. ")") or ""))
+						.. ":",
+					false,
+					username or stdout:match("User %[(.*)%]:") or ""
+				)
+				if username == nil then
+					return false
 				end
+			else
+				error_msg = string.format(
+					NOTIFY_MSG.MOUNT_ERROR_USERNAME,
+					(device.name or "NO_NAME") .. " (" .. (device.scheme or "UNKNOWN_SCHEME") .. ")"
+				)
 			end
-			if
-				stdout:find("\nDomain: \n")
-				or stdout:find("\nDomain %[.*%]: \n")
-				or stdout:find("\nUser: \n")
-				or stdout:find("\nUser %[.*%]: \n")
-			then
-				if retries < max_retry then
-					service_domain, _ = show_input(
-						"Enter Domain "
-							.. (device.name and ("(" .. device.name .. ")") or (device.uri and ("(" .. device.uri .. ")") or ""))
-							.. ":",
-						false,
-						service_domain or stdout:match("Domain %[(.*)%]:") or "WORKGROUP"
-					)
-					if service_domain == nil then
-						return false
-					end
-				else
-					error_msg = string.format(
-						NOTIFY_MSG.MOUNT_ERROR_USERNAME,
-						(device.name or "NO_NAME") .. " (" .. device.scheme .. ")"
-					)
+		end
+		if
+			stdout:find("\nDomain: \n")
+			or stdout:find("\nDomain %[.*%]: \n")
+			or stdout:find("\nUser: \n")
+			or stdout:find("\nUser %[.*%]: \n")
+		then
+			if retries < max_retry then
+				service_domain, _ = show_input(
+					"Enter Domain "
+						.. (device.name and ("(" .. device.name .. ")") or (device.uri and ("(" .. device.uri .. ")") or ""))
+						.. ":",
+					false,
+					service_domain or stdout:match("Domain %[(.*)%]:") or "WORKGROUP"
+				)
+				if service_domain == nil then
+					return false
 				end
+			else
+				error_msg = string.format(
+					NOTIFY_MSG.MOUNT_ERROR_USERNAME,
+					(device.name or "NO_NAME") .. " (" .. device.scheme .. ")"
+				)
 			end
-			if
-				stdout:find("\nPassword: \n")
-				or stdout:find("\nUser: \n")
-				or stdout:find("\nUser %[.*%]: \n")
-				or stdout:find("\nDomain: \n")
-				or stdout:find("\nDomain %[.*%]: \n")
-			then
-				if username ~= opts.username or (username == nil and is_pw_saved == nil) then
-					-- Prevent showing gpg passphrase twice
-					if not skipped_secret_vault and not is_secret_vault_available(true) then
-						skipped_secret_vault = true
-					end
-					if not skipped_secret_vault then
-						if device.uuid then
-							-- case hard drive
-							password = lookup_password(device.scheme, device.uuid, device.uuid)
-						else
-							local scheme, domain, user, _, prefix, port, _service_domain =
-								extract_info_from_uri(device.uri)
-							password = lookup_password(
-								scheme,
-								username or user,
-								domain,
-								prefix,
-								port,
-								service_domain or (username or user or ""):match("^([^;]+);") or _service_domain
-							)
-						end
-						is_pw_saved = password ~= nil
-						if is_pw_saved then
-							info(NOTIFY_MSG.RETRIVE_PASSWORD_SUCCESS)
-						end
-					end
+		end
+		if
+			stdout:find("\nPassword: \n")
+			or stdout:find("\nUser: \n")
+			or stdout:find("\nUser %[.*%]: \n")
+			or stdout:find("\nDomain: \n")
+			or stdout:find("\nDomain %[.*%]: \n")
+		then
+			if username ~= opts.username or (username == nil and is_pw_saved == nil) then
+				-- Prevent showing gpg passphrase twice
+				if not skipped_secret_vault and not is_secret_vault_available(true) then
+					skipped_secret_vault = true
 				end
-				if retries < max_retry then
-					if not is_pw_saved then
-						password, _ = show_input(
-							"Enter password "
-								.. (device.name and ("(" .. device.name .. ")") or (device.uri and ("(" .. device.uri .. ")") or ""))
-								.. ":",
-							true
+				if not skipped_secret_vault then
+					if device.uuid then
+						-- case hard drive
+						password = lookup_password(device.scheme, device.uuid, device.uuid)
+					else
+						local scheme, domain, user, _, prefix, port, _service_domain = extract_info_from_uri(device.uri)
+						password = lookup_password(
+							scheme,
+							username or user,
+							domain,
+							prefix,
+							port,
+							service_domain or (username or user or ""):match("^([^;]+);") or _service_domain
 						)
-						if password == nil then
-							return false
-						end
 					end
-				else
-					error_msg = string.format(
-						NOTIFY_MSG.MOUNT_ERROR_PASSWORD,
-						(device.name or "NO_NAME") .. " (" .. device.scheme .. ")"
-					)
+					is_pw_saved = password ~= nil
+					if is_pw_saved then
+						info(NOTIFY_MSG.RETRIVE_PASSWORD_SUCCESS)
+					end
 				end
+			end
+			if retries < max_retry then
+				if not is_pw_saved then
+					password, _ = show_input(
+						"Enter password "
+							.. (device.name and ("(" .. device.name .. ")") or (device.uri and ("(" .. device.uri .. ")") or ""))
+							.. ":",
+						true
+					)
+					if password == nil then
+						return false
+					end
+				end
+			else
+				error_msg = string.format(
+					NOTIFY_MSG.MOUNT_ERROR_PASSWORD,
+					(device.name or "NO_NAME") .. " (" .. device.scheme .. ")"
+				)
 			end
 		end
 	end
@@ -1826,7 +1826,7 @@ local save_tab_hovered = ya.sync(function()
 		local is_virtual = Url(tab.current.cwd).scheme and Url(tab.current.cwd).scheme.is_virtual
 		table.insert(hovered_item_per_tab, {
 			id = (type(tab.id) == "number" or type(tab.id) == "string") and tab.id or tab.id.value,
-			cwd = tostring(is_virtual and tab.current.cwd or tab.current.cwd.path),
+			cwd = tostring((is_virtual and tab.current.cwd or tab.current.cwd.path) or tab.current.cwd),
 		})
 	end
 	return hovered_item_per_tab
@@ -1842,7 +1842,7 @@ local redirect_unmounted_tab_to_home = ya.sync(function(_, unmounted_url, notify
 	end
 	for _, tab in ipairs(cx.tabs) do
 		local is_virtual = Url(tab.current.cwd).scheme and Url(tab.current.cwd).scheme.is_virtual
-		if (is_virtual and tab.current.cwd or tab.current.cwd.path):starts_with(unmounted_url) then
+		if ((is_virtual and tab.current.cwd or tab.current.cwd.path) or tab.current.cwd):starts_with(unmounted_url) then
 			ya.emit("cd", {
 				HOME,
 				tab = (type(tab.id) == "number" or type(tab.id) == "string") and tab.id or tab.id.value,
@@ -1936,7 +1936,7 @@ end
 ---@param state_key STATE_KEY.CACHED_LOCAL_PATH_DEVICE|STATE_KEY.AUTOMOUNTS|string
 ---@param jump_location string?
 ---@param tab_id number?
-local function remount_keep_cwd_unchanged_action(state_key, jump_location, tab_id)
+local function remount_keep_cwd_unchanged_action(state_key, jump_location, tab_id, hide_cant_remount_message)
 	local cwd = jump_location or current_dir()
 	local root_mountpoint = get_state(STATE_KEY.ROOT_MOUNTPOINT)
 	if
@@ -1953,8 +1953,10 @@ local function remount_keep_cwd_unchanged_action(state_key, jump_location, tab_i
 		return
 	end
 	if is_mounted(current_tab_device) then
-		info(NOTIFY_MSG.CANT_REMOUNT_DEVICE, current_tab_device.name)
-		return
+		if not hide_cant_remount_message then
+			info(NOTIFY_MSG.CANT_REMOUNT_DEVICE, current_tab_device.name)
+		end
+		return current_tab_device
 	end
 	local tabs = save_tab_hovered()
 	local saved_matched_tabs = {}
@@ -2086,6 +2088,9 @@ local function add_or_edit_mount_action(is_edit)
 	end
 
 	mount.uri, _ = show_input("Enter mount URI:", false, mount.uri)
+	if mount.uri == nil then
+		return
+	end
 	mount.uri = mount.uri:gsub("^%s*(.-)%s*$", "%1")
 	if mount.uri == nil then
 		return
@@ -2487,7 +2492,8 @@ function M:entry(job)
 		end
 		if cached_device then
 			-- Update cached device with new data
-			local new_cached_device = remount_keep_cwd_unchanged_action(STATE_KEY.AUTOMOUNTS, subfolder_path, tab_id)
+			local new_cached_device =
+				remount_keep_cwd_unchanged_action(STATE_KEY.AUTOMOUNTS, subfolder_path, tab_id, true)
 			if new_cached_device then
 				cached_device = new_cached_device
 			end

@@ -7,6 +7,7 @@ return {
   opts = {
     router = {
       browse = {
+        -- My gitea server
         -- https://git.linuxholic.com/boydaihungst/AnimeSubtitles/src/commit/250145403bde3858562337528233b0707fdf6e86/typesetting_fonts.txt#L4-L10
         [to_litteral "ssh.linuxholic.com"] = "https://git.linuxholic.com/"
           .. "{_A.ORG}/"
@@ -16,6 +17,7 @@ return {
           .. "#L{_A.LSTART}-L{_A.LEND}",
       },
       blame = {
+        -- My gitea server
         -- https://git.linuxholic.com/boydaihungst/AnimeSubtitles/blame/commit/250145403bde3858562337528233b0707fdf6e86/typesetting_fonts.txt#L4-L10
         [to_litteral "ssh.linuxholic.com"] = "https://git.linuxholic.com/"
           .. "{_A.ORG}/"
