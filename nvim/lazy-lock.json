@@ -7,7 +7,7 @@
   "aerial.nvim": { "branch": "master", "commit": "f93dceed41e2f926074944fdf94c93c747bb7d19" },
   "ansible-vim": { "branch": "master", "commit": "6718ff81fe36f5f4fbf6675d95b16e4a74814827" },
   "arrow.nvim": { "branch": "master", "commit": "6e0f726f55f99332dd726a53effd6813786b6d49" },
-  "astrocommunity": { "branch": "main", "commit": "2b889c7bcca1b9b7b32e66f0cfe07626e30bf4da" },
+  "astrocommunity": { "branch": "v6", "commit": "9412fb940d2f289ba5ecbe26f13906f512e06e28" },
   "astrocore": { "branch": "v3", "commit": "07b6017b55d8cd3003b269bf07d87007513ec591" },
   "astrolsp": { "branch": "v4", "commit": "66b1ed538d78f0dddee50fcf0b4023aabbad2c4f" },
   "astrotheme": { "branch": "main", "commit": "4ed9d1110e62b8965cd35ba9419237057bb41550" },
@@ -107,7 +107,7 @@
   "store.nvim": { "branch": "main", "commit": "59fada5660c316c24c316a462ea7cdd5d589f6f4" },
   "suda.vim": { "branch": "master", "commit": "c492741b4679b3cdd4d9e34138209784e061d916" },
   "supermaven-nvim": { "branch": "main", "commit": "07d20fce48a5629686aefb0a7cd4b25e33947d50" },
-  "tiny-inline-diagnostic.nvim": { "branch": "main", "commit": "ecce93ff7db4461e942c03e0fcc64bd785df4057" },
+  "tiny-inline-diagnostic.nvim": { "branch": "main", "commit": "57353cc4087857ae07a056dea9d4fe88874021fa" },
   "todo-comments.nvim": { "branch": "main", "commit": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668" },
   "toggleterm.nvim": { "branch": "main", "commit": "9a88eae817ef395952e08650b3283726786fb5fb" },
   "ts-comments.nvim": { "branch": "main", "commit": "123a9fb12e7229342f807ec9e6de478b1102b041" },
@@ -119,5 +119,5 @@
   "vim-visual-multi": { "branch": "master", "commit": "a6975e7c1ee157615bbc80fc25e4392f71c344d4" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "yanky.nvim": { "branch": "main", "commit": "04775cc6e10ef038c397c407bc17f00a2f52b378" },
-  "yazi.nvim": { "branch": "main", "commit": "59d430c5f8577c9f26e32be76170f73ef13906f6" }
+  "yazi.nvim": { "branch": "main", "commit": "1317633540114eeed5dd060d23590d448b7fe16e" }
 }

@@ -5,7 +5,11 @@
 
 ---@type LazySpec
 return {
-  "AstroNvim/astrocommunity",
+  {
+    "AstroNvim/astrocommunity",
+    branch = "v6",
+  },
+
   -- { import = "astrocommunity.file-explorer.oil-nvim" },
   -- { import = "astrocommunity.lsp.ts-error-translator-nvim" },
   -- { import = "astrocommunity.pack.angular" },
