@@ -88,7 +88,7 @@ return {
               default_num = 10,
             },
             -- Enable notifications for indexing progress
-            notify = true,
+            notify = false,
             -- Index all existing memories on startup
             -- (requires VectorCode 0.6.12+ for efficient incremental indexing)
             index_on_startup = true,
