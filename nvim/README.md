@@ -107,7 +107,7 @@ The first time you open Neovim, it will ask you to trust `.nvim.lua` and `.lazy.
 
 ### Alot of things need to be done manually
 
-- Activate AI supermaven to get inlay hint suggestion.
+- Activate AI supermaven to get inlay hint suggestion. Accept suggestion with `<C-l>`.
 - Some plugins in plugins folder are disabled.
   You need to activate them, set enabled = true in the their config file.
 - VectorCode require uv installed. Disable it if you don't need it.
