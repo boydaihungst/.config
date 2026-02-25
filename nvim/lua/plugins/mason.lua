@@ -33,7 +33,7 @@ return {
         "fish-lsp",
         "gh-actions-language-server",
         --TODO: Rmove after this issue is fixed: https://github.com/folke/lazydev.nvim/issues/136
-        { "lua-language-server", version = "3.16.4" },
+        { "lua-language-server", version = "3.16.4", auto_update = false },
       },
     },
   },
