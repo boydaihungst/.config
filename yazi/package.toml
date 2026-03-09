@@ -103,5 +103,12 @@ use = "boydaihungst/yamb"
 rev = "0440de3"
 hash = "bafda73a9b5ea54189b89c125cfab8da"
 
-[flavor]
-deps = []
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-mocha"
+rev = "c02c804"
+hash = "7dfe41c9c3d9be76da8a844263d0bbed"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-frappe"
+rev = "c02c804"
+hash = "1844f850b0c5d1af511c84399c95e3d7"

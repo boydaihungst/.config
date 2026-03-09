@@ -368,7 +368,7 @@ return {
       max_height = 20,
     },
     quickfile = {},
-    lazygit = {},
+    -- lazygit = {},
     ---@type snacks.picker.Config
     picker = {
       win = {

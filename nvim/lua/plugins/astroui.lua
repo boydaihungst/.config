@@ -73,5 +73,22 @@ return {
         -- },
       },
     },
+
+    lazygit = {
+      theme = {
+        [241] = { fg = "Special" },
+        activeBorderColor = { fg = "@character", bold = true },
+        cherryPickedCommitBgColor = { bg = "Substitute" },
+        cherryPickedCommitFgColor = { fg = "Substitute" },
+        defaultFgColor = { fg = "Normal" },
+        inactiveBorderColor = { fg = "FloatBorder" },
+        markedBaseCommitBgColor = { bg = "CurSearch" },
+        markedBaseCommitFgColor = { fg = "CurSearch" },
+        optionsTextColor = { fg = "Function" },
+        searchingActiveBorderColor = { fg = "@character", bold = true },
+        selectedLineBgColor = { bg = "Visual" }, -- set to `default` to have no background colour
+        unstagedChangesColor = { fg = "DiagnosticError" },
+      },
+    },
   },
 }

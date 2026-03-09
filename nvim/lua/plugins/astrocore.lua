@@ -110,7 +110,7 @@ return {
       },
       o = {
         exrc = true,
-        secure = true,
+        -- secure = true,
         clipboard = "unnamed,unnamedplus",
       },
       g = { -- vim.g.<key>

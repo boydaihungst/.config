@@ -22,7 +22,7 @@
   tab_size        = 2
   ueberzug_offset = [ 25.5, 6, 0, 0 ]
   ueberzug_scale  = 1
-  wrap            = "no"
+  wrap            = "yes"
 
 [opener]
 
@@ -217,7 +217,7 @@
     { url = "/mnt/**/*", run = "noop", prio = "high" },
     { url = "/home/huyhoang/Media/**/*", run = "noop", prio = "high" },
     # Audio + Video + Image
-    { mime = "application/postscript", run = "mediainfo" },
+    { url = "*.{ai,eps,ait}", run = "mediainfo" },
     { mime = "{audio,video,image}/*", run = "mediainfo" },
     # { mime = "application/subrip", run = "mediainfo" },
     # PDF
@@ -227,6 +227,8 @@
   ]
 
   spotters = [
+    # Multi-file
+    { mime = "multi/*", run = "multi" },
     { url = "*/", run = "folder" },
     { url = "/mnt/**/*", run = "file-extra-metadata", prio = "high" },
     # Code
@@ -268,7 +270,7 @@
     { mime = "image/xcursor", run = 'enhance-piper -- bat -p --color=always --theme=base16 "$1"' },
     # JSON
     # Audio + Video + Image
-    { mime = "application/postscript", run = "mediainfo" },
+    { url = "*.{ai,eps,ait}", run = "mediainfo" },
     { mime = "{video,image,audio}/*", run = "mediainfo" },
     { mime = "application/{json,ndjson}", run = "json" },
     # PDF
