@@ -26,6 +26,7 @@ require("simple-tag"):setup({
 		["w"] = "󱛻",
 	},
 })
+
 require("pref-by-location"):setup({
 	-- no_notify = true,
 	disable_fallback_preference = false,

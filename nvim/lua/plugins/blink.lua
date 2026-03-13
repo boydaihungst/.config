@@ -216,7 +216,7 @@ return {
     --     "sort_text",
     --   },
     --
-    --   use_frecency = false,
+    --   frecency = { enabled = true },
     --   use_proximity = false,
     --   max_typos = function() return 0 end,
     -- },
@@ -232,7 +232,12 @@ return {
       list = { selection = { preselect = false, auto_insert = true } },
       documentation = {
         draw = function(opts)
-          if opts.item and opts.item.documentation and opts.item.documentation.value then
+          if
+            opts.item
+            and opts.item.documentation
+            and opts.item.documentation.value
+            and require("astrocore").is_available "pretty_hover"
+          then
             local out = require("pretty_hover.parser").parse(opts.item.documentation.value)
             opts.item.documentation.value = out:string()
           end

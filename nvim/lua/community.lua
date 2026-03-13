@@ -71,7 +71,6 @@ return {
   { import = "astrocommunity.search.nvim-hlslens" },
   { import = "astrocommunity.snippet.mini-snippets" },
   { import = "astrocommunity.syntax.vim-easy-align" },
-  { import = "astrocommunity.test.crazy-coverage-nvim" },
   { import = "astrocommunity.test.neotest" },
   { import = "astrocommunity.test.nvim-coverage" },
   { import = "astrocommunity.utility.lua-json5" },

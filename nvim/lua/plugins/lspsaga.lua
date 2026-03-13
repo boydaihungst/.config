@@ -113,67 +113,36 @@ return {
         -- rename
         maps.n["<Leader>lr"] =
           { "<Cmd>Lspsaga rename<CR>", desc = "Rename current symbol", cond = "textDocument/rename" }
+        if vim.lsp.log.get_level() <= vim.log.levels.DEBUG then
+          local log_path = vim.fn.stdpath "cache" .. "/lsp_trace.log"
 
-        -- Detecting LSP server request stuck
-        local log_file = vim.fn.stdpath "cache" .. "/lsp_stuck.log"
-        local TIMEOUT = 5000 -- ms
+          -- Helper to append to the log file
+          local function log_to_file(msg)
+            local f = io.open(log_path, "a")
+            if f then
+              f:write(os.date "[%Y-%m-%d %H:%M:%S] " .. msg .. "\n\n")
+              f:close()
+            end
+          end
+          -- Intercept the request function
+          local original_request = vim.lsp.client.request
+          ---@diagnostic disable-next-line: duplicate-set-field
+          vim.lsp.client.request = function(self, method, params, handler, bufnr)
+            local trace = debug.traceback("Trace for " .. method, 2)
+            log_to_file("METHOD: " .. method .. "\n" .. trace)
 
-        local pending = {}
+            return original_request(self, method, params, handler, bufnr)
+          end
 
-        local function log(msg)
-          local f = io.open(log_file, "a")
-          if f then
-            f:write(os.date "%Y-%m-%d %H:%M:%S " .. msg .. "\n")
-            f:close()
+          -- Intercept sync requests (often used by formatters)
+          local original_sync = vim.lsp.buf_request_sync
+          vim.lsp.buf_request_sync = function(bufnr, method, params, timeout_ms)
+            local trace = debug.traceback("SYNC Trace for " .. method, 2)
+            log_to_file("SYNC METHOD: " .. method .. "\n" .. trace)
+
+            return original_sync(bufnr, method, params, timeout_ms)
           end
         end
-
-        local function now() return vim.loop.now() end
-
-        vim.api.nvim_create_autocmd("LspRequest", {
-          callback = function(args)
-            local data = args.data
-            local client = vim.lsp.get_client_by_id(data.client_id)
-            if not client then return end
-
-            local key = data.client_id .. ":" .. data.request_id
-
-            -- REQUEST START
-            if data.type == "pending" then
-              pending[key] = {
-                start = now(),
-                method = data.request.method,
-                client = client.name,
-              }
-
-              -- Start timeout checker
-              vim.defer_fn(function()
-                local req = pending[key]
-                if req then
-                  log(
-                    string.format(
-                      "[STUCK] client=%s method=%s duration=%dms",
-                      req.client,
-                      req.method,
-                      now() - req.start
-                    )
-                  )
-                end
-              end, TIMEOUT)
-
-            -- REQUEST COMPLETE
-            elseif data.type == "complete" then
-              local req = pending[key]
-              if req then
-                local duration = now() - req.start
-
-                log(string.format("[DONE] client=%s method=%s duration=%dms", req.client, req.method, duration))
-
-                pending[key] = nil
-              end
-            end
-          end,
-        })
       end,
     },
   },

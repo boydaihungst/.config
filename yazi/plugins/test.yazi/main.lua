@@ -1,19 +1,15 @@
-local M = {}
-
-function M:peek(job)
-	ya.preview_widget(job, {})
+-- ~/.config/yazi/plugins/folder-rules.yazi/main.lua
+local function setup()
+	local home = os.getenv("HOME") or os.getenv("USERPROFILE")
+	ps.sub("ind-hidden", function(opt)
+		local cwd = cx.active.current.cwd
+		if tostring(cwd.path) == home then
+			opt.state = "hide"
+		else
+			opt.state = "show"
+		end
+		return opt
+	end)
 end
 
-function M:seek() end
-
-function M:fetch(job)
-	return true
-end
-
-function M:preload(job)
-	return true
-end
-
-function M:spot(job) end
-
-return M
+return { setup = setup }
