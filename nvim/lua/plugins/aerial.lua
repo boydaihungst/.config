@@ -24,5 +24,7 @@ return {
     -- -- Fold code when you open/collapse symbols in the tree.
     -- -- Only works when manage_folds = true
     link_tree_to_folds = true,
+    -- Show box drawing characters for the tree hierarchy
+    show_guides = true,
   },
 }

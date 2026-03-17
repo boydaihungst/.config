@@ -31,6 +31,7 @@ return {
         LspReferenceRead = { underline = true },
         NeoTreeFloatBorder = { link = "FloatBorder" },
         CodeiumSuggestion = { link = "CodeCompanionVirtualText" },
+        BlinkCmpLabelMatch = { bold = true },
         -- @markup.link.url xxx cterm=underline,italic gui=underline,italic guifg=#8ebd6b
         ["@markup.link.url"] = { underline = true, italic = true },
       },

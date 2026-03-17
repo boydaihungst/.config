@@ -2,7 +2,7 @@
 return {
   "Fildo7525/pretty_hover",
   event = "LspAttach",
-  enabled = false,
+  enabled = true,
   dependencies = {
     {
       "AstroNvim/astrolsp",
@@ -26,5 +26,10 @@ return {
       },
     },
   },
-  opts = {},
+  opts = {
+    -- If you use nvim 0.11.0 or higher you can choose, whether you want to use the new
+    -- multi lsp support or not. Otherwise this option is ignored.
+    -- NOTE: Temporarily disable because it make lua_ls stuck after using a while
+    multi_server = false,
+  },
 }

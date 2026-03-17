@@ -1,6 +1,6 @@
 ---@type LazySpec
 return {
-  "boydaihungst/lazydev.nvim",
+  "folke/lazydev.nvim",
   optional = true,
   dependencies = {
     -- {

@@ -7,11 +7,9 @@
 return {
   {
     "AstroNvim/astrocommunity",
-    branch = "v6",
+    -- branch = "v6",
   },
-
   -- { import = "astrocommunity.file-explorer.oil-nvim" },
-  -- { import = "astrocommunity.lsp.ts-error-translator-nvim" },
   -- { import = "astrocommunity.pack.angular" },
   -- { import = "astrocommunity.pack.full-dadbod" },
   { import = "astrocommunity.comment.ts-comments-nvim" },
@@ -33,6 +31,7 @@ return {
   { import = "astrocommunity.git.gitlinker-nvim" },
   { import = "astrocommunity.git.octo-nvim" },
   { import = "astrocommunity.lsp.nvim-lint" },
+  { import = "astrocommunity.lsp.ts-error-translator-nvim" },
   { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
   { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
   { import = "astrocommunity.media.img-clip-nvim" },
