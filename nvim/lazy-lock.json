@@ -31,6 +31,7 @@
   "demicolon.nvim": { "branch": "main", "commit": "a9ca137474b3a02e1d6ac48bfdb1985172e2ec9a" },
   "dev-tools.nvim": { "branch": "main", "commit": "d60a184f3a44fc39991a9251e84b3e7789246883" },
   "dial.nvim": { "branch": "master", "commit": "f2634758455cfa52a8acea6f142dcd6271a1bf57" },
+  "eyeliner.nvim": { "branch": "main", "commit": "8f197eb30cecdf4c2cc9988a5eecc6bc34c0c7d6" },
   "friendly-snippets": { "branch": "main", "commit": "6cd7280adead7f586db6fccbd15d2cac7e2188b9" },
   "gitlinker.nvim": { "branch": "master", "commit": "bbe2a1254fc8fce21f3bbf9a020266a1c49799f7" },
   "gitsigns.nvim": { "branch": "main", "commit": "7c4faa3540d0781a28588cafbd4dd187a28ac6e3" },
