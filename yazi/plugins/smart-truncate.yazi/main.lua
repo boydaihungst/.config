@@ -1,4 +1,4 @@
---- @since 25.12.29
+--- @since 26.1.22
 --- @sync peek
 
 local M = {}
@@ -51,8 +51,8 @@ local function remove_suffix(str, suffix)
 	if suffix == "" then
 		return str
 	end
-	local str_len = utf8.len(str)
-	local suffix_len = utf8.len(suffix)
+	local str_len = ui.width(str)
+	local suffix_len = ui.width(suffix)
 	local end_of_str = utf8_sub(str, str_len - suffix_len + 1, str_len)
 	if end_of_str == suffix then
 		return utf8_sub(str, 1, str_len - suffix_len)
@@ -70,7 +70,7 @@ local function shorten_suffix(max_width, long_string_without_suffix, suffix)
 	suffix = suffix or ""
 	max_width = max_width < 0 and 0 or max_width
 	long_string_without_suffix = long_string_without_suffix or ""
-	local long_string_length = ui.Line(long_string_without_suffix .. suffix):width()
+	local long_string_length = ui.width(long_string_without_suffix .. suffix)
 
 	if long_string_length <= max_width then
 		return long_string_without_suffix .. suffix
@@ -79,7 +79,7 @@ local function shorten_suffix(max_width, long_string_without_suffix, suffix)
 	-- local long_string_without_suffix = remove_suffix(long_string_without_suffix, suffix)
 	local original_suffix = suffix
 	suffix = "…" .. suffix
-	local suffix_len = ui.Line(suffix):width()
+	local suffix_len = ui.width(suffix)
 
 	local cut_width = max_width - suffix_len
 
@@ -91,8 +91,7 @@ local function shorten_suffix(max_width, long_string_without_suffix, suffix)
 		return suffix .. "…"
 	end
 
-	--TODO: remove this after next yazi released
-	local result = (ui.truncate or ya.truncate)(long_string_without_suffix, { max = cut_width + 1 })
+	local result = ui.truncate(long_string_without_suffix, { max = cut_width + 1 })
 	if string.find(result, "…$") then
 		return result .. original_suffix
 	end
@@ -111,7 +110,7 @@ local function shortern_array_strings(
 	list_display_order_hidden = list_display_order_hidden or {}
 
 	for i = #array_strings, 1, -1 do
-		if not array_strings[i] or utf8.len(array_strings[i].segment) == 0 then
+		if not array_strings[i] or ui.width(array_strings[i].segment) == 0 then
 			table.remove(array_strings, i)
 		else
 			if array_strings[i].resize_order == resize_order then
@@ -241,7 +240,7 @@ function M:shorten(max_width, string_with_suffix, suffix, always_show_patterns)
 	-- Remove empty pattern
 	if always_show_patterns ~= nil then
 		for i = #always_show_patterns, 1, -1 do
-			if not always_show_patterns[i] == "" or utf8.len(always_show_patterns[i]) == 0 then
+			if not always_show_patterns[i] == "" or ui.width(always_show_patterns[i]) == 0 then
 				table.remove(always_show_patterns, i)
 			end
 		end
@@ -250,7 +249,7 @@ function M:shorten(max_width, string_with_suffix, suffix, always_show_patterns)
 	suffix = suffix or ""
 	max_width = max_width or 0
 	local string_without_suffix = remove_suffix(string_with_suffix, suffix) or ""
-	if not always_show_patterns or #always_show_patterns == 0 or max_width <= utf8.len("…" .. suffix) then
+	if not always_show_patterns or #always_show_patterns == 0 or max_width <= ui.width("…" .. suffix) then
 		return shorten_suffix(max_width, string_without_suffix, suffix)
 	end
 
@@ -293,7 +292,7 @@ function M:shorten(max_width, string_with_suffix, suffix, always_show_patterns)
 			local unmatched = string_without_suffix:sub(last_byte_end, byte_start_pos - 1)
 			table.insert(result_with_order_flags, {
 				segment = unmatched,
-				length = utf8.len(unmatched),
+				length = ui.width(unmatched),
 				resize_order = 1,
 				display_order = display_order,
 			})
@@ -303,7 +302,7 @@ function M:shorten(max_width, string_with_suffix, suffix, always_show_patterns)
 		local matched = string_without_suffix:sub(byte_start_pos, byte_end_pos - 1)
 		table.insert(result_with_order_flags, {
 			segment = matched,
-			length = utf8.len(matched),
+			length = ui.width(matched),
 			resize_order = 2,
 			display_order = display_order,
 		})
@@ -317,7 +316,7 @@ function M:shorten(max_width, string_with_suffix, suffix, always_show_patterns)
 		local segment = string_without_suffix:sub(last_byte_end)
 		table.insert(result_with_order_flags, {
 			segment = segment,
-			length = utf8.len(segment),
+			length = ui.width(segment),
 			resize_order = 1,
 			display_order = display_order,
 		})
@@ -328,10 +327,10 @@ function M:shorten(max_width, string_with_suffix, suffix, always_show_patterns)
 		return shorten_suffix(max_width, string_without_suffix, suffix)
 	end
 
-	if suffix and utf8.len(suffix) > 0 then
+	if suffix and ui.width(suffix) > 0 then
 		table.insert(
 			result_with_order_flags,
-			{ segment = suffix, length = utf8.len(suffix), resize_order = 3, display_order = display_order + 1 }
+			{ segment = suffix, length = ui.width(suffix), resize_order = 3, display_order = display_order + 1 }
 		)
 	end
 
@@ -371,7 +370,7 @@ function M:smart_truncate_entity(entity, max_width)
 				if not entity_self._components[c.id] then
 					entity_self._components[c.id] = {}
 				end
-				entity_self._components[c.id].length = child_component:width()
+				entity_self._components[c.id].length = ui.width(child_component)
 				-- add some metadata for this commponent/children
 				if resizable_entity_children_ids_set[c.id] and entity_self._components[c.id].length > 0 then
 					entity_self._components[c.id].max_length = 0
@@ -453,7 +452,7 @@ function M:render_parent_entities()
 		for _, f in ipairs(self._folder.window) do
 			local entity = Entity:new(f)
 			local linemode_rendered = Linemode:new(f):redraw()
-			local linemode_char_length = linemode_rendered:align(ui.Align.RIGHT):width()
+			local linemode_char_length = ui.width(linemode_rendered:align(ui.Align.RIGHT))
 			thisPlugin:smart_truncate_entity(entity, parent_tab_window_w - linemode_char_length)
 			entities[#entities + 1] = ui.Line({ entity:redraw() }):style(entity:style())
 			linemodes[#linemodes + 1] = linemode_rendered
@@ -480,7 +479,7 @@ function M:render_current_entities()
 		for _, f in ipairs(files) do
 			local entity = Entity:new(f)
 			local linemode_rendered = Linemode:new(f):redraw()
-			local linemode_char_length = linemode_rendered:align(ui.Align.RIGHT):width()
+			local linemode_char_length = ui.width(linemode_rendered:align(ui.Align.RIGHT))
 			-- smart truncate
 			thisPlugin:smart_truncate_entity(entity, current_tab_window_w - linemode_char_length)
 			entities[#entities + 1] = ui.Line({ entity:redraw() }):style(entity:style())
@@ -515,7 +514,7 @@ function M:peek(job)
 	for _, f in ipairs(folder.window) do
 		local entity = Entity:new(f)
 		local linemode_rendered = Linemode:new(f):redraw()
-		local linemode_char_length = linemode_rendered:align(ui.Align.RIGHT):width()
+		local linemode_char_length = ui.width(linemode_rendered:align(ui.Align.RIGHT))
 
 		-- smart truncate
 		self:smart_truncate_entity(entity, job.area.w - linemode_char_length)

@@ -151,7 +151,7 @@ return {
         "dap_repl",
         "html",
         "latex",
-        "norg",
+        -- "norg",
         "scss",
         "svelte",
         "typst",

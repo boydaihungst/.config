@@ -213,7 +213,7 @@ set $toggle_gemini ~/.config/hypr/scripts/toggle_gemini.sh
 #
     # Launch the file explorer
     bindsym $mod+n exec kitty --app-id 'yazi' -- yazi
-    bindsym $mod+Shift+n exec YAZI_LOG=debug  kitty --app-id 'yazi' -- yazi
+    bindsym $mod+Shift+n exec YAZI_LOG=debug kitty --app-id 'yazi' -- yazi
 
     # Launch the text editor
     bindsym $mod+e exec kitty --app-id 'nvim' -- nvim

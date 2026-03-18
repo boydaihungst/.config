@@ -148,14 +148,21 @@ function M:peek(job)
 	-- NOTE: Hacky way to prevent image overlap with old metadata area
 	if utils.get_state(const.STATE_KEY.prev_metadata_area) then
 		local old_metadata_area = utils.get_state(const.STATE_KEY.prev_metadata_area)
-		ya.preview_widget(job, {
-			ui.Clear(ui.Rect({
-				x = math.min(job.area.x, old_metadata_area.x),
-				y = math.min(job.area.y, old_metadata_area.y),
-				w = math.min(job.area.w, old_metadata_area.w),
-				h = math.min(job.area.h, old_metadata_area.h),
-			})),
-		})
+		if
+			old_metadata_area.win_x == job.area.x
+			and old_metadata_area.win_y == job.area.y
+			and old_metadata_area.win_w == job.area.w
+			and old_metadata_area.win_h == job.area.h
+		then
+			ya.preview_widget(job, {
+				ui.Clear(ui.Rect({
+					x = old_metadata_area.x,
+					y = old_metadata_area.y,
+					w = old_metadata_area.w,
+					h = old_metadata_area.h,
+				})),
+			})
+		end
 	end
 	utils.force_render()
 
@@ -195,6 +202,10 @@ function M:peek(job)
 		y = job.area.y + image_height,
 		w = job.area.w,
 		h = job.area.h - image_height,
+		win_x = job.area.x,
+		win_y = job.area.y,
+		win_w = job.area.w,
+		win_h = job.area.h,
 	} or nil)
 end
 

@@ -1,5 +1,7 @@
 focus_on_window_activation focus
-for_window [title=".*"] focus, inhibit_idle fullscreen
+# Auto focus when a window opens, except ueberzug
+for_window [title="^(?i)(?!ueberzug.*).*"] focus, inhibit_idle fullscreen
+# [class="^(?i)(?!firefox)(?!gnome-terminal).*"]
 
 # fix ibus
 no_focus [class="^Ibus-ui-gtk2$"]

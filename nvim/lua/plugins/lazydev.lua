@@ -11,7 +11,7 @@ return {
   opts = {
     library = {
       -- Load yazi types library
-      { path = os.getenv "HOME" .. "/.config/yazi/plugins/types.yazi", words = { "ya%." } },
+      { path = os.getenv "HOME" .. "/.config/yazi/plugins/types.yazi", words = { "ya%.", "ui%." } },
       -- { path = "wezterm-types", mods = { "wezterm" } },
     },
   },
