@@ -165,6 +165,7 @@ return {
 
           -- Intercept sync requests (often used by formatters)
           local original_sync = vim.lsp.buf_request_sync
+          ---@diagnostic disable-next-line: duplicate-set-field
           vim.lsp.buf_request_sync = function(bufnr, method, params, timeout_ms)
             local trace = debug.traceback("SYNC Trace for " .. method, 2)
             log_to_file("SYNC METHOD: " .. method .. "\n" .. trace)

@@ -4,6 +4,16 @@ local prefix = "<Leader>A"
 return {
   "olimorris/codecompanion.nvim",
   optional = true,
+  keys = { prefix },
+  cmd = {
+    "CodeCompanion",
+    "CodeCompanionHistory",
+    "CodeCompanionSummaries",
+    "CodeCompanionActions",
+    "CodeCompanionChat",
+    "CodeCompanionCLI",
+    "CodeCompanionCmd",
+  },
   dependencies = {
     "ravitemer/codecompanion-history.nvim",
     -- Add mcphub.nvim as a dependency

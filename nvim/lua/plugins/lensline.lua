@@ -2,7 +2,7 @@
 return {
   "oribarilan/lensline.nvim",
   enabled = false,
-  -- tag = "1.0.0",
+  -- tag = "2.0.0",
   -- for latest non-breaking updates
   -- branch = "release/1.x",
   event = "LspAttach",

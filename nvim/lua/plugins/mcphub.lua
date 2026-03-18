@@ -5,6 +5,8 @@ return {
   "ravitemer/mcphub.nvim",
   optional = true,
   enabled = true,
+  keys = { prefix },
+  cmd = { "MCPHub" },
   dependencies = {
     "nvim-lua/plenary.nvim",
     { "Joakker/lua-json5", build = "./install.sh" },

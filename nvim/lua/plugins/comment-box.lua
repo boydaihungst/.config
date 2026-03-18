@@ -2,7 +2,6 @@
 return {
   "LudoPinelli/comment-box.nvim",
   optional = true,
-  event = "User AstroFile",
   opts = {},
   specs = {
     {
@@ -10,6 +9,8 @@ return {
       opts = function(_, opts)
         local maps = opts.mappings
         maps.n["<Leader>B"] = { desc = "󱋄" .. " Comment box/line" }
+        maps.n["<Leader>Bb"] = { desc = "Comment Box" }
+        maps.n["<Leader>Bl"] = { desc = "Comment Line" }
         maps.n["<Leader>Bc"] = { "<CMD>CBcatalog<CR>", desc = "List Catalog" }
         maps.n["<Leader>Bbl"] = { "<CMD>CBllbox<CR>", desc = "Comment Box (Left)" }
         maps.n["<Leader>Bbc"] = { "<CMD>CBlcbox<CR>", desc = "Comment Box (Center)" }

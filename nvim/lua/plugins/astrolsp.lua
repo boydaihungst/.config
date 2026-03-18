@@ -15,6 +15,7 @@ return {
       semantic_tokens = true,
       signature_help = true,
       linked_editing_range = true,
+      inline_completion = true,
     },
     -- customize lsp formatting options
     formatting = {

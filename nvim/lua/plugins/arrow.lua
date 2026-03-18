@@ -2,7 +2,7 @@
 return {
   "otavioschwanck/arrow.nvim",
   lazy = true,
-  event = "VeryLazy",
+  keys = { "M", "m" },
   dependencies = {
     { "nvim-mini/mini.icons" },
   },
