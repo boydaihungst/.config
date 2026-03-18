@@ -1,25 +1,30 @@
 ---@type LazySpec
+--- Optional: rg for faster usage scans (falls back to git ls-files).
 return {
   "yelog/i18n.nvim",
-  enabled = false,
+  enabled = true,
   lazy = true,
-  ft = { "json", "vue", "typescript", "javascript", "tsx", "jsx" },
+  ft = { "vue", "typescript", "javascript", "typescriptreact", "javascriptreact", "tsx", "jsx", "java", "json", "yaml" },
   dependencies = {
-    "ibhagwan/fzf-lua",
+    "folke/snacks.nvim",
     "nvim-treesitter/nvim-treesitter",
   },
   opts = {
+    activation = "lazy",
     show_mode = "both",
     diagnostic = true,
     -- Locales to parse; first is the default locale
     -- Use I18nNextLocale command to switch the default locale in real time
-    locales = { "en", "vn", "jp", "zh" },
+    locales = { "en", "vn", "jp", "zh", "en_US", "vi_VN", "ja_JP", "zh_CN" },
     usage = {
       -- Popup provider used when choosing between multiple usage locations
       -- Available values: 'vim_ui', 'telescope', 'fzf-lua', 'snacks'
       popup_type = "snacks",
+      notify_no_key = false,
+      max_file_size = 0, -- 0 = no limit
+      scan_on_startup = true,
     },
-    -- func_pattern = { "t", "$t" },
+    func_pattern = { "t", "$t" },
     -- sources can be string or table { pattern = "...", prefix = "..." }
     -- Project-level configuration files
     -- .i18nrc.json
@@ -34,6 +39,15 @@ return {
     i18n_keys = {
       popup_type = "snacks",
     },
+
+    -- Enable namespace resolution
+    -- false: Disabled, no namespace resolution
+    -- 'auto': Auto-detect framework based on filetype (tsx/jsx → react_i18next, vue → vue_i18n)
+    -- 'react_i18next': Detect useTranslation('namespace') calls in React components
+    -- 'vue_i18n': Detect useI18n({ namespace: '...' }) in Vue components
+    namespace_resolver = "auto", -- or 'react_i18next', 'vue_i18n', custom function, or table
+    -- Separator between namespace and key
+    namespace_separator = ".", -- set ':' for i18next standard
   },
   specs = {
     {
@@ -46,7 +60,7 @@ return {
 
         local signature_help = {
           function()
-            if require("i18n.display").get_key_under_cursor() then
+            if require("astrocore").is_available "i18n.nvim" and require("i18n.display").get_key_under_cursor() then
               require("i18n").show_popup()
             else
               vim.lsp.buf.signature_help()
@@ -55,9 +69,21 @@ return {
           desc = "Signature help",
         }
 
-        maps.n["<Leader>gK"] = signature_help
-        maps.s["<Leader>gK"] = signature_help
-        maps.i["<Leader>gK"] = signature_help
+        maps.n["gK"] = signature_help
+        maps.s["<C-s>"] = signature_help
+        maps.i["<C-s>"] = signature_help
+        opts.autocmds = vim.tbl_deep_extend("force", opts.autocmds, {
+          reload_i18n_on_cwd_changed = {
+            {
+              event = "DirChanged",
+              pattern = { "*" },
+              desc = "Reload i18n on cwd changed",
+              callback = function(_)
+                if require("astrocore").is_available "i18n.nvim" then vim.cmd "I18nReload" end
+              end,
+            },
+          },
+        })
       end,
     },
     {
@@ -67,7 +93,7 @@ return {
         local maps = opts.mappings
         maps.n["<Leader>lh"] = {
           function()
-            if require("i18n.display").get_key_under_cursor() then
+            if require("astrocore").is_available "i18n.nvim" and require("i18n.display").get_key_under_cursor() then
               require("i18n").show_popup()
             else
               vim.lsp.buf.signature_help()

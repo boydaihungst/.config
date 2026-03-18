@@ -37,6 +37,7 @@ return {
         maps.x["<Leader>la"] =
           { ":<C-U>Lspsaga code_action<CR>", desc = "Code action", cond = "textDocument/codeAction" }
 
+        maps.n["gra"] = { "<Cmd>Lspsaga code_action<CR>", desc = "Code action", cond = "textDocument/codeAction" }
         -- diagnostic
         maps.n["<Leader>ld"] = {
           "<Cmd>Lspsaga show_buffer_diagnostics ++float<CR>",
@@ -48,8 +49,19 @@ return {
         }
 
         -- definition
-        maps.n["gd"] =
-          { "<Cmd>Lspsaga peek_definition<CR>", desc = "Peek definition", cond = "textDocument/definition" }
+        maps.n["gd"] = {
+          function()
+            if
+              require("astrocore").is_available "i18n.nvim"
+              and (require("i18n").i18n_definition() or require("i18n").i18n_definition_next_locale())
+            then
+              return
+            end
+            vim.cmd "Lspsaga peek_definition"
+          end,
+          desc = "Peek definition",
+        }
+
         maps.n["gy"] = {
           "<Cmd>Lspsaga peek_type_definition<CR>",
           desc = "Peek type definition",
@@ -101,18 +113,35 @@ return {
 
         -- references
         maps.n["<Leader>lR"] = {
-          "<Cmd>Lspsaga finder ref+imp+tyd<CR>",
-          desc = "Search Imp+Ref+typeDef",
-          cond = function(client, bufnr)
-            return client:supports_method("textDocument/references", bufnr)
-              or client:supports_method("textDocument/implementation", bufnr)
-              or client:supports_method("textDocument/typeDefinition", bufnr)
+          function()
+            if require("astrocore").is_available "i18n.nvim" and require("i18n").i18n_key_usages() then return end
+            vim.cmd "Lspsaga finder ref+imp+tyd"
           end,
+
+          desc = "Search Imp+Ref+typeDef",
+        }
+        maps.n["gri"] = {
+          "<Cmd>Lspsaga finder imp<CR>",
+          desc = "Search implementation",
+          cond = function(client, bufnr) return client:supports_method("textDocument/implementation", bufnr) end,
+        }
+
+        maps.n["grr"] = {
+          function()
+            if require("astrocore").is_available "i18n.nvim" and require("i18n").i18n_key_usages() then
+              return
+            else
+              vim.cmd "Lspsaga finder ref"
+            end
+          end,
+
+          desc = "Search references",
         }
 
         -- rename
         maps.n["<Leader>lr"] =
           { "<Cmd>Lspsaga rename<CR>", desc = "Rename current symbol", cond = "textDocument/rename" }
+        maps.n["grn"] = { "<Cmd>Lspsaga rename<CR>", desc = "Rename current symbol", cond = "textDocument/rename" }
         if vim.lsp.log.get_level() <= vim.log.levels.DEBUG then
           local log_path = vim.fn.stdpath "cache" .. "/lsp_trace.log"
 
