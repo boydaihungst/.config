@@ -1,8 +1,8 @@
 ---@type LazySpec
 return {
   "yarospace/dev-tools.nvim",
-  event = "LspAttach",
-  cmd = "Lspsaga",
+  event = { "LspAttach" },
+  cmd = { "Lspsaga" },
   lazy = true,
   enabled = true,
   dependencies = {
@@ -13,6 +13,7 @@ return {
     },
     {
       "ThePrimeagen/refactoring.nvim",
+      lazy = true,
       dependencies = { "nvim-lua/plenary.nvim" },
     },
   },

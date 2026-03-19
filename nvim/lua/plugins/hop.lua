@@ -1,9 +1,9 @@
 ---@type LazySpec
 return {
   "smoka7/hop.nvim",
-  enabled = true,
+  enabled = false,
   optional = true,
-  event = "VeryLazy",
+  cmd = { "HopChar1", "HopChar2", "HopLine", "HopPattern", "HopWord", "Hop" },
   opts = {
     excluded_filetypes = {
       "DressingSelect",
@@ -42,7 +42,10 @@ return {
     opts = {
       mappings = {
         n = {
-          ["s"] = { function() require("hop").hint_words { multi_windows = true } end, desc = "Hop hint words" },
+          ["s"] = {
+            function() require("hop").hint_words { multi_windows = true } end,
+            desc = "Hop hint words",
+          },
           ["<S-s>"] = { function() require("hop").hint_char1 { multi_windows = true } end, desc = "Hop hint 1 char" },
         },
         v = {
