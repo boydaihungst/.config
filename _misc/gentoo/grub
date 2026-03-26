@@ -1,0 +1,84 @@
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+#
+# To populate all changes in this file you need to regenerate your
+# grub configuration file afterwards:
+#     'grub-mkconfig -o /boot/grub/grub.cfg'
+#
+# See the grub info page for documentation on possible variables and
+# their associated values.
+
+GRUB_DISTRIBUTOR="Gentoo"
+
+# Default menu entry
+GRUB_DEFAULT=saved
+GRUB_SAVEDEFAULT=true
+
+# Boot the default entry this many seconds after the menu is displayed
+GRUB_TIMEOUT=3
+GRUB_TIMEOUT_STYLE=menu
+
+# Append parameters to the linux kernel command line
+# GRUB_CMDLINE_LINUX=""
+#
+# Examples:
+#
+# Boot with network interface renaming disabled
+# GRUB_CMDLINE_LINUX="net.ifnames=0"
+#
+# Boot with systemd instead of sysvinit (openrc)
+# GRUB_CMDLINE_LINUX="init=/usr/lib/systemd/systemd"
+
+# Append parameters to the linux kernel command line for non-recovery entries
+#GRUB_CMDLINE_LINUX_DEFAULT="rootflags=subvol=@ root=/dev/mapper/root rd.luks.uuid=3f2238db-1fe6-4b53-9a4e-0663f8f3b5d2 resume=UUID=c9e3e688-8dfb-45ea-95d9-949b4b44618b amdgpu.dcdebugmask=0x10 amdgpu.dpm=1 nvidia_drm.modeset=1 gpiolib_acpi.ignore_interrupt=AMDI0030:00@4,AMDI0030:00@89 module_blacklist=nouveau"
+GRUB_CMDLINE_LINUX_DEFAULT="nvme_load=YES nowatchdog rw rootflags=subvol=/@ rd.luks.uuid=3f2238db-1fe6-4b53-9a4e-0663f8f3b5d2 root=/dev/mapper/root resume=UUID=b702a60f-0fb0-48d0-ad80-e34a4df44855 resume_offset=27862272 nvidia_drm.modeset=1 gpiolib_acpi.ignore_interrupt=AMDI0030:00@4,AMDI0030:00@89"
+
+# Uncomment to disable graphical terminal (grub-pc only)
+#GRUB_TERMINAL=console
+
+# Resolution used on graphical terminal.
+# The list of valid modes may be obtained using the 'vbeinfo' (PC BIOS) or
+# 'videoinfo' (EFI) command from a GRUB boot prompt.
+GRUB_GFXMODE="2560x1600x24,auto"
+
+# Set to 'text' to force the Linux kernel to boot in normal text
+# mode, 'keep' to preserve the graphics mode set using
+# 'GRUB_GFXMODE', 'WIDTHxHEIGHT'['xDEPTH'] to set a particular
+# graphics mode, or a sequence of these separated by commas or
+# semicolons to try several modes in sequence.
+#GRUB_GFXPAYLOAD_LINUX=
+
+# Path to theme spec txt file.
+# The starfield is by default provided with use truetype.
+# NOTE: when enabling custom theme, ensure you have required font/etc.
+# GRUB_THEME="/boot/grub/themes/starfield/theme.txt"
+
+# Background image used on graphical terminal.
+# Can be in various bitmap formats.
+#GRUB_BACKGROUND="/boot/grub/mybackground.png"
+
+# Uncomment if you don't want GRUB to pass "root=UUID=xxx" parameter to kernel
+GRUB_DISABLE_LINUX_UUID=true
+
+# Comment if you don't want GRUB to pass "root=PARTUUID=xxx" parameter to kernel
+GRUB_DISABLE_LINUX_PARTUUID=true
+
+# Uncomment to disable generation of recovery mode menu entries
+GRUB_DISABLE_RECOVERY=true
+
+# Uncomment to disable generation of the submenu and put all choices on
+# the top-level menu.
+# Besides the visual affect of no sub menu, this makes navigation of the
+# menu easier for a user who can't see the screen.
+GRUB_DISABLE_SUBMENU=y
+
+# Uncomment to play a tone when the main menu is displayed.
+# This is useful, for example, to allow users who can't see the screen
+# to know when they can make a choice on the menu.
+#GRUB_INIT_TUNE="60 800 1"
+GRUB_DISABLE_OS_PROBER=false
+GRUB_ENABLE_CRYPTODISK=y
+GRUB_BACKGROUND="/boot/grub/themes/Matrix/black.png"
+
+GRUB_THEME="/boot/grub/themes/Matrix/theme.txt"
+GRUB_GFXPAYLOAD_LINUX=keep

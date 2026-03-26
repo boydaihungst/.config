@@ -1,0 +1,112 @@
+##############################################################################
+##                                                                          ##
+##    there are docs at https://github.com/desultory/ugrd/tree/main/docs    ##
+##                                                                          ##
+##############################################################################
+
+# This config will decrypt the LUKS volume with uuid "fdf442da-0574-4531-98c7-55227a041f1d", mapping it to "/dev/mapper/root"
+# Note: In most cases, the uuid of the LUKS volume will be detected from the root mount. It's set as an example here.
+# It will attempt to mount the btrfs volume with label "rootfs" to /target_rootfs
+# It will pull all current kernel modules from lspci -k results
+# It will try to process the cmdline and mount the rootfs based on the root= parameter
+
+late_resume = true
+modules = [
+  #  "ugrd.crypto.cryptsetup", # This is included by the gpg module
+  #  "ugrd.crypto.gpg", # This is included by the smartcard module
+  #  "ugrd.crypto.smartcard",   
+  "ugrd.fs.btrfs",
+  "ugrd.crypto.cryptsetup",
+  "ugrd.fs.resume",
+]
+#strict_resume = true
+# swap_uuid = "b702a60f-0fb0-48d0-ad80-e34a4df44855"
+
+# Mask the parse_cmdline function to prevent it from running
+# Can be applied to any function
+#mask.init_pre = 'parse_cmdline'
+
+# By default, all kmod categories are ignored. This can be disabled by category
+# Modules can define these options if needed, and users should not need to set them
+# In most cases, kmods in these categories are not needed to boot the system
+#kmod_ignore_video = false
+#kmod_ignore_sound = false
+#kmod_ignore_network = false
+
+# The initramfs will be built in /tmp/initramfs if "build_dir" is not specified
+#out_dir = "/usr/src/initramfs"
+#out_dir = "/boot"
+
+# create device nodes in build dir, requires root
+#make_nodes = true
+
+# By default, xz compression is used. This can be disabled or set to zstd if the zstandard python module is installed
+#cpio_compression = "zstd"  # Use zstd compression
+#cpio_compression = false # No compression
+
+# Optionally supply a kernel version, uses the current kernel version if not specified
+#kernel_version = "6.1.53-gentoo-dist"
+# lspci based detection is usually helpful
+kmod_autodetect_lspci = true
+# lsmod detection can be helpful, but can bring in unnecessary modules
+#kmod_autodetect_lsmod = true
+# keyboard/input device detection is enabled by default, but can be disabled or adjusted
+#kmod_autodetect_input = false
+# If input detection is finding non-keyboard devices, the key count threshold can be adjusted
+#keyboard_key_threshold = 50
+# If no kernel modules are needed, or installed, no_kmod should be set
+#no_kmod = true
+
+# ugrd is designed for merged-usr systems. If using a split-usr system, automatic symlink creation can be disabled:
+#merge_usr = false
+
+# on systems using glibc in the userspace, libgcc is often required. If it's not necessary, pulling it can be diabled with:
+#find_libgcc = false
+
+# By default, ugrd will keep retrying to mount base mounts and the rootfs, unless space is pressed
+# The default timeout between attempts is 1s, and the default number of retries is infinite
+#mount_timeout = 0.25  # Wait 0.25 seconds between mount attempts, instead of 1s.
+#mount_retries = 5 # Retry mounting the rootfs 5 times, if unset, it will retry indefinitely
+
+# The location of the gpg public key, if using a smartcard and gpg encrypted keyfile
+#sc_public_key = "/etc/ugrd/pubkey.gpg"
+
+#auto_mounts = ['/boot']  # Automatically create mount config for /boot on the host
+
+# Optionally specify the root mountpoint information manually, it should be detected automatically
+# Whatever options are set manually will be validated against the current root mount
+#[mounts.root]
+# The label of the root filesystem, a uuid or partuuid could be used instead
+#label = "rootfs"
+
+# This is necessary if the keyfile is on another device.
+# The keyfile could be added as a dependency. if it's on the same device.
+#[mounts.boot]
+#type = "vfat"
+#uuid = "4886-A631"
+
+# If the root is a LUKS volume, specify the LUKS volume information
+# The name of the LUKS volume should match the name of the device in /dev/mapper
+#[cryptsetup.root]
+# The UUID of the encrypted volume, mounted at /dev/mapper/root, should be detected automatically
+#uuid = "fdf442da-0574-4531-98c7-55227a041f1d"
+
+# If a GPG encrypted key file is used, the key_type must be set to gpg.
+# If using a plain keyfile, this can be left unset.
+#key_type = "gpg"
+# The key file must either be included as a dependency, or it must be under an external mountpoint.
+# Key file under /boot, which is configured as an auto_mount
+#key_file = "/boot/rootfs.luks.gpg"
+# Key file included as a dependency
+#key_file = "/etc/ugrd/rootfs.luks.gpg"
+#include_key = true
+# If the key file is on storage not accessible to the build system, validation can be disabled:
+#validate_key = false
+# If key unlocking fails, attempt a password unlock:
+#try_nokey = true
+
+# If using detached headers, the header file can be treated similarly to the key file
+#header_file = "/boot/rootfs.luks.header"
+#header_file = "/etc/ugrd/rootfs.luks.header"
+#include_header = true
+#validate_header = false

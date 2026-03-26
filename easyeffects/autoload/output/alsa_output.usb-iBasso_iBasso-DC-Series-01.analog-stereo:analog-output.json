@@ -1,6 +1,0 @@
-{
-    "device": "alsa_output.usb-iBasso_iBasso-DC-Series-01.analog-stereo",
-    "device-description": "iBasso-DC-Series Analog Stereo",
-    "device-profile": "analog-output",
-    "preset-name": "Headphone"
-}

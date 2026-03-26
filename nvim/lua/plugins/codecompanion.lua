@@ -112,27 +112,20 @@ return {
       acp = {
         gemini_cli = function()
           return require("codecompanion.adapters").extend("gemini_cli", {
-            commands = {
-              flash = {
-                "gemini",
-                "--experimental-acp",
-                -- "-m",
-                -- "gemini-3-pro-preview",
-              },
-              pro = {
-                "gemini",
-                "--experimental-acp",
-                -- "-m",
-                -- "gemini-3-pro-preview",
-              },
-            },
             defaults = {
               auth_method = "oauth-personal",
               -- mcpServers = mcpServers,
               timeout = 20000, -- 20 seconds
             },
             env = {
-              -- api_key = "GEMINI_API_KEY",
+              GEMINI_API_KEY = (function()
+                if vim.env.GEMINI_API_KEY then return "GEMINI_API_KEY" end
+                if vim.fn.executable "pass" == 1 then
+                  local encrypted_file = vim.fn.expand "~/.password-store/llm/GEMINI_API_KEY.gpg"
+                  if vim.fn.filereadable(encrypted_file) == 1 then return "cmd: pass llm/GEMINI_API_KEY" end
+                end
+                return "GEMINI_API_KEY"
+              end)(),
             },
           })
         end,
@@ -149,7 +142,14 @@ return {
             },
             env = {
               url = "https://integrate.api.nvidia.com",
-              api_key = "NVIDIA_API_KEY",
+              api_key = (function()
+                if vim.env.NVIDIA_API_KEY then return "NVIDIA_API_KEY" end
+                if vim.fn.executable "pass" == 1 then
+                  local encrypted_file = vim.fn.expand "~/.password-store/llm/NVIDIA_API_KEY.gpg"
+                  if vim.fn.filereadable(encrypted_file) == 1 then return "cmd: pass llm/NVIDIA_API_KEY" end
+                end
+                return "NVIDIA_API_KEY"
+              end)(),
               chat_url = "/v1/chat/completions",
               models_endpoint = "/v1/models",
             },
@@ -157,50 +157,50 @@ return {
               model = {
                 default = "qwen/qwen3.5-397b-a17b",
               },
-              -- temperature = {
-              --   order = 2,
-              --   mapping = "parameters",
-              --   type = "number",
-              --   optional = true,
-              --   default = 0.6,
-              --   desc = "What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both.",
-              --   validate = function(n) return n >= 0 and n <= 1, "Must be between 0 and 1" end,
-              -- },
-              -- top_p = {
-              --   order = 3,
-              --   mapping = "parameters",
-              --   type = "number",
-              --   optional = true,
-              --   default = 0.95,
-              --   desc = "An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or temperature but not both.",
-              --   validate = function(n) return n >= 0 and n <= 1, "Must be between 0 and 1" end,
-              -- },
-              -- top_k = {
-              --   order = 4,
-              --   mapping = "parameters",
-              --   type = "number",
-              --   optional = true,
-              --   default = 20,
-              --   desc = "An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or temperature but not both.",
-              -- },
-              -- presence_penalty = {
-              --   order = 5,
-              --   mapping = "parameters",
-              --   type = "number",
-              --   optional = true,
-              --   default = 0,
-              --   desc = "Number between 0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.",
-              --   validate = function(n) return n >= 0 and n <= 2, "Must be between 0 and 2" end,
-              -- },
-              -- repetition_penalty = {
-              --   order = 6,
-              --   mapping = "parameters",
-              --   type = "number",
-              --   optional = true,
-              --   default = 1,
-              --   desc = "Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.",
-              --   validate = function(n) return n >= -2 and n <= 2, "Must be between -2 and 2" end,
-              -- },
+              temperature = {
+                order = 2,
+                mapping = "parameters",
+                type = "number",
+                optional = true,
+                default = 0.6,
+                desc = "What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both.",
+                validate = function(n) return n >= 0 and n <= 1, "Must be between 0 and 1" end,
+              },
+              top_p = {
+                order = 3,
+                mapping = "parameters",
+                type = "number",
+                optional = true,
+                default = 0.95,
+                desc = "An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or temperature but not both.",
+                validate = function(n) return n >= 0 and n <= 1, "Must be between 0 and 1" end,
+              },
+              top_k = {
+                order = 4,
+                mapping = "parameters",
+                type = "number",
+                optional = true,
+                default = 20,
+                desc = "An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered. We generally recommend altering this or temperature but not both.",
+              },
+              presence_penalty = {
+                order = 5,
+                mapping = "parameters",
+                type = "number",
+                optional = true,
+                default = 0,
+                desc = "Number between 0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.",
+                validate = function(n) return n >= 0 and n <= 2, "Must be between 0 and 2" end,
+              },
+              repetition_penalty = {
+                order = 6,
+                mapping = "parameters",
+                type = "number",
+                optional = true,
+                default = 1,
+                desc = "Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.",
+                validate = function(n) return n >= -2 and n <= 2, "Must be between -2 and 2" end,
+              },
             },
           })
         end,

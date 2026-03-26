@@ -272,11 +272,11 @@ function Status:file_size_and_folder_childs()
 		return ui.Line({})
 	end
 
-	local size = h:size()
+	local size = h.cha.len
 
 	if size then
 		return ui.Line({
-			ui.Span(ya.readable_size(h:size() or h.cha.len)),
+			ui.Span(ya.readable_size(size)),
 			ui.Span(" "),
 		})
 	else

@@ -1,8 +1,0 @@
-[Unit]
-Description=Clean trashed items
-[Timer]
-OnCalendar=weekly
-Persistent=true
-Unit=trash-empty.service
-[Install]
-WantedBy=timers.target
