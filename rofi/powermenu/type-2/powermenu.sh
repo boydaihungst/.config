@@ -64,14 +64,14 @@ run_cmd() {
 	selected=$yes
 	if [[ "$selected" == "$yes" ]]; then
 		if [[ $1 == '--shutdown' ]]; then
-			systemctl poweroff
+			loginctl poweroff
 		elif [[ $1 == '--reboot' ]]; then
-			systemctl reboot
+			loginctl reboot
 		elif [[ $1 == '--hibernate' ]]; then
 			playerctl pause
 			# amixer set Master mute
-			# systemctl hybrid-sleep
-			systemctl suspend-then-hibernate
+			loginctl hybrid-sleep
+			# loginctl suspend-then-hibernate
 		elif [[ $1 == '--logout' ]]; then
 			if command -v uwsm &>/dev/null; then
 				uwsm stop
@@ -81,6 +81,8 @@ run_cmd() {
 				bspc quit
 			elif [[ "$XDG_CURRENT_DESKTOP" == i3* ]]; then
 				i3-msg exit
+			elif [[ "$XDG_CURRENT_DESKTOP" == sway* ]]; then
+				swaymsg exit
 			elif [[ "$XDG_CURRENT_DESKTOP" == plasma* ]]; then
 				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
 			fi

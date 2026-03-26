@@ -1,34 +1,37 @@
 exec shikane
 
 # Auth with polkit-gnome:
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# exec /usr/libexec/polkit-gnome-authentication-agent-1
 
-# Import environment variables for user systemd service manager
-exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK WLR_DRM_DEVICES WLR_RENDERER ENABLE_HDR_WSI I3SOCK XCURSOR_SIZE XCURSOR_THEME
-
-# Update dbus environments with display variables
-exec hash dbus-update-activation-environment 2>/dev/null && \
-    dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK WLR_DRM_DEVICES WLR_RENDERER ENABLE_HDR_WSI I3SOCK XCURSOR_SIZE XCURSOR_THEME
-
-exec exec uwsm finalize DISPLAY WAYLAND_DISPLAY SWAYSOCK WLR_DRM_DEVICES WLR_RENDERER ENABLE_HDR_WSI I3SOCK XCURSOR_SIZE XCURSOR_THEME
+exec --no-startup-id dbus-update-activation-environment --all
+exec gnome-keyring-daemon --start --components=secrets
+exec export $(gnome-keyring-daemon)
+exec dex -a
+#exec exec uwsm finalize DISPLAY WAYLAND_DISPLAY SWAYSOCK WLR_DRM_DEVICES WLR_RENDERER ENABLE_HDR_WSI I3SOCK XCURSOR_SIZE XCURSOR_THEME
 
 # Idle configuration
 exec swayidle -w \
-    timeout 300 'brightnessctl -sd amdgpu_bl2 set 50%; brightnessctl -sd platform::kbd_backlight set 0' \
-        resume 'brightnessctl -rd amdgpu_bl2; brightnessctl -rd platform::kbd_backlight' \
+    timeout 300 'brightnessctl -sd amdgpu_bl1 set 50%; brightnessctl -sd platform::kbd_backlight set 0' \
+        resume 'brightnessctl -rd amdgpu_bl1; brightnessctl -rd platform::kbd_backlight' \
     timeout 600 'swaylock -f' \
     timeout 700 'swaymsg "output * power off"' \
         resume 'swaymsg "output * power on"' \
     before-sleep 'swaylock -f'
     # timeout 1800 'systemctl suspend-then-hibernate' \
 
-exec batsignal -b -a battery -I "battery-charged" -e -n BAT0 -w 15 -c 10 -d 5 -W "Battery is low" -C "Battery is low. System will shutdown soon" -D "systemctl hibernate"
+#exec batsignal -b -a battery -I "battery-charged" -e -n BAT0 -w 15 -c 10 -d 5 -W "Battery is low" -C "Battery is low. System will shutdown soon" -D "systemctl hibernate"
 
 # Autotiling
 exec autotiling
 
 # cliphist
 exec wl-paste --watch cliphist store
+
+# TODO: Remove later gentoo pipewire
+# exec gentoo-pipewire-launcher restart &
+
+exec /usr/libexec/xdg-desktop-portal-termfilechooser
+exec /usr/local/libexec/file_manager_dbus
 
 # exec-once = waypaper-engine daemon
 
