@@ -11,8 +11,8 @@ return {
   },
   -- { import = "astrocommunity.file-explorer.oil-nvim" },
   -- { import = "astrocommunity.motion.hop-nvim" },
-  -- { import = "astrocommunity.pack.angular" },
-  -- { import = "astrocommunity.pack.full-dadbod" },
+  -- { import = "astrocommunity.pack.cs" }, -- Not compatible with astro v6
+  { import = "astrocommunity.lsp.garbage-day-nvim" },
   { import = "astrocommunity.ai.codecompanion-nvim" },
   { import = "astrocommunity.comment.ts-comments-nvim" },
   { import = "astrocommunity.completion.supermaven-nvim" },

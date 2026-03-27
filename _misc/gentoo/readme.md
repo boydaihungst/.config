@@ -3,3 +3,5 @@ sudo gpg -d portage*backup*...gpg | tar -xvj
 
 sudo rc-update del nvidia-powerd
 sudo rc-update add nvidia-persistenced default
+
+only use suspend-then-hibernate

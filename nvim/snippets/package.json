@@ -8,6 +8,10 @@
       {
         "language": "vue",
         "path": "./vue.json"
+      },
+      {
+        "language": "cs",
+        "path": "./cs.json"
       }
     ]
   }
