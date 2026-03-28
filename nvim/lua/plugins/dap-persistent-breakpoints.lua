@@ -1,0 +1,37 @@
+---@type LazySpec
+return {
+  "Weissle/persistent-breakpoints.nvim",
+  optional = true,
+  keys = {
+    {
+      "<F9>",
+      function() require("persistent-breakpoints.api").toggle_breakpoint() end,
+      { silent = true },
+      desc = "Debugger: Toggle Breakpoint",
+    },
+    {
+      "<Leader>db",
+      function() require("persistent-breakpoints.api").toggle_breakpoint() end,
+      { silent = true },
+      desc = "Toggle Breakpoint (F9)",
+    },
+    {
+      "<Leader>dB",
+      function() require("persistent-breakpoints.api").clear_all_breakpoints() end,
+      { silent = true },
+      desc = "Clear Breakpoints",
+    },
+    {
+      "<Leader>dC",
+      function() require("persistent-breakpoints.api").set_conditional_breakpoint() end,
+      { silent = true },
+      desc = "Conditional Breakpoint (S-F9)",
+    },
+    {
+      "<F21>", -- Shift+F9
+      function() require("persistent-breakpoints.api").set_conditional_breakpoint() end,
+      { silent = true },
+      desc = "Conditional Breakpoint",
+    },
+  },
+}

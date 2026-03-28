@@ -9,7 +9,7 @@ set $right l
 
 set $powermenu ~/.config/rofi/powermenu/type-2/powermenu.sh
 set $applaucher ~/.config/rofi/launchers/type-1/launcher.sh
-set $powerprofiles ~/.config/hypr/scripts/power-profiles
+set $powerprofiles ~/.config/sway/scripts/power-profiles
 set $volumectl ~/.config/hypr/scripts/volumectl
 set $brightnesschange ~/.config/hypr/scripts/brightness-change.sh
 set $toggle_gemini ~/.config/hypr/scripts/toggle_gemini.sh

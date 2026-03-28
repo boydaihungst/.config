@@ -52,9 +52,11 @@ end
 
 if not type -q safe-rm
     echo "safe-rm not found. Install through package manager!"
+else
+    alias rm='safe-rm'
 end
 fish_add_path -p /usr/lib/safe-rm
-fish_add_path -aP ~/bin ~/.local/bin ~/.cargo/bin $GEM_HOME/bin ~/.local/share/neovim/bin /usr/local/go/bin ~/android_root/platform-tools /usr/include/vapoursynth ~/go/bin ~/.cache/.bun/bin
+fish_add_path -aP ~/bin ~/.local/bin ~/.cargo/bin $GEM_HOME/bin ~/.local/share/neovim/bin /usr/local/go/bin ~/android_root/platform-tools /usr/include/vapoursynth ~/go/bin ~/.cache/.bun/bin ~/.dotnet/tools
 
 if type -q nvim
     set EDITOR nvim
@@ -66,9 +68,9 @@ end
 set COLORTERM truecolor
 set TMPDIR /tmp
 set fish_greeting
-if test -f ~/.ssh/cf_llm
-    source ~/.ssh/cf_llm
-end
+# if test -f ~/.ssh/cf_llm
+#     source ~/.ssh/cf_llm
+# end
 if set -q KITTY_WINDOW_ID
     alias ssh="kitten ssh"
 end
@@ -110,3 +112,5 @@ if type -q zoxide
     zoxide init fish | source
 end
 set -x DOCKER_HOST unix://$XDG_RUNTIME_DIR/docker.sock
+set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+set -gx GPG_TTY (tty)

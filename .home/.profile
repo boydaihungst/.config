@@ -1,10 +1,3 @@
-# export MOZ_ENABLE_WAYLAND=1
-# export XDG_CURRENT_DESKTOP=sway
-# export XDG_SESSION_TYPE=wayland
-# export WLR_NO_HARDWARE_CURSORS=1
-# export WLR_RENDERER_ALLOW_SOFTWARE=1
-# export WLR_DRM_NO_ATOMIC=1
-# export ELECTRON_OZONE_PLATFORM_HINT=wayland
 export QT_QPA_PLATFORMTHEME=qt5ct
 export MOZ_USE_XINPUT2=1
 # export GDK_DPI_SCALE=1
@@ -17,9 +10,7 @@ export XMODIFIERS=@im=fcitx
 export QT4_IM_MODULE=fcitx
 export CLUTTER_IM_MODULE=fcitx
 # export INPUT_METHOD=ibus
-# export GDK_DEBUG=portals
-# export QT_STYLE_OVERRIDE=kvantum
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:/usr/lib/safe-rm:$PATH:$HOME/bin:$HOME/.bun/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GEM_HOME/bin:$HOME/.local/share/neovim/bin:$HOME/.local/share/bob/nvim-bin:$HOME/.pyenv/bin:$HOME/android_root/platform-tools/adb:/opt/cuda/bin:/usr/local/VideoSubFinder:$HOME/.yarn/bin:$HOME/go/bin"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:/usr/lib/safe-rm:$PATH:$HOME/bin:$HOME/.bun/bin:$HOME/.local/bin:$HOME/.cargo/bin:$GEM_HOME/bin:$HOME/.local/share/neovim/bin:$HOME/.local/share/bob/nvim-bin:$HOME/.pyenv/bin:$HOME/android_root/platform-tools/adb:/opt/cuda/bin:/usr/local/VideoSubFinder:$HOME/.yarn/bin:$HOME/go/bin:$HOME/.dotnet/tools"
 export npm_config_prefix="$HOME/.local"
 export JAVA_HOME=/usr/lib/jvm/default
 export EDITOR=nvim
@@ -30,8 +21,31 @@ export COLORTERM=truecolor
 export USE_CCACHE=1
 export CCACHE_COMPRESS=1
 export CCACHE_MAXSIZE=50G # 50 GB
-if [ -f "$HOME"/.ssh/cf_llm ]; then
-  source "$HOME"/.ssh/cf_llm
-fi
 export CUDAToolkit_ROOT=/opt/cuda
 export GPG_TTY=$(tty)
+
+export XCURSOR_SIZE=24
+export MOZ_ENABLE_WAYLAND=1
+export OZONE_PLATFORM=wayland
+export ELECTRON_OZONE_PLATFORM_HINT=wayland
+export GDK_DEBUG=portals
+export QT_QPA_PLATFORMTHEME=qt6ct
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export WLR_DRM_DEVICES=/dev/dri/amd-igpu:/dev/dri/nvidia-egpu
+export WLR_RENDERER=vulkan
+export ENABLE_HDR_WSI=1
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=sway
+# Manually export the most common ones
+export XDG_DESKTOP_DIR="$(xdg-user-dir DESKTOP)"
+export XDG_DOWNLOAD_DIR="$(xdg-user-dir DOWNLOAD)"
+export XDG_TEMPLATES_DIR="$(xdg-user-dir TEMPLATES)"
+export XDG_PUBLICSHARE_DIR="$(xdg-user-dir PUBLICSHARE)"
+export XDG_DOCUMENTS_DIR="$(xdg-user-dir DOCUMENTS)"
+export XDG_MUSIC_DIR="$(xdg-user-dir MUSIC)"
+export XDG_PICTURES_DIR="$(xdg-user-dir PICTURES)"
+export XDG_VIDEOS_DIR="$(xdg-user-dir VIDEOS)"
+export XDG_CONFIG_HOME="$(xdg-user-dir CONFIG_HOME)"
+unset SSH_AGENT_PID
+export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"

@@ -23,7 +23,7 @@
     "bluetooth",
     "battery",
     // "custom/ibus-bamboo",
-    // "power-profiles-daemon",
+    "power-profiles-daemon",
     "idle_inhibitor",
     "tray",
   ],
@@ -291,10 +291,10 @@
     "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
     "tooltip": true,
     "format-icons": {
-      "default": "",
-      "performance": "",
-      "balanced": "",
-      "power-saver": ""
+      "default": " ",
+      "performance": " ",
+      "balanced": "󰗑 ",
+      "power-saver": " "
     }
   },
   "custom/ibus-bamboo": {

@@ -53,6 +53,7 @@ ZENITY_TITLE="Power Profiles"
 ZENITY_TEXT="Set Profiles:"
 ZENITY_OPTIONS=(--column= --hide-header)
 
+
 #######################################################################
 #                             END CONFIG                              #
 #######################################################################
@@ -63,6 +64,8 @@ enable_confirmation=false
 # Preferred launcher if both are available
 preferred_launcher="rofi"
 
+preferred_power_manager="powerprofilesctl"
+
 usage="$(basename "$0") [-h] [-c] [-p name] -- display a menu for shutdown, reboot, lock etc.
 
 where:
@@ -71,7 +74,6 @@ where:
     -p  preferred launcher (rofi or zenity)
 
 This script depends on:
-  - systemd,
   - wayland,
   - rofi or zenity."
 
@@ -122,7 +124,8 @@ function command_exists() {
 }
 
 # systemctl required
-if ! command_exists systemctl ; then
+if ! command_exists $preferred_power_manager ; then
+  notify-send -i "dialog-error" "Power Manager Not Found: ${preferred_power_manager}"
   exit 1
 fi
 
@@ -132,10 +135,17 @@ typeset -A menu
 # Menu with keys/commands
 
 menu=(
-  [ Performance]="powerprofilesctl set performance"
-  [ Balanced]="powerprofilesctl set balanced"
-  [ Power Saver]="powerprofilesctl set power-saver"
+  [ Performance]="$preferred_power_manager set performance"
+  [󰗑 Balanced]="$preferred_power_manager set balanced"
+  [ Power Saver]="$preferred_power_manager set power-saver"
   [ Cancel]=""
+)
+
+order=(
+  " Cancel"
+  " Power Saver"
+  "󰗑 Balanced"
+  " Performance"
 )
 
 menu_nrows=${#menu[@]}
@@ -170,11 +180,12 @@ done
 
 # No launcher available
 if [[ -z "${launcher_exe}" ]]; then
+  notify-send -i "dialog-error" "Launcher Not Found: ${launcher_list[*]}"
   exit 1
 fi
 
 launcher=(${launcher_exe} "${launcher_options[@]}")
-selection="$(printf '%s\n' "${!menu[@]}" | sort | "${launcher[@]}")"
+selection="$(printf '%s\n' "${order[@]}" | "${launcher[@]}")"
 
 function ask_confirmation() {
   if [ "${launcher_exe}" == "rofi" ]; then
@@ -187,7 +198,11 @@ function ask_confirmation() {
   fi
 
   if [ "${confirmed}" == 0 ]; then
-    "${menu[${selection}]}"
+	  if [[ "$XDG_CURRENT_DESKTOP" == sway* ]]; then
+		  swaymsg exec "${menu[${selection}]}"
+	  elif [[ "$XDG_CURRENT_DESKTOP" == Hyprland* ]]; then
+      hyprctl dispatch exec "${menu[${selection}]}"
+    fi
   fi
 }
 
@@ -196,6 +211,11 @@ if [[ $? -eq 0 && -n ${selection} ]]; then
         ${menu_confirm} =~ (^|[[:space:]])"${selection}"($|[[:space:]]) ]]; then
     ask_confirmation
   else
-    "${menu[${selection}]}"
+    if [[ "$XDG_CURRENT_DESKTOP" == sway* ]]; then
+		  swaymsg exec "${menu[${selection}]}"
+	  elif [[ "$XDG_CURRENT_DESKTOP" == Hyprland* ]]; then
+      hyprctl dispatch exec "${menu[${selection}]}"
+    fi
+
   fi
 fi

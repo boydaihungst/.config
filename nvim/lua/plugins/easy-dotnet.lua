@@ -4,6 +4,7 @@ local is_ef_available = vim.fn.executable "dotnet-ef" == 1
 ---@type LazySpec
 return {
   "GustavEikaas/easy-dotnet.nvim",
+  cmd = { "Dotnet" },
   enabled = true,
   opts = {
     managed_terminal = {

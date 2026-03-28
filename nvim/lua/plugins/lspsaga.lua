@@ -214,6 +214,8 @@ return {
     opts.code_action = {
       num_shortcut = true,
       show_server_name = true,
+      max_width = 0.8,
+      max_height = 0.6,
       extend_gitsigns = astrocore.is_available "gitsigns.nvim",
       keys = {
         -- string | table type

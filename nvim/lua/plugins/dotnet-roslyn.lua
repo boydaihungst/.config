@@ -39,7 +39,9 @@ return {
     ft = "cs",
     ---@module 'roslyn.config'
     ---@type RoslynNvimConfig
-    opts = {},
+    opts = {
+      silent = true,
+    },
   },
   {
     "jay-babu/mason-nvim-dap.nvim",

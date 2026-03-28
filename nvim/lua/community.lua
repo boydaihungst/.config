@@ -56,7 +56,7 @@ return {
   { import = "astrocommunity.pack.prettier" },
   { import = "astrocommunity.pack.proto" },
   { import = "astrocommunity.pack.python" },
-  { import = "astrocommunity.pack.rust" },
+  -- { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.sql" }, -- Setup connection file plugins/sqls.lua
   { import = "astrocommunity.pack.tailwindcss" },
   { import = "astrocommunity.pack.toml" },

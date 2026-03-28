@@ -1,5 +1,6 @@
 exec shikane
 
+# (run via dex):
 # Auth with polkit-gnome:
 # exec /usr/libexec/polkit-gnome-authentication-agent-1
 
@@ -7,12 +8,11 @@ exec --no-startup-id dbus-update-activation-environment --all
 exec gnome-keyring-daemon --start --components=secrets
 exec export $(gnome-keyring-daemon)
 exec dex -a
-#exec exec uwsm finalize DISPLAY WAYLAND_DISPLAY SWAYSOCK WLR_DRM_DEVICES WLR_RENDERER ENABLE_HDR_WSI I3SOCK XCURSOR_SIZE XCURSOR_THEME
 
 # Idle configuration
 exec swayidle -w \
-    timeout 300 'brightnessctl -sd amdgpu_bl1 set 50%; brightnessctl -sd platform::kbd_backlight set 0' \
-        resume 'brightnessctl -rd amdgpu_bl1; brightnessctl -rd platform::kbd_backlight' \
+    timeout 300 'brightnessctl -s set 50%; brightnessctl -sd platform::kbd_backlight set 0' \
+        resume 'brightnessctl -r; brightnessctl -rd platform::kbd_backlight' \
     timeout 600 'swaylock -f' \
     timeout 700 'swaymsg "output * power off"' \
         resume 'swaymsg "output * power on"' \
@@ -27,11 +27,15 @@ exec autotiling
 # cliphist
 exec wl-paste --watch cliphist store
 
+# (run via dex):
 # TODO: Remove later gentoo pipewire
 # exec gentoo-pipewire-launcher restart &
 
 exec /usr/libexec/xdg-desktop-portal-termfilechooser
 exec /usr/local/libexec/file_manager_dbus
+exec gpgconf --launch gpg-agent
+exec sway-audio-idle-inhibit
+exec ~/.config/sway/scripts/battery-watch.sh
 
 # exec-once = waypaper-engine daemon
 

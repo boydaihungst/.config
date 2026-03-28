@@ -24,10 +24,8 @@ return {
             require("snacks").picker.highlights {
               confirm = function(picker, item)
                 vim.fn.setreg("+", item.hl_group)
-                local buf = item.buf or vim.api.nvim_win_get_buf(picker.main)
-                local ft = vim.bo[buf].filetype
                 require("snacks").notify(
-                  ("Yanked to register `%s`:\n```%s\n%s\n```"):format("+", ft, item.hl_group),
+                  ("Yanked to register `%s`:\n`%s`"):format("+", item.hl_group),
                   { title = "Snacks Picker" }
                 )
                 picker:close()
@@ -47,6 +45,25 @@ return {
             end
           end,
           desc = "Home Screen",
+        }
+        maps.n["<Leader>fk"] = {
+          function()
+            require("snacks").picker.keymaps {
+              confirm = function(picker, item)
+                picker:close()
+                if item.info and item.info.linedefined then
+                  vim.api.nvim_command("edit +" .. item.info.linedefined .. " " .. item.file)
+                elseif item.item and item.item.rhs then
+                  vim.fn.setreg("+", item.item.rhs)
+                  require("snacks").notify(
+                    ("Yanked to register `%s`:\n`%s`"):format("+", item.item.rhs),
+                    { title = "Snacks Picker" }
+                  )
+                end
+              end,
+            }
+          end,
+          desc = "Find keymaps",
         }
         maps.n["<Leader>fl"] = {
           function()
@@ -102,12 +119,7 @@ return {
             require("snacks").picker.notifications {
               confirm = function(picker, item)
                 vim.fn.setreg("+", item.item.msg)
-                local buf = item.buf or vim.api.nvim_win_get_buf(picker.main)
-                local ft = vim.bo[buf].filetype
-                require("snacks").notify(
-                  ("Yanked to register `%s`:\n```%s\n%s\n```"):format("+", ft, item.item.msg),
-                  { title = "Snacks Picker" }
-                )
+                require("snacks").notify(("Yanked to register `%s`"):format "+", { title = "Snacks Picker" })
                 picker:close()
               end,
             }

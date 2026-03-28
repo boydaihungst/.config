@@ -83,10 +83,10 @@ require("zoxide"):setup({
 
 local always_show_patterns = {
 	"%- S%d%dE%d%d %-",
-	-- "Bluray",
-	-- "WEBDL",
-	-- "WEBRip",
-	-- "HDTV",
+	"Bluray",
+	"WEBDL",
+	"WEBRip",
+	"HDTV",
 	-- "AMZN",
 	-- "NF",
 	-- "DSNP",

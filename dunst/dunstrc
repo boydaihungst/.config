@@ -24,7 +24,7 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = (0,300)
+    width = (0,500)
 
     # The maximum height of a single notification, excluding the frame.
     # # dynamic width from 0 to 300
@@ -463,6 +463,5 @@
 	history_ignore = yes
 	set_stack_tag = "battery"
     highlight = "#A24F5F,#e5c07b,#597A9A"
-    script = ~/.config/dunst/scripts/batsignal_alert.sh
 #
 # vim: ft=cfg
