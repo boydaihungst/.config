@@ -2,7 +2,7 @@ Compress and encrypt gentoo portage packages, settings
 `sudo tar -cvpj /etc/portage /var/lib/portage/world | gpg -c -o portage_backup_$(date +%F).tar.bz2.gpg`
 
 Decompress and extract
-`sudo gpg -d portage*backup*...gpg | tar -xvj`
+`sudo gpg -d portage_backup_...gpg | tar -xvj`
 
 # This prevent nvida card laptop from black screen when hibernate
 
