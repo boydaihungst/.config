@@ -10,6 +10,9 @@ return {
       opts = function(_, opts)
         if not opts.options then opts.options = {} end
         if not opts.options.g then opts.options.g = {} end
+        vim.api.nvim_set_hl(0, "VM_Cursor", { link = "Cursor" })
+        vim.api.nvim_set_hl(0, "VM_MONO", { link = "Cursor" })
+
         -- Prevent overlapping with astrocore horizontal split key
         opts.options.g.VM_leader = opts.options.g.VM_leader or vim.g.VM_leader or "<leader>m"
         opts.options.g.VM_silent_exit = 1

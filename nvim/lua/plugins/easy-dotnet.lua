@@ -6,6 +6,28 @@ return {
   "GustavEikaas/easy-dotnet.nvim",
   cmd = { "Dotnet" },
   enabled = true,
+  build = function()
+    if not vim.fn.executable "dotnet" then error "Easy-dotnet requires dotnet installed" end
+    if not is_ef_available then
+      vim.system({ "dotnet", "tool", "install", "-g", "dotnet-ef" }, { text = true }, function(obj)
+        if obj.code == 0 then
+          vim.notify "Installed successfully: dotnet entity framework"
+          is_ef_available = true
+        else
+          vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
+        end
+      end)
+    else
+      vim.system({ "dotnet", "tool", "update", "-g", "dotnet-ef" }, { text = true }, function(obj)
+        if obj.code == 0 then
+          vim.notify "Updated successfully: dotnet entity framework"
+        else
+          vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
+        end
+      end)
+    end
+  end,
+
   opts = {
     managed_terminal = {
       auto_hide = true, -- auto hides terminal if exit code is 0

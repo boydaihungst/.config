@@ -36,7 +36,6 @@ return {
   { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
   { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },
   { import = "astrocommunity.media.img-clip-nvim" },
-  { import = "astrocommunity.motion.flash-nvim" },
   { import = "astrocommunity.motion.mini-move" },
   { import = "astrocommunity.motion.vim-matchup" },
   { import = "astrocommunity.pack.ansible" },

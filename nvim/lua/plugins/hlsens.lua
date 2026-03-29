@@ -10,7 +10,7 @@ return {
       if nearest then
         local cnt = #posList
         text = ("[%d/%d]"):format(idx or 0, cnt or 0)
-        chunks = { { " " }, { text, "NvimSurroundHighlight" } }
+        chunks = { { " " }, { text, "StatusVisual" } }
       else
         text = ("[%d]"):format(idx or 0)
         chunks = { { " " }, { text, "HlSearchLens" } }
