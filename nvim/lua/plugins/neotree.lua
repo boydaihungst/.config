@@ -79,10 +79,10 @@ return {
         },
       },
       filtered_items = {
-        visible = false, -- when true, they will just be displayed differently than normal items
-        hide_dotfiles = false,
-        hide_gitignored = false,
-        hide_hidden = false,
+        visible = true, -- when true, they will just be displayed differently than normal items
+        hide_dotfiles = true,
+        hide_gitignored = true,
+        hide_hidden = true,
         hide_by_name = {
           ".DS_Store",
           "thumbs.db",

@@ -1,5 +1,5 @@
 {
-  "setup": {
+  "language": {
     "prefix": ["language"],
     "body": ["//language=$1"],
     "description": "Rider-like syntax highlighting for injected languages (sql, json and xml) based on comments. Just add single-line comment like //language=json before string to start using this."

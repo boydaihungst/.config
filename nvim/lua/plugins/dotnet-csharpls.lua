@@ -1,6 +1,15 @@
 return {}
 -- return {
 --   -- CSharp support
+-- {
+--   "mason-org/mason.nvim",
+--   optional = true,
+--   opts = {
+--     registries = {
+--       "github:boydaihungst/mason-registry",
+--     },
+--   },
+-- },
 --   {
 --     "nvim-treesitter/nvim-treesitter",
 --     optional = true,
@@ -14,8 +23,23 @@ return {}
 --     "williamboman/mason-lspconfig.nvim",
 --     optional = true,
 --     opts = function(_, opts)
---       opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "csharp_ls" })
+--       opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "csharp_ls", "msbuild_project_tools_server" })
 --     end,
+-- dependencies = {
+--   {
+--     "AstroNvim/astrolsp",
+--     opts = {
+--       config = {
+--         msbuild_project_tools_server = {
+--           cmd = { "msbuild_project_tools_server" },
+--           -- Configure default capabilities
+--           capabilities = {},
+--         },
+--       },
+--     },
+--   },
+-- },
+
 --   },
 --   {
 --     "Decodetalkers/csharpls-extended-lsp.nvim",
@@ -33,7 +57,7 @@ return {}
 --     opts = function(_, opts)
 --       opts.ensure_installed = require("astrocore").list_insert_unique(
 --         opts.ensure_installed,
---         { "csharp-language-server", "csharpier", "netcoredbg" }
+--         { "csharp-language-server", "csharpier", "netcoredbg", "msbuild_project_tools_server" }
 --       )
 --     end,
 --   },

@@ -8,5 +8,6 @@ return {
       include_match_words = true,
     }
     vim.treesitter.language.register("bash", "kitty")
+    vim.treesitter.language.register("xml", { "msbuild" })
   end,
 }

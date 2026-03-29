@@ -1,6 +1,13 @@
 -- Set up custom filetypes
 vim.filetype.add {
-  extension = { rasi = "rasi", rofi = "rasi", wofi = "rasi" },
+  extension = {
+    rasi = "rasi",
+    rofi = "rasi",
+    wofi = "rasi",
+    props = "msbuild",
+    tasks = "msbuild",
+    targets = "msbuild",
+  },
   filename = {
     ["vifmrc"] = "vim",
   },
@@ -13,5 +20,6 @@ vim.filetype.add {
     -- [".*/hypr/.+%.conf"] = "hyprlang",
     [".*/sway/.+%.conf"] = "swayconfig",
     ["%.env%.[%w_.-]+"] = "sh",
+    [".*%..*proj"] = "msbuild",
   },
 }

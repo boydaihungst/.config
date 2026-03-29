@@ -1,3 +1,4 @@
+local has_autopair
 local function has_words_before()
   local line, col = (unpack or table.unpack)(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
@@ -6,14 +7,15 @@ end
 -- Check if there is any autopair fastwrap extmarks
 local function has_fastwrap_extmarks(bufnr)
   bufnr = bufnr or 0 -- Default to current buffer
-
-  vim.api.nvim_get_namespaces()
+  if has_autopair == false then return false end
+  if not has_autopair then return false end
+  local _, fastwarp = pcall(require, "nvim-autopairs.fastwrap")
 
   -- Fetch extmarks in the specific namespace
   -- Parameters: buffer, namespace_id, start_range, end_range, options
   local extmarks = vim.api.nvim_buf_get_extmarks(
     bufnr,
-    require("nvim-autopairs.fastwrap").ns_fast_wrap,
+    fastwarp.ns_fast_wrap,
     0, -- Start of buffer (row 0)
     -1, -- End of buffer (row -1)
     {}

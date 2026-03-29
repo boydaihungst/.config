@@ -7,6 +7,7 @@ return {
     opts = {
       registries = {
         "github:Crashdummyy/mason-registry",
+        "github:boydaihungst/mason-registry",
       },
     },
   },
@@ -23,14 +24,31 @@ return {
     "mason-org/mason-lspconfig.nvim",
     optional = true,
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "roslyn" })
+      opts.ensure_installed =
+        require("astrocore").list_insert_unique(opts.ensure_installed, { "roslyn", "msbuild_project_tools_server" })
     end,
+    dependencies = {
+      {
+        "AstroNvim/astrolsp",
+        opts = {
+          config = {
+            msbuild_project_tools_server = {
+              cmd = { "msbuild_project_tools_server" },
+              -- Configure default capabilities
+            },
+          },
+        },
+      },
+    },
   },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     optional = true,
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "roslyn", "csharpier" })
+      opts.ensure_installed = require("astrocore").list_insert_unique(
+        opts.ensure_installed,
+        { "roslyn", "csharpier", "msbuild_project_tools_server" }
+      )
     end,
   },
 

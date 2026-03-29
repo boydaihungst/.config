@@ -47,7 +47,6 @@ return {
     -- customize language server configuration passed to `vim.lsp.config`
     -- Configure language servers with `vim.lsp.config` (`:h vim.lsp.config`)
     config = {
-
       -- Configure LSP defaults
       ["*"] = {
         -- Configure default capabilities
