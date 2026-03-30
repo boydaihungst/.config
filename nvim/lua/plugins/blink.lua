@@ -172,19 +172,19 @@ return {
       ["<Tab>"] = {
         function(cmp)
           return cmp.select_next {
-            auto_insert = true,
+            auto_insert = not vim.g.Vm or vim.g.Vm.mappings_enabled == 0,
           }
         end,
         "snippet_forward",
         function(cmp)
-          if has_words_before() or vim.api.nvim_get_mode().mode == "c" then return cmp.show() end
+          if has_words_before() or vim.api.nvim_get_mode().mode == "c" then cmp.show() end
         end,
         "fallback",
       },
       ["<S-Tab>"] = {
         function(cmp)
           return cmp.select_prev {
-            auto_insert = true,
+            auto_insert = not vim.g.Vm or vim.g.Vm.mappings_enabled == 0,
           }
         end,
         "snippet_backward",
