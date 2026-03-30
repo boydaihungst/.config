@@ -1,5 +1,4 @@
--- return {}
----@type LazySpec
+local is_dotnet_available = vim.fn.executable "dotnet" == 1---@type LazySpec
 return {
   {
     "mason-org/mason.nvim",
@@ -24,8 +23,10 @@ return {
     "mason-org/mason-lspconfig.nvim",
     optional = true,
     opts = function(_, opts)
-      opts.ensure_installed =
-        require("astrocore").list_insert_unique(opts.ensure_installed, { "roslyn", "msbuild_project_tools_server" })
+      if is_dotnet_available then
+        opts.ensure_installed =
+          require("astrocore").list_insert_unique(opts.ensure_installed, { "roslyn", "msbuild_project_tools_server" })
+      end
     end,
     dependencies = {
       {
@@ -45,10 +46,12 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     optional = true,
     opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(
-        opts.ensure_installed,
-        { "roslyn", "csharpier", "msbuild_project_tools_server" }
-      )
+      if is_dotnet_available then
+        opts.ensure_installed = require("astrocore").list_insert_unique(
+          opts.ensure_installed,
+          { "roslyn", "csharpier", "msbuild_project_tools_server" }
+        )
+      end
     end,
   },
 
@@ -72,8 +75,10 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     optional = true,
     opts = function(_, opts)
-      opts.ensure_installed =
-        require("astrocore").list_insert_unique(opts.ensure_installed, { "csharpier", "netcoredbg" })
+      if is_dotnet_available then
+        opts.ensure_installed =
+          require("astrocore").list_insert_unique(opts.ensure_installed, { "csharpier", "netcoredbg" })
+      end
     end,
   },
   {
