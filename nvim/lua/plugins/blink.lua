@@ -1,4 +1,3 @@
-local has_autopair
 local function has_words_before()
   local line, col = (unpack or table.unpack)(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
@@ -7,18 +6,15 @@ end
 -- Check if there is any autopair fastwrap extmarks
 local function has_fastwrap_extmarks(bufnr)
   bufnr = bufnr or 0 -- Default to current buffer
-  if has_autopair == false then return false end
-  if not has_autopair then return false end
-  local _, fastwarp = pcall(require, "nvim-autopairs.fastwrap")
-
-  -- Fetch extmarks in the specific namespace
-  -- Parameters: buffer, namespace_id, start_range, end_range, options
+  local fastwarp_exist, fastwarp = pcall(require, "nvim-autopairs.fastwrap")
+  if not fastwarp_exist then return false end
+  local line_num = vim.api.nvim_win_get_cursor(0)[1] - 1
   local extmarks = vim.api.nvim_buf_get_extmarks(
     bufnr,
     fastwarp.ns_fast_wrap,
-    0, -- Start of buffer (row 0)
-    -1, -- End of buffer (row -1)
-    {}
+    { line_num, 0 },
+    { line_num, -1 },
+    { details = false, limit = 1 }
   )
 
   return #extmarks > 0
@@ -38,6 +34,8 @@ return {
     { "disrupted/blink-cmp-conventional-commits", lazy = true },
     { "xzbdmw/colorful-menu.nvim", lazy = true },
   },
+
+  ---@type blink.cmp.Config
   opts = {
     sources = {
       -- add 'git' to the list
@@ -159,12 +157,13 @@ return {
       },
     },
     signature = {
-      enabled = true,
+      enabled = false,
       window = {
         border = "rounded",
         winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder",
         treesitter_highlighting = true,
         show_documentation = true,
+        scrollbar = true,
       },
     },
     -- APIs: https://github.com/Saghen/blink.cmp/blob/main/lua/blink/cmp/init.lua
@@ -250,6 +249,7 @@ return {
       menu = {
         -- NOTE: Fix autopairs fastwrap overlapping menu
         auto_show = function(_, _) return not has_fastwrap_extmarks() end,
+
         draw = {
           columns = {
             { "kind_icon" },

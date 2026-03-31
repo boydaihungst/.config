@@ -40,6 +40,7 @@ return {
             { find = "Supermaven Free Tier" },
             -- disable deprecated message
             { find = 'is deprecated. Run ":checkhealth vim.deprecated' },
+            { find = "No snippets in contex" },
             -- { find = "deprecated" },
           },
         },

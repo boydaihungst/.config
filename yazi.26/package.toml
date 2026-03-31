@@ -1,0 +1,114 @@
+[[plugin.deps]]
+  hash = "6fa6a05a81c98dd000fbca3cca6e9682"
+  rev  = "1962818"
+  use  = "yazi-rs/plugins:full-border"
+
+[[plugin.deps]]
+  hash = "8b177921e50732b2c8e9d71aa5956270"
+  rev  = "1962818"
+  use  = "yazi-rs/plugins:mime-ext"
+
+[[plugin.deps]]
+  hash = "5eeb4f0919ce6be5d941a9290c131d7d"
+  rev  = "198c2ba"
+  use  = "boydaihungst/projects"
+
+[[plugin.deps]]
+  hash = "778941e7f1ebbacd60f4e254bb3c51de"
+  rev  = "4eda0bf"
+  use  = "boydaihungst/restore"
+
+[[plugin.deps]]
+  hash = "141bfd952a2ff21c92de5be7c0e78086"
+  rev  = "5dc3449"
+  use  = "boydaihungst/fuse-archive"
+
+[[plugin.deps]]
+  hash = "ff02946e042df4869617edb9aa310523"
+  rev  = "871ba3c"
+  use  = "boydaihungst/file-extra-metadata"
+
+[[plugin.deps]]
+  hash = "c9def7878c94aa9b2171965c13f986c2"
+  rev  = "75e9eaa"
+  use  = "boydaihungst/thunar-bulk-rename"
+
+[[plugin.deps]]
+  hash = "d0e5f36c72fe3ab69cb2f320803e1dd8"
+  rev  = "a880050"
+  use  = "boydaihungst/pref-by-location"
+
+[[plugin.deps]]
+  hash = "cb389a36241ada4893796d89dd5da7a0"
+  rev  = "d720b1c"
+  use  = "boydaihungst/relative-motions"
+
+[[plugin.deps]]
+  hash = "57ae6b43c477e117802f176683b78e74"
+  rev  = "dec3ffa"
+  use  = "boydaihungst/mediainfo"
+
+[[plugin.deps]]
+  hash = "bd921661ea2be141a1ff182ed81d7012"
+  rev  = "a971d5a"
+  use  = "boydaihungst/simple-tag"
+
+[[plugin.deps]]
+  hash = "4c0260feb50ea2437380690ffc241da7"
+  rev  = "1962818"
+  use  = "yazi-rs/plugins:toggle-pane"
+
+[[plugin.deps]]
+  hash = "f50b733cede531d5217cc9b90d633d07"
+  rev  = "2621bd5"
+  use  = "boydaihungst/compress"
+
+[[plugin.deps]]
+  hash = "f6e6a829c6dc6c900a75bebe422a5c33"
+  rev  = "1962818"
+  use  = "yazi-rs/plugins:vcs-files"
+
+[[plugin.deps]]
+  hash = "7144ebc65b85092e4d3a5c28984e0166"
+  rev  = "838dc34"
+  use  = "boydaihungst/smart-truncate"
+
+[[plugin.deps]]
+  hash = "4bdfecaa643db1cc28ccba799463d5b8"
+  rev  = "4f034ac"
+  use  = "boydaihungst/save-clipboard-to-file"
+
+[[plugin.deps]]
+  hash = "4161cfa043b5ba3341d82c6869007b41"
+  rev  = "1962818"
+  use  = "yazi-rs/plugins:types"
+
+[[plugin.deps]]
+  hash = "b6f691f01a2122bd94866800d4d12a22"
+  rev  = "9d64595"
+  use  = "boydaihungst/gvfs"
+
+[[plugin.deps]]
+  hash = "384464b6df8cb807425c521f8cd790f3"
+  rev  = "1962818"
+  use  = "yazi-rs/plugins:piper"
+
+[[plugin.deps]]
+  hash = "ae593567aa576c7d2b92d885ae994ee0"
+  rev  = "f127b5f"
+  use  = "boydaihungst/enhance-piper"
+
+[[plugin.deps]]
+  hash = "bafda73a9b5ea54189b89c125cfab8da"
+  rev  = "0440de3"
+  use  = "boydaihungst/yamb"
+
+[[flavor.deps]]
+  hash = "7dfe41c9c3d9be76da8a844263d0bbed"
+  rev  = "9511cb0"
+  use  = "yazi-rs/flavors:catppuccin-mocha"
+
+[[flavor.deps]]
+  hash = "1844f850b0c5d1af511c84399c95e3d7"
+  rev  = "9511cb0"
+  use  = "yazi-rs/flavors:catppuccin-frappe"

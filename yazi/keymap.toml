@@ -8,6 +8,8 @@
     { on = "<Esc>", run = "escape", desc = "Exit visual mode, clear selected, or cancel search" },
     { on = "<F9>", run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"', desc = "Toggle media previewer metadata" },
     { on = "+", run = "plugin mediainfo -- toggle-metadata", desc = "Toggle media previewer metadata" },
+    { on = "=", run = "plugin mediainfo -- toggle-preview", desc = "Toggle media previewer image" },
+    { on = "-", run = "plugin mediainfo -- reset", desc = "Toggle media previewer image" },
     { on = "-", run = "plugin vcs-files", desc = "plugin vcs-files" },
     { on = "q", run = [
       "plugin fuse-archive -- unmount",

@@ -2,11 +2,12 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
   optional = true,
-  enabled = true,
+  enabled = false,
   opts = {
     max_file_size = 2.0,
     preset = "obsidian",
     render_modes = { "n", "c", "t" },
+    debounce = 1000,
     file_types = {
       "saga_codeaction",
       "markdown",
@@ -43,7 +44,12 @@ return {
         },
       },
       filetype = {},
-      buftype = {},
+      buftype = {
+        nofile = {
+          render_modes = true,
+          padding = { highlight = "NormalFloat" },
+        },
+      },
     },
     code = {
       sign = false,
@@ -63,11 +69,6 @@ return {
       },
     },
     completions = {
-      -- Settings for blink.cmp completions source
-      blink = { enabled = false },
-      -- Settings for coq_nvim completions source
-      coq = { enabled = false },
-      -- Settings for in-process language server completions
       lsp = { enabled = true },
     },
   },

@@ -2,7 +2,7 @@
 ---@type LazySpec
 return {
   "yelog/i18n.nvim",
-  enabled = true,
+  enabled = false,
   lazy = true,
   ft = { "vue", "typescript", "javascript", "typescriptreact", "javascriptreact", "tsx", "jsx", "java", "json", "yaml" },
   dependencies = {
@@ -12,24 +12,21 @@ return {
       "AstroNvim/astrocore",
       opts = function(_, opts)
         local astrocore = require "astrocore"
-        if not astrocore.is_available "i18n.nvim" then return end
-        if not opts.mappings then opts.mappings = astrocore.empty_map_table() end
-        local maps = opts.mappings
-
-        local signature_help = {
-          function()
-            if require("astrocore").is_available "i18n.nvim" and require("i18n.display").get_key_under_cursor() then
+        local original_sig_help = vim.lsp.buf.signature_help
+        if not vim.g.changed_sign_helper then
+          vim.lsp.buf.signature_help = function(opts)
+            if astrocore.is_available "i18n.nvim" and require("i18n.display").get_key_under_cursor() then
               require("i18n").show_popup()
             else
-              vim.lsp.buf.signature_help()
+              opts = astrocore.extend_tbl(opts, {
+                anchor_bias = "above",
+              })
+              return original_sig_help(opts)
             end
-          end,
-          desc = "Signature help",
-        }
+          end
+          vim.g.changed_sign_helper = true
+        end
 
-        maps.n["gK"] = signature_help
-        maps.s["<C-s>"] = signature_help
-        maps.i["<C-s>"] = signature_help
         opts.autocmds = vim.tbl_deep_extend("force", opts.autocmds, {
           reload_i18n_on_cwd_changed = {
             {
@@ -42,24 +39,6 @@ return {
             },
           },
         })
-      end,
-    },
-    {
-      "AstroNvim/astrolsp",
-      opts = function(_, opts)
-        if not opts.mappings then opts.mappings = require("astrocore").empty_map_table() end
-        local maps = opts.mappings
-        maps.n["<Leader>lh"] = {
-          function()
-            if require("astrocore").is_available "i18n.nvim" and require("i18n.display").get_key_under_cursor() then
-              require("i18n").show_popup()
-            else
-              vim.lsp.buf.signature_help()
-            end
-          end,
-          desc = "Signature help",
-          cond = "textDocument/signatureHelp",
-        }
       end,
     },
     {

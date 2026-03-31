@@ -1,0 +1,14 @@
+[services.home]
+  host           = "home"
+  key_file       = "~/.ssh/id_ecdsa"
+  key_passphrase = "@"
+  port           = 22
+  type           = "sftp"
+  user           = ""
+[services.arm]
+  host           = ""
+  key_file       = "~/.ssh/id_ecdsa"
+  key_passphrase = "@"
+  port           = 22
+  type           = "sftp"
+  user           = ""

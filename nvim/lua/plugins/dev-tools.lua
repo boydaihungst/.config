@@ -29,7 +29,13 @@ return {
 
     builtin_actions = {
       include = {}, -- filetype/group/name of actions to include or {} to include all
-      exclude = {}, -- filetype/group/name of actions to exclude or "true" to exclude all
+      exclude = {
+        "Debugging",
+        "Specs",
+        "Convert JSON->Lua table",
+        "Extract variable",
+        "Extract function",
+      }, -- filetype/group/name of actions to exclude or "true" to exclude all
     },
 
     action_opts = { -- override default options for actions
@@ -46,24 +52,24 @@ return {
           -- }
         },
       },
-      {
-        group = "Specs",
-        name = "Watch specs",
-        opts = {
-          tree_cmd = nil, ---@type string command to run the file tree, default "git ls-files -cdmo --exclude-standard"
-          test_cmd = nil, ---@type string command to run tests, default "nvim -l tests/minit.lua tests --shuffle-tests -v"
-          test_tag = nil, ---@type string test tag, default "wip"
-          terminal_cmd = nil, ---@type function to run the terminal, default is Snacks.terminal
-        },
-      },
-      {
-        group = "Todo",
-        name = "Open Todo",
-        opts = {
-          filename = nil, ---@type string name of the todo file, default ".todo.md"
-          template = nil, ---@type string[] -- template for the todo file
-        },
-      },
+      -- {
+      --   group = "Specs",
+      --   name = "Watch specs",
+      --   opts = {
+      --     tree_cmd = nil, ---@type string command to run the file tree, default "git ls-files -cdmo --exclude-standard"
+      --     test_cmd = nil, ---@type string command to run tests, default "nvim -l tests/minit.lua tests --shuffle-tests -v"
+      --     test_tag = nil, ---@type string test tag, default "wip"
+      --     terminal_cmd = nil, ---@type function to run the terminal, default is Snacks.terminal
+      --   },
+      -- },
+      -- {
+      --   group = "Todo",
+      --   name = "Open Todo",
+      --   opts = {
+      --     filename = nil, ---@type string name of the todo file, default ".todo.md"
+      --     template = nil, ---@type string[] -- template for the todo file
+      --   },
+      -- },
     },
 
     ui = {

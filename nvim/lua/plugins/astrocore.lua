@@ -7,8 +7,8 @@
 ---@type LazySpec
 return {
   "AstroNvim/astrocore",
-  version = false,
-  branch = "v3",
+  -- version = false,
+  -- branch = "v3",
   ---@type AstroCoreOpts
   opts = {
     mappings = {
@@ -34,7 +34,6 @@ return {
           desc = "Close all buffers to the right",
         },
       },
-      v = {},
     },
     -- User comands
     commands = {},

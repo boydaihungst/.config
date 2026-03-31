@@ -1,10 +1,11 @@
 -- if vim.fn.has "nvim-0.12" == 1 then vim.lsp.on_type_formatting.enable() end
 
+local sig_timer = nil
 ---@type LazySpec
 return {
   "AstroNvim/astrolsp",
-  version = false,
-  branch = "v4",
+  -- version = false,
+  -- branch = "v4",
   ---@type AstroLSPOpts
   opts = {
     defaults = {},
@@ -13,6 +14,7 @@ return {
       codelens = true,
       inlay_hints = false,
       semantic_tokens = true,
+      -- Prefer blink
       signature_help = true,
       linked_editing_range = true,
       inline_completion = true,
@@ -74,23 +76,25 @@ return {
     },
     -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {
-
-      -- first key is the `augroup` to add the auto commands to (:h augroup)
-      lsp_codelens_refresh = {
-        -- Optional condition to create/delete auto command group
-        -- can either be a string of a client capability or a function of `fun(client, bufnr): boolean`
-        -- condition will be resolved for each client on each execution and if it ever fails for all clients,
-        -- the auto commands will be deleted for that buffer
-        cond = "textDocument/codeLens",
-        -- cond = function(client, bufnr) return client.name == "lua_ls" end,
-        -- list of auto commands to set
+      lsp_auto_signature_help = {
+        cond = "textDocument/signatureHelp",
         {
-          -- events to trigger
-          event = { "InsertLeave", "BufEnter" },
-          -- the rest of the autocmd options (:h nvim_create_autocmd)
-          desc = "Refresh codelens (buffer)",
+          event = { "TextChangedI", "InsertEnter" },
+          desc = "Automatically show signature help if enabled",
           callback = function(args)
-            if require("astrolsp").config.features.codelens then vim.lsp.codelens.refresh { bufnr = args.buf } end
+            if sig_timer then sig_timer:stop() end
+            sig_timer = vim.defer_fn(function()
+              vim.schedule(function()
+                sig_timer = nil
+                local signature_help = vim.b[args.buf].signature_help
+                if signature_help == nil then signature_help = require("astrolsp").config.features.signature_help end
+                if signature_help then
+                  vim.lsp.buf.signature_help {
+                    anchor_bias = "above",
+                  }
+                end
+              end)
+            end, args.event == "InsertEnter" and 0 or 200)
           end,
         },
       },

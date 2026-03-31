@@ -1,4 +1,5 @@
-local is_dotnet_available = vim.fn.executable "dotnet" == 1---@type LazySpec
+local is_dotnet_available = vim.fn.executable "dotnet" == 1
+---@type LazySpec
 return {
   {
     "mason-org/mason.nvim",

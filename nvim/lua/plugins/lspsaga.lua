@@ -43,9 +43,12 @@ return {
           "<Cmd>Lspsaga show_buffer_diagnostics ++float<CR>",
           desc = "Diagnostics in buffer",
         }
+
+        vim.keymap.del("n", "<Leader>lD")
         maps.n["<Leader>lD"] = {
           "<Cmd>Lspsaga show_workspace_diagnostics ++float<CR>",
           desc = "Diagnostics in workspace",
+          cond = "workspace/diagnostic",
         }
 
         -- definition
@@ -202,7 +205,7 @@ return {
     }
     opts.definition = {
       width = 0.8,
-      height = 0.8,
+      height = 0.7,
       keys = {
         edit = "<C-c>o",
         vsplit = "<C-c>v",
@@ -217,6 +220,7 @@ return {
       max_width = 0.8,
       max_height = 0.6,
       extend_gitsigns = astrocore.is_available "gitsigns.nvim",
+      wrap_around = true,
       keys = {
         -- string | table type
         quit = { "q", "<ESC>" },
@@ -353,11 +357,11 @@ return {
       expand = get_icon "FoldClosed",
       collapse = get_icon "FoldOpened",
       lines = { "┗", "┣", "┃", "━", "┏" },
-      scroll_preview = {
-        scroll_down = "<C-j>",
-        scroll_up = "<C-k>",
-      },
       -- imp_sign = get_icon "",
+    }
+    opts.scroll_preview = {
+      scroll_down = "<C-j>",
+      scroll_up = "<C-k>",
     }
   end,
 }
