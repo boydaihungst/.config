@@ -13,19 +13,17 @@ return {
       opts = function(_, opts)
         local astrocore = require "astrocore"
         local original_sig_help = vim.lsp.buf.signature_help
-        if not vim.g.changed_sign_helper then
-          vim.lsp.buf.signature_help = function(opts)
-            if astrocore.is_available "i18n.nvim" and require("i18n.display").get_key_under_cursor() then
-              require("i18n").show_popup()
-            else
-              opts = astrocore.extend_tbl(opts, {
-                anchor_bias = "above",
-              })
-              return original_sig_help(opts)
-            end
+        vim.lsp.buf.signature_help = function(opts)
+          if astrocore.is_available "i18n.nvim" and require("i18n.display").get_key_under_cursor() then
+            require("i18n").show_popup()
+          else
+            opts = astrocore.extend_tbl(opts, {
+              anchor_bias = "above",
+            })
+            return original_sig_help(opts)
           end
-          vim.g.changed_sign_helper = true
         end
+        vim.g.changed_sign_helper = true
 
         opts.autocmds = vim.tbl_deep_extend("force", opts.autocmds, {
           reload_i18n_on_cwd_changed = {
