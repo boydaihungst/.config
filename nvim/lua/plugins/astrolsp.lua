@@ -11,10 +11,10 @@ return {
     defaults = {},
     -- Configuration table of features provided by AstroLSP
     features = {
-      codelens = true,
+      -- NOTE: Temporarily disable codelens
+      codelens = false,
       inlay_hints = false,
       semantic_tokens = true,
-      -- Prefer blink
       signature_help = true,
       linked_editing_range = true,
       inline_completion = true,
@@ -91,6 +91,7 @@ return {
                 if signature_help then
                   vim.lsp.buf.signature_help {
                     anchor_bias = "above",
+                    max_height = 15,
                   }
                 end
               end)

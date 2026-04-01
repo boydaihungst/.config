@@ -2,6 +2,7 @@
 return {
   "supermaven-nvim",
   optional = true,
+  enabled = true,
   opts = {
     ignore_filetypes = { "sql", "grug-far", "snacks_picker_input", "neo-tree-popup" },
     -- color = {

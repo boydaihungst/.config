@@ -9,7 +9,6 @@ return {
     render_modes = { "n", "c", "t" },
     debounce = 1000,
     file_types = {
-      "saga_codeaction",
       "markdown",
       "Avante",
       "codecompanion",
