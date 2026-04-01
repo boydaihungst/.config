@@ -4,7 +4,7 @@ local prefix = "<Leader>A"
 return {
   "ravitemer/mcphub.nvim",
   optional = true,
-  enabled = true,
+  enabled = false,
   keys = { prefix },
   cmd = { "MCPHub" },
   dependencies = {

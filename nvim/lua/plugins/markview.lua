@@ -37,10 +37,9 @@ return {
     },
     filetypes = {
       "markdown",
+      "markdown_inline",
       "quarto",
       "rmd",
-      "saga_codeaction",
-      "markdown",
       "Avante",
       "codecompanion",
       "help",

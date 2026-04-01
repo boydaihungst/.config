@@ -94,7 +94,7 @@ return {
                   }
                 end
               end)
-            end, args.event == "InsertEnter" and 0 or 200)
+            end, 200)
           end,
         },
       },

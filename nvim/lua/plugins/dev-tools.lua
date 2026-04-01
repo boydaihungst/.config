@@ -5,6 +5,7 @@ return {
   cmd = { "Lspsaga" },
   lazy = true,
   enabled = true,
+  opts_extend = { "actions", "filetypes.include", "filetypes.exclude", "action_opts" },
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
     {
