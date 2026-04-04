@@ -244,7 +244,7 @@ return {
         clients = {
           astrocore.is_available "dev-tools.nvim" and "dev-tools",
         },
-        ft = {},
+        ft = { "nvim-undotree" },
       },
     }
     opts.diagnostic = {

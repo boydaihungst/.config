@@ -33,6 +33,9 @@ return {
           "fish-lsp",
           "gh-actions-language-server",
           "lua-language-server",
+
+          -- AI assistent
+          -- "copilot-language-server",
         })
         -- NOTE: disable emmet-ls, so react template will display correct lsp autocompletion
         local disabled_lsp_servers = { "emmet-ls", "emmet-language-server" }
