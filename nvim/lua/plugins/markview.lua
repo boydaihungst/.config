@@ -45,6 +45,8 @@ return {
       enable_hybrid_mode = false,
       headings = { shift_width = 0 },
       icon_provider = "mini", -- "mini" or "devicons"
+      -- Use disabled_buftypes list above instead
+      ignore_buftypes = {},
       condition = function(bufnr)
         local buftype = vim.api.nvim_get_option_value("buftype", { buf = bufnr })
         if vim.tbl_contains(disabled_buftypes, buftype) then return false end
@@ -124,7 +126,7 @@ return {
           local buftype = vim.api.nvim_get_option_value("buftype", { buf = data.buffer })
           local filetype = vim.api.nvim_get_option_value("filetype", { buf = data.buffer })
           if buftype ~= "nofile" or vim.tbl_contains(allowed_hybrid_modes_ft, filetype) then
-            vim.api.nvim_buf_call(data.buffer, function() vim.cmd "Markview HybridEnable" end)
+            require("markview.actions").hybridEnable(data.buffer)
           end
         end
       end,

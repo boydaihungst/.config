@@ -1,6 +1,7 @@
 -- if vim.fn.has "nvim-0.12" == 1 then vim.lsp.on_type_formatting.enable() end
 
 local sig_timer = nil
+local vim_version = vim.version()
 ---@type LazySpec
 return {
   "AstroNvim/astrolsp",
@@ -11,8 +12,8 @@ return {
     defaults = {},
     -- Configuration table of features provided by AstroLSP
     features = {
-      -- NOTE: Temporarily disable codelens
-      codelens = false,
+      -- 0.12.0 has issues with codelens
+      codelens = vim_version.major ~= 0 or vim_version.minor ~= 12 or vim_version.patch ~= 0,
       inlay_hints = false,
       semantic_tokens = true,
       signature_help = true,
@@ -115,6 +116,23 @@ return {
           cond = function(client, bufnr)
             return client:supports_method("textDocument/semanticTokens/full", bufnr) and vim.lsp.semantic_tokens ~= nil
           end,
+        },
+      },
+      i = {
+        ["<C-l>"] = {
+          function() return vim.lsp.inline_completion.get() end,
+          desc = "Apply inline completion",
+          cond = "textDocument/inlineCompletion",
+        },
+        ["<C-[>"] = {
+          function() return vim.lsp.inline_completion.select { wrap = true, count = -1 } end,
+          desc = "Switch to previous inline completion",
+          cond = "textDocument/inlineCompletion",
+        },
+        ["<C-]>"] = {
+          function() return vim.lsp.inline_completion.select { wrap = true, count = 1 } end,
+          desc = "Switch to next inline completion",
+          cond = "textDocument/inlineCompletion",
         },
       },
     },
