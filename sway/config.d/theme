@@ -37,3 +37,4 @@ client.background       #080a0e
 bar {
     swaybar_command waybar
 }
+

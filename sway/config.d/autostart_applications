@@ -19,8 +19,6 @@ exec swayidle -w \
     before-sleep 'swaylock -f'
     # timeout 1800 'systemctl suspend-then-hibernate' \
 
-#exec batsignal -b -a battery -I "battery-charged" -e -n BAT0 -w 15 -c 10 -d 5 -W "Battery is low" -C "Battery is low. System will shutdown soon" -D "systemctl hibernate"
-
 # Autotiling
 exec autotiling
 
@@ -36,6 +34,7 @@ exec /usr/local/libexec/file_manager_dbus
 exec gpgconf --launch gpg-agent
 exec sway-audio-idle-inhibit
 exec ~/.config/sway/scripts/battery-watch.sh
+exec swaybg -i ~/.config/sway/wallpaper -m fill
 
 # exec-once = waypaper-engine daemon
 

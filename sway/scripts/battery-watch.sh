@@ -13,6 +13,12 @@ ADP_DEV=$(upower -e | grep 'line_power')
 initial_online=$(upower -i "$ADP_DEV" | grep "online:" | awk '{print $2}')
 initial_cap=$(upower -i "$BAT_DEV" | grep "percentage:" | grep -oP '\d+(?=%)')
 
+if ! command -v "powerprofilesctl" >/dev/null 2>&1; then
+  function powerprofilesctl {
+    :
+  }
+fi
+
 if [[ "$initial_online" == "yes" ]]; then
   powerprofilesctl set balanced
 else
@@ -31,7 +37,7 @@ upower --monitor-detail | stdbuf -oL awk '/device changed|online:|percentage:|st
   if [[ "$line" =~ "online:" ]]; then
     if [[ "$line" =~ "yes" ]]; then
       notify-send -a battery -t 1000 -u low -i "ac-adapter" "Power Connected" "System is now on AC power."
-      powerprofilesctl set balanced
+      # powerprofilesctl set balanced
     else
       notify-send -a battery -t 1000 -u normal -i "battery-caution" "Power Disconnected" "System is now on Battery."
       powerprofilesctl set power-saver
