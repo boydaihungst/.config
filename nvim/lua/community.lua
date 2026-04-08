@@ -8,6 +8,8 @@ return {
   {
     "AstroNvim/astrocommunity",
     -- branch = "v6",
+    -- NOTE: BUG with astrocore
+    commit = "7e99989",
   },
   -- { import = "astrocommunity.file-explorer.oil-nvim" },
   -- { import = "astrocommunity.motion.hop-nvim" },

@@ -6,15 +6,13 @@ return {
     { "folke/snacks.nvim" },
     {
       "AstroNvim/astrocore",
-      ---@param opts AstroCoreOpts
-      opts = function(_, opts)
-        local maps, prefix = opts.mappings, "<Leader>"
-
-        maps.n[prefix .. "o"] = {
-          "<cmd>Yazi<cr>",
-          desc = "Open yazi - current file",
-        }
-      end,
+      opts = {
+        mappings = {
+          n = {
+            ["<Leader>o"] = { "<cmd>Yazi<cr>", desc = "Open yazi - current file" },
+          },
+        },
+      },
     },
   },
   ---@type YaziConfig

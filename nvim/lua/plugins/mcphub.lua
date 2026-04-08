@@ -15,13 +15,16 @@ return {
   specs = {
     {
       "AstroNvim/astrocore",
-      opts = function(_, opts)
-        if not opts.mappings then opts.mappings = {} end
-        opts.mappings.n = opts.mappings.n or {}
-        opts.mappings.v = opts.mappings.v or {}
-        opts.mappings.n[prefix .. "m"] = { "<cmd>MCPHub<cr>", desc = "Toggle MCPHub" }
-        opts.mappings.v[prefix .. "m"] = { "<cmd>MCPHub<cr>", desc = "Toggle MCPHub" }
-      end,
+      opts = {
+        mappings = {
+          n = {
+            ["<Leader>m"] = { "<cmd>MCPHub<cr>", desc = "Toggle MCPHub" },
+          },
+          v = {
+            ["<Leader>m"] = { "<cmd>MCPHub<cr>", desc = "Toggle MCPHub" },
+          },
+        },
+      },
     },
     {
       "olimorris/codecompanion.nvim",

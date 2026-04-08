@@ -18,44 +18,46 @@ return {
       render.setVirt(0, lnum - 1, col - 1, chunks, nearest)
     end,
   },
-  specs = {
+  dependencies = {
     {
       "AstroNvim/astrocore",
-      opts = function(_, opts)
-        if not opts.mappings then opts.mappings = require("astrocore").empty_map_table() end
-        -- Lua helper for vim-visual-multi "find under" with count support
-        local maps = assert(opts.mappings)
-        maps.n["n"] = {
-          "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>",
-          desc = "Open history",
-          silent = true,
-        }
-        maps.n["N"] = {
-          "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>",
-          desc = "Browse summaries",
-          silent = true,
-        }
-        maps.n["*"] = {
-          "*<Cmd>lua require('hlslens').start()<CR>",
-          desc = "Browse summaries",
-          silent = true,
-        }
-        maps.n["#"] = {
-          "#<Cmd>lua require('hlslens').start()<CR>",
-          desc = "Browse summaries",
-          silent = true,
-        }
-        maps.n["g*"] = {
-          "#<Cmd>lua require('hlslens').start()<CR>",
-          desc = "Browse summaries",
-          silent = true,
-        }
-        maps.n["g#"] = {
-          "#<Cmd>lua require('hlslens').start()<CR>",
-          desc = "Browse summaries",
-          silent = true,
-        }
-      end,
+      opts = {
+        on_keys = { auto_hlsearch = false },
+        mappings = {
+          n = {
+            ["n"] = {
+              "<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>",
+              desc = "Open history",
+              silent = true,
+            },
+            ["N"] = {
+              "<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>",
+              desc = "Browse summaries",
+              silent = true,
+            },
+            ["*"] = {
+              "*<Cmd>lua require('hlslens').start()<CR>",
+              desc = "Browse summaries",
+              silent = true,
+            },
+            ["#"] = {
+              "#<Cmd>lua require('hlslens').start()<CR>",
+              desc = "Browse summaries",
+              silent = true,
+            },
+            ["g*"] = {
+              "#<Cmd>lua require('hlslens').start()<CR>",
+              desc = "Browse summaries",
+              silent = true,
+            },
+            ["g#"] = {
+              "#<Cmd>lua require('hlslens').start()<CR>",
+              desc = "Browse summaries",
+              silent = true,
+            },
+          },
+        },
+      },
     },
   },
 }

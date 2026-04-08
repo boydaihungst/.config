@@ -89,6 +89,7 @@ return {
       -- do we cycle back and forth (tenth to first on increment, first to tenth on decrement).
       -- Otherwise nothing will happen when there are no further values
       cyclic = true,
+      match_before_cursor = true,
     }
 
     local weekdays = augend.constant.new {
@@ -103,6 +104,7 @@ return {
       },
       word = true,
       cyclic = true,
+      match_before_cursor = true,
     }
 
     local months = augend.constant.new {
@@ -122,6 +124,7 @@ return {
       },
       word = true,
       cyclic = true,
+      match_before_cursor = true,
     }
 
     local capitalized_boolean = augend.constant.new {
@@ -140,6 +143,7 @@ return {
       },
       word = true,
       cyclic = true,
+      match_before_cursor = true,
     }
     local yes_no = augend.constant.new {
       elements = {
@@ -148,6 +152,7 @@ return {
       },
       word = true,
       cyclic = true,
+      match_before_cursor = true,
     }
 
     return {
@@ -174,6 +179,7 @@ return {
             },
             word = true,
             cyclic = true,
+            match_before_cursor = true,
           },
           augend.constant.new {
             elements = {
@@ -182,13 +188,14 @@ return {
             },
             word = true,
             cyclic = true,
+            match_before_cursor = true,
           },
         },
         vue = {
-          augend.constant.new { elements = { "let", "const" } },
+          augend.constant.new { elements = { "let", "const" }, match_before_cursor = true, word = true, cyclic = true },
           import_export,
-          augend.hexcolor.new { case = "lower" },
-          augend.hexcolor.new { case = "upper" },
+          augend.hexcolor.new { case = "lower", match_before_cursor = true },
+          augend.hexcolor.new { case = "upper", match_before_cursor = true },
           augend.constant.new {
             elements = {
               "|",
@@ -202,20 +209,22 @@ return {
               "!=",
               "==",
             },
-            word = false,
+            word = true,
             cyclic = true,
           },
         },
         typescript = {
-          augend.constant.new { elements = { "let", "const" } },
+          augend.constant.new { elements = { "let", "const" }, match_before_cursor = true, word = true, cyclic = true },
           import_export,
         },
         css = {
           augend.hexcolor.new {
             case = "lower",
+            match_before_cursor = true,
           },
           augend.hexcolor.new {
             case = "upper",
+            match_before_cursor = true,
           },
         },
         markdown = {
@@ -223,6 +232,7 @@ return {
             elements = { "[ ]", "[x]" },
             word = false,
             cyclic = true,
+            match_before_cursor = true,
           },
           augend.misc.alias.markdown_header,
         },
@@ -241,8 +251,9 @@ return {
               "else",
               "elseif",
             },
-            word = false,
+            word = true,
             cyclic = true,
+            match_before_cursor = true,
           },
         },
         python = {
@@ -253,8 +264,9 @@ return {
               "else",
               "elif",
             },
-            word = false,
+            word = true,
             cyclic = true,
+            match_before_cursor = true,
           },
         },
       },

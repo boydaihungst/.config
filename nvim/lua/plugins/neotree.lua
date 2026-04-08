@@ -5,13 +5,20 @@ return {
   dependencies = {
     {
       "AstroNvim/astrocore",
-      opts = function(_, opts)
-        if not opts.mappings then opts.mappings = require("astrocore").empty_map_table() end
-        local maps = opts.mappings
-        -- maps.n["<Leader>e"] = { "<Cmd>Neotree toggle reveal_force_cwd<CR>", desc = "Toggle Explorer" }
-        maps.n["<Leader>e"] = { "<Cmd>Neotree toggle last reveal_force_cwd<CR>", desc = "Toggle Explorer" }
-        maps.n["<Leader>ge"] = { "<Cmd>Neotree toggle git_status<CR>", desc = "Toggle Explorer" }
-      end,
+      opts = {
+        mappings = {
+          n = {
+            ["<Leader>e"] = {
+              "<Cmd>Neotree toggle last reveal_force_cwd<CR>",
+              desc = "Toggle Explorer",
+            },
+            ["<Leader>ge"] = {
+              "<Cmd>Neotree toggle git_status<CR>",
+              desc = "Toggle Explorer",
+            },
+          },
+        },
+      },
     },
   },
   opts = {

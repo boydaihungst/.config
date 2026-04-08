@@ -36,10 +36,13 @@ return {
     dependencies = {
       {
         "AstroNvim/astrocore",
-        opts = function(_, opts)
-          local maps = opts.mappings
-          maps.n["<Leader>lI"] = { "<Cmd>ConformInfo<CR>", desc = "Formatter information" }
-        end,
+        opts = {
+          mappings = {
+            n = {
+              ["<Leader>lI"] = { "<Cmd>ConformInfo<CR>", desc = "Formatter information" },
+            },
+          },
+        },
       },
     },
   },

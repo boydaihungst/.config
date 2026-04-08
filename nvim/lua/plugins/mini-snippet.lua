@@ -1,6 +1,6 @@
 ---@type LazySpec
 return {
-  "echasnovski/mini.snippets",
+  "nvim-mini/mini.snippets",
   optional = true,
   opts = {
     mappings = {

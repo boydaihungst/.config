@@ -21,16 +21,11 @@ return {
   enabled = true,
   dependencies = {
     "AstroNvim/astrocore",
-    opts = function(_, opts)
-      local astrocore = require "astrocore"
-
-      if opts.treesitter == nil then opts.treesitter = {} end
-      if opts.treesitter.ensure_installed == nil then opts.treesitter.ensure_installed = {} end
-
-      if opts.treesitter.ensure_installed ~= "all" then
-        astrocore.list_insert_unique(opts.treesitter.ensure_installed, { "latex", "typst", "yaml" })
-      end
-    end,
+    opts = {
+      treesitter = {
+        ensure_installed = { "latex", "typst", "yaml" },
+      },
+    },
   },
   ---@type markview.config
   opts = {
@@ -90,14 +85,14 @@ return {
     require("markview.extras.checkboxes").setup {
       --- Default checkbox state(used when adding checkboxes).
       ---@type string
-      default = "X",
+      default = "x",
 
       --- Changes how checkboxes are removed.
       ---@type
       ---| "disable" Disables the checkbox.
       ---| "checkbox" Removes the checkbox.
       ---| "list_item" Removes the list item markers too.
-      remove_style = "disable",
+      remove_style = "list_item",
 
       --- Various checkbox states.
       ---
@@ -105,7 +100,7 @@ return {
       --- when there are a lot of states.
       ---@type string[][]
       states = {
-        { " ", "/", "X" },
+        { " ", "x" },
         { "<", ">" },
         { "?", "!", "*" },
         { '"' },

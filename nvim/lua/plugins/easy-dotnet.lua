@@ -1,6 +1,7 @@
 local is_dev_tools_available
 local is_ef_available = vim.fn.executable "dotnet-ef" == 1
 
+local prefix = "<leader>le"
 ---@type LazySpec
 return {
   "GustavEikaas/easy-dotnet.nvim",
@@ -155,101 +156,102 @@ return {
     {
       "AstroNvim/astrocore",
       ---@param opts AstroCoreOpts
-      opts = function(_, opts)
-        if not opts.mappings then opts.mappings = {} end
-        local prefix = "<leader>le"
-        opts.mappings.n = opts.mappings.n or {}
-        opts.mappings.v = opts.mappings.v or {}
-        opts.mappings.n[prefix] = { desc = "Dotnet" }
-        -- Add custom key mappings here
-        opts.autocmds.easydotnet_keymap = {
-          {
-            event = "BufReadPost",
-            pattern = "*.fsproj",
-            callback = function(args)
-              local bufnr = args.buf
-              local bufname = vim.api.nvim_buf_get_name(bufnr)
-              ---@type vim.keymap.set.Opts
-              local key_opts = { buffer = bufnr, silent = true }
-              -- Entity framework
-              vim.keymap.set("n", prefix .. "r", function()
-                local easy_dotnet_proj = require "easy-dotnet.fsproj-mappings"
-                coroutine.wrap(function() easy_dotnet_proj.add_project_reference(bufname) end)()
-              end, vim.tbl_extend("force", key_opts, { desc = "Add project reference" }))
-            end,
+      opts = {
+        mappings = {
+          n = {
+            [prefix] = { desc = "Dotnet" },
           },
-          {
-            event = "BufReadPost",
-            pattern = "*.csproj",
-            callback = function(args)
-              local bufnr = args.buf
-              local bufname = vim.api.nvim_buf_get_name(bufnr)
-              ---@type vim.keymap.set.Opts
-              local key_opts = { buffer = bufnr, silent = true }
-              -- Entity framework
-              vim.keymap.set("n", prefix .. "r", function()
-                local easy_dotnet_proj = require "easy-dotnet.csproj-mappings"
-                coroutine.wrap(function() easy_dotnet_proj.add_project_reference(bufname) end)()
-              end, vim.tbl_extend("force", key_opts, { desc = "Add project reference" }))
-            end,
-          },
-          {
-            event = "LspAttach",
-            desc = "Dotnet keymaps",
-            callback = function(args)
-              local client = vim.lsp.get_client_by_id(args.data.client_id)
-
-              -- Only apply if the server is Roslyn
-              if client and (client.name == "roslyn" or client.name == "easy_dotnet") then
+        },
+        autocmds = {
+          easydotnet_keymap = {
+            {
+              event = "BufReadPost",
+              pattern = "*.fsproj",
+              callback = function(args)
                 local bufnr = args.buf
-                -- local bufname = vim.api.nvim_buf_get_name(bufnr)
+                local bufname = vim.api.nvim_buf_get_name(bufnr)
                 ---@type vim.keymap.set.Opts
                 local key_opts = { buffer = bufnr, silent = true }
+                -- Entity framework
+                vim.keymap.set("n", prefix .. "r", function()
+                  local easy_dotnet_proj = require "easy-dotnet.fsproj-mappings"
+                  coroutine.wrap(function() easy_dotnet_proj.add_project_reference(bufname) end)()
+                end, vim.tbl_extend("force", key_opts, { desc = "Add project reference" }))
+              end,
+            },
+            {
+              event = "BufReadPost",
+              pattern = "*.csproj",
+              callback = function(args)
+                local bufnr = args.buf
+                local bufname = vim.api.nvim_buf_get_name(bufnr)
+                ---@type vim.keymap.set.Opts
+                local key_opts = { buffer = bufnr, silent = true }
+                -- Entity framework
+                vim.keymap.set("n", prefix .. "r", function()
+                  local easy_dotnet_proj = require "easy-dotnet.csproj-mappings"
+                  coroutine.wrap(function() easy_dotnet_proj.add_project_reference(bufname) end)()
+                end, vim.tbl_extend("force", key_opts, { desc = "Add project reference" }))
+              end,
+            },
+            {
+              event = "LspAttach",
+              desc = "Dotnet keymaps",
+              callback = function(args)
+                local client = vim.lsp.get_client_by_id(args.data.client_id)
 
-                -- Add Package
-                vim.keymap.set(
-                  "n",
-                  prefix .. "a",
-                  "<cmd>Dotnet add package<cr>",
-                  vim.tbl_extend("force", key_opts, { desc = "Nuget packages (add)" })
-                )
+                -- Only apply if the server is Roslyn
+                if client and (client.name == "roslyn" or client.name == "easy_dotnet") then
+                  local bufnr = args.buf
+                  -- local bufname = vim.api.nvim_buf_get_name(bufnr)
+                  ---@type vim.keymap.set.Opts
+                  local key_opts = { buffer = bufnr, silent = true }
 
-                -- Remove Package
-                vim.keymap.set(
-                  "n",
-                  prefix .. "r",
-                  "<cmd>Dotnet remove package<cr>",
-                  vim.tbl_extend("force", key_opts, { desc = "Nuget packages (remove)" })
-                )
-
-                -- Secrets
-                vim.keymap.set(
-                  "n",
-                  prefix .. "s",
-                  "<cmd>Dotnet secrets<cr>",
-                  vim.tbl_extend("force", key_opts, { desc = "Dotnet secrets" })
-                )
-
-                if is_ef_available then
-                  -- Entity framework
+                  -- Add Package
                   vim.keymap.set(
                     "n",
-                    prefix .. "d",
-                    function() vim.api.nvim_feedkeys(":Dotnet ef database ", "nit", true) end,
-                    vim.tbl_extend("force", key_opts, { desc = "Entity Framework database" })
+                    prefix .. "a",
+                    "<cmd>Dotnet add package<cr>",
+                    vim.tbl_extend("force", key_opts, { desc = "Nuget packages (add)" })
                   )
+
+                  -- Remove Package
                   vim.keymap.set(
                     "n",
-                    prefix .. "m",
-                    function() vim.api.nvim_feedkeys(":Dotnet ef migrations ", "nit", true) end,
-                    vim.tbl_extend("force", key_opts, { desc = "Entity Framework migration" })
+                    prefix .. "r",
+                    "<cmd>Dotnet remove package<cr>",
+                    vim.tbl_extend("force", key_opts, { desc = "Nuget packages (remove)" })
                   )
+
+                  -- Secrets
+                  vim.keymap.set(
+                    "n",
+                    prefix .. "s",
+                    "<cmd>Dotnet secrets<cr>",
+                    vim.tbl_extend("force", key_opts, { desc = "Dotnet secrets" })
+                  )
+
+                  if is_ef_available then
+                    -- Entity framework
+                    vim.keymap.set(
+                      "n",
+                      prefix .. "d",
+                      function() vim.api.nvim_feedkeys(":Dotnet ef database ", "nit", true) end,
+                      vim.tbl_extend("force", key_opts, { desc = "Entity Framework database" })
+                    )
+                    vim.keymap.set(
+                      "n",
+                      prefix .. "m",
+                      function() vim.api.nvim_feedkeys(":Dotnet ef migrations ", "nit", true) end,
+                      vim.tbl_extend("force", key_opts, { desc = "Entity Framework migration" })
+                    )
+                  end
                 end
-              end
-            end,
+              end,
+            },
           },
-        }
-      end,
+        },
+      },
     },
     {
       "yarospace/dev-tools.nvim",
@@ -277,14 +279,12 @@ return {
       },
     },
     {
-      "nvim-treesitter/nvim-treesitter",
+      "AstroNvim/astrocore",
       optional = true,
-      opts = function(_, opts)
-        if opts.ensure_installed ~= "all" then
-          opts.ensure_installed =
-            require("astrocore").list_insert_unique(opts.ensure_installed, { "json", "xml", "sql" })
-        end
-      end,
+      ---@type AstroCoreOpts
+      opts = {
+        treesitter = { ensure_installed = { "json", "xml", "sql" } },
+      },
     },
     {
       "nvim-neo-tree/neo-tree.nvim",

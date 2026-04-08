@@ -23,13 +23,16 @@ return {
   specs = {
     {
       "AstroNvim/astrocore",
-      opts = function(_, opts)
-        if not opts.mappings then opts.mappings = {} end
-        opts.mappings.n = opts.mappings.n or {}
-        opts.mappings.v = opts.mappings.v or {}
-        opts.mappings.n[prefix .. "h"] = { "<cmd>CodeCompanionHistory<cr>", desc = "Open history" }
-        opts.mappings.v[prefix .. "s"] = { "<cmd>CodeCompanionSummaries<cr>", desc = "Browse summaries" }
-      end,
+      opts = {
+        mappings = {
+          n = {
+            [prefix .. "h"] = { "<cmd>CodeCompanionHistory<cr>", desc = "Open history" },
+          },
+          v = {
+            [prefix .. "s"] = { "<cmd>CodeCompanionSummaries<cr>", desc = "Browse summaries" },
+          },
+        },
+      },
     },
   },
   opts = {

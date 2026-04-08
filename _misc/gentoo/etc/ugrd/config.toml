@@ -41,7 +41,7 @@ modules = [
 #make_nodes = true
 
 # By default, xz compression is used. This can be disabled or set to zstd if the zstandard python module is installed
-#cpio_compression = "zstd"  # Use zstd compression
+cpio_compression = "zstd" # Use zstd compression
 #cpio_compression = false # No compression
 
 # Optionally supply a kernel version, uses the current kernel version if not specified
