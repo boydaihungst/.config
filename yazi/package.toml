@@ -1,114 +1,114 @@
 [[plugin.deps]]
-  hash = "6fa6a05a81c98dd000fbca3cca6e9682"
-  rev  = "1962818"
-  use  = "yazi-rs/plugins:full-border"
+use = "yazi-rs/plugins:full-border"
+rev = "7749958"
+hash = "6fa6a05a81c98dd000fbca3cca6e9682"
 
 [[plugin.deps]]
-  hash = "8b177921e50732b2c8e9d71aa5956270"
-  rev  = "1962818"
-  use  = "yazi-rs/plugins:mime-ext"
+use = "yazi-rs/plugins:mime-ext"
+rev = "7749958"
+hash = "31994c9caec5bdcafd994e9b00c632a4"
 
 [[plugin.deps]]
-  hash = "5eeb4f0919ce6be5d941a9290c131d7d"
-  rev  = "198c2ba"
-  use  = "boydaihungst/projects"
+use = "boydaihungst/projects"
+rev = "1913bad"
+hash = "ade475fc0a2bdbc68c02dd6dc295dc4a"
 
 [[plugin.deps]]
-  hash = "778941e7f1ebbacd60f4e254bb3c51de"
-  rev  = "4eda0bf"
-  use  = "boydaihungst/restore"
+use = "boydaihungst/restore"
+rev = "0e08704"
+hash = "e4d7c06510b4fe5f64ae31fbb4e017d6"
 
 [[plugin.deps]]
-  hash = "141bfd952a2ff21c92de5be7c0e78086"
-  rev  = "5dc3449"
-  use  = "boydaihungst/fuse-archive"
+use = "boydaihungst/fuse-archive"
+rev = "5dc3449"
+hash = "141bfd952a2ff21c92de5be7c0e78086"
 
 [[plugin.deps]]
-  hash = "ff02946e042df4869617edb9aa310523"
-  rev  = "871ba3c"
-  use  = "boydaihungst/file-extra-metadata"
+use = "boydaihungst/file-extra-metadata"
+rev = "871ba3c"
+hash = "ff02946e042df4869617edb9aa310523"
 
 [[plugin.deps]]
-  hash = "c9def7878c94aa9b2171965c13f986c2"
-  rev  = "75e9eaa"
-  use  = "boydaihungst/thunar-bulk-rename"
+use = "boydaihungst/thunar-bulk-rename"
+rev = "75e9eaa"
+hash = "c9def7878c94aa9b2171965c13f986c2"
 
 [[plugin.deps]]
-  hash = "d0e5f36c72fe3ab69cb2f320803e1dd8"
-  rev  = "a880050"
-  use  = "boydaihungst/pref-by-location"
+use = "boydaihungst/pref-by-location"
+rev = "8d355f5"
+hash = "9ddac64e0db5178e2710fa6cfc2dd004"
 
 [[plugin.deps]]
-  hash = "cb389a36241ada4893796d89dd5da7a0"
-  rev  = "d720b1c"
-  use  = "boydaihungst/relative-motions"
+use = "boydaihungst/relative-motions"
+rev = "d720b1c"
+hash = "cb389a36241ada4893796d89dd5da7a0"
 
 [[plugin.deps]]
-  hash = "57ae6b43c477e117802f176683b78e74"
-  rev  = "dec3ffa"
-  use  = "boydaihungst/mediainfo"
+use = "boydaihungst/mediainfo"
+rev = "c97a7e6"
+hash = "f79d39c943cd2fba0f3d8657a03ec097"
 
 [[plugin.deps]]
-  hash = "bd921661ea2be141a1ff182ed81d7012"
-  rev  = "a971d5a"
-  use  = "boydaihungst/simple-tag"
+use = "boydaihungst/simple-tag"
+rev = "c6f3670"
+hash = "9861da6a5514ec430d8c9435cf65b67d"
 
 [[plugin.deps]]
-  hash = "4c0260feb50ea2437380690ffc241da7"
-  rev  = "1962818"
-  use  = "yazi-rs/plugins:toggle-pane"
+use = "yazi-rs/plugins:toggle-pane"
+rev = "7749958"
+hash = "4c0260feb50ea2437380690ffc241da7"
 
 [[plugin.deps]]
-  hash = "f50b733cede531d5217cc9b90d633d07"
-  rev  = "2621bd5"
-  use  = "boydaihungst/compress"
+use = "boydaihungst/compress"
+rev = "2621bd5"
+hash = "f50b733cede531d5217cc9b90d633d07"
 
 [[plugin.deps]]
-  hash = "f6e6a829c6dc6c900a75bebe422a5c33"
-  rev  = "1962818"
-  use  = "yazi-rs/plugins:vcs-files"
+use = "yazi-rs/plugins:vcs-files"
+rev = "7749958"
+hash = "f6e6a829c6dc6c900a75bebe422a5c33"
 
 [[plugin.deps]]
-  hash = "7144ebc65b85092e4d3a5c28984e0166"
-  rev  = "838dc34"
-  use  = "boydaihungst/smart-truncate"
+use = "boydaihungst/smart-truncate"
+rev = "f46f293"
+hash = "56ecaa9ccb55aae71e3d44245a9c6975"
 
 [[plugin.deps]]
-  hash = "4bdfecaa643db1cc28ccba799463d5b8"
-  rev  = "4f034ac"
-  use  = "boydaihungst/save-clipboard-to-file"
+use = "boydaihungst/save-clipboard-to-file"
+rev = "4f034ac"
+hash = "4bdfecaa643db1cc28ccba799463d5b8"
 
 [[plugin.deps]]
-  hash = "4161cfa043b5ba3341d82c6869007b41"
-  rev  = "1962818"
-  use  = "yazi-rs/plugins:types"
+use = "yazi-rs/plugins:types"
+rev = "7749958"
+hash = "4161cfa043b5ba3341d82c6869007b41"
 
 [[plugin.deps]]
-  hash = "b6f691f01a2122bd94866800d4d12a22"
-  rev  = "9d64595"
-  use  = "boydaihungst/gvfs"
+use = "boydaihungst/gvfs"
+rev = "3abc0a2"
+hash = "eed89e75671723c8f9390a2862af0e4e"
 
 [[plugin.deps]]
-  hash = "384464b6df8cb807425c521f8cd790f3"
-  rev  = "1962818"
-  use  = "yazi-rs/plugins:piper"
+use = "yazi-rs/plugins:piper"
+rev = "7749958"
+hash = "384464b6df8cb807425c521f8cd790f3"
 
 [[plugin.deps]]
-  hash = "ae593567aa576c7d2b92d885ae994ee0"
-  rev  = "f127b5f"
-  use  = "boydaihungst/enhance-piper"
+use = "boydaihungst/enhance-piper"
+rev = "9af29cd"
+hash = "5e91b2d903a38179c6d37e4ccf4d3def"
 
 [[plugin.deps]]
-  hash = "bafda73a9b5ea54189b89c125cfab8da"
-  rev  = "0440de3"
-  use  = "boydaihungst/yamb"
+use = "boydaihungst/yamb"
+rev = "0440de3"
+hash = "bafda73a9b5ea54189b89c125cfab8da"
 
 [[flavor.deps]]
-  hash = "7dfe41c9c3d9be76da8a844263d0bbed"
-  rev  = "9511cb0"
-  use  = "yazi-rs/flavors:catppuccin-mocha"
+use = "yazi-rs/flavors:catppuccin-mocha"
+rev = "0670801"
+hash = "7dfe41c9c3d9be76da8a844263d0bbed"
 
 [[flavor.deps]]
-  hash = "1844f850b0c5d1af511c84399c95e3d7"
-  rev  = "9511cb0"
-  use  = "yazi-rs/flavors:catppuccin-frappe"
+use = "yazi-rs/flavors:catppuccin-frappe"
+rev = "0670801"
+hash = "1844f850b0c5d1af511c84399c95e3d7"

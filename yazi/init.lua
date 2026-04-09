@@ -1,4 +1,3 @@
-require("hover-after-moved"):setup()
 require("custom-dds"):setup()
 require("simple-tag"):setup({
 	ui_mode = "text",

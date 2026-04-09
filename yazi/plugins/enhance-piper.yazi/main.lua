@@ -54,7 +54,7 @@ function M:peek(job)
 			.. " --h="
 			.. ya.quote(job.area.h)
 			.. " --file-cache-name="
-			.. ya.quote(file_cache_name)
+			.. (file_cache_name and ya.quote(file_cache_name) or "")
 		if job.args.cache_limit then
 			args = args .. " --cache-limit=" .. ya.quote(job.args.cache_limit)
 		end
