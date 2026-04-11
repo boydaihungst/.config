@@ -2,7 +2,7 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
   optional = true,
-  dependencies = {
+  specs = {
     {
       "AstroNvim/astrocore",
       opts = {

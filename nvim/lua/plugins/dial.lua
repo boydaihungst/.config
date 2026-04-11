@@ -4,7 +4,7 @@ return {
   lazy = true,
   event = "VeryLazy",
   desc = "Increment and decrement numbers, dates, and more",
-  dependencies = {
+  specs = {
     {
       "AstroNvim/astrocore",
       opts = {

@@ -3,7 +3,7 @@ return {
   "Fildo7525/pretty_hover",
   event = "LspAttach",
   enabled = true,
-  dependencies = {
+  specs = {
     {
       "AstroNvim/astrolsp",
       opts = {

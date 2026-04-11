@@ -84,33 +84,24 @@ return {
   {
     "nvim-neotest/neotest",
     optional = true,
+    init = function()
+      vim.g.neotest_vstest = {
+        build_opts = {
+          -- Arguments that will be added to all `dotnet build` and `dotnet msbuild` commands
+          additional_args = {},
+        },
+        -- If project contains directories which are not supposed to be searched for solution files
+        discovery_directory_filter = function(search_path)
+          -- ignore hidden directories
+          return search_path:match "/%."
+        end,
+        -- if no obvious parent solution is found, broadly scan downward for solution files from current path. This can freeze Neovim when started from broad directories.
+        broad_recursive_discovery = true,
+        timeout_ms = 30 * 5 * 1000, -- number of milliseconds to wait before timeout while communicating with adapter client
+      }
+    end,
     dependencies = {
       "Nsidorenco/neotest-vstest",
-      {
-        "AstroNvim/astrocore",
-        ---@param opts AstroCoreOpts
-        opts = {
-          options = {
-            g = {
-              --- @type neotest_vstest.Config
-              neotest_vstest = {
-                build_opts = {
-                  -- Arguments that will be added to all `dotnet build` and `dotnet msbuild` commands
-                  additional_args = {},
-                },
-                -- If project contains directories which are not supposed to be searched for solution files
-                discovery_directory_filter = function(search_path)
-                  -- ignore hidden directories
-                  return search_path:match "/%."
-                end,
-                -- if no obvious parent solution is found, broadly scan downward for solution files from current path. This can freeze Neovim when started from broad directories.
-                broad_recursive_discovery = true,
-                timeout_ms = 30 * 5 * 1000, -- number of milliseconds to wait before timeout while communicating with adapter client
-              },
-            },
-          },
-        },
-      },
     },
     opts = function(_, opts)
       if not opts.adapters then opts.adapters = {} end

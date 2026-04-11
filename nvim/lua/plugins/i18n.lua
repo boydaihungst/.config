@@ -1,31 +1,31 @@
+local original_sig_help = vim.lsp.buf.signature_help
+
 --- Optional: rg for faster usage scans (falls back to git ls-files).
 ---@type LazySpec
 return {
   "yelog/i18n.nvim",
-  enabled = false,
+  enabled = true,
   lazy = true,
   ft = { "vue", "typescript", "javascript", "typescriptreact", "javascriptreact", "tsx", "jsx", "java", "json", "yaml" },
-  dependencies = {
-    "folke/snacks.nvim",
-    "nvim-treesitter/nvim-treesitter",
+  config = function(_, opts)
+    require("i18n").setup(opts)
+    vim.lsp.buf.signature_help = function(opts)
+      if require("i18n.display").get_key_under_cursor() then
+        require("i18n").show_popup()
+      else
+        opts = require("astrocore").extend_tbl(opts, {
+          anchor_bias = "above",
+        })
+        return original_sig_help(opts)
+      end
+    end
+    vim.g.changed_sign_helper = true
+  end,
+  specs = {
     {
       "AstroNvim/astrocore",
-      opts = function(_, opts)
-        local astrocore = require "astrocore"
-        local original_sig_help = vim.lsp.buf.signature_help
-        vim.lsp.buf.signature_help = function(opts)
-          if astrocore.is_available "i18n.nvim" and require("i18n.display").get_key_under_cursor() then
-            require("i18n").show_popup()
-          else
-            opts = astrocore.extend_tbl(opts, {
-              anchor_bias = "above",
-            })
-            return original_sig_help(opts)
-          end
-        end
-        vim.g.changed_sign_helper = true
-
-        opts.autocmds = vim.tbl_deep_extend("force", opts.autocmds, {
+      opts = {
+        autocmds = {
           reload_i18n_on_cwd_changed = {
             {
               event = "DirChanged",
@@ -36,8 +36,8 @@ return {
               end,
             },
           },
-        })
-      end,
+        },
+      },
     },
     {
       "saghen/blink.cmp",
@@ -57,6 +57,10 @@ return {
         },
       },
     },
+  },
+  dependencies = {
+    "folke/snacks.nvim",
+    "nvim-treesitter/nvim-treesitter",
   },
   opts = {
     activation = "lazy",

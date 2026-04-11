@@ -30,32 +30,35 @@ return {
     specs = {
       {
         "AstroNvim/astrocore",
-        opts = function(_, opts)
-          local get_icon = require("astroui").get_icon
-          if not opts.signs then opts.signs = {} end
-          opts.signs.DapBreakpoint = {
-            text = get_icon "DapBreakpoint",
-            texthl = "DiagnosticInfo",
-            numhl = "TinyInlineDiagnosticVirtualTextInfo",
-          }
-          opts.signs.DapBreakpointCondition = {
-            text = get_icon "DapBreakpointCondition",
-            texthl = "DiagnosticInfo",
-            numhl = "TinyInlineDiagnosticVirtualTextInfo",
-          }
-          opts.signs.DapBreakpointRejected = {
-            text = get_icon "DapBreakpointRejected",
-            texthl = "DiagnosticError",
-            numhl = "TinyInlineDiagnosticVirtualTextError",
-          }
-          opts.signs.DapLogPoint = {
-            text = get_icon "DapLogPoint",
-            texthl = "DiagnosticInfo",
-            numhl = "TinyInlineDiagnosticVirtualTextInfo",
-          }
-          opts.signs.DapStopped =
-            { text = get_icon "DapStopped", texthl = "DiagnosticWarn", numhl = "TinyInlineDiagnosticVirtualTextWarn" }
-        end,
+        opts = {
+          signs = {
+            DapBreakpoint = {
+              text = require("astroui").get_icon "DapBreakpoint",
+              texthl = "DiagnosticInfo",
+              numhl = "TinyInlineDiagnosticVirtualTextInfo",
+            },
+            DapBreakpointCondition = {
+              text = require("astroui").get_icon "DapBreakpointCondition",
+              texthl = "DiagnosticInfo",
+              numhl = "TinyInlineDiagnosticVirtualTextInfo",
+            },
+            DapBreakpointRejected = {
+              text = require("astroui").get_icon "DapBreakpointRejected",
+              texthl = "DiagnosticError",
+              numhl = "TinyInlineDiagnosticVirtualTextError",
+            },
+            DapLogPoint = {
+              text = require("astroui").get_icon "DapLogPoint",
+              texthl = "DiagnosticInfo",
+              numhl = "TinyInlineDiagnosticVirtualTextInfo",
+            },
+            DapStopped = {
+              text = require("astroui").get_icon "DapStopped",
+              texthl = "DiagnosticWarn",
+              numhl = "TinyInlineDiagnosticVirtualTextWarn",
+            },
+          },
+        },
       },
     },
   },

@@ -8,6 +8,8 @@ return {
   enabled = function() return vim.version().minor >= 12 end,
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
+  },
+  specs = {
     {
       "AstroNvim/astrolsp",
       opts = function(_, opts)

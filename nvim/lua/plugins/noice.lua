@@ -12,7 +12,7 @@ return {
       signature = {
         enabled = false,
       },
-      progress = { enabled = true, view = "mini" }, -- Optional: If you want less clutter
+      progress = { enabled = false, view = "mini" }, -- Optional: If you want less clutter
     },
     presets = {
       bottom_search = false, -- use a classic bottom cmdline for search
@@ -30,7 +30,7 @@ return {
           event = "msg_show",
           kind = "search_count",
         },
-        opts = { skip = true },
+        opts = { skip = false },
       },
       {
         filter = {
@@ -39,21 +39,21 @@ return {
             { find = "Starting Supermaven" },
             { find = "Supermaven Free Tier" },
             -- disable deprecated message
-            { find = 'is deprecated. Run ":checkhealth vim.deprecated' },
+            -- { find = 'is deprecated. Run ":checkhealth vim.deprecated' },
             { find = "No snippets in contex" },
             -- { find = "deprecated" },
           },
         },
-        skip = true,
+        opts = { skip = true },
       },
       -- Hide recoding message -> use heirline instead
       {
         filter = {
           event = "msg_showmode",
-          find = "recording",
+          find = "recording @",
         },
-        view = "mini",
-        skip = true,
+        -- view = "mini",
+        opts = { skip = true },
       },
       {
         filter = {
@@ -65,6 +65,7 @@ return {
       {
         filter = { event = "msg_showmode" },
         view = "mini",
+        -- opts = { skip = true },
       },
     },
   },

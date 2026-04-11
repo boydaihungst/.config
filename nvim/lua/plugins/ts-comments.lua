@@ -1,10 +1,10 @@
 return {
   "folke/ts-comments.nvim",
-  enabled = false,
+  enabled = true,
   opts = {
     lang = {
       kitty = "# %s",
-      lua = { "-- %s", [=[--[[ %s ]]--]=] }, -- langs can have multiple commentstrings
+      mpvconfig = "# %s",
     },
   },
   optional = true,

@@ -4,7 +4,7 @@ local prefix = "<Leader>A"
 return {
   "ravitemer/mcphub.nvim",
   optional = true,
-  enabled = false,
+  enabled = true,
   keys = { prefix },
   cmd = { "MCPHub" },
   dependencies = {
@@ -18,10 +18,10 @@ return {
       opts = {
         mappings = {
           n = {
-            ["<Leader>m"] = { "<cmd>MCPHub<cr>", desc = "Toggle MCPHub" },
+            ["<Leader>Am"] = { "<cmd>MCPHub<cr>", desc = "Toggle MCPHub" },
           },
           v = {
-            ["<Leader>m"] = { "<cmd>MCPHub<cr>", desc = "Toggle MCPHub" },
+            ["<Leader>Am"] = { "<cmd>MCPHub<cr>", desc = "Toggle MCPHub" },
           },
         },
       },

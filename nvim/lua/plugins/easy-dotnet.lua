@@ -11,38 +11,46 @@ return {
     if not vim.fn.executable "dotnet" then error "Easy-dotnet requires dotnet installed" end
     if not is_ef_available then
       vim.system({ "dotnet", "tool", "install", "-g", "dotnet-ef" }, { text = true }, function(obj)
-        if obj.code == 0 then
-          vim.notify "Installed successfully: dotnet entity framework"
-          is_ef_available = true
-        else
-          vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
-        end
+        vim.schedule(function()
+          if obj.code == 0 then
+            vim.notify "Installed successfully: dotnet entity framework"
+            is_ef_available = true
+          else
+            vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
+          end
+        end)
       end)
     else
       vim.system({ "dotnet", "tool", "update", "-g", "dotnet-ef" }, { text = true }, function(obj)
-        if obj.code == 0 then
-          vim.notify "Updated successfully: dotnet entity framework"
-        else
-          vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
-        end
+        vim.schedule(function()
+          if obj.code == 0 then
+            vim.notify "Updated successfully: dotnet entity framework"
+          else
+            vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
+          end
+        end)
       end)
     end
     if not vim.fn.executable "dotnet-easydotnet" == 1 then
       vim.system({ "dotnet", "tool", "install", "-g", "dotnet-easydotnet" }, { text = true }, function(obj)
-        if obj.code == 0 then
-          vim.notify "Installed successfully: EasyDotnet"
-          is_ef_available = true
-        else
-          vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
-        end
+        vim.schedule(function()
+          if obj.code == 0 then
+            vim.notify "Installed successfully: EasyDotnet"
+            is_ef_available = true
+          else
+            vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
+          end
+        end)
       end)
     else
       vim.system({ "dotnet", "tool", "update", "-g", "dotnet-easydotnet" }, { text = true }, function(obj)
-        if obj.code == 0 then
-          vim.notify "Updated successfully: EasyDotnet"
-        else
-          vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
-        end
+        vim.schedule(function()
+          if obj.code == 0 then
+            vim.notify "Updated successfully: EasyDotnet"
+          else
+            vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
+          end
+        end)
       end)
     end
   end,
@@ -150,9 +158,58 @@ return {
     -- telescope -> fzf -> snacks ->  basic
     picker = "snacks",
   },
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "mfussenegger/nvim-dap",
+  specs = {
+    {
+      "nvim-neo-tree/neo-tree.nvim",
+      optional = true,
+      opts = {
+        filesystem = {
+          window = {
+            mappings = {
+              -- Make the mapping anything you want
+              ["<C-p>"] = "create_dotnet",
+            },
+          },
+          commands = {
+            ["create_dotnet"] = function(state)
+              local node = state.tree:get_node()
+              local path = node.type == "directory" and node.path or vim.fs.dirname(node.path)
+              require("easy-dotnet").create_new_item(
+                path,
+                function() require("neo-tree.sources.manager").refresh(state.name) end
+              )
+            end,
+          },
+        },
+      },
+    },
+
+    {
+      "yarospace/dev-tools.nvim",
+      optional = true,
+      opts = {
+        actions = {},
+      },
+    },
+    {
+      "saghen/blink.cmp",
+      optional = true,
+      opts = {
+        sources = {
+          default = { "easy-dotnet" },
+          providers = {
+            ["easy-dotnet"] = {
+              name = "easy-dotnet",
+              enabled = true,
+              module = "easy-dotnet.completion.blink",
+              score_offset = 10000,
+              async = true,
+            },
+          },
+        },
+      },
+    },
+
     {
       "AstroNvim/astrocore",
       ---@param opts AstroCoreOpts
@@ -251,65 +308,13 @@ return {
             },
           },
         },
-      },
-    },
-    {
-      "yarospace/dev-tools.nvim",
-      optional = true,
-      opts = {
-        actions = {},
-      },
-    },
-    {
-      "saghen/blink.cmp",
-      optional = true,
-      opts = {
-        sources = {
-          default = { "easy-dotnet" },
-          providers = {
-            ["easy-dotnet"] = {
-              name = "easy-dotnet",
-              enabled = true,
-              module = "easy-dotnet.completion.blink",
-              score_offset = 10000,
-              async = true,
-            },
-          },
-        },
-      },
-    },
-    {
-      "AstroNvim/astrocore",
-      optional = true,
-      ---@type AstroCoreOpts
-      opts = {
         treesitter = { ensure_installed = { "json", "xml", "sql" } },
       },
     },
-    {
-      "nvim-neo-tree/neo-tree.nvim",
-      optional = true,
-      opts = {
-        filesystem = {
-          window = {
-            mappings = {
-              -- Make the mapping anything you want
-              ["<C-p>"] = "create_dotnet",
-            },
-          },
-          commands = {
-            ["create_dotnet"] = function(state)
-              local node = state.tree:get_node()
-              local path = node.type == "directory" and node.path or vim.fs.dirname(node.path)
-              require("easy-dotnet").create_new_item(
-                path,
-                function() require("neo-tree.sources.manager").refresh(state.name) end
-              )
-            end,
-          },
-        },
-      },
-    },
+  },
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "mfussenegger/nvim-dap",
     -- Disable cpu and memory usage panel
     -- {
     --   "rcarriga/nvim-dap-ui",

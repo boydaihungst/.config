@@ -10,6 +10,7 @@ vim.filetype.add {
   },
   filename = {
     ["vifmrc"] = "vim",
+    ["mpv.conf"] = "editorconfig",
   },
   pattern = {
     [".*/waybar/config.*"] = "jsonc",

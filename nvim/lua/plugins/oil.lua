@@ -192,10 +192,11 @@ return {
       border = "rounded",
     },
   },
-  dependencies = {
+  specs = {
     { "AstroNvim/astroui", opts = { icons = { OilPlugin = "󰙅" } } },
     {
       "AstroNvim/astrocore",
+      optional = true,
       opts = {
         mappings = {
           n = {
@@ -235,7 +236,7 @@ return {
     {
       "rebelot/heirline.nvim",
       optional = true,
-      dependencies = { "AstroNvim/astroui", opts = { status = { winbar = { enabled = { filetype = { "^oil$" } } } } } },
+      dependencies = { "AstroNvim/astroui", optional = true, opts = { status = { winbar = { enabled = { filetype = { "^oil$" } } } } } },
       opts = function(_, opts)
         if opts.winbar then
           local status = require "astroui.status"

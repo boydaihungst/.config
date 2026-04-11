@@ -7,7 +7,6 @@ return {
   specs = {
     {
       "AstroNvim/astrocore",
-      optional = true,
       opts = {
         options = {
           g = {

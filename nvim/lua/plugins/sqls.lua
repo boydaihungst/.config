@@ -4,7 +4,7 @@ return {
   optional = true,
   lazy = true,
   ft = { "sql", "mysql" },
-  dependencies = {
+  specs = {
     "AstroNvim/astrocore",
     opts = {
       autocmds = {

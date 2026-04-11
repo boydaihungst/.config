@@ -1,25 +1,39 @@
+local prefix = "<leader>m"
 ---@type LazySpec
 return {
   "mg979/vim-visual-multi",
   event = { "User AstroFile", "InsertEnter" },
+  init = function()
+  -- Prevent overlapping with astrocore horizontal split key
+  vim.g.VM_leader = vim.g.VM_leader or prefix
+  vim.g.VM_silent_exit = 1
+  vim.g.VM_show_warnings = 0
+  -- Remap <cr> to fix enter to select in blink
+  -- Source: https://github.com/Saghen/blink.cmp/issues/406#issuecomment-2537184121
+  -- Check this if you use VM_custom_motions: https://github.com/Saghen/blink.cmp/issues/406#issuecomment-3239199356
+  vim.g.VM_maps = {
+    ["I BS"] = "",
+    ["Goto Next"] = "]v",
+    ["Goto Prev"] = "[v",
+    ["I CtrlB"] = "<M-b>",
+    ["I CtrlF"] = "<M-f>",
+    ["I Return"] = "<S-CR>",
+    ["I Down Arrow"] = "",
+    ["I Up Arrow"] = "",
+  }
+  vim.api.nvim_set_hl(0, "VM_Cursor", { link = "Cursor" })
+  vim.api.nvim_set_hl(0, "VM_MONO", { link = "Cursor" })
+  end,
   dependencies = {
     { "AstroNvim/astroui", opts = { icons = { VimVisualMulti = "󰗧" } } },
+  },
+  specs = {
     {
       "AstroNvim/astrocore",
       ---@param opts AstroCoreOpts
-      opts = function(_, opts)
-        if not opts.options then opts.options = {} end
-        if not opts.options.g then opts.options.g = {} end
-        vim.api.nvim_set_hl(0, "VM_Cursor", { link = "Cursor" })
-        vim.api.nvim_set_hl(0, "VM_MONO", { link = "Cursor" })
-
-        -- Prevent overlapping with astrocore horizontal split key
-        opts.options.g.VM_leader = opts.options.g.VM_leader or vim.g.VM_leader or "<leader>m"
-        opts.options.g.VM_silent_exit = 1
-        opts.options.g.VM_show_warnings = 0
-
-        if not opts.autocmds then opts.autocmds = {} end
-        opts.autocmds.visual_multi_mappings = {
+      opts = {
+        autocmds =
+          {visual_multi_mappings = {
           {
             event = "User",
             pattern = "visual_multi_mappings",
@@ -37,39 +51,28 @@ return {
             end,
           },
         }
+          },
 
-        -- Remap <cr> to fix enter to select in blink
-        -- Source: https://github.com/Saghen/blink.cmp/issues/406#issuecomment-2537184121
-        -- Check this if you use VM_custom_motions: https://github.com/Saghen/blink.cmp/issues/406#issuecomment-3239199356
-        opts.options.g.VM_maps = {
-          ["I BS"] = "",
-          ["Goto Next"] = "]v",
-          ["Goto Prev"] = "[v",
-          ["I CtrlB"] = "<M-b>",
-          ["I CtrlF"] = "<M-f>",
-          ["I Return"] = "<S-CR>",
-          ["I Down Arrow"] = "",
-          ["I Up Arrow"] = "",
+        mappings = {
+          n = {
+        [prefix] = { desc = require("astroui").get_icon("VimVisualMulti", 1, true) .. "Multi cursors" },
+        [prefix .. "A"] = { desc = "Select all occurrences word under cursor" },
+        [prefix .. "/"] = { desc = "Start regex search" },
+        [prefix .. "\\"] = { desc = "Add a single cursor at current position" },
+        [prefix .. "gS"] = { desc = "Reselect last visual selection" },
+        ["<C-up>"] = { "<C-u>call vm#commands#add_cursor_up(0, v:count1)<cr>", desc = "Add cursor above" },
+        ["<C-down>"] = { "<C-u>call vm#commands#add_cursor_down(0, v:count1)<cr>", desc = "Add cursor below" },
+},
+          v= {
+        [prefix] = { desc = require("astroui").get_icon("VimVisualMulti", 1, true) .. "Multi cursors" },
+        [prefix .. "a"] = { desc = "Convert a visual selection to a VM selection" },
+        [prefix .. "a"] = { desc = "Convert a visual selection to a VM selection" },
+        [prefix .. "A"] = { desc = "Select all occurrences of selection text" },
+        [prefix .. "c"] = { desc = "Add cursors downwards from start of visual block" },
+        [prefix .. "/"] = { desc = "Start regex search within selected text" }
+            }
         }
-
-        if not opts.mappings then opts.mappings = require("astrocore").empty_map_table() end
-        local maps = assert(opts.mappings)
-        local leader = opts.options.g.VM_leader
-        maps.n[leader] = { desc = require("astroui").get_icon("VimVisualMulti", 1, true) .. "Multi cursors" }
-        maps.n[leader .. "A"] = { desc = "Select all occurrences word under cursor" }
-        maps.n[leader .. "/"] = { desc = "Start regex search" }
-        maps.n[leader .. "\\"] = { desc = "Add a single cursor at current position" }
-        maps.n[leader .. "gS"] = { desc = "Reselect last visual selection" }
-        maps.n["<C-up>"] = { "<C-u>call vm#commands#add_cursor_up(0, v:count1)<cr>", desc = "Add cursor above" }
-        maps.n["<C-down>"] = { "<C-u>call vm#commands#add_cursor_down(0, v:count1)<cr>", desc = "Add cursor below" }
-
-        maps.v[leader] = { desc = require("astroui").get_icon("VimVisualMulti", 1, true) .. "Multi cursors" }
-        maps.v[leader .. "a"] = { desc = "Convert a visual selection to a VM selection" }
-        maps.v[leader .. "a"] = { desc = "Convert a visual selection to a VM selection" }
-        maps.v[leader .. "A"] = { desc = "Select all occurrences of selection text" }
-        maps.v[leader .. "c"] = { desc = "Add cursors downwards from start of visual block" }
-        maps.v[leader .. "/"] = { desc = "Start regex search within selected text" }
-      end,
+      },
     },
   },
 }

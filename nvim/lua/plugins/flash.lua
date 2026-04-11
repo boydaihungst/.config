@@ -3,7 +3,7 @@ return {
   "folke/flash.nvim",
   event = "VeryLazy",
   enabled = true,
-  dependencies = {
+  specs = {
     {
       "AstroNvim/astrocore",
       opts = {

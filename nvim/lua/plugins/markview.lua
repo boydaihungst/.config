@@ -19,7 +19,7 @@ return {
   "OXY2DEV/markview.nvim",
   optional = true,
   enabled = true,
-  dependencies = {
+  specs = {
     "AstroNvim/astrocore",
     opts = {
       treesitter = {
@@ -63,9 +63,6 @@ return {
       code_blocks = {
         sign = false,
       },
-      headings = require("markview.presets").headings.arrowed,
-      horizontal_rules = require("markview.presets").horizontal_rules.thin,
-      tables = require("markview.presets").tables.single,
 
       list_items = {
         shift_width = function(buffer, item)
@@ -80,6 +77,10 @@ return {
     },
   },
   config = function(_, opts)
+    opts.markdown = opts.markers or {}
+    opts.markdown.headings = require("markview.presets").headings.arrowed
+    opts.markdown.horizontal_rules = require("markview.presets").horizontal_rules.thin
+    opts.markdown.tables = require("markview.presets").tables.single
     require("markview.extras.headings").setup()
     -- require("markview.extras.editor").setup()
     require("markview.extras.checkboxes").setup {

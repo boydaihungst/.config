@@ -4,6 +4,8 @@ return {
   event = "VeryLazy",
   dependencies = {
     { "folke/snacks.nvim" },
+  },
+  specs = {
     {
       "AstroNvim/astrocore",
       opts = {

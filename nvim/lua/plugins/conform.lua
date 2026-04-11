@@ -33,7 +33,7 @@ return {
       notify_no_formatters = true,
       -- Custom formatters and overrides for built-in formatters
     },
-    dependencies = {
+    specs = {
       {
         "AstroNvim/astrocore",
         opts = {

@@ -18,7 +18,7 @@ return {
       render.setVirt(0, lnum - 1, col - 1, chunks, nearest)
     end,
   },
-  dependencies = {
+  specs = {
     {
       "AstroNvim/astrocore",
       opts = {

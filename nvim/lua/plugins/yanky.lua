@@ -5,9 +5,7 @@ return {
   -- Enabled this if you want to use yank history Leader + f + y
   enabled = false,
   event = "User AstroFile",
-  dependencies = {
-    { "kkharji/sqlite.lua", enabled = not is_windows },
-    { "folke/snacks.nvim" },
+  specs = {
     {
       "AstroNvim/astrocore",
       opts = {
@@ -42,6 +40,10 @@ return {
         },
       },
     },
+  },
+  dependencies = {
+    { "kkharji/sqlite.lua", enabled = not is_windows },
+    { "folke/snacks.nvim" },
   },
   opts = {
     highlight = { timer = 200 },
