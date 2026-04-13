@@ -1,0 +1,1 @@
+# Global LSP configurations
