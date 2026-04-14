@@ -95,11 +95,7 @@ Config.icons = {
     FolderEmpty = '',
     FolderOpen = '',
     Git = '󰊢',
-    GitAdd = '',
-    GitBranch = '',
-    GitChange = '',
     GitConflict = '',
-    GitDelete = '',
     GitIgnored = '◌',
     GitRenamed = '➜',
     GitSign = '▎',
@@ -131,6 +127,12 @@ Config.icons = {
     Terminal = '',
     Window = '',
     WordFile = '󰈭',
+    VimIcon = '',
+    ScrollText = '',
+    GitBranch = '',
+    GitAdd = '',
+    GitChange = '',
+    GitDelete = '',
   },
   text_icons = {
     ActiveLSP = 'LSP:',
@@ -205,7 +207,7 @@ end
 ---@param padding? integer Padding to add to the end of the icon
 ---@param no_fallback? boolean Whether or not to disable fallback to text icon
 ---@return string icon
-function Config.get_icon(kind, padding, no_fallback)
+function Config.get_custom_icon(kind, padding, no_fallback)
   local icons_enabled = vim.g.icons_enabled ~= false
   if not icons_enabled and no_fallback then return '' end
   local icon_pack = assert(Config.icons[icons_enabled and 'icons' or 'text_icons'])
@@ -218,7 +220,7 @@ end
 function Config.get_spinner(kind, ...)
   local spinner = {}
   repeat
-    local icon = Config.get_icon(('%s%d'):format(kind, #spinner + 1), ...)
+    local icon = Config.get_custom_icon(('%s%d'):format(kind, #spinner + 1), ...)
     if icon ~= '' then table.insert(spinner, icon) end
   until not icon or icon == ''
   if #spinner > 0 then return spinner end

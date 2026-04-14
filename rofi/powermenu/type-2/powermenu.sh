@@ -70,7 +70,11 @@ run_cmd() {
 		elif [[ $1 == '--hibernate' ]]; then
 			playerctl pause
 			# amixer set Master mute
-			loginctl suspend-then-hibernate
+			if grep -qw disk /sys/power/state; then
+				loginctl suspend-then-hibernate
+			else
+				loginctl suspend
+			fi
 			# loginctl suspend-then-hibernate
 		elif [[ $1 == '--logout' ]]; then
 			if command -v uwsm &>/dev/null; then

@@ -28,6 +28,9 @@ vim.g.markdown_recommended_style = 0
 vim.g.health = { style = 'float' }
 -- Use osc52 on ssh terminals
 vim.g.clipboard = os.getenv 'SSH_TTY' and 'osc52'
+vim.o.foldmethod = 'expr'
+-- Use 25_folding.lua folding
+vim.o.foldexpr = 'v:lua.Folding.foldexpr()'
 vim.opt.mouse = 'h'
 vim.opt.whichwrap = 'lh' -- allow horizontal and vertical movement
 -- Sync clipboard between OS and Neovim.
@@ -37,6 +40,7 @@ vim.opt.whichwrap = 'lh' -- allow horizontal and vertical movement
 vim.schedule(function() vim.opt.clipboard = 'unnamed,unnamedplus' end)
 
 vim.opt.list = true
+-- Tab chars for indentation: check mini.indentscope
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣', extends = '»', precedes = '«' }
 
 -- Preview substitutions live, as you type!
@@ -55,10 +59,10 @@ vim.opt.diffopt = vim.list_extend(vim.opt.diffopt:get(), { 'algorithm:histogram'
 vim.opt.expandtab = true -- enable the use of space in tab
 vim.opt.fillchars = {
   eob = ' ',
-  foldopen = Config.get_icon 'FoldOpened', -- fold open icon
-  foldclose = Config.get_icon 'FoldClosed', -- fold close icon
-  foldsep = Config.get_icon 'FoldSeparator', -- fold separator
-  foldinner = Config.get_icon 'FoldSeparator', -- nested fold separator
+  foldopen = Config.get_custom_icon 'FoldOpened', -- fold open icon
+  foldclose = Config.get_custom_icon 'FoldClosed', -- fold close icon
+  foldsep = Config.get_custom_icon 'FoldSeparator', -- fold separator
+  foldinner = Config.get_custom_icon 'FoldSeparator', -- nested fold separator
 } -- disable `~` on nonexistent lines
 vim.opt.ignorecase = true -- case insensitive searching
 vim.opt.infercase = true -- infer cases in keyword completion

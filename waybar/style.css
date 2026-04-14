@@ -89,7 +89,8 @@ Color Scheme
 #cpu,
 #memory,
 #temperature,
-#custom-ibus-bamboo {
+#custom-ibus-bamboo,
+#custom-rapoo {
   margin-left: 1em;
 }
 #idle_inhibitor,

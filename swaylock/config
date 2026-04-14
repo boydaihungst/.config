@@ -4,7 +4,7 @@ daemonize
 hide-keyboard-layout
 indicator-caps-lock
 image=~/.config/sway/wallpaper
-scaling=fit
+scaling=fill
 font=Hack Nerd Font
 font-size=30
 indicator-thickness=15

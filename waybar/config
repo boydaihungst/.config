@@ -9,7 +9,7 @@
     "cpu",
     "memory",
     "temperature",
-    // "mpd",
+    "mpd",
     "sway/workspaces",
     "sway/mode",
   ],
@@ -21,9 +21,10 @@
     "backlight",
     "network",
     "bluetooth",
+    "custom/rapoo",
     "battery",
     // "custom/ibus-bamboo",
-    "power-profiles-daemon",
+    // "power-profiles-daemon",
     "idle_inhibitor",
     "tray",
   ],
@@ -307,5 +308,18 @@
     "interval": "once",
     "signal": 30,
     "format": "󰌌 {text}",
-  }
+  },
+    "custom/rapoo": {
+    "exec": "rapoo-battery --waybar",
+    "return-type": "json",
+    "format": "󰦋 {percentage}%",
+    "format-charging": "󱕑 {percentage}%",
+    "format-critical": "󱕐 {percentage}%",
+    "interval": 60,
+    "states": {
+        "warning": 30,
+        "critical": 15
+    }
+}
+
 }

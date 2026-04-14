@@ -101,7 +101,7 @@ local function delete_watch_later(event)
 		if not can_delete then
 			can_delete = true
 		elseif event["reason"] == "eof" or event["reason"] == "stop" then
-			trigger_yazi_simple_tag(path)
+			-- trigger_yazi_simple_tag(path)
 			print("Deleting state (end-file " .. event["reason"] .. ")")
 			mp.commandv("delete-watch-later-config", path)
 		end

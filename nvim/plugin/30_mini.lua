@@ -112,6 +112,43 @@ now(function()
     filetype = {
       cs = { glyph = '', hl = 'MiniIconsGreen' },
     },
+    -- VSCode-like icons
+    lsp = {
+      array = { glyph = '' },
+      boolean = { glyph = '' },
+      key = { glyph = '' },
+      namespace = { glyph = '' },
+      null = { glyph = '' },
+      number = { glyph = '' },
+      object = { glyph = '' },
+      package = { glyph = '' },
+      string = { glyph = '' },
+      class = { glyph = '' },
+      color = { glyph = '' },
+      constant = { glyph = '' },
+      constructor = { glyph = '' },
+      enum = { glyph = '' },
+      enummember = { glyph = '' },
+      event = { glyph = '' },
+      field = { glyph = '' },
+      file = { glyph = '' },
+      folder = { glyph = '' },
+      ['function'] = { glyph = '' },
+      interface = { glyph = '' },
+      keyword = { glyph = '' },
+      method = { glyph = '' },
+      module = { glyph = '' },
+      operator = { glyph = '' },
+      property = { glyph = '' },
+      reference = { glyph = '' },
+      snippet = { glyph = '' },
+      struct = { glyph = '' },
+      text = { glyph = '' },
+      typeparameter = { glyph = '' },
+      unit = { glyph = '' },
+      value = { glyph = '' },
+      variable = { glyph = '' },
+    },
   }
 
   function MiniIcons.get_icon(category, kind)
@@ -361,19 +398,22 @@ now(function()
   end
   local old_mode_hl = {}
   -- Cache these outside the function so they only run ONCE
-  local home = vim.fn.expand '~'
-  local home_pattern = '^' .. vim.pesc(home)
   MiniStatusline.section_filename = function(args)
-    if vim.bo.buftype == 'terminal' then return '%t' end
-    local path = vim.api.nvim_buf_get_name(0)
-    -- Remove minifiles prefix (Fast Lua pattern)
-    path = path:gsub('^minifiles://%d+/', '')
-    path = path:gsub(home_pattern, '~', 1)
-    if MiniStatusline.is_truncated(args.trunc_width) then path = vim.fn.fnamemodify(path, ':t') end
-    return path .. '%m%r'
+    -- In terminal, and nofile always show 'filename'
+    if vim.bo.buftype == 'terminal' or vim.bo.buftype == 'nofile' then
+      return '%t'
+    elseif MiniStatusline.is_truncated(args.trunc_width) then
+      -- File name with 'truncate', 'modified', 'readonly' flags
+      -- Use relative path if truncated
+      return '%f%m%r'
+    else
+      -- Use fullpath if not truncated
+      return '%F%m%r'
+    end
   end
 
   MiniStatusline.setup {
+    use_icons = vim.g.icons_enabled,
     content = {
       active = function()
         local mode, mode_hl = MiniStatusline.section_mode {}
@@ -386,27 +426,42 @@ now(function()
         H.ensure_get_icon()
         local file_icon = H.get_icon ~= nil and vim.bo.filetype ~= '' and H.get_icon(vim.bo.filetype) or ''
         local git = MiniStatusline.section_git { trunc_width = 40 }
-        -- local diff = MiniStatusline.section_diff { trunc_width = 75 }
+        local diff = vim.b.minidiff_summary_string_obj or MiniStatusline.section_diff { trunc_width = 75 }
         local diagnostics = MiniStatusline.section_diagnostics { trunc_width = 75 }
         local lsp = MiniStatusline.section_lsp { trunc_width = 75 }
         local filename = MiniStatusline.section_filename { trunc_width = 140 }
         local location = MiniStatusline.section_location { trunc_width = 75 }
         local search = MiniStatusline.section_searchcount { trunc_width = 75 }
 
-        return MiniStatusline.combine_groups {
-          { hl = mode_hl, strings = { '  ', mode } },
+        local groups = {
+          { hl = mode_hl, strings = { ' ', Config.get_custom_icon 'VimIcon', ' ', mode } },
           { hl = mode_hl .. 'Separator1', strings = { '' } },
           { hl = 'MiniStatuslineModeSeparator2', strings = { '' } },
           { hl = 'MiniStatuslineFilename', strings = { ' ', file_icon, ' ', filename, ' ' } },
           { hl = 'MiniStatuslineModeSeparator3', strings = { '' } },
-          '%<', -- Mark general truncate point
+          '%<',
           { hl = 'MiniStatuslineGit', strings = { ' ', git } },
-          -- { hl = 'MiniStatuslineDevinfo', strings = { ' ', diff } },
-          '%=', -- End left alignment
+        }
+
+        if type(diff) == 'table' then
+          if diff.add then table.insert(groups, { hl = 'DiffAdd', strings = { ' ', diff.add_icon, ' ', tostring(diff.add) } }) end
+          if diff.change then table.insert(groups, { hl = 'DiffChange', strings = { ' ', diff.change_icon, ' ', tostring(diff.change) } }) end
+          if diff.delete then table.insert(groups, { hl = 'DiffDelete', strings = { ' ', diff.delete_icon, ' ', tostring(diff.delete) } }) end
+        else
+          table.insert(groups, { hl = 'MiniStatuslineDevinfo', strings = { ' ', diff } })
+        end
+
+        local right_side = {
+          '%=',
           { hl = 'MiniStatuslineDevinfo', strings = { ' ', diagnostics, ' ', lsp } },
           { hl = 'MiniStatuslineSearch', strings = search ~= '' and { ' ', search, ' ' } or {} },
           { hl = 'MiniStatuslineLocation', strings = { ' ', location } },
         }
+
+        for _, section in ipairs(right_side) do
+          table.insert(groups, section)
+        end
+        return MiniStatusline.combine_groups(groups)
       end,
     },
   }
@@ -699,6 +754,16 @@ now_if_args(function()
 
   -- Display yanked indicators
   local ns = vim.api.nvim_create_namespace 'minifiles_yank_status'
+  local function normalize_yank_data(line)
+    if line then
+      local yanked_entry_parts = vim.split(line, '/', { trimempty = true })
+      if #yanked_entry_parts < 3 then return end
+      yanked_entry_parts[1] = yanked_entry_parts[1]:gsub('^0+(%d)', '%1')
+      return '/' .. table.concat(yanked_entry_parts, '/')
+    end
+    return line
+  end
+
   Config.new_autocmd('User', 'MiniFilesBufferUpdate', function(args)
     local buf_id = args.data.buf_id
     local lines = vim.api.nvim_buf_get_lines(buf_id, 0, -1, false)
@@ -711,18 +776,23 @@ now_if_args(function()
 
     local yanked_lines = {}
     for line in string.gmatch(yank_data, '[^\r\n]+') do
-      yanked_lines[line] = true
+      local line = normalize_yank_data(line)
+      if line then yanked_lines[line] = true end
     end
 
     vim.api.nvim_buf_clear_namespace(buf_id, ns, 0, -1)
-    vim.notify(vim.inspect(yanked_lines))
 
     for line_num, line_content in ipairs(lines) do
-      if yanked_lines[line_content] then
-        vim.api.nvim_buf_set_extmark(buf_id, ns, line_num - 1, 0, {
-          virt_text = { { '+ ', 'Added' } },
-          virt_text_pos = 'inline',
-        })
+      if line_content then
+        local line_content = normalize_yank_data(line_content)
+        if line_content then
+          if yanked_lines[normalize_yank_data(line_content)] then
+            vim.api.nvim_buf_set_extmark(buf_id, ns, line_num - 1, 0, {
+              virt_text = { { '+ ', 'Added' } },
+              virt_text_pos = 'inline',
+            })
+          end
+        end
       end
     end
   end, 'MiniFilesBufferUpdate')
@@ -909,6 +979,8 @@ end)
 -- - `<Leader>bd` - delete current buffer (see `:h :bdelete`)
 later(function() require('mini.bufremove').setup() end)
 
+-- NOTE: Prefer which-key, since it also support text-objects keys like a/i
+
 -- Show next key clues in a bottom right window. Requires explicit opt-in for
 -- keys that act as clue trigger. Example usage:
 -- - Press `<Leader>` and wait for 1 second. A window with information about
@@ -1027,7 +1099,7 @@ end)
 --
 -- It is not enabled by default because its effects are a matter of taste.
 -- Uncomment next line (use `gcc`) to enable.
--- later(function() require('mini.cursorword').setup() end)
+later(function() require('mini.cursorword').setup() end)
 
 -- Work with diff hunks that represent the difference between the buffer text and
 -- some reference text set by a source. Default source uses text from Git index.
@@ -1043,7 +1115,79 @@ end)
 -- - `:h MiniDiff-overview` - overview of how module works
 -- - `:h MiniDiff-diff-summary` - available summary information
 -- - `:h MiniDiff.gen_source` - available built-in sources
-later(function() require('mini.diff').setup() end)
+later(function()
+  local gitsign = Config.get_custom_icon 'GitSign'
+  require('mini.diff').setup {
+    view = {
+      -- Visualization style. Possible values are 'sign' and 'number'.
+      -- Default: 'number' if line numbers are enabled, 'sign' otherwise.
+      style = 'sign',
+
+      -- Signs used for hunks with 'sign' view
+      signs = { add = gitsign, change = gitsign, delete = gitsign },
+
+      -- Priority of used visualization extmarks
+      priority = 199,
+    },
+    -- Module mappings. Use `''` (empty string) to disable one.
+    mappings = {
+      -- Apply hunks inside a visual/operator region
+      apply = 'gh',
+
+      -- Reset hunks inside a visual/operator region
+      reset = 'gH',
+
+      -- Hunk range textobject to be used inside operator
+      -- Works also in Visual mode if mapping differs from apply and reset
+      textobject = 'gh',
+
+      -- Go to hunk range in corresponding direction
+      goto_first = '[H',
+      goto_prev = '[h',
+      goto_next = ']h',
+      goto_last = ']H',
+    },
+    options = {
+      -- Diff algorithm. See `:h vim.diff()`.
+      algorithm = 'histogram',
+
+      -- Whether to use "indent heuristic". See `:h vim.diff()`.
+      indent_heuristic = true,
+
+      -- The amount of second-stage diff to align lines
+      linematch = 60,
+
+      -- Whether to wrap around edges during hunk navigation
+      wrap_goto = true,
+    },
+  }
+  local format_summary = function(data)
+    local summary = vim.b[data.buf].minidiff_summary
+    local t = {}
+    local t_obj = {}
+    if summary.add > 0 then
+      local icon = Config.get_custom_icon 'GitAdd'
+      t_obj.add_icon = icon
+      t_obj.add = summary.add
+      table.insert(t, icon .. ' ' .. summary.add)
+    end
+    if summary.change > 0 then
+      local icon = Config.get_custom_icon 'GitChange'
+      t_obj.change_icon = icon
+      t_obj.change = summary.change
+      table.insert(t, icon .. ' ' .. summary.change)
+    end
+    if summary.delete > 0 then
+      local icon = Config.get_custom_icon 'GitDelete'
+      t_obj.delete_icon = icon
+      t_obj.delete = summary.delete
+      table.insert(t, icon .. ' ' .. summary.delete)
+    end
+    vim.b[data.buf].minidiff_summary_string = table.concat(t, ' ')
+    vim.b[data.buf].minidiff_summary_string_obj = t_obj
+  end
+  Config.new_autocmd('User', 'MiniDiffUpdated', format_summary)
+end)
 
 -- Git integration for more straightforward Git actions based on Neovim's state.
 -- It is not meant as a fully featured Git client, only to provide helpers that
@@ -1057,7 +1201,17 @@ later(function() require('mini.diff').setup() end)
 -- - `:h MiniGit-examples` - examples of common setups
 -- - `:h :Git` - more details about `:Git` user command
 -- - `:h MiniGit.show_at_cursor()` - what information at cursor is shown
-later(function() require('mini.git').setup() end)
+later(function()
+  require('mini.git').setup()
+  -- Use only HEAD name as summary string
+  local format_summary = function(data)
+    -- Utilize buffer-local table summary
+    local summary = vim.b[data.buf].minigit_summary
+    vim.b[data.buf].minigit_summary_string = summary.head_name or ''
+  end
+
+  Config.new_autocmd('User', 'MiniGitUpdated', format_summary)
+end)
 
 -- Highlight patterns in text. Like `TODO`/`NOTE` or color hex codes.
 -- Example usage:
@@ -1093,8 +1247,25 @@ end)
 --
 -- See also:
 -- - `:h MiniIndentscope.gen_animation` - available animation rules
-later(function() require('mini.indentscope').setup() end)
+later(function()
+  require('mini.indentscope').setup {
+    -- Module mappings. Use `''` (empty string) to disable one.
+    mappings = {
+      -- Textobjects
+      object_scope = 'ii',
+      object_scope_with_border = 'ai',
 
+      -- Motions (jump to respective border line; if not present - body line)
+      goto_top = '[i',
+      goto_bottom = ']i',
+    },
+    -- Which character to use for drawing scope indicator
+    -- Check vim.opt.listchars > tab for default tab character
+    symbol = '╎',
+  }
+end)
+
+--TODO: here
 -- Jump to next/previous single character. It implements "smarter `fFtT` keys"
 -- (see `:h f`) that work across multiple lines, start "jumping mode", and
 -- highlight all target matches. Example usage:
