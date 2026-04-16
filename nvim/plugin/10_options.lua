@@ -23,6 +23,17 @@ vim.filetype.add {
     ['.*%..*proj'] = 'msbuild',
   },
 }
+vim.diagnostic.config {
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = Config.get_custom_icon 'DiagnosticError',
+      [vim.diagnostic.severity.HINT] = Config.get_custom_icon 'DiagnosticHint',
+      [vim.diagnostic.severity.WARN] = Config.get_custom_icon 'DiagnosticWarn',
+      [vim.diagnostic.severity.INFO] = Config.get_custom_icon 'DiagnosticInfo',
+    },
+  },
+}
+
 vim.cmd 'filetype plugin indent on'
 vim.g.markdown_recommended_style = 0
 vim.g.health = { style = 'float' }
@@ -31,6 +42,8 @@ vim.g.clipboard = os.getenv 'SSH_TTY' and 'osc52'
 vim.o.foldmethod = 'expr'
 -- Use 25_folding.lua folding
 vim.o.foldexpr = 'v:lua.Folding.foldexpr()'
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
 vim.opt.mouse = 'h'
 vim.opt.whichwrap = 'lh' -- allow horizontal and vertical movement
 -- Sync clipboard between OS and Neovim.
@@ -50,7 +63,7 @@ vim.opt.inccommand = 'split'
 vim.opt.scrolloff = 10
 vim.opt.backspace = vim.list_extend(vim.opt.backspace:get(), { 'nostop' }) -- don't stop backspace at insert
 vim.opt.breakindent = true -- wrap indent to match  line start
-vim.opt.cmdheight = 0 -- hide command line unless needed
+vim.opt.cmdheight = 1 -- hide command line unless needed
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect', 'fuzzy', 'nosort' } -- Options for insert mode completion
 vim.opt.confirm = true -- raise a dialog asking if you wish to save the current file(s)
 vim.opt.copyindent = true -- copy the previous indentation on autoindenting

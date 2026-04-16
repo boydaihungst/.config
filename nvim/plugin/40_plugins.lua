@@ -10,7 +10,77 @@
 
 -- Make concise helpers for installing/adding plugins in two stages
 local add = vim.pack.add
-local now_if_args, later = Config.now_if_args, Config.later
+---@diagnostic disable-next-line: unused-local
+local now_if_args, later, on_event, on_filetype = Config.now_if_args, Config.later, Config.on_event, Config.on_filetype
+
+local ensure_installed_treesitter = {
+  'bash',
+  'c',
+  'c_sharp',
+  'css',
+  'dap_repl',
+  'fish',
+  'git_config',
+  'gitignore',
+  'graphql',
+  'html',
+  'hyprlang',
+  'java',
+  'javascript',
+  'json',
+  'json5',
+  'latex',
+  'markdown_inline',
+  'python',
+  'query',
+  'rasi',
+  'regex',
+  'rust',
+  'scss',
+  'svelte',
+  'tsx',
+  'typescript',
+  'typst',
+  'vim',
+  'vue',
+  'yaml',
+  'lua',
+  'markdown',
+  'vimdoc',
+}
+
+local ensure_installed_mason_packages = {
+  -- install language servers
+  'fish-lsp',
+  'gh-actions-language-server',
+  'lua-language-server',
+  'marksman',
+  'msbuild_project_tools_server',
+  'roslyn',
+  'sqls',
+  'taplo',
+  'tree-sitter-cli',
+  'yaml-language-server',
+
+  -- AI assistent
+  -- "copilot-language-server",
+
+  -- install formatters
+  'black',
+  'isort',
+  'markdown-toc',
+  'rust-analyzer',
+  'stylua',
+
+  -- linters
+  'dotenv-linter',
+  'shellcheck',
+
+  -- install debuggers
+  'debugpy',
+  'firefox-debug-adapter',
+  'local-lua-debugger-vscode',
+}
 
 -- File operations ============================================================
 now_if_args(function()
@@ -22,7 +92,7 @@ now_if_args(function()
   local ok_mini_files, _ = pcall(require, 'mini.files')
   local log = require 'lsp-file-operations.log'
   if ok_mini_files then
-    log.debug 'Setting up nvim-tree integration'
+    log.debug 'Setting up mini.files integration'
 
     Config.new_autocmd(
       'User',
@@ -119,7 +189,9 @@ later(function()
     }
   end
 
-  require('which-key').setup(config)
+  local wk = require 'which-key'
+  wk.add(Config.leader_group_which_key)
+  wk.setup(config)
 end)
 -- Tree-sitter ================================================================
 
@@ -154,33 +226,42 @@ now_if_args(function()
   add {
     'https://github.com/nvim-treesitter/nvim-treesitter',
     'https://github.com/nvim-treesitter/nvim-treesitter-textobjects',
+    'https://github.com/nvim-treesitter/nvim-treesitter-context',
+    'https://github.com/RRethy/nvim-treesitter-endwise',
   }
 
   -- Define languages which will have parsers installed and auto enabled
   -- After changing this, restart Neovim once to install necessary parsers. Wait
   -- for the installation to finish before opening a file for added language(s).
-  local languages = {
-    -- These are already pre-installed with Neovim. Used as an example.
-    'lua',
-    'vimdoc',
-    'markdown',
-    -- Add here more languages with which you want to use tree-sitter
-    -- To see available languages:
-    -- - Execute `:=require('nvim-treesitter').get_available()`
-    -- - Visit 'SUPPORTED_LANGUAGES.md' file at
-    --   https://github.com/nvim-treesitter/nvim-treesitter/blob/main
-  }
   local isnt_installed = function(lang) return #vim.api.nvim_get_runtime_file('parser/' .. lang .. '.*', false) == 0 end
-  local to_install = vim.tbl_filter(isnt_installed, languages)
+  local to_install = vim.tbl_filter(isnt_installed, ensure_installed_treesitter)
   if #to_install > 0 then require('nvim-treesitter').install(to_install) end
 
+  vim.treesitter.language.register('bash', 'kitty')
+  vim.treesitter.language.register('xml', { 'msbuild' })
   -- Enable tree-sitter after opening a file for a target language
   local filetypes = {}
-  for _, lang in ipairs(languages) do
+  for _, lang in ipairs(ensure_installed_treesitter) do
     for _, ft in ipairs(vim.treesitter.language.get_filetypes(lang)) do
       table.insert(filetypes, ft)
     end
   end
+  -- enable treesitter extra plugins
+  require('treesitter-context').setup {
+    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+    multiwindow = false, -- Enable multiwindow support.
+    max_lines = 5, -- How many lines the window should span. Values <= 0 mean no limit.
+    min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+    line_numbers = true,
+    multiline_threshold = 5, -- Maximum number of lines to show for a single context
+    trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+    mode = 'cursor', -- Line used to calculate context. Choices: 'cursor', 'topline'
+    -- Separator between context and content. Should be a single character string, like '-'.
+    -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+    separator = '─',
+    zindex = 20, -- The Z-index of the context window
+    on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
+  }
   local ts_start = function(ev) vim.treesitter.start(ev.buf) end
   Config.new_autocmd('FileType', filetypes, ts_start, 'Start tree-sitter')
 end)
@@ -212,6 +293,87 @@ now_if_args(function()
   -- })
 end)
 
+now_if_args(function()
+  add {
+    'https://github.com/mason-org/mason.nvim',
+  }
+  local mason_update = function() vim.cmd 'MasonUpdate' end
+  Config.on_packchanged('mason.nvim', { 'update' }, mason_update, ':MasonUpdate')
+
+  require('mason').setup {
+    registries = {
+      'github:mason-org/mason-registry',
+      'github:Crashdummyy/mason-registry',
+      'github:boydaihungst/mason-registry',
+    },
+    ui = {
+      icons = vim.g.icons_enabled == false and {
+        package_installed = 'O',
+        package_uninstalled = 'X',
+        package_pending = '0',
+      } or {
+        package_installed = '✓',
+        package_uninstalled = '✗',
+        package_pending = '⟳',
+      },
+    },
+  }
+end)
+
+now_if_args(function()
+  add {
+    'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim',
+  }
+  require('mason-tool-installer').setup {
+    ensure_installed = ensure_installed_mason_packages,
+    -- Disable alternative name from these package, only use name from Mason.Nvim
+    integrations = { ['mason-lspconfig'] = false, ['mason-null-ls'] = false, ['mason-nvim-dap'] = false },
+  }
+end)
+
+now_if_args(function()
+  add {
+    'https://github.com/mason-org/mason-lspconfig.nvim',
+  }
+  -- Borrow from astronvim. Auto config and enable lsp servers
+  local _ = require 'mason-core.functional'
+  local registry = require 'mason-registry'
+  local mappings = require 'mason-lspconfig.mappings'
+
+  local enabled_servers = {}
+  if not mason_lsp_setup then
+    _G.mason_lsp_setup = vim.schedule_wrap(function(mason_pkg)
+      if type(mason_pkg) ~= 'string' then mason_pkg = mason_pkg.name end
+      local lspconfig_name = mappings.get_mason_map().package_to_lspconfig[mason_pkg]
+      if not lspconfig_name or enabled_servers[lspconfig_name] then return end
+
+      local ok, config = pcall(require, 'mason-lspconfig.lsp.' .. lspconfig_name)
+      if ok then vim.lsp.config(lspconfig_name, config) end
+
+      vim.lsp.enable(lspconfig_name)
+      enabled_servers[lspconfig_name] = true
+    end)
+  end
+
+  _.each(mason_lsp_setup, registry.get_installed_package_names())
+  registry.refresh(vim.schedule_wrap(function(success, updated_registries)
+    if success and #updated_registries > 0 then _.each(mason_lsp_setup, registry.get_installed_package_names()) end
+  end))
+  registry:off('package:install:success', mason_lsp_setup)
+  registry:on('package:install:success', mason_lsp_setup)
+
+  require('mason-lspconfig').setup {
+    automatic_enable = true,
+    ensure_installed = nil, -- because we use mason-tool-installer to install lsp severs
+  }
+end)
+
+now_if_args(function()
+  add {
+    'https://github.com/jay-babu/mason-nvim-dap.nvim',
+  }
+end)
+
 -- Formatting =================================================================
 
 -- Programs dedicated to text formatting (a.k.a. formatters) are very useful.
@@ -232,10 +394,49 @@ later(function()
       -- Allow formatting from LSP server if no dedicated formatter is available
       lsp_format = 'fallback',
     },
-    -- Map of filetype to formatters
-    -- Make sure that necessary CLI tool is available
-    -- formatters_by_ft = { lua = { 'stylua' } },
+    format_on_save = function(bufnr)
+      if vim.F.if_nil(vim.b[bufnr].autoformat, vim.g.autoformat, true) then return { lsp_format = 'fallback' } end
+    end,
+    formatters_by_ft = {
+      toml = { 'taplo' },
+      markdown = { 'markdown-toc', 'prettierd', stop_after_first = false },
+      sh = { 'shfmt' },
+    },
+    formatters = {
+      -- nginxfmt = {
+      --   -- Change where to find the command
+      --   command = os.getenv "HOME" .. "/.venv/bin/nginxfmt",
+      -- },
+      taplo = {
+        -- prepend_args = { "-o", "" },
+        env = {
+          TAPLO_CONFIG = os.getenv 'HOME' .. '/.config/.taplo.toml',
+        },
+      },
+      ['clang-format'] = {},
+      stylua = {
+        prepend_args = { '--syntax', 'LuaJIT' },
+      },
+    },
+    -- Set the log level. Use `:ConformInfo` to see the location of the log file.
+    log_level = vim.log.levels.OFF,
+    -- Conform will notify you when a formatter errors
+    notify_on_error = true,
+    -- Conform will notify you when no formatters are available for the buffer
+    notify_no_formatters = true,
   }
+
+  vim.api.nvim_create_user_command('Format', function(args)
+    local range = nil
+    if args.count ~= -1 then
+      local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+      range = {
+        start = { args.line1, 0 },
+        ['end'] = { args.line2, end_line:len() },
+      }
+    end
+    require('conform').format { async = true, range = range }
+  end, { desc = 'Format buffer', range = true })
 end)
 
 -- Snippets ===================================================================
@@ -251,19 +452,6 @@ later(function() add { 'https://github.com/rafamadriz/friendly-snippets' } end)
 
 -- Honorable mentions =========================================================
 
--- 'mason-org/mason.nvim' (a.k.a. "Mason") is a great tool (package manager) for
--- installing external language servers, formatters, and linters. It provides
--- a unified interface for installing, updating, and deleting such programs.
---
--- The caveat is that these programs will be set up to be mostly used inside Neovim.
--- If you need them to work elsewhere, consider using other package managers.
---
--- You can use it like so:
--- now_if_args(function()
---   add({ 'https://github.com/mason-org/mason.nvim' })
---   require('mason').setup()
--- end)
-
 -- Beautiful, usable, well maintained color schemes outside of 'mini.nvim' and
 -- have full support of its highlight groups. Use if you don't like 'miniwinter'
 -- enabled in 'plugin/30_mini.lua' or other suggested 'mini.hues' based ones.
@@ -278,3 +466,16 @@ later(function() add { 'https://github.com/rafamadriz/friendly-snippets' } end)
 --   -- Enable only one
 --   vim.cmd('color everforest')
 -- end)
+on_filetype('lua', function()
+  add {
+    'https://github.com/folke/lazydev.nvim',
+    -- 'https://github.com/DrKJeff16/wezterm-types',
+  }
+  require('lazydev').setup {
+    library = {
+      { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+      { path = os.getenv 'HOME' .. '/.config/yazi/plugins/types.yazi', words = { 'ya%.', 'ui%.' } },
+      -- { path = "wezterm-types", mods = { "wezterm" } },
+    },
+  }
+end)

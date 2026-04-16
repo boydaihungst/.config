@@ -46,10 +46,10 @@ Config.now_if_args = vim.fn.argc(-1) > 0 and Config.now or Config.later
 Config.on_event = function(ev, f) misc.safely('event:' .. ev, f) end
 Config.on_filetype = function(ft, f) misc.safely('filetype:' .. ft, f) end
 
-local gr = vim.api.nvim_create_augroup('custom-config', {})
-Config.new_autocmd = function(event, pattern, callback, desc)
-  local opts = { group = gr, pattern = pattern, callback = callback, desc = desc }
-  vim.api.nvim_create_autocmd(event, opts)
+local default_gr = vim.api.nvim_create_augroup('custom-config', { clear = true })
+Config.new_autocmd = function(event, pattern, callback, desc, gr)
+  local opts = { group = default_gr, pattern = pattern, callback = callback, desc = desc }
+  return vim.api.nvim_create_autocmd(event, opts)
 end
 
 Config.on_packchanged = function(plugin_name, kinds, callback, desc)
