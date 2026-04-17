@@ -69,6 +69,10 @@ now(function()
   Config.extend_hl('WinSeparator', { bg = '#080A0E', fg = '#BCC4C9' })
   Config.extend_hl('FloatBorder', { bg = '#080A0E', fg = '#BCC4C9' })
   Config.extend_hl('Folded', { bg = '#282C34', fg = '#BCC4C9' })
+  Config.extend_hl('Search', { fg = '#111317', bg = '#4fa6ed' })
+  Config.extend_hl('CurSearch', { fg = '#111317', bg = '#5C88B0' })
+  vim.api.nvim_set_hl(0, 'IncSearch', { link = 'Search' })
+  -- vim.api.nvim_set_hl(0, 'CurSearch', { link = 'Search' })
   vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#1E222A' })
   vim.api.nvim_set_hl(0, 'CursorColumn', { bg = '#1E222A' })
 end)
@@ -163,9 +167,6 @@ now(function()
   -- Mock 'nvim-tree/nvim-web-devicons' for plugins without 'mini.icons' support.
   -- Not needed for 'mini.nvim' or MiniMax, but might be useful for others.
   later(MiniIcons.mock_nvim_web_devicons)
-
-  -- Add LSP kind icons. Useful for 'mini.completion'.
-  later(MiniIcons.tweak_lsp_kind)
 end)
 
 -- Notifications provider. Shows all kinds of notifications in the upper right
@@ -606,37 +607,38 @@ end)
 -- It also works with snippet candidates provided by LSP server. Best experience
 -- when paired with 'mini.snippets' (which is set up in this file).
 
-now_if_args(function()
-  -- Customize post-processing of LSP responses for a better user experience.
-  -- Don't show 'Text' suggestions (usually noisy) and show snippets last (if set Snippet = 99).
-  local process_items_opts = { kind_priority = { Text = 99 } }
-  local process_items = function(items, base) return MiniCompletion.default_process_items(items, base, process_items_opts) end
-  require('mini.completion').setup {
-    delay = { completion = 100, info = 100, signature = 50 },
-    lsp_completion = {
-      -- Without this config autocompletion is set up through `:h 'completefunc'`.
-      -- Although not needed, setting up through `:h 'omnifunc'` is cleaner
-      -- (sets up only when needed) and makes it possible to use `<C-u>`.
-      source_func = 'omnifunc',
-      auto_setup = false,
-      process_items = process_items,
-    },
-    window = {
-      info = { height = 25, width = 80, border = vim.o.winborder },
-      signature = { height = 25, width = 80, border = vim.o.winborder },
-    },
-  }
-
-  -- Set 'omnifunc' for LSP completion only when needed.
-  local on_attach = function(ev) vim.bo[ev.buf].omnifunc = 'v:lua.MiniCompletion.completefunc_lsp' end
-  Config.new_autocmd('LspAttach', nil, on_attach, "Set 'omnifunc'")
-
-  -- Advertise to servers that Neovim now supports certain set of completion and
-  -- signature features through 'mini.completion'.
-  vim.lsp.config('*', {
-    capabilities = MiniCompletion.get_lsp_capabilities(),
-  })
-end)
+-- now_if_args(function()
+--   -- Customize post-processing of LSP responses for a better user experience.
+--   -- Don't show 'Text' suggestions (usually noisy) and show snippets last (if set Snippet = 99).
+--   local process_items_opts = { kind_priority = { Text = 99 } }
+--   local process_items = function(items, base) return MiniCompletion.default_process_items(items, base, process_items_opts) end
+--   require('mini.completion').setup {
+--     delay = { completion = 20, info = 20, signature = 20 },
+--     lsp_completion = {
+--       -- Without this config autocompletion is set up through `:h 'completefunc'`.
+--       -- Although not needed, setting up through `:h 'omnifunc'` is cleaner
+--       -- (sets up only when needed) and makes it possible to use `<C-u>`.
+--       source_func = 'omnifunc',
+--       auto_setup = false,
+--       process_items = process_items,
+--     },
+--     window = {
+--       info = { height = 25, width = 80, border = vim.o.winborder },
+--       signature = { height = 25, width = 80, border = vim.o.winborder },
+--     },
+--   }
+-- Add LSP kind icons. Useful for 'mini.completion'.
+-- if MiniIcons then later(MiniIcons.tweak_lsp_kind) end
+--   -- Set 'omnifunc' for LSP completion only when needed.
+--   local on_attach = function(ev) vim.bo[ev.buf].omnifunc = 'v:lua.MiniCompletion.completefunc_lsp' end
+--   Config.new_autocmd('LspAttach', nil, on_attach, "Set 'omnifunc'")
+--
+--   -- Advertise to servers that Neovim now supports certain set of completion and
+--   -- signature features through 'mini.completion'.
+--   vim.lsp.config('*', {
+--     capabilities = MiniCompletion.get_lsp_capabilities(),
+--   })
+-- end)
 
 -- Navigate and manipulate file system
 --
@@ -692,11 +694,12 @@ now_if_args(function()
     if is_in_searchmode == 0 or (not search_pattern or search_pattern == '') or #fs_entries == 0 then return fs_entries end
     local ft = vim.bo.filetype
     local row = vim.api.nvim_win_get_cursor(0)[1]
-    local hovered_entry = ((ft == 'minifiles' and row >= 1 and MiniFiles) and MiniFiles.get_fs_entry())
-    local hovered_path = hovered_entry and hovered_entry.path
+    local explorer_state = ((ft == 'minifiles' and row >= 1 and MiniFiles) and MiniFiles.get_explorer_state())
+    local cur_focused_path = explorer_state and explorer_state.branch[explorer_state.depth_focus]
+    local is_focused_pane = nil
     for _, entry in ipairs(fs_entries) do
-      local relpath = entry.path and hovered_path and vim.fs.relpath(entry.path, hovered_path)
-      if vim.fn.match(entry.name, search_pattern) >= 0 or (relpath ~= '.' and relpath ~= nil) then table.insert(valid_entry, entry) end
+      if is_focused_pane == nil then is_focused_pane = cur_focused_path and vim.fs.dirname(entry.path) == cur_focused_path end
+      if vim.fn.match(entry.name, search_pattern) >= 0 or not is_focused_pane then table.insert(valid_entry, entry) end
     end
     return valid_entry
   end
@@ -883,30 +886,33 @@ now_if_args(function()
       end
     end, { buffer = args.buf, desc = 'Clear filter/search or close minifiles' })
 
-    vim.keymap.set('n', '<CR>', function() MiniFiles.go_in { close_on_file = true } end, { buffer = args.buf, desc = 'Open hovered file minifiles' })
+    vim.keymap.set('n', '<CR>', function()
+      MiniFiles.synchronize()
+      MiniFiles.go_in { close_on_file = true }
+    end, { buffer = args.buf, desc = 'Open hovered file minifiles' })
 
-    local bufenter_autocmd_id = Config.new_autocmd('BufEnter', nil, function(args)
+    Config.new_autocmd('BufEnter', nil, function(args)
       local ft = vim.bo[args.buf].filetype
       if ft == 'minifiles' and search_pattern ~= '' then
         vim.defer_fn(function()
           vim.cmd 'nohlsearch'
           clear_search()
-          if bufenter_autocmd_id then
-            vim.api.nvim_del_autocmd(bufenter_autocmd_id)
-            bufenter_autocmd_id = nil
-          end
+          vim.api.nvim_del_autocmd(args.id)
         end, 20)
       end
     end, 'BufEnter minifiles clear search pattern at the start', minifiles_group)
 
+    ---@type uv.uv_timer_t|nil
+    local cmdchange_timer = nil
     Config.new_autocmd('CmdlineChanged', nil, function(args)
       local cmd_type = vim.fn.getcmdtype()
       if cmd_type == '/' or cmd_type == '?' then
-        vim.defer_fn(function()
+        if cmdchange_timer then cmdchange_timer:stop() end
+        cmdchange_timer = vim.defer_fn(function()
           search_pattern = vim.fn.getcmdline() or ''
           MiniFiles.refresh { content = { force = true } }
           vim.cmd 'redraw'
-        end, 20)
+        end, 100)
       end
     end, 'CmdlineChanged minifiles search pattern', minifiles_group)
 
@@ -1084,6 +1090,8 @@ later(function()
       inside_last = 'il',
     },
 
+    -- Number of lines within which textobject is searched
+    n_lines = 10000,
     -- 'mini.ai' by default mostly mimics built-in search behavior: first try
     -- to find textobject covering cursor, then try to find to the right.
     -- Although this works in most cases, some are confusing. It is more robust to
@@ -1228,7 +1236,14 @@ later(function() require('mini.bufremove').setup() end)
 -- - Autocompletion. Basically an automated `:h cmdline-completion`.
 -- - Autocorrection of words as-you-type. Like `:W`->`:w`, `:lau`->`:lua`, etc.
 -- - Autopeek command range (like line number at the start) as-you-type.
-later(function() require('mini.cmdline').setup {} end)
+later(function()
+  require('mini.cmdline').setup {
+    -- Autopeek: show command's target range in a floating window
+    autopeek = {
+      n_context = 3,
+    },
+  }
+end)
 
 -- Tweak and save any color scheme. Contains utility functions to work with
 -- color spaces and color schemes. Example usage:
@@ -1546,11 +1561,11 @@ end)
 later(function()
   require('mini.keymap').setup()
   -- Navigate 'mini.completion' menu with `<Tab>` /  `<S-Tab>`
-  MiniKeymap.map_multistep('i', '<Tab>', { 'minisnippets_next', 'pmenu_next' })
-  MiniKeymap.map_multistep('i', '<S-Tab>', { 'minisnippets_prev', 'pmenu_prev' })
+  MiniKeymap.map_multistep('i', '<Tab>', { 'minisnippets_next', 'pmenu_next', 'blink_next', 'cmp_next' })
+  MiniKeymap.map_multistep('i', '<S-Tab>', { 'minisnippets_prev', 'pmenu_prev', 'blink_prev', 'cmp_prev' })
   -- On `<CR>` try to accept current completion item, fall back to accounting
   -- for pairs from 'mini.pairs'
-  MiniKeymap.map_multistep('i', '<CR>', { 'pmenu_accept', 'minipairs_cr' })
+  MiniKeymap.map_multistep('i', '<CR>', { 'pmenu_accept', 'blink_accept', 'cmp_accept', 'minipairs_cr' })
   -- On `<BS>` just try to account for pairs from 'mini.pairs'
   MiniKeymap.map_multistep('i', '<BS>', { 'minipairs_bs' })
 
@@ -1883,7 +1898,7 @@ later(function()
       stop = '<Esc>',
 
       toggle_info = '<F1>',
-      toggle_preview = '<C-S-p>',
+      toggle_preview = '<C-p>',
       -- Custom action + keymaps
       paste_system = {
         char = '<C-r>',
@@ -2077,7 +2092,7 @@ later(function()
   -- By default snippets available at cursor are not shown as candidates in
   -- 'mini.completion' menu. This requires a dedicated in-process LSP server
   -- that will provide them. To have that, uncomment next line (use `gcc`).
-  MiniSnippets.start_lsp_server()
+  if MiniCompletion then MiniSnippets.start_lsp_server() end
 end)
 
 -- Split and join arguments (regions inside brackets between allowed separators).

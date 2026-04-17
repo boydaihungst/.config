@@ -133,5 +133,4 @@ vim.opt.shada = "'100,<50,s10,:1000,/100,@100,h"
 vim.opt.conceallevel = 2
 vim.opt.exrc = true
 vim.opt.secure = true
-
 -- vim: ts=2 sts=2 sw=2 et

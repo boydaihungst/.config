@@ -212,14 +212,7 @@ end)
 -- Add it now if file (and not 'mini.starter') is shown after startup.
 now_if_args(function()
   add { 'https://github.com/neovim/nvim-lspconfig' }
-
-  -- Use `:h vim.lsp.enable()` to automatically enable language server based on
-  -- the rules provided by 'nvim-lspconfig'.
-  -- Use `:h vim.lsp.config()` or 'after/lsp/' directory to configure servers.
-  -- Uncomment and tweak the following `vim.lsp.enable()` call to enable servers.
-  -- vim.lsp.enable({
-  --   -- For example, if `lua-language-server` is installed, use `'lua_ls'` entry
-  -- })
+  -- Enable via mason below
 end)
 
 now_if_args(function()
@@ -253,7 +246,7 @@ now_if_args(function()
   add {
     'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim',
   }
-  mason_tool_installer = require 'mason-tool-installer'
+  local mason_tool_installer = require 'mason-tool-installer'
   mason_tool_installer.setup {
     ensure_installed = ensure_installed_mason_packages,
     -- Disable alternative name from these package, only use name from Mason.Nvim
@@ -265,8 +258,14 @@ end)
 
 now_if_args(function()
   add {
+    -- dependencies
+    { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range '1.x' },
     'https://github.com/mason-org/mason-lspconfig.nvim',
   }
+  vim.lsp.config('*', {
+    capabilities = require('blink.cmp').get_lsp_capabilities(),
+  })
+
   -- Borrow from astronvim. Auto config and enable lsp servers
   local _ = require 'mason-core.functional'
   local registry = require 'mason-registry'
@@ -956,4 +955,511 @@ later(function()
   vim.keymap.set('x', '<C-x>', function() require('dial.map').manipulate('decrement', 'visual') end)
   vim.keymap.set('x', 'g<C-a>', function() require('dial.map').manipulate('increment', 'gvisual') end)
   vim.keymap.set('x', 'g<C-x>', function() require('dial.map').manipulate('decrement', 'gvisual') end)
+end)
+
+later(function()
+  add { 'https://github.com/linrongbin16/gitlinker.nvim' }
+  local function to_litteral(str) return str and str:gsub('([%^%$%(%)%%%.%[%]%*%+%-%?])', '%%%1') end
+  require('gitlinker').setup {
+    router = {
+      browse = {
+        -- My gitea server
+        -- https://git.linuxholic.com/boydaihungst/AnimeSubtitles/src/commit/250145403bde3858562337528233b0707fdf6e86/typesetting_fonts.txt#L4-L10
+        [to_litteral 'ssh.linuxholic.com'] = 'https://git.linuxholic.com/'
+          .. '{_A.ORG}/'
+          .. '{_A.REPO}/src/commit/'
+          .. '{_A.REV}/'
+          .. '{_A.FILE}'
+          .. '#L{_A.LSTART}-L{_A.LEND}',
+      },
+      blame = {
+        -- My gitea server
+        -- https://git.linuxholic.com/boydaihungst/AnimeSubtitles/blame/commit/250145403bde3858562337528233b0707fdf6e86/typesetting_fonts.txt#L4-L10
+        [to_litteral 'ssh.linuxholic.com'] = 'https://git.linuxholic.com/'
+          .. '{_A.ORG}/'
+          .. '{_A.REPO}/blame/commit/'
+          .. '{_A.REV}/'
+          .. '{_A.FILE}'
+          .. '#L{_A.LSTART}-L{_A.LEND}',
+      },
+    },
+  }
+  local prefix = '<leader>g'
+
+  vim.keymap.set({ 'n', 'x' }, prefix .. 'y', '<cmd>GitLink<cr>', { desc = 'Copy Git link' })
+  vim.keymap.set({ 'n', 'x' }, prefix .. 'z', '<cmd>GitLink!<cr>', { desc = 'Open Git link' })
+end)
+
+later(function()
+  add { 'https://github.com/kevinhwang91/nvim-hlslens' }
+
+  local hlslens = require 'hlslens'
+  hlslens.setup {
+    -- NOTE: disable this because it makes mini.files incremental search error
+    enable_incsearch = false,
+    override_lens = function(render, posList, nearest, idx, relIdx)
+      local text, chunks
+
+      local lnum, col = unpack(posList[idx])
+      if nearest then
+        local cnt = #posList
+        text = ('[%d/%d]'):format(idx or 0, cnt or 0)
+        chunks = { { ' ' }, { text, 'IncSearch' } }
+      else
+        text = ('[%d]'):format(idx or 0)
+        chunks = { { ' ' }, { text, 'CurSearch' } }
+      end
+      render.setVirt(0, lnum - 1, col - 1, chunks, nearest)
+    end,
+  }
+
+  local function n_with_hlslens(char)
+    local count = vim.v.count1
+    -- Executes the normal command (n, N, *, etc) then starts hlslens
+    vim.cmd(('normal! %d%s'):format(count, char))
+    hlslens.start()
+  end
+
+  -- n and N
+  vim.keymap.set('n', 'n', function() n_with_hlslens 'n' end, { silent = true, desc = 'Next search result' })
+  vim.keymap.set('n', 'N', function() n_with_hlslens 'N' end, { silent = true, desc = 'Prev search result' })
+
+  -- * and # (Directly trigger the command then start hlslens)
+  vim.keymap.set('n', '*', '*<Cmd>lua require("hlslens").start()<CR>', { silent = true, desc = 'Search word forward' })
+  vim.keymap.set('n', '#', '#<Cmd>lua require("hlslens").start()<CR>', { silent = true, desc = 'Search word backward' })
+
+  -- g* and g#
+  vim.keymap.set('n', 'g*', 'g*<Cmd>lua require("hlslens").start()<CR>', { silent = true, desc = 'Search word forward (partial)' })
+  vim.keymap.set('n', 'g#', 'g#<Cmd>lua require("hlslens").start()<CR>', { silent = true, desc = 'Search word backward (partial)' })
+end)
+
+on_filetype('vue,typescript,javascript,typescriptreact,javascriptreact,tsx,jsx,java,json,yaml', function()
+  add { 'https://github.com/yelog/i18n.nvim' }
+  local original_sig_help = vim.lsp.buf.signature_help
+
+  require('i18n').setup {
+    activation = 'lazy',
+    show_mode = 'both',
+    diagnostic = true,
+    -- Locales to parse; first is the default locale
+    -- Use I18nNextLocale command to switch the default locale in real time
+    locales = { 'en', 'vn', 'jp', 'zh', 'en_US', 'vi_VN', 'ja_JP', 'zh_CN' },
+    usage = {
+      -- Popup provider used when choosing between multiple usage locations
+      -- Available values: 'vim_ui', 'telescope', 'fzf-lua', 'snacks'
+      popup_type = 'vim_ui',
+      notify_no_key = false,
+      max_file_size = 0, -- 0 = no limit
+      scan_on_startup = true,
+    },
+    func_pattern = { 't', '$t' },
+    -- sources can be string or table { pattern = "...", prefix = "..." }
+    -- Project-level configuration files
+    -- .i18nrc.json
+    -- i18n.config.json
+    -- .i18nrc.lua
+    sources = {
+      'src/locales/{locales}.json',
+      'src/lang/{locales}.json',
+      -- { pattern = "src/locales/lang/{locales}/{module}.ts",            prefix = "{module}." },
+      -- { pattern = "src/views/{bu}/locales/lang/{locales}/{module}.ts", prefix = "{bu}.{module}." },
+    },
+    i18n_keys = {
+      popup_type = 'vim_ui',
+    },
+
+    -- Enable namespace resolution
+    -- false: Disabled, no namespace resolution
+    -- 'auto': Auto-detect framework based on filetype (tsx/jsx → react_i18next, vue → vue_i18n)
+    -- 'react_i18next': Detect useTranslation('namespace') calls in React components
+    -- 'vue_i18n': Detect useI18n({ namespace: '...' }) in Vue components
+    namespace_resolver = 'auto', -- or 'react_i18next', 'vue_i18n', custom function, or table
+    -- Separator between namespace and key
+    namespace_separator = '.', -- set ':' for i18next standard
+  }
+  vim.lsp.buf.signature_help = function(opts)
+    if require('i18n.display').get_key_under_cursor() then
+      require('i18n').show_popup()
+    else
+      opts = vim.tbl_extend('force', opts, {
+        anchor_bias = 'above',
+      })
+      return original_sig_help(opts)
+    end
+  end
+
+  vim.g.changed_sign_helper = true
+  Config.new_autocmd('DirChanged', '*', function()
+    if vim.fn.exists ':I18nReload' == 2 then vim.cmd 'I18nReload' end
+  end, 'Reload i18n on cwd/workspace changed')
+end)
+
+on_event('LspAttach', function()
+  add {
+    'https://github.com/Fildo7525/pretty_hover',
+  }
+  require('pretty_hover').setup {}
+  ---@diagnostic disable-next-line: duplicate-set-field
+  vim.lsp.buf.hover = function(opts)
+    if not pcall(require, 'i18n') then return require('pretty_hover').hover(opts) end
+    if require('i18n.display').get_key_under_cursor() then
+      require('i18n').show_popup()
+      return
+    end
+    require('pretty_hover').hover()
+  end
+end)
+
+on_event('InsertEnter,CmdlineEnter', function()
+  add {
+    'https://github.com/nvim-lua/plenary.nvim',
+    'https://github.com/xzbdmw/colorful-menu.nvim',
+    'https://github.com/Fildo7525/pretty_hover',
+    -- sources
+    'https://github.com/Kaiser-Yang/blink-cmp-git',
+    'https://github.com/disrupted/blink-cmp-conventional-commits',
+    'https://github.com/yelog/i18n.nvim',
+
+    { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range '1.x' },
+  }
+
+  -- local function has_words_before()
+  --   local line, col = (unpack or table.unpack)(vim.api.nvim_win_get_cursor(0))
+  --   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
+  -- end
+
+  -- Check if there is any autopair fastwrap extmarks
+  -- local function has_fastwrap_extmarks(bufnr)
+  --   bufnr = bufnr or 0 -- Default to current buffer
+  --   local fastwarp_exist, fastwarp = pcall(require, 'nvim-autopairs.fastwrap')
+  --   if not fastwarp_exist then return false end
+  --   local line_num = vim.api.nvim_win_get_cursor(0)[1] - 1
+  --   local extmarks = vim.api.nvim_buf_get_extmarks(bufnr, fastwarp.ns_fast_wrap, { line_num, 0 }, { line_num, -1 }, { details = false, limit = 1 })
+  --
+  --   return #extmarks > 0
+  -- end
+
+  ---@type function?, function?
+  local icon_provider, hl_provider
+
+  local function get_kind_icon(CTX)
+    -- Evaluate icon provider
+    if not icon_provider then
+      local _, mini_icons = pcall(require, 'mini.icons')
+      if _G.MiniIcons then
+        icon_provider = function(ctx)
+          local is_specific_color = ctx.kind_hl and ctx.kind_hl:match '^HexColor' ~= nil
+          if ctx.item.source_name == 'LSP' then
+            local icon, hl = mini_icons.get('lsp', ctx.kind or '')
+            if icon then
+              ctx.kind_icon = icon
+              if not is_specific_color then ctx.kind_hl = hl end
+            end
+          elseif ctx.item.source_name == 'Path' then
+            ctx.kind_icon, ctx.kind_hl = mini_icons.get(ctx.kind == 'Folder' and 'directory' or 'file', ctx.label)
+          elseif ctx.item.source_name == 'Snippets' then
+            ctx.kind_icon, ctx.kind_hl = mini_icons.get('lsp', 'snippet')
+          end
+        end
+      end
+      if not icon_provider then
+        local lspkind_avail, lspkind = pcall(require, 'lspkind')
+        if lspkind_avail then
+          icon_provider = function(ctx)
+            if ctx.item.source_name == 'LSP' then
+              local icon = lspkind.symbol_map[ctx.kind]
+              if icon then ctx.kind_icon = icon end
+            elseif ctx.item.source_name == 'Snippets' then
+              local icon = lspkind.symbol_map['Snippet']
+              if icon then ctx.kind_icon = icon end
+            end
+          end
+        end
+      end
+      if not icon_provider then icon_provider = function() end end
+    end
+    -- Evaluate highlight provider
+    if not hl_provider then
+      local highlight_colors_avail, highlight_colors = pcall(require, 'nvim-highlight-colors')
+      if highlight_colors_avail then
+        local kinds
+        hl_provider = function(ctx)
+          if not kinds then kinds = require('blink.cmp.types').CompletionItemKind end
+          if ctx.item.kind == kinds.Color then
+            local doc = vim.tbl_get(ctx, 'item', 'documentation')
+            if doc then
+              local color_item = highlight_colors_avail and highlight_colors.format(doc, { kind = kinds[kinds.Color] })
+              if color_item and color_item.abbr_hl_group then
+                if color_item.abbr then ctx.kind_icon = color_item.abbr end
+                ctx.kind_hl = color_item.abbr_hl_group
+              end
+            end
+          end
+        end
+      end
+      if not hl_provider then hl_provider = function() end end
+    end
+    -- Call resolved providers
+    icon_provider(CTX)
+    hl_provider(CTX)
+    -- Return text and highlight information
+    return { text = CTX.kind_icon .. CTX.icon_gap, highlight = CTX.kind_hl }
+  end
+
+  require('blink.cmp').setup {
+    enabled = function()
+      local dap_prompt = pcall(require, 'cmp-dap') -- add interoperability with cmp-dap
+        and vim.tbl_contains({ 'dap-repl', 'dapui_watches', 'dapui_hover' }, vim.bo.filetype)
+      if vim.bo.buftype == 'prompt' and not dap_prompt then return false end
+      return vim.b.completion ~= false
+    end,
+    sources = {
+      default = { 'lsp', 'path', 'snippets', 'buffer', 'i18n', 'conventional_commits', 'git', 'lazydev' },
+      providers = {
+        lazydev = {
+          name = 'LazyDev',
+          module = 'lazydev.integrations.blink',
+          -- make lazydev completions top priority (see `:h blink.cmp`)
+          score_offset = 100,
+        },
+        git = {
+          module = 'blink-cmp-git',
+          name = 'Git',
+          -- only enable this source when filetype is gitcommit, markdown, or 'octo'
+          enabled = function() return vim.tbl_contains({ 'octo', 'gitcommit', 'markdown' }, vim.bo.filetype) end,
+          --- @module 'blink-cmp-git'
+          --- @type blink-cmp-git.Options
+          opts = {
+            commit = {
+              -- You may want to customize when it should be enabled
+              -- The default will enable this when `git` is found and `cwd` is in a git repository
+              -- enable = function() end
+              -- You may want to change the triggers
+              -- triggers = { ':' },
+            },
+            git_centers = {
+              github = {
+                -- Those below have the same fields with `commit`
+                -- Those features will be enabled when `git` and `gh` (or `curl`) are found and
+                -- remote contains `github.com`
+                -- issue = {
+                --     get_token = function() return '' end,
+                -- },
+                -- pull_request = {
+                --     get_token = function() return '' end,
+                -- },
+                -- mention = {
+                --     get_token = function() return '' end,
+                --     get_documentation = function(item)
+                --         local default = require('blink-cmp-git.default.github')
+                --             .mention.get_documentation(item)
+                --         default.get_token = function() return '' end
+                --         return default
+                --     end
+                -- }
+              },
+              gitlab = {
+                -- Those below have the same fields with `commit`
+                -- Those features will be enabled when `git` and `glab` (or `curl`) are found and
+                -- remote contains `gitlab.com`
+                -- issue = {
+                --     get_token = function() return '' end,
+                -- },
+                -- NOTE:
+                -- Even for `gitlab`, you should use `pull_request` rather than`merge_request`
+                -- pull_request = {
+                --     get_token = function() return '' end,
+                -- },
+                -- mention = {
+                --     get_token = function() return '' end,
+                --     get_documentation = function(item)
+                --         local default = require('blink-cmp-git.default.gitlab')
+                --            .mention.get_documentation(item)
+                --         default.get_token = function() return '' end
+                --         return default
+                --     end
+                -- }
+              },
+            },
+          },
+        },
+        conventional_commits = {
+          name = 'Conventional Commits',
+          module = 'blink-cmp-conventional-commits',
+          enabled = function() return vim.bo.filetype == 'gitcommit' end,
+          ---@module 'blink-cmp-conventional-commits'
+          ---@type blink-cmp-conventional-commits.Options
+          opts = {}, -- none so far
+        },
+        -- Path completion from cwd instead of current buffer's directory
+        path = {
+          opts = {
+            get_cwd = function(_) return vim.fn.getcwd() end,
+          },
+        },
+        i18n = {
+          name = 'i18n',
+          module = 'i18n.integration.blink_source',
+        },
+      },
+    },
+    keymap = {
+      ['<C-Space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+      ['<Up>'] = { 'select_prev', 'fallback' },
+      ['<Down>'] = { 'select_next', 'fallback' },
+      ['<C-N>'] = { 'select_next', 'show' },
+      ['<C-P>'] = { 'select_prev', 'show' },
+      ['<C-J>'] = { 'select_next', 'fallback' },
+      ['<C-K>'] = { 'select_prev', 'fallback' },
+      ['<C-U>'] = { 'scroll_documentation_up', 'fallback' },
+      ['<C-D>'] = { 'scroll_documentation_down', 'fallback' },
+      ['<C-e>'] = { 'hide', 'fallback' },
+      -- recommended, as the default keymap will only show and select the next item
+      -- NOTE: use mini.keymap instead
+      -- ['<Tab>'] = {
+      --   -- function(cmp)
+      --   --   if cmp.is_ghost_text_visible() and not cmp.is_menu_visible() then return cmp.accept() end
+      --   -- end,
+      --   'show_and_insert',
+      --   'select_next',
+      -- },
+      -- ['<CR>'] = {
+      --   function(cmp)
+      --     if cmp.is_ghost_text_visible() and not cmp.is_menu_visible() then return cmp.accept() end
+      --   end,
+      --   'accept_and_enter',
+      --   'fallback',
+      -- },
+      ['<Left>'] = {},
+      ['<Right>'] = {},
+    },
+    fuzzy = { implementation = 'prefer_rust' },
+    completion = {
+      trigger = {
+        show_on_backspace_in_keyword = true,
+        show_on_insert = true,
+      },
+      ghost_text = {
+        enabled = true,
+        show_with_menu = true,
+      },
+      list = { selection = { preselect = false, auto_insert = true } },
+      menu = {
+        auto_show = true,
+        -- NOTE: Fix autopairs fastwrap overlapping menu
+        -- auto_show = function(_, _) return not has_fastwrap_extmarks() end,
+        winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None',
+        draw = {
+          treesitter = { 'lsp' },
+          components = {
+            kind_icon = {
+              text = function(ctx) return get_kind_icon(ctx).text end,
+              highlight = function(ctx) return get_kind_icon(ctx).highlight end,
+            },
+            label = {
+              text = function(ctx) return require('colorful-menu').blink_components_text(ctx) end,
+              highlight = function(ctx) return require('colorful-menu').blink_components_highlight(ctx) end,
+            },
+            source_name = {
+              width = { max = 100 },
+              text = function(ctx) return '(' .. ctx.source_name .. ')' end,
+              highlight = 'BlinkCmpSource',
+            },
+          },
+          columns = {
+            { 'kind_icon' },
+            { 'label', gap = 1 },
+            { 'source_name' },
+          },
+        },
+        direction_priority = function()
+          local ctx = require('blink.cmp').get_context()
+          local item = require('blink.cmp').get_selected_item()
+          if ctx == nil or item == nil then return { 's', 'n' } end
+
+          local item_text = item.textEdit ~= nil and item.textEdit.newText or item.insertText or item.label
+          local is_multi_line = item_text:find '\n' ~= nil
+
+          -- after showing the menu upwards, we want to maintain that direction
+          -- until we re-open the menu, so store the context id in a global variable
+          if is_multi_line or vim.g.blink_cmp_upwards_ctx_id == ctx.id then
+            vim.g.blink_cmp_upwards_ctx_id = ctx.id
+            return { 'n', 's' }
+          end
+          return { 's', 'n' }
+        end,
+      },
+      accept = {
+        auto_brackets = { enabled = true },
+      },
+      documentation = {
+        draw = function(opts)
+          if opts.item and opts.item.documentation and opts.item.documentation.value then
+            local out = require('pretty_hover.parser').parse(opts.item.documentation.value)
+            opts.item.documentation.value = out:string()
+          end
+
+          opts.default_implementation(opts)
+        end,
+        auto_show = true,
+        auto_show_delay_ms = 0,
+        window = {
+          winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None',
+        },
+      },
+    },
+    cmdline = {
+      -- NOTE: use mini.cmdline instead
+      enabled = false,
+      keymap = {
+        ['<End>'] = { 'hide', 'fallback' },
+      },
+      completion = {
+        ghost_text = { enabled = false },
+        menu = {
+          auto_show = true,
+          draw = {
+            columns = {
+              { 'kind_icon' },
+              { 'label', gap = 1 },
+            },
+          },
+        },
+        list = {
+          selection = {
+            preselect = false,
+            auto_insert = true,
+          },
+        },
+      },
+    },
+    -- NOTE: Use default nvim stead
+    signature = {
+      enabled = false,
+      window = {
+        winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder',
+      },
+    },
+  }
+end)
+
+later(function()
+  add { 'https://github.com/HakonHarnes/img-clip.nvim' }
+  require('img-clip').setup {
+    default = {
+      prompt_for_file_name = false,
+      drag_and_drop = {
+        insert_mode = true,
+      },
+      use_absolute_path = vim.fn.has 'win32' == 1, -- default to absolute path for windows users
+    },
+    filetypes = {
+      codecompanion = {
+        prompt_for_file_name = false,
+        template = '[Image]($FILE_PATH)',
+        use_absolute_path = true,
+      },
+    },
+  }
+  vim.keymap.set('n', '<Leader>P', '<CMD>PasteImage<CR>', { desc = 'Paste image' })
 end)

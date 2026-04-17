@@ -100,14 +100,14 @@ local new_scratch_buffer = function()
   vim.api.nvim_win_set_buf(0, vim.api.nvim_create_buf(true, true))
 end
 
-nmap_leader('bp', '<Cmd>b#<CR>', 'Switch to [p]revious buffer')
-nmap_leader('bd', '<Cmd>lua MiniBufremove.delete()<CR>', 'Close/[d]elete buffer')
+nmap_leader('bp', '<Cmd>b#<CR>', 'Switch to previous buffer')
+nmap_leader('bd', '<Cmd>lua MiniBufremove.delete()<CR>', 'Close/Delete buffer')
 -- nmap_leader('bD', '<Cmd>lua MiniBufremove.delete(0      , true)<CR>', '[C]lose buffer')
-nmap_leader('bs', new_scratch_buffer, 'new [s]cratch buffer')
-nmap_leader('bn', '<Cmd>enew<CR>', '[n]ew buffer')
-nmap_leader('bw', '<Cmd>lua MiniBufremove.wipeout()<CR>', '[w]ipeout')
+nmap_leader('bs', new_scratch_buffer, 'New scratch buffer')
+nmap_leader('bn', '<Cmd>enew<CR>', 'New buffer')
+nmap_leader('bw', '<Cmd>lua MiniBufremove.wipeout()<CR>', 'Wipeout')
 -- nmap_leader('bW', '<Cmd>lua MiniBufremove.wipeout(0     , true)<CR>', '[W]ipeout!')
-nmap_leader('c', '<Cmd>lua MiniBufremove.delete()<CR>', '[c]lose/Celete buffer')
+nmap_leader('c', '<Cmd>lua MiniBufremove.delete()<CR>', 'Close/Delete buffer')
 
 -- e is for 'Explore' and 'Edit'. Common usage:
 -- - `<Leader>ed` - open explorer at current working directory
