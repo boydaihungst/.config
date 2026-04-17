@@ -179,6 +179,35 @@ now(function()
   require('mini.notify').setup {
     content = {
       format = function(notif) return string.format('%s', notif.msg) end,
+      -- Show more recent notifications first
+      sort = function(notif_arr)
+        table.sort(notif_arr, function(a, b) return a.ts_update > b.ts_update end)
+        return notif_arr
+      end,
+    },
+    -- Notifications about LSP progress
+    lsp_progress = {
+      -- Whether to enable showing.
+      -- Prefer fidget
+      enable = false,
+
+      -- Notification level
+      level = 'INFO',
+
+      -- Duration (in ms) of how long last message should be shown
+      duration_last = 1000,
+    },
+
+    -- Window options
+    window = {
+      -- Floating window config
+      config = {},
+
+      -- Maximum window width as share (between 0 and 1) of available columns
+      max_width_share = 0.382,
+
+      -- Value of 'winblend' option
+      winblend = 25,
     },
   }
 end)
@@ -198,13 +227,13 @@ now(function()
     autowrite = true,
 
     -- Directory where global sessions are stored (use `''` to disable)
-    directory = vim.fs.joinpath(vim.fn.stdpath 'cache', 'session'), --<"session" subdir of user data directory from |stdpath()|>,
+    directory = vim.fs.joinpath(vim.fn.stdpath 'data', 'session'), --<"session" subdir of user data directory from |stdpath()|>,
 
     -- File for local session (use `''` to disable)
     file = 'Session.vim',
 
     -- Whether to force possibly harmful actions (meaning depends on function)
-    force = { read = false, write = true, delete = false },
+    force = { read = false, write = true, delete = true },
 
     -- Hook functions for actions. Default `nil` means 'do nothing'.
     -- Takes table with active session data as argument.
@@ -232,8 +261,11 @@ later(function()
   end, 'Allow to save global session only after opened a buffer')
 
   Config.new_autocmd('VimLeavePre', nil, function()
+    local global_session_path = vim.fs.joinpath(MiniSessions.config.directory, global_session_name)
     -- Save local session first
-    if vim.v.this_session ~= '' and vim.v.this_session ~= global_session_name and MiniSessions then MiniSessions.write(vim.v.this_session, { force = true }) end
+    if vim.v.this_session ~= nil and vim.v.this_session ~= '' and vim.v.this_session ~= global_session_path and MiniSessions then
+      MiniSessions.write(vim.v.this_session, { force = true })
+    end
     -- This saves to your global directory with the name 'latest'
     if vim.g.allow_save_global_session then MiniSessions.write(global_session_name, { force = true }) end
   end, 'Auto save global session before leaving')
@@ -437,8 +469,17 @@ now(function()
         local file_icon = H.get_icon ~= nil and vim.bo.filetype ~= '' and H.get_icon(vim.bo.filetype) or ''
         local git = MiniStatusline.section_git { trunc_width = 40 }
         local diff = vim.b.minidiff_summary_string_obj or MiniStatusline.section_diff { trunc_width = 75 }
-        local diagnostics = MiniStatusline.section_diagnostics { trunc_width = 75 }
-        local lsp = MiniStatusline.section_lsp { trunc_width = 75 }
+        local diagnostics = MiniStatusline.section_diagnostics {
+          trunc_width = 75,
+          icon = '',
+          signs = {
+            ERROR = Config.get_custom_icon 'DiagnosticError',
+            HINT = Config.get_custom_icon 'DiagnosticHint',
+            WARN = Config.get_custom_icon 'DiagnosticWarn',
+            INFO = Config.get_custom_icon 'DiagnosticInfo',
+          },
+        }
+        local lsp = MiniStatusline.section_lsp { trunc_width = 75, icon = Config.get_custom_icon 'ActiveLSP' }
         local filename = MiniStatusline.section_filename { trunc_width = 140 }
         local location = MiniStatusline.section_location { trunc_width = 75 }
         local search = MiniStatusline.section_searchcount { trunc_width = 75 }
@@ -461,9 +502,28 @@ now(function()
           table.insert(groups, { hl = 'MiniStatuslineDevinfo', strings = { ' ', diff } })
         end
 
+        table.insert(groups, '%=')
+        if diagnostics then
+          local segments = vim.split(diagnostics, '%s+', { trimempty = true })
+          for _, segment in ipairs(segments) do
+            local count = segment:match '%d+'
+            local icon = segment:match '%D+'
+            if icon == Config.get_custom_icon 'DiagnosticError' then
+              table.insert(groups, { hl = 'DiagnosticError', strings = { ' ', tostring(icon), ' ', tostring(count) } })
+            end
+            if icon == Config.get_custom_icon 'DiagnosticInfo' then
+              table.insert(groups, { hl = 'DiagnosticInfo', strings = { ' ', tostring(icon), ' ', tostring(count) } })
+            end
+            if icon == Config.get_custom_icon 'DiagnosticHint' then
+              table.insert(groups, { hl = 'DiagnosticHint', strings = { ' ', tostring(icon), ' ', tostring(count) } })
+            end
+            if icon == Config.get_custom_icon 'DiagnosticWarn' then
+              table.insert(groups, { hl = 'DiagnosticWarn', strings = { ' ', tostring(icon), ' ', tostring(count) } })
+            end
+          end
+        end
         local right_side = {
-          '%=',
-          { hl = 'MiniStatuslineDevinfo', strings = { ' ', diagnostics, ' ', lsp, ' ' } },
+          { hl = 'MiniStatuslineDevinfo', strings = { ' ', lsp, ' ' } },
           { hl = 'MiniStatuslineSearch', strings = search ~= '' and { ' ', search, ' ' } or {} },
           { hl = 'MiniStatuslineLocation', strings = { ' ', location } },
         }
@@ -792,13 +852,18 @@ now_if_args(function()
   -- - `g?` to see available bookmarks
   local home = vim.fn.expand '~'
   local add_bookmarks = function()
-    MiniFiles.set_bookmark('c', vim.fn.stdpath 'config', { desc = '~/.config' })
+    local function setbookmark(key, path, desc)
+      local p = path
+      if vim.is_callable(path) then p = path() end
+      if vim.uv.fs_stat(p) then MiniFiles.set_bookmark(key, p, { desc }) end
+    end
+    setbookmark('c', vim.fn.stdpath 'config', { desc = '~/.config' })
     local vimpack_plugins = vim.fs.joinpath(vim.fn.stdpath 'data', 'site', 'pack', 'core', 'opt')
-    MiniFiles.set_bookmark('p', vimpack_plugins, { desc = 'Nvim Plugins' })
-    MiniFiles.set_bookmark('w', vim.fn.getcwd, { desc = 'CWD' })
-    MiniFiles.set_bookmark('l', vim.fs.joinpath(home, '.local', 'share'), { desc = '~/.local/share/' })
-    MiniFiles.set_bookmark('h', home, { desc = '~/' })
-    MiniFiles.set_bookmark('g', vim.fs.joinpath(home, 'git'), { desc = '~/git/' })
+    setbookmark('p', vimpack_plugins, { desc = 'Nvim Plugins' })
+    setbookmark('w', vim.fn.getcwd, { desc = 'CWD' })
+    setbookmark('l', vim.fs.joinpath(home, '.local', 'share'), { desc = '~/.local/share/' })
+    setbookmark('h', home, { desc = '~/' })
+    setbookmark('g', vim.fs.joinpath(home, 'git'), { desc = '~/git/' })
   end
 
   -- ╭─────────────────────────────────────────────────────────╮
@@ -1083,7 +1148,7 @@ later(function()
     quickfix = { suffix = 'q', options = {} },
     treesitter = { suffix = 't', options = {} },
     window = { suffix = 'w', options = {} },
-    yank = { suffix = 'y', options = {} },
+    yank = { suffix = '', options = {} },
   }
 end)
 
@@ -1795,7 +1860,7 @@ later(function()
 
       delete_char = '<BS>',
       delete_char_right = '<Del>',
-      delete_left = '<C-u>',
+      delete_left = '',
       delete_word = '<C-w>',
 
       mark = '<C-x>',
@@ -1805,20 +1870,32 @@ later(function()
       move_start = '<C-g>',
       move_up = '<S-Tab>',
 
-      paste = '<C-r>',
+      paste = '',
 
       refine = '<C-Space>',
       refine_marked = '<M-Space>',
 
-      scroll_down = '<C-f>',
-      scroll_up = '<C-b>',
+      scroll_down = '<C-d>',
+      scroll_up = '<C-u>',
       scroll_left = '<C-h>',
       scroll_right = '<C-l>',
 
       stop = '<Esc>',
 
       toggle_info = '<F1>',
-      toggle_preview = '<C-p>',
+      toggle_preview = '<C-S-p>',
+      -- Custom action + keymaps
+      paste_system = {
+        char = '<C-r>',
+        func = function()
+          -- Get text from system clipboard and clean it (remove newlines for the picker)
+          local content = vim.fn.getreg('+'):gsub('[\n\r]', '')
+          content = vim.trim(content)
+          -- Insert it into the current picker query
+          local keys = vim.api.nvim_replace_termcodes(content, true, false, true)
+          vim.api.nvim_feedkeys(keys, 'n', true)
+        end,
+      },
     },
     -- General options
     options = {
@@ -1837,13 +1914,19 @@ later(function()
         local status_space = (vim.o.laststatus > 0) and 1 or 0
         local available_height = total_height - curr_screen_row - cmd_space - status_space
         local final_height = math.max(available_height, 1)
+        local half_vh = math.floor(vim.o.lines / 2)
+        if final_height < half_vh then
+          curr_screen_row = curr_screen_row + final_height - half_vh
+          final_height = half_vh
+        end
+
         return {
           relative = 'editor',
           anchor = 'NW',
           row = curr_screen_row,
           col = 2,
           width = vim.o.columns - 6,
-          height = final_height - 2,
+          height = final_height - (((curr_screen_row + final_height + vim.o.cmdheight) == vim.o.lines) and 3 or 2),
         }
       end,
       -- String to use as caret in prompt

@@ -37,8 +37,35 @@ vim.diagnostic.config {
 vim.cmd 'filetype plugin indent on'
 vim.g.markdown_recommended_style = 0
 vim.g.health = { style = 'float' }
--- Use osc52 on ssh terminals
-vim.g.clipboard = os.getenv 'SSH_TTY' and 'osc52'
+
+-- Use osc52 on ssh terminals. Disable osc 52 pasting, not supported by weztern
+if os.getenv 'SSH_TTY' then
+  vim.o.clipboard = 'unnamedplus'
+  local function paste()
+    return {
+      vim.fn.split(vim.fn.getreg '', '\n'),
+      vim.fn.getregtype '',
+    }
+  end
+
+  vim.g.clipboard = {
+    name = 'OSC 52',
+    copy = {
+      ['+'] = require('vim.ui.clipboard.osc52').copy '+',
+      ['*'] = require('vim.ui.clipboard.osc52').copy '*',
+    },
+    paste = {
+      ['+'] = paste,
+      ['*'] = paste,
+    },
+  }
+else
+  -- Sync clipboard between OS and Neovim.
+  --  Schedule the setting after `UiEnter` because it can increase startup-time.
+  --  Remove this option if you want your OS clipboard to remain independent.
+  --  See `:help 'clipboard'`
+  vim.schedule(function() vim.opt.clipboard = 'unnamed,unnamedplus' end)
+end
 vim.o.foldmethod = 'expr'
 -- Use 25_folding.lua folding
 vim.o.foldexpr = 'v:lua.Folding.foldexpr()'
@@ -46,11 +73,6 @@ vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 vim.opt.mouse = 'h'
 vim.opt.whichwrap = 'lh' -- allow horizontal and vertical movement
--- Sync clipboard between OS and Neovim.
---  Schedule the setting after `UiEnter` because it can increase startup-time.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.schedule(function() vim.opt.clipboard = 'unnamed,unnamedplus' end)
 
 vim.opt.list = true
 -- Tab chars for indentation: check mini.indentscope
@@ -104,6 +126,7 @@ vim.opt.undofile = true -- enable persistent undo
 vim.opt.updatetime = 250 -- length of time to wait before triggering the plugin
 vim.opt.virtualedit = 'block' -- allow going past end of line in visual block mode
 vim.opt.winborder = 'rounded' -- set default winborder to rounded
+vim.opt.pumborder = 'rounded' -- set default popup window border to rounded (e.g: autocomplete)
 vim.opt.wrap = true -- wrapping of lines longer than the width of window
 vim.opt.writebackup = false -- disable making a backup before overwriting a file
 vim.opt.shada = "'100,<50,s10,:1000,/100,@100,h"

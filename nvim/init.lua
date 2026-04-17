@@ -32,7 +32,7 @@ vim.pack.add { 'https://github.com/nvim-mini/mini.nvim', 'https://github.com/nvi
 -- - Others are better used only if the above is not enough for good performance.
 --   Use only if you are comfortable with adding complexity to your config:
 --   - `on_event` - execute once on a first matched event. Like "delay until
---     first Insert mode enter": `on_event('InsertEnter', function() ... end)`.
+--     first Insert mode enter": `on_event('InsertEnter,BufEnter', function() ... end)`.
 --   - `on_filetype` - execute once on a first matched filetype. Like "delay
 --     until first Lua file": `on_filetype('lua', function() ... end)`.
 --
@@ -133,6 +133,9 @@ Config.icons = {
     GitAdd = '',
     GitChange = '',
     GitDelete = '',
+    -- Custom plugins icon
+    GrugFar = '󰛔',
+    CommentBox = '󱋄',
   },
   text_icons = {
     ActiveLSP = 'LSP:',
@@ -214,6 +217,7 @@ function Config.get_custom_icon(kind, padding, no_fallback)
   local icon = icon_pack[kind]
   return icon and icon .. (' '):rep(padding or 0) or ''
 end
+
 --- Get a icon spinner table if it is available in the AstroNvim icons. Icons in format `kind1`,`kind2`, `kind3`, ...
 ---@param kind string The kind of icon to check for sequential entries of
 ---@return string[]|nil spinners # A collected table of spinning icons in sequential order or nil if none exist

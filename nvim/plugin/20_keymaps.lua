@@ -75,7 +75,7 @@ Config.leader_group_which_key = {
   { '<Leader>l', mode = { 'n', 'x' }, group = 'Language' },
   { '<Leader>m', mode = 'n',          group = 'Map' },
   { '<Leader>o', mode = 'n',          group = 'Other' },
-  { '<Leader>s', mode = 'n',          group = 'Session' },
+  { '<Leader>S', mode = 'n',          group = 'Session' },
   { '<Leader>t', mode = 'n',          group = 'Terminal' },
   { '<Leader>v', mode = 'n',          group = 'Visits' },
 }
@@ -236,11 +236,11 @@ nmap_leader('oz', '<Cmd>lua MiniMisc.zoom()<CR>', 'Zoom toggle')
 -- - `<Leader>sR` - restart Neovim preserving current session
 local session_new = 'vim.ui.input({ prompt = "Session name: " }, MiniSessions.write)'
 
-nmap_leader('sd', '<Cmd>lua MiniSessions.select("delete")<CR>', 'Delete')
-nmap_leader('sn', '<Cmd>lua ' .. session_new .. '<CR>', 'New')
-nmap_leader('sr', '<Cmd>lua MiniSessions.select("read")<CR>', 'Read')
-nmap_leader('sR', '<Cmd>lua MiniSessions.restart()<CR>', 'Restart')
-nmap_leader('sw', '<Cmd>lua MiniSessions.write()<CR>', 'Write current')
+nmap_leader('Sd', '<Cmd>lua MiniSessions.select("delete")<CR>', 'Delete')
+nmap_leader('Sn', '<Cmd>lua ' .. session_new .. '<CR>', 'New')
+nmap_leader('Sr', '<Cmd>lua MiniSessions.select("read")<CR>', 'Read')
+nmap_leader('SR', '<Cmd>lua MiniSessions.restart()<CR>', 'Restart')
+nmap_leader('Sw', '<Cmd>lua MiniSessions.write()<CR>', 'Write current')
 
 -- t is for 'Terminal'
 nmap_leader('tT', '<Cmd>horizontal term<CR>', 'Terminal (horizontal)')
