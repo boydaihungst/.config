@@ -23,16 +23,6 @@ vim.filetype.add {
     ['.*%..*proj'] = 'msbuild',
   },
 }
-vim.diagnostic.config {
-  signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = Config.get_custom_icon 'DiagnosticError',
-      [vim.diagnostic.severity.HINT] = Config.get_custom_icon 'DiagnosticHint',
-      [vim.diagnostic.severity.WARN] = Config.get_custom_icon 'DiagnosticWarn',
-      [vim.diagnostic.severity.INFO] = Config.get_custom_icon 'DiagnosticInfo',
-    },
-  },
-}
 
 vim.cmd 'filetype plugin indent on'
 vim.g.markdown_recommended_style = 0
@@ -130,7 +120,10 @@ vim.opt.pumborder = 'rounded' -- set default popup window border to rounded (e.g
 vim.opt.wrap = true -- wrapping of lines longer than the width of window
 vim.opt.writebackup = false -- disable making a backup before overwriting a file
 vim.opt.shada = "'100,<50,s10,:1000,/100,@100,h"
-vim.opt.conceallevel = 2
+vim.opt.conceallevel = 3
+vim.opt.concealcursor = 'c'
 vim.opt.exrc = true
 vim.opt.secure = true
+vim.opt.formatexpr = 'v:lua.require("conform").format()'
+
 -- vim: ts=2 sts=2 sw=2 et

@@ -10,6 +10,4 @@
 --   end,
 -- })
 
-if require('lazy.core.config').plugins['tsc.nvim'] ~= nil then
-  vim.keymap.set({ 'n', 'v' }, '<Leader>lt', '<cmd>TSC<cr>', { desc = 'TSC: Type checking', buffer = 0 })
-end
+if vim.pack.is_available 'tsc.nvim' then vim.keymap.set({ 'n', 'v' }, '<Leader>lt', '<cmd>TSC<cr>', { desc = 'TSC: Type checking', buffer = 0 }) end

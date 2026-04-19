@@ -20,64 +20,21 @@ nmap('[p', '<Cmd>exe "iput! " . v:register<CR>', 'Paste Above')
 nmap(']p', '<Cmd>exe "iput "  . v:register<CR>', 'Paste Below')
 nmap('H', '<Cmd>lua MiniBracketed.buffer("backward")<CR>', 'Prev buffer')
 nmap('L', '<Cmd>lua MiniBracketed.buffer("forward")<CR>', 'Next buffer')
+nmap('gco', 'o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', 'Add Comment Below')
+nmap('gcO', 'O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>', 'Add Comment Above')
 
--- Many general mappings are created by 'mini.basics'. See 'plugin/30_mini.lua'
-
--- stylua: ignore start
--- The next part (until `-- stylua: ignore end`) is aligned manually for easier
--- reading. Consider preserving this or remove `-- stylua` lines to autoformat.
-
--- Leader mappings ============================================================
-
--- Neovim has the concept of a Leader key (see `:h <Leader>`). It is a configurable
--- key that is primarily used for "workflow" mappings (opposed to text editing).
--- Like "open file explorer", "create scratch buffer", "pick from buffers".
---
--- In 'plugin/10_options.lua' <Leader> is set to <Space>, i.e. press <Space>
--- whenever there is a suggestion to press <Leader>.
---
--- This config uses a "two key Leader mappings" approach: first key describes
--- semantic group, second key executes an action. Both keys are usually chosen
--- to create some kind of mnemonic.
--- Example: `<Leader>f` groups "find" type of actions; `<Leader>ff` - find files.
--- Use this section to add Leader mappings in a structural manner.
---
--- Usually if there are global and local kinds of actions, lowercase second key
--- denotes global and uppercase - local.
--- Example: `<Leader>fs` / `<Leader>fS` - find workspace/document LSP symbols.
---
--- Many of the mappings use 'mini.nvim' modules set up in 'plugin/30_mini.lua'.
-
--- Create a global table with information about Leader groups in certain modes.
--- This is used to provide 'mini.clue' with extra clues.
--- Add an entry if you create a new group.
--- Which-key
--- Config.leader_group_clues = {
---   { mode = 'n', keys = '<Leader>b', desc = '+Buffer' },
---   { mode = 'n', keys = '<Leader>e', desc = '+Explore/Edit' },
---   { mode = 'n', keys = '<Leader>f', desc = '+Find' },
---   { mode = 'n', keys = '<Leader>g', desc = '+Git' },
---   { mode = 'n', keys = '<Leader>l', desc = '+Language' },
---   { mode = 'n', keys = '<Leader>m', desc = '+Map' },
---   { mode = 'n', keys = '<Leader>o', desc = '+Other' },
---   { mode = 'n', keys = '<Leader>s', desc = '+Session' },
---   { mode = 'n', keys = '<Leader>t', desc = '+Terminal' },
---   { mode = 'n', keys = '<Leader>v', desc = '+Visits' },
---
---   { mode = 'x', keys = '<Leader>g', desc = '+Git' },
---   { mode = 'x', keys = '<Leader>l', desc = '+Language' },
--- }
+-- Which-key groups
+local get_icon = Config.get_custom_icon
 Config.leader_group_which_key = {
-  { '<Leader>b', mode = 'n',          group = 'Buffer' },
-  { '<Leader>e', mode = 'n',          group = 'Explore/Edit' },
-  { '<Leader>f', mode = 'n',          group = 'Find' },
-  { '<Leader>g', mode = { 'n', 'x' }, group = 'Git' },
-  { '<Leader>l', mode = { 'n', 'x' }, group = 'Language' },
-  { '<Leader>m', mode = 'n',          group = 'Map' },
-  { '<Leader>o', mode = 'n',          group = 'Other' },
-  { '<Leader>S', mode = 'n',          group = 'Session' },
-  { '<Leader>t', mode = 'n',          group = 'Terminal' },
-  { '<Leader>v', mode = 'n',          group = 'Visits' },
+  { '<Leader>b', mode = 'n', group = get_icon('TabBar', 1, true) .. 'Buffer' },
+  { '<Leader>d', mode = 'n', group = get_icon('Debugger', 1, true) .. 'Debugger' },
+  { '<Leader>e', mode = 'n', group = get_icon('FolderTree', 1, true) .. 'Explore/Edit' },
+  { '<Leader>f', mode = 'n', group = get_icon('Search', 1, true) .. 'Find' },
+  { '<Leader>g', mode = { 'n', 'x' }, group = get_icon('Git', 1, true) .. 'Git' },
+  { '<Leader>l', mode = { 'n', 'x' }, group = get_icon('ActiveLSP', 1, true) .. 'Language Tools' },
+  { '<Leader>o', mode = 'n', group = get_icon('OtherTools', 1, true) .. 'Other' },
+  { '<Leader>S', mode = 'n', group = get_icon('Session', 1, true) .. 'Session' },
+  { '<Leader>p', mode = 'n', group = get_icon('Package', 1, true) .. 'Plugins' },
 }
 
 -- Helpers for a more concise `<Leader>` mappings.
@@ -85,113 +42,166 @@ Config.leader_group_which_key = {
 -- an attempt to be more concise yet descriptive. See `:h <Cmd>`.
 -- This approach also doesn't require the underlying commands/functions to exist
 -- during mapping creation: a "lazy loading" approach to improve startup time.
-local nmap_leader = function(suffix, rhs, desc)
-  vim.keymap.set('n', '<Leader>' .. suffix, rhs, { desc = desc })
+local nmap_leader = function(suffixes, rhs, desc)
+  if type(suffixes) == 'table' then
+    for _, s in ipairs(suffixes) do
+      if type(s) == 'string' then vim.keymap.set('n', '<Leader>' .. s, rhs, { desc = desc }) end
+    end
+  else
+    vim.keymap.set('n', '<Leader>' .. suffixes, rhs, { desc = desc })
+  end
 end
-local xmap_leader = function(suffix, rhs, desc)
-  vim.keymap.set('x', '<Leader>' .. suffix, rhs, { desc = desc })
+local xmap_leader = function(suffixes, rhs, desc)
+  if type(suffixes) == 'table' then
+    for s in suffixes do
+      if type(s) == 'string' then vim.keymap.set('x', '<Leader>' .. s, rhs, { desc = desc }) end
+    end
+  else
+    vim.keymap.set('x', '<Leader>' .. suffixes, rhs, { desc = desc })
+  end
 end
 
 -- b is for 'Buffer'. Common usage:
 -- - `<Leader>bs` - create scratch (temporary) buffer
 -- - `<Leader>ba` - navigate to the alternative buffer
 -- - `<Leader>bw` - wipeout (fully delete) current buffer
-local new_scratch_buffer = function()
-  vim.api.nvim_win_set_buf(0, vim.api.nvim_create_buf(true, true))
+local new_scratch_buffer = function() vim.api.nvim_win_set_buf(0, vim.api.nvim_create_buf(true, true)) end
+
+--- Helper function to power a save confirmation prompt before `mini.bufremove`
+---@param func fun(bufnr:integer,force:boolean?) The function to execute if confirmation is passed
+---@param bufnr integer The buffer to close or the current buffer if not provided
+---@param force? boolean Whether or not to foce close the buffers or confirm changes (default: false)
+local function mini_confirm(func, bufnr, force)
+  if not force and vim.bo[bufnr].modified then
+    local bufname = vim.fn.expand '%'
+    local empty = bufname == ''
+    if empty then bufname = 'Untitled' end
+    local confirm = vim.fn.confirm(('Save changes to "%s"?'):format(bufname), '&Yes\n&No\n&Cancel', 1, 'Question')
+    if confirm == 1 then
+      if empty then return end
+      vim.cmd.write()
+    elseif confirm == 2 then
+      force = true
+    else
+      return
+    end
+  end
+  func(bufnr, force)
 end
 
-nmap_leader('bp', '<Cmd>b#<CR>', 'Switch to previous buffer')
-nmap_leader('bd', '<Cmd>lua MiniBufremove.delete()<CR>', 'Close/Delete buffer')
--- nmap_leader('bD', '<Cmd>lua MiniBufremove.delete(0      , true)<CR>', '[C]lose buffer')
+--- Close a given buffer
+---@param bufnr? integer The buffer to close or the current buffer if not provided
+---@param force? boolean Whether or not to foce close the buffers or confirm changes (default: false)
+local function close(bufnr, force)
+  if not bufnr or bufnr == 0 then bufnr = vim.api.nvim_get_current_buf() end
+  if Config.is_valid_buf(bufnr) and #vim.t.bufs > 1 then
+    if vim.pack.is_available 'snacks.nvim' then
+      require('snacks').bufdelete { buf = bufnr, force = force }
+      return
+    end
+    if vim.pack.is_available 'mini.bufremove' then
+      mini_confirm(require('mini.bufremove').delete, bufnr, force)
+      return
+    end
+  end
+  -- fallback
+  local buftype = vim.bo[bufnr].buftype
+  vim.cmd(('silent! %s %d'):format((force or buftype == 'terminal') and 'bdelete!' or 'confirm bdelete', bufnr))
+end
+
+--- Fully wipeout a given buffer
+---@param bufnr? integer The buffer to wipe or the current buffer if not provided
+---@param force? boolean Whether or not to foce close the buffers or confirm changes (default: false)
+local function wipe(bufnr, force)
+  if not bufnr or bufnr == 0 then bufnr = vim.api.nvim_get_current_buf() end
+  if Config.is_valid_buf(bufnr) and #vim.t.bufs > 1 then
+    if vim.pack.is_available 'snacks.nvim' then return require('snacks').bufdelete { buf = bufnr, force = force, wipe = true } end
+    if vim.pack.is_available 'mini.bufremove' then return mini_confirm(require('mini.bufremove').wipeout, bufnr, force) end
+  end
+  -- fallback
+  local buftype = vim.bo[bufnr].buftype
+  vim.cmd(('silent! %s %d'):format((force or buftype == 'terminal') and 'bwipeout!' or 'confirm bwipeout', bufnr))
+end
+
+--- Close all buffers
+---@param keep_current? boolean Whether or not to keep the current buffer (default: false)
+---@param force? boolean Whether or not to foce close the buffers or confirm changes (default: false)
+local function close_all(keep_current, force)
+  if keep_current == nil then keep_current = false end
+  local current = vim.api.nvim_get_current_buf()
+  for _, bufnr in ipairs(vim.t.bufs) do
+    if not keep_current or bufnr ~= current then close(bufnr, force) end
+  end
+end
+
+--- Close buffers to the left of the current buffer
+---@param force? boolean Whether or not to foce close the buffers or confirm changes (default: false)
+local function close_left(force)
+  local current = vim.api.nvim_get_current_buf()
+  for _, bufnr in ipairs(vim.t.bufs) do
+    if bufnr == current then break end
+    close(bufnr, force)
+  end
+end
+
+--- Close buffers to the right of the current buffer
+---@param force? boolean Whether or not to foce close the buffers or confirm changes (default: false)
+local function close_right(force)
+  local current = vim.api.nvim_get_current_buf()
+  local after_current = false
+  for _, bufnr in ipairs(vim.t.bufs) do
+    if after_current then close(bufnr, force) end
+    if bufnr == current then after_current = true end
+  end
+end
+
+nmap_leader('bp', '<Cmd>b#<CR>', 'Prev buffer')
+nmap_leader('bd', close, 'Close current buffer')
+nmap_leader('bc', function() close_all(true) end, 'Close all buffer except current')
+nmap_leader('bC', close_all, 'Close all buffer')
+nmap_leader('bh', close_left, 'Close all left buffers')
+nmap_leader('bl', close_right, 'Close all right buffers')
 nmap_leader('bs', new_scratch_buffer, 'New scratch buffer')
 nmap_leader('bn', '<Cmd>enew<CR>', 'New buffer')
-nmap_leader('bw', '<Cmd>lua MiniBufremove.wipeout()<CR>', 'Wipeout')
--- nmap_leader('bW', '<Cmd>lua MiniBufremove.wipeout(0     , true)<CR>', '[W]ipeout!')
-nmap_leader('c', '<Cmd>lua MiniBufremove.delete()<CR>', 'Close/Delete buffer')
+nmap_leader('bw', wipe, 'Wipeout')
+nmap_leader('c', close, 'Close/Delete buffer')
+
+nmap_leader('pu', '<Cmd>lua vim.pack.update()<CR>', 'Plugins Update')
+nmap_leader('pm', '<Cmd>Mason<CR>', 'Mason GUI')
+nmap_leader('pt', '<Cmd>TSUpdate<CR>', 'Treesitter Update')
+vim.keymap.set({ 'i', 's' }, '<C-S>', function() vim.lsp.buf.signature_help() end, { desc = 'vim.lsp.buf.signature_help()' })
 
 -- e is for 'Explore' and 'Edit'. Common usage:
 -- - `<Leader>ed` - open explorer at current working directory
 -- - `<Leader>ef` - open directory of current file (needs to be present on disk)
 -- - `<Leader>ei` - edit 'init.lua'
 -- - All mappings that use `edit_plugin_file` - edit 'plugin/' config files
-local edit_plugin_file = function(filename)
-  return string.format('<Cmd>edit %s/plugin/%s<CR>', vim.fn.stdpath('config'), filename)
-end
 local explore_at_file = '<Cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>'
-local explore_quickfix = function()
-  vim.cmd(vim.fn.getqflist({ winid = true }).winid ~= 0 and 'cclose' or 'copen')
-end
-local explore_locations = function()
-  vim.cmd(vim.fn.getloclist(0, { winid = true }).winid ~= 0 and 'lclose' or 'lopen')
-end
+local explore_quickfix = function() vim.cmd(vim.fn.getqflist({ winid = true }).winid ~= 0 and 'cclose' or 'copen') end
+local explore_locations = function() vim.cmd(vim.fn.getloclist(0, { winid = true }).winid ~= 0 and 'lclose' or 'lopen') end
 
 nmap_leader('ed', '<Cmd>lua MiniFiles.open()<CR>', 'Directory')
 nmap_leader('ef', explore_at_file, 'File directory')
-nmap_leader('ei', '<Cmd>edit $MYVIMRC<CR>', 'init.lua')
-nmap_leader('ek', edit_plugin_file('20_keymaps.lua'), 'Keymaps config')
-nmap_leader('em', edit_plugin_file('30_mini.lua'), 'MINI config')
-nmap_leader('en', '<Cmd>lua MiniNotify.show_history()<CR>', 'Notifications')
-nmap_leader('eo', edit_plugin_file('10_options.lua'), 'Options config')
-nmap_leader('ep', edit_plugin_file('40_plugins.lua'), 'Plugins config')
+nmap_leader('en', '<Cmd>lua require("snacks").notifier.show_history()<CR>', 'Notifications history')
 nmap_leader('eq', explore_quickfix, 'Quickfix list')
 nmap_leader('eQ', explore_locations, 'Location list')
+nmap('<C-q>', explore_quickfix, 'Quickfix list')
 
--- f is for 'Fuzzy Find'. Common usage:
--- - `<Leader>ff` - find files; for best performance requires `ripgrep`
--- - `<Leader>fg` - find inside files; requires `ripgrep`
--- - `<Leader>fh` - find help tag
--- - `<Leader>fr` - resume latest picker
--- - `<Leader>fv` - all visited paths; requires 'mini.visits'
+-- local git_log_cmd = [[Git log --pretty=format:\%h\ \%as\ │\ \%s --topo-order]]
+-- local git_log_buf_cmd = git_log_cmd .. ' --follow -- %'
+
+-- nmap_leader('ga', '<Cmd>Git diff --cached<CR>', 'Added diff')
+-- nmap_leader('gA', '<Cmd>Git diff --cached -- %<CR>', 'Added diff buffer')
+-- nmap_leader('gc', '<Cmd>Git commit<CR>', 'Commit')
+-- nmap_leader('gC', '<Cmd>Git commit --amend<CR>', 'Commit amend')
+-- nmap_leader('gd', '<Cmd>Git diff<CR>', 'Diff')
+-- nmap_leader('gD', '<Cmd>Git diff -- %<CR>', 'Diff buffer')
+-- nmap_leader('gl', '<Cmd>' .. git_log_cmd .. '<CR>', 'Log')
+-- nmap_leader('gL', '<Cmd>' .. git_log_buf_cmd .. '<CR>', 'Log buffer')
+-- nmap_leader('go', '<Cmd>lua MiniDiff.toggle_overlay()<CR>', 'Toggle overlay')
+-- nmap_leader('gs', '<Cmd>lua MiniGit.show_at_cursor()<CR>', 'Show at cursor')
 --
--- All these use 'mini.pick'. See `:h MiniPick-overview` for an overview.
-local pick_added_hunks_buf = '<Cmd>Pick git_hunks path="%" scope="staged"<CR>'
-local pick_workspace_symbols_live = '<Cmd>Pick lsp scope="workspace_symbol_live"<CR>'
-
-nmap_leader('f/', '<Cmd>Pick history scope="/"<CR>', '"/" history')
-nmap_leader('f:', '<Cmd>Pick history scope=":"<CR>', '":" history')
-nmap_leader('fa', '<Cmd>Pick git_hunks scope="staged"<CR>', 'Added hunks (all)')
-nmap_leader('fA', pick_added_hunks_buf, 'Added hunks (buf)')
-nmap_leader('fb', '<Cmd>Pick buffers<CR>', 'Buffers')
-nmap_leader('fc', '<Cmd>Pick git_commits<CR>', 'Commits (all)')
-nmap_leader('fC', '<Cmd>Pick git_commits path="%"<CR>', 'Commits (buf)')
-nmap_leader('fd', '<Cmd>Pick diagnostic scope="all"<CR>', 'Diagnostic workspace')
-nmap_leader('fD', '<Cmd>Pick diagnostic scope="current"<CR>', 'Diagnostic buffer')
-nmap_leader('ff', '<Cmd>Pick files<CR>', 'Files')
-nmap_leader('fg', '<Cmd>Pick grep_live<CR>', 'Grep live')
-nmap_leader('fG', '<Cmd>Pick grep pattern="<cword>"<CR>', 'Grep current word')
-nmap_leader('fh', '<Cmd>Pick help<CR>', 'Help tags')
-nmap_leader('fH', '<Cmd>Pick hl_groups<CR>', 'Highlight groups')
-nmap_leader('fl', '<Cmd>Pick buf_lines scope="all"<CR>', 'Lines (all)')
-nmap_leader('fL', '<Cmd>Pick buf_lines scope="current"<CR>', 'Lines (buf)')
-nmap_leader('fm', '<Cmd>Pick git_hunks<CR>', 'Modified hunks (all)')
-nmap_leader('fM', '<Cmd>Pick git_hunks path="%"<CR>', 'Modified hunks (buf)')
-nmap_leader('fr', '<Cmd>Pick resume<CR>', 'Resume')
-nmap_leader('fR', '<Cmd>Pick lsp scope="references"<CR>', 'References (LSP)')
-nmap_leader('fs', pick_workspace_symbols_live, 'Symbols workspace (live)')
-nmap_leader('fS', '<Cmd>Pick lsp scope="document_symbol"<CR>', 'Symbols document')
-nmap_leader('fv', '<Cmd>Pick visit_paths cwd=""<CR>', 'Visit paths (all)')
-nmap_leader('fV', '<Cmd>Pick visit_paths<CR>', 'Visit paths (cwd)')
-
--- g is for 'Git'. Common usage:
--- - `<Leader>gs` - show information at cursor
--- - `<Leader>go` - toggle 'mini.diff' overlay to show in-buffer unstaged changes
--- - `<Leader>gd` - show unstaged changes as a patch in separate tabpage
--- - `<Leader>gL` - show Git log of current file
-local git_log_cmd = [[Git log --pretty=format:\%h\ \%as\ │\ \%s --topo-order]]
-local git_log_buf_cmd = git_log_cmd .. ' --follow -- %'
-
-nmap_leader('ga', '<Cmd>Git diff --cached<CR>', 'Added diff')
-nmap_leader('gA', '<Cmd>Git diff --cached -- %<CR>', 'Added diff buffer')
-nmap_leader('gc', '<Cmd>Git commit<CR>', 'Commit')
-nmap_leader('gC', '<Cmd>Git commit --amend<CR>', 'Commit amend')
-nmap_leader('gd', '<Cmd>Git diff<CR>', 'Diff')
-nmap_leader('gD', '<Cmd>Git diff -- %<CR>', 'Diff buffer')
-nmap_leader('gl', '<Cmd>' .. git_log_cmd .. '<CR>', 'Log')
-nmap_leader('gL', '<Cmd>' .. git_log_buf_cmd .. '<CR>', 'Log buffer')
-nmap_leader('go', '<Cmd>lua MiniDiff.toggle_overlay()<CR>', 'Toggle overlay')
-nmap_leader('gs', '<Cmd>lua MiniGit.show_at_cursor()<CR>', 'Show at cursor')
-
-xmap_leader('gs', '<Cmd>lua MiniGit.show_at_cursor()<CR>', 'Show at selection')
+-- xmap_leader('gs', '<Cmd>lua MiniGit.show_at_cursor()<CR>', 'Show at selection')
 
 -- l is for 'Language'. Common usage:
 -- - `<Leader>ld` - show more diagnostic details in a floating window
@@ -201,28 +211,37 @@ xmap_leader('gs', '<Cmd>lua MiniGit.show_at_cursor()<CR>', 'Show at selection')
 -- NOTE: most LSP mappings represent a more structured way of replacing built-in
 -- LSP mappings (like `:h gra` and others). This is needed because `gr` is mapped
 -- by an "replace" operator in 'mini.operators' (which is more commonly used).
-nmap_leader('la', '<Cmd>lua vim.lsp.buf.code_action()<CR>', 'Actions')
-nmap_leader('ld', '<Cmd>lua vim.diagnostic.open_float()<CR>', 'Diagnostic popup')
--- Use conform custom user command to format
-nmap_leader('lf', '<Cmd>Format<CR>', 'Format')
+nmap('gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', 'Code actions')
+nmap_leader('la', '<Cmd>lua vim.lsp.buf.code_action()<CR>', 'Code actions')
+xmap_leader('la', ':<C-U>lua vim.lsp.buf.code_action()<CR>', 'Code actions')
+nmap_leader('lc', '<Cmd>lua vim.lsp.buf.incoming_calls<CR>', 'Incoming calls')
+nmap_leader('lC', '<Cmd>lua vim.lsp.buf.outgoing_calls<CR>', 'Outgoing calls')
+nmap_leader('ld', '<Cmd>Lspsaga show_buf_diagnostics ++float<CR>', 'Diagnostic (buffer)')
+-- Use snacks
+-- nmap_leader('lD', '<Cmd>Lspsaga show_workspace_diagnostics ++float)<CR>', 'Diagnostic (workspace)')
 nmap_leader('li', '<Cmd>lua vim.lsp.buf.implementation()<CR>', 'Implementation')
 nmap_leader('lh', '<Cmd>lua vim.lsp.buf.hover()<CR>', 'Hover')
-nmap_leader('ll', '<Cmd>lua vim.lsp.codelens.run()<CR>', 'Lens')
+nmap_leader('ll', '<Cmd>lua vim.lsp.codelens.run()<CR>', 'CodeLens Run')
 nmap_leader('lr', '<Cmd>lua vim.lsp.buf.rename()<CR>', 'Rename')
+nmap('<F2>', '<Cmd>lua vim.lsp.buf.rename()<CR>', 'Rename')
 nmap_leader('lR', '<Cmd>lua vim.lsp.buf.references()<CR>', 'References')
-nmap_leader('ls', '<Cmd>lua vim.lsp.buf.definition()<CR>', 'Source definition')
 nmap_leader('lt', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', 'Type definition')
+nmap_leader('lT', '<Cmd>lua vim.lsp.buf.typehierarchy("supertypes")<CR>', 'Type hierarchy')
+-- LSP Information Capability flattener
+nmap_leader('lI', '<Cmd>checkhealth vim.lsp<CR>', 'Lsp information')
 
-xmap_leader('lf', '<Cmd>lua require("conform").format()<CR>', 'Format selection')
+nmap('gl', '<Cmd>vim.diagnostic.open_float()<CR>', 'Hover diagnostics')
+nmap(']d', '<Cmd>Lspsaga diagnostic_jump_next<CR>', 'Next diagnostic')
+nmap('[d', '<Cmd>Lspsaga diagnostic_jump_prev<CR>', 'Prev diagnostic')
 
+-- Use conform custom user command to format
+nmap_leader('lf', '<Cmd>Format<CR>', 'Format')
+xmap_leader('lf', '<Cmd>Format<CR>', 'Format selection')
 -- m is for 'Map'. Common usage:
 -- - `<Leader>mt` - toggle map from 'mini.map' (closed by default)
 -- - `<Leader>mf` - focus on the map for fast navigation
 -- - `<Leader>ms` - change map's side (if it covers something underneath)
-nmap_leader('mf', '<Cmd>lua MiniMap.toggle_focus()<CR>', 'Focus (toggle)')
-nmap_leader('mr', '<Cmd>lua MiniMap.refresh()<CR>', 'Refresh')
-nmap_leader('ms', '<Cmd>lua MiniMap.toggle_side()<CR>', 'Side (toggle)')
-nmap_leader('mt', '<Cmd>lua MiniMap.toggle()<CR>', 'Toggle')
+nmap('\\m', '<Cmd>lua MiniMap.toggle()<CR>', 'Toggle scrollbar')
 
 -- o is for 'Other'. Common usage:
 -- - `<Leader>oz` - toggle between "zoomed" and regular view of current buffer
@@ -242,34 +261,10 @@ nmap_leader('Sr', '<Cmd>lua MiniSessions.select("read")<CR>', 'Read')
 nmap_leader('SR', '<Cmd>lua MiniSessions.restart()<CR>', 'Restart')
 nmap_leader('Sw', '<Cmd>lua MiniSessions.write()<CR>', 'Write current')
 
--- t is for 'Terminal'
-nmap_leader('tT', '<Cmd>horizontal term<CR>', 'Terminal (horizontal)')
-nmap_leader('tt', '<Cmd>vertical term<CR>', 'Terminal (vertical)')
-
--- v is for 'Visits'. Common usage:
--- - `<Leader>vv` - add    "core" label to current file.
--- - `<Leader>vV` - remove "core" label to current file.
--- - `<Leader>vc` - pick among all files with "core" label.
-local make_pick_core = function(cwd, desc)
-  return function()
-    local sort_latest = MiniVisits.gen_sort.default({ recency_weight = 1 })
-    local local_opts = { cwd = cwd, filter = 'core', sort = sort_latest }
-    MiniExtra.pickers.visit_paths(local_opts, { source = { name = desc } })
-  end
-end
-
-nmap_leader('vc', make_pick_core('', 'Core visits (all)'), 'Core visits (all)')
-nmap_leader('vC', make_pick_core(nil, 'Core visits (cwd)'), 'Core visits (cwd)')
-nmap_leader('vv', '<Cmd>lua MiniVisits.add_label("core")<CR>', 'Add "core" label')
-nmap_leader('vV', '<Cmd>lua MiniVisits.remove_label("core")<CR>', 'Remove "core" label')
-nmap_leader('vl', '<Cmd>lua MiniVisits.add_label()<CR>', 'Add label')
-nmap_leader('vL', '<Cmd>lua MiniVisits.remove_label()<CR>', 'Remove label')
-
 -- other key maps
-nmap_leader('h',
-  function()
-    vim.cmd('nohlsearch')
-    vim.schedule(function() vim.api.nvim_exec_autocmds("User", { pattern = "Nohlsearch", }) end)
-  end, 'Clear highlight')
+nmap_leader('h', function()
+  vim.cmd 'nohlsearch'
+  vim.schedule(function() vim.api.nvim_exec_autocmds('User', { pattern = 'Nohlsearch' }) end)
+end, 'Clear highlight')
 
 -- stylua: ignore end

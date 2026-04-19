@@ -1,5 +1,19 @@
+_G.STARTUP_TIME = vim.uv.hrtime()
 vim.loader.enable(true)
 vim.lsp.log.set_level(vim.log.levels.ERROR)
+require('vim._core.ui2').enable()
+-- Disable built-in plugins
+local disabled_builtins = {
+  'gzip',
+  'netrwPlugin',
+  'tarPlugin',
+  'tohtml',
+  'zipPlugin',
+}
+
+for _, plugin in ipairs(disabled_builtins) do
+  vim.g['loaded_' .. plugin] = 1
+end
 
 -- Import full environment from login shell
 do
@@ -48,7 +62,7 @@ Config.on_filetype = function(ft, f) misc.safely('filetype:' .. ft, f) end
 
 local default_gr = vim.api.nvim_create_augroup('custom-config', { clear = true })
 Config.new_autocmd = function(event, pattern, callback, desc, gr)
-  local opts = { group = default_gr, pattern = pattern, callback = callback, desc = desc }
+  local opts = { group = gr or default_gr, pattern = pattern, callback = callback, desc = desc }
   return vim.api.nvim_create_autocmd(event, opts)
 end
 
@@ -136,6 +150,17 @@ Config.icons = {
     -- Custom plugins icon
     GrugFar = '󰛔',
     CommentBox = '󱋄',
+    Markdown = '',
+    Neogen = '󰷉',
+    Tests = '󰗇',
+    Watch = '',
+    Octo = '',
+    Overseer = '',
+    VimVisualMulti = '󰵉',
+    FolderTree = '',
+    TabBar = '󰠷',
+    OtherTools = '',
+    CodeCompanion = '󱙺',
   },
   text_icons = {
     ActiveLSP = 'LSP:',
@@ -236,6 +261,66 @@ function Config.extend_hl(name, data)
   vim.api.nvim_set_hl(0, name, new_hl)
 end
 
+local large_buf_cache, buf_size_cache = {}, {} -- cache large buffer detection results and buffer sizes
+Config.default_large_buf_opts = {
+  -- Allow large files to be detected
+  enabled = true,
+  -- Notify when a large file is detected
+  notify = true,
+  -- The maximum size of a file in bytes. 2MB
+  size = 1000 * 2000,
+  -- The maximum number of lines in a file
+  lines = 10000,
+  -- The maximum average line length in a file
+  line_length = 1000,
+}
+
+---@class AstroCoreMaxFile
+---@field enabled (boolean|fun(bufnr: integer, config: AstroCoreMaxFile):boolean|AstroCoreMaxFile?)? whether to enable large file detection
+---@field notify boolean? whether or not to display a notification when a large file is detected
+---@field size integer|false? the number of bytes in a file or false to disable check
+---@field lines integer|false? the number of lines in a file or false to disable check
+---@field line_length integer|false? the average line length in a file or false to disable check
+
+--- Check if a buffer is a large buffer (always returns false if large buffer detection is disabled)
+---@param bufnr? integer the buffer to check the size of, default to current buffer
+---@param large_buf_opts? AstroCoreMaxFile large buffer parameters, default to AstroCore configuration
+---@return boolean is_large whether the buffer is detected as large or not
+function Config.is_large(bufnr, large_buf_opts)
+  if not bufnr then bufnr = vim.api.nvim_get_current_buf() end
+  -- always return not large until buffer is loaded, do not cache decision
+  if not vim.api.nvim_buf_is_loaded(bufnr) then return false end
+  local skip_cache = large_buf_opts ~= nil -- skip cache when called manually with custom options
+  if not large_buf_opts then large_buf_opts = Config.default_large_buf_opts end
+  if large_buf_opts then
+    if skip_cache or large_buf_cache[bufnr] == nil then
+      local enabled = vim.tbl_get(large_buf_opts, 'enabled')
+      if type(enabled) == 'function' then
+        large_buf_opts = vim.deepcopy(large_buf_opts)
+        enabled = enabled(bufnr, large_buf_opts)
+        if type(enabled) == 'table' then large_buf_opts = enabled end
+      end
+      local large_buf = false
+      if vim.F.if_nil(enabled, true) then
+        if not buf_size_cache[bufnr] then
+          local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(bufnr))
+          buf_size_cache[bufnr] = ok and stats and stats.size or 0
+        end
+        local file_size = buf_size_cache[bufnr]
+        local line_count = vim.api.nvim_buf_line_count(bufnr)
+        local too_large = large_buf_opts.size and file_size > large_buf_opts.size
+        local too_long = large_buf_opts.lines and line_count > large_buf_opts.lines
+        local too_wide = large_buf_opts.line_length and (file_size / line_count) - 1 > large_buf_opts.line_length
+        large_buf = too_large or too_long or too_wide or false
+      end
+      if skip_cache then return large_buf end
+      large_buf_cache[bufnr] = large_buf
+    end
+    return large_buf_cache[bufnr]
+  end
+  return false
+end
+
 function vim.tbl_to_set(array)
   local set = {}
   for _, v in ipairs(array) do
@@ -245,4 +330,70 @@ function vim.tbl_to_set(array)
   return set
 end
 
+--- Extend string table with another string table, value is unique
+---@param base table table to extend
+---@param extra table table contain new values
+---@return table
+function vim.tbl_unique_extend(base, extra)
+  local seen = {}
+  local result = {}
+
+  -- Mark existing items as seen
+  for _, v in ipairs(base) do
+    if not seen[v] then
+      table.insert(result, v)
+      seen[v] = true
+    end
+  end
+
+  -- Add new items only if not seen
+  for _, v in ipairs(extra) do
+    if not seen[v] then
+      table.insert(result, v)
+      seen[v] = true
+    end
+  end
+
+  return result
+end
+
+vim.pack.is_available = function(pkg) return pcall(require, pkg) end
+
+vim.diagnostic.config {
+  -- use tiny-inline-diagnostic.nvim instead
+  virtual_lines = false,
+  virtual_text = false,
+
+  update_in_insert = false,
+  float = true,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = Config.get_custom_icon 'DiagnosticError',
+      [vim.diagnostic.severity.HINT] = Config.get_custom_icon 'DiagnosticHint',
+      [vim.diagnostic.severity.WARN] = Config.get_custom_icon 'DiagnosticWarn',
+      [vim.diagnostic.severity.INFO] = Config.get_custom_icon 'DiagnosticInfo',
+    },
+  },
+}
+
+vim.lsp.inlay_hint.enable(false)
+vim.lsp.semantic_tokens.enable(true)
+vim.lsp.linked_editing_range.enable(true)
+vim.lsp.codelens.enable(true)
+vim.lsp.inline_completion.enable(true)
+vim.lsp.on_type_formatting.enable(false)
+vim.lsp.config('*', {
+  capabilities = {
+    textDocument = {
+      -- TODO: python won't work Wait till this PR is merged https://github.com/neovim/neovim/pull/35578
+      -- This is because require('blink.cmp').get_lsp_capabilities() doesn't set the necessary capability for onTypeFormatting.
+      -- onTypeFormatting = { dynamicRegistration = false },
+
+      -- Force enable callHierarchy
+      callHierarchy = {
+        dynamicRegistration = true,
+      },
+    },
+  },
+})
 -- vim: ts=2 sts=2 sw=2 et

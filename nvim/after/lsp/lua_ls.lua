@@ -3,7 +3,10 @@ return {
     Lua = {
       diagnostics = {
         -- disable unused diagnostics
-        disable = { "unused-function" },
+        disable = { 'unused-function' },
+      },
+      codeLens = {
+        enable = true,
       },
     },
   },

@@ -37,44 +37,47 @@ local add = vim.pack.add
 -- - 'plugin/40_plugins.lua' honorable mentions - other good color schemes
 -- now(function() vim.cmd 'colorscheme miniwinter' end)
 now(function()
-  require('mini.base16').setup {
+  require("mini.base16").setup {
     palette = {
       -- UI / Backgrounds
-      base00 = '#080A0E', -- base (background)
-      base01 = '#080A0E', -- tool / float / prompt
-      base02 = '#26343F', -- inactive_base, tab, status bg, visual selection
-      base03 = '#696C76', -- split / subtle fg, inactive line number
-      base04 = '#ADB0BB', -- active line number
-      base05 = '#BCC4C9', -- main text
-      base06 = '#3A3E47', -- dimmed fg for mini jump2d
-      base07 = '#FFFFFF', -- brightest fg (fallback)
+      base00 = "#080A0E", -- base (background)
+      base01 = "#080A0E", -- tool / float / prompt
+      base02 = "#26343F", -- inactive_base, tab, status bg, visual selection
+      base03 = "#3A3E47", -- split / subtle fg, inactive line number
+      base04 = "#ADB0BB", -- active line number
+      base05 = "#BCC4C9", -- main text
+      base06 = "#3A3E47", -- dimmed fg for mini jump2d
+      base07 = "#FFFFFF", -- brightest fg (fallback)
       -- Syntax
-      base08 = '#e55561', -- Red (Variables, XML tags)
-      base09 = '#cc9057', -- Orange (Integers, Booleans)
-      base0A = '#e2b86b', -- Yellow (Classes)
-      base0B = '#8ebd6b', -- Green (Strings)
-      base0C = '#48b0bd', -- Cyan (Regex, Escape chars)
-      base0D = '#4fa6ed', -- Blue (Functions, Methods)
-      base0E = '#bf68d9', -- Purple (Keywords)
-      base0F = '#61afef', -- Accent (Deprecated, HTML tags)
+      base08 = "#e55561", -- Red (Variables, XML tags)
+      base09 = "#cc9057", -- Orange (Integers, Booleans)
+      base0A = "#e2b86b", -- Yellow (Classes)
+      base0B = "#8ebd6b", -- Green (Strings)
+      base0C = "#48b0bd", -- Cyan (Regex, Escape chars)
+      base0D = "#4fa6ed", -- Blue (Functions, Methods)
+      base0E = "#bf68d9", -- Purple (Keywords)
+      base0F = "#61afef", -- Accent (Deprecated, HTML tags)
     },
     use_cterm = true,
     plugins = {
       default = true,
-      ['nvim-mini/mini.nvim'] = true,
+      ["nvim-mini/mini.nvim"] = true,
     },
   }
-  Config.extend_hl('Comment', { italic = true })
-  Config.extend_hl('StatusLine', { bg = 'NONE' })
-  Config.extend_hl('WinSeparator', { bg = '#080A0E', fg = '#BCC4C9' })
-  Config.extend_hl('FloatBorder', { bg = '#080A0E', fg = '#BCC4C9' })
-  Config.extend_hl('Folded', { bg = '#282C34', fg = '#BCC4C9' })
-  Config.extend_hl('Search', { fg = '#111317', bg = '#4fa6ed' })
-  Config.extend_hl('CurSearch', { fg = '#111317', bg = '#5C88B0' })
-  vim.api.nvim_set_hl(0, 'IncSearch', { link = 'Search' })
+  Config.extend_hl("Comment", { italic = true })
+  Config.extend_hl("StatusLine", { bg = "NONE" })
+  Config.extend_hl("WinSeparator", { bg = "#080A0E", fg = "#BCC4C9" })
+  Config.extend_hl("FloatBorder", { bg = "#080A0E", fg = "#BCC4C9" })
+  Config.extend_hl("Folded", { bg = "#282C34", fg = "#BCC4C9" })
+  Config.extend_hl("Search", { fg = "#111317", bg = "#4fa6ed" })
+  Config.extend_hl("CurSearch", { fg = "#111317", bg = "#5C88B0" })
+  vim.api.nvim_set_hl(0, "IncSearch", { link = "Search" })
   -- vim.api.nvim_set_hl(0, 'CurSearch', { link = 'Search' })
-  vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#1E222A' })
-  vim.api.nvim_set_hl(0, 'CursorColumn', { bg = '#1E222A' })
+  vim.api.nvim_set_hl(0, "CursorLine", { bg = "#1E222A" })
+  vim.api.nvim_set_hl(0, "CursorColumn", { bg = "#1E222A" })
+  vim.api.nvim_set_hl(0, "NonText", { fg = "#3A3E47" })
+  vim.api.nvim_set_hl(0, "TreesitterContext", { link = "CursorLine" })
+  vim.api.nvim_set_hl(0, "WinBar", { fg = "#797D87" })
 end)
 
 -- You can try these other 'mini.hues'-based color schemes (uncomment with `gcc`):
@@ -96,7 +99,7 @@ end)
 -- - `:h MiniBasics.config.mappings` - list of created mappings
 -- - `:h MiniBasics.config.autocommands` - list of created autocommands
 now(function()
-  require('mini.basics').setup {
+  require("mini.basics").setup {
     -- Manage options in 'plugin/10_options.lua' for didactic purposes
     options = { basic = false },
     mappings = {
@@ -104,6 +107,8 @@ now(function()
       windows = true,
       -- Create `<M-hjkl>` mappings for navigation in Insert and Command modes
       move_with_alt = true,
+      -- Disable
+      option_toggle_prefix = "",
     },
   }
 end)
@@ -114,53 +119,53 @@ now(function()
   -- Set up to not prefer extension-based icon for some extensions
   local ext3_blocklist = { scm = true, txt = true, yml = true }
   local ext4_blocklist = { json = true, yaml = true }
-  require('mini.icons').setup {
+  require("mini.icons").setup {
     use_file_extension = function(ext, _) return not (ext3_blocklist[ext:sub(-3)] or ext4_blocklist[ext:sub(-4)]) end,
-    style = vim.g.icons_enabled and 'glyph' or 'ascii',
+    style = vim.g.icons_enabled and "glyph" or "ascii",
     filetype = {
-      cs = { glyph = '', hl = 'MiniIconsGreen' },
+      cs = { glyph = "", hl = "MiniIconsGreen" },
     },
     -- VSCode-like icons
     lsp = {
-      array = { glyph = '' },
-      boolean = { glyph = '' },
-      key = { glyph = '' },
-      namespace = { glyph = '' },
-      null = { glyph = '' },
-      number = { glyph = '' },
-      object = { glyph = '' },
-      package = { glyph = '' },
-      string = { glyph = '' },
-      class = { glyph = '' },
-      color = { glyph = '' },
-      constant = { glyph = '' },
-      constructor = { glyph = '' },
-      enum = { glyph = '' },
-      enummember = { glyph = '' },
-      event = { glyph = '' },
-      field = { glyph = '' },
-      file = { glyph = '' },
-      folder = { glyph = '' },
-      ['function'] = { glyph = '' },
-      interface = { glyph = '' },
-      keyword = { glyph = '' },
-      method = { glyph = '' },
-      module = { glyph = '' },
-      operator = { glyph = '' },
-      property = { glyph = '' },
-      reference = { glyph = '' },
-      snippet = { glyph = '' },
-      struct = { glyph = '' },
-      text = { glyph = '' },
-      typeparameter = { glyph = '' },
-      unit = { glyph = '' },
-      value = { glyph = '' },
-      variable = { glyph = '' },
+      array = { glyph = "" },
+      boolean = { glyph = "" },
+      key = { glyph = "" },
+      namespace = { glyph = "" },
+      null = { glyph = "" },
+      number = { glyph = "" },
+      object = { glyph = "" },
+      package = { glyph = "" },
+      string = { glyph = "" },
+      class = { glyph = "" },
+      color = { glyph = "" },
+      constant = { glyph = "" },
+      constructor = { glyph = "" },
+      enum = { glyph = "" },
+      enummember = { glyph = "" },
+      event = { glyph = "" },
+      field = { glyph = "" },
+      file = { glyph = "" },
+      folder = { glyph = "" },
+      ["function"] = { glyph = "" },
+      interface = { glyph = "" },
+      keyword = { glyph = "" },
+      method = { glyph = "" },
+      module = { glyph = "" },
+      operator = { glyph = "" },
+      property = { glyph = "" },
+      reference = { glyph = "" },
+      snippet = { glyph = "" },
+      struct = { glyph = "" },
+      text = { glyph = "" },
+      typeparameter = { glyph = "" },
+      unit = { glyph = "" },
+      value = { glyph = "" },
+      variable = { glyph = "" },
     },
   }
 
   function MiniIcons.get_icon(category, kind)
-    if not category then category = 'default' end
+    if not category then category = "default" end
     return MiniIcons.get(category, kind)
   end
 
@@ -169,58 +174,14 @@ now(function()
   later(MiniIcons.mock_nvim_web_devicons)
 end)
 
--- Notifications provider. Shows all kinds of notifications in the upper right
--- corner (by default). Example usage:
--- - `:h vim.notify()` - show notification (hides automatically)
--- - `<Leader>en` - show notification history
---
--- See also:
--- - `:h MiniNotify.config` for some of common configuration examples.
-now(function()
-  require('mini.notify').setup {
-    content = {
-      format = function(notif) return string.format('%s', notif.msg) end,
-      -- Show more recent notifications first
-      sort = function(notif_arr)
-        table.sort(notif_arr, function(a, b) return a.ts_update > b.ts_update end)
-        return notif_arr
-      end,
-    },
-    -- Notifications about LSP progress
-    lsp_progress = {
-      -- Whether to enable showing.
-      -- Prefer fidget
-      enable = false,
-
-      -- Notification level
-      level = 'INFO',
-
-      -- Duration (in ms) of how long last message should be shown
-      duration_last = 1000,
-    },
-
-    -- Window options
-    window = {
-      -- Floating window config
-      config = {},
-
-      -- Maximum window width as share (between 0 and 1) of available columns
-      max_width_share = 0.382,
-
-      -- Value of 'winblend' option
-      winblend = 25,
-    },
-  }
-end)
-
 -- Session management. A thin wrapper around `:h mksession` that consistently
 -- manages session files. Example usage:
 -- - `<Leader>sn` - start new session
 -- - `<Leader>sr` - read previously started session
 -- - `<Leader>sd` - delete previously started session
-local global_session_name = 'latest'
+local global_session_name = "latest"
 now(function()
-  require('mini.sessions').setup {
+  require("mini.sessions").setup {
     -- Whether to read default session if Neovim opened without file arguments
     autoread = false,
 
@@ -228,10 +189,10 @@ now(function()
     autowrite = true,
 
     -- Directory where global sessions are stored (use `''` to disable)
-    directory = vim.fs.joinpath(vim.fn.stdpath 'data', 'session'), --<"session" subdir of user data directory from |stdpath()|>,
+    directory = vim.fs.joinpath(vim.fn.stdpath "data", "session"), --<"session" subdir of user data directory from |stdpath()|>,
 
     -- File for local session (use `''` to disable)
-    file = 'Session.vim',
+    file = "Session.vim",
 
     -- Whether to force possibly harmful actions (meaning depends on function)
     force = { read = false, write = true, delete = true },
@@ -240,9 +201,41 @@ now(function()
     -- Takes table with active session data as argument.
     hooks = {
       -- Before successful action
-      pre = { read = nil, write = nil, delete = nil },
+      -- pre = { read = nil, write = nil, delete = nil },
       -- After successful action
-      post = { read = nil, write = nil, delete = nil },
+      -- post = { read = nil, write = nil, delete = nil },
+      -- Before saving a session
+      pre = {
+        write = function()
+          -- Terminate and close all dap
+          if vim.pack.is_available "nvim-dap" then
+            require("dap").terminate { all = true }
+            require("dap").close()
+            require("dapui").close()
+          end
+          -- Terminate and close all toggleterm buffers
+          if vim.pack.is_available "toggleterm.nvim" then
+            local terminal_list = require("toggleterm.terminal").get_all()
+            for _, term in ipairs(terminal_list) do
+              term:shutdown() -- Kills the process and closes the buffer
+            end
+          end
+
+          -- Close all unlisted buffers
+          local bufs = vim.api.nvim_list_bufs()
+          for _, bufnr in ipairs(bufs) do
+            if vim.api.nvim_buf_is_valid(bufnr) and not vim.bo[bufnr].buflisted then
+              -- Exclude terminals to prevent breaking plugins like ToggleTerm
+              if vim.bo[bufnr].buftype ~= "terminal" then vim.api.nvim_buf_delete(bufnr, { force = true }) end
+            end
+          end
+        end,
+        read = function() end,
+      },
+      -- After reading a session
+      post = {
+        read = function() end,
+      },
     },
 
     -- Whether to print session path after action
@@ -252,24 +245,29 @@ end)
 
 -- Auto save local and global sessions before leaving
 later(function()
-  Config.new_autocmd('BufEnter', nil, function(args)
+  Config.new_autocmd("BufEnter", nil, function(args)
     local bufnr = args.buf
 
     if vim.bo[bufnr].buflisted then
       vim.g.allow_save_global_session = true
       vim.api.nvim_del_autocmd(args.id)
     end
-  end, 'Allow to save global session only after opened a buffer')
+  end, "Allow to save global session only after opened a buffer")
 
-  Config.new_autocmd('VimLeavePre', nil, function()
+  Config.new_autocmd("VimLeavePre", nil, function()
     local global_session_path = vim.fs.joinpath(MiniSessions.config.directory, global_session_name)
     -- Save local session first
-    if vim.v.this_session ~= nil and vim.v.this_session ~= '' and vim.v.this_session ~= global_session_path and MiniSessions then
+    if
+      vim.v.this_session ~= nil
+      and vim.v.this_session ~= ""
+      and vim.v.this_session ~= global_session_path
+      and MiniSessions
+    then
       MiniSessions.write(vim.v.this_session, { force = true })
     end
     -- This saves to your global directory with the name 'latest'
     if vim.g.allow_save_global_session then MiniSessions.write(global_session_name, { force = true }) end
-  end, 'Auto save global session before leaving')
+  end, "Auto save global session before leaving")
 end)
 
 -- Start screen. This is what is shown when you open Neovim like `nvim`.
@@ -282,7 +280,7 @@ end)
 -- - `:h MiniStarter-example-config` - non-default config examples
 -- - `:h MiniStarter-lifecycle` - how to work with Starter buffer
 now(function()
-  local MiniStarter = require 'mini.starter'
+  local MiniStarter = require "mini.starter"
   MiniStarter.setup {
     -- Whether to open Starter buffer on VimEnter. Not opened if Neovim was
     -- started with intent to show something else.
@@ -292,25 +290,23 @@ now(function()
     -- funny cowsay
     header = function()
       if vim.g.cowsay ~= nil then return vim.g.cowsay end
-      local cmd = 'fortune -s | cowsay'
-      if vim.fn.executable 'cowsay' == 0 and vim.fn.executable 'fortune' == 0 then
-        vim.g.cowsay = ''
+      local cmd = "fortune -s | cowsay"
+      if vim.fn.executable "cowsay" == 0 and vim.fn.executable "fortune" == 0 then
+        vim.g.cowsay = ""
         return vim.g.cowsay
       end
-      if vim.fn.executable 'cowsay' == 0 then cmd = 'fortune -s' end
+      if vim.fn.executable "cowsay" == 0 then cmd = "fortune -s" end
       vim.g.cowsay = vim.fn.system(cmd)
       return vim.g.cowsay
     end,
 
     items = {
       {
-        { name = 'New buffer', action = 'enew', section = 'Actions' },
-        { action = 'Pick explorer', name = 'Explorer', section = 'Actions' },
-        { action = 'Pick files', name = 'Files', section = 'Actions' },
-        { action = 'Pick grep_live', name = 'Grep live', section = 'Actions' },
-        { action = 'Pick help', name = 'Help tags', section = 'Actions' },
-        { action = 'Pick visit_paths', name = 'Visited paths', section = 'Actions' },
-        { name = 'Quit Neovim', action = 'qall', section = 'Actions' },
+        { name = "New buffer", action = "enew", section = "Actions" },
+        { name = "Recents", action = "lua require('snacks').picker.recent()", section = "Actions" },
+        -- { name = 'Files', action = 'lua require("snacks").picker.files()', section = 'Actions' },
+        { name = "Projects", action = 'lua require("snacks").picker.projects()', section = "Actions" },
+        { name = "Quit Neovim", action = "qall", section = "Actions" },
       },
       -- Modified MiniStarter.sections.sessions to always showing "latest" session
       function()
@@ -319,16 +315,18 @@ now(function()
         -- Whether to show recent sessions (instead of alphabetically by name). Default: true.
         local recent = true
 
-        if _G.MiniSessions == nil then return { { name = [['mini.sessions' is not set up]], action = '', section = 'Sessions' } } end
+        if _G.MiniSessions == nil then
+          return { { name = [['mini.sessions' is not set up]], action = "", section = "Sessions" } }
+        end
 
         local items = {}
         for session_name, session in pairs(_G.MiniSessions.detected) do
           if session_name ~= global_session_name then
             table.insert(items, {
               _session = session,
-              name = ('%s%s'):format(session_name, session.type == 'local' and ' (local)' or ''),
+              name = ("%s%s"):format(session_name, session.type == "local" and " (local)" or ""),
               action = ([[lua _G.MiniSessions.read('%s')]]):format(session_name),
-              section = 'Sessions',
+              section = "Sessions",
             })
           end
         end
@@ -336,14 +334,14 @@ now(function()
         local sort_fun
         if recent then
           sort_fun = function(a, b)
-            local a_time = a._session.type == 'local' and math.huge or a._session.modify_time
-            local b_time = b._session.type == 'local' and math.huge or b._session.modify_time
+            local a_time = a._session.type == "local" and math.huge or a._session.modify_time
+            local b_time = b._session.type == "local" and math.huge or b._session.modify_time
             return a_time > b_time
           end
         else
           sort_fun = function(a, b)
-            local a_name = a._session.type == 'local' and '' or a.name
-            local b_name = b._session.type == 'local' and '' or b.name
+            local a_name = a._session.type == "local" and "" or a.name
+            local b_name = b._session.type == "local" and "" or b.name
             return a_name < b_name
           end
         end
@@ -354,9 +352,11 @@ now(function()
           _session = vim.v.this_session,
           name = global_session_name,
           action = ([[lua _G.MiniSessions.read('%s')]]):format(global_session_name),
-          section = 'Sessions',
+          section = "Sessions",
         })
-        if vim.tbl_count(items) == 0 then return { { name = [[There are no detected sessions in 'mini.sessions']], action = '', section = 'Sessions' } } end
+        if vim.tbl_count(items) == 0 then
+          return { { name = [[There are no detected sessions in 'mini.sessions']], action = "", section = "Sessions" } }
+        end
         -- Take only first `n` elements and remove helper fields
         return vim.tbl_map(function(x)
           x._session = nil
@@ -368,10 +368,14 @@ now(function()
     },
     content_hooks = {
       MiniStarter.gen_hook.adding_bullet(),
-      MiniStarter.gen_hook.indexing('all', { 'Builtin actions', 'Sessions', 'Pick', 'Actions' }),
-      MiniStarter.gen_hook.aligning('center', 'center'),
+      MiniStarter.gen_hook.indexing("all", { "Builtin actions", "Sessions", "Pick", "Actions" }),
+      MiniStarter.gen_hook.aligning("center", "center"),
     },
-    footer = nil,
+    footer = function()
+      -- Calculate difference in nanoseconds, convert to milliseconds
+      local total_ms = (vim.uv.hrtime() - _G.STARTUP_TIME) / 1e6
+      return string.format("🚀 Started in %.2f ms", total_ms)
+    end,
     silent = false,
   }
 end)
@@ -388,25 +392,25 @@ end)
 -- - `:h MiniStatusline-example-content` - example of default content. Use it to
 --   configure a custom statusline by setting `config.content.active` function.
 now(function()
-  local MiniStatusline = require 'mini.statusline'
+  local MiniStatusline = require "mini.statusline"
   MiniStatusline.combine_groups = function(groups)
     local parts = vim.tbl_map(function(s)
-      if type(s) == 'string' then return s end
-      if type(s) ~= 'table' then return '' end
+      if type(s) == "string" then return s end
+      if type(s) ~= "table" then return "" end
 
-      local string_arr = vim.tbl_filter(function(x) return type(x) == 'string' and x ~= '' end, s.strings or {})
-      local str = table.concat(string_arr, '')
+      local string_arr = vim.tbl_filter(function(x) return type(x) == "string" and x ~= "" end, s.strings or {})
+      local str = table.concat(string_arr, "")
 
       -- Use previous highlight group
-      if s.hl == nil then return '' .. str .. '' end
+      if s.hl == nil then return "" .. str .. "" end
 
       -- Allow using this highlight group later
-      if str:len() == 0 then return '%#' .. s.hl .. '#' end
+      if str:len() == 0 then return "%#" .. s.hl .. "#" end
 
-      return string.format('%%#%s#%s', s.hl, str)
+      return string.format("%%#%s#%s", s.hl, str)
     end, groups)
 
-    return table.concat(parts, '')
+    return table.concat(parts, "")
   end
   local H = {}
   H.ensure_get_icon = function()
@@ -418,17 +422,17 @@ now(function()
       return
     elseif _G.MiniIcons ~= nil then
       -- Prefer 'mini.icons'
-      H.get_icon = function(filetype) return (_G.MiniIcons.get('filetype', filetype)) end
+      H.get_icon = function(filetype) return (_G.MiniIcons.get("filetype", filetype)) end
     else
       -- Try falling back to 'nvim-web-devicons'
-      local has_devicons, devicons = pcall(require, 'nvim-web-devicons')
+      local has_devicons, devicons = pcall(require, "nvim-web-devicons")
       if not has_devicons then return end
-      H.get_icon = function() return (devicons.get_icon(vim.fn.expand '%:t', nil, { default = true })) end
+      H.get_icon = function() return (devicons.get_icon(vim.fn.expand "%:t", nil, { default = true })) end
     end
   end
   MiniStatusline.section_location = function(args)
     local ln_width = #tostring(vim.api.nvim_buf_line_count(0))
-    if MiniStatusline.is_truncated(args.trunc_width) then return string.format('%%%dl/%%%dv', ln_width, 3) end
+    if MiniStatusline.is_truncated(args.trunc_width) then return string.format("%%%dl/%%%dv", ln_width, 3) end
     -- Use `virtcol()` to correctly handle multi-byte characters
     -- return '%l/%-1L│%1v/%-2{virtcol("$") - 1}'
     return string.format('%%%dl/%%-%dL│%%%dv/%%-%d{virtcol("$") - 1}', ln_width, ln_width, 3, 3)
@@ -436,21 +440,28 @@ now(function()
   local old_mode_hl = {}
   -- Cache these outside the function so they only run ONCE
   MiniStatusline.section_filename = function(args)
-    local pattern = ''
+    local pattern = ""
     -- In terminal, and nofile always show 'filename'
-    if vim.bo.buftype == 'terminal' or vim.bo.buftype == 'nofile' then
-      pattern = '%t'
+    if vim.bo.buftype == "terminal" or vim.bo.buftype == "nofile" then
+      pattern = "%t"
     elseif MiniStatusline.is_truncated(args.trunc_width) then
       -- File name with 'truncate', 'modified', 'readonly' flags
       -- Use relative path if truncated
-      pattern = '%f%m%r'
+      pattern = "%f%m%r"
     else
       -- Use fullpath if not truncated
-      pattern = '%F%m%r'
+      pattern = "%F%m%r"
     end
     -- Show minifiles hidden status
     return pattern
-      .. (((vim.bo.filetype == 'minifiles' or vim.bo.filetype == 'minifiles-help') and (MiniFiles and not MiniFiles.show_hidden)) and ' (hidden)' or '')
+      .. (
+        (
+            (vim.bo.filetype == "minifiles" or vim.bo.filetype == "minifiles-help")
+            and (MiniFiles and not MiniFiles.show_hidden)
+          )
+          and " (hidden)"
+        or ""
+      )
   end
 
   MiniStatusline.setup {
@@ -458,75 +469,81 @@ now(function()
     content = {
       active = function()
         -- Prevent statusline flickering during cmd mode
-        if vim.o.cmdheight <= 0 and vim.fn.getcmdtype() == '/' then return '' end
+        if vim.o.cmdheight <= 0 and vim.fn.getcmdtype() == "/" then return "" end
         local mode, mode_hl = MiniStatusline.section_mode {}
 
         if not old_mode_hl[mode_hl] then
           local hl = Config.get_hlgroup(mode_hl)
-          vim.api.nvim_set_hl(0, mode_hl .. 'Separator1', { fg = hl.bg, bg = '#BCC4C9' })
+          vim.api.nvim_set_hl(0, mode_hl .. "Separator1", { fg = hl.bg, bg = "#BCC4C9" })
           old_mode_hl[mode_hl] = true
         end
         H.ensure_get_icon()
-        local file_icon = H.get_icon ~= nil and vim.bo.filetype ~= '' and H.get_icon(vim.bo.filetype) or ''
+        local file_icon = H.get_icon ~= nil and vim.bo.filetype ~= "" and H.get_icon(vim.bo.filetype) or ""
         local git = MiniStatusline.section_git { trunc_width = 40 }
         local diff = vim.b.minidiff_summary_string_obj or MiniStatusline.section_diff { trunc_width = 75 }
         local diagnostics = MiniStatusline.section_diagnostics {
           trunc_width = 75,
-          icon = '',
+          icon = "",
           signs = {
-            ERROR = Config.get_custom_icon 'DiagnosticError',
-            HINT = Config.get_custom_icon 'DiagnosticHint',
-            WARN = Config.get_custom_icon 'DiagnosticWarn',
-            INFO = Config.get_custom_icon 'DiagnosticInfo',
+            ERROR = Config.get_custom_icon "DiagnosticError",
+            HINT = Config.get_custom_icon "DiagnosticHint",
+            WARN = Config.get_custom_icon "DiagnosticWarn",
+            INFO = Config.get_custom_icon "DiagnosticInfo",
           },
         }
-        local lsp = MiniStatusline.section_lsp { trunc_width = 75, icon = Config.get_custom_icon 'ActiveLSP' }
+        local lsp = MiniStatusline.section_lsp { trunc_width = 75, icon = Config.get_custom_icon "ActiveLSP" }
         local filename = MiniStatusline.section_filename { trunc_width = 140 }
         local location = MiniStatusline.section_location { trunc_width = 75 }
         local search = MiniStatusline.section_searchcount { trunc_width = 75 }
 
         local groups = {
-          { hl = mode_hl, strings = { ' ', Config.get_custom_icon 'VimIcon', ' ', mode } },
-          { hl = mode_hl .. 'Separator1', strings = { '' } },
-          { hl = 'MiniStatuslineModeSeparator2', strings = { '' } },
-          { hl = 'MiniStatuslineFilename', strings = { ' ', file_icon, ' ', filename, ' ' } },
-          { hl = 'MiniStatuslineModeSeparator3', strings = { '' } },
-          '%<',
-          { hl = 'MiniStatuslineGit', strings = { ' ', git } },
+          { hl = mode_hl, strings = { " ", Config.get_custom_icon "VimIcon", " ", mode } },
+          { hl = mode_hl .. "Separator1", strings = { "" } },
+          { hl = "MiniStatuslineModeSeparator2", strings = { "" } },
+          { hl = "MiniStatuslineFilename", strings = { " ", file_icon, " ", filename, " " } },
+          { hl = "MiniStatuslineModeSeparator3", strings = { "" } },
+          "%<",
+          { hl = "MiniStatuslineGit", strings = { " ", git } },
         }
 
-        if type(diff) == 'table' then
-          if diff.add then table.insert(groups, { hl = 'DiffAdd', strings = { ' ', diff.add_icon, ' ', tostring(diff.add) } }) end
-          if diff.change then table.insert(groups, { hl = 'DiffChange', strings = { ' ', diff.change_icon, ' ', tostring(diff.change) } }) end
-          if diff.delete then table.insert(groups, { hl = 'DiffDelete', strings = { ' ', diff.delete_icon, ' ', tostring(diff.delete) } }) end
+        if type(diff) == "table" then
+          if diff.add then
+            table.insert(groups, { hl = "DiffAdd", strings = { " ", diff.add_icon, " ", tostring(diff.add) } })
+          end
+          if diff.change then
+            table.insert(groups, { hl = "DiffChange", strings = { " ", diff.change_icon, " ", tostring(diff.change) } })
+          end
+          if diff.delete then
+            table.insert(groups, { hl = "DiffDelete", strings = { " ", diff.delete_icon, " ", tostring(diff.delete) } })
+          end
         else
-          table.insert(groups, { hl = 'MiniStatuslineDevinfo', strings = { ' ', diff } })
+          table.insert(groups, { hl = "MiniStatuslineDevinfo", strings = { " ", diff } })
         end
 
-        table.insert(groups, '%=')
+        table.insert(groups, "%=")
         if diagnostics then
-          local segments = vim.split(diagnostics, '%s+', { trimempty = true })
+          local segments = vim.split(diagnostics, "%s+", { trimempty = true })
           for _, segment in ipairs(segments) do
-            local count = segment:match '%d+'
-            local icon = segment:match '%D+'
-            if icon == Config.get_custom_icon 'DiagnosticError' then
-              table.insert(groups, { hl = 'DiagnosticError', strings = { ' ', tostring(icon), ' ', tostring(count) } })
+            local count = segment:match "%d+"
+            local icon = segment:match "%D+"
+            if icon == Config.get_custom_icon "DiagnosticError" then
+              table.insert(groups, { hl = "DiagnosticError", strings = { " ", tostring(icon), " ", tostring(count) } })
             end
-            if icon == Config.get_custom_icon 'DiagnosticInfo' then
-              table.insert(groups, { hl = 'DiagnosticInfo', strings = { ' ', tostring(icon), ' ', tostring(count) } })
+            if icon == Config.get_custom_icon "DiagnosticInfo" then
+              table.insert(groups, { hl = "DiagnosticInfo", strings = { " ", tostring(icon), " ", tostring(count) } })
             end
-            if icon == Config.get_custom_icon 'DiagnosticHint' then
-              table.insert(groups, { hl = 'DiagnosticHint', strings = { ' ', tostring(icon), ' ', tostring(count) } })
+            if icon == Config.get_custom_icon "DiagnosticHint" then
+              table.insert(groups, { hl = "DiagnosticHint", strings = { " ", tostring(icon), " ", tostring(count) } })
             end
-            if icon == Config.get_custom_icon 'DiagnosticWarn' then
-              table.insert(groups, { hl = 'DiagnosticWarn', strings = { ' ', tostring(icon), ' ', tostring(count) } })
+            if icon == Config.get_custom_icon "DiagnosticWarn" then
+              table.insert(groups, { hl = "DiagnosticWarn", strings = { " ", tostring(icon), " ", tostring(count) } })
             end
           end
         end
         local right_side = {
-          { hl = 'MiniStatuslineDevinfo', strings = { ' ', lsp, ' ' } },
-          { hl = 'MiniStatuslineSearch', strings = search ~= '' and { ' ', search, ' ' } or {} },
-          { hl = 'MiniStatuslineLocation', strings = { ' ', location } },
+          { hl = "MiniStatuslineDevinfo", strings = { " ", lsp, " " } },
+          { hl = "MiniStatuslineSearch", strings = search ~= "" and { " ", search, " " } or {} },
+          { hl = "MiniStatuslineLocation", strings = { " ", location } },
         }
 
         for _, section in ipairs(right_side) do
@@ -536,152 +553,64 @@ now(function()
       end,
     },
   }
-  vim.api.nvim_set_hl(0, 'MiniStatuslineModeNormal', { bg = '#4FA6ED', fg = '#111317', bold = true })
-  vim.api.nvim_set_hl(0, 'MiniStatuslineModeInsert', { bg = '#8EBD6B', fg = '#111317', bold = true })
-  vim.api.nvim_set_hl(0, 'MiniStatuslineModeVisual', { bg = '#BF68D9', fg = '#111317', bold = true })
-  vim.api.nvim_set_hl(0, 'MiniStatuslineModeCommand', { bg = '#E2B86B', fg = '#111317', bold = true })
-  vim.api.nvim_set_hl(0, 'MiniStatuslineModeReplace', { bg = '#E55561', fg = '#111317', bold = true })
-  vim.api.nvim_set_hl(0, 'MiniStatuslineModeOther', { link = 'MiniStatuslineModeInsert' })
-  vim.api.nvim_set_hl(0, 'MiniStatuslineModeSeparator2', { bg = '#202c36', fg = '#BCC4C9' })
-  vim.api.nvim_set_hl(0, 'MiniStatuslineModeSeparator3', { fg = '#202c36', bg = 'NONE' })
-  vim.api.nvim_set_hl(0, 'MiniStatuslineFilename', { bg = '#202c36', fg = '#BCC4C9' })
-  vim.api.nvim_set_hl(0, 'MiniStatuslineGit', { fg = '#696C76' })
-  vim.api.nvim_set_hl(0, 'MiniStatuslineSearch', { link = 'Search' })
-  vim.api.nvim_set_hl(0, 'MiniStatuslineLocation', { bg = 'NONE' })
-  Config.extend_hl('MiniStatuslineDevinfo', { bg = 'NONE' })
+  vim.api.nvim_set_hl(0, "MiniStatuslineModeNormal", { bg = "#4FA6ED", fg = "#111317", bold = true })
+  vim.api.nvim_set_hl(0, "MiniStatuslineModeInsert", { bg = "#8EBD6B", fg = "#111317", bold = true })
+  vim.api.nvim_set_hl(0, "MiniStatuslineModeVisual", { bg = "#BF68D9", fg = "#111317", bold = true })
+  vim.api.nvim_set_hl(0, "MiniStatuslineModeCommand", { bg = "#E2B86B", fg = "#111317", bold = true })
+  vim.api.nvim_set_hl(0, "MiniStatuslineModeReplace", { bg = "#E55561", fg = "#111317", bold = true })
+  vim.api.nvim_set_hl(0, "MiniStatuslineModeOther", { link = "MiniStatuslineModeInsert" })
+  vim.api.nvim_set_hl(0, "MiniStatuslineModeSeparator2", { bg = "#202c36", fg = "#BCC4C9" })
+  vim.api.nvim_set_hl(0, "MiniStatuslineModeSeparator3", { fg = "#202c36", bg = "NONE" })
+  vim.api.nvim_set_hl(0, "MiniStatuslineFilename", { bg = "#202c36", fg = "#BCC4C9" })
+  vim.api.nvim_set_hl(0, "MiniStatuslineGit", { fg = "#696C76" })
+  vim.api.nvim_set_hl(0, "MiniStatuslineSearch", { link = "Search" })
+  vim.api.nvim_set_hl(0, "MiniStatuslineLocation", { bg = "NONE" })
+  Config.extend_hl("MiniStatuslineDevinfo", { bg = "NONE" })
 end)
 
 -- Tabline. Sets `:h 'tabline'` to show all listed buffers in a line at the top.
 -- Buffers are ordered as they were created. Navigate with `[b` and `]b`.
 now(function()
-  Config.extend_hl('MiniTablineCurrent', { bold = false, fg = '#4FA6ED' })
-  Config.extend_hl('MiniTablineVisible', { bold = false, fg = '#4FA6ED' })
-  Config.extend_hl('MiniTablineHidden', { bold = false, fg = '#696C76' })
-  local MiniTablineCurrent = Config.get_hlgroup 'MiniTablineCurrent'
-  local MiniTablineHidden = Config.get_hlgroup 'MiniTablineHidden'
-  local MiniTablineVisible = Config.get_hlgroup 'MiniTablineVisible'
+  Config.extend_hl("MiniTablineCurrent", { bold = false, fg = "#4FA6ED" })
+  Config.extend_hl("MiniTablineVisible", { bold = false, fg = "#4FA6ED" })
+  Config.extend_hl("MiniTablineHidden", { bold = false, fg = "#696C76" })
+  local MiniTablineCurrent = Config.get_hlgroup "MiniTablineCurrent"
+  local MiniTablineHidden = Config.get_hlgroup "MiniTablineHidden"
+  local MiniTablineVisible = Config.get_hlgroup "MiniTablineVisible"
 
-  Config.extend_hl('MiniTablineModifiedCurrent', { bold = false, bg = MiniTablineCurrent.bg, fg = MiniTablineCurrent.fg })
-  Config.extend_hl('MiniTablineModifiedVisible', { bold = false, bg = MiniTablineVisible.bg, fg = MiniTablineVisible.fg })
-  Config.extend_hl('MiniTablineModifiedHidden', { bold = false, bg = MiniTablineHidden.bg, fg = MiniTablineHidden.fg })
+  Config.extend_hl(
+    "MiniTablineModifiedCurrent",
+    { bold = false, bg = MiniTablineCurrent.bg, fg = MiniTablineCurrent.fg }
+  )
+  Config.extend_hl(
+    "MiniTablineModifiedVisible",
+    { bold = false, bg = MiniTablineVisible.bg, fg = MiniTablineVisible.fg }
+  )
+  Config.extend_hl("MiniTablineModifiedHidden", { bold = false, bg = MiniTablineHidden.bg, fg = MiniTablineHidden.fg })
   -- vim.api.nvim_set_hl(0, 'MiniTablineTrunc', { fg = '#BCC4C9', bg = 'NONE', italic = true, bold = true })
 
-  require('mini.tabline').setup {
+  require("mini.tabline").setup {
     format = function(buf_id, label)
-      local suffix = vim.bo[buf_id].modified and ' ' or ''
+      local suffix = vim.bo[buf_id].modified and " " or ""
       return MiniTabline.default_format(buf_id, label) .. suffix
     end,
   }
   -- vim.api.nvim_set_hl(0, 'MiniStatuslineLocation', { bg = 'NONE' })
 end)
 
--- Step one or two ============================================================
--- Load now if Neovim is started like `nvim -- path/to/file`, otherwise - later.
--- This ensures a correct behavior for files opened during startup.
-
--- Completion and signature help. Implements async "two stage" autocompletion:
--- - Based on attached LSP servers that support completion.
--- - Fallback (based on built-in keyword completion) if there is no LSP candidates.
---
--- Example usage in Insert mode with attached LSP:
--- - Start typing text that should be recognized by LSP (like variable name).
--- - After 100ms a popup menu with candidates appears.
--- - Press `<Tab>` / `<S-Tab>` to navigate down/up the list. These are set up
---   in 'mini.keymap'. You can also use `<C-n>` / `<C-p>`.
--- - During navigation there is an info window to the right showing extra info
---   that the LSP server can provide about the candidate. It appears after the
---   candidate stays selected for 100ms. Use `<C-f>` / `<C-b>` to scroll it.
--- - Navigating to an entry also changes buffer text. If you are happy with it,
---   keep typing after it. To discard completion completely, press `<C-e>`.
--- - After pressing special trigger(s), usually `(`, a window appears that shows
---   the signature of the current function/method. It gets updated as you type
---   showing the currently active parameter.
---
--- Example usage in Insert mode without an attached LSP or in places not
--- supported by the LSP (like comments):
--- - Start typing a word that is present in current or opened buffers.
--- - After 100ms popup menu with candidates appears.
--- - Navigate with `<Tab>` / `<S-Tab>` or `<C-n>` / `<C-p>`. This also updates
---   buffer text. If happy with choice, keep typing. Stop with `<C-e>`.
---
--- It also works with snippet candidates provided by LSP server. Best experience
--- when paired with 'mini.snippets' (which is set up in this file).
-
--- now_if_args(function()
---   -- Customize post-processing of LSP responses for a better user experience.
---   -- Don't show 'Text' suggestions (usually noisy) and show snippets last (if set Snippet = 99).
---   local process_items_opts = { kind_priority = { Text = 99 } }
---   local process_items = function(items, base) return MiniCompletion.default_process_items(items, base, process_items_opts) end
---   require('mini.completion').setup {
---     delay = { completion = 20, info = 20, signature = 20 },
---     lsp_completion = {
---       -- Without this config autocompletion is set up through `:h 'completefunc'`.
---       -- Although not needed, setting up through `:h 'omnifunc'` is cleaner
---       -- (sets up only when needed) and makes it possible to use `<C-u>`.
---       source_func = 'omnifunc',
---       auto_setup = false,
---       process_items = process_items,
---     },
---     window = {
---       info = { height = 25, width = 80, border = vim.o.winborder },
---       signature = { height = 25, width = 80, border = vim.o.winborder },
---     },
---   }
--- Add LSP kind icons. Useful for 'mini.completion'.
--- if MiniIcons then later(MiniIcons.tweak_lsp_kind) end
---   -- Set 'omnifunc' for LSP completion only when needed.
---   local on_attach = function(ev) vim.bo[ev.buf].omnifunc = 'v:lua.MiniCompletion.completefunc_lsp' end
---   Config.new_autocmd('LspAttach', nil, on_attach, "Set 'omnifunc'")
---
---   -- Advertise to servers that Neovim now supports certain set of completion and
---   -- signature features through 'mini.completion'.
---   vim.lsp.config('*', {
---     capabilities = MiniCompletion.get_lsp_capabilities(),
---   })
--- end)
-
--- Navigate and manipulate file system
---
--- Navigation is done using column view (Miller columns) to display nested
--- directories, they are displayed in floating windows in top left corner.
---
--- Manipulate files and directories by editing text as regular buffers.
---
--- Example usage:
--- - `<Leader>ed` - open current working directory
--- - `<Leader>ef` - open directory of current file (needs to be present on disk)
---
--- Basic navigation:
--- - `l` - go in entry at cursor: navigate into directory or open file
--- - `h` - go out of focused directory
--- - Navigate window as any regular buffer
--- - Press `g?` inside explorer to see more mappings
---
--- Basic manipulation:
--- - After any following action, press `=` in Normal mode to synchronize, read
---   carefully about actions, press `y` or `<CR>` to confirm
--- - New entry: press `o` and type its name; end with `/` to create directory
--- - Rename: press `C` and type new name
--- - Delete: type `dd`
--- - Move/copy: type `dd`/`yy`, navigate to target directory, press `p`
---
--- See also:
--- - `:h MiniFiles-navigation` - more details about how to navigate
--- - `:h MiniFiles-manipulation` - more details about how to manipulate
--- - `:h MiniFiles-examples` - examples of common setups
 now_if_args(function()
   local show_hidden = true
   local dim_hidden = true
 
   local hide_dotfiles = true
-  local hide_by_name = { '.git' }
-  local hide_by_pattern = { '%.git/' }
-  local search_pattern = ''
+  local hide_by_name = { ".git" }
+  local hide_by_pattern = { "%.git/" }
+  local search_pattern = ""
 
   -- local always_show = { '.env', '__pycache__' }
   -- local always_show_by_pattern = { '%.env.*' }
   -- Never show, even if show_hidden = true
-  local never_show = { '.DS_Store', 'thumbs.db' }
+  local never_show = { ".DS_Store", "thumbs.db" }
   local never_show_by_pattern = {}
 
   -- always_show = vim.tbl_to_set(always_show)
@@ -691,14 +620,18 @@ now_if_args(function()
   local smart_hlsearch = function(fs_entries)
     local valid_entry = {}
     local is_in_searchmode = vim.v.hlsearch
-    if is_in_searchmode == 0 or (not search_pattern or search_pattern == '') or #fs_entries == 0 then return fs_entries end
+    if is_in_searchmode == 0 or (not search_pattern or search_pattern == "") or #fs_entries == 0 then
+      return fs_entries
+    end
     local ft = vim.bo.filetype
     local row = vim.api.nvim_win_get_cursor(0)[1]
-    local explorer_state = ((ft == 'minifiles' and row >= 1 and MiniFiles) and MiniFiles.get_explorer_state())
+    local explorer_state = ((ft == "minifiles" and row >= 1 and MiniFiles) and MiniFiles.get_explorer_state())
     local cur_focused_path = explorer_state and explorer_state.branch[explorer_state.depth_focus]
     local is_focused_pane = nil
     for _, entry in ipairs(fs_entries) do
-      if is_focused_pane == nil then is_focused_pane = cur_focused_path and vim.fs.dirname(entry.path) == cur_focused_path end
+      if is_focused_pane == nil then
+        is_focused_pane = cur_focused_path and vim.fs.dirname(entry.path) == cur_focused_path
+      end
       if vim.fn.match(entry.name, search_pattern) >= 0 or not is_focused_pane then table.insert(valid_entry, entry) end
     end
     return valid_entry
@@ -740,7 +673,7 @@ now_if_args(function()
     if hide_by_name[name] then return false end
 
     -- dotfile hide
-    if hide_dotfiles and vim.startswith(name, '.') then return false end
+    if hide_dotfiles and vim.startswith(name, ".") then return false end
 
     -- hide by pattern
     for _, pattern in ipairs(hide_by_pattern) do
@@ -751,7 +684,198 @@ now_if_args(function()
   end
 
   -- Enable directory/file preview
-  require('mini.files').setup {
+  require "mini.files"
+
+  local clear_search = function()
+    vim.schedule(function()
+      search_pattern = ""
+      MiniFiles.refresh { content = { force = true } }
+      vim.cmd "redraw"
+    end)
+  end
+
+  local toggle_hidden = function()
+    show_hidden = not show_hidden
+    MiniFiles.gitignore.state = show_hidden
+    MiniFiles.show_hidden = show_hidden
+    MiniFiles.refresh { content = { force = true } }
+  end
+
+  local toggle_dim = function()
+    dim_hidden = not dim_hidden
+    MiniFiles.refresh { content = { force = true } }
+  end
+
+  -- Set focused directory as current working directory
+  local set_cwd = function()
+    local path = (MiniFiles.get_fs_entry() or {}).path
+    if path == nil then return vim.notify "Cursor is not on valid entry" end
+    local p = vim.fs.dirname(path)
+    vim.fn.chdir(p)
+    vim.notify(string.format("Root:\n %s", p))
+  end
+
+  -- Yank in register full path of entry under cursor
+  local yank_path = function()
+    local path = (MiniFiles.get_fs_entry() or {}).path
+    if path == nil then return vim.notify "Cursor is not on valid entry" end
+    vim.fn.setreg(vim.v.register, path)
+    vim.notify(string.format("Yanked:\n%s", path))
+  end
+
+  local yank_basename = function()
+    local name = (MiniFiles.get_fs_entry() or {}).name
+    if name == nil then return vim.notify "Cursor is not on valid entry" end
+    vim.fn.setreg(vim.v.register, name)
+    vim.notify(string.format("Yanked:\n%s", name))
+  end
+  -- Open path with system default handler (useful for non-text files)
+  local ui_open = function() vim.ui.open(MiniFiles.get_fs_entry().path) end
+  -- Add common bookmarks for every explorer. Example usage inside explorer:
+  -- - `'c` to navigate into your config directory
+  -- - `g?` to see available bookmarks
+  local home = vim.fn.expand "~"
+  local add_bookmarks = function()
+    local function setbookmark(key, path, desc)
+      local p = path
+      if vim.is_callable(path) then p = path() end
+      if vim.uv.fs_stat(p) then MiniFiles.set_bookmark(key, p, { desc }) end
+    end
+    setbookmark("c", vim.fn.stdpath "config", { desc = "~/.config" })
+    local vimpack_plugins = vim.fs.joinpath(vim.fn.stdpath "data", "site", "pack", "core", "opt")
+    setbookmark("p", vimpack_plugins, { desc = "Nvim Plugins" })
+    setbookmark("w", vim.fn.getcwd, { desc = "CWD" })
+    setbookmark("l", vim.fs.joinpath(home, ".local", "share"), { desc = "~/.local/share/" })
+    setbookmark("h", home, { desc = "~/" })
+    setbookmark("g", vim.fs.joinpath(home, "git"), { desc = "~/git/" })
+  end
+
+  -- ╭─────────────────────────────────────────────────────────╮
+  -- │                   Autocmd mini.files                    │
+  -- ╰─────────────────────────────────────────────────────────╯
+
+  local minifiles_group = vim.api.nvim_create_augroup("minifiles-custom-group", { clear = true })
+
+  Config.new_autocmd("User", "MiniFilesExplorerOpen", function(args)
+    add_bookmarks()
+    Config.new_autocmd("BufEnter", nil, function(args2)
+      local ft = vim.bo[args2.buf].filetype
+      if ft == "minifiles" and search_pattern ~= "" then
+        vim.defer_fn(function()
+          vim.cmd "nohlsearch"
+          clear_search()
+          vim.api.nvim_del_autocmd(args2.id)
+        end, 20)
+      end
+    end, "BufEnter minifiles clear search pattern at the start", minifiles_group)
+
+    ---@type uv.uv_timer_t|nil
+    local cmdchange_timer = nil
+    Config.new_autocmd("CmdlineChanged", nil, function(args)
+      local cmd_type = vim.fn.getcmdtype()
+      if cmd_type == "/" or cmd_type == "?" then
+        if cmdchange_timer then cmdchange_timer:stop() end
+        cmdchange_timer = vim.defer_fn(function()
+          search_pattern = vim.fn.getcmdline() or ""
+          MiniFiles.refresh { content = { force = true } }
+          vim.cmd "redraw"
+        end, 100)
+      end
+    end, "CmdlineChanged minifiles search pattern", minifiles_group)
+
+    Config.new_autocmd("User", "Nohlsearch", function(args) clear_search() end)
+  end, "Nohlsearch minifiles clear search pattern", minifiles_group)
+
+  -- Display yanked indicators
+  local ns = vim.api.nvim_create_namespace "minifiles_yank_status"
+  local function normalize_yank_data(line)
+    if line then
+      local yanked_entry_parts = vim.split(line, "/", { trimempty = true })
+      if #yanked_entry_parts < 3 then return end
+      yanked_entry_parts[1] = yanked_entry_parts[1]:gsub("^0+(%d)", "%1")
+      return "/" .. table.concat(yanked_entry_parts, "/")
+    end
+    return line
+  end
+
+  Config.new_autocmd("User", "MiniFilesBufferUpdate", function(args)
+    local buf_id = args.data.buf_id
+    local lines = vim.api.nvim_buf_get_lines(buf_id, 0, -1, false)
+
+    local yank_data = vim.fn.getreg "0"
+    if yank_data == "" then
+      vim.api.nvim_buf_clear_namespace(buf_id, ns, 0, -1)
+      return
+    end
+
+    local yanked_lines = {}
+    for line in string.gmatch(yank_data, "[^\r\n]+") do
+      local line = normalize_yank_data(line)
+      if line then yanked_lines[line] = true end
+    end
+
+    vim.api.nvim_buf_clear_namespace(buf_id, ns, 0, -1)
+
+    for line_num, line_content in ipairs(lines) do
+      if line_content then
+        local line_content = normalize_yank_data(line_content)
+        if line_content then
+          if yanked_lines[normalize_yank_data(line_content)] then
+            vim.api.nvim_buf_set_extmark(buf_id, ns, line_num - 1, 0, {
+              virt_text = { { "+ ", "Added" } },
+              virt_text_pos = "inline",
+            })
+          end
+        end
+      end
+    end
+  end, "MiniFilesBufferUpdate")
+
+  Config.new_autocmd("TextYankPost", nil, function()
+    vim.schedule(function() MiniFiles.refresh { content = { force = true } } end)
+  end, "Trigger MiniFiles refresh")
+
+  -- Mappings
+  Config.new_autocmd("User", "MiniFilesBufferCreate", function(args)
+    local buf_id = args.data.buf_id
+    -- Tweak left-hand side of mapping to your liking
+    vim.keymap.set("n", "<M-h>", toggle_hidden, { buffer = buf_id, desc = "Toggle hidden" })
+    vim.keymap.set("n", "<M-d>", toggle_dim, { buffer = buf_id, desc = "Toggle dim" })
+    vim.keymap.set("n", ".", set_cwd, { buffer = buf_id, desc = "Set cwd" })
+    vim.keymap.set("n", "gx", ui_open, { buffer = buf_id, desc = "OS open" })
+    vim.keymap.set("n", "yp", yank_path, { buffer = buf_id, desc = "Yank path" })
+    vim.keymap.set("n", "yn", yank_basename, { buffer = buf_id, desc = "Yank name" })
+    vim.keymap.set("n", "<Esc>", function()
+      if search_pattern ~= "" then
+        vim.cmd "nohlsearch"
+        clear_search()
+      else
+        MiniFiles.close()
+      end
+    end, { buffer = buf_id, desc = "Clear filter/search or close minifiles" })
+
+    vim.keymap.set("n", "<CR>", function()
+      MiniFiles.synchronize()
+      MiniFiles.go_in { close_on_file = true }
+    end, { buffer = buf_id, desc = "Open hovered file minifiles" })
+
+    vim.keymap.set("n", "<C-a>", "ggVG", { buffer = args.buf, desc = "Select all" })
+    vim.keymap.set("n", "yA", "ggVGyy", { buffer = args.buf, desc = "Yank all" })
+    vim.keymap.set("n", "<C-v>", "p", { buffer = args.buf, desc = "Paste" })
+  end, "Create mappings for mini files window")
+
+  Config.new_autocmd("VimLeavePre", nil, function()
+    if MiniFiles.gitignore then MiniFiles.gitignore:cleanup() end
+  end)
+
+  -- autochdir
+  Config.new_autocmd("DirChanged", "*", function()
+    if MiniFiles.get_explorer_state() then -- check if we have an open explorer
+      MiniFiles.open(vim.fn.getcwd()) -- re-open for changed cwd
+    end
+  end, "Auto change cwd")
+
+  require("mini.files").setup {
     options = {
       use_as_default_explorer = true,
       permanant_delete = false,
@@ -760,19 +884,19 @@ now_if_args(function()
     -- Module mappings created only inside explorer.
     -- Use `''` (empty string) to not create one.
     mappings = {
-      close = 'q',
-      go_in = 'L',
-      go_in_plus = 'l',
-      go_out = 'h',
-      go_out_plus = 'H',
+      close = "q",
+      go_in = "L",
+      go_in_plus = "l",
+      go_out = "h",
+      go_out_plus = "H",
       mark_goto = "'",
-      mark_set = 'm',
-      reset = '<BS>',
-      reveal_cwd = '@',
-      show_help = 'g?',
-      synchronize = '=',
-      trim_left = '<',
-      trim_right = '>',
+      mark_set = "m",
+      reset = "<BS>",
+      reveal_cwd = "@",
+      show_help = "g?",
+      synchronize = "=",
+      trim_left = "<",
+      trim_right = ">",
     },
     -- Gitignore-specific configuration
     gitignore = {
@@ -792,7 +916,12 @@ now_if_args(function()
         if not dim_hidden then return MiniFiles.default_highlight(fs_entry) end
         -- If filter_hide returns false, it means this is a "hidden" file
         -- return 'Comment' to dim it.
-        if (not filter_hide(fs_entry)) or (MiniFiles.gitignore and MiniFiles.gitignore:is_file_ignored(vim.fs.dirname(path), path)) then return 'Comment' end
+        if
+          (not filter_hide(fs_entry))
+          or (MiniFiles.gitignore and MiniFiles.gitignore:is_file_ignored(vim.fs.dirname(path), path))
+        then
+          return "Comment"
+        end
 
         -- Otherwise use standard highlighting
         return MiniFiles.default_highlight(fs_entry)
@@ -801,201 +930,6 @@ now_if_args(function()
   }
   MiniFiles.gitignore = MiniFilesGitignore.new(MiniFiles.config, MiniFiles.config.gitignore)
   MiniFiles.show_hidden = show_hidden
-
-  -- ╭─────────────────────────────────────────────────────────╮
-  -- │                    Mappings actions                     │
-  -- ╰─────────────────────────────────────────────────────────╯
-  local clear_search = function()
-    vim.schedule(function()
-      search_pattern = ''
-      MiniFiles.refresh { content = { force = true } }
-      vim.cmd 'redraw'
-    end)
-  end
-
-  local toggle_hidden = function()
-    show_hidden = not show_hidden
-    MiniFiles.gitignore.state = show_hidden
-    MiniFiles.show_hidden = show_hidden
-    MiniFiles.refresh { content = { force = true } }
-  end
-
-  local toggle_dim = function()
-    dim_hidden = not dim_hidden
-    MiniFiles.refresh { content = { force = true } }
-  end
-
-  -- Set focused directory as current working directory
-  local set_cwd = function()
-    local path = (MiniFiles.get_fs_entry() or {}).path
-    if path == nil then return vim.notify 'Cursor is not on valid entry' end
-    local p = vim.fs.dirname(path)
-    vim.fn.chdir(p)
-    vim.notify(string.format('Root:\n %s', p))
-  end
-
-  -- Yank in register full path of entry under cursor
-  local yank_path = function()
-    local path = (MiniFiles.get_fs_entry() or {}).path
-    if path == nil then return vim.notify 'Cursor is not on valid entry' end
-    vim.fn.setreg(vim.v.register, path)
-    vim.notify(string.format('Yanked:\n %s', path))
-  end
-
-  local yank_basename = function()
-    local name = (MiniFiles.get_fs_entry() or {}).name
-    if name == nil then return vim.notify 'Cursor is not on valid entry' end
-    vim.fn.setreg(vim.v.register, name)
-    vim.notify(string.format('Yanked:\n %s', name))
-  end
-  -- Open path with system default handler (useful for non-text files)
-  local ui_open = function() vim.ui.open(MiniFiles.get_fs_entry().path) end
-  -- Add common bookmarks for every explorer. Example usage inside explorer:
-  -- - `'c` to navigate into your config directory
-  -- - `g?` to see available bookmarks
-  local home = vim.fn.expand '~'
-  local add_bookmarks = function()
-    local function setbookmark(key, path, desc)
-      local p = path
-      if vim.is_callable(path) then p = path() end
-      if vim.uv.fs_stat(p) then MiniFiles.set_bookmark(key, p, { desc }) end
-    end
-    setbookmark('c', vim.fn.stdpath 'config', { desc = '~/.config' })
-    local vimpack_plugins = vim.fs.joinpath(vim.fn.stdpath 'data', 'site', 'pack', 'core', 'opt')
-    setbookmark('p', vimpack_plugins, { desc = 'Nvim Plugins' })
-    setbookmark('w', vim.fn.getcwd, { desc = 'CWD' })
-    setbookmark('l', vim.fs.joinpath(home, '.local', 'share'), { desc = '~/.local/share/' })
-    setbookmark('h', home, { desc = '~/' })
-    setbookmark('g', vim.fs.joinpath(home, 'git'), { desc = '~/git/' })
-  end
-
-  -- ╭─────────────────────────────────────────────────────────╮
-  -- │                   Autocmd mini.files                    │
-  -- ╰─────────────────────────────────────────────────────────╯
-
-  local minifiles_group = vim.api.nvim_create_augroup('minifiles-custom-group', { clear = true })
-  Config.new_autocmd('User', 'MiniFilesExplorerOpen', function(args)
-    add_bookmarks()
-    clear_search()
-    vim.keymap.set('n', '<Esc>', function()
-      if search_pattern ~= '' then
-        vim.cmd 'nohlsearch'
-        clear_search()
-      else
-        MiniFiles.close()
-      end
-    end, { buffer = args.buf, desc = 'Clear filter/search or close minifiles' })
-
-    vim.keymap.set('n', '<CR>', function()
-      MiniFiles.synchronize()
-      MiniFiles.go_in { close_on_file = true }
-    end, { buffer = args.buf, desc = 'Open hovered file minifiles' })
-
-    Config.new_autocmd('BufEnter', nil, function(args)
-      local ft = vim.bo[args.buf].filetype
-      if ft == 'minifiles' and search_pattern ~= '' then
-        vim.defer_fn(function()
-          vim.cmd 'nohlsearch'
-          clear_search()
-          vim.api.nvim_del_autocmd(args.id)
-        end, 20)
-      end
-    end, 'BufEnter minifiles clear search pattern at the start', minifiles_group)
-
-    ---@type uv.uv_timer_t|nil
-    local cmdchange_timer = nil
-    Config.new_autocmd('CmdlineChanged', nil, function(args)
-      local cmd_type = vim.fn.getcmdtype()
-      if cmd_type == '/' or cmd_type == '?' then
-        if cmdchange_timer then cmdchange_timer:stop() end
-        cmdchange_timer = vim.defer_fn(function()
-          search_pattern = vim.fn.getcmdline() or ''
-          MiniFiles.refresh { content = { force = true } }
-          vim.cmd 'redraw'
-        end, 100)
-      end
-    end, 'CmdlineChanged minifiles search pattern', minifiles_group)
-
-    Config.new_autocmd('User', 'Nohlsearch', function(args) clear_search() end)
-  end, 'Nohlsearch minifiles clear search pattern', minifiles_group)
-
-  Config.new_autocmd('User', 'MiniFilesExplorerClose', function()
-    if minifiles_group then
-      vim.api.nvim_del_augroup_by_id(minifiles_group)
-      minifiles_group = nil
-    end
-  end, 'MiniFilesExplorerClose')
-  -- Display yanked indicators
-  local ns = vim.api.nvim_create_namespace 'minifiles_yank_status'
-  local function normalize_yank_data(line)
-    if line then
-      local yanked_entry_parts = vim.split(line, '/', { trimempty = true })
-      if #yanked_entry_parts < 3 then return end
-      yanked_entry_parts[1] = yanked_entry_parts[1]:gsub('^0+(%d)', '%1')
-      return '/' .. table.concat(yanked_entry_parts, '/')
-    end
-    return line
-  end
-
-  Config.new_autocmd('User', 'MiniFilesBufferUpdate', function(args)
-    local buf_id = args.data.buf_id
-    local lines = vim.api.nvim_buf_get_lines(buf_id, 0, -1, false)
-
-    local yank_data = vim.fn.getreg '0'
-    if yank_data == '' then
-      vim.api.nvim_buf_clear_namespace(buf_id, ns, 0, -1)
-      return
-    end
-
-    local yanked_lines = {}
-    for line in string.gmatch(yank_data, '[^\r\n]+') do
-      local line = normalize_yank_data(line)
-      if line then yanked_lines[line] = true end
-    end
-
-    vim.api.nvim_buf_clear_namespace(buf_id, ns, 0, -1)
-
-    for line_num, line_content in ipairs(lines) do
-      if line_content then
-        local line_content = normalize_yank_data(line_content)
-        if line_content then
-          if yanked_lines[normalize_yank_data(line_content)] then
-            vim.api.nvim_buf_set_extmark(buf_id, ns, line_num - 1, 0, {
-              virt_text = { { '+ ', 'Added' } },
-              virt_text_pos = 'inline',
-            })
-          end
-        end
-      end
-    end
-  end, 'MiniFilesBufferUpdate')
-
-  Config.new_autocmd('TextYankPost', nil, function()
-    vim.schedule(function() MiniFiles.refresh { content = { force = true } } end)
-  end, 'Trigger MiniFiles refresh')
-
-  -- Mappings
-  Config.new_autocmd('User', 'MiniFilesBufferCreate', function(args)
-    local buf_id = args.data.buf_id
-    -- Tweak left-hand side of mapping to your liking
-    vim.keymap.set('n', '<M-h>', toggle_hidden, { buffer = buf_id, desc = 'Toggle hidden' })
-    vim.keymap.set('n', '<M-d>', toggle_dim, { buffer = buf_id, desc = 'Toggle dim' })
-    vim.keymap.set('n', '.', set_cwd, { buffer = buf_id, desc = 'Set cwd' })
-    vim.keymap.set('n', 'gx', ui_open, { buffer = buf_id, desc = 'OS open' })
-    vim.keymap.set('n', 'yp', yank_path, { buffer = buf_id, desc = 'Yank path' })
-    vim.keymap.set('n', 'yn', yank_basename, { buffer = buf_id, desc = 'Yank name' })
-  end, 'Create mappings for mini files window')
-
-  Config.new_autocmd('VimLeavePre', nil, function()
-    if MiniFiles.gitignore then MiniFiles.gitignore:cleanup() end
-  end)
-
-  -- autochdir
-  Config.new_autocmd('DirChanged', '*', function()
-    if MiniFiles.get_explorer_state() then -- check if we have an open explorer
-      MiniFiles.open(vim.fn.getcwd()) -- re-open for changed cwd
-    end
-  end, 'Auto change cwd')
 end)
 
 -- Miscellaneous small but useful functions. Example usage:
@@ -1007,25 +941,25 @@ end)
 --   function `f` 100 times and report statistical summary of execution times
 now_if_args(function()
   -- Makes `:h MiniMisc.put()` and `:h MiniMisc.put_text()` public
-  require('mini.misc').setup()
+  require("mini.misc").setup()
 
   -- Change current working directory based on the current file path. It
   -- searches up the file tree until the first root marker ('.git' or 'Makefile')
   -- and sets their parent directory as a current directory.
   -- This is helpful when simultaneously dealing with files from several projects.
   MiniMisc.setup_auto_root {
-    'nvim-pack-lock.json',
-    '.git',
-    '_darcs',
-    '.hg',
-    '.bzr',
-    '.svn',
-    'lua',
-    'MakeFile',
-    'package.json',
-    'lazy-lock.json',
-    'yazi.toml',
-    'hyprland.conf',
+    "nvim-pack-lock.json",
+    ".git",
+    "_darcs",
+    ".hg",
+    ".bzr",
+    ".svn",
+    "lua",
+    "MakeFile",
+    "package.json",
+    "lazy-lock.json",
+    "yazi.toml",
+    "hyprland.conf",
   }
 
   -- Restore latest cursor position on file open
@@ -1045,7 +979,7 @@ end)
 --   Calling `setup()` makes 'mini.pick' respect 'mini.extra' pickers.
 -- - `:h MiniExtra.gen_ai_spec` - 'mini.ai' textobject specifications
 -- - `:h MiniExtra.gen_highlighter` - 'mini.hipatterns' highlighters
-later(function() require('mini.extra').setup() end)
+later(function() require("mini.extra").setup() end)
 
 -- Extend and create a/i textobjects, like `:h a(`, `:h a'`, and more).
 -- Contains not only `a` and `i` type of textobjects, but also their "next" and
@@ -1064,7 +998,7 @@ later(function() require('mini.extra').setup() end)
 -- - `:h MiniAi-builtin-textobjects` - list of all supported textobjects
 -- - `:h MiniAi-textobject-specification` - examples of custom textobjects
 later(function()
-  local ai = require 'mini.ai'
+  local ai = require "mini.ai"
   ai.setup {
     -- 'mini.ai' can be extended with custom textobjects
     custom_textobjects = {
@@ -1078,16 +1012,16 @@ later(function()
       -- For more complicated textobjects that require structural awareness,
       -- use tree-sitter. This example makes `aF`/`iF` mean around/inside function
       -- definition (not call). See `:h MiniAi.gen_spec.treesitter()` for details.
-      F = ai.gen_spec.treesitter { a = '@function.outer', i = '@function.inner' },
+      F = ai.gen_spec.treesitter { a = "@function.outer", i = "@function.inner" },
     },
     mappings = {
       -- Next/last textobjects
       -- NOTE: These override built-in LSP selection mappings on Neovim>=0.12
       -- Map LSP selection manually to use it (see `:h MiniAi.config`)
-      around_next = 'an',
-      inside_next = 'in',
-      around_last = 'al',
-      inside_last = 'il',
+      around_next = "an",
+      inside_next = "in",
+      around_last = "al",
+      inside_last = "il",
     },
 
     -- Number of lines within which textobject is searched
@@ -1098,17 +1032,17 @@ later(function()
     -- always try to search only covering textobject and explicitly ask to search
     -- for next (`an`/`in`) or last (`al`/`il`).
     -- Try this. If you don't like it - delete next line and this comment.
-    search_method = 'cover',
+    search_method = "cover",
   }
 end)
 
 local map_lsp_selection = function(lhs, desc)
-  local s = vim.startswith(desc, 'Increase') and 1 or -1
+  local s = vim.startswith(desc, "Increase") and 1 or -1
   local rhs = function() vim.lsp.buf.selection_range(s * vim.v.count1) end
-  vim.keymap.set('x', lhs, rhs, { desc = desc })
+  vim.keymap.set("x", lhs, rhs, { desc = desc })
 end
-map_lsp_selection('<Leader>ls', 'Increase selection')
-map_lsp_selection('<Leader>lS', 'Decrease selection')
+map_lsp_selection("<Leader>ls", "Increase selection")
+map_lsp_selection("<Leader>lS", "Decrease selection")
 -- Align text interactively. Example usage:
 -- - `gaip,` - `ga` (align operator) *i*nside *p*aragraph by comma
 -- - `gAip` - start interactive alignment on the paragraph. Choose how to
@@ -1119,7 +1053,22 @@ map_lsp_selection('<Leader>lS', 'Decrease selection')
 -- - `:h MiniAlign-example` - hands-on list of examples to practice aligning
 -- - `:h MiniAlign.gen_step` - list of support step customizations
 -- - `:h MiniAlign-algorithm` - how alignment is done on algorithmic level
-later(function() require('mini.align').setup() end)
+later(
+  function()
+    require("mini.align").setup {
+      mappings = {
+        start = "ga",
+        start_with_preview = "gA",
+      },
+
+      options = {
+        split_pattern = "=",
+        justify_side = "left",
+        merge_delimiter = "",
+      },
+    }
+  end
+)
 
 -- Animate common Neovim actions. Like cursor movement, scroll, window resize,
 -- window open, window close. Animations are done based on Neovim events and
@@ -1141,22 +1090,22 @@ later(function() require('mini.align').setup() end)
 -- See also:
 -- - `:h MiniBracketed` - overall mapping design and list of targets
 later(function()
-  require('mini.bracketed').setup {
-    undo = { suffix = '', options = {} },
-    file = { suffix = '', options = {} },
-    jump = { suffix = '', options = {} },
-    buffer = { suffix = 'b', options = {} },
-    comment = { suffix = 'c', options = {} },
-    conflict = { suffix = 'x', options = {} },
+  require("mini.bracketed").setup {
+    undo = { suffix = "", options = {} },
+    file = { suffix = "", options = {} },
+    jump = { suffix = "", options = {} },
+    buffer = { suffix = "b", options = {} },
+    comment = { suffix = "c", options = {} },
+    conflict = { suffix = "x", options = {} },
     -- NOTE: Use lspsaga instead
-    diagnostic = { suffix = '', options = {} },
-    indent = { suffix = 'i', options = {} },
-    location = { suffix = 'l', options = {} },
-    oldfile = { suffix = '', options = {} },
-    quickfix = { suffix = 'q', options = {} },
-    treesitter = { suffix = 't', options = {} },
-    window = { suffix = 'w', options = {} },
-    yank = { suffix = '', options = {} },
+    diagnostic = { suffix = "", options = {} },
+    indent = { suffix = "i", options = {} },
+    location = { suffix = "l", options = {} },
+    oldfile = { suffix = "", options = {} },
+    quickfix = { suffix = "q", options = {} },
+    treesitter = { suffix = "t", options = {} },
+    window = { suffix = "w", options = {} },
+    yank = { suffix = "", options = {} },
   }
 end)
 
@@ -1165,79 +1114,14 @@ end)
 -- - `<Leader>bw` - completely wipeout current buffer (see `:h :bwipeout`)
 -- - `<Leader>bW` - completely wipeout current buffer even if it has changes
 -- - `<Leader>bd` - delete current buffer (see `:h :bdelete`)
-later(function() require('mini.bufremove').setup() end)
-
--- NOTE: Prefer which-key, since it also support text-objects keys like a/i
-
--- Show next key clues in a bottom right window. Requires explicit opt-in for
--- keys that act as clue trigger. Example usage:
--- - Press `<Leader>` and wait for 1 second. A window with information about
---   next available keys should appear.
--- - Press one of the listed keys. Window updates immediately to show information
---   about new next available keys. You can press `<BS>` to go back in key sequence.
--- - Press keys until they resolve into some mapping.
---
--- Note: it is designed to work in buffers for normal files. It doesn't work in
--- special buffers (like for 'mini.starter' or 'mini.files') to not conflict
--- with its local mappings.
---
--- See also:
--- - `:h MiniClue-examples` - examples of common setups
--- - `:h MiniClue.ensure_buf_triggers()` - use it to enable triggers in buffer
--- - `:h MiniClue.set_mapping_desc()` - change mapping description not from config
--- later(function()
---   local miniclue = require 'mini.clue'
---   -- stylua: ignore
---   miniclue.setup({
---     -- Define which clues to show. By default shows only clues for custom mappings
---     -- (uses `desc` field from the mapping; takes precedence over custom clue).
---     clues = {
---       -- This is defined in 'plugin/20_keymaps.lua' with Leader group descriptions
---       Config.leader_group_clues,
---       miniclue.gen_clues.builtin_completion(),
---       miniclue.gen_clues.g(),
---       miniclue.gen_clues.marks(),
---       miniclue.gen_clues.registers(),
---       miniclue.gen_clues.square_brackets(),
---       -- This creates a submode for window resize mappings. Try the following:
---       -- - Press `<C-w>s` to make a window split.
---       -- - Press `<C-w>+` to increase height. Clue window still shows clues as if
---       --   `<C-w>` is pressed again. Keep pressing just `+` to increase height.
---       --   Try pressing `-` to decrease height.
---       -- - Stop submode either by `<Esc>` or by any key that is not in submode.
---       miniclue.gen_clues.windows({ submode_resize = true }),
---       miniclue.gen_clues.z(),
---     },
---     -- Explicitly opt-in for set of common keys to trigger clue window
---     triggers = {
---       { mode = { 'n', 'x' }, keys = '<Leader>' }, -- Leader triggers
---       { mode = 'n', keys = 'y' },
---       { mode =   'n',        keys = '\\' },       -- mini.basics
---       { mode = { 'n', 'x' }, keys = '[' },        -- mini.bracketed
---       { mode = { 'n', 'x' }, keys = ']' },
---       { mode =   'i',        keys = '<C-x>' },    -- Built-in completion
---       { mode = { 'n', 'x' }, keys = 'g' },        -- `g` key
---       { mode = { 'n', 'x' }, keys = "'" },        -- Marks
---       { mode = { 'n', 'x' }, keys = '`' },
---       { mode = { 'n', 'x' }, keys = '"' },        -- Registers
---       { mode = { 'i', 'c' }, keys = '<C-r>' },
---       { mode =   'n',        keys = '<C-w>' },    -- Window commands
---       { mode = { 'n', 'x' }, keys = 's' },        -- `s` key (mini.surround, etc.)
---       { mode = { 'n', 'x' }, keys = 'z' },        -- `z` key
---       { mode = 'n', keys = 'c' },
---       { mode = 'n', keys = 'v' }, -- Visual mode
---       { mode = 'o', keys = 'i' },
---       { mode = 'o', keys = 'a' },
---     },
---   })
--- end)
+later(function() require("mini.bufremove").setup() end)
 
 -- Command line tweaks. Improves command line editing with:
 -- - Autocompletion. Basically an automated `:h cmdline-completion`.
 -- - Autocorrection of words as-you-type. Like `:W`->`:w`, `:lau`->`:lua`, etc.
 -- - Autopeek command range (like line number at the start) as-you-type.
 later(function()
-  require('mini.cmdline').setup {
+  require("mini.cmdline").setup {
     -- Autopeek: show command's target range in a floating window
     autopeek = {
       n_context = 3,
@@ -1257,7 +1141,7 @@ end)
 --
 -- It is not enabled by default because it is not really needed on a daily basis.
 -- Uncomment next line (use `gcc`) to enable.
-later(function() require('mini.colors').setup() end)
+later(function() require("mini.colors").setup() end)
 
 -- Comment lines. Provides functionality to work with commented lines.
 -- Uses `:h 'commentstring'` option to infer comment structure.
@@ -1269,22 +1153,22 @@ later(function() require('mini.colors').setup() end)
 -- The built-in `:h commenting` is based on 'mini.comment'. Yet this module is
 -- still enabled as it provides more customization opportunities.
 later(function()
-  require('mini.comment').setup {
+  require("mini.comment").setup {
     -- Module mappings. Use `''` (empty string) to disable one.
     mappings = {
       -- Toggle comment (like `gcip` - comment inner paragraph) for both
       -- Normal and Visual modes
-      comment = 'gc',
+      comment = "gc",
 
       -- Toggle comment on current line
-      comment_line = 'gcc',
+      comment_line = "gcc",
 
       -- Toggle comment on visual selection
-      comment_visual = 'gc',
+      comment_visual = "gc",
 
       -- Define 'comment' textobject (like `dgc` - delete whole comment block)
       -- Works also in Visual mode if mapping differs from `comment_visual`
-      textobject = 'gc',
+      textobject = "gc",
     },
   }
 end)
@@ -1294,7 +1178,8 @@ end)
 --
 -- It is not enabled by default because its effects are a matter of taste.
 -- Uncomment next line (use `gcc`) to enable.
-later(function() require('mini.cursorword').setup() end)
+
+-- later(function() require('mini.cursorword').setup() end)
 
 -- Work with diff hunks that represent the difference between the buffer text and
 -- some reference text set by a source. Default source uses text from Git index.
@@ -1311,12 +1196,12 @@ later(function() require('mini.cursorword').setup() end)
 -- - `:h MiniDiff-diff-summary` - available summary information
 -- - `:h MiniDiff.gen_source` - available built-in sources
 later(function()
-  local gitsign = Config.get_custom_icon 'GitSign'
-  require('mini.diff').setup {
+  local gitsign = Config.get_custom_icon "GitSign"
+  require("mini.diff").setup {
     view = {
       -- Visualization style. Possible values are 'sign' and 'number'.
       -- Default: 'number' if line numbers are enabled, 'sign' otherwise.
-      style = 'sign',
+      style = "sign",
 
       -- Signs used for hunks with 'sign' view
       signs = { add = gitsign, change = gitsign, delete = gitsign },
@@ -1327,24 +1212,24 @@ later(function()
     -- Module mappings. Use `''` (empty string) to disable one.
     -- Apply hunks inside a visual/operator region
     mappings = {
-      apply = 'gh',
+      apply = "gh",
 
       -- Reset hunks inside a visual/operator region
-      reset = 'gH',
+      reset = "gH",
 
       -- Hunk range textobject to be used inside operator
       -- Works also in Visual mode if mapping differs from apply and reset
-      textobject = 'gh',
+      textobject = "gh",
 
       -- Go to hunk range in corresponding direction
-      goto_first = '[H',
-      goto_prev = '[h',
-      goto_next = ']h',
-      goto_last = ']H',
+      goto_first = "[H",
+      goto_prev = "[h",
+      goto_next = "]h",
+      goto_last = "]H",
     },
     options = {
       -- Diff algorithm. See `:h vim.diff()`.
-      algorithm = 'histogram',
+      algorithm = "histogram",
 
       -- Whether to use "indent heuristic". See `:h vim.diff()`.
       indent_heuristic = true,
@@ -1361,51 +1246,27 @@ later(function()
     local t = {}
     local t_obj = {}
     if summary.add > 0 then
-      local icon = Config.get_custom_icon 'GitAdd'
+      local icon = Config.get_custom_icon "GitAdd"
       t_obj.add_icon = icon
       t_obj.add = summary.add
-      table.insert(t, icon .. ' ' .. summary.add)
+      table.insert(t, icon .. " " .. summary.add)
     end
     if summary.change > 0 then
-      local icon = Config.get_custom_icon 'GitChange'
+      local icon = Config.get_custom_icon "GitChange"
       t_obj.change_icon = icon
       t_obj.change = summary.change
-      table.insert(t, icon .. ' ' .. summary.change)
+      table.insert(t, icon .. " " .. summary.change)
     end
     if summary.delete > 0 then
-      local icon = Config.get_custom_icon 'GitDelete'
+      local icon = Config.get_custom_icon "GitDelete"
       t_obj.delete_icon = icon
       t_obj.delete = summary.delete
-      table.insert(t, icon .. ' ' .. summary.delete)
+      table.insert(t, icon .. " " .. summary.delete)
     end
-    vim.b[data.buf].minidiff_summary_string = table.concat(t, ' ')
+    vim.b[data.buf].minidiff_summary_string = table.concat(t, " ")
     vim.b[data.buf].minidiff_summary_string_obj = t_obj
   end
-  Config.new_autocmd('User', 'MiniDiffUpdated', format_summary)
-end)
-
--- Git integration for more straightforward Git actions based on Neovim's state.
--- It is not meant as a fully featured Git client, only to provide helpers that
--- integrate better with Neovim. Example usage:
--- - `<Leader>gs` - show information at cursor
--- - `<Leader>gd` - show unstaged changes as a patch in separate tabpage
--- - `<Leader>gL` - show Git log of current file
--- - `:Git help git` - show output of `git help git` inside Neovim
---
--- See also:
--- - `:h MiniGit-examples` - examples of common setups
--- - `:h :Git` - more details about `:Git` user command
--- - `:h MiniGit.show_at_cursor()` - what information at cursor is shown
-later(function()
-  require('mini.git').setup()
-  -- Use only HEAD name as summary string
-  local format_summary = function(data)
-    -- Utilize buffer-local table summary
-    local summary = vim.b[data.buf].minigit_summary
-    vim.b[data.buf].minigit_summary_string = summary.head_name or ''
-  end
-
-  Config.new_autocmd('User', 'MiniGitUpdated', format_summary)
+  Config.new_autocmd("User", "MiniDiffUpdated", format_summary)
 end)
 
 -- Highlight patterns in text. Like `TODO`/`NOTE` or color hex codes.
@@ -1415,48 +1276,20 @@ end)
 -- See also:
 -- - `:h MiniHipatterns-examples` - examples of common setups
 later(function()
-  local hipatterns = require 'mini.hipatterns'
+  local hipatterns = require "mini.hipatterns"
   local hi_words = MiniExtra.gen_highlighter.words
   hipatterns.setup {
     highlighters = {
       -- Highlight a fixed set of common words. Will be highlighted in any place,
       -- not like "only in comments".
-      fixme = hi_words({ 'FIXME', 'Fixme', 'fixme', 'BUG', 'bug', 'Bug' }, 'MiniHipatternsFixme'),
-      hack = hi_words({ 'HACK', 'Hack', 'hack' }, 'MiniHipatternsHack'),
-      todo = hi_words({ 'TODO', 'Todo', 'todo' }, 'MiniHipatternsTodo'),
-      note = hi_words({ 'NOTE', 'Note', 'note' }, 'MiniHipatternsNote'),
+      fixme = hi_words({ "FIXME", "Fixme", "fixme", "BUG", "bug", "Bug" }, "MiniHipatternsFixme"),
+      hack = hi_words({ "HACK", "Hack", "hack" }, "MiniHipatternsHack"),
+      todo = hi_words({ "TODO", "Todo", "todo" }, "MiniHipatternsTodo"),
+      note = hi_words({ "NOTE", "Note", "note" }, "MiniHipatternsNote"),
 
       -- Highlight hex color string (#aabbcc) with that color as a background
       hex_color = hipatterns.gen_highlighter.hex_color(),
     },
-  }
-end)
-
--- Visualize and work with indent scope. It visualizes indent scope "at cursor"
--- with animated vertical line. Provides relevant motions and textobjects.
--- Example usage:
--- - `cii` - *c*hange *i*nside *i*ndent scope
--- - `Vaiai` - *V*isually select *a*round *i*ndent scope and then again
---   reselect *a*round new *i*indent scope
--- - `[i` / `]i` - navigate to scope's top / bottom
---
--- See also:
--- - `:h MiniIndentscope.gen_animation` - available animation rules
-later(function()
-  require('mini.indentscope').setup {
-    -- Module mappings. Use `''` (empty string) to disable one.
-    mappings = {
-      -- Textobjects
-      object_scope = 'ii',
-      object_scope_with_border = 'ai',
-
-      -- Motions (jump to respective border line; if not present - body line)
-      goto_top = '[i',
-      goto_bottom = ']i',
-    },
-    -- Which character to use for drawing scope indicator
-    -- Check vim.opt.listchars > tab for default tab character
-    symbol = '╎',
   }
 end)
 
@@ -1466,7 +1299,7 @@ end)
 -- - `fxff` - move *f*orward onto next character "x", then next, and next again
 -- - `dt)` - *d*elete *t*ill next closing parenthesis (`)`)
 later(function()
-  require('mini.jump').setup {
+  require("mini.jump").setup {
     view = {
       -- Whether to dim lines with at least one jump spot
       dim = true,
@@ -1476,21 +1309,21 @@ later(function()
     },
     -- Module mappings. Use `''` (empty string) to disable one.
     mappings = {
-      forward = 'f',
-      backward = 'F',
-      forward_till = 't',
-      backward_till = 'T',
-      repeat_jump = ';',
+      forward = "f",
+      backward = "F",
+      forward_till = "t",
+      backward_till = "T",
+      repeat_jump = ";",
     },
     silent = false,
   }
   -- Stop jumping after pressing `<Esc>`
   local jump_stop = function()
-    if not MiniJump.state.jumping then return '<Esc>' end
+    if not MiniJump.state.jumping then return "<Esc>" end
     MiniJump.stop_jumping()
   end
-  local opts = { expr = true, desc = 'Stop jumping' }
-  vim.keymap.set({ 'n', 'x', 'o' }, '<Esc>', jump_stop, opts)
+  local opts = { expr = true, desc = "Stop jumping" }
+  vim.keymap.set({ "n", "x", "o" }, "<Esc>", jump_stop, opts)
 end)
 
 -- Jump within visible lines to pre-defined spots via iterative label filtering.
@@ -1504,10 +1337,10 @@ end)
 -- See also:
 -- - `:h MiniJump2d.gen_spotter` - list of available spotters
 later(function()
-  require('mini.jump2d').setup {
+  require("mini.jump2d").setup {
 
     -- Characters used for labels of jump spots (in supplied order)
-    labels = 'abcdefghijklmnopqrstuvwxyz',
+    labels = "abcdefghijklmnopqrstuvwxyz",
     view = {
       -- Whether to dim lines with at least one jump spot
       dim = true,
@@ -1531,7 +1364,7 @@ later(function()
 
     -- Module mappings. Use `''` (empty string) to disable one.
     mappings = {
-      start_jumping = '<CR>',
+      start_jumping = "<CR>",
     },
   }
 end)
@@ -1559,20 +1392,24 @@ end)
 -- -- Pressing <Tab> inserts fallback `\t`; logs C1+C2+C3
 -- _G.cond1, _G.cond2, _G.cond3 = false, false, false
 later(function()
-  require('mini.keymap').setup()
+  require("mini.keymap").setup()
   -- Navigate 'mini.completion' menu with `<Tab>` /  `<S-Tab>`
-  MiniKeymap.map_multistep('i', '<Tab>', { 'minisnippets_next', 'pmenu_next', 'blink_next', 'cmp_next' })
-  MiniKeymap.map_multistep('i', '<S-Tab>', { 'minisnippets_prev', 'pmenu_prev', 'blink_prev', 'cmp_prev' })
-  -- On `<CR>` try to accept current completion item, fall back to accounting
-  -- for pairs from 'mini.pairs'
-  MiniKeymap.map_multistep('i', '<CR>', { 'pmenu_accept', 'blink_accept', 'cmp_accept', 'minipairs_cr' })
+  -- MiniKeymap.map_multistep("i", "<Tab>", { "minisnippets_next", "pmenu_next", "blink_next", "cmp_next" })
+  -- MiniKeymap.map_multistep("i", "<S-Tab>", { "minisnippets_prev", "pmenu_prev", "blink_prev", "cmp_prev" })
+  -- -- On `<CR>` try to accept current completion item, fall back to accounting
+  -- -- for pairs from 'mini.pairs'
+  -- MiniKeymap.map_multistep(
+  --   "i",
+  --   "<CR>",
+  --   { "minisnippets_expand", "pmenu_accept", "blink_accept", "cmp_accept", "minipairs_cr", "nvimautopairs_cr" }
+  -- )
   -- On `<BS>` just try to account for pairs from 'mini.pairs'
-  MiniKeymap.map_multistep('i', '<BS>', { 'minipairs_bs' })
+  MiniKeymap.map_multistep("i", "<BS>", { "nvimautopairs_bs", "minipairs_bs" })
 
   -- Hide search highlighting
-  require('mini.keymap').map_combo({ 'n', 'i', 'x', 'c' }, '<Esc><Esc>', function()
+  require("mini.keymap").map_combo({ "n", "i", "x", "c" }, "<Esc><Esc>", function()
     if MiniSnippets then MiniSnippets.session.stop() end
-    return '<Esc><Esc>'
+    return "<Esc><Esc>"
   end)
 
   -- To fix bad habit of repeating key
@@ -1602,7 +1439,7 @@ end)
 --
 -- NOTE: Might introduce lag on very big buffers (10000+ lines)
 later(function()
-  local map = require 'mini.map'
+  local map = require "mini.map"
   map.setup {
     -- Use Braille dots to encode text
     -- symbols = { encode = map.gen_encode_symbols.dot '3x2' },
@@ -1621,12 +1458,12 @@ later(function()
   }
 
   -- Map built-in navigation characters to force map refresh
-  for _, key in ipairs { 'n', 'N', '*', '#' } do
+  for _, key in ipairs { "n", "N", "*", "#" } do
     local rhs = key
       -- Also open enough folds when jumping to the next match
-      .. 'zv'
-      .. '<Cmd>lua MiniMap.refresh({}, { lines = false, scrollbar = false })<CR>'
-    vim.keymap.set('n', key, rhs)
+      .. "zv"
+      .. "<Cmd>lua MiniMap.refresh({}, { lines = false, scrollbar = false })<CR>"
+    vim.keymap.set("n", key, rhs)
   end
 end)
 
@@ -1637,20 +1474,20 @@ end)
 -- Example usage in Visual mode:
 -- - `<M-h>`/`<M-j>`/`<M-k>`/`<M-l>` - move selection left/down/up/right
 later(function()
-  require('mini.move').setup {
+  require("mini.move").setup {
     -- Module mappings. Use `''` (empty string) to disable one.
     mappings = {
       -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
-      left = '<M-h>',
-      right = '<M-l>',
-      down = '<M-j>',
-      up = '<M-k>',
+      left = "<M-h>",
+      right = "<M-l>",
+      down = "<M-j>",
+      up = "<M-k>",
 
       -- Move current line in Normal mode
-      line_left = '<M-h>',
-      line_right = '<M-l>',
-      line_down = '<M-j>',
-      line_up = '<M-k>',
+      line_left = "<M-h>",
+      line_right = "<M-l>",
+      line_down = "<M-j>",
+      line_up = "<M-k>",
     },
   }
 end)
@@ -1674,7 +1511,7 @@ end)
 -- - `:h MiniOperators-mappings` - overview of how mappings are created
 -- - `:h MiniOperators-overview` - overview of present operators
 later(function()
-  require('mini.operators').setup {
+  require("mini.operators").setup {
 
     -- Each entry configures one operator.
     -- `prefix` defines keys mapped during `setup()`: in Normal mode
@@ -1682,7 +1519,7 @@ later(function()
 
     -- Evaluate text and replace with output
     evaluate = {
-      prefix = 'g=',
+      prefix = "g=",
 
       -- Function which does the evaluation
       -- func = nil,
@@ -1694,7 +1531,7 @@ later(function()
     -- Use `<C-c>` to stop exchanging after the first step.
     exchange = {
       -- NOTE: Default `gx` is remapped to `gX`
-      prefix = 'gX',
+      prefix = "gX",
 
       -- Whether to reindent new text to match previous indent
       reindent_linewise = true,
@@ -1710,7 +1547,7 @@ later(function()
     --    - In most cases separate steps would be "yank" + "move cursor" + "paste",
     --      while "multiply" makes it at once.
     multiply = {
-      prefix = 'gm',
+      prefix = "gm",
 
       -- Function which can modify text before multiplying
       -- func = nil,
@@ -1724,7 +1561,7 @@ later(function()
     --    - Can automatically reindent.
     replace = {
       -- NOTE: Default `gr*` LSP mappings are removed
-      prefix = 'gr',
+      prefix = "gr",
 
       -- Whether to reindent new text to match previous indent
       reindent_linewise = true,
@@ -1732,22 +1569,12 @@ later(function()
 
     -- Sort text
     sort = {
-      prefix = 'gs',
+      prefix = "gs",
 
       -- Function which does the sort
       -- func = nil,
     },
   }
-
-  -- Create mappings for swapping adjacent arguments. Notes:
-  -- - Relies on `a` argument textobject from 'mini.ai'.
-  -- - It is not 100% reliable, but mostly works.
-  -- - It overrides `:h (` and `:h )`.
-  -- Explanation: `gx`-`ia`-`gx`-`ila` <=> exchange current and last argument
-  -- Usage: when on `a` in `(aa, bb)` press `)` followed by `(`.
-  vim.keymap.set('n', '(', 'gxiagxila', { remap = true, desc = 'Swap arg left' })
-
-  vim.keymap.set('n', ')', 'gxiagxina', { remap = true, desc = 'Swap arg right' })
 end)
 
 -- Autopairs functionality. Insert pair when typing opening character and go over
@@ -1760,245 +1587,23 @@ end)
 --   'mini.pairs' doesn't provide particularly smart behavior, like auto balancing
 later(function()
   -- Create pairs not only in Insert, but also in Command line mode
-  require('mini.pairs').setup {
-    modes = { command = true },
-    -- Global mappings. Each right hand side should be a pair information, a
-    -- table with at least these fields (see more in |MiniPairs.map()|):
-    -- - <action> - one of "open", "close", "closeopen".
-    -- - <pair> - two character string for pair to be used.
-    -- By default pair is not inserted after `\`, quotes are not recognized by
-    -- <CR>, `'` does not insert the pair after a letter.
-    -- Only parts of tables can be tweaked (others will use these defaults).
-    -- Supply `false` instead of table to not map particular key.
+  require("mini.pairs").setup {
+    --NOTE: Use autopairs for insert mode, terminal mode
+    modes = { insert = false, command = true, terminal = false },
     mappings = {
-      ['('] = { action = 'open', pair = '()', neigh_pattern = '^[^\\]' },
-      ['['] = { action = 'open', pair = '[]', neigh_pattern = '^[^\\]' },
-      ['{'] = { action = 'open', pair = '{}', neigh_pattern = '^[^\\]' },
+      ["("] = { action = "open", pair = "()", neigh_pattern = "^[^\\]" },
+      ["["] = { action = "open", pair = "[]", neigh_pattern = "^[^\\]" },
+      ["{"] = { action = "open", pair = "{}", neigh_pattern = "^[^\\]" },
 
-      [')'] = { action = 'close', pair = '()', neigh_pattern = '^[^\\]' },
-      [']'] = { action = 'close', pair = '[]', neigh_pattern = '^[^\\]' },
-      ['}'] = { action = 'close', pair = '{}', neigh_pattern = '^[^\\]' },
+      [")"] = { action = "close", pair = "()", neigh_pattern = "^[^\\]" },
+      ["]"] = { action = "close", pair = "[]", neigh_pattern = "^[^\\]" },
+      ["}"] = { action = "close", pair = "{}", neigh_pattern = "^[^\\]" },
 
-      ['"'] = { action = 'closeopen', pair = '""', neigh_pattern = '^[^\\]', register = { cr = false } },
-      ["'"] = { action = 'closeopen', pair = "''", neigh_pattern = '^[^%a\\]', register = { cr = false } },
-      ['`'] = { action = 'closeopen', pair = '``', neigh_pattern = '^[^\\]', register = { cr = false } },
+      ['"'] = { action = "closeopen", pair = '""', neigh_pattern = "^[^\\]", register = { cr = false } },
+      ["'"] = { action = "closeopen", pair = "''", neigh_pattern = "^[^%a\\]", register = { cr = false } },
+      ["`"] = { action = "closeopen", pair = "``", neigh_pattern = "^[^\\]", register = { cr = false } },
     },
   }
-
-  -- Insert `<>` pair if `<` is typed at line start, don't register for <CR>
-  MiniPairs.map('i', '<', {
-    action = 'open',
-    pair = '<>',
-    neigh_pattern = '\r.',
-    register = { cr = false },
-  })
-
-  MiniPairs.map('i', '>', { action = 'close', pair = '<>', register = { cr = false } })
-
-  -- Create symmetrical `$$` pair only in Tex files
-  local map_tex = function() MiniPairs.map_buf(0, 'i', '$', { action = 'closeopen', pair = '$$' }) end
-
-  vim.api.nvim_create_autocmd('FileType', { pattern = 'tex', callback = map_tex })
-
-  -- Create symmetrical `**` pair only in Markdown files
-  local map_md = function() MiniPairs.map_buf(0, 'i', '*', { action = 'closeopen', pair = '**' }) end
-
-  vim.api.nvim_create_autocmd('FileType', { pattern = 'markdown', callback = map_md })
-end)
-
--- Pick anything with single window layout and fast matching. This is one of
--- the main usability improvements as it powers a lot of "find things quickly"
--- workflows. How to use a picker:
--- - Start picker, usually with `:Pick <picker-name>` command. Like `:Pick files`.
---   It shows a single window in the bottom left corner filled with possible items
---   to choose from. Current item has special full line highlighting.
---   At the top there is a current query used to filter+sort items.
--- - Type characters (appear at top) to narrow down items. There is fuzzy matching:
---   characters may not match one-by-one, but they should be in correct order.
--- - Navigate down/up with `<C-n>`/`<C-p>`.
--- - Press `<Tab>` to show item's preview. `<Tab>` again goes back to items.
--- - Press `<S-Tab>` to show picker's info. `<S-Tab>` again goes back to items.
--- - Press `<CR>` to choose an item. The exact action depends on the picker: `files`
---   picker opens a selected file, `help` picker opens help page on selected tag.
---   To close picker without choosing an item, press `<Esc>`.
---
--- Example usage:
--- - `<Leader>ff` - *f*ind *f*iles; for best performance requires `ripgrep`
--- - `<Leader>fg` - *f*ind inside files (a.k.a. "to *g*rep"); requires `ripgrep`
--- - `<Leader>fh` - *f*ind *h*elp tag
--- - `<Leader>fr` - *r*esume latest picker
--- - `:h vim.ui.select()` - implemented with 'mini.pick'
---
--- See also:
--- - `:h MiniPick-overview` - overview of picker functionality
--- - `:h MiniPick-examples` - examples of common setups
--- - `:h MiniPick.builtin` and `:h MiniExtra.pickers` - available pickers;
---   Execute one either with Lua function, `:Pick <picker-name>` command, or
---   one of `<Leader>f` mappings defined in 'plugin/20_keymaps.lua'
---
--- - If query starts with `'`, the match is exact.
--- - If query starts with `^`, the match is exact at start.
--- - If query ends with `$`, the match is exact at end.
--- - If query starts with `*`, the match is forced to be fuzzy.
--- - Otherwise match is fuzzy.
--- - Sorting is done to first minimize match width and then match start.
---   Nothing more: no favoring certain places in string, etc.
-
--- - Type special keys to perform |MiniPick-actions|. Here are some basic ones:
---     - `<C-n>` / `<Down>` moves down; `<C-p>` / `<Up>` moves up.
---     - `<Left>` / `<Right>` moves prompt caret left / right.
---     - `<S-Tab>` toggles information window with all available mappings.
---     - `<Tab>` toggles preview.
---     - `<C-x>` / `<C-a>` toggles current / all item(s) as (un)marked.
---     - `<C-Space>` / `<M-Space>` makes all matches or marked items as new picker.
---     - `<CR>` / `<M-CR>` chooses current/marked item(s).
---     - `<Esc>` / `<C-c>` stops picker.
-later(function()
-  require('mini.pick').setup {
-    -- Delays (in ms; should be at least 1)
-    delay = {
-      -- Delay between forcing asynchronous behavior
-      async = 10,
-
-      -- Delay between computation start and visual feedback about it
-      busy = 50,
-    },
-    mappings = {
-      caret_left = '<M-h>',
-      caret_right = '<M-l>',
-
-      choose = '<CR>',
-      choose_in_split = '<C-s>',
-      choose_in_vsplit = '<C-v>',
-      choose_in_tabpage = '<C-t>',
-      choose_marked = '<M-CR>',
-
-      delete_char = '<BS>',
-      delete_char_right = '<Del>',
-      delete_left = '',
-      delete_word = '<C-w>',
-
-      mark = '<C-x>',
-      mark_all = '<C-a>',
-
-      move_down = '<Tab>',
-      move_start = '<C-g>',
-      move_up = '<S-Tab>',
-
-      paste = '',
-
-      refine = '<C-Space>',
-      refine_marked = '<M-Space>',
-
-      scroll_down = '<C-d>',
-      scroll_up = '<C-u>',
-      scroll_left = '<C-h>',
-      scroll_right = '<C-l>',
-
-      stop = '<Esc>',
-
-      toggle_info = '<F1>',
-      toggle_preview = '<C-p>',
-      -- Custom action + keymaps
-      paste_system = {
-        char = '<C-r>',
-        func = function()
-          -- Get text from system clipboard and clean it (remove newlines for the picker)
-          local content = vim.fn.getreg('+'):gsub('[\n\r]', '')
-          content = vim.trim(content)
-          -- Insert it into the current picker query
-          local keys = vim.api.nvim_replace_termcodes(content, true, false, true)
-          vim.api.nvim_feedkeys(keys, 'n', true)
-        end,
-      },
-    },
-    -- General options
-    options = {
-      -- Whether to show content from bottom to top
-      content_from_bottom = false,
-
-      -- Whether to cache matches (more speed and memory on repeated prompts)
-      use_cache = true,
-    },
-    window = {
-      -- Use all available height under cursor
-      config = function()
-        local curr_screen_row = vim.fn.screenrow()
-        local total_height = vim.o.lines
-        local cmd_space = vim.o.cmdheight
-        local status_space = (vim.o.laststatus > 0) and 1 or 0
-        local available_height = total_height - curr_screen_row - cmd_space - status_space
-        local final_height = math.max(available_height, 1)
-        local half_vh = math.floor(vim.o.lines / 2)
-        if final_height < half_vh then
-          curr_screen_row = curr_screen_row + final_height - half_vh
-          final_height = half_vh
-        end
-
-        return {
-          relative = 'editor',
-          anchor = 'NW',
-          row = curr_screen_row,
-          col = 2,
-          width = vim.o.columns - 6,
-          height = final_height - (((curr_screen_row + final_height + vim.o.cmdheight) == vim.o.lines) and 3 or 2),
-        }
-      end,
-      -- String to use as caret in prompt
-      prompt_caret = '▏',
-      -- String to use as prefix in prompt
-      prompt_prefix = ' ❯ ',
-    },
-  }
-
-  -- Customize with fourth argument inside a function wrapper
-  vim.ui.select = function(items, opts, on_choice)
-    local i = 0
-    opts = opts or {}
-    if not opts.format_item then
-      opts.format_item = function(item)
-        if type(item) == 'string' then
-          i = i + 1
-          return ' ' .. tostring(i) .. ' ' .. item .. ' '
-        end
-        return item
-      end
-    end
-
-    local function get_max_ui_width_at_cursor(items, format_item)
-      local formatter = format_item or tostring
-
-      local content_width = vim.iter(items):fold(0, function(acc, item)
-        local text = formatter(item)
-        return math.max(acc, vim.fn.strdisplaywidth(text))
-      end)
-
-      local cursor_col = vim.fn.screencol()
-      local remaining_space = vim.o.columns - cursor_col
-
-      return math.min(content_width, remaining_space - 1)
-    end
-
-    local start_opts = {
-      window = {
-        config = function()
-          local width = math.max(20, get_max_ui_width_at_cursor(items, opts.format_item))
-          return {
-            relative = 'cursor',
-            anchor = 'NW',
-            row = 1, -- Starts exactly 1 line below the cursor text
-            col = -math.max(0, math.floor(0.5 * width)),
-            width = width,
-            height = math.min(10, #items),
-          }
-        end,
-        prompt_prefix = ' Select: ',
-      },
-    }
-    i = 0
-
-    return MiniPick.ui_select(items, opts, on_choice, start_opts)
-  end
 end)
 
 -- Manage and expand snippets (templates for a frequently used text).
@@ -2045,16 +1650,7 @@ end)
 -- - `:h MiniSnippets.gen_loader` - list of available loaders
 later(function()
   -- Define language patterns to work better with 'friendly-snippets'
-  local latex_patterns = { 'latex/**/*.json', '**/latex.json' }
-  local lang_patterns = {
-    tex = latex_patterns,
-    plaintex = latex_patterns,
-    -- Recognize special injected language of markdown tree-sitter parser
-    markdown_inline = { 'markdown.json' },
-  }
-
-  local snippets = require 'mini.snippets'
-  local config_path = vim.fn.stdpath 'config'
+  local snippets = require "mini.snippets"
   -- local match_strict = function(snips)
   --   -- Do not match with whitespace to cursor's left
   --   return snippets.default_match(snips, { pattern_fuzzy = '%S+' })
@@ -2062,30 +1658,29 @@ later(function()
   snippets.setup {
     snippets = {
       -- Always load 'snippets/global.json' from config directory
-      snippets.gen_loader.from_file(config_path .. '/snippets/global.json'),
+      snippets.gen_loader.from_file(vim.fn.stdpath "config" .. "/snippets/global.json"),
       -- Load from 'snippets/' directory of plugins, like 'friendly-snippets'
-      snippets.gen_loader.from_lang { lang_patterns = lang_patterns },
+      snippets.gen_loader.from_lang {},
       -- Load project-local snippets with `gen_loader.from_file()`
       -- and relative path (file doesn't have to be present)
-      snippets.gen_loader.from_file '.vscode/project.code-snippets',
+      snippets.gen_loader.from_file ".vscode/project.code-snippets",
       -- Custom loader for language-specific project-local snippets
       function(context)
-        local rel_path = '.vscode/' .. context.lang .. '.code-snippets'
-        if vim.fn.filereadable(rel_path) == 0 then return end
-        return MiniSnippets.read_file(rel_path)
+        local rel_path = ".vscode/" .. context.lang .. ".code-snippets"
+        return vim.fn.filereadable(rel_path) == 1 and mini_snippets.read_file(rel_path)
       end,
       -- Ensure that some prefixes are not used (as there is no `body`)
-      { prefix = { 'bad', 'prefix' } },
+      { prefix = { "bad", "prefix" } },
     },
     -- Module mappings. Use `''` (empty string) to disable one.
     mappings = {
       -- Expand snippet at cursor position. Created globally in Insert mode.
-      expand = '',
+      expand = "",
       -- Interact with default `expand.insert` session.
       -- Created for the duration of active session(s)
-      jump_next = '',
-      jump_prev = '',
-      stop = '<C-c>',
+      jump_next = "",
+      jump_prev = "",
+      stop = "<C-c>",
     },
     -- expand   = { match = match_strict },
   }
@@ -2106,19 +1701,19 @@ end)
 -- See also:
 -- - `:h MiniSplitjoin.gen_hook` - list of available hooks
 later(function()
-  require('mini.splitjoin').setup {
+  require("mini.splitjoin").setup {
     -- Module mappings. Use `''` (empty string) to disable one.
     -- Created for both Normal and Visual modes.
-    mappings = { toggle = 'gj', split = '', join = '' },
+    mappings = { toggle = "gj", split = "", join = "" },
 
     -- Detection options: where split/join should be done
     detect = {
       -- Array of Lua patterns to detect region with arguments.
       -- Default: { '%b()', '%b[]', '%b{}' }
-      brackets = { '%b()', '%b[]', '%b{}' },
+      brackets = { "%b()", "%b[]", "%b{}" },
 
       -- String Lua pattern defining argument separator
-      separator = '[,;]',
+      separator = "[,;]",
 
       -- Array of Lua patterns for sub-regions to exclude separators from.
       -- Enables correct detection in presence of nested brackets and quotes.
@@ -2164,7 +1759,7 @@ end)
 -- - `:h MiniSurround-surrounding-specification` - examples of custom surroundings
 -- - `:h MiniSurround-vim-surround-config` - alternative set of action mappings
 later(function()
-  require('mini.surround').setup {
+  require("mini.surround").setup {
     -- Add custom surroundings to be used on top of builtin ones. For more
     -- information with examples, see `:h MiniSurround.config`.
     -- custom_surroundings = nil,
@@ -2174,15 +1769,15 @@ later(function()
 
     -- Module mappings. Use `''` (empty string) to disable one.
     mappings = {
-      add = 'sa', -- Add surrounding in Normal and Visual modes
-      delete = 'sd', -- Delete surrounding
-      find = 'sf', -- Find surrounding (to the right)
-      find_left = 'sF', -- Find surrounding (to the left)
-      highlight = 'sh', -- Highlight surrounding
-      replace = 'sr', -- Replace surrounding
+      add = "sa", -- Add surrounding in Normal and Visual modes
+      delete = "sd", -- Delete surrounding
+      find = "sf", -- Find surrounding (to the right)
+      find_left = "sF", -- Find surrounding (to the left)
+      highlight = "sh", -- Highlight surrounding
+      replace = "sr", -- Replace surrounding
 
-      suffix_last = 'l', -- Suffix to search with "prev" method
-      suffix_next = 'n', -- Suffix to search with "next" method
+      suffix_last = "l", -- Suffix to search with "prev" method
+      suffix_next = "n", -- Suffix to search with "next" method
     },
 
     -- Number of lines within which surrounding is searched
@@ -2197,7 +1792,7 @@ later(function()
     -- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
     -- 'cover_or_nearest', 'next', 'prev', 'nearest'. For more details,
     -- see `:h MiniSurround.config`.
-    search_method = 'cover',
+    search_method = "cover",
 
     -- Whether to disable showing non-error feedback
     -- This also affects (purely informational) helper messages shown after
@@ -2210,23 +1805,9 @@ end)
 -- to reduce noise when typing. Example usage:
 -- - `<Leader>ot` - trim all trailing whitespace in a buffer
 later(function()
-  require('mini.trailspace').setup {
+  require("mini.trailspace").setup {
     -- Highlight only in normal buffers (ones with empty 'buftype'). This is
     -- useful to not show trailing whitespace where it usually doesn't matter.
     only_in_normal_buffers = true,
   }
 end)
-
--- Track and reuse file system visits. Every file/directory visit is persistently
--- tracked on disk to later reuse: show in special frecency order, etc. It also
--- supports adding labels to visited paths to quickly navigate between them.
--- Example usage:
--- - `<Leader>fv` - find across all visits
--- - `<Leader>vv` / `<Leader>vV` - add/remove special "core" label to current file
--- - `<Leader>vc` / `<Leader>vC` - show files with "core" label; all or added within
---   current working directory
---
--- See also:
--- - `:h MiniVisits-overview` - overview of how module works
--- - `:h MiniVisits-examples` - examples of common setups
-later(function() require('mini.visits').setup() end)
