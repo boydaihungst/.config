@@ -4,7 +4,7 @@
 local add = vim.pack.add
 ---@diagnostic disable-next-line: unused-local
 local now, now_if_args, later, on_event, on_filetype =
-    Config.now, Config.now_if_args, Config.later, Config.on_event, Config.on_filetype
+  Config.now, Config.now_if_args, Config.later, Config.on_event, Config.on_filetype
 
 local ensure_installed_treesitter = {
   "bash",
@@ -308,9 +308,8 @@ now(function()
     { "install", "update" },
     function(data)
       vim
-          .system(vim.fn.has "win32" == 1 and { "powershell", "./install.ps1" } or { "./install.sh" },
-            { cwd = data.path })
-          :wait()
+        .system(vim.fn.has "win32" == 1 and { "powershell", "./install.ps1" } or { "./install.sh" }, { cwd = data.path })
+        :wait()
     end,
     "Install json5"
   )
@@ -563,18 +562,18 @@ now_if_args(function()
 
   -- enable treesitter extra plugins
   require("treesitter-context").setup {
-    enable = true,           -- Enable this plugin (Can be enabled/disabled later via commands)
-    multiwindow = false,     -- Enable multiwindow support.
-    max_lines = 5,           -- How many lines the window should span. Values <= 0 mean no limit.
-    min_window_height = 0,   -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+    enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+    multiwindow = false, -- Enable multiwindow support.
+    max_lines = 5, -- How many lines the window should span. Values <= 0 mean no limit.
+    min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
     line_numbers = true,
     multiline_threshold = 5, -- Maximum number of lines to show for a single context
-    trim_scope = "outer",    -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-    mode = "cursor",         -- Line used to calculate context. Choices: 'cursor', 'topline'
+    trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+    mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
     -- Separator between context and content. Should be a single character string, like '-'.
     -- When separator  set, the context will only show up when there are at least 2 lines above cursorline.
     separator = "─",
-    zindex = 20,     -- The Z-index of the context window
+    zindex = 20, -- The Z-index of the context window
     on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
   }
   --TODO: Add more text objects here
@@ -719,7 +718,7 @@ on_filetype("lua", function()
   }
   require("lazydev").setup {
     library = {
-      { path = "${3rd}/luv/library",                                   words = { "vim%.uv" } },
+      { path = "${3rd}/luv/library", words = { "vim%.uv" } },
       { path = os.getenv "HOME" .. "/.config/yazi/plugins/types.yazi", words = { "ya%.", "ui%." } },
       -- { path = "wezterm-types", mods = { "wezterm" } },
     },
@@ -809,17 +808,17 @@ later(function()
     comment_style = "auto",
     outer_blank_lines_above = true, -- insert a blank line above the box
     outer_blank_lines_below = true, -- insert a blank line below the box
-    inner_blank_lines = true,       -- insert a blank line above and below the text
-    line_blank_line_above = true,   -- insert a blank line above the line
-    line_blank_line_below = true,   -- insert a blank line below the line
+    inner_blank_lines = true, -- insert a blank line above and below the text
+    line_blank_line_above = true, -- insert a blank line above the line
+    line_blank_line_below = true, -- insert a blank line below the line
   }
   local key_prefix = "<Leader>B"
   local modes = { "n", "x" }
   if wk then
     wk.add {
-      { key_prefix,        group = Config.get_custom_icon("CommentBox", 1, true) .. "Comment Box/Line", mode = modes },
-      { key_prefix .. "b", group = "Comment Box",                                                       mode = modes },
-      { key_prefix .. "l", group = "Comment Line",                                                      mode = modes },
+      { key_prefix, group = Config.get_custom_icon("CommentBox", 1, true) .. "Comment Box/Line", mode = modes },
+      { key_prefix .. "b", group = "Comment Box", mode = modes },
+      { key_prefix .. "l", group = "Comment Line", mode = modes },
     }
   end
   vim.keymap.set(modes, key_prefix .. "bl", "<Cmd>CBllbox<Cr>", { desc = "Comment Box Left" })
@@ -848,9 +847,9 @@ now(function()
         progress_icon = { "dots" },
         -- Highlight group for in-progress LSP tasks
         progress_style = "WarningMsg",
-        group_style = "Title",   -- Highlight group for group name (LSP server name)
+        group_style = "Title", -- Highlight group for group name (LSP server name)
         icon_style = "Question", -- Highlight group for group icons
-        overrides = {            -- Override options from the default notification config
+        overrides = { -- Override options from the default notification config
           rust_analyzer = { name = "rust-analyzer" },
         },
       },
@@ -858,7 +857,7 @@ now(function()
       -- Options related to Neovim's built-in LSP client
       lsp = {
         progress_ringbuf_size = 0, -- Configure the nvim's LSP progress ring buffer size
-        log_handler = false,       -- Log `$/progress` handler invocations (for debugging)
+        log_handler = false, -- Log `$/progress` handler invocations (for debugging)
       },
     },
   }
@@ -921,14 +920,14 @@ later(function()
   add { "https://github.com/otavioschwanck/arrow.nvim" }
   require("arrow").setup {
     show_icons = vim.g.icons_enabled,
-    leader_key = "M",                                                    -- Recommended to be a single key
-    buffer_leader_key = "m",                                             -- Per Buffer Mappings
+    leader_key = "M", -- Recommended to be a single key
+    buffer_leader_key = "m", -- Per Buffer Mappings
     always_show_path = false,
-    separate_by_branch = true,                                           -- Bookmarks will be separated by git branch
-    hide_handbook = false,                                               -- set to true to hide the shortcuts on menu.
-    separate_save_and_remove = true,                                     -- if true, will remove the toggle and create the save/remove keymaps.
-    save_key = "cwd",                                                    -- what will be used as root to save the bookmarks. Can be also `git_root` and `git_root_bare`.
-    global_bookmarks = false,                                            -- if true, arrow will save files globally (ignores separate_by_branch)
+    separate_by_branch = true, -- Bookmarks will be separated by git branch
+    hide_handbook = false, -- set to true to hide the shortcuts on menu.
+    separate_save_and_remove = true, -- if true, will remove the toggle and create the save/remove keymaps.
+    save_key = "cwd", -- what will be used as root to save the bookmarks. Can be also `git_root` and `git_root_bare`.
+    global_bookmarks = false, -- if true, arrow will save files globally (ignores separate_by_branch)
     index_keys = "123456789zxcbnmZXVBNM,afghjklAFGHJKLwrtyuiopWRTYUIOP", -- keys mapped to bookmark index, i.e. 1st bookmark will be accessible by 1, and 12th - by c
     mappings = {
       edit = "e",
@@ -950,9 +949,9 @@ later(function()
       border = vim.o.winborder,
     },
     per_buffer_config = {
-      lines = 4,                 -- Number of lines showed on preview.
+      lines = 4, -- Number of lines showed on preview.
       sort_automatically = true, -- Auto sort buffer marks.
-      satellite = {              -- default to nil, display arrow index in scrollbar at every update
+      satellite = { -- default to nil, display arrow index in scrollbar at every update
         enable = true,
         overlap = true,
         priority = 1000,
@@ -1071,10 +1070,10 @@ later(function()
   }
   local groups = {
     default = {
-      augend.integer.alias.decimal,     -- nonnegative decimal number (0, 1, 2, 3, ...)
+      augend.integer.alias.decimal, -- nonnegative decimal number (0, 1, 2, 3, ...)
       augend.integer.alias.decimal_int, -- nonnegative and negative decimal number
-      augend.integer.alias.hex,         -- nonnegative hex number  (0x01, 0x1a1f, etc.)
-      augend.date.alias["%Y/%m/%d"],    -- date (2022/02/18, etc.)
+      augend.integer.alias.hex, -- nonnegative hex number  (0x01, 0x1a1f, etc.)
+      augend.date.alias["%Y/%m/%d"], -- date (2022/02/18, etc.)
       ordinal_numbers,
       weekdays,
       months,
@@ -1191,21 +1190,21 @@ later(function()
         -- My gitea server
         -- https://git.linuxholic.com/boydaihungst/AnimeSubtitles/src/commit/250145403bde3858562337528233b0707fdf6e86/typesetting_fonts.txt#L4-L10
         [to_litteral "ssh.linuxholic.com"] = "https://git.linuxholic.com/"
-            .. "{_A.ORG}/"
-            .. "{_A.REPO}/src/commit/"
-            .. "{_A.REV}/"
-            .. "{_A.FILE}"
-            .. "#L{_A.LSTART}-L{_A.LEND}",
+          .. "{_A.ORG}/"
+          .. "{_A.REPO}/src/commit/"
+          .. "{_A.REV}/"
+          .. "{_A.FILE}"
+          .. "#L{_A.LSTART}-L{_A.LEND}",
       },
       blame = {
         -- My gitea server
         -- https://git.linuxholic.com/boydaihungst/AnimeSubtitles/blame/commit/250145403bde3858562337528233b0707fdf6e86/typesetting_fonts.txt#L4-L10
         [to_litteral "ssh.linuxholic.com"] = "https://git.linuxholic.com/"
-            .. "{_A.ORG}/"
-            .. "{_A.REPO}/blame/commit/"
-            .. "{_A.REV}/"
-            .. "{_A.FILE}"
-            .. "#L{_A.LSTART}-L{_A.LEND}",
+          .. "{_A.ORG}/"
+          .. "{_A.REPO}/blame/commit/"
+          .. "{_A.REV}/"
+          .. "{_A.FILE}"
+          .. "#L{_A.LSTART}-L{_A.LEND}",
       },
     },
   }
@@ -1314,7 +1313,7 @@ on_filetype("vue,typescript,javascript,typescriptreact,javascriptreact,tsx,jsx,j
     -- 'vue_i18n': Detect useI18n({ namespace: '...' }) in Vue components
     namespace_resolver = "auto", -- or 'react_i18next', 'vue_i18n', custom function, or table
     -- Separator between namespace and key
-    namespace_separator = ".",   -- set ':' for i18next standard
+    namespace_separator = ".", -- set ':' for i18next standard
   }
   vim.lsp.buf.signature_help = function(opts)
     if require("i18n.display").get_key_under_cursor() then
@@ -1376,10 +1375,10 @@ on_event("InsertEnter,CmdlineEnter", function()
     { src = "https://github.com/saghen/blink.cmp", version = vim.version.range "1.x" },
   }
 
-  -- local function has_words_before()
-  --   local line, col = (unpack or table.unpack)(vim.api.nvim_win_get_cursor(0))
-  --   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
-  -- end
+  local function has_words_before()
+    local line, col = (unpack or table.unpack)(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
+  end
 
   -- Check if there  any autopair fastwrap extmarks
   local function has_fastwrap_extmarks(bufnr)
@@ -1468,7 +1467,7 @@ on_event("InsertEnter,CmdlineEnter", function()
   require("blink.cmp").setup {
     enabled = function()
       local dap_prompt = pcall(require, "cmp-dap") -- add interoperability with cmp-dap
-          and vim.tbl_contains({ "dap-repl", "dapui_watches", "dapui_hover" }, vim.bo.filetype)
+        and vim.tbl_contains({ "dap-repl", "dapui_watches", "dapui_hover" }, vim.bo.filetype)
       if vim.bo.buftype == "prompt" and not dap_prompt then return false end
       return vim.b.completion ~= false
     end,
@@ -1591,7 +1590,7 @@ on_event("InsertEnter,CmdlineEnter", function()
           },
           columns = {
             { "kind_icon" },
-            { "label",      gap = 1 },
+            { "label", gap = 1 },
             { "source_name" },
           },
         },
@@ -1646,7 +1645,7 @@ on_event("InsertEnter,CmdlineEnter", function()
           draw = {
             columns = {
               { "kind_icon" },
-              { "label",    gap = 1 },
+              { "label", gap = 1 },
             },
           },
         },
@@ -2255,7 +2254,7 @@ later(function()
 
   if wk then
     wk.add {
-      { prefix,       group = Config.get_custom_icon("Tests", 1, true) .. "Tests" },
+      { prefix, group = Config.get_custom_icon("Tests", 1, true) .. "Tests" },
       { watch_prefix, group = Config.get_custom_icon("Watch", 1, true) .. "Watch" },
     }
   end
@@ -2277,7 +2276,7 @@ later(function()
     local base = lint.linters[name]
     lint.linters[name] = (type(linter) == "table" and type(base) == "table")
         and vim.tbl_deep_extend("force", base, linter)
-        or linter
+      or linter
   end
 
   local valid_linters = function(ctx, linters)
@@ -2285,8 +2284,8 @@ later(function()
     return vim.tbl_filter(function(name)
       local linter = lint.linters[name]
       return linter
-          and vim.fn.executable(linter.cmd) == 1
-          and not (type(linter) == "table" and linter.condition and not linter.condition(ctx))
+        and vim.fn.executable(linter.cmd) == 1
+        and not (type(linter) == "table" and linter.condition and not linter.condition(ctx))
     end, linters)
   end
 
@@ -2302,7 +2301,7 @@ later(function()
     ctx.dirname = vim.fn.fnamemodify(ctx.filename, ":h")
 
     local linters = valid_linters(ctx, orig(...))
-    if not linters[1] then linters = valid_linters(ctx, lint.linters_by_ft["_"]) end      -- fallback
+    if not linters[1] then linters = valid_linters(ctx, lint.linters_by_ft["_"]) end -- fallback
 
     linters = vim.tbl_unique_extend(linters, valid_linters(ctx, lint.linters_by_ft["*"])) -- global
 
@@ -2328,19 +2327,19 @@ later(function()
     "https://github.com/pwntester/octo.nvim",
   }
   local opts = {
-    use_local_fs = false,           -- use local files on right side of reviews
-    enable_builtin = true,          -- shows a list of builtin actions when no action is provided
+    use_local_fs = false, -- use local files on right side of reviews
+    enable_builtin = true, -- shows a list of builtin actions when no action is provided
     ssh_aliases = {},
-    github_hostname = "",           -- GitHub Enterprise host
-    gh_cmd = "gh",                  -- Command to use when calling Github CLI
-    gh_env = {},                    -- extra environment variables to pass on to GitHub CLI, can be a table or function returning a table
+    github_hostname = "", -- GitHub Enterprise host
+    gh_cmd = "gh", -- Command to use when calling Github CLI
+    gh_env = {}, -- extra environment variables to pass on to GitHub CLI, can be a table or function returning a table
     default_to_projects_v2 = false, -- use projects v2 for the `Octo card ...` command by default. Both legacy and v2 commands are available under `Octo cardlegacy ...` and `Octo cardv2 ...` respectively.
     use_diagnostic_signs = true,
     mappings = {},
     picker = (vim.pack.is_available "telescope" and "telescope")
-        or (vim.pack.is_available "fzf-lua" and "fzf-lua")
-        or (vim.pack.is_available "snacks" and "snacks")
-        or "default",
+      or (vim.pack.is_available "fzf-lua" and "fzf-lua")
+      or (vim.pack.is_available "snacks" and "snacks")
+      or "default",
   }
 
   if vim.fn.executable(opts.gh_cmd) == 0 then return end
@@ -2418,17 +2417,17 @@ later(function()
   --- Which-key Group
   if wk then
     wk.add {
-      { prefix,         group = Config.get_custom_icon("Octo", 1, true) .. "Octo" },
-      { prefix .. "a",  group = "Assignee/Reviewer" },
-      { prefix .. "c",  group = "Comments" },
-      { prefix .. "e",  group = "Reaction" },
-      { prefix .. "i",  group = "Issues" },
-      { prefix .. "l",  group = "Label" },
-      { prefix .. "p",  group = "Pull requests" },
+      { prefix, group = Config.get_custom_icon("Octo", 1, true) .. "Octo" },
+      { prefix .. "a", group = "Assignee/Reviewer" },
+      { prefix .. "c", group = "Comments" },
+      { prefix .. "e", group = "Reaction" },
+      { prefix .. "i", group = "Issues" },
+      { prefix .. "l", group = "Label" },
+      { prefix .. "p", group = "Pull requests" },
       { prefix .. "pm", group = "Merge current PR" },
-      { prefix .. "r",  group = "Repo" },
-      { prefix .. "s",  group = "Review" },
-      { prefix .. "t",  group = "Threads" },
+      { prefix .. "r", group = "Repo" },
+      { prefix .. "s", group = "Review" },
+      { prefix .. "t", group = "Threads" },
     }
   end
 end)
@@ -2464,11 +2463,9 @@ later(function()
   vim.keymap.set("n", prefix .. "a", "<Cmd>OverseerTaskAction<CR>", { desc = "Task Action" })
   vim.keymap.set("n", prefix .. "i", "<Cmd>OverseerInfo<CR>", { desc = "Overseer Info" })
 
-  if wk then
-    wk.add {
-      { prefix, group = Config.get_custom_icon("Overseer", 1, true) .. "Overseer" },
-    }
-  end
+  if wk then wk.add {
+    { prefix, group = Config.get_custom_icon("Overseer", 1, true) .. "Overseer" },
+  } end
 end)
 
 on_event("BufRead~package.json", function()
@@ -2499,9 +2496,9 @@ on_event("BufRead~package.json", function()
         invalid = " ", -- Icon for invalid dependencies
       },
     },
-    notifications = false,          -- Whether to display notifications when running commands
-    autostart = true,               -- Whether to autostart when `package.json`  opened
-    hide_up_to_date = false,        -- It hides up to date versions when displaying virtual text
+    notifications = false, -- Whether to display notifications when running commands
+    autostart = true, -- Whether to autostart when `package.json`  opened
+    hide_up_to_date = false, -- It hides up to date versions when displaying virtual text
     hide_unstable_versions = false, -- It hides unstable versions from version list e.g next-11.1.3-canary3
     -- Can be `npm`, `yarn`, or `pnpm`. Used for `delete`, `install` etc...
     -- The plugin will try to auto-detect the package manager based on
@@ -2594,7 +2591,7 @@ later(function()
     },
     log_level = "off",
     disable_inline_completion = false, -- disables inline completion for use with cmp
-    disable_keymaps = false,           -- disables built in keymaps for more manual control
+    disable_keymaps = false, -- disables built in keymaps for more manual control
     -- color = {
     --   suggestion_color = "#ffffff",
     --   cterm = 244,
@@ -2629,7 +2626,7 @@ later(function()
       hint = "DiagnosticHint",
       arrow = "NonText",
       background = "CursorLine", -- Can be a highlight or a hexadecimal color (#RRGGBB)
-      mixing_color = "None",     -- Can be None or a hexadecimal color (#RRGGBB). Used to blend the background color with the diagnostic background color with another color.
+      mixing_color = "None", -- Can be None or a hexadecimal color (#RRGGBB). Used to blend the background color with the diagnostic background color with another color.
     },
     blend = {
       factor = 0.27,
@@ -2798,17 +2795,17 @@ later(function()
         group = Config.get_custom_icon("VimVisualMulti", 1, true) .. "Multi Cursors",
         mode = { "n", "v" },
       },
-      { prefix .. "A",  desc = "Select all occurrences word under cursor",         mode = "n" },
-      { prefix .. "/",  desc = "Start regex search",                               mode = "n" },
-      { prefix .. "\\", desc = "Add a single cursor at current position",          mode = "n" },
-      { prefix .. "gS", desc = "Reselect last visual selection",                   mode = "n" },
+      { prefix .. "A", desc = "Select all occurrences word under cursor", mode = "n" },
+      { prefix .. "/", desc = "Start regex search", mode = "n" },
+      { prefix .. "\\", desc = "Add a single cursor at current position", mode = "n" },
+      { prefix .. "gS", desc = "Reselect last visual selection", mode = "n" },
 
       -- visual mode groups
-      { prefix,         group = "Multi Cursors",                                   mode = "v" },
-      { prefix .. "a",  desc = "Convert a visual selection to a VM selection",     mode = "v" },
-      { prefix .. "A",  desc = "Select all occurrences of selection text",         mode = "v" },
-      { prefix .. "c",  desc = "Add cursors downwards from start of visual block", mode = "v" },
-      { prefix .. "/",  desc = "Start regex search within selected text",          mode = "v" },
+      { prefix, group = "Multi Cursors", mode = "v" },
+      { prefix .. "a", desc = "Convert a visual selection to a VM selection", mode = "v" },
+      { prefix .. "A", desc = "Select all occurrences of selection text", mode = "v" },
+      { prefix .. "c", desc = "Add cursors downwards from start of visual block", mode = "v" },
+      { prefix .. "/", desc = "Start regex search within selected text", mode = "v" },
     }
   end
 end)
@@ -3003,11 +3000,9 @@ later(function()
   -- F19  = Shift + F7 (Shift == 12 -> F12 + F7)
   vim.keymap.set("n", "<F19>", "<Cmd>TermNew<CR>", { desc = "Split terminal window" })
 
-  if wk then
-    wk.add {
-      { prefix, group = Config.get_custom_icon("Terminal", 1, true) .. "Terminal" },
-    }
-  end
+  if wk then wk.add {
+    { prefix, group = Config.get_custom_icon("Terminal", 1, true) .. "Terminal" },
+  } end
 
   -- MiniFiles mappings
   if MiniFiles then
@@ -3043,7 +3038,7 @@ now(function()
   ---@type snacks.Config
   local opts = {
     bigfile = {
-      notify = true,                                           -- show notification when big file detected
+      notify = true, -- show notification when big file detected
       size = Config.default_large_buf_opts.size,
       line_length = Config.default_large_buf_opts.line_length, -- average line length (useful for minified files)
       -- Enable or disable features when big file detected
@@ -3065,8 +3060,8 @@ now(function()
       left = { "mark", "sign" }, -- priority of signs on the left (high to low)
       right = { "fold", "git" }, -- priority of signs on the right (high to low)
       folds = {
-        open = false,            -- show open fold icons
-        git_hl = false,          -- use Git Signs hl for fold icons
+        open = false, -- show open fold icons
+        git_hl = false, -- use Git Signs hl for fold icons
       },
       git = {
         -- patterns to match Git signs
@@ -3201,16 +3196,16 @@ now(function()
       indent = { char = "▏" },
       filter = function(bufnr)
         return Config.is_valid_buf(bufnr)
-            and not Config.is_large(bufnr)
-            and vim.g.snacks_indent ~= false
-            and vim.b[bufnr].snacks_indent ~= false
+          and not Config.is_large(bufnr)
+          and vim.g.snacks_indent ~= false
+          and vim.b[bufnr].snacks_indent ~= false
       end,
       animate = {
         enabled = true,
         style = "out",
         easing = "linear",
         duration = {
-          step = 20,   -- ms per step
+          step = 20, -- ms per step
           total = 200, -- maximum duration
         },
       },
@@ -3219,7 +3214,7 @@ now(function()
         enabled = true, -- enable highlighting the current scope
         priority = 200,
         char = "▏",
-        underline = false,    -- underline the start of the scope
+        underline = false, -- underline the start of the scope
         only_current = false, -- only show scope in the current window
         hl = "SnacksIndentScope", ---@type string|string[] hl group for scopes
       },
@@ -3245,18 +3240,18 @@ now(function()
     scope = {
       filter = function(bufnr)
         return Config.is_valid_buf(bufnr)
-            and not Config.is_large(bufnr)
-            and vim.g.snacks_scope ~= false
-            and vim.b[bufnr].snacks_scope ~= false
+          and not Config.is_large(bufnr)
+          and vim.g.snacks_scope ~= false
+          and vim.b[bufnr].snacks_scope ~= false
       end,
     },
     words = {
       enabled = true,
       filter = function(bufnr)
         return Config.is_valid_buf(bufnr)
-            and not Config.is_large(bufnr)
-            and vim.g.snacks_words ~= false
-            and vim.b[bufnr].snacks_words ~= false
+          and not Config.is_large(bufnr)
+          and vim.g.snacks_words ~= false
+          and vim.b[bufnr].snacks_words ~= false
       end,
     },
   }
@@ -3397,7 +3392,7 @@ now(function()
               title = "{title} {live} {flags}",
               title_pos = "center",
             },
-            { win = "list",    height = 0.8, border = "rounded" },
+            { win = "list", height = 0.8, border = "rounded" },
             { win = "preview", height = 0.2, border = "rounded" },
           },
         },
@@ -3537,10 +3532,10 @@ now(function()
     vim.keymap.set("n", "<Leader>fo", function()
       require("snacks").picker.smart {
         multi = { "recent" },
-        format = "file",      -- use `file` format for all sources
+        format = "file", -- use `file` format for all sources
         matcher = {
-          cwd_bonus = false,  -- boost cwd matches
-          frecency = true,    -- use frecency boosting
+          cwd_bonus = false, -- boost cwd matches
+          frecency = true, -- use frecency boosting
           sort_empty = false, -- sort even when the filter is empty
           history_bonus = true,
         },
@@ -3721,23 +3716,23 @@ later(function()
       return vim.notify("The VectorCode pack requires uv installed", vim.log.levels.DEBUG)
     end
     vim
-        .system({ "uv", "tool", "install", "vectorcode[lsp,mcp]" }, { text = true }, function(obj)
-          if obj.code == 0 then
-            vim.notify("Installed successfully: vectorcode\n" .. obj.stdout)
-          else
-            vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
-          end
-        end)
-        :wait()
+      .system({ "uv", "tool", "install", "vectorcode[lsp,mcp]" }, { text = true }, function(obj)
+        if obj.code == 0 then
+          vim.notify("Installed successfully: vectorcode\n" .. obj.stdout)
+        else
+          vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
+        end
+      end)
+      :wait()
     vim
-        .system({ "uv", "tool", "upgrade", "vectorcode[lsp,mcp]" }, { text = true }, function(obj)
-          if obj.code == 0 then
-            vim.notify("Updated successfully: vectorcode\n" .. obj.stdout)
-          else
-            vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
-          end
-        end)
-        :wait()
+      .system({ "uv", "tool", "upgrade", "vectorcode[lsp,mcp]" }, { text = true }, function(obj)
+        if obj.code == 0 then
+          vim.notify("Updated successfully: vectorcode\n" .. obj.stdout)
+        else
+          vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
+        end
+      end)
+      :wait()
   end, "VectorCode install/update")
 
   add {
@@ -3763,7 +3758,7 @@ later(function()
           -- Picker interface (auto resolved to a valid picker)
           picker = "default", --- ("telescope", "snacks", "fzf-lua", or "default")
           ---Optional filter function to control which chats are shown when browsing
-          chat_filter = nil,  -- function(chat_data) return boolean end
+          chat_filter = nil, -- function(chat_data) return boolean end
           -- Customize picker keymaps (optional)
           -- picker_keymaps = {
           --   rename = { n = "r", i = "<M-r>" },
@@ -3793,8 +3788,8 @@ later(function()
             generation_opts = {
               adapter = "nvidia",
               model = "qwen/qwen3.5-397b-a17b",
-              context_size = 260000,       -- max tokens that the model supports
-              include_references = true,   -- include slash command content
+              context_size = 260000, -- max tokens that the model supports
+              include_references = true, -- include slash command content
               include_tool_outputs = true, -- include tool execution results
               -- system_prompt = nil, -- custom system prompt (string or function)
               -- format_summary = nil, -- custom function to format generated summary e.g to remove <think/> tags from summary
@@ -4035,7 +4030,7 @@ later(function()
     -- Custom actions: https://github.com/yarospace/dev-tools.nvim?tab=readme-ov-file#adding-code-actions
     actions = {},
 
-    filetypes = {   -- filetypes for which to attach the LSP
+    filetypes = { -- filetypes for which to attach the LSP
       include = {}, -- {} to include all, except for special buftypes, e.g. nofile|help|terminal|prompt
       exclude = {},
     },
@@ -4068,7 +4063,7 @@ later(function()
     },
 
     debug = false, -- extra debug info
-    cache = true,  -- cache the actions on start
+    cache = true, -- cache the actions on start
   }
 end)
 
@@ -4080,55 +4075,55 @@ later(function()
     if not vim.fn.executable "dotnet" then error "Easy-dotnet requires dotnet installed" end
     if not is_ef_available then
       vim
-          .system({ "dotnet", "tool", "install", "-g", "dotnet-ef" }, { text = true }, function(obj)
-            vim.schedule(function()
-              if obj.code == 0 then
-                vim.notify "Installed successfully: dotnet entity framework"
-                is_ef_available = true
-              else
-                vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
-              end
-            end)
+        .system({ "dotnet", "tool", "install", "-g", "dotnet-ef" }, { text = true }, function(obj)
+          vim.schedule(function()
+            if obj.code == 0 then
+              vim.notify "Installed successfully: dotnet entity framework"
+              is_ef_available = true
+            else
+              vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
+            end
           end)
-          :wait()
+        end)
+        :wait()
     else
       vim
-          .system({ "dotnet", "tool", "update", "-g", "dotnet-ef" }, { text = true }, function(obj)
-            vim.schedule(function()
-              if obj.code == 0 then
-                vim.notify "Updated successfully: dotnet entity framework"
-              else
-                vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
-              end
-            end)
+        .system({ "dotnet", "tool", "update", "-g", "dotnet-ef" }, { text = true }, function(obj)
+          vim.schedule(function()
+            if obj.code == 0 then
+              vim.notify "Updated successfully: dotnet entity framework"
+            else
+              vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
+            end
           end)
-          :wait()
+        end)
+        :wait()
     end
     if vim.fn.executable "dotnet-easydotnet" ~= 1 then
       vim
-          .system({ "dotnet", "tool", "install", "-g", "EasyDotnet" }, { text = true }, function(obj)
-            vim.schedule(function()
-              if obj.code == 0 then
-                vim.notify "Installed successfully: EasyDotnet"
-                is_ef_available = true
-              else
-                vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
-              end
-            end)
+        .system({ "dotnet", "tool", "install", "-g", "EasyDotnet" }, { text = true }, function(obj)
+          vim.schedule(function()
+            if obj.code == 0 then
+              vim.notify "Installed successfully: EasyDotnet"
+              is_ef_available = true
+            else
+              vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
+            end
           end)
-          :wait()
+        end)
+        :wait()
     else
       vim
-          .system({ "dotnet", "tool", "update", "-g", "EasyDotnet" }, { text = true }, function(obj)
-            vim.schedule(function()
-              if obj.code == 0 then
-                vim.notify "Updated successfully: EasyDotnet"
-              else
-                vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
-              end
-            end)
+        .system({ "dotnet", "tool", "update", "-g", "EasyDotnet" }, { text = true }, function(obj)
+          vim.schedule(function()
+            if obj.code == 0 then
+              vim.notify "Updated successfully: EasyDotnet"
+            else
+              vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
+            end
           end)
-          :wait()
+        end)
+        :wait()
     end
   end, "Easy-dotnet install/update")
 
@@ -4145,18 +4140,18 @@ later(function()
   }
   require("easy-dotnet").setup {
     managed_terminal = {
-      auto_hide = true,       -- auto hides terminal if exit code is 0
+      auto_hide = true, -- auto hides terminal if exit code is 0
       auto_hide_delay = 1000, -- delay before auto hiding, 0 = instant
     },
     -- Optional configuration for external terminals (matches nvim-dap structure)
     external_terminal = nil,
     lsp = {
       enabled = (function() return not vim.pack.is_available "roslyn" end)(), -- Enable builtin roslyn lsp
-      preload_roslyn = true,                                                  -- Start loading roslyn before any buffer is opened
-      roslynator_enabled = true,                                              -- Automatically enable roslynator analyzer
-      easy_dotnet_analyzer_enabled = true,                                    -- Enable roslyn analyzer from easy-dotnet-server
+      preload_roslyn = true, -- Start loading roslyn before any buffer is opened
+      roslynator_enabled = true, -- Automatically enable roslynator analyzer
+      easy_dotnet_analyzer_enabled = true, -- Enable roslyn analyzer from easy-dotnet-server
       auto_refresh_codelens = true,
-      analyzer_assemblies = {},                                               -- Any additional roslyn analyzers you might use like SonarAnalyzer.CSharp
+      analyzer_assemblies = {}, -- Any additional roslyn analyzers you might use like SonarAnalyzer.CSharp
       config = {},
     },
     debugger = {
@@ -4227,7 +4222,7 @@ later(function()
       enabled = true,
       use_clipboard_json = {
         behavior = "prompt", --'auto' | 'prompt' | 'never',
-        register = "+",      -- which register to check
+        register = "+", -- which register to check
       },
     },
     -- choose which picker to use with the plugin
@@ -4236,9 +4231,9 @@ later(function()
     -- the available one automatically with this priority:
     -- telescope -> fzf -> snacks ->  basic
     picker = vim.pack.is_available "telescope" and "telescope"
-        or vim.pack.is_available "fzf-lua" and "fzf"
-        or vim.pack.is_available "snacks" and "snacks"
-        or "basic",
+      or vim.pack.is_available "fzf-lua" and "fzf"
+      or vim.pack.is_available "snacks" and "snacks"
+      or "basic",
   }
   local prefix = "<leader>le"
   if MiniFiles then
