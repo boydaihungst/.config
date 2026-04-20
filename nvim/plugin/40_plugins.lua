@@ -47,17 +47,18 @@ local ensure_installed_treesitter = {
 }
 
 local ensure_installed_mason_packages = {
+  -- Tree sitter cli should be installed first
+  "tree-sitter-cli",
   -- install language servers
   "ast-grep",
   "fish-lsp",
   "gh-actions-language-server",
   "lua-language-server",
   "marksman",
-  "msbuild_project_tools_server",
+  vim.fn.executable "dotnet" and "msbuild_project_tools_server",
   "roslyn",
   "sqls",
   "taplo",
-  "tree-sitter-cli",
   "vtsls",
   "yaml-language-server",
   -- AI asisstent
@@ -88,7 +89,7 @@ local ensure_installed_mason_packages = {
 }
 
 -- File operations ============================================================
-now_if_args(function()
+now(function()
   add { "https://github.com/antosha417/nvim-lsp-file-operations" }
   require("lsp-file-operations").setup {}
   vim.lsp.config("*", {
@@ -106,12 +107,17 @@ now_if_args(function()
       "execute `didCreateFiles` operation when creating files"
     )
 
-    Config.new_autocmd(
-      "User",
-      "MiniFilesActionDelete",
-      function(args) require("lsp-file-operations.did-delete").callback { fname = args.data.from } end,
-      "execute `didDeleteFiles` operation when creating files"
-    )
+    Config.new_autocmd("User", "MiniFilesActionDelete", function(args)
+      vim.schedule(function() vim.notify("Deleted: " .. args.data.from) end)
+      require("lsp-file-operations.did-delete").callback { fname = args.data.from }
+      -- Auto close deleted buffers
+      local closed_buffers = vim.api.nvim_get_buffers_by_path(args.data.from)
+      if #closed_buffers > 0 then
+        for _, closed_buf in ipairs(closed_buffers) do
+          Config.close_buffer(closed_buf, true)
+        end
+      end
+    end, "execute `didDeleteFiles` operation when creating files")
 
     Config.new_autocmd(
       "User",
@@ -201,32 +207,34 @@ later(function()
   wk.add(Config.leader_group_which_key)
   wk.setup(config)
 end)
--- Language servers ===========================================================
 
--- Language Server Protocol (LSP)  a set of conventions that power creation of
--- language specific tools. It requires two parts:
--- - Server - program that performs language specific computations.
--- - Client - program that asks server for computations and shows results.
---
--- Here Neovim itself  a client (see `:h vim.lsp`). Language servers need to
--- be installed separately based on your OS, CLI tools, and preferences.
--- See note about 'mason.nvim' at the bottom of the file.
---
--- Neovim's team collects commonly used configurations for most language servers
--- inside 'neovim/nvim-lspconfig' plugin.
---
--- Add it now if file (and not 'mini.starter')  shown after startup.
-now_if_args(function()
-  add { "https://github.com/neovim/nvim-lspconfig" }
-  -- Enable via mason below
+now(function()
+  Config.on_packchanged(
+    "lua-json5",
+    { "install", "update" },
+    function(data)
+      vim
+        .system(vim.fn.has "win32" == 1 and { "powershell", "./install.ps1" } or { "./install.sh" }, { cwd = data.path })
+        :wait()
+    end,
+    "Install json5"
+  )
+  add {
+    "https://github.com/Joakker/lua-json5",
+  }
 end)
 
-now_if_args(function()
-  Config.on_packchanged("mason.nvim", { "update" }, function() vim.cmd "MasonUpdate" end, ":MasonUpdate")
+now(function()
+  Config.on_packchanged("mason.nvim", { "install", "update" }, function() vim.cmd "MasonUpdate" end, ":MasonUpdate")
   add {
+    { src = "https://github.com/saghen/blink.cmp", version = vim.version.range "1.x" },
     "https://github.com/mason-org/mason.nvim",
+    "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
+    "https://github.com/mason-org/mason-lspconfig.nvim",
+    "https://github.com/neovim/nvim-lspconfig",
   }
-  require("mason").setup {
+  local mason = require "mason"
+  mason.setup {
     registries = {
       "github:mason-org/mason-registry",
       "github:Crashdummyy/mason-registry",
@@ -244,28 +252,14 @@ now_if_args(function()
       },
     },
   }
-end)
-
-now_if_args(function()
-  add {
-    "https://github.com/WhoSethDaniel/mason-tool-installer.nvim",
-  }
   local mason_tool_installer = require "mason-tool-installer"
+
   mason_tool_installer.setup {
     ensure_installed = ensure_installed_mason_packages,
     -- disable alternative name from these package, only use name from Mason.Nvim
     integrations = { ["mason-lspconfig"] = false, ["mason-null-ls"] = false, ["mason-nvim-dap"] = false },
   }
-  -- Install at the startup
-  mason_tool_installer.run_on_start()
-end)
 
-now_if_args(function()
-  add {
-    -- dependencies
-    { src = "https://github.com/saghen/blink.cmp", version = vim.version.range "1.x" },
-    "https://github.com/mason-org/mason-lspconfig.nvim",
-  }
   vim.lsp.config("*", {
     capabilities = require("blink.cmp").get_lsp_capabilities(),
   })
@@ -300,22 +294,8 @@ now_if_args(function()
     automatic_enable = true,
     ensure_installed = nil, -- because we use mason-tool-installer to install lsp severs
   }
-end)
-
-now(function()
-  Config.on_packchanged(
-    "lua-json5",
-    { "install", "update" },
-    function(data)
-      vim
-        .system(vim.fn.has "win32" == 1 and { "powershell", "./install.ps1" } or { "./install.sh" }, { cwd = data.path })
-        :wait()
-    end,
-    "Install json5"
-  )
-  add {
-    "https://github.com/Joakker/lua-json5",
-  }
+  -- Install at the startup
+  mason_tool_installer.run_on_start()
 end)
 
 later(function()
@@ -329,6 +309,7 @@ later(function()
     "https://github.com/Weissle/persistent-breakpoints.nvim",
     "https://github.com/Joakker/lua-json5",
     { src = "https://github.com/saghen/blink.cmp", version = vim.version.range "1.x" },
+    "https://github.com/saghen/blink.compat",
   }
 
   local dap = require "dap"
@@ -406,8 +387,10 @@ later(function()
     })
   end
 
-  -- Use json5 to parse vscode json
-  require("dap.ext.vscode").json_decode = require("json5").parse
+  if vim.pack.is_available "json5" then
+    -- Use json5 to parse vscode json
+    require("dap.ext.vscode").json_decode = require("json5").parse
+  end
 
   -- Function Key Mappings
   vim.keymap.set("n", "<F5>", function() dap.continue() end, { desc = "Debugger: Start" })
@@ -502,7 +485,7 @@ later(function()
   })
 end)
 -- Tree-sitter ================================================================
-now_if_args(function()
+later(function()
   -- Define hook to update tree-sitter parsers after plugin  updated
   Config.on_packchanged("nvim-treesitter", { "update" }, function() vim.cmd "TSUpdate" end, ":TSUpdate")
 
@@ -1271,7 +1254,10 @@ later(function()
 end)
 
 on_filetype("vue,typescript,javascript,typescriptreact,javascriptreact,tsx,jsx,java,json,yaml", function()
-  add { "https://github.com/yelog/i18n.nvim" }
+  add {
+    "https://github.com/yelog/i18n.nvim",
+    { src = "https://github.com/saghen/blink.cmp", version = vim.version.range "1.x" },
+  }
   local original_sig_help = vim.lsp.buf.signature_help
 
   local i18n = require "i18n"
@@ -1330,6 +1316,28 @@ on_filetype("vue,typescript,javascript,typescriptreact,javascriptreact,tsx,jsx,j
   Config.new_autocmd("DirChanged", "*", function()
     if vim.fn.exists ":I18nReload" == 2 and i18n._activated then vim.cmd "I18nReload" end
   end, "Reload i18n on cwd/workspace changed")
+
+  local blink_avail, blink = pcall(require, "blink.cmp")
+  if blink_avail then
+    for _, filetype in ipairs {
+      "vue",
+      "typescript",
+      "javascript",
+      "typescriptreact",
+      "javascriptreact",
+      "tsx",
+      "jsx",
+      "java",
+      "json",
+      "yaml",
+    } do
+      blink.add_filetype_source(filetype, "i18n")
+    end
+    blink.add_source_provider("i18n", {
+      name = "i18n",
+      module = "i18n.integration.blink_source",
+    })
+  end
 end)
 
 later(function()
@@ -1368,10 +1376,10 @@ on_event("InsertEnter,CmdlineEnter", function()
     "https://github.com/xzbdmw/colorful-menu.nvim",
     "https://github.com/Fildo7525/pretty_hover",
     -- sources
-    "https://github.com/Kaer-Yang/blink-cmp-git",
-    "https://github.com/drupted/blink-cmp-conventional-commits",
+    "https://github.com/Kaiser-Yang/blink-cmp-git",
+    "https://github.com/disrupted/blink-cmp-conventional-commits",
     "https://github.com/yelog/i18n.nvim",
-
+    "https://github.com/saghen/blink.compat",
     { src = "https://github.com/saghen/blink.cmp", version = vim.version.range "1.x" },
   }
 
@@ -1464,7 +1472,8 @@ on_event("InsertEnter,CmdlineEnter", function()
     return { text = CTX.kind_icon .. CTX.icon_gap, highlight = CTX.kind_hl }
   end
 
-  require("blink.cmp").setup {
+  local blink = require "blink.cmp"
+  blink.setup {
     enabled = function()
       local dap_prompt = pcall(require, "cmp-dap") -- add interoperability with cmp-dap
         and vim.tbl_contains({ "dap-repl", "dapui_watches", "dapui_hover" }, vim.bo.filetype)
@@ -1473,86 +1482,13 @@ on_event("InsertEnter,CmdlineEnter", function()
     end,
     snippets = { preset = "mini_snippets" },
     sources = {
-      default = { "lsp", "path", "snippets", "buffer", "i18n", "conventional_commits", "git" },
+      default = { "lsp", "path", "snippets", "buffer" },
       providers = {
-        git = {
-          module = "blink-cmp-git",
-          name = "Git",
-          -- only enable th source when filetype is gitcommit, markdown, or 'octo'
-          enabled = function() return vim.tbl_contains({ "octo", "gitcommit", "markdown" }, vim.bo.filetype) end,
-          --- @module 'blink-cmp-git'
-          --- @type blink-cmp-git.Options
-          opts = {
-            commit = {
-              -- You may want to customize when it should be enabled
-              -- The default will enable th when `git` is found and `cwd` is in a git repository
-              -- enable = function() end
-              -- You may want to change the triggers
-              -- triggers = { ':' },
-            },
-            git_centers = {
-              github = {
-                -- Those below have the same fields with `commit`
-                -- Those features will be enabled when `git` and `gh` (or `curl`) are found and
-                -- remote contains `github.com`
-                -- sue = {
-                --     get_token = function() return '' end,
-                -- },
-                -- pull_request = {
-                --     get_token = function() return '' end,
-                -- },
-                -- mention = {
-                --     get_token = function() return '' end,
-                --     get_documentation = function(item)
-                --         local default = require('blink-cmp-git.default.github')
-                --             .mention.get_documentation(item)
-                --         default.get_token = function() return '' end
-                --         return default
-                --     end
-                -- }
-              },
-              gitlab = {
-                -- Those below have the same fields with `commit`
-                -- Those features will be enabled when `git` and `glab` (or `curl`) are found and
-                -- remote contains `gitlab.com`
-                -- sue = {
-                --     get_token = function() return '' end,
-                -- },
-                -- NOTE:
-                -- Even for `gitlab`, you should use `pull_request` rather than`merge_request`
-                -- pull_request = {
-                --     get_token = function() return '' end,
-                -- },
-                -- mention = {
-                --     get_token = function() return '' end,
-                --     get_documentation = function(item)
-                --         local default = require('blink-cmp-git.default.gitlab')
-                --            .mention.get_documentation(item)
-                --         default.get_token = function() return '' end
-                --         return default
-                --     end
-                -- }
-              },
-            },
-          },
-        },
-        conventional_commits = {
-          name = "Conventional Commits",
-          module = "blink-cmp-conventional-commits",
-          enabled = function() return vim.bo.filetype == "gitcommit" end,
-          ---@module 'blink-cmp-conventional-commits'
-          ---@type blink-cmp-conventional-commits.Options
-          opts = {}, -- none so far
-        },
         -- Path completion from cwd instead of current buffer's directory
         path = {
           opts = {
             get_cwd = function(_) return vim.fn.getcwd() end,
           },
-        },
-        i18n = {
-          name = "i18n",
-          module = "i18n.integration.blink_source",
         },
       },
     },
@@ -1714,7 +1650,37 @@ on_event("InsertEnter,CmdlineEnter", function()
       },
     },
   }
-  require("blink.cmp").setup()
+
+  for _, filetype in ipairs { "octo", "gitcommit", "markdown" } do
+    blink.add_filetype_source(filetype, "git")
+  end
+  blink.add_source_provider("git", {
+    module = "blink-cmp-git",
+    name = "Git",
+    -- only enable th source when filetype is gitcommit, markdown, or 'octo'
+    enabled = function() return vim.fn.executable "git" == 1 end,
+    --- @module 'blink-cmp-git'
+    --- @type blink-cmp-git.Options
+    opts = {
+      commit = {},
+      git_centers = {
+        github = {},
+        gitlab = {},
+      },
+    },
+  })
+
+  for _, filetype in ipairs { "gitcommit" } do
+    blink.add_filetype_source(filetype, "conventional_commits")
+  end
+  blink.add_source_provider("conventional_commits", {
+    name = "Conventional Commits",
+    module = "blink-cmp-conventional-commits",
+    enabled = function() return vim.fn.executable "git" == 1 end,
+    ---@module 'blink-cmp-conventional-commits'
+    ---@type blink-cmp-conventional-commits.Options
+    opts = {}, -- none so far
+  })
 end)
 
 later(function()
@@ -2262,7 +2228,7 @@ end)
 
 later(function()
   add {
-    "https://github.com/williamboman/mason.nvim",
+    "https://github.com/mason-org/mason.nvim",
     "https://github.com/mfussenegger/nvim-lint",
   }
   local lint = require "lint"
@@ -2553,7 +2519,7 @@ end)
 later(function()
   vim.g["suda#prompt"] = "Enter root password to save:"
   add {
-    "https://github.com/lambdalue/suda.vim",
+    "https://github.com/lambdalisue/vim-suda",
   }
 
   local function smart_save()
@@ -3616,62 +3582,72 @@ later(function()
     on_attach = function(bufnr)
       local prefix = "<Leader>g"
       -- Normal Mode Mappings
-      vim.keymap.set("n", prefix .. "l", function() gitsigns.blame_line() end, { buf = bufnr, desc = "View Git blame" })
+      vim.keymap.set(
+        "n",
+        prefix .. "l",
+        function() gitsigns.blame_line() end,
+        { buffer = bufnr, desc = "View Git blame" }
+      )
       vim.keymap.set(
         "n",
         prefix .. "L",
         function() gitsigns.blame_line { full = true } end,
-        { buf = bufnr, desc = "View full Git blame" }
+        { buffer = bufnr, desc = "View full Git blame" }
       )
       vim.keymap.set(
         "n",
         prefix .. "p",
         function() gitsigns.preview_hunk_inline() end,
-        { buf = bufnr, desc = "Preview Git hunk" }
+        { buffer = bufnr, desc = "Preview Git hunk" }
       )
-      vim.keymap.set("n", prefix .. "r", function() gitsigns.reset_hunk() end, { buf = bufnr, desc = "Reset Git hunk" })
+      vim.keymap.set(
+        "n",
+        prefix .. "r",
+        function() gitsigns.reset_hunk() end,
+        { buffer = bufnr, desc = "Reset Git hunk" }
+      )
       vim.keymap.set(
         "n",
         prefix .. "R",
         function() gitsigns.reset_buffer() end,
-        { buf = bufnr, desc = "Reset Git buffer" }
+        { buffer = bufnr, desc = "Reset Git buffer" }
       )
       vim.keymap.set(
         "n",
         prefix .. "s",
         function() gitsigns.stage_hunk() end,
-        { buf = bufnr, desc = "Stage/Unstage Git hunk" }
+        { buffer = bufnr, desc = "Stage/Unstage Git hunk" }
       )
       vim.keymap.set(
         "n",
         prefix .. "S",
         function() gitsigns.stage_buffer() end,
-        { buf = bufnr, desc = "Stage Git buffer" }
+        { buffer = bufnr, desc = "Stage Git buffer" }
       )
-      vim.keymap.set("n", prefix .. "d", function() gitsigns.diffthis() end, { buf = bufnr, desc = "View Git diff" })
+      vim.keymap.set("n", prefix .. "d", function() gitsigns.diffthis() end, { buffer = bufnr, desc = "View Git diff" })
 
       -- Visual Mode Mappings (Range specific)
       vim.keymap.set(
         "v",
         prefix .. "r",
         function() gitsigns.reset_hunk { vim.fn.line ".", vim.fn.line "v" } end,
-        { buf = bufnr, desc = "Reset Git hunk" }
+        { buffer = bufnr, desc = "Reset Git hunk" }
       )
 
       vim.keymap.set(
         "v",
         prefix .. "s",
         function() gitsigns.stage_hunk { vim.fn.line ".", vim.fn.line "v" } end,
-        { buf = bufnr, desc = "Stage Git hunk" }
+        { buffer = bufnr, desc = "Stage Git hunk" }
       )
 
       -- Navigation Mappings
-      vim.keymap.set("n", "[G", function() gitsigns.nav_hunk "first" end, { buf = bufnr, desc = "First Git hunk" })
-      vim.keymap.set("n", "]G", function() gitsigns.nav_hunk "last" end, { buf = bufnr, desc = "Last Git hunk" })
-      vim.keymap.set("n", "]g", function() gitsigns.nav_hunk "next" end, { buf = bufnr, desc = "Next Git hunk" })
-      vim.keymap.set("n", "[g", function() gitsigns.nav_hunk "prev" end, { buf = bufnr, desc = "Previous Git hunk" })
+      vim.keymap.set("n", "[G", function() gitsigns.nav_hunk "first" end, { buffer = bufnr, desc = "First Git hunk" })
+      vim.keymap.set("n", "]G", function() gitsigns.nav_hunk "last" end, { buffer = bufnr, desc = "Last Git hunk" })
+      vim.keymap.set("n", "]g", function() gitsigns.nav_hunk "next" end, { buffer = bufnr, desc = "Next Git hunk" })
+      vim.keymap.set("n", "[g", function() gitsigns.nav_hunk "prev" end, { buffer = bufnr, desc = "Previous Git hunk" })
 
-      vim.keymap.set({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { buf = bufnr, desc = "inside Git hunk" })
+      vim.keymap.set({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { buffer = bufnr, desc = "inside Git hunk" })
     end,
     worktrees = nil,
   }
@@ -3711,38 +3687,37 @@ later(function()
 end)
 
 later(function()
-  Config.on_packchanged("VectorCode", { "install", "update" }, function()
-    if vim.fn.executable "uv" ~= 1 then
-      return vim.notify("The VectorCode pack requires uv installed", vim.log.levels.DEBUG)
-    end
-    vim
-      .system({ "uv", "tool", "install", "vectorcode[lsp,mcp]" }, { text = true }, function(obj)
+  if vim.fn.executable "uv" == 1 then
+    Config.on_packchanged("VectorCode", { "install", "update" }, function()
+      vim.system({ "uv", "tool", "install", "vectorcode[lsp,mcp]" }, { text = true }, function(obj)
         if obj.code == 0 then
           vim.notify("Installed successfully: vectorcode\n" .. obj.stdout)
         else
           vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
         end
       end)
-      :wait()
-    vim
-      .system({ "uv", "tool", "upgrade", "vectorcode[lsp,mcp]" }, { text = true }, function(obj)
+      vim.system({ "uv", "tool", "upgrade", "vectorcode[lsp,mcp]" }, { text = true }, function(obj)
         if obj.code == 0 then
           vim.notify("Updated successfully: vectorcode\n" .. obj.stdout)
         else
           vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
         end
       end)
-      :wait()
-  end, "VectorCode install/update")
+    end, "VectorCode install/update")
+    add {
+      "https://github.com/Davidyz/VectorCode",
+    }
+  else
+    if vim.pack.is_available "VectorCode" then vim.pack.del { "VectorCode" } end
+  end
 
   add {
     "https://github.com/nvim-lua/plenary.nvim",
     "https://github.com/ravitemer/codecompanion-history.nvim",
     "https://github.com/franco-ruggeri/codecompanion-spinner.nvim",
-    "https://github.com/Davidyz/VectorCode",
     "https://github.com/olimorris/codecompanion.nvim",
   }
-  require("codecompanion").setup {
+  local opts = {
     extensions = {
       history = {
         enabled = true,
@@ -3816,42 +3791,6 @@ later(function()
         },
       },
       spinner = {},
-      vectorcode = vim.fn.executable "vectorcode" == 1 and {
-        opts = {
-          -- prompt_library = {
-          -- },
-          tool_group = {
-            -- this will register a tool group called `@vectorcode_toolbox` that contains all 3 tools
-            enabled = true,
-            -- a list of extra tools that you want to include in `@vectorcode_toolbox`.
-            -- if you use @vectorcode_vectorise, it'll be very handy to include
-            -- `file_search` here.
-            extras = {},
-            collapse = false, -- whether the individual tools should be shown in the chat
-          },
-          tool_opts = {
-            ls = {},
-            vectorise = {},
-            query = {
-              max_num = { chunk = -1, document = -1 },
-              default_num = { chunk = 50, document = 10 },
-              include_stderr = false,
-              use_lsp = false,
-              no_duplicate = true,
-              chunk_mode = false,
-              summarise = {
-                enabled = false,
-                -- adapter = "gemini_cli",
-                query_augmented = true,
-              },
-            },
-          },
-          on_setup = {
-            update = true, -- set to true to enable update when `setup` is called.
-            -- lsp = false,
-          },
-        },
-      },
     },
     language = "English",
     adapters = {
@@ -3909,6 +3848,7 @@ later(function()
                 type = "number",
                 optional = true,
                 default = 0.6,
+                description = "Temperature",
                 validate = function(n) return n >= 0 and n <= 1, "Must be between 0 and 1" end,
               },
               top_p = {
@@ -3917,6 +3857,7 @@ later(function()
                 type = "number",
                 optional = true,
                 default = 0.95,
+                description = "Top-p sampling",
                 validate = function(n) return n >= 0 and n <= 1, "Must be between 0 and 1" end,
               },
               top_k = {
@@ -3924,6 +3865,7 @@ later(function()
                 mapping = "parameters",
                 type = "number",
                 optional = true,
+                description = "Top-k sampling",
                 default = 20,
               },
               presence_penalty = {
@@ -3932,6 +3874,7 @@ later(function()
                 type = "number",
                 optional = true,
                 default = 0,
+                description = "Presence penalty",
                 validate = function(n) return n >= 0 and n <= 2, "Must be between 0 and 2" end,
               },
               repetition_penalty = {
@@ -3940,6 +3883,7 @@ later(function()
                 type = "number",
                 optional = true,
                 default = 1,
+                description = "Repetition penalty",
                 validate = function(n) return n >= -2 and n <= 2, "Must be between -2 and 2" end,
               },
             },
@@ -3996,6 +3940,46 @@ later(function()
       },
     },
   }
+  if vim.fn.executable "vectorcode" == 1 then
+    opts.extensions = opts.extensions or {}
+    opts.extensions.vectorcode = {
+      opts = {
+        -- prompt_library = {
+        -- },
+        tool_group = {
+          -- this will register a tool group called `@vectorcode_toolbox` that contains all 3 tools
+          enabled = true,
+          -- a list of extra tools that you want to include in `@vectorcode_toolbox`.
+          -- if you use @vectorcode_vectorise, it'll be very handy to include
+          -- `file_search` here.
+          extras = {},
+          collapse = false, -- whether the individual tools should be shown in the chat
+        },
+        tool_opts = {
+          ls = {},
+          vectorise = {},
+          query = {
+            max_num = { chunk = -1, document = -1 },
+            default_num = { chunk = 50, document = 10 },
+            include_stderr = false,
+            use_lsp = false,
+            no_duplicate = true,
+            chunk_mode = false,
+            summarise = {
+              enabled = false,
+              -- adapter = "gemini_cli",
+              query_augmented = true,
+            },
+          },
+        },
+        on_setup = {
+          update = true, -- set to true to enable update when `setup` is called.
+          -- lsp = false,
+        },
+      },
+    }
+  end
+  require("codecompanion").setup(opts)
   local prefix = "<Leader>A" -- or whatever your prefix variable is set to
 
   if wk then
@@ -4068,64 +4052,54 @@ later(function()
 end)
 
 later(function()
-  local is_dev_tools_available
-  local is_ef_available = vim.fn.executable "dotnet-ef" == 1
+  local function setup_dotnet_tools()
+    local home = vim.uv.os_homedir()
+    local sep = vim.uv.os_uname().sysname == "Windows_NT" and ";" or ":"
+    local tools_path = home .. "/.dotnet/tools"
+    if vim.uv.os_uname().sysname == "Windows_NT" then tools_path = tools_path:gsub("/", "\\") end
+    if not string.find(vim.env.PATH, tools_path, 1, true) then vim.env.PATH = vim.env.PATH .. sep .. tools_path end
+  end
 
-  Config.on_packchanged("easy-dotnet.nvim", { "install", "update" }, function()
-    if not vim.fn.executable "dotnet" then error "Easy-dotnet requires dotnet installed" end
-    if not is_ef_available then
-      vim
-        .system({ "dotnet", "tool", "install", "-g", "dotnet-ef" }, { text = true }, function(obj)
-          vim.schedule(function()
-            if obj.code == 0 then
-              vim.notify "Installed successfully: dotnet entity framework"
-              is_ef_available = true
-            else
-              vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
-            end
-          end)
-        end)
-        :wait()
-    else
-      vim
-        .system({ "dotnet", "tool", "update", "-g", "dotnet-ef" }, { text = true }, function(obj)
-          vim.schedule(function()
-            if obj.code == 0 then
-              vim.notify "Updated successfully: dotnet entity framework"
-            else
-              vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
-            end
-          end)
-        end)
-        :wait()
+  setup_dotnet_tools()
+
+  local is_dotnet_available = vim.fn.executable "dotnet" == 1
+  local is_dev_tools_available
+  local is_ef_cli_available = vim.fn.executable "dotnet-ef" == 1
+  local is_easydotnet_cli_available = vim.fn.executable "dotnet-easydotnet" == 1
+
+  local install_external_deps = function()
+    if not is_dotnet_available then return vim.notify "Easy-dotnet requires dotnet installed" end
+
+    if not is_ef_cli_available then
+      vim.schedule(function() vim.notify "Installing: dotnet entity framework" end)
+      local result = vim.system({ "dotnet", "tool", "install", "-g", "dotnet-ef" }, { text = true }):wait()
+      if result.code == 0 then
+        vim.schedule(function() vim.notify "Installed successfully: dotnet entity framework" end)
+        is_ef_cli_available = true
+      else
+        vim.schedule(function() vim.notify("Error:\n" .. result.stderr, vim.log.levels.ERROR) end)
+      end
     end
-    if vim.fn.executable "dotnet-easydotnet" ~= 1 then
-      vim
-        .system({ "dotnet", "tool", "install", "-g", "EasyDotnet" }, { text = true }, function(obj)
-          vim.schedule(function()
-            if obj.code == 0 then
-              vim.notify "Installed successfully: EasyDotnet"
-              is_ef_available = true
-            else
-              vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
-            end
-          end)
-        end)
-        :wait()
-    else
-      vim
-        .system({ "dotnet", "tool", "update", "-g", "EasyDotnet" }, { text = true }, function(obj)
-          vim.schedule(function()
-            if obj.code == 0 then
-              vim.notify "Updated successfully: EasyDotnet"
-            else
-              vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
-            end
-          end)
-        end)
-        :wait()
+
+    if not is_easydotnet_cli_available then
+      vim.schedule(function() vim.notify "Installing: EasyDotnet" end)
+      local result = vim.system({ "dotnet", "tool", "install", "-g", "EasyDotnet" }, { text = true }):wait()
+      if result.code == 0 then
+        vim.schedule(function() vim.notify "Installed successfully: EasyDotnet" end)
+        is_easydotnet_cli_available = true
+      else
+        vim.schedule(function() vim.notify("Error:\n" .. result.stderr, vim.log.levels.ERROR) end)
+      end
     end
-  end, "Easy-dotnet install/update")
+  end
+
+  Config.on_packchanged(
+    "easy-dotnet.nvim",
+    { "install", "update" },
+    install_external_deps,
+    "Easy-dotnet install/update"
+  )
+  install_external_deps()
 
   add {
     "https://github.com/GustavEikaas/easy-dotnet.nvim",
@@ -4326,7 +4300,7 @@ later(function()
         vim.tbl_extend("force", key_opts, { desc = "Dotnet secrets" })
       )
 
-      if is_ef_available then
+      if is_ef_cli_available then
         -- Entity framework
         vim.keymap.set(
           "n",

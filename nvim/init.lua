@@ -1,41 +1,65 @@
 _G.STARTUP_TIME = vim.uv.hrtime()
 vim.loader.enable(true)
 vim.lsp.log.set_level(vim.log.levels.ERROR)
-require('vim._core.ui2').enable()
+local ui2_exist, ui2 = pcall(require, "vim._core.ui2")
+if ui2_exist then
+  ui2.enable {
+    enable = true,
+    msg = {
+      -- Options related to the message module.
+      ---@type 'cmd'|'msg' Default message target, either in the
+      ---cmdline or in a separate ephemeral message window.
+      ---@type string|table<string, 'cmd'|'msg'|'pager'> Default message target
+      ---or table mapping |ui-messages| kinds and triggers to a target.
+      targets = "cmd",
+      cmd = { -- Options related to messages in the cmdline window.
+        height = 0.5,
+      }, -- Maximum height while expanded for messages beyond 'cmdheight'.
+      dialog = { -- Options related to dialog window.
+        height = 0.5,
+      }, -- Maximum height.
+      msg = {
+        height = 0.5, -- Maximum height.
+        timeout = 5000, -- Time a message is visible in the message window.
+      },
+      pager = { height = 0.5 }, -- Maximum height.
+    },
+  }
+end
 -- Disable built-in plugins
 local disabled_builtins = {
-  'gzip',
-  'netrwPlugin',
-  'tarPlugin',
-  'tohtml',
-  'zipPlugin',
+  "gzip",
+  "netrwPlugin",
+  "tarPlugin",
+  "tohtml",
+  "zipPlugin",
 }
 
 for _, plugin in ipairs(disabled_builtins) do
-  vim.g['loaded_' .. plugin] = 1
+  vim.g["loaded_" .. plugin] = 1
 end
 
 -- Import full environment from login shell
 do
-  local env = vim.fn.systemlist(vim.o.shell .. ' -l -c env')
+  local env = vim.fn.systemlist(vim.o.shell .. " -l -c env")
   for _, line in ipairs(env) do
-    local k, v = line:match '([^=]+)=(.*)'
+    local k, v = line:match "([^=]+)=(.*)"
     if k and v then vim.env[k] = v end
   end
 end
 
-local project_root = vim.fs.root(0, { '.lazy.lua', '.nvim.lua', '.nvimrc', '.exrc' })
+local project_root = vim.fs.root(0, { ".lazy.lua", ".nvim.lua", ".nvimrc", ".exrc" })
 if project_root then vim.cmd.cd(project_root) end
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 vim.g.icons_enabled = true
 
 _G.Config = {}
 
-vim.pack.add { 'https://github.com/nvim-mini/mini.nvim', 'https://github.com/nvim-lua/plenary.nvim' }
+vim.pack.add { "https://github.com/nvim-mini/mini.nvim", "https://github.com/nvim-lua/plenary.nvim" }
 
 -- Loading helpers used to organize config into fail-safe parts. Example usage:
 -- - `now` - execute immediately. Use for what must be executed during startup.
@@ -53,14 +77,14 @@ vim.pack.add { 'https://github.com/nvim-mini/mini.nvim', 'https://github.com/nvi
 -- See also:
 -- - `:h MiniMisc.safely()`
 -- - 'plugin/30_mini.lua' and 'plugin/40_plugins.lua'
-local misc = require 'mini.misc'
-Config.now = function(f) misc.safely('now', f) end
-Config.later = function(f) misc.safely('later', f) end
+local misc = require "mini.misc"
+Config.now = function(f) misc.safely("now", f) end
+Config.later = function(f) misc.safely("later", f) end
 Config.now_if_args = vim.fn.argc(-1) > 0 and Config.now or Config.later
-Config.on_event = function(ev, f) misc.safely('event:' .. ev, f) end
-Config.on_filetype = function(ft, f) misc.safely('filetype:' .. ft, f) end
+Config.on_event = function(ev, f) misc.safely("event:" .. ev, f) end
+Config.on_filetype = function(ft, f) misc.safely("filetype:" .. ft, f) end
 
-local default_gr = vim.api.nvim_create_augroup('custom-config', { clear = true })
+local default_gr = vim.api.nvim_create_augroup("custom-config", { clear = true })
 Config.new_autocmd = function(event, pattern, callback, desc, gr)
   local opts = { group = gr or default_gr, pattern = pattern, callback = callback, desc = desc }
   return vim.api.nvim_create_autocmd(event, opts)
@@ -73,136 +97,136 @@ Config.on_packchanged = function(plugin_name, kinds, callback, desc)
     if not ev.data.active then vim.cmd.packadd(plugin_name) end
     callback(ev.data)
   end
-  Config.new_autocmd('PackChanged', '*', f, desc)
+  Config.new_autocmd("PackChanged", "*", f, desc)
 end
 
 -- Custom icons
 Config.icons = {
   icons = {
-    ActiveLSP = '',
-    ActiveTS = '',
-    ArrowLeft = '',
-    ArrowRight = '',
-    Bookmarks = '',
-    BufferClose = '󰅖',
-    DapBreakpoint = '',
-    DapBreakpointCondition = '',
-    DapBreakpointRejected = '',
-    DapLogPoint = '󰛿',
-    DapStopped = '󰁕',
-    Debugger = '',
-    DefaultFile = '󰈙',
-    Diagnostic = '󰒡',
-    DiagnosticError = '',
-    DiagnosticHint = '󰌵',
-    DiagnosticInfo = '󰋼',
-    DiagnosticWarn = '',
-    Ellipsis = '…',
-    Environment = '',
-    FileNew = '',
-    FileModified = '',
-    FileReadOnly = '',
-    FoldClosed = '',
-    FoldOpened = '',
-    FoldSeparator = ' ',
-    FolderClosed = '',
-    FolderEmpty = '',
-    FolderOpen = '',
-    Git = '󰊢',
-    GitConflict = '',
-    GitIgnored = '◌',
-    GitRenamed = '➜',
-    GitSign = '▎',
-    GitStaged = '✓',
-    GitUnstaged = '✗',
-    GitUntracked = '★',
-    List = '',
-    LSPLoading1 = '⠋',
-    LSPLoading2 = '⠙',
-    LSPLoading3 = '⠹',
-    LSPLoading4 = '⠸',
-    LSPLoading5 = '⠼',
-    LSPLoading6 = '⠴',
-    LSPLoading7 = '⠦',
-    LSPLoading8 = '⠧',
-    LSPLoading9 = '⠇',
-    LSPLoading10 = '⠏',
-    MacroRecording = '',
-    Package = '󰏖',
-    Paste = '󰅌',
-    Refresh = '',
-    Search = '',
-    Selected = '❯',
-    Session = '󱂬',
-    Sort = '󰒺',
-    Spellcheck = '󰓆',
-    Tab = '󰓩',
-    TabClose = '󰅙',
-    Terminal = '',
-    Window = '',
-    WordFile = '󰈭',
-    VimIcon = '',
-    ScrollText = '',
-    GitBranch = '',
-    GitAdd = '',
-    GitChange = '',
-    GitDelete = '',
+    ActiveLSP = "",
+    ActiveTS = "",
+    ArrowLeft = "",
+    ArrowRight = "",
+    Bookmarks = "",
+    BufferClose = "󰅖",
+    DapBreakpoint = "",
+    DapBreakpointCondition = "",
+    DapBreakpointRejected = "",
+    DapLogPoint = "󰛿",
+    DapStopped = "󰁕",
+    Debugger = "",
+    DefaultFile = "󰈙",
+    Diagnostic = "󰒡",
+    DiagnosticError = "",
+    DiagnosticHint = "󰌵",
+    DiagnosticInfo = "󰋼",
+    DiagnosticWarn = "",
+    Ellipsis = "…",
+    Environment = "",
+    FileNew = "",
+    FileModified = "",
+    FileReadOnly = "",
+    FoldClosed = "",
+    FoldOpened = "",
+    FoldSeparator = " ",
+    FolderClosed = "",
+    FolderEmpty = "",
+    FolderOpen = "",
+    Git = "󰊢",
+    GitConflict = "",
+    GitIgnored = "◌",
+    GitRenamed = "➜",
+    GitSign = "▎",
+    GitStaged = "✓",
+    GitUnstaged = "✗",
+    GitUntracked = "★",
+    List = "",
+    LSPLoading1 = "⠋",
+    LSPLoading2 = "⠙",
+    LSPLoading3 = "⠹",
+    LSPLoading4 = "⠸",
+    LSPLoading5 = "⠼",
+    LSPLoading6 = "⠴",
+    LSPLoading7 = "⠦",
+    LSPLoading8 = "⠧",
+    LSPLoading9 = "⠇",
+    LSPLoading10 = "⠏",
+    MacroRecording = "",
+    Package = "󰏖",
+    Paste = "󰅌",
+    Refresh = "",
+    Search = "",
+    Selected = "❯",
+    Session = "󱂬",
+    Sort = "󰒺",
+    Spellcheck = "󰓆",
+    Tab = "󰓩",
+    TabClose = "󰅙",
+    Terminal = "",
+    Window = "",
+    WordFile = "󰈭",
+    VimIcon = "",
+    ScrollText = "",
+    GitBranch = "",
+    GitAdd = "",
+    GitChange = "",
+    GitDelete = "",
     -- Custom plugins icon
-    GrugFar = '󰛔',
-    CommentBox = '󱋄',
-    Markdown = '',
-    Neogen = '󰷉',
-    Tests = '󰗇',
-    Watch = '',
-    Octo = '',
-    Overseer = '',
-    VimVisualMulti = '󰵉',
-    FolderTree = '',
-    TabBar = '󰠷',
-    OtherTools = '',
-    CodeCompanion = '󱙺',
+    GrugFar = "󰛔",
+    CommentBox = "󱋄",
+    Markdown = "",
+    Neogen = "󰷉",
+    Tests = "󰗇",
+    Watch = "",
+    Octo = "",
+    Overseer = "",
+    VimVisualMulti = "󰵉",
+    FolderTree = "",
+    TabBar = "󰠷",
+    OtherTools = "",
+    CodeCompanion = "󱙺",
   },
   text_icons = {
-    ActiveLSP = 'LSP:',
-    ArrowLeft = '<',
-    ArrowRight = '>',
-    BufferClose = 'x',
-    DapBreakpoint = 'B',
-    DapBreakpointCondition = 'C',
-    DapBreakpointRejected = 'R',
-    DapLogPoint = 'L',
-    DapStopped = '>',
-    DefaultFile = '[F]',
-    DiagnosticError = 'X',
-    DiagnosticHint = '?',
-    DiagnosticInfo = 'i',
-    DiagnosticWarn = '!',
-    Ellipsis = '...',
-    Environment = 'Env:',
-    FileModified = '*',
-    FileReadOnly = '[lock]',
-    FoldClosed = '+',
-    FoldOpened = '-',
-    FoldSeparator = ' ',
-    FolderClosed = '[D]',
-    FolderEmpty = '[E]',
-    FolderOpen = '[O]',
-    GitAdd = '[+]',
-    GitChange = '[/]',
-    GitConflict = '[!]',
-    GitDelete = '[-]',
-    GitIgnored = '[I]',
-    GitRenamed = '[R]',
-    GitSign = '|',
-    GitStaged = '[S]',
-    GitUnstaged = '[U]',
-    GitUntracked = '[?]',
-    MacroRecording = 'Recording:',
-    Paste = '[PASTE]',
-    Search = '?',
-    Selected = '*',
-    Spellcheck = '[SPELL]',
-    TabClose = 'X',
+    ActiveLSP = "LSP:",
+    ArrowLeft = "<",
+    ArrowRight = ">",
+    BufferClose = "x",
+    DapBreakpoint = "B",
+    DapBreakpointCondition = "C",
+    DapBreakpointRejected = "R",
+    DapLogPoint = "L",
+    DapStopped = ">",
+    DefaultFile = "[F]",
+    DiagnosticError = "X",
+    DiagnosticHint = "?",
+    DiagnosticInfo = "i",
+    DiagnosticWarn = "!",
+    Ellipsis = "...",
+    Environment = "Env:",
+    FileModified = "*",
+    FileReadOnly = "[lock]",
+    FoldClosed = "+",
+    FoldOpened = "-",
+    FoldSeparator = " ",
+    FolderClosed = "[D]",
+    FolderEmpty = "[E]",
+    FolderOpen = "[O]",
+    GitAdd = "[+]",
+    GitChange = "[/]",
+    GitConflict = "[!]",
+    GitDelete = "[-]",
+    GitIgnored = "[I]",
+    GitRenamed = "[R]",
+    GitSign = "|",
+    GitStaged = "[S]",
+    GitUnstaged = "[U]",
+    GitUntracked = "[?]",
+    MacroRecording = "Recording:",
+    Paste = "[PASTE]",
+    Search = "?",
+    Selected = "*",
+    Spellcheck = "[SPELL]",
+    TabClose = "X",
   },
 }
 --- Check if a buffer is valid
@@ -220,8 +244,8 @@ end
 function Config.get_hlgroup(name, fallback)
   if vim.fn.hlexists(name) == 1 then
     local hl = vim.api.nvim_get_hl(0, { name = name, link = false })
-    if not hl.fg then hl.fg = 'NONE' end
-    if not hl.bg then hl.bg = 'NONE' end
+    if not hl.fg then hl.fg = "NONE" end
+    if not hl.bg then hl.bg = "NONE" end
     if hl.reverse then
       hl.fg, hl.bg, hl.reverse = hl.bg, hl.fg, nil
     end
@@ -237,10 +261,10 @@ end
 ---@return string icon
 function Config.get_custom_icon(kind, padding, no_fallback)
   local icons_enabled = vim.g.icons_enabled ~= false
-  if not icons_enabled and no_fallback then return '' end
-  local icon_pack = assert(Config.icons[icons_enabled and 'icons' or 'text_icons'])
+  if not icons_enabled and no_fallback then return "" end
+  local icon_pack = assert(Config.icons[icons_enabled and "icons" or "text_icons"])
   local icon = icon_pack[kind]
-  return icon and icon .. (' '):rep(padding or 0) or ''
+  return icon and icon .. (" "):rep(padding or 0) or ""
 end
 
 --- Get a icon spinner table if it is available in the AstroNvim icons. Icons in format `kind1`,`kind2`, `kind3`, ...
@@ -249,15 +273,15 @@ end
 function Config.get_spinner(kind, ...)
   local spinner = {}
   repeat
-    local icon = Config.get_custom_icon(('%s%d'):format(kind, #spinner + 1), ...)
-    if icon ~= '' then table.insert(spinner, icon) end
-  until not icon or icon == ''
+    local icon = Config.get_custom_icon(("%s%d"):format(kind, #spinner + 1), ...)
+    if icon ~= "" then table.insert(spinner, icon) end
+  until not icon or icon == ""
   if #spinner > 0 then return spinner end
 end
 
 function Config.extend_hl(name, data)
   local old_hl = vim.api.nvim_get_hl(0, { name = name, link = false })
-  local new_hl = vim.tbl_extend('force', old_hl, data)
+  local new_hl = vim.tbl_extend("force", old_hl, data)
   vim.api.nvim_set_hl(0, name, new_hl)
 end
 
@@ -294,11 +318,11 @@ function Config.is_large(bufnr, large_buf_opts)
   if not large_buf_opts then large_buf_opts = Config.default_large_buf_opts end
   if large_buf_opts then
     if skip_cache or large_buf_cache[bufnr] == nil then
-      local enabled = vim.tbl_get(large_buf_opts, 'enabled')
-      if type(enabled) == 'function' then
+      local enabled = vim.tbl_get(large_buf_opts, "enabled")
+      if type(enabled) == "function" then
         large_buf_opts = vim.deepcopy(large_buf_opts)
         enabled = enabled(bufnr, large_buf_opts)
-        if type(enabled) == 'table' then large_buf_opts = enabled end
+        if type(enabled) == "table" then large_buf_opts = enabled end
       end
       local large_buf = false
       if vim.F.if_nil(enabled, true) then
@@ -368,21 +392,24 @@ vim.diagnostic.config {
   float = true,
   signs = {
     text = {
-      [vim.diagnostic.severity.ERROR] = Config.get_custom_icon 'DiagnosticError',
-      [vim.diagnostic.severity.HINT] = Config.get_custom_icon 'DiagnosticHint',
-      [vim.diagnostic.severity.WARN] = Config.get_custom_icon 'DiagnosticWarn',
-      [vim.diagnostic.severity.INFO] = Config.get_custom_icon 'DiagnosticInfo',
+      [vim.diagnostic.severity.ERROR] = Config.get_custom_icon "DiagnosticError",
+      [vim.diagnostic.severity.HINT] = Config.get_custom_icon "DiagnosticHint",
+      [vim.diagnostic.severity.WARN] = Config.get_custom_icon "DiagnosticWarn",
+      [vim.diagnostic.severity.INFO] = Config.get_custom_icon "DiagnosticInfo",
     },
   },
 }
 
-vim.lsp.inlay_hint.enable(false)
-vim.lsp.semantic_tokens.enable(true)
-vim.lsp.linked_editing_range.enable(true)
-vim.lsp.codelens.enable(true)
-vim.lsp.inline_completion.enable(true)
-vim.lsp.on_type_formatting.enable(false)
-vim.lsp.config('*', {
+local function enable_lsp_feature(feature)
+  if not vim.lsp[feature] then vim.lsp[feature].enable(true) end
+end
+enable_lsp_feature "inlay_hint"
+enable_lsp_feature "semantic_tokens"
+enable_lsp_feature "linked_editing_range"
+enable_lsp_feature "codelens"
+enable_lsp_feature "inline_completion"
+enable_lsp_feature "on_type_formatting"
+vim.lsp.config("*", {
   capabilities = {
     textDocument = {
       -- TODO: python won't work Wait till this PR is merged https://github.com/neovim/neovim/pull/35578
@@ -396,4 +423,15 @@ vim.lsp.config('*', {
     },
   },
 })
+vim.api.nvim_get_buffers_by_path = function(path)
+  path = vim.fn.fnamemodify(path, ":p") -- normalize to absolute path
+  local matched_buffers = {}
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf) then
+      local name = vim.api.nvim_buf_get_name(buf)
+      if name ~= "" and vim.fn.fnamemodify(name, ":p") == path then matched_buffers[#matched_buffers + 1] = buf end
+    end
+  end
+  return matched_buffers
+end
 -- vim: ts=2 sts=2 sw=2 et

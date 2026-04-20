@@ -20,22 +20,22 @@
       "rev": "6e0f726f55f99332dd726a53effd6813786b6d49",
       "src": "https://github.com/otavioschwanck/arrow.nvim"
     },
-    "astrotheme": {
-      "rev": "4ed9d1110e62b8965cd35ba9419237057bb41550",
-      "src": "https://github.com/AstroNvim/astrotheme"
-    },
     "blink-cmp-conventional-commits": {
       "rev": "faa45344aab97aa33ece53938c4c3379760e61bd",
-      "src": "https://github.com/drupted/blink-cmp-conventional-commits"
+      "src": "https://github.com/disrupted/blink-cmp-conventional-commits"
     },
     "blink-cmp-git": {
       "rev": "10783593af764424018a95e75df6ad5a8b66fe07",
-      "src": "https://github.com/Kaer-Yang/blink-cmp-git"
+      "src": "https://github.com/Kaiser-Yang/blink-cmp-git"
     },
     "blink.cmp": {
       "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
       "src": "https://github.com/saghen/blink.cmp",
       "version": "1.0.0 - 2.0.0"
+    },
+    "blink.compat": {
+      "rev": "1454f14a8d855a578ceeba77c62538fa1459a67c",
+      "src": "https://github.com/saghen/blink.compat"
     },
     "codecompanion-history.nvim": {
       "rev": "bc1b4fe06eaaf0aa2399be742e843c22f7f1652a",
@@ -132,15 +132,11 @@
     },
     "mason-tool-installer.nvim": {
       "rev": "443f1ef8b5e6bf47045cb2217b6f748a223cf7dc",
-      "src": "https://github.com/WhoSethDaniel/mason-tool-installer.nvim"
+      "src": "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim"
     },
     "mason.nvim": {
       "rev": "b03fb0f20bc1d43daf558cda981a2be22e73ac42",
       "src": "https://github.com/mason-org/mason.nvim"
-    },
-    "mini.misc": {
-      "rev": "c72c90e083bcf24bfb2827d63b4752e414023f3e",
-      "src": "https://github.com/nvim-mini/mini.misc"
     },
     "mini.nvim": {
       "rev": "418ef4930ddabe80f449c6f1323f8b6abb172d1c",
@@ -259,16 +255,12 @@
       "src": "https://github.com/ThePrimeagen/refactoring.nvim"
     },
     "roslyn.nvim": {
-      "rev": "6a5e60a7c25d9ce0835aa9c69379f1c92e0a9d56",
+      "rev": "42d1196b4b06411504f897caeee0a3d4940e2654",
       "src": "https://github.com/seblyng/roslyn.nvim"
     },
     "snacks.nvim": {
       "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
       "src": "https://github.com/folke/snacks.nvim"
-    },
-    "suda.vim": {
-      "rev": "c492741b4679b3cdd4d9e34138209784e061d916",
-      "src": "https://github.com/lambdalue/suda.vim"
     },
     "supermaven-nvim": {
       "rev": "07d20fce48a5629686aefb0a7cd4b25e33947d50",
@@ -290,6 +282,10 @@
       "rev": "6fa6b57cda8459e1e4b2ca34df702f55242f4e4d",
       "src": "https://github.com/mbbill/undotree"
     },
+    "vim-suda": {
+      "rev": "c492741b4679b3cdd4d9e34138209784e061d916",
+      "src": "https://github.com/lambdalisue/vim-suda"
+    },
     "vim-visual-multi": {
       "rev": "a6975e7c1ee157615bbc80fc25e4392f71c344d4",
       "src": "https://github.com/mg979/vim-visual-multi"
@@ -299,7 +295,7 @@
       "src": "https://github.com/folke/which-key.nvim"
     },
     "yazi.nvim": {
-      "rev": "bb69f7fc634a9566edba5fc0da3a2025d7ffbae0",
+      "rev": "a7a64ba4fe4139336df554c1ba674cd75d7d704a",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }

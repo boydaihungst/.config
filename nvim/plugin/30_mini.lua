@@ -831,16 +831,18 @@ now_if_args(function()
     end
   end, "MiniFilesBufferUpdate")
 
+  -- Trigger MiniFiles refresh on `TextYankPost` event to redraw +/added marks
   Config.new_autocmd("TextYankPost", nil, function()
-    vim.schedule(function() MiniFiles.refresh { content = { force = true } } end)
+    local event = vim.v.event
+    if event.operator == "y" then vim.schedule(function() MiniFiles.refresh { content = { force = true } } end) end
   end, "Trigger MiniFiles refresh")
 
   -- Mappings
   Config.new_autocmd("User", "MiniFilesBufferCreate", function(args)
     local buf_id = args.data.buf_id
     -- Tweak left-hand side of mapping to your liking
-    vim.keymap.set("n", "<M-h>", toggle_hidden, { buffer = buf_id, desc = "Toggle hidden" })
-    vim.keymap.set("n", "<M-d>", toggle_dim, { buffer = buf_id, desc = "Toggle dim" })
+    vim.keymap.set("n", "<F2>", toggle_hidden, { buffer = buf_id, desc = "Toggle hidden" })
+    vim.keymap.set("n", "<F3>", toggle_dim, { buffer = buf_id, desc = "Toggle dim" })
     vim.keymap.set("n", ".", set_cwd, { buffer = buf_id, desc = "Set cwd" })
     vim.keymap.set("n", "gx", ui_open, { buffer = buf_id, desc = "OS open" })
     vim.keymap.set("n", "yp", yank_path, { buffer = buf_id, desc = "Yank path" })
