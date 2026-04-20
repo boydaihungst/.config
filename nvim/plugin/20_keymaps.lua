@@ -178,12 +178,29 @@ nmap_leader(
 nmap_leader("pp", "<Cmd>Pack<CR>", "Plugins")
 nmap_leader("pm", "<Cmd>Mason<CR>", "Mason")
 nmap_leader("pt", "<Cmd>TSUpdate<CR>", "Treesitter Update")
-vim.keymap.set(
-  { "i", "s" },
-  "<C-S>",
-  function() vim.lsp.buf.signature_help() end,
-  { desc = "vim.lsp.buf.signature_help()" }
-)
+
+vim.keymap.set({ "i", "s" }, "<C-s>", function()
+  if Config.default_lsp_signature_help then
+    local win, _ = vim.api.nvim_get_win_by_var "lsp_floating_bufnr"
+    if win and vim.api.nvim_win_is_valid(win) and vim.fn.pumvisible() == 0 then
+      vim.api.nvim_win_set_config(win, {
+        focusable = true,
+      })
+      Config.new_autocmd("TextChanged", nil, function()
+        win, _ = vim.api.nvim_get_win_by_var "lsp_floating_bufnr"
+        if win and vim.api.nvim_win_is_valid(win) and vim.fn.pumvisible() == 0 then
+          local bufnr = vim.api.nvim_win_get_buf(win)
+          if bufnr and vim.api.nvim_buf_is_valid(bufnr) then
+            local bufnr_line_count = vim.api.nvim_buf_line_count(bufnr)
+            vim.api.nvim_win_set_height(win, math.min(bufnr_line_count, 15))
+            vim.api.nvim_win_call(win, function() vim.cmd "set concealcursor=niv" end)
+          end
+        end
+      end, "Set concealcursor sign window")
+    end
+  end
+  vim.lsp.buf.signature_help {}
+end, { desc = "Show sign_help help" }) -- don't use "signature" word on desc because it will be replaced by mini.basic
 
 -- e is for 'Explore' and 'Edit'. Common usage:
 -- - `<Leader>ed` - open explorer at current working directory

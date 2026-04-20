@@ -1989,7 +1989,7 @@ later(function()
       condition = function(bufnr)
         local buftype = vim.api.nvim_get_option_value("buftype", { buf = bufnr })
         if vim.tbl_contains(disabled_buftypes, buftype) then return false end
-        return nil
+        return
       end,
       filetypes = allowed_ft,
     },
@@ -2517,7 +2517,7 @@ on_filetype("sql,mysql", function()
 end)
 
 later(function()
-  vim.g["suda#prompt"] = "Enter root password to save:"
+  vim.g["suda#prompt"] = "Enter sudo password to save:"
   add {
     "https://github.com/lambdalisue/vim-suda",
   }
@@ -3731,7 +3731,10 @@ later(function()
           -- Number of days after which chats are automatically deleted (0 to disable)
           expiration_days = 0,
           -- Picker interface (auto resolved to a valid picker)
-          picker = "default", --- ("telescope", "snacks", "fzf-lua", or "default")
+          picker = vim.pack.is_available "telescope" and "telescope"
+            or vim.pack.is_available "fzf-lua" and "fzf-lua"
+            or vim.pack.is_available "snacks" and "snacks"
+            or "default", --- ("telescope", "snacks", "fzf-lua", or "default")
           ---Optional filter function to control which chats are shown when browsing
           chat_filter = nil, -- function(chat_data) return boolean end
           -- Customize picker keymaps (optional)

@@ -1,4 +1,16 @@
 _G.STARTUP_TIME = vim.uv.hrtime()
+-- Disable built-in plugins
+local disabled_builtins = {
+  "gzip",
+  "netrwPlugin",
+  "tarPlugin",
+  "tohtml",
+  "zipPlugin",
+}
+
+for _, plugin in ipairs(disabled_builtins) do
+  vim.g["loaded_" .. plugin] = 1
+end
 vim.loader.enable(true)
 vim.lsp.log.set_level(vim.log.levels.ERROR)
 local ui2_exist, ui2 = pcall(require, "vim._core.ui2")
@@ -26,18 +38,6 @@ if ui2_exist then
     },
   }
 end
--- Disable built-in plugins
-local disabled_builtins = {
-  "gzip",
-  "netrwPlugin",
-  "tarPlugin",
-  "tohtml",
-  "zipPlugin",
-}
-
-for _, plugin in ipairs(disabled_builtins) do
-  vim.g["loaded_" .. plugin] = 1
-end
 
 -- Import full environment from login shell
 do
@@ -48,7 +48,7 @@ do
   end
 end
 
-local project_root = vim.fs.root(0, { ".lazy.lua", ".nvim.lua", ".nvimrc", ".exrc" })
+local project_root = vim.fs.root(0, { ".nvim.lua", ".nvimrc", ".exrc" })
 if project_root then vim.cmd.cd(project_root) end
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -57,7 +57,9 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.icons_enabled = true
 
-_G.Config = {}
+_G.Config = {
+  default_lsp_signature_help = true,
+}
 
 vim.pack.add { "https://github.com/nvim-mini/mini.nvim", "https://github.com/nvim-lua/plenary.nvim" }
 
@@ -403,12 +405,13 @@ vim.diagnostic.config {
 local function enable_lsp_feature(feature)
   if not vim.lsp[feature] then vim.lsp[feature].enable(true) end
 end
-enable_lsp_feature "inlay_hint"
-enable_lsp_feature "semantic_tokens"
-enable_lsp_feature "linked_editing_range"
-enable_lsp_feature "codelens"
-enable_lsp_feature "inline_completion"
-enable_lsp_feature "on_type_formatting"
+
+vim.lsp.inlay_hint.enable(false)
+vim.lsp.semantic_tokens.enable(true)
+vim.lsp.linked_editing_range.enable(true)
+vim.lsp.codelens.enable(true)
+vim.lsp.inline_completion.enable(true)
+vim.lsp.on_type_formatting.enable(false)
 vim.lsp.config("*", {
   capabilities = {
     textDocument = {
@@ -434,4 +437,15 @@ vim.api.nvim_get_buffers_by_path = function(path)
   end
   return matched_buffers
 end
+
+vim.api.nvim_get_win_by_var = function(var_name)
+  -- Iterate through all windows in the current tabpage
+  for _, winid in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+    -- Check if the variable exists in this window's scope
+    local success, value = pcall(vim.api.nvim_win_get_var, winid, var_name)
+    if success then return winid, value end
+  end
+  return nil
+end
+
 -- vim: ts=2 sts=2 sw=2 et

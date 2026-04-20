@@ -11,8 +11,8 @@ return {
         workspaceDelay = -1,
         workspaceEvent = "None",
         groupFileStatus = {
-          workspace = "None", -- 👈 stop workspace-wide rescans
-          opened = "Opened", -- only diagnose open buffers
+          workspace = "None",
+          opened = "Opened",
         },
       },
       codeLens = {

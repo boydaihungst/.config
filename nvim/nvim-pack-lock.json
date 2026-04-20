@@ -21,7 +21,7 @@
       "src": "https://github.com/otavioschwanck/arrow.nvim"
     },
     "blink-cmp-conventional-commits": {
-      "rev": "faa45344aab97aa33ece53938c4c3379760e61bd",
+      "rev": "28f46593ef5e03ba7525bdf6075be0c56c6ceb55",
       "src": "https://github.com/disrupted/blink-cmp-conventional-commits"
     },
     "blink-cmp-git": {
@@ -86,7 +86,7 @@
       "src": "https://github.com/linrongbin16/gitlinker.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "8d82c240f190fc33723d48c308ccc1ed8baad69d",
+      "rev": "6d808f99bd63303646794406e270bd553ad7792e",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "grug-far.nvim": {
@@ -195,7 +195,7 @@
       "src": "https://github.com/antosha417/nvim-lsp-file-operations"
     },
     "nvim-lspconfig": {
-      "rev": "4b7fbaa239c5db6b36f424a4521ca9f1a401be33",
+      "rev": "e05fb8c3bd61d909dacff24f77f23beb644daf54",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-nio": {
@@ -295,7 +295,7 @@
       "src": "https://github.com/folke/which-key.nvim"
     },
     "yazi.nvim": {
-      "rev": "a7a64ba4fe4139336df554c1ba674cd75d7d704a",
+      "rev": "982781518274c723202f73064e93beda7f0468fe",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }

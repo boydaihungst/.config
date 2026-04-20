@@ -373,8 +373,10 @@ now(function()
     },
     footer = function()
       -- Calculate difference in nanoseconds, convert to milliseconds
+      if vim.g.startup_time then return vim.g.startup_time end
       local total_ms = (vim.uv.hrtime() - _G.STARTUP_TIME) / 1e6
-      return string.format("🚀 Started in %.2f ms", total_ms)
+      vim.g.startup_time = string.format("🚀 Started in %.2f ms", total_ms)
+      return vim.g.startup_time
     end,
     silent = false,
   }

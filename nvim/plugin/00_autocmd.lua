@@ -81,34 +81,36 @@ Config.new_autocmd({ "BufDelete", "TermClose" }, nil, function(args)
   vim.cmd.redrawtabline()
 end, "Update buffers when deleting buffers")
 
-local lsp_bufs = {}
-Config.new_autocmd({ "LspAttach" }, nil, function(args)
-  if not Config.is_valid_buf(args.buf) then return end
-  local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-  if client:supports_method("textDocument/signatureHelp", args.buf) and not lsp_bufs[args.buf] then
-    local sig_timer = nil
-    lsp_bufs[args.buf] = Config.new_autocmd({ "TextChangedI", "InsertEnter" }, nil, function(args)
-      if sig_timer then sig_timer:stop() end
-      sig_timer = vim.defer_fn(function()
-        vim.lsp.buf.signature_help {
-          anchor_bias = "above",
-          max_height = 15,
-          focusable = false,
-          silent = true,
-        }
-        sig_timer = nil
-      end, 200)
-    end, "Automatically show signature help if enabled")
-  end
-end)
-
-Config.new_autocmd({ "LspDetach" }, nil, function(args)
-  if not Config.is_valid_buf(args.buf) then return end
-  for _, client in pairs(vim.lsp.get_clients { bufnr = args.buf }) do
-    if client.id ~= args.data.client_id and client:supports_method("textDocument/signatureHelp", args.buf) then
-      return
+if Config.default_lsp_signature_help then
+  local lsp_bufs = {}
+  Config.new_autocmd({ "LspAttach" }, nil, function(args)
+    if not Config.is_valid_buf(args.buf) then return end
+    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+    if client:supports_method("textDocument/signatureHelp", args.buf) and not lsp_bufs[args.buf] then
+      local sig_timer = nil
+      lsp_bufs[args.buf] = Config.new_autocmd({ "TextChangedI", "InsertEnter", "CursorMovedI" }, nil, function()
+        if sig_timer then sig_timer:stop() end
+        sig_timer = vim.defer_fn(function()
+          vim.lsp.buf.signature_help {
+            anchor_bias = "above",
+            max_height = 15,
+            focusable = false,
+            silent = true,
+          }
+          sig_timer = nil
+        end, 200)
+      end, "Automatically show signature help if enabled")
     end
-  end
-  if lsp_bufs[args.buf] then pcall(vim.api.nvim_del_autocmd, lsp_bufs[args.buf]) end
-  lsp_bufs[args.buf] = nil
-end, "Safely remove LSP signature help providers when language servers detach")
+  end)
+
+  Config.new_autocmd({ "LspDetach" }, nil, function(args)
+    if not Config.is_valid_buf(args.buf) then return end
+    for _, client in pairs(vim.lsp.get_clients { bufnr = args.buf }) do
+      if client.id ~= args.data.client_id and client:supports_method("textDocument/signatureHelp", args.buf) then
+        return
+      end
+    end
+    if lsp_bufs[args.buf] then pcall(vim.api.nvim_del_autocmd, lsp_bufs[args.buf]) end
+    lsp_bufs[args.buf] = nil
+  end, "Safely remove LSP signature help providers when language servers detach")
+end
