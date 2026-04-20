@@ -61,6 +61,7 @@ local ensure_installed_mason_packages = {
   "taplo",
   "vtsls",
   "yaml-language-server",
+  "bash-language-server",
   -- AI asisstent
   -- "copilot-language-server",
 
@@ -83,6 +84,7 @@ local ensure_installed_mason_packages = {
   "firefox-debug-adapter",
   "local-lua-debugger-vscode",
   "netcoredbg",
+  "bash-debug-adapter",
 
   -- other
   "gh",
@@ -341,6 +343,7 @@ later(function()
     virt_text_win_col = 70,
     commented = false,
     all_references = true,
+    enabled_commands = true,
   }
 
   dap_persist_bp.setup {
@@ -648,8 +651,10 @@ later(function()
     formatters_by_ft = {
       toml = { "taplo" },
       markdown = { "markdown-toc", "prettierd", stop_after_first = false },
-      sh = { "shfmt" },
       cs = { "csharpier" },
+      sh = { "shfmt", "shellcheck" },
+      zsh = { "shfmt", "shellcheck" },
+      lua = { "stylua", stop_after_first = false },
     },
     formatters = {
       -- nginxfmt = {
@@ -2233,7 +2238,10 @@ later(function()
   }
   local lint = require "lint"
   local opts = {
-    linters_by_ft = {},
+    linters_by_ft = {
+      sh = { "shellcheck" },
+      zsh = { "shellcheck" },
+    },
     linters = {},
   }
 
@@ -2286,6 +2294,29 @@ later(function()
       end)
     end
   end)
+end)
+
+later(function()
+  add { "https://github.com/nvim-lua/plenary.nvim", "https://github.com/andythigpen/nvim-coverage" }
+
+  local coverage = require "coverage"
+  coverage.setup {}
+  local tests_prefix = "<Leader>T"
+  local coverage_prefix = tests_prefix .. "C"
+  if wk then
+    -- group names
+    wk.add {
+      { tests_prefix, group = Config.get_custom_icon("Coverage", 1, true) .. "Coverage" },
+    }
+  end
+
+  vim.keymap.set("n", coverage_prefix .. "t", function() coverage.toggle() end, { desc = "Toggle coverage" })
+
+  vim.keymap.set("n", coverage_prefix .. "s", function() coverage.summary() end, { desc = "Show coverage summary" })
+
+  vim.keymap.set("n", coverage_prefix .. "c", function() coverage.clear() end, { desc = "Clear coverage" })
+
+  vim.keymap.set("n", coverage_prefix .. "l", function() coverage.load(true) end, { desc = "Load and show coverage" })
 end)
 
 later(function()
@@ -2508,6 +2539,16 @@ later(function()
     function() quicker.toggle { focus = true, loclist = true } end,
     { desc = "Toggle loclist" }
   )
+end)
+
+on_filetype("qf", function()
+  add { "https://github.com/kevinhwang91/nvim-bqf" }
+
+  vim.fn.sign_define("BqfSign", {
+    text = " " .. Config.get_custom_icon "Selected",
+    texthl = "BqfSign",
+  })
+  require("bqf").setup {}
 end)
 
 on_filetype("sql,mysql", function()
@@ -4320,4 +4361,18 @@ later(function()
       end
     end
   end, ".NET mappings csproj")
+end)
+
+on_event("LspAttach", function()
+  add {
+    "https://github.com/dmmulroy/ts-error-translator.nvim",
+  }
+  require("ts-error-translator").setup {}
+end)
+
+later(function()
+  add {
+    "https://github.com/zeioth/garbage-day.nvim",
+  }
+  require("garbage-day").setup {}
 end)

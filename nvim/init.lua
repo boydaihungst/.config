@@ -187,6 +187,7 @@ Config.icons = {
     TabBar = "󰠷",
     OtherTools = "",
     CodeCompanion = "󱙺",
+    Coverage = "",
   },
   text_icons = {
     ActiveLSP = "LSP:",

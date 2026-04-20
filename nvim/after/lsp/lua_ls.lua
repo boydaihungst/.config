@@ -22,7 +22,7 @@ return {
         checkThirdParty = false,
         maxPreload = 200,
         preloadFileSize = 50,
-        -- library = vim.api.nvim_get_runtime_file("", true),
+        -- library      = vim.api.nvim_get_runtime_file("", true),
         ignoreDir = {
           ".git",
           "node_modules",
