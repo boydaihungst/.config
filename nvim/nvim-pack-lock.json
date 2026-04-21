@@ -16,6 +16,10 @@
       "rev": "645d108a5242ec7b378cbe643eb6d04d4223f034",
       "src": "https://github.com/stevearc/aerial.nvim"
     },
+    "ansible-vim": {
+      "rev": "9e020fbb31b4959ea12d97afa78a90c7528ac109",
+      "src": "https://github.com/pearofducks/ansible-vim"
+    },
     "arrow.nvim": {
       "rev": "6e0f726f55f99332dd726a53effd6813786b6d49",
       "src": "https://github.com/otavioschwanck/arrow.nvim"
@@ -36,6 +40,10 @@
     "blink.compat": {
       "rev": "1454f14a8d855a578ceeba77c62538fa1459a67c",
       "src": "https://github.com/saghen/blink.compat"
+    },
+    "clangd_extensions.nvim": {
+      "rev": "78c2ecd659d54972be17aa6ba2deac3c53223b80",
+      "src": "https://github.com/p00f/clangd_extensions.nvim"
     },
     "codecompanion-history.nvim": {
       "rev": "bc1b4fe06eaaf0aa2399be742e843c22f7f1652a",
@@ -158,6 +166,10 @@
       "rev": "0e7979d51301dfae5ef839d771bd28cf593fde3f",
       "src": "https://github.com/nvim-neotest/neotest-jest"
     },
+    "neotest-python": {
+      "rev": "e6df4f1892f6137f58135917db24d1655937d831",
+      "src": "https://github.com/nvim-neotest/neotest-python"
+    },
     "neotest-vitest": {
       "rev": "f01addc6f07b79ef1be5f4297eafbee9e0959018",
       "src": "https://github.com/marilari88/neotest-vitest"
@@ -234,6 +246,10 @@
       "rev": "88c1453db4ba7dd24131086fe51fdf74e587d275",
       "src": "https://github.com/windwp/nvim-ts-autotag"
     },
+    "nvim-vtsls": {
+      "rev": "0b5f73c9e50ce95842ea07bb3f05c7d66d87d14a",
+      "src": "https://github.com/yioneko/nvim-vtsls"
+    },
     "nvim_context_vt": {
       "rev": "fadbd9e57af72f6df3dd33df32ee733aa01cdbc0",
       "src": "https://github.com/andersevenrud/nvim_context_vt"
@@ -270,9 +286,21 @@
       "rev": "42d1196b4b06411504f897caeee0a3d4940e2654",
       "src": "https://github.com/seblyng/roslyn.nvim"
     },
+    "rustaceanvim": {
+      "rev": "2497c7b2a61d4eb5dad716371a64ea82fb068bee",
+      "src": "https://github.com/mrcjkb/rustaceanvim"
+    },
+    "schemastore.nvim": {
+      "rev": "250aed7415ddd6cb3ea321490c7b35094ed9148d",
+      "src": "https://github.com/b0o/schemastore.nvim"
+    },
     "snacks.nvim": {
       "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
       "src": "https://github.com/folke/snacks.nvim"
+    },
+    "sqls.nvim": {
+      "rev": "dfc304f10fe364611ffdb3efc488ae260b0dca78",
+      "src": "https://github.com/nanotee/sqls.nvim"
     },
     "supermaven-nvim": {
       "rev": "07d20fce48a5629686aefb0a7cd4b25e33947d50",
@@ -293,6 +321,10 @@
     "ts-error-translator.nvim": {
       "rev": "558abff11b9e8f4cefc0de09df780c56841c7a4b",
       "src": "https://github.com/dmmulroy/ts-error-translator.nvim"
+    },
+    "tsc.nvim": {
+      "rev": "e083bcf1e54bc3af7df92b33235efb334e8c782c",
+      "src": "https://github.com/dmmulroy/tsc.nvim"
     },
     "undotree": {
       "rev": "6fa6b57cda8459e1e4b2ca34df702f55242f4e4d",

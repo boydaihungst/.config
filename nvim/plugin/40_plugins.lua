@@ -1,6 +1,6 @@
--- TODO: DAP, NEOTEST
 -- A lots of codes borrow from astronvim. Auto config and enable lsp servers
 
+local is_aarch64 = vim.loop.os_uname().machine == "aarch64"
 local add = vim.pack.add
 ---@diagnostic disable-next-line: unused-local
 local now, now_if_args, later, on_event, on_filetype =
@@ -44,12 +44,39 @@ local ensure_installed_treesitter = {
   "yaml",
   "xml",
   "sql",
+  "jsdoc",
+  "astro",
+  "cpp",
+  "objc",
+  "cuda",
+  "proto",
+  "dockerfile",
+  "styled",
+  "hyprlang",
+  "kotlin",
+  "luap",
+  "nginx",
+  "toml",
+  "sql",
+  "java",
+}
+
+local treesitter_map_lang_with_filetype = {
+  scss = { "less", "postcss" },
+  bash = "kitty",
+  xml = { "msbuild" },
+}
+
+-- Manually enable lsp servers
+local no_auto_enable_lsp_servers = {
+  "jdtls",
+  "rust_analyzer",
 }
 
 local ensure_installed_mason_packages = {
+  -- install language servers
   -- Tree sitter cli should be installed first
   "tree-sitter-cli",
-  -- install language servers
   "ast-grep",
   "fish-lsp",
   "gh-actions-language-server",
@@ -62,32 +89,144 @@ local ensure_installed_mason_packages = {
   "vtsls",
   "yaml-language-server",
   "bash-language-server",
+  "ansible-language-server",
+  "vtsls",
+  "astro-language-server",
+  "docker-language-server",
+  "eslint-lsp",
+  "json-lsp",
+  "html-lsp",
+  "css-lsp",
+  "emmet-ls",
+  "hyprls",
+  "kotlin-language-server",
+  "lua-language-server",
+  "stylua",
+  "nginx-language-server",
+  "buf",
+  "basedpyright",
+  "codelldb",
+  "tailwindcss-language-server",
+  "vue-language-server",
+  "lemminx",
+  "jdtls",
+  (not is_aarch64 and "selene") or nil,
+
+  (function()
+    local uname = (vim.uv or vim.loop).os_uname()
+    local is_linux_arm = uname.sysname == "Linux" and (is_aarch64 or vim.startswith(uname.machine, "arm"))
+    if not is_linux_arm then return "clangd" end
+  end)(),
   -- AI asisstent
   -- "copilot-language-server",
 
-  -- install formatters
-  "black",
-  "isort",
+  -- formatters
   "markdown-toc",
   "prettierd",
   "rust-analyzer",
   "shfmt",
   "stylua",
   "csharpier",
-
+  "nginx-config-formatter",
+  "black",
+  "isort",
   -- linters
   "dotenv-linter",
   "shellcheck",
+  "ansible-lint",
+  "hadolint",
+  "ktlint",
+  "sqlfluff",
 
-  -- install debuggers
+  -- debuggers
   "debugpy",
   "firefox-debug-adapter",
   "local-lua-debugger-vscode",
   "netcoredbg",
   "bash-debug-adapter",
+  "js-debug-adapter",
+  "codelldb",
+  "kotlin-debug-adapter",
+  "java-debug-adapter",
+  "java-test",
 
   -- other
   "gh",
+}
+
+local formatters_cfg = {
+  formatters_by_ft = {
+    fish = { "fish_indent" },
+    toml = { "taplo" },
+    markdown = { "markdown-toc", "prettierd", stop_after_first = false },
+    ["markdown.mdx"] = { "markdown-toc", "prettierd", stop_after_first = false },
+    cs = { "csharpier" },
+    sh = { "shfmt", "shellcheck" },
+    zsh = { "shfmt", "shellcheck" },
+    lua = { "stylua", stop_after_first = false },
+    nginx = { "nginxfmt" },
+
+    javascript = { "prettierd" },
+    javascriptreact = { "prettierd" },
+    typescript = { "prettierd" },
+    typescriptreact = { "prettierd" },
+    vue = { "prettierd" },
+    css = { "prettierd" },
+    scss = { "prettierd" },
+    less = { "prettierd" },
+    html = { "prettierd" },
+    json = { "prettierd" },
+    jsonc = { "prettierd" },
+    yaml = { "prettierd" },
+    graphql = { "prettierd" },
+    handlebars = { "prettierd" },
+    svelte = { "prettierd" },
+    astro = { "prettierd" },
+    htmlangular = { "prettierd" },
+    proto = { "buf" },
+    python = { "black", "isort" },
+    sql = { "sqlfluff" },
+  },
+  formatters = {
+    -- nginxfmt = {
+    --   -- Change where to find the command
+    --   command = os.getenv "HOME" .. "/.venv/bin/nginxfmt",
+    -- },
+    taplo = {
+      -- prepend_args = { "-o", "" },
+      env = {
+        TAPLO_CONFIG = os.getenv "HOME" .. "/.config/.taplo.toml",
+      },
+    },
+    ["clang-format"] = {},
+    stylua = {
+      prepend_args = { "--syntax", "LuaJIT" },
+    },
+    sqlfluff = {
+      require_cwd = false,
+    },
+  },
+}
+
+local linters_cfg = {
+  linters_by_ft = {
+    sh = { "shellcheck" },
+    zsh = { "shellcheck" },
+    ansible = { "ansible_lint" },
+    dockerfile = { "hadolint" },
+    fish = { "fish" },
+    kotlin = { "ktlint" },
+    lua = { "selene" },
+    proto = { "buf_lint" },
+    sql = { "sqlfluff" },
+  },
+  linters = {
+    selenne = {
+      condition = function(ctx)
+        return #vim.fs.find("selene.toml", { path = ctx.filename, upward = true, type = "file" }) > 0
+      end,
+    },
+  },
 }
 
 -- File operations ============================================================
@@ -275,7 +414,13 @@ now(function()
     _G.mason_lsp_setup = vim.schedule_wrap(function(mason_pkg)
       if type(mason_pkg) ~= "string" then mason_pkg = mason_pkg.name end
       local lspconfig_name = mappings.get_mason_map().package_to_lspconfig[mason_pkg]
-      if not lspconfig_name or enabled_servers[lspconfig_name] then return end
+      if
+        not lspconfig_name
+        or enabled_servers[lspconfig_name]
+        or vim.tbl_contains(no_auto_enable_lsp_servers, lspconfig_name)
+      then
+        return
+      end
 
       local ok, config = pcall(require, "mason-lspconfig.lsp." .. lspconfig_name)
       if ok then vim.lsp.config(lspconfig_name, config) end
@@ -514,9 +659,9 @@ later(function()
     -- enables treesitter based indentation
     vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
   end
-
-  vim.treesitter.language.register("bash", "kitty")
-  vim.treesitter.language.register("xml", { "msbuild" })
+  for lang, filetype in ipairs(treesitter_map_lang_with_filetype) do
+    vim.treesitter.language.register(lang, filetype)
+  end
 
   Config.new_autocmd("FileType", "*", function(args)
     local buf, filetype = args.buf, args.match
@@ -640,7 +785,7 @@ end)
 
 later(function()
   add { "https://github.com/stevearc/conform.nvim" }
-  require("conform").setup {
+  require("conform").setup(vim.tbl_deep_extend("force", {
     default_format_opts = {
       -- Allow formatting from LSP server if no dedicated formatter  available
       lsp_format = "fallback",
@@ -648,37 +793,13 @@ later(function()
     format_on_save = function(bufnr)
       if vim.F.if_nil(vim.b[bufnr].autoformat, vim.g.autoformat, true) then return { lsp_format = "fallback" } end
     end,
-    formatters_by_ft = {
-      toml = { "taplo" },
-      markdown = { "markdown-toc", "prettierd", stop_after_first = false },
-      cs = { "csharpier" },
-      sh = { "shfmt", "shellcheck" },
-      zsh = { "shfmt", "shellcheck" },
-      lua = { "stylua", stop_after_first = false },
-    },
-    formatters = {
-      -- nginxfmt = {
-      --   -- Change where to find the command
-      --   command = os.getenv "HOME" .. "/.venv/bin/nginxfmt",
-      -- },
-      taplo = {
-        -- prepend_args = { "-o", "" },
-        env = {
-          TAPLO_CONFIG = os.getenv "HOME" .. "/.config/.taplo.toml",
-        },
-      },
-      ["clang-format"] = {},
-      stylua = {
-        prepend_args = { "--syntax", "LuaJIT" },
-      },
-    },
     -- Set the log level. Use `:ConformInfo` to see the location of the log file.
     log_level = vim.log.levels.OFF,
     -- Conform will notify you when a formatter errors
     notify_on_error = true,
     -- Conform will notify you when no formatters are available for the buffer
     notify_no_formatters = true,
-  }
+  }, formatters_cfg))
 
   vim.api.nvim_create_user_command("Format", function(args)
     local range = nil
@@ -1221,7 +1342,7 @@ later(function()
         text = ("[%d]"):format(idx or 0)
         chunks = { { " " }, { text, "HlSearchLens" } }
       end
-      render.setVirt(0, lnum - 1, col - 1, chunks, nearest)
+      if idx >= 0 then render.setVirt(0, lnum - 1, col - 1, chunks, nearest) end
     end,
   }
 
@@ -1230,9 +1351,8 @@ later(function()
 
   local function n_with_hlslens(char)
     local count = vim.v.count1
-    -- Executes the normal command (n, N, *, etc) then starts hlslens
-    vim.cmd(("normal! %d%s"):format(count, char))
-    hlslens.start()
+    local ok, _ = pcall(function() vim.cmd(("normal! %d%s"):format(count, char)) end)
+    if ok then hlslens.start() end
   end
 
   -- n and N
@@ -1258,92 +1378,95 @@ later(function()
   )
 end)
 
-on_filetype("vue,typescript,javascript,typescriptreact,javascriptreact,tsx,jsx,java,json,yaml", function()
-  add {
-    "https://github.com/yelog/i18n.nvim",
-    { src = "https://github.com/saghen/blink.cmp", version = vim.version.range "1.x" },
-  }
-  local original_sig_help = vim.lsp.buf.signature_help
+on_filetype(
+  { "vue", "typescript", "javascript", "typescriptreact", "javascriptreact", "tsx", "jsx", "java", "json", "yaml" },
+  function()
+    add {
+      "https://github.com/yelog/i18n.nvim",
+      { src = "https://github.com/saghen/blink.cmp", version = vim.version.range "1.x" },
+    }
+    local original_sig_help = vim.lsp.buf.signature_help
 
-  local i18n = require "i18n"
-  i18n.setup {
-    activation = "lazy",
-    show_mode = "both",
-    diagnostic = true,
-    -- Locales to parse; first  the default locale
-    -- Use I18nNextLocale command to switch the default locale in real time
-    locales = { "en", "vn", "jp", "zh", "en_US", "vi_VN", "ja_JP", "zh_CN" },
-    usage = {
-      -- Popup provider used when choosing between multiple usage locations
-      -- Available values: 'vim_ui', 'telescope', 'fzf-lua', 'snacks'
-      popup_type = "vim_ui",
-      notify_no_key = false,
-      max_file_size = 0, -- 0 = no limit
-      scan_on_startup = true,
-    },
-    func_pattern = { "t", "$t" },
-    -- sources can be string or table { pattern = "...", prefix = "..." }
-    -- Project-level configuration files
-    -- .i18nrc.json
-    -- i18n.config.json
-    -- .i18nrc.lua
-    sources = {
-      "src/locales/{locales}.json",
-      "src/lang/{locales}.json",
-      -- { pattern = "src/locales/lang/{locales}/{module}.ts",            prefix = "{module}." },
-      -- { pattern = "src/views/{bu}/locales/lang/{locales}/{module}.ts", prefix = "{bu}.{module}." },
-    },
-    i18n_keys = {
-      popup_type = "vim_ui",
-    },
+    local i18n = require "i18n"
+    i18n.setup {
+      activation = "lazy",
+      show_mode = "both",
+      diagnostic = true,
+      -- Locales to parse; first  the default locale
+      -- Use I18nNextLocale command to switch the default locale in real time
+      locales = { "en", "vn", "jp", "zh", "en_US", "vi_VN", "ja_JP", "zh_CN" },
+      usage = {
+        -- Popup provider used when choosing between multiple usage locations
+        -- Available values: 'vim_ui', 'telescope', 'fzf-lua', 'snacks'
+        popup_type = "vim_ui",
+        notify_no_key = false,
+        max_file_size = 0, -- 0 = no limit
+        scan_on_startup = true,
+      },
+      func_pattern = { "t", "$t" },
+      -- sources can be string or table { pattern = "...", prefix = "..." }
+      -- Project-level configuration files
+      -- .i18nrc.json
+      -- i18n.config.json
+      -- .i18nrc.lua
+      sources = {
+        "src/locales/{locales}.json",
+        "src/lang/{locales}.json",
+        -- { pattern = "src/locales/lang/{locales}/{module}.ts",            prefix = "{module}." },
+        -- { pattern = "src/views/{bu}/locales/lang/{locales}/{module}.ts", prefix = "{bu}.{module}." },
+      },
+      i18n_keys = {
+        popup_type = "vim_ui",
+      },
 
-    -- Enable namespace resolution
-    -- false: disabled, no namespace resolution
-    -- 'auto': Auto-detect framework based on filetype (tsx/jsx → react_i18next, vue → vue_i18n)
-    -- 'react_i18next': Detect useTranslation('namespace') calls in React components
-    -- 'vue_i18n': Detect useI18n({ namespace: '...' }) in Vue components
-    namespace_resolver = "auto", -- or 'react_i18next', 'vue_i18n', custom function, or table
-    -- Separator between namespace and key
-    namespace_separator = ".", -- set ':' for i18next standard
-  }
-  vim.lsp.buf.signature_help = function(opts)
-    if require("i18n.display").get_key_under_cursor() then
-      require("i18n").show_popup()
-    else
-      opts = vim.tbl_extend("force", opts, {
-        anchor_bias = "above",
+      -- Enable namespace resolution
+      -- false: disabled, no namespace resolution
+      -- 'auto': Auto-detect framework based on filetype (tsx/jsx → react_i18next, vue → vue_i18n)
+      -- 'react_i18next': Detect useTranslation('namespace') calls in React components
+      -- 'vue_i18n': Detect useI18n({ namespace: '...' }) in Vue components
+      namespace_resolver = "auto", -- or 'react_i18next', 'vue_i18n', custom function, or table
+      -- Separator between namespace and key
+      namespace_separator = ".", -- set ':' for i18next standard
+    }
+    vim.lsp.buf.signature_help = function(opts)
+      if require("i18n.display").get_key_under_cursor() then
+        require("i18n").show_popup()
+      else
+        opts = vim.tbl_extend("force", opts, {
+          anchor_bias = "above",
+        })
+        return original_sig_help(opts)
+      end
+    end
+    vim.g.changed_sign_helper = true
+
+    Config.new_autocmd("DirChanged", "*", function()
+      if vim.fn.exists ":I18nReload" == 2 and i18n._activated then vim.cmd "I18nReload" end
+    end, "Reload i18n on cwd/workspace changed")
+
+    local blink_avail, blink = pcall(require, "blink.cmp")
+    if blink_avail then
+      for _, filetype in ipairs {
+        "vue",
+        "typescript",
+        "javascript",
+        "typescriptreact",
+        "javascriptreact",
+        "tsx",
+        "jsx",
+        "java",
+        "json",
+        "yaml",
+      } do
+        blink.add_filetype_source(filetype, "i18n")
+      end
+      blink.add_source_provider("i18n", {
+        name = "i18n",
+        module = "i18n.integration.blink_source",
       })
-      return original_sig_help(opts)
     end
   end
-  vim.g.changed_sign_helper = true
-
-  Config.new_autocmd("DirChanged", "*", function()
-    if vim.fn.exists ":I18nReload" == 2 and i18n._activated then vim.cmd "I18nReload" end
-  end, "Reload i18n on cwd/workspace changed")
-
-  local blink_avail, blink = pcall(require, "blink.cmp")
-  if blink_avail then
-    for _, filetype in ipairs {
-      "vue",
-      "typescript",
-      "javascript",
-      "typescriptreact",
-      "javascriptreact",
-      "tsx",
-      "jsx",
-      "java",
-      "json",
-      "yaml",
-    } do
-      blink.add_filetype_source(filetype, "i18n")
-    end
-    blink.add_source_provider("i18n", {
-      name = "i18n",
-      module = "i18n.integration.blink_source",
-    })
-  end
-end)
+)
 
 later(function()
   local original_sig_help = vim.lsp.buf.signature_help
@@ -1938,7 +2061,7 @@ later(function()
   vim.lsp.buf.declaration = function() vim.cmd "Lspsaga peek_declaration" end
 end)
 
-on_filetype("markdown,markdown.mdx", function()
+on_filetype({ "markdown", "markdown.mdx" }, function()
   vim.g.mkdp_filetypes = { "markdown", "markdown.mdx" }
   vim.g.mkdp_auto_start = false
 
@@ -2138,7 +2261,9 @@ later(function()
     "https://github.com/nvim-neotest/nvim-nio",
     "https://github.com/marilari88/neotest-vitest",
     "https://github.com/nvim-neotest/neotest-jest",
+    "https://github.com/nvim-neotest/neotest-python",
     "https://github.com/Nsidorenco/neotest-vstest",
+    "https://github.com/mrcjkb/rustaceanvim",
     "https://github.com/nvim-neotest/neotest",
   }
   local neotest = require "neotest"
@@ -2155,9 +2280,13 @@ later(function()
   local opts = {
     floating = { border = vim.o.winborder },
     adapters = {
-      require "neotest-vstest",
+      require "neotest-vstest" {},
+      require "neotest-jest" {},
+      require "neotest-vitest" {},
+      require "neotest-python" {},
     },
   }
+  if vim.pack.is_available "rustaceanvim" then table.insert(opts.adapters, require "rustaceanvim.neotest"()) end
 
   if vim.pack.is_available "overseer" then
     opts.consumers = opts.consumers or {}
@@ -2237,13 +2366,7 @@ later(function()
     "https://github.com/mfussenegger/nvim-lint",
   }
   local lint = require "lint"
-  local opts = {
-    linters_by_ft = {
-      sh = { "shellcheck" },
-      zsh = { "shellcheck" },
-    },
-    linters = {},
-  }
+  local opts = linters_cfg
 
   lint.linters_by_ft = opts.linters_by_ft or {}
   for name, linter in pairs(opts.linters or {}) do
@@ -2465,46 +2588,6 @@ later(function()
   } end
 end)
 
-on_event("BufRead~package.json", function()
-  add {
-    "https://github.com/MunifTanjim/nui.nvim",
-    "https://github.com/vuki656/package-info.nvim",
-  }
-  require("package-info").setup {
-    highlights = {
-      up_to_date = {
-        fg = "#3C4048",
-        ctermfg = 237,
-      },
-      outdated = {
-        fg = "#d19a66",
-        bold = true,
-      },
-      invalid = {
-        fg = "#ee4b2b",
-        bold = true,
-      },
-    },
-    icons = {
-      enable = true,
-      style = {
-        up_to_date = " ", -- Icon for up to date dependencies
-        outdated = " ", -- Icon for outdated dependencies
-        invalid = " ", -- Icon for invalid dependencies
-      },
-    },
-    notifications = false, -- Whether to display notifications when running commands
-    autostart = true, -- Whether to autostart when `package.json`  opened
-    hide_up_to_date = false, -- It hides up to date versions when displaying virtual text
-    hide_unstable_versions = false, -- It hides unstable versions from version list e.g next-11.1.3-canary3
-    -- Can be `npm`, `yarn`, or `pnpm`. Used for `delete`, `install` etc...
-    -- The plugin will try to auto-detect the package manager based on
-    -- `yarn.lock` or `package-lock.json`. If none are found it will use the
-    -- provided one, if nothing  provided it will use `yarn`
-    package_manager = "npm",
-  }
-end)
-
 later(function()
   add {
     "https://github.com/stevearc/quicker.nvim",
@@ -2551,12 +2634,6 @@ on_filetype("qf", function()
   require("bqf").setup {}
 end)
 
-on_filetype("sql,mysql", function()
-  add {
-    "https://github.com/nanotee/sqls.nvim",
-  }
-end)
-
 later(function()
   vim.g["suda#prompt"] = "Enter sudo password to save:"
   add {
@@ -2565,18 +2642,19 @@ later(function()
 
   local function smart_save()
     if vim.bo.buftype ~= "" then return end
-    local filepath = vim.fn.expand "%:p"
-    local _writable = vim.fn.filewritable(filepath) == 1
 
-    if vim.bo.readonly or not _writable then
-      if vim.fn.exists ":SudaWrite" > 0 then
-        vim.cmd "SudaWrite"
+    local success, err = pcall(function() vim.cmd "update" end)
+
+    if not success then
+      if err:match "E212" or err:match "permission denied" then
+        if vim.fn.exists ":SudaWrite" > 0 then
+          vim.cmd "SudaWrite"
+        else
+          vim.notify("Save failed and vim-suda is unavailable: " .. err, vim.log.levels.ERROR)
+        end
       else
-        vim.notify("File  readonly and suda.vim is not installed", vim.log.levels.ERROR)
+        vim.notify("Save failed: " .. err, vim.log.levels.ERROR)
       end
-    else
-      -- Standard save
-      vim.cmd "silent! update | redraw"
     end
   end
   vim.keymap.set({ "n" }, "<C-S>", smart_save, { desc = "Smart Save (Sudo if needed)" })
@@ -3190,10 +3268,15 @@ now(function()
       win = {
         input = {
           keys = {
+            -- Scroll list window.
             ["<S-Tab>"] = { "list_up", mode = { "i", "n" } },
             ["<Tab>"] = { "list_down", mode = { "i", "n" } },
-            ["<c-j>"] = { "select_and_next", mode = { "i", "n" } },
-            ["<c-k>"] = { "select_and_prev", mode = { "i", "n" } },
+            -- Select multiple result items
+            ["<M-j>"] = { "select_and_next", mode = { "i", "n" } },
+            ["<M-k>"] = { "select_and_prev", mode = { "i", "n" } },
+            -- Scroll preview window. Use <M-w> to switch focus between preview, list and input window
+            ["<c-u>"] = { "preview_scroll_up", mode = { "i", "n" } },
+            ["<c-d>"] = { "preview_scroll_down", mode = { "i", "n" } },
           },
         },
       },
@@ -3294,8 +3377,17 @@ now(function()
       vim.keymap.set("n", "<Leader>fg", function() snacks.picker.git_files() end, { desc = "Find git files" })
     end
     -- General Pickers
-    vim.keymap.set("n", "<Leader>f<CR>", function() snacks.picker.resume() end, { desc = "Resume previous search" })
+    vim.keymap.set("n", "<Leader><CR>", function() snacks.picker.resume() end, { desc = "Resume previous search" })
+    vim.keymap.set("n", "<Leader>f/", function() snacks.picker.search_history() end, { desc = "Search history" })
     vim.keymap.set("n", "<Leader>f'", function() snacks.picker.marks() end, { desc = "Find marks" })
+    vim.keymap.set("n", "<Leader>fL", function()
+      snacks.picker.lsp_config {
+        confirm = function(picker, item)
+          picker:close()
+          vim.notify(vim.inspect(item))
+        end,
+      }
+    end, { desc = "Find default lsp configs" })
     vim.keymap.set("n", "<Leader>fl", function()
       local filetypes = {}
       for _, ft in ipairs(vim.fn.getcompletion("", "filetype")) do
@@ -3538,7 +3630,7 @@ now(function()
     end, { desc = "Find custom icons" })
     vim.keymap.set("n", "<Leader>fo", function()
       require("snacks").picker.smart {
-        multi = { "recent" },
+        multi = { "buffers", "recent", "files" },
         format = "file", -- use `file` format for all sources
         matcher = {
           cwd_bonus = false, -- boost cwd matches
@@ -3550,13 +3642,33 @@ now(function()
         sort_lastused = true,
       }
     end, { desc = "Find old files" })
+    vim.keymap.set("n", "<Leader>fO", function()
+      require("snacks").picker.smart {
+        multi = { "buffers", "recent", "files" },
+        format = "file", -- use `file` format for all sources
+        matcher = {
+          cwd_bonus = true, -- boost cwd matches
+          frecency = true, -- use frecency boosting
+          sort_empty = false, -- sort even when the filter is empty
+          history_bonus = true,
+        },
+        transform = "unique_file",
+        sort_lastused = true,
+        filter = {
+          cwd = true,
+        },
+      }
+    end, { desc = "Find old files (cwd)" })
     vim.keymap.set(
       "n",
-      "<Leader>fO",
-      function() snacks.picker.recent { filter = { cwd = true } } end,
-      { desc = "Find old files (cwd)" }
+      "<Leader>fp",
+      function()
+        snacks.picker.projects {
+          dev = { "~/dev", "~/projects", "~/code", "~/workspace", "~/git" },
+        }
+      end,
+      { desc = "Find projects" }
     )
-    vim.keymap.set("n", "<Leader>fp", function() snacks.picker.projects() end, { desc = "Find projects" })
     vim.keymap.set("n", "<Leader>fr", function() snacks.picker.registers() end, { desc = "Find registers" })
     vim.keymap.set("n", "<Leader>fs", function() snacks.picker.smart() end, { desc = "Find buffers/recent/files" })
     vim.keymap.set("n", "<Leader>ft", function() snacks.picker.colorschemes() end, { desc = "Find themes" })
@@ -3585,12 +3697,7 @@ now(function()
   end, { desc = "Search symbols" })
 
   if vim.tbl_get(opts, "words", "enabled") ~= false then
-    vim.keymap.set(
-      "n",
-      "\\r",
-      function() snacks.toggle.words():toggle() end,
-      { desc = "Toggle reference highlighting" }
-    )
+    vim.keymap.set("n", "\\w", function() snacks.toggle.words():toggle() end, { desc = "Toggle cursor word highlight" })
     vim.keymap.set("n", "]r", function() snacks.words.jump(vim.v.count1) end, { desc = "Next reference" })
     vim.keymap.set("n", "[r", function() snacks.words.jump(-vim.v.count1) end, { desc = "Previous reference" })
   end
@@ -3724,7 +3831,7 @@ later(function()
       hovered_buffer_in_same_directory = nil,
     },
   }
-  vim.keymap.set({ "n" }, "<Leader>y", "<cmd>Yazi<cr>", { desc = "Open yazi " })
+  vim.keymap.set({ "n" }, "<Leader>o", "<cmd>Yazi<cr>", { desc = "Open yazi " })
 end)
 
 later(function()
@@ -4376,3 +4483,205 @@ later(function()
   }
   require("garbage-day").setup {}
 end)
+
+later(function()
+  add {
+    "https://github.com/b0o/schemastore.nvim",
+  }
+end)
+
+on_filetype("yaml.ansible", function()
+  add {
+    "https://github.com/pearofducks/ansible-vim",
+  }
+end)
+
+on_event("BufRead~package.json", function()
+  add {
+    "https://github.com/MunifTanjim/nui.nvim",
+    "https://github.com/vuki656/package-info.nvim",
+  }
+  require("package-info").setup {
+    highlights = {
+      up_to_date = {
+        fg = "#3C4048",
+        ctermfg = 237,
+      },
+      outdated = {
+        fg = "#d19a66",
+        bold = true,
+      },
+      invalid = {
+        fg = "#ee4b2b",
+        bold = true,
+      },
+    },
+    icons = {
+      enable = true,
+      style = {
+        up_to_date = " ", -- Icon for up to date dependencies
+        outdated = " ", -- Icon for outdated dependencies
+        invalid = " ", -- Icon for invalid dependencies
+      },
+    },
+    notifications = false, -- Whether to display notifications when running commands
+    autostart = true, -- Whether to autostart when `package.json`  opened
+    hide_up_to_date = false, -- It hides up to date versions when displaying virtual text
+    hide_unstable_versions = false, -- It hides unstable versions from version list e.g next-11.1.3-canary3
+    -- Can be `npm`, `yarn`, or `pnpm`. Used for `delete`, `install` etc...
+    -- The plugin will try to auto-detect the package manager based on
+    -- `yarn.lock` or `package-lock.json`. If none are found it will use the
+    -- provided one, if nothing  provided it will use `yarn`
+    package_manager = "npm",
+  }
+end)
+
+later(function()
+  add { "https://github.com/yioneko/nvim-vtsls" }
+  Config.new_autocmd("LspAttach", nil, function(args)
+    if assert(vim.lsp.get_client_by_id(args.data.client_id)).name == "vtsls" then
+      require("vtsls")._on_attach(args.data.client_id, args.buf)
+      vim.api.nvim_del_augroup_by_name "nvim_vtsls"
+    end
+  end, "Load nvim-vtsls with vtsls", "nvim_vtsls")
+  require("vtsls").config {}
+end)
+
+later(function()
+  add { "https://github.com/dmmulroy/tsc.nvim" }
+  require("tsc").setup {}
+end)
+
+later(function()
+  local uname = (vim.uv or vim.loop).os_uname()
+  local is_linux_arm = uname.sysname == "Linux" and (uname.machine == "aarch64" or vim.startswith(uname.machine, "arm"))
+
+  add {
+    "https://github.com/p00f/clangd_extensions.nvim",
+  }
+  Config.new_autocmd("LspAttach", nil, function(args)
+    if assert(vim.lsp.get_client_by_id(args.data.client_id)).name == "clangd" then
+      require "clangd_extensions"
+      vim.api.nvim_del_augroup_by_name "clangd_extensions"
+    end
+  end, "Load clangd_extensions with clangd", "clangd_extensions")
+
+  Config.new_autocmd("LspAttach", nil, function(args)
+    if assert(vim.lsp.get_client_by_id(args.data.client_id)).name == "clangd" then
+      vim.keymap.set(
+        "n",
+        "<Leader>lw",
+        "<Cmd>ClangdSwitchSourceHeader<CR>",
+        { desc = "Switch source/header file", buffer = args.buf }
+      )
+    end
+  end, "Load clangd_extensions_mappings with clangd", "clangd_extension_mappings")
+  if is_linux_arm then
+    -- Force enable clangd for arm arch. Because we don't install clangd from mason
+    -- We use built-in clangd instead
+    vim.lsp.enable "clangd"
+  end
+end)
+
+on_filetype({ "c", "cpp", "objc", "objcpp", "cuda", "proto" }, function()
+  add {
+    "https://github.com/Civitasv/cmake-tools.nvim",
+  }
+  require("cmake-tools").setup {}
+end)
+
+on_filetype("python", function()
+  if not (vim.fn.executable "fd" == 1 or vim.fn.executable "fdfind" == 1 or vim.fn.executable "fd-find" == 1) then
+    add {
+      "https://github.com/linux-cultist/venv-selector.nvim",
+    }
+    require("venv-selector").setup {}
+  end
+
+  add {
+    "https://github.com/mfussenegger/nvim-dap-python",
+  }
+  local path = vim.fn.exepath "debugpy-adapter"
+  if path == "" then path = vim.fn.exepath "python" end
+  require("dap-python").setup(path, {})
+end)
+
+on_event("BufRead~Cargo.toml", function()
+  add { "https://github.com/Saecki/crates.nvim" }
+  require("crates").setup {
+    completion = {
+      crates = { enabled = true },
+    },
+    lsp = {
+      enabled = true,
+      on_attach = function(...) require("astrolsp").on_attach(...) end,
+      actions = true,
+      completion = true,
+      hover = true,
+    },
+  }
+end)
+
+on_filetype("rust", function()
+  -- Project-local config via rust-analyzer.json file
+  add { { src = "https://github.com/mrcjkb/rustaceanvim", version = vim.version.range "9.x" } }
+
+  local adapter
+  local codelldb_installed = pcall(function() return require("mason-registry").get_package "codelldb" end)
+  local cfg = require "rustaceanvim.config"
+  if codelldb_installed then
+    local codelldb_path = vim.fn.exepath "codelldb"
+    local this_os = vim.uv.os_uname().sysname
+
+    local liblldb_path = vim.fn.expand "$MASON/share/lldb"
+    -- The path in windows is different
+    if this_os:find "Windows" then
+      liblldb_path = liblldb_path .. "\\bin\\lldb.dll"
+    else
+      -- The liblldb extension is .so for linux and .dylib for macOS
+      liblldb_path = liblldb_path .. "/lib/liblldb" .. (this_os == "Linux" and ".so" or ".dylib")
+    end
+    adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path)
+  else
+    adapter = cfg.get_codelldb_adapter()
+  end
+
+  local rust_analyzer_lsp_config = vim.lsp.config["rust_analyzer"] or {}
+  rust_analyzer_lsp_config.root_dir = nil
+  local server = {
+    ---@type table | (fun(project_root:string|nil, default_settings: table|nil):table) -- The rust-analyzer settings or a function that creates them.
+    settings = function(project_root, default_settings)
+      local rust_avalyzer_lsp_config_setting = rust_analyzer_lsp_config.settings or {}
+
+      local merge_table = vim.tbl_deep_extend("force", default_settings or {}, rust_avalyzer_lsp_config_setting)
+
+      -- Merge the settings from `rustaceanvim` first.
+      local ra = require "rustaceanvim.config.server"
+      local settings = ra.load_rust_analyzer_settings(project_root, {
+        settings_file_pattern = "rust-analyzer.json",
+        default_settings = merge_table,
+      })
+
+      -- Merge the settings again from `codesettings` if available. This is
+      -- the recommended way of sharing project-local settings with VSCode
+      -- in newer versions of `rustaceanvim`.
+      local codesettings_avail, codesettings = pcall(require, "codesettings")
+      if codesettings_avail then
+        settings = codesettings.with_local_settings("rust-analyzer", { settings = settings }).settings
+      end
+      return settings
+    end,
+  }
+  local final_server = vim.tbl_deep_extend("force", rust_analyzer_lsp_config, server)
+  local opts = {
+    server = final_server,
+    dap = { adapter = adapter, load_rust_types = true },
+    tools = { enable_clippy = false },
+  }
+  vim.g.rustaceanvim = vim.tbl_deep_extend("force", opts, vim.g.rustaceanvim or {
+    -- https://github.com/mrcjkb/rustaceanvim#gear-advanced-configuration
+  })
+end)
+
+-- Load before sql buffer/file loaded to override sqls server config
+now_if_args(function() add { "https://github.com/nanotee/sqls.nvim" } end)

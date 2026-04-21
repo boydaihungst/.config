@@ -124,6 +124,47 @@ now(function()
     style = vim.g.icons_enabled and "glyph" or "ascii",
     filetype = {
       cs = { glyph = "", hl = "MiniIconsGreen" },
+      postcss = { glyph = "󰌜", hl = "MiniIconsOrange" },
+    },
+    file = {
+      [".nvmrc"] = { glyph = "", hl = "MiniIconsGreen" },
+      [".node-version"] = { glyph = "", hl = "MiniIconsGreen" },
+      ["package.json"] = { glyph = "", hl = "MiniIconsGreen" },
+      ["tsconfig.json"] = { glyph = "", hl = "MiniIconsAzure" },
+      ["tsconfig.build.json"] = { glyph = "", hl = "MiniIconsAzure" },
+      ["yarn.lock"] = { glyph = "", hl = "MiniIconsBlue" },
+
+      [".eslintignore"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
+      [".eslintrc"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
+      [".eslintrc.cjs"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
+      [".eslintrc.js"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
+      [".eslintrc.json"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
+      [".eslintrc.yaml"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
+      [".eslintrc.yml"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
+      ["eslint.config.cjs"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
+      ["eslint.config.cts"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
+      ["eslint.config.js"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
+      ["eslint.config.mjs"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
+      ["eslint.config.mts"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
+      ["eslint.config.ts"] = { glyph = "󰱺", hl = "MiniIconsYellow" },
+
+      [".prettierrc"] = { glyph = "", hl = "MiniIconsPurple" },
+      [".prettierrc.cjs"] = { glyph = "", hl = "MiniIconsPurple" },
+      [".prettierrc.cts"] = { glyph = "", hl = "MiniIconsPurple" },
+      [".prettierrc.js"] = { glyph = "", hl = "MiniIconsPurple" },
+      [".prettierrc.json"] = { glyph = "", hl = "MiniIconsPurple" },
+      [".prettierrc.json5"] = { glyph = "", hl = "MiniIconsPurple" },
+      [".prettierrc.mjs"] = { glyph = "", hl = "MiniIconsPurple" },
+      [".prettierrc.mts"] = { glyph = "", hl = "MiniIconsPurple" },
+      [".prettierrc.toml"] = { glyph = "", hl = "MiniIconsPurple" },
+      [".prettierrc.ts"] = { glyph = "", hl = "MiniIconsPurple" },
+      [".prettierrc.yaml"] = { glyph = "", hl = "MiniIconsPurple" },
+      [".prettierrc.yml"] = { glyph = "", hl = "MiniIconsPurple" },
+      ["prettier.config.cjs"] = { glyph = "", hl = "MiniIconsPurple" },
+      ["prettier.config.js"] = { glyph = "", hl = "MiniIconsPurple" },
+      ["prettier.config.mjs"] = { glyph = "", hl = "MiniIconsPurple" },
+      ["prettier.config.mts"] = { glyph = "", hl = "MiniIconsPurple" },
+      ["prettier.config.ts"] = { glyph = "", hl = "MiniIconsPurple" },
     },
     -- VSCode-like icons
     lsp = {
@@ -863,9 +904,9 @@ now_if_args(function()
       MiniFiles.go_in { close_on_file = true }
     end, { buffer = buf_id, desc = "Open hovered file minifiles" })
 
-    vim.keymap.set("n", "<C-a>", "ggVG", { buffer = args.buf, desc = "Select all" })
-    vim.keymap.set("n", "yA", "ggVGyy", { buffer = args.buf, desc = "Yank all" })
-    vim.keymap.set("n", "<C-v>", "p", { buffer = args.buf, desc = "Paste" })
+    vim.keymap.set("n", "<C-a>", "ggVG", { buffer = buf_id, desc = "Select all" })
+    vim.keymap.set("n", "yA", "ggVGyy", { buffer = buf_id, desc = "Yank all" })
+    vim.keymap.set("n", "<C-v>", "p", { buffer = buf_id, desc = "Paste" })
   end, "Create mappings for mini files window")
 
   Config.new_autocmd("VimLeavePre", nil, function()
@@ -1111,6 +1152,7 @@ later(function()
     window = { suffix = "w", options = {} },
     yank = { suffix = "", options = {} },
   }
+  vim.keymap.set({ "n", "i" }, "<M-w>", "<Cmd>lua MiniBracketed.window('forward')<CR>")
 end)
 
 -- Remove buffers. Opened files occupy space in tabline and buffer picker.

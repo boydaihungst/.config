@@ -10,4 +10,15 @@
 --   end,
 -- })
 
-if vim.pack.is_available 'tsc.nvim' then vim.keymap.set({ 'n', 'v' }, '<Leader>lt', '<cmd>TSC<cr>', { desc = 'TSC: Type checking', buffer = 0 }) end
+if vim.fn.exists ":TSC" == 1 then
+  vim.keymap.set({ "n", "v" }, "<Leader>lt", "<cmd>TSC<cr>", { desc = "TSC: Type checking", buffer = 0 })
+end
+
+if vim.pack.is_available "vtsls" then
+  vim.keymap.set(
+    "n",
+    "<Leader>lO",
+    function() require("vtsls").commands.goto_source_definition() end,
+    { desc = "Goto Source Definition (vtsls)", buffer = 0 }
+  )
+end

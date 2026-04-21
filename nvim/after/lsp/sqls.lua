@@ -9,9 +9,9 @@ return {
       -- https://github.com/sqls-server/sqls?tab=readme-ov-file#db-configuration
       connections = {
         {
-          alias = "postgres mydb",
-          driver = "postgresql",
-          dataSourceName = "postgresql://user:pass@localhost:5432/mydb",
+          -- alias = "postgres mydb",
+          -- driver = "postgresql",
+          -- dataSourceName = "postgresql://user:pass@localhost:5432/mydb",
         },
       },
     },

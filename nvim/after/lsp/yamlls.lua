@@ -2,8 +2,8 @@ local ok, schemastore = pcall(require, "schemastore")
 if ok then
   return {
     settings = {
-      json = {
-        schemas = schemastore.json.schemas {
+      yaml = {
+        schemas = schemastore.yaml.schemas {
           validate = { enable = true },
         },
       },

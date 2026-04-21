@@ -59,6 +59,149 @@ vim.g.icons_enabled = true
 
 _G.Config = {
   default_lsp_signature_help = true,
+  default_large_buf_opts = {
+    -- Allow large files to be detected
+    enabled = true,
+    -- Notify when a large file is detected
+    notify = true,
+    -- The maximum size of a file in bytes. 2MB
+    size = 1000 * 2000,
+    -- The maximum number of lines in a file
+    lines = 10000,
+    -- The maximum average line length in a file
+    line_length = 1000,
+  },
+
+  -- Custom icons
+  icons = {
+    icons = {
+      ActiveLSP = "",
+      ActiveTS = "",
+      ArrowLeft = "",
+      ArrowRight = "",
+      Bookmarks = "",
+      BufferClose = "󰅖",
+      DapBreakpoint = "",
+      DapBreakpointCondition = "",
+      DapBreakpointRejected = "",
+      DapLogPoint = "󰛿",
+      DapStopped = "󰁕",
+      Debugger = "",
+      DefaultFile = "󰈙",
+      Diagnostic = "󰒡",
+      DiagnosticError = "",
+      DiagnosticHint = "󰌵",
+      DiagnosticInfo = "󰋼",
+      DiagnosticWarn = "",
+      Ellipsis = "…",
+      Environment = "",
+      FileNew = "",
+      FileModified = "",
+      FileReadOnly = "",
+      FoldClosed = "",
+      FoldOpened = "",
+      FoldSeparator = " ",
+      FolderClosed = "",
+      FolderEmpty = "",
+      FolderOpen = "",
+      Git = "󰊢",
+      GitConflict = "",
+      GitIgnored = "◌",
+      GitRenamed = "➜",
+      GitSign = "▎",
+      GitStaged = "✓",
+      GitUnstaged = "✗",
+      GitUntracked = "★",
+      List = "",
+      LSPLoading1 = "⠋",
+      LSPLoading2 = "⠙",
+      LSPLoading3 = "⠹",
+      LSPLoading4 = "⠸",
+      LSPLoading5 = "⠼",
+      LSPLoading6 = "⠴",
+      LSPLoading7 = "⠦",
+      LSPLoading8 = "⠧",
+      LSPLoading9 = "⠇",
+      LSPLoading10 = "⠏",
+      MacroRecording = "",
+      Package = "󰏖",
+      Paste = "󰅌",
+      Refresh = "",
+      Search = "",
+      Selected = "❯",
+      Session = "󱂬",
+      Sort = "󰒺",
+      Spellcheck = "󰓆",
+      Tab = "󰓩",
+      TabClose = "󰅙",
+      Terminal = "",
+      Window = "",
+      WordFile = "󰈭",
+      VimIcon = "",
+      ScrollText = "",
+      GitBranch = "",
+      GitAdd = "",
+      GitChange = "",
+      GitDelete = "",
+      -- Custom plugins icon
+      GrugFar = "󰛔",
+      CommentBox = "󱋄",
+      Markdown = "",
+      Neogen = "󰷉",
+      Tests = "󰗇",
+      Watch = "",
+      Octo = "",
+      Overseer = "",
+      VimVisualMulti = "󰵉",
+      FolderTree = "",
+      TabBar = "󰠷",
+      OtherTools = "",
+      CodeCompanion = "󱙺",
+      Coverage = "",
+    },
+    text_icons = {
+      ActiveLSP = "LSP:",
+      ArrowLeft = "<",
+      ArrowRight = ">",
+      BufferClose = "x",
+      DapBreakpoint = "B",
+      DapBreakpointCondition = "C",
+      DapBreakpointRejected = "R",
+      DapLogPoint = "L",
+      DapStopped = ">",
+      DefaultFile = "[F]",
+      DiagnosticError = "X",
+      DiagnosticHint = "?",
+      DiagnosticInfo = "i",
+      DiagnosticWarn = "!",
+      Ellipsis = "...",
+      Environment = "Env:",
+      FileModified = "*",
+      FileReadOnly = "[lock]",
+      FoldClosed = "+",
+      FoldOpened = "-",
+      FoldSeparator = " ",
+      FolderClosed = "[D]",
+      FolderEmpty = "[E]",
+      FolderOpen = "[O]",
+      GitAdd = "[+]",
+      GitChange = "[/]",
+      GitConflict = "[!]",
+      GitDelete = "[-]",
+      GitIgnored = "[I]",
+      GitRenamed = "[R]",
+      GitSign = "|",
+      GitStaged = "[S]",
+      GitUnstaged = "[U]",
+      GitUntracked = "[?]",
+      MacroRecording = "Recording:",
+      Paste = "[PASTE]",
+      Search = "?",
+      Selected = "*",
+      Spellcheck = "[SPELL]",
+      TabClose = "X",
+    },
+  },
 }
 
 vim.pack.add { "https://github.com/nvim-mini/mini.nvim", "https://github.com/nvim-lua/plenary.nvim" }
@@ -83,11 +226,18 @@ local misc = require "mini.misc"
 Config.now = function(f) misc.safely("now", f) end
 Config.later = function(f) misc.safely("later", f) end
 Config.now_if_args = vim.fn.argc(-1) > 0 and Config.now or Config.later
-Config.on_event = function(ev, f) misc.safely("event:" .. ev, f) end
-Config.on_filetype = function(ft, f) misc.safely("filetype:" .. ft, f) end
+Config.on_event = function(ev, f)
+  if type(ev) == "table" then ev = table.concat(ev, ",") end
+  misc.safely("event:" .. ev, f)
+end
+Config.on_filetype = function(ft, f)
+  if type(ft) == "table" then ft = table.concat(ft, ",") end
+  misc.safely("filetype:" .. ft, f)
+end
 
 local default_gr = vim.api.nvim_create_augroup("custom-config", { clear = true })
 Config.new_autocmd = function(event, pattern, callback, desc, gr)
+  if type(gr) == "string" then gr = vim.api.nvim_create_augroup(gr, { clear = true }) end
   local opts = { group = gr or default_gr, pattern = pattern, callback = callback, desc = desc }
   return vim.api.nvim_create_autocmd(event, opts)
 end
@@ -102,136 +252,6 @@ Config.on_packchanged = function(plugin_name, kinds, callback, desc)
   Config.new_autocmd("PackChanged", "*", f, desc)
 end
 
--- Custom icons
-Config.icons = {
-  icons = {
-    ActiveLSP = "",
-    ActiveTS = "",
-    ArrowLeft = "",
-    ArrowRight = "",
-    Bookmarks = "",
-    BufferClose = "󰅖",
-    DapBreakpoint = "",
-    DapBreakpointCondition = "",
-    DapBreakpointRejected = "",
-    DapLogPoint = "󰛿",
-    DapStopped = "󰁕",
-    Debugger = "",
-    DefaultFile = "󰈙",
-    Diagnostic = "󰒡",
-    DiagnosticError = "",
-    DiagnosticHint = "󰌵",
-    DiagnosticInfo = "󰋼",
-    DiagnosticWarn = "",
-    Ellipsis = "…",
-    Environment = "",
-    FileNew = "",
-    FileModified = "",
-    FileReadOnly = "",
-    FoldClosed = "",
-    FoldOpened = "",
-    FoldSeparator = " ",
-    FolderClosed = "",
-    FolderEmpty = "",
-    FolderOpen = "",
-    Git = "󰊢",
-    GitConflict = "",
-    GitIgnored = "◌",
-    GitRenamed = "➜",
-    GitSign = "▎",
-    GitStaged = "✓",
-    GitUnstaged = "✗",
-    GitUntracked = "★",
-    List = "",
-    LSPLoading1 = "⠋",
-    LSPLoading2 = "⠙",
-    LSPLoading3 = "⠹",
-    LSPLoading4 = "⠸",
-    LSPLoading5 = "⠼",
-    LSPLoading6 = "⠴",
-    LSPLoading7 = "⠦",
-    LSPLoading8 = "⠧",
-    LSPLoading9 = "⠇",
-    LSPLoading10 = "⠏",
-    MacroRecording = "",
-    Package = "󰏖",
-    Paste = "󰅌",
-    Refresh = "",
-    Search = "",
-    Selected = "❯",
-    Session = "󱂬",
-    Sort = "󰒺",
-    Spellcheck = "󰓆",
-    Tab = "󰓩",
-    TabClose = "󰅙",
-    Terminal = "",
-    Window = "",
-    WordFile = "󰈭",
-    VimIcon = "",
-    ScrollText = "",
-    GitBranch = "",
-    GitAdd = "",
-    GitChange = "",
-    GitDelete = "",
-    -- Custom plugins icon
-    GrugFar = "󰛔",
-    CommentBox = "󱋄",
-    Markdown = "",
-    Neogen = "󰷉",
-    Tests = "󰗇",
-    Watch = "",
-    Octo = "",
-    Overseer = "",
-    VimVisualMulti = "󰵉",
-    FolderTree = "",
-    TabBar = "󰠷",
-    OtherTools = "",
-    CodeCompanion = "󱙺",
-    Coverage = "",
-  },
-  text_icons = {
-    ActiveLSP = "LSP:",
-    ArrowLeft = "<",
-    ArrowRight = ">",
-    BufferClose = "x",
-    DapBreakpoint = "B",
-    DapBreakpointCondition = "C",
-    DapBreakpointRejected = "R",
-    DapLogPoint = "L",
-    DapStopped = ">",
-    DefaultFile = "[F]",
-    DiagnosticError = "X",
-    DiagnosticHint = "?",
-    DiagnosticInfo = "i",
-    DiagnosticWarn = "!",
-    Ellipsis = "...",
-    Environment = "Env:",
-    FileModified = "*",
-    FileReadOnly = "[lock]",
-    FoldClosed = "+",
-    FoldOpened = "-",
-    FoldSeparator = " ",
-    FolderClosed = "[D]",
-    FolderEmpty = "[E]",
-    FolderOpen = "[O]",
-    GitAdd = "[+]",
-    GitChange = "[/]",
-    GitConflict = "[!]",
-    GitDelete = "[-]",
-    GitIgnored = "[I]",
-    GitRenamed = "[R]",
-    GitSign = "|",
-    GitStaged = "[S]",
-    GitUnstaged = "[U]",
-    GitUntracked = "[?]",
-    MacroRecording = "Recording:",
-    Paste = "[PASTE]",
-    Search = "?",
-    Selected = "*",
-    Spellcheck = "[SPELL]",
-    TabClose = "X",
-  },
-}
 --- Check if a buffer is valid
 ---@param bufnr? integer The buffer to check, default to current buffer
 ---@return boolean # Whether the buffer is valid or not
@@ -289,19 +309,6 @@ function Config.extend_hl(name, data)
 end
 
 local large_buf_cache, buf_size_cache = {}, {} -- cache large buffer detection results and buffer sizes
-Config.default_large_buf_opts = {
-  -- Allow large files to be detected
-  enabled = true,
-  -- Notify when a large file is detected
-  notify = true,
-  -- The maximum size of a file in bytes. 2MB
-  size = 1000 * 2000,
-  -- The maximum number of lines in a file
-  lines = 10000,
-  -- The maximum average line length in a file
-  line_length = 1000,
-}
-
 ---@class AstroCoreMaxFile
 ---@field enabled (boolean|fun(bufnr: integer, config: AstroCoreMaxFile):boolean|AstroCoreMaxFile?)? whether to enable large file detection
 ---@field notify boolean? whether or not to display a notification when a large file is detected
@@ -403,30 +410,24 @@ vim.diagnostic.config {
   },
 }
 
-local function enable_lsp_feature(feature)
-  if not vim.lsp[feature] then vim.lsp[feature].enable(true) end
-end
-
 vim.lsp.inlay_hint.enable(false)
 vim.lsp.semantic_tokens.enable(true)
 vim.lsp.linked_editing_range.enable(true)
-vim.lsp.codelens.enable(true)
+if vim.lsp.codelens.enable then vim.lsp.codelens.enable(true) end
 vim.lsp.inline_completion.enable(true)
 vim.lsp.on_type_formatting.enable(false)
+vim.lsp.protocol.make_client_capabilities()
 vim.lsp.config("*", {
   capabilities = {
     textDocument = {
-      -- TODO: python won't work Wait till this PR is merged https://github.com/neovim/neovim/pull/35578
-      -- This is because require('blink.cmp').get_lsp_capabilities() doesn't set the necessary capability for onTypeFormatting.
-      -- onTypeFormatting = { dynamicRegistration = false },
-
-      -- Force enable callHierarchy
+      -- Force enable callHierarchy to use with lspsaga
       callHierarchy = {
         dynamicRegistration = true,
       },
     },
   },
 })
+
 vim.api.nvim_get_buffers_by_path = function(path)
   path = vim.fn.fnamemodify(path, ":p") -- normalize to absolute path
   local matched_buffers = {}

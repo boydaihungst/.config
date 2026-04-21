@@ -242,7 +242,7 @@ nmap("<C-q>", explore_quickfix, "Quickfix list")
 -- NOTE: most LSP mappings represent a more structured way of replacing built-in
 -- LSP mappings (like `:h gra` and others). This is needed because `gr` is mapped
 -- by an "replace" operator in 'mini.operators' (which is more commonly used).
-nmap("gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", "Code actions")
+nmap("gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition")
 nmap_leader("la", "<Cmd>lua vim.lsp.buf.code_action()<CR>", "Code actions")
 xmap_leader("la", ":<C-U>lua vim.lsp.buf.code_action()<CR>", "Code actions")
 nmap_leader("lc", "<Cmd>lua vim.lsp.buf.incoming_calls<CR>", "Incoming calls")
@@ -261,7 +261,8 @@ nmap_leader("lT", '<Cmd>lua vim.lsp.buf.typehierarchy("supertypes")<CR>', "Type 
 -- LSP Information Capability flattener
 nmap_leader("lI", "<Cmd>checkhealth vim.lsp<CR>", "Lsp information")
 
-nmap("gl", "<Cmd>vim.diagnostic.open_float()<CR>", "Hover diagnostics")
+nmap("gl", "<Cmd>lua vim.diagnostic.open_float({scope='c'})<CR>", "Diagnostics (cursor)")
+nmap("gL", "<Cmd>lua vim.diagnostic.open_float({scope='l'})<CR>", "Diagnostics (line)")
 nmap("]d", "<Cmd>Lspsaga diagnostic_jump_next<CR>", "Next diagnostic")
 nmap("[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", "Prev diagnostic")
 
@@ -276,9 +277,9 @@ nmap("\\m", "<Cmd>lua MiniMap.toggle()<CR>", "Toggle scrollbar")
 
 -- o is for 'Other'. Common usage:
 -- - `<Leader>oz` - toggle between "zoomed" and regular view of current buffer
-nmap_leader("or", "<Cmd>lua MiniMisc.resize_window()<CR>", "Resize to default width")
-nmap_leader("ot", "<Cmd>lua MiniTrailspace.trim()<CR>", "Trim trailspace")
-nmap_leader("oz", "<Cmd>lua MiniMisc.zoom()<CR>", "Zoom toggle")
+nmap("\\r", "<Cmd>lua MiniMisc.resize_window()<CR>", "Resize to default width")
+nmap("\\t", "<Cmd>lua MiniTrailspace.trim()<CR>", "Trim trailspace")
+nmap("\\z", "<Cmd>lua MiniMisc.zoom()<CR>", "Zoom toggle")
 
 -- s is for 'Session'. Common usage:
 -- - `<Leader>sn` - start new session

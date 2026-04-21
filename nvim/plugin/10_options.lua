@@ -6,10 +6,15 @@ vim.filetype.add {
     props = "msbuild",
     tasks = "msbuild",
     targets = "msbuild",
+    pcss = "postcss",
+    postcss = "postcss",
+    hl = "hyprlang",
+    pg = "sql",
   },
   filename = {
     ["vifmrc"] = "vim",
     ["mpv.conf"] = "editorconfig",
+    ["docker-compose.yaml"] = "yaml.docker-compose",
   },
   pattern = {
     [".*/waybar/config.*"] = "jsonc",
@@ -21,6 +26,20 @@ vim.filetype.add {
     [".*/sway/.+%.conf"] = "swayconfig",
     ["%.env%.[%w_.-]+"] = "sh",
     [".*%..*proj"] = "msbuild",
+
+    [".*/defaults/.*%.ya?ml"] = "yaml.ansible",
+    [".*/host_vars/.*%.ya?ml"] = "yaml.ansible",
+    [".*/group_vars/.*%.ya?ml"] = "yaml.ansible",
+    [".*/group_vars/.*/.*%.ya?ml"] = "yaml.ansible",
+    [".*/playbook.*%.ya?ml"] = "yaml.ansible",
+    [".*/playbooks/.*%.ya?ml"] = "yaml.ansible",
+    [".*/roles/.*/tasks/.*%.ya?ml"] = "yaml.ansible",
+    [".*/roles/.*/handlers/.*%.ya?ml"] = "yaml.ansible",
+    [".*/tasks/.*%.ya?ml"] = "yaml.ansible",
+    [".*/molecule/.*%.ya?ml"] = "yaml.ansible",
+
+    [".*/hypr/.*.conf"] = "hyprlang",
+    ["hypr.*.conf"] = "hyprlang",
   },
 }
 
