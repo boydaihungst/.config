@@ -98,6 +98,10 @@
     # { run = 'wezterm start --cwd %s1', orphan = true, desc = "Wezterm", for = "linux" },
   ]
 
+  lazygit = [
+    { run = 'kitty --app-id "lazygit" -- ~/.config/yazi/lazygit.sh %s1', orphan = true, desc = "Lazygit", for = "linux" },
+  ]
+
   edit = [
     { run = 'kitty --app-id "nvim" -- nvim %s', orphan = true, desc = "Nvim", for = "linux" },
     # { run = 'wezterm start --class "nvim" -- nvim %s', orphan = true, desc = "Nvim", for = "linux" },
@@ -136,7 +140,7 @@
     { url = "bulk-rename.txt", use = [ "bulk-rename" ], block = true },
     # Folder
     { url = "/mnt/remote/", use = [ "mount_remote", "terminal" ] },
-    { url = "*/", use = [ "terminal", "subtitle_processor_folder" ] },
+    { url = "*/", use = [ "terminal", "lazygit", "subtitle_processor_folder" ] },
 
     # subtitle
     { url = "*.ass", use = [ "edit", "subtitle_editor_ass" ] },
