@@ -3119,6 +3119,8 @@ end)
 
 now(function()
   add { "https://github.com/folke/snacks.nvim" }
+  local snacks = require "snacks"
+
   local get_icon = Config.get_custom_icon
   ---@type snacks.Config
   local opts = {
@@ -3130,7 +3132,7 @@ now(function()
       ---@param ctx {buf: number, ft:string}
       setup = function(ctx)
         if vim.fn.exists ":NoMatchParen" ~= 0 then vim.cmd [[NoMatchParen]] end
-        Snacks.util.wo(0, { foldmethod = "manual", statuscolumn = "", conceallevel = 0 })
+        snacks.util.wo(0, { foldmethod = "manual", statuscolumn = "", conceallevel = 0 })
         vim.bo.undorefer = false
         vim.bo.swapfile = false
         vim.b.completion = false
@@ -3142,10 +3144,10 @@ now(function()
       end,
     },
     statuscolumn = {
-      left = { "mark", "sign" }, -- priority of signs on the left (high to low)
-      right = { "fold", "git" }, -- priority of signs on the right (high to low)
+      left = { "fold", "mark" }, -- priority of signs on the left (high to low)
+      right = { "sign", "git" }, -- priority of signs on the right (high to low)
       folds = {
-        open = false, -- show open fold icons
+        open = true, -- show open fold icons
         git_hl = false, -- use Git Signs hl for fold icons
       },
       git = {
@@ -3346,7 +3348,6 @@ now(function()
     },
   }
 
-  local snacks = require "snacks"
   snacks.setup(opts)
 
   if vim.tbl_get(opts, "indent", "enabled") ~= false then

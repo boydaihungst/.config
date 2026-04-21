@@ -78,6 +78,7 @@ now(function()
   vim.api.nvim_set_hl(0, "NonText", { fg = "#3A3E47" })
   vim.api.nvim_set_hl(0, "TreesitterContext", { link = "CursorLine" })
   vim.api.nvim_set_hl(0, "WinBar", { fg = "#797D87" })
+  vim.api.nvim_set_hl(0, "SignColumn", { bg = "#080A0E", fg = "#BCC4C9" })
 end)
 
 -- You can try these other 'mini.hues'-based color schemes (uncomment with `gcc`):
@@ -586,6 +587,7 @@ now(function()
         local right_side = {
           { hl = "MiniStatuslineDevinfo", strings = { " ", lsp, " " } },
           { hl = "MiniStatuslineSearch", strings = search ~= "" and { " ", search, " " } or {} },
+          { hl = "MiniStatuslineFiletype", strings = { " ", file_icon .. " " .. vim.bo.filetype } },
           { hl = "MiniStatuslineLocation", strings = { " ", location } },
         }
 

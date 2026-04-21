@@ -91,12 +91,14 @@ if Config.default_lsp_signature_help then
       lsp_bufs[args.buf] = Config.new_autocmd({ "TextChangedI", "InsertEnter", "CursorMovedI" }, nil, function()
         if sig_timer then sig_timer:stop() end
         sig_timer = vim.defer_fn(function()
-          vim.lsp.buf.signature_help {
-            anchor_bias = "above",
-            max_height = 15,
-            focusable = false,
-            silent = true,
-          }
+          if lsp_bufs[vim.api.nvim_get_current_buf()] then
+            vim.lsp.buf.signature_help {
+              anchor_bias = "above",
+              max_height = 15,
+              focusable = false,
+              silent = true,
+            }
+          end
           sig_timer = nil
         end, 200)
       end, "Automatically show signature help if enabled")
