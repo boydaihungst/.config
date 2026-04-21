@@ -345,11 +345,8 @@ function Status:name()
 	file_name = smart_truncate:shorten(max_width, file_name, tail, always_show_patterns)
 	local style = self:style()
 	return ui.Line({
-		ui.Span(" " .. icon.text):style(icon.style):bg("#26343F"),
-		-- TODO: Modify this after next yazi released
-		ui.Span(" " .. (ui.printable and ui.printable(file_name) or file_name:gsub("\r", "?", 1)) .. " ")
-			:fg(style.alt:fg())
-			:bg("#26343F"),
+		ui.Span(" " .. (icon and icon.text or "")):style(icon and icon.style or ui.Style()):bg("#26343F"),
+		ui.Span(" " .. (ui.printable(file_name)) .. " "):fg(style.alt:fg()):bg("#26343F"),
 		ui.Span(""):fg("#26343F"):bg(style.alt:bg()),
 	})
 end

@@ -203,11 +203,11 @@
     # Mimetype
     # { id = "mime", url = "/run/user/*/gvfs/google-drive:host=gmail.com,user=*/**/*", run = "mime-ext.local", prio = "high" },
     # { id = "mime", url = "/run/user/*/gvfs/google-drive:host=gmail.com,user=*/**/*/", run = "mime.dir", prio = "high" },
-    { id = "mime", url = "*/", run = "mime.dir", prio = "high" },
-    { id = "mime", url = "local://*", run = "mime-ext.local", prio = "high" },
-    { id = "mime", url = "remote://*", run = "mime-ext.remote", prio = "high" },
-    { id = "simple-tag", url = "*", run = "simple-tag" },
-    { id = "simple-tag", url = "*/", run = "simple-tag" },
+    { url = "*/", run = "mime.dir", prio = "high", group = "mime" },
+    { url = "local://*", run = "mime-ext.local", prio = "high", group = "mime" },
+    { url = "remote://*", run = "mime-ext.remote", prio = "high", group = "mime" },
+    { url = "*", run = "simple-tag", group = "simple-tag" },
+    { url = "*/", run = "simple-tag", group = "simple-tag" },
   ]
   preloaders = [
     { url = "/run/user/*/gvfs/google-drive:host=gmail.com,user=*/**/*", run = "noop", prio = "high" },
