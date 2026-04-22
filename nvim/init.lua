@@ -220,8 +220,14 @@ vim.pack.add { "https://github.com/nvim-mini/mini.nvim", "https://github.com/nvi
 --   like `nvim -- path/to/file`, but otherwise delaying is fine.
 -- - Others are better used only if the above is not enough for good performance.
 --   Use only if you are comfortable with adding complexity to your config:
---   - `on_event` - execute once on a first matched event. Like "delay until
---     first Insert mode enter": `on_event('InsertEnter,BufEnter', function() ... end)`.
+--   - `on_event` - execute once on a first matched event. Like "delay until:
+--     first Insert mode enter" (no pattern):
+--        -`on_event('InsertEnter,BufEnter', function() ... end)`.
+--     first BufEnter with pattern (with pattern):
+--        - `on_event('BufEnter~package.json', function() ... end)`.
+--     first BufEnter or BufReadPre with pattern (multiple events with multiple pattern):
+--        - `on_event({'BufEnter', 'BufReadPre'}, {"package.json", "*.lua"}, function() ... end)`.
+--        - `on_event('BufReadPre,BufEnter~package.json,*.lua', function() ... end)`.
 --   - `on_filetype` - execute once on a first matched filetype. Like "delay
 --     until first Lua file": `on_filetype('lua', function() ... end)`.
 --
@@ -233,9 +239,15 @@ _G.add = vim.pack.add
 _G.now = function(f) misc.safely("now", f) end
 _G.later = function(f) misc.safely("later", f) end
 _G.now_if_args = vim.fn.argc(-1) > 0 and _G.now or _G.later
-_G.on_event = function(ev, f)
+_G.on_event = function(ev, patt, f)
   if type(ev) == "table" then ev = table.concat(ev, ",") end
-  misc.safely("event:" .. ev, f)
+  if type(patt) == "table" then patt = table.concat(patt, ",") end
+  if type(patt) == "function" then
+    f = patt
+    patt = nil
+  end
+  if not ev then return end
+  misc.safely("event:" .. ev .. (patt and "~" .. patt or ""), f)
 end
 _G.on_filetype = function(ft, f)
   if type(ft) == "table" then ft = table.concat(ft, ",") end

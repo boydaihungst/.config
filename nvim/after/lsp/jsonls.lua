@@ -3,9 +3,8 @@ if ok then
   return {
     settings = {
       json = {
-        schemas = schemastore.json.schemas {
-          validate = { enable = true },
-        },
+        schemas = schemastore.json.schemas(),
+        validate = { enable = true },
       },
     },
   }

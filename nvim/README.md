@@ -145,10 +145,14 @@ The first time you open Neovim, it will ask you to trust `project-root/.nvim.lua
   - `now_if_args`: execute immediately if start like `nvim -- path/to/file`,  
     otherwise execute a bit later.
   - `on_event`: execute once on a first matched event.
-    - A table of event\~pattern or a string with each event\~pattern separated by comma.  
-      Pattern is after `~`.
-      `on_event({"InsertEnter","BufRead~package.json"}, function() ... end)`  
-      `on_event('InsertEnter,BufEnter~package.json', function() ... end)`
+    - Like "delay until:
+      - first Insert mode enter" (no pattern):
+        - `on_event('InsertEnter,BufEnter', function() ... end)`
+      - first BufEnter with pattern (with pattern):
+        - `on_event('BufEnter~package.json', function() ... end)`
+      - first BufEnter or BufReadPre with pattern (multiple events with multiple pattern):
+        - `on_event({'BufEnter', 'BufReadPre'}, {"package.json", "*.lua"}, function() ... end)`
+        - `on_event('BufReadPre,BufEnter~package.json,*.lua', function() ... end)`
   - `on_filetype`: execute once on a first matched filetype.
     - A table of filetype or a string with each filetype separated by comma.
       `on_filetype({"lua","python"}, function() ... end)`

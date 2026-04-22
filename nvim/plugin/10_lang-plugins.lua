@@ -1,7 +1,12 @@
 -- Language-based supported plugins should add to this file
 
--- Load before sql buffer/file loaded to override sqls server config
-now(function() add { "https://github.com/nanotee/sqls.nvim" } end)
+on_filetype({ "sql", "mysql" }, function()
+  add { "https://github.com/nanotee/sqls.nvim" }
+
+  --Remember to disable sqls lsp auto start in 05_lsp-servers.lua
+  vim.lsp.config("sqls", {})
+  vim.lsp.enable "sqls"
+end)
 
 on_filetype({
   "typescript",
@@ -20,11 +25,15 @@ on_filetype({
 end)
 
 -- Schema for json, yaml, etc.
-later(function()
-  add {
-    "https://github.com/b0o/schemastore.nvim",
-  }
-end)
+on_event(
+  { "BufReadPre" },
+  { "*.yaml", "*.yml", ",*.json", "*.jsonc" },
+  function()
+    add {
+      "https://github.com/b0o/schemastore.nvim",
+    }
+  end
+)
 
 on_filetype("yaml.ansible", function()
   add {
@@ -105,16 +114,16 @@ later(function()
     end, "Set keymaps for when a lsp support ", "nvim-inline-completion")
   end
 end)
+
 -- Extra command for vtsls
 later(function()
-  add { "https://github.com/yioneko/nvim-vtsls" }
   Config.new_autocmd("LspAttach", nil, function(args)
     if assert(vim.lsp.get_client_by_id(args.data.client_id)).name == "vtsls" then
+      add { "https://github.com/yioneko/nvim-vtsls" }
       require("vtsls")._on_attach(args.data.client_id, args.buf)
       vim.api.nvim_del_augroup_by_name "nvim_vtsls"
     end
   end, "Load nvim-vtsls with vtsls", "nvim_vtsls")
-  require("vtsls").config {}
 end)
 
 -- :TSC command to check type for typescript
@@ -130,11 +139,9 @@ later(function()
   local uname = (vim.uv or vim.loop).os_uname()
   local is_linux_arm = uname.sysname == "Linux" and (uname.machine == "aarch64" or vim.startswith(uname.machine, "arm"))
 
-  add {
-    "https://github.com/p00f/clangd_extensions.nvim",
-  }
   Config.new_autocmd("LspAttach", nil, function(args)
     if assert(vim.lsp.get_client_by_id(args.data.client_id)).name == "clangd" then
+      add { "https://github.com/p00f/clangd_extensions.nvim" }
       require "clangd_extensions"
       vim.keymap.set(
         "n",
@@ -206,6 +213,8 @@ later(function()
     local this_os = vim.uv.os_uname().sysname
 
     local liblldb_path = vim.fn.expand "$MASON/share/lldb"
+    if vim.fn.isdirectory(liblldb_path) == 0 then liblldb_path = vim.fn.expand "$MASON/opt/lldb" end
+    if vim.fn.isdirectory(liblldb_path) == 0 then return vim.notify("Could not find lldb lib", vim.log.levels.ERROR) end
     -- The path in windows is different
     if this_os:find "Windows" then
       liblldb_path = liblldb_path .. "\\bin\\lldb.dll"

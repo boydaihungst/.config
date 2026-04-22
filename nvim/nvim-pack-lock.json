@@ -274,6 +274,10 @@
       "rev": "f818eefff81f4b12fb7cf236f1b6c16768a2fcbc",
       "src": "https://github.com/stevearc/overseer.nvim"
     },
+    "package-info.nvim": {
+      "rev": "9725099fb118bab8360e560c1219bff60763b7e1",
+      "src": "https://github.com/vuki656/package-info.nvim"
+    },
     "persistent-breakpoints.nvim": {
       "rev": "d1656221836207787b8a7969cc2dc72668c4742a",
       "src": "https://github.com/Weissle/persistent-breakpoints.nvim"

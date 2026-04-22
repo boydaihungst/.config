@@ -32,7 +32,6 @@ local ensure_installed_pkg = {
   "nginx-language-server",
   "buf",
   "basedpyright",
-  "codelldb",
   "tailwindcss-language-server",
   "vue-language-server",
   "lemminx",

@@ -1,6 +1,7 @@
 local manually_start_lsp_servers = {
   "jdtls",
   "rust_analyzer", -- rustaceanvim will auto enable this lsp server
+  "sqls", -- sqls-nvim instead
 }
 
 later(function()
