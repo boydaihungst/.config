@@ -32,7 +32,7 @@ Config.new_autocmd("BufWinEnter", nil, function(args)
   if vim.tbl_contains({ "help", "nofile", "quickfix" }, vim.bo[args.buf].buftype) then
     vim.keymap.set("n", "q", "<Cmd>close<CR>", {
       desc = "Close window",
-      buffer = args.buf,
+      buf = args.buf,
       silent = true,
       nowait = true,
     })
@@ -91,7 +91,7 @@ if Config.default_lsp_signature_help then
       lsp_bufs[args.buf] = Config.new_autocmd({ "TextChangedI", "InsertEnter", "CursorMovedI" }, nil, function()
         if sig_timer then sig_timer:stop() end
         sig_timer = vim.defer_fn(function()
-          if lsp_bufs[vim.api.nvim_get_current_buf()] then
+          if lsp_bufs[vim.api.nvim_get_current_buf()] and vim.api.nvim_get_mode().mode == "i" then
             vim.lsp.buf.signature_help {
               anchor_bias = "above",
               max_height = 15,

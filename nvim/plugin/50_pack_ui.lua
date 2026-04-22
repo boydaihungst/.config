@@ -615,7 +615,7 @@ local open
 -- Setup buffer keymaps (buffer-local, survive re-focus since buffer persists)
 local function setup_keymaps()
   local buf = state.bufnr
-  local opts = { buffer = buf, silent = true, nowait = true }
+  local opts = { buf = buf, silent = true, nowait = true }
 
   -- Close
   vim.keymap.set("n", "q", close, opts)

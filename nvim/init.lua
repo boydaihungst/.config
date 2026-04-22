@@ -1,5 +1,5 @@
 _G.STARTUP_TIME = vim.uv.hrtime()
--- Disable built-in plugins
+-- Disable unused built-in plugins
 local disabled_builtins = {
   "gzip",
   "netrwPlugin",
@@ -11,8 +11,12 @@ local disabled_builtins = {
 for _, plugin in ipairs(disabled_builtins) do
   vim.g["loaded_" .. plugin] = 1
 end
+
+-- This makes nvim load faster
 vim.loader.enable(true)
 vim.lsp.log.set_level(vim.log.levels.ERROR)
+
+-- User new ui2 to prevent error request for press enter to continue
 local ui2_exist, ui2 = pcall(require, "vim._core.ui2")
 if ui2_exist then
   ui2.enable {
@@ -39,7 +43,7 @@ if ui2_exist then
   }
 end
 
--- Import full environment from login shell
+-- Import full environment from login shell. Useful for codecompanion to read API key from env
 do
   local env = vim.fn.systemlist(vim.o.shell .. " -l -c env")
   for _, line in ipairs(env) do
@@ -48,8 +52,10 @@ do
   end
 end
 
+-- cd to project root on startup
 local project_root = vim.fs.root(0, { ".nvim.lua", ".nvimrc", ".exrc" })
 if project_root then vim.cmd.cd(project_root) end
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -223,14 +229,15 @@ vim.pack.add { "https://github.com/nvim-mini/mini.nvim", "https://github.com/nvi
 -- - `:h MiniMisc.safely()`
 -- - 'plugin/30_mini.lua' and 'plugin/40_plugins.lua'
 local misc = require "mini.misc"
-Config.now = function(f) misc.safely("now", f) end
-Config.later = function(f) misc.safely("later", f) end
-Config.now_if_args = vim.fn.argc(-1) > 0 and Config.now or Config.later
-Config.on_event = function(ev, f)
+_G.add = vim.pack.add
+_G.now = function(f) misc.safely("now", f) end
+_G.later = function(f) misc.safely("later", f) end
+_G.now_if_args = vim.fn.argc(-1) > 0 and _G.now or _G.later
+_G.on_event = function(ev, f)
   if type(ev) == "table" then ev = table.concat(ev, ",") end
   misc.safely("event:" .. ev, f)
 end
-Config.on_filetype = function(ft, f)
+_G.on_filetype = function(ft, f)
   if type(ft) == "table" then ft = table.concat(ft, ",") end
   misc.safely("filetype:" .. ft, f)
 end
@@ -240,16 +247,6 @@ Config.new_autocmd = function(event, pattern, callback, desc, gr)
   if type(gr) == "string" then gr = vim.api.nvim_create_augroup(gr, { clear = true }) end
   local opts = { group = gr or default_gr, pattern = pattern, callback = callback, desc = desc }
   return vim.api.nvim_create_autocmd(event, opts)
-end
-
-Config.on_packchanged = function(plugin_name, kinds, callback, desc)
-  local f = function(ev)
-    local name, kind = ev.data.spec.name, ev.data.kind
-    if not (name == plugin_name and vim.tbl_contains(kinds, kind)) then return end
-    if not ev.data.active then vim.cmd.packadd(plugin_name) end
-    callback(ev.data)
-  end
-  Config.new_autocmd("PackChanged", "*", f, desc)
 end
 
 --- Check if a buffer is valid
@@ -277,8 +274,8 @@ function Config.get_hlgroup(name, fallback)
   return fallback or {}
 end
 
---- Get an icon from the AstroNvim internal icons if it is available and return it
----@param kind string The kind of icon in astroui.icons to retrieve
+--- Get an icon from the internal icons if it is available and return it
+---@param kind string The kind of icon in Config.icons to retrieve
 ---@param padding? integer Padding to add to the end of the icon
 ---@param no_fallback? boolean Whether or not to disable fallback to text icon
 ---@return string icon
@@ -290,7 +287,7 @@ function Config.get_custom_icon(kind, padding, no_fallback)
   return icon and icon .. (" "):rep(padding or 0) or ""
 end
 
---- Get a icon spinner table if it is available in the AstroNvim icons. Icons in format `kind1`,`kind2`, `kind3`, ...
+--- Get a icon spinner table if it is available in the internal icons. Icons in format `kind1`,`kind2`, `kind3`, ...
 ---@param kind string The kind of icon to check for sequential entries of
 ---@return string[]|nil spinners # A collected table of spinning icons in sequential order or nil if none exist
 function Config.get_spinner(kind, ...)
@@ -393,6 +390,52 @@ end
 
 vim.pack.is_available = function(pkg) return pcall(require, pkg) end
 
+vim.pack.on_packchanged = function(plugin_name, kinds, callback, desc)
+  local f = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if not (name == plugin_name and vim.tbl_contains(kinds, kind)) then return end
+    if not ev.data.active then vim.cmd.packadd(plugin_name) end
+    callback(ev.data)
+  end
+  Config.new_autocmd("PackChanged", "*", f, desc)
+end
+
+vim.api.nvim_get_buffers_rel_path = function(path)
+  path = vim.fn.fnamemodify(path, ":p") -- normalize to absolute path
+  local matched_buffers = {}
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf) then
+      local name = vim.api.nvim_buf_get_name(buf)
+      if name ~= "" and vim.fs.relpath(path, vim.fn.fnamemodify(name, ":p")) then
+        matched_buffers[#matched_buffers + 1] = buf
+      end
+    end
+  end
+  return matched_buffers
+end
+
+vim.api.nvim_get_buffers_by_path = function(path)
+  path = vim.fn.fnamemodify(path, ":p") -- normalize to absolute path
+  local matched_buffers = {}
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf) then
+      local name = vim.api.nvim_buf_get_name(buf)
+      if name ~= "" and vim.fn.fnamemodify(name, ":p") == path then matched_buffers[#matched_buffers + 1] = buf end
+    end
+  end
+  return matched_buffers
+end
+
+vim.api.nvim_get_win_by_var = function(var_name)
+  -- Iterate through all windows in the current tabpage
+  for _, winid in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+    -- Check if the variable exists in this window's scope
+    local success, value = pcall(vim.api.nvim_win_get_var, winid, var_name)
+    if success then return winid, value end
+  end
+  return nil
+end
+
 vim.diagnostic.config {
   -- use tiny-inline-diagnostic.nvim instead
   virtual_lines = false,
@@ -427,27 +470,5 @@ vim.lsp.config("*", {
     },
   },
 })
-
-vim.api.nvim_get_buffers_by_path = function(path)
-  path = vim.fn.fnamemodify(path, ":p") -- normalize to absolute path
-  local matched_buffers = {}
-  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.api.nvim_buf_is_loaded(buf) then
-      local name = vim.api.nvim_buf_get_name(buf)
-      if name ~= "" and vim.fn.fnamemodify(name, ":p") == path then matched_buffers[#matched_buffers + 1] = buf end
-    end
-  end
-  return matched_buffers
-end
-
-vim.api.nvim_get_win_by_var = function(var_name)
-  -- Iterate through all windows in the current tabpage
-  for _, winid in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-    -- Check if the variable exists in this window's scope
-    local success, value = pcall(vim.api.nvim_win_get_var, winid, var_name)
-    if success then return winid, value end
-  end
-  return nil
-end
 
 -- vim: ts=2 sts=2 sw=2 et

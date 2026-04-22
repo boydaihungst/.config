@@ -10,5 +10,5 @@
 --   end,
 -- })
 if vim.fn.exists ":TSC" == 1 then
-  vim.keymap.set({ "n", "v" }, "<Leader>lt", "<cmd>TSC<cr>", { desc = "TSC: Type checking", buffer = 0 })
+  vim.keymap.set({ "n", "v" }, "<Leader>lt", "<cmd>TSC<cr>", { desc = "TSC: Type checking", buf = 0 })
 end

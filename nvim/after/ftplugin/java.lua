@@ -1,0 +1,10 @@
+-- vim.keymap.set(
+--   "n",
+--   "<leader>dt",
+--   function() require("jdtls").test_nearest_method() end,
+--   { desc = "Java Test: Nearest Method", buf = 0 }
+-- )
+--
+-- vim.keymap.set("n", "<leader>dT", function() require("jdtls").test_class() end, { desc = "Java Test: Class" })
+--
+-- vim.keymap.set("n", "<leader>dm", function() require("jdtls").pick_test() end, { desc = "Java Test: Pick" })

@@ -1,0 +1,31 @@
+later(function()
+  add { "https://github.com/mikavilpas/yazi.nvim", "https://github.com/folke/snacks.nvim" }
+  require("yazi").setup {
+    open_for_directories = false,
+    keymaps = {
+      show_help = "<f1>",
+      open_file_in_vertical_split = "<c-v>",
+      open_file_in_horizontal_split = "<c-s>",
+      open_file_in_tab = "<c-t>",
+      grep_in_directory = "<c-f>",
+      replace_in_directory = "<c-g>",
+      cycle_open_buffers = "<C-l>",
+      copy_relative_path_to_selected_files = "<c-y>",
+      send_to_quickfix_list = "<c-q>",
+      change_working_directory = "<c-\\>",
+    },
+    floating_window_scaling_factor = 0.7,
+    -- open visible splits as yazi tabs for easy navigation. Requires a yazi
+    -- version more recent than 2024-08-11
+    -- https://github.com/mikavilpas/yazi.nvim/pull/359
+    open_multiple_tabs = true,
+    -- use_ya_for_events_reading = true,
+    highlight_groups = {
+      -- See https://github.com/mikavilpas/yazi.nvim/pull/180
+      hovered_buffer = { link = "CursorLine" },
+      -- See https://github.com/mikavilpas/yazi.nvim/pull/351
+      hovered_buffer_in_same_directory = nil,
+    },
+  }
+  vim.keymap.set({ "n" }, "<Leader>o", "<cmd>Yazi<cr>", { desc = "Open yazi " })
+end)

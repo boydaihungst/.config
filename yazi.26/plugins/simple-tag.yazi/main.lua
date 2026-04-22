@@ -596,12 +596,12 @@ function M:setup(opts)
 				local style = ui.Style()
 				if _self._file.is_hovered then
 					if is_reversed_color then
-						style:bg(st[STATE_KEY.colors][tag] and st[STATE_KEY.colors][tag] or "reset")
+						style = style:bg(st[STATE_KEY.colors][tag] and st[STATE_KEY.colors][tag] or "reset")
 					else
-						style:fg(st[STATE_KEY.colors][tag] and st[STATE_KEY.colors][tag] or "reset")
+						style = style:fg(st[STATE_KEY.colors][tag] and st[STATE_KEY.colors][tag] or "reset")
 					end
 				else
-					style:fg(st[STATE_KEY.colors][tag] and st[STATE_KEY.colors][tag] or "reset")
+					style = style:fg(st[STATE_KEY.colors][tag] and st[STATE_KEY.colors][tag] or "reset")
 				end
 				if st[STATE_KEY.ui_mode] == UI_MODE.icon then
 					spans[#spans + 1] = ui.Span(" " .. (st[STATE_KEY.icons][tag] or st[STATE_KEY.icons].default))
@@ -1176,7 +1176,7 @@ function M:entry(job)
 			end
 		end
 
-		ya.emit("cd", { Url(_cwd) })
+		ya.emit("cd", { Url(_cwd), source = "search" })
 		ya.emit("update_files", { op = fs.op("part", { id = id, url = Url(_cwd), files = {} }) })
 		ya.emit("update_files", { op = fs.op("part", { id = id, url = Url(_cwd), files = files }) })
 		ya.emit("update_files", {

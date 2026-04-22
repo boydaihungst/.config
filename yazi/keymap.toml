@@ -257,7 +257,7 @@
     # by selected key
     { on = [ "t", "t" ], run = "plugin simple-tag -- toggle-tag", desc = "Toggle tag by any key (press any key to tag)" },
     { on = [ "t", "T" ], run = "plugin simple-tag -- toggle-tag --input", desc = "Toggle tag by any key (press any key to tag)" },
-    { on = [ "t", "f" ], run = "plugin simple-tag -- filter --input", desc = "Filter files by tag key" },
+    { on = [ "t", "f" ], run = "plugin simple-tag -- filter", desc = "Filter files by tag key" },
     # { on = [ "t", "f" ], run = "plugin simple-tag -- filter --keys=!", desc = "Filter files with tag key !" },
     # { on = [ "t", "f" ], run = "plugin simple-tag -- filter --keys=!1q", desc = "Filter files with tag keys ! or 1 or q" },
     # { on = [ "t", "F" ], run = "plugin simple-tag -- filter --input", desc = "Filter files with tagged key !" },
