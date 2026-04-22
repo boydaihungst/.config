@@ -1,4 +1,4 @@
-later(function()
+on_event("BufEnter", function()
   add {
     "https://github.com/rachartier/tiny-inline-diagnostic.nvim",
   }
