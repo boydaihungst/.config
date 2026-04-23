@@ -73,6 +73,10 @@
       "rev": "694357861ec9ebf12475ddcdd04ea45a0923c32d",
       "src": "https://github.com/Saecki/crates.nvim"
     },
+    "csharpls-extended-lsp.nvim": {
+      "rev": "1480abcafab446a3f66eb026faabe25b8412fc5f",
+      "src": "https://github.com/Decodetalkers/csharpls-extended-lsp.nvim"
+    },
     "dev-tools.nvim": {
       "rev": "d60a184f3a44fc39991a9251e84b3e7789246883",
       "src": "https://github.com/yarospace/dev-tools.nvim"
@@ -165,6 +169,10 @@
     "neotest": {
       "rev": "fd0b7986dd0ae04e38ec7dc0c78a432e3820839c",
       "src": "https://github.com/nvim-neotest/neotest"
+    },
+    "neotest-dotnet": {
+      "rev": "e27c67a856ce67cc968b773d01a35ec07459bb8b",
+      "src": "https://github.com/Issafalcon/neotest-dotnet"
     },
     "neotest-jest": {
       "rev": "0e7979d51301dfae5ef839d771bd28cf593fde3f",

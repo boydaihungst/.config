@@ -166,7 +166,7 @@ The first time you open Neovim, it will ask you to trust `project-root/.nvim.lua
 - Custom filetype should be added in [./plugin/00_options.lua](./plugin/00_options.lua)
 - Whenever you want to add new language pack (like in `astrocommunity/pack/language`),  
   you can add it in `05_` (tress-sitter, lsp servers, formatter, linter, debugger, etc.)
-- `10_` file should contain plugins that need to be loaded for specific filetype.
+- `10_` file should contain plugins that need to be loaded for specific filetype/language.
 - By default, any lsp server installed via mason will be enable (vim.lsp.enable)  
   at start up and after install/update.
 - For any lsp server that need to enable manually (like `jdtls` after `jdtls` plugin initalization),
@@ -174,7 +174,7 @@ The first time you open Neovim, it will ask you to trust `project-root/.nvim.lua
   This will prevent it from being enable at start up.  
   Then after you install + config related plugin, you can enable it manually via  
   `vim.lsp.enable("jdtls")` command or via plugin like `nvim-jdtls`.  
-  Check `10_lang-plugins.lua > jdtls plugins` for more examples.
+  Check `10_java-plugins.lua > jdtls plugins` for more examples.
 - If you use other theme, disable `mini.base16` in [./plugin/01_mini.lua](./plugin/01_mini.lua)
 
 ### Alot of things need to be done manually

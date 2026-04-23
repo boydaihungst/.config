@@ -36,6 +36,7 @@ local ensure_installed_pkg = {
   "vue-language-server",
   "lemminx",
   "jdtls",
+  "csharp-language-server",
   (not is_aarch64 and "selene") or nil,
 
   (function()

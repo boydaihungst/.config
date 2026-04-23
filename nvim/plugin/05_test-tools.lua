@@ -25,6 +25,7 @@ later(function()
     "https://github.com/Nsidorenco/neotest-vstest",
     "https://github.com/mrcjkb/rustaceanvim",
     "https://github.com/nvim-neotest/neotest",
+    "https://github.com/Issafalcon/neotest-dotnet",
   }
   local neotest = require "neotest"
   -- NOTE: We don't use virtual text (init.lua)
@@ -44,6 +45,7 @@ later(function()
       require "neotest-jest" {},
       require "neotest-vitest" {},
       require "neotest-python" {},
+      require "neotest-dotnet" {},
     },
   }
   if vim.pack.is_available "rustaceanvim" then table.insert(opts.adapters, require "rustaceanvim.neotest"()) end

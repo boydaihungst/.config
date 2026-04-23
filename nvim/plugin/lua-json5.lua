@@ -1,3 +1,5 @@
+-- This is a library plugin, so it shouldn't be lazy-loaded
+-- So we don't have to add on_packchanged any where we require it
 now(function()
   vim.pack.on_packchanged(
     "lua-json5",

@@ -10,5 +10,7 @@ return {
       razorSupport = true,
     },
   },
-  on_attach = function(client, bufnr) require("csharpls_extended").buf_read_cmd_bind() end,
+  on_attach = function(client, bufnr)
+    if vim.pack.is_available "csharpls_extended" then require("csharpls_extended").buf_read_cmd_bind() end
+  end,
 }

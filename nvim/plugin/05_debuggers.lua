@@ -19,11 +19,7 @@ later(function()
   require("mason-nvim-dap").setup {
     automatic_installation = true,
     handlers = {
-      -- function(config)
-      --   -- all sources with no handler get passed here
-      --   -- Keep original functionality
-      --   require("mason-nvim-dap").default_setup(config)
-      -- end,
+      -- function(config) require("mason-nvim-dap").default_setup(config) end,
       -- firefox = function(config)
       --   config.adapters = {
       --     {
