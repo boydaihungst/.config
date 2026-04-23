@@ -186,6 +186,7 @@ The first time you open Neovim, it will ask you to trust `project-root/.nvim.lua
 - i18n.nvim is heavy, so enable it only when you need it.
 - gitsigns.nvim use gh cli by default. gh is installed via mason if not exists.
 - Install yazi if you want to use it. My config is [here](../yazi/)
+- Update plugins changelogs need to save to apply changes.
 
 #### To generate TOC (Table of Contents) in markdown files:
 

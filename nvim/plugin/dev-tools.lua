@@ -2,10 +2,10 @@ later(function()
   add {
     "https://github.com/yarospace/dev-tools.nvim",
     "https://github.com/nvim-treesitter/nvim-treesitter",
+    "https://github.com/lewis6991/async.nvim",
     "https://github.com/nvim-lua/plenary.nvim",
     "https://github.com/ThePrimeagen/refactoring.nvim",
   }
-  require("refactoring").setup()
   require("dev-tools").setup {
     -- Custom actions: https://github.com/yarospace/dev-tools.nvim?tab=readme-ov-file#adding-code-actions
     actions = {},
