@@ -14,11 +14,12 @@ now(function()
       setup = function(ctx)
         if vim.fn.exists ":NoMatchParen" ~= 0 then vim.cmd [[NoMatchParen]] end
         snacks.util.wo(0, { foldmethod = "manual", statuscolumn = "", conceallevel = 0 })
-        vim.bo.undorefer = false
+        vim.bo.undofile = false
         vim.bo.swapfile = false
         vim.b.completion = false
         vim.b.minianimate_disable = true
         vim.b.minihipatterns_disable = true
+        vim.b.minimap_disable = true
         vim.schedule(function()
           if vim.api.nvim_buf_is_valid(ctx.buf) then vim.bo[ctx.buf].syntax = ctx.ft end
         end)
@@ -511,18 +512,27 @@ now(function()
       }
     end, { desc = "Find custom icons" })
     vim.keymap.set("n", "<Leader>fo", function()
-      require("snacks").picker.smart {
-        multi = { "buffers", "recent" },
-        format = "file", -- use `file` format for all sources
+      require("snacks").picker.recent {
+        -- filter = { cwd = false },
+        sort_lastused = true,
         matcher = {
           cwd_bonus = false, -- boost cwd matches
-          frecency = false, -- use frecency boosting
-          sort_empty = false, -- sort even when the filter is empty
-          history_bonus = false,
+          frecency = true, -- use frecency boosting
+          history_bonus = true,
         },
-        transform = "unique_file",
-        sort_lastused = true,
       }
+      -- require("snacks").picker.smart {
+      --   multi = { "buffers", "recent" },
+      --   format = "file", -- use `file` format for all sources
+      --   matcher = {
+      --     cwd_bonus = false, -- boost cwd matches
+      --     frecency = false, -- use frecency boosting
+      --     sort_empty = false, -- sort even when the filter is empty
+      --     history_bonus = false,
+      --   },
+      --   transform = "unique_file",
+      --   sort_lastused = true,
+      -- }
     end, { desc = "Find old files" })
     vim.keymap.set("n", "<Leader>fO", function()
       require("snacks").picker.smart {

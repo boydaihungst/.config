@@ -6,16 +6,16 @@ local linters_cfg = {
     dockerfile = { "hadolint" },
     fish = { "fish" },
     kotlin = { "ktlint" },
-    lua = { "selene" },
+    -- lua = { "selene" },
     proto = { "buf_lint" },
     sql = { "sqlfluff" },
   },
   linters = {
-    selenne = {
-      condition = function(ctx)
-        return #vim.fs.find("selene.toml", { path = ctx.filename, upward = true, type = "file" }) > 0
-      end,
-    },
+    -- selenne = {
+    --   condition = function(ctx)
+    --     return #vim.fs.find("selene.toml", { path = ctx.filename, upward = true, type = "file" }) > 0
+    --   end,
+    -- },
   },
 }
 

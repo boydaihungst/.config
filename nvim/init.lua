@@ -75,9 +75,36 @@ _G.Config = {
     -- The maximum number of lines in a file
     lines = 10000,
     -- The maximum average line length in a file
-    line_length = 1000,
+    line_length = 2000,
   },
-
+  auto_chdir_root = true,
+  -- Change current working directory based on the current file path. It
+  -- searches up the file tree until the first root marker ('.git' or 'Makefile')
+  -- and sets their parent directory as a current directory.
+  -- This is helpful when simultaneously dealing with files from several projects.
+  root_markers = {
+    "nvim-pack-lock.json",
+    ".git",
+    "_darcs",
+    ".hg",
+    ".bzr",
+    ".svn",
+    "lua",
+    "MakeFile",
+    "package.json",
+    "lazy-lock.json",
+    "yazi.toml",
+    "hyprland.conf",
+  },
+  -- LSP took priority over root_markers above
+  -- Add the names of LSP servers you want to ignore here
+  root_markers_lsp_servers_ignored = {
+    ["copilot"] = true,
+    ["null-ls"] = true,
+    ["efm"] = true,
+    ["dev-tools"] = true,
+    ["taplo"] = true,
+  },
   -- Custom icons
   icons = {
     icons = {

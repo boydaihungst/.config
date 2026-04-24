@@ -1018,20 +1018,15 @@ now_if_args(function()
   -- searches up the file tree until the first root marker ('.git' or 'Makefile')
   -- and sets their parent directory as a current directory.
   -- This is helpful when simultaneously dealing with files from several projects.
-  MiniMisc.setup_auto_root {
-    "nvim-pack-lock.json",
-    ".git",
-    "_darcs",
-    ".hg",
-    ".bzr",
-    ".svn",
-    "lua",
-    "MakeFile",
-    "package.json",
-    "lazy-lock.json",
-    "yazi.toml",
-    "hyprland.conf",
-  }
+  -- NOTE: Don't use this, already added a better version in 'plugin/00_autocmd.lua'
+  -- MiniMisc.setup_auto_root {
+  --   "nvim-pack-lock.json",
+  --   ".git",
+  --   "_darcs",
+  --   ".hg",
+  --   ".bzr",
+  --   ".svn",
+  -- }
 
   -- Restore latest cursor position on file open
   MiniMisc.setup_restore_cursor()
