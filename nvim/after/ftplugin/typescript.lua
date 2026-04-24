@@ -9,6 +9,6 @@
 --     require("vtsls").commands.add_missing_imports(buffer)
 --   end,
 -- })
-if vim.fn.exists ":TSC" == 1 then
+if vim.fn.exists ":TSC" ~= 0 then
   vim.keymap.set({ "n", "v" }, "<Leader>lt", "<cmd>TSC<cr>", { desc = "TSC: Type checking", buf = 0 })
 end

@@ -60,7 +60,7 @@ on_filetype(
     end
 
     Config.new_autocmd("DirChanged", "*", function()
-      if vim.fn.exists ":I18nReload" == 2 and i18n._activated then vim.cmd "I18nReload" end
+      if vim.fn.exists ":I18nReload" ~= 0 and i18n._activated then vim.cmd "I18nReload" end
     end, "Reload i18n on cwd/workspace changed")
 
     local blink_avail, blink = pcall(require, "blink.cmp")

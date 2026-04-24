@@ -1,4 +1,4 @@
-on_event("BufEnter", function()
+later(function()
   local prefix = "<leader>m"
   vim.g.VM_leader = vim.g.VM_leader or prefix
   vim.g.VM_silent_exit = 1

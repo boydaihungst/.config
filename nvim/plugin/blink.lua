@@ -297,11 +297,11 @@ later(function()
     --- @module 'blink-cmp-git'
     --- @type blink-cmp-git.Options
     opts = {
-      commit = {},
-      git_centers = {
-        github = {},
-        gitlab = {},
-      },
+      -- commit = {},
+      -- git_centers = {
+      -- github = {},
+      -- gitlab = {},
+      -- },
     },
   })
 

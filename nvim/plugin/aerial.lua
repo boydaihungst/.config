@@ -1,4 +1,4 @@
-on_event("BufEnter", function()
+later(function()
   add { "https://github.com/stevearc/aerial.nvim" }
   require("aerial").setup {
     attach_mode = "global",

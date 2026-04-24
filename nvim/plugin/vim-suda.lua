@@ -11,7 +11,7 @@ later(function()
 
     if not success then
       if err:match "E212" or err:match "permission denied" then
-        if vim.fn.exists ":SudaWrite" > 0 then
+        if vim.fn.exists ":SudaWrite" ~= 0 then
           vim.cmd "SudaWrite"
         else
           vim.notify("Save failed and vim-suda is unavailable: " .. err, vim.log.levels.ERROR)

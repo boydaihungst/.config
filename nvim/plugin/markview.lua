@@ -36,7 +36,20 @@ later(function()
       end,
       filetypes = allowed_ft,
     },
+    markdown_inline = {
+      tags = {
+        default = {
+          hl = "MarkviewCodeInfo",
+          padding_left = "",
+          padding_left_hl = "MarkviewCodeFg",
+          padding_right = "",
+          padding_right_hl = "MarkviewCodeFg",
+        },
+        enable = true,
+      },
+    },
     markdown = {
+      block_quotes = require("markview.presets").block_quotes.obsidian,
       reference_definitions = {
         enable = true,
         -- Setting website here
@@ -71,7 +84,9 @@ later(function()
   opts.markdown.horizontal_rules = require("markview.presets").horizontal_rules.thin
   opts.markdown.tables = require("markview.presets").tables.single
   require("markview.extras.headings").setup()
-  -- require("markview.extras.editor").setup()
+  require("markview.extras.editor").setup {
+    max_height = math.floor(vim.o.lines * 0.75),
+  }
   require("markview.extras.checkboxes").setup {
     --- Default checkbox state(used when adding checkboxes).
     ---@type string
@@ -82,7 +97,7 @@ later(function()
     ---| "disable" Disables the checkbox.
     ---| "checkbox" Removes the checkbox.
     ---| "list_item" Removes the list item markers too.
-    remove_style = "list_item",
+    remove_style = "checkbox",
 
     --- Various checkbox states.
     ---

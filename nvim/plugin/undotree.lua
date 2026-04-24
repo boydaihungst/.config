@@ -1,4 +1,4 @@
-on_event("BufEnter", function()
+later(function()
   vim.g.undotree_WindowLayout = 3
   vim.g.undotree_SplitWidth = 50
   vim.g.undotree_DiffpanelHeight = 25

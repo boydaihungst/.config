@@ -84,7 +84,7 @@ For example:
 
 #### Structure should be like this:
 
-```
+```text
 project-root/
   .git/
     info/
