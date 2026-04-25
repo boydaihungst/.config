@@ -76,6 +76,7 @@ local ensure_installed_pkg = {
   "kotlin-debug-adapter",
   "java-debug-adapter",
   "java-test",
+  "dart-debug-adapter",
 
   -- other
   vim.fn.executable "gh" == 0 and "gh" or nil,

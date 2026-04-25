@@ -58,6 +58,7 @@ local ensure_installed_treesitter = {
   "toml",
   "sql",
   "java",
+  "dart",
 }
 
 later(function()
