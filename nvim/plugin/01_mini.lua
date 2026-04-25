@@ -1461,8 +1461,8 @@ end)
 later(function()
   require("mini.keymap").setup()
   -- Navigate 'mini.completion' menu with `<Tab>` /  `<S-Tab>`
-  -- MiniKeymap.map_multistep("i", "<Tab>", { "minisnippets_next", "pmenu_next", "blink_next", "cmp_next" })
-  -- MiniKeymap.map_multistep("i", "<S-Tab>", { "minisnippets_prev", "pmenu_prev", "blink_prev", "cmp_prev" })
+  MiniKeymap.map_multistep("n", "<Tab>", { "minisnippets_next" })
+  MiniKeymap.map_multistep("n", "<S-Tab>", { "minisnippets_prev" })
   -- -- On `<CR>` try to accept current completion item, fall back to accounting
   -- -- for pairs from 'mini.pairs'
   -- MiniKeymap.map_multistep(

@@ -20,6 +20,12 @@ local lsp_settings_for_this_workspace = {
   },
 }
 
+-- This list of plugin won't get remove after switch to other project
+vim.pack.add {
+  "https://github.com/winston0410/range-highlight.nvim",
+}
+require("range-highlight").setup {}
+
 -- Add any thing which only use in this project to this callback, make sure it use buffer-local option
 vim.api.nvim_create_autocmd("BufReadPost", {
   group = augroup_id,

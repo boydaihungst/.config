@@ -306,6 +306,10 @@
       "rev": "063cc44da1eef8681bbd653b29d3bc961780886a",
       "src": "https://github.com/stevearc/quicker.nvim"
     },
+    "range-highlight.nvim": {
+      "rev": "097103da6550c2a34c029971c3d7da63d3fef320",
+      "src": "https://github.com/winston0410/range-highlight.nvim"
+    },
     "refactoring.nvim": {
       "rev": "f06ac3d457128f9d512103399b367c4be49a2421",
       "src": "https://github.com/ThePrimeagen/refactoring.nvim"

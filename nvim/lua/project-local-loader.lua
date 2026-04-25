@@ -59,7 +59,7 @@ function M.setup()
         local cur_file = vim.fn.expand "%:t"
         if vim.tbl_contains(M.config_files or {}, cur_file) then
           vim.notify("Auto trust project-local file: " .. cur_file)
-          vim.cmd "trust"
+          vim.cmd "silent! trust"
         end
       end,
     })
