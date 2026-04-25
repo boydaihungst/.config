@@ -1436,6 +1436,8 @@ later(function()
   }
 end)
 
+vim.api.nvim_set_hl(0, "MiniJump2dSpot", { fg = "#cc9057" })
+vim.api.nvim_set_hl(0, "MiniJump2dSpotUnique", { fg = "#8ebd6b" })
 -- Special key mappings. Provides helpers to map:
 -- - Multi-step actions. Apply action 1 if condition is met; else apply
 --   action 2 if condition is met; etc.
