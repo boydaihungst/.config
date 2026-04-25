@@ -38,6 +38,14 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
+--[[
+ -   ╭─────────────────────────────────────────────────────────╮
+ -   │                                                         │
+ -   │            Ignore everything below this line            │
+ -   │                                                         │
+ -   ╰─────────────────────────────────────────────────────────╯
+]]
+
 local function update_lsp_settings(lsp_servers_configs, is_restoring)
   for lsp_server, new_config in pairs(lsp_servers_configs) do
     local clients = vim.lsp.get_clients { name = lsp_server }
