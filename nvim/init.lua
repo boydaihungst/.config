@@ -477,6 +477,7 @@ vim.api.nvim_get_win_by_var = function(var_name)
   end
   return nil
 end
+string.to_litteral = function(str) return str and str:gsub("([%^%$%(%)%%%.%[%]%*%+%-%?])", "%%%1") end
 
 vim.diagnostic.config {
   -- use tiny-inline-diagnostic.nvim instead

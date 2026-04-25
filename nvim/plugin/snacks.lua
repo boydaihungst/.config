@@ -143,6 +143,25 @@ now(function()
         trace = get_icon "DiagnosticHint",
         warn = get_icon "DiagnosticWarn",
       },
+      filter = function(notif)
+        -- Define patterns or titles you want to ignore
+        local pattern_to_hide = {
+          -- Sqls LSP has to bug: https://github.com/sqls-server/sqls/issues/59
+          "LSP%[sqls%] no database connection",
+        }
+
+        -- Check if the message matches any of the patterns
+        for _, pattern in ipairs(pattern_to_hide) do
+          if notif.msg:find(pattern) then
+            return false -- This notification will not be shown
+          end
+        end
+
+        -- You can also filter by level (e.g., ignore all TRACE/DEBUG logs)
+        -- if notif.level == "trace" then return false end
+
+        return true -- Show everything else
+      end,
     },
     -- Load file as quickly as possible if run `nvim somefile`
     quickfile = {},
