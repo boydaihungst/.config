@@ -6,7 +6,8 @@ Only works with Nvim v0.12+
 <!-- toc -->
 
 - [To achieve project-local Plugins and LSP configurations:](#to-achieve-project-local-plugins-and-lsp-configurations)
-  - [Project configuration](#project-configuration)
+  - [Use custom plugin/module [./plugin/project-local-loader.lua](./plugin/project-local-loader.lua)](#use-custom-pluginmodule-pluginproject-local-loaderluapluginproject-local-loaderlua)
+  - [Use built-in `exrc` method and start nvim with `nvim /path/to/project-root` or `nvim /path/to/project-root/sub/folder/file`](#use-built-in-exrc-method-and-start-nvim-with-nvim-pathtoproject-root-or-nvim-pathtoproject-rootsubfolderfile)
   - [Structure should be like this:](#structure-should-be-like-this)
   - [This method only works if you start Neovim with `nvim /path/to/project-root` or `nvim /path/to/project-root/sub/folder/file`](#this-method-only-works-if-you-start-neovim-with-nvim-pathtoproject-root-or-nvim-pathtoproject-rootsubfolderfile)
 - [Explain about init.lua and plugin/ folder](#explain-about-initlua-and-plugin-folder)
@@ -19,9 +20,19 @@ Only works with Nvim v0.12+
 
 ### To achieve project-local Plugins and LSP configurations:
 
-Use built-in `exrc` method
+We have 2 methods:
 
-#### Project configuration
+#### Use custom plugin/module [./plugin/project-local-loader.lua](./plugin/project-local-loader.lua)
+
+- Don't have to start nvim with path.
+- This module will auto load project-local config files (like `.nvim.lua`)
+  when cwd is changed (check [./init.lua > Config.auto_chdir_root](./init.lua)).
+- This will auto trust `.nvim.lua` when you save it.
+- But all settings in `.nvim.lua` have to be buffer-local.
+- Check [./new-project-templete/.nvim.lua](./new-project-templete/.nvim.lua) for example.
+- Disable via [./init.lua > Config.enable_project_local_loader](./init.lua)
+
+#### Use built-in `exrc` method and start nvim with `nvim /path/to/project-root` or `nvim /path/to/project-root/sub/folder/file`
 
 1. Set `exrc = true` in [./plugin/00_options.lua](./plugin/00_options.lua)
 2. Place LSP config files at `project-root/.nvim/lsp/*.lua` in your project root (replace \* with the name of the LSP server, same as in [./after/lsp/](./after/lsp/))

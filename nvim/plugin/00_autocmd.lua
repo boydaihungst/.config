@@ -22,22 +22,28 @@ Config.new_autocmd("FileType", nil, function(args)
   end
 end, "Ensure editorconfig settings take highest precedence")
 
-Config.new_autocmd("BufWinEnter", nil, function(args)
+Config.new_autocmd("FileType", nil, function(args)
   if not vim.g.q_close_windows then vim.g.q_close_windows = {} end
   if vim.g.q_close_windows[args.buf] then return end
-  vim.g.q_close_windows[args.buf] = true
-  for _, map in ipairs(vim.api.nvim_buf_get_keymap(args.buf, "n")) do
-    if map.lhs == "q" then return end
-  end
-  if vim.tbl_contains({ "help", "nofile", "quickfix" }, vim.bo[args.buf].buftype) then
+
+  local ft = args.match
+  local bt = vim.bo[args.buf].buftype
+
+  if vim.tbl_contains({ "help", "nofile", "quickfix" }, bt) or ft == "sqls_output" then
+    for _, map in ipairs(vim.api.nvim_buf_get_keymap(args.buf, "n")) do
+      if map.lhs == "q" then return end
+    end
+
     vim.keymap.set("n", "q", "<Cmd>close<CR>", {
       desc = "Close window",
-      buf = args.buf,
+      buffer = args.buf,
       silent = true,
       nowait = true,
     })
+
+    vim.g.q_close_windows[args.buf] = true
   end
-end, "Make q close help, man, quickfix, dap floats")
+end, "Make q close help, man, quickfix, dap floats, and other floating windows")
 
 Config.new_autocmd("BufDelete", nil, function(args)
   if vim.g.q_close_windows then vim.g.q_close_windows[args.buf] = nil end

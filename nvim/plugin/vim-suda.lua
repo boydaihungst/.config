@@ -6,11 +6,9 @@ later(function()
 
   local function smart_save()
     if vim.bo.buftype ~= "" then return end
-
     local success, err = pcall(function() vim.cmd "update" end)
-
     if not success then
-      if err:match "E212" or err:match "permission denied" then
+      if err and err:match "E212" or err:match "permission denied" then
         if vim.fn.exists ":SudaWrite" ~= 0 then
           vim.cmd "SudaWrite"
         else

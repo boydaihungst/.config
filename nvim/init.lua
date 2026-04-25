@@ -105,6 +105,9 @@ _G.Config = {
     ["dev-tools"] = true,
     ["taplo"] = true,
   },
+  -- auto load project-local Plugins and LSP configurations
+  enable_project_local_loader = true,
+
   -- Custom icons
   icons = {
     icons = {
@@ -427,7 +430,7 @@ function vim.tbl_unique_extend(base, extra)
   return result
 end
 
-vim.pack.is_available = function(pkg) return pcall(require, pkg) end
+vim.pack.is_available = function(pkg) return package.loaded and package.loaded[pkg] end
 
 vim.pack.on_packchanged = function(plugin_name, kinds, callback, desc)
   local f = function(ev)
@@ -510,4 +513,5 @@ vim.lsp.config("*", {
   },
 })
 
+if Config.enable_project_local_loader then require("project-local-loader").setup() end
 -- vim: ts=2 sts=2 sw=2 et
