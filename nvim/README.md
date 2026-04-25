@@ -6,7 +6,7 @@ Only works with Nvim v0.12+
 <!-- toc -->
 
 - [To achieve project-local Plugins and LSP configurations:](#to-achieve-project-local-plugins-and-lsp-configurations)
-  - [Use custom plugin/module [./plugin/project-local-loader.lua](./plugin/project-local-loader.lua)](#use-custom-pluginmodule-pluginproject-local-loaderluapluginproject-local-loaderlua)
+  - [Use custom plugin/module [./lua/project-local-loader.lua](./lua/project-local-loader.lua)](#use-custom-pluginmodule-luaproject-local-loaderlualuaproject-local-loaderlua)
   - [Use built-in `exrc` method and start nvim with `nvim /path/to/project-root` or `nvim /path/to/project-root/sub/folder/file`](#use-built-in-exrc-method-and-start-nvim-with-nvim-pathtoproject-root-or-nvim-pathtoproject-rootsubfolderfile)
   - [Structure should be like this:](#structure-should-be-like-this)
   - [This method only works if you start Neovim with `nvim /path/to/project-root` or `nvim /path/to/project-root/sub/folder/file`](#this-method-only-works-if-you-start-neovim-with-nvim-pathtoproject-root-or-nvim-pathtoproject-rootsubfolderfile)
@@ -22,7 +22,7 @@ Only works with Nvim v0.12+
 
 We have 2 methods:
 
-#### Use custom plugin/module [./plugin/project-local-loader.lua](./plugin/project-local-loader.lua)
+#### Use custom plugin/module [./lua/project-local-loader.lua](./lua/project-local-loader.lua)
 
 - Don't have to start nvim with path.
 - This module will auto load project-local config files (like `.nvim.lua`)
