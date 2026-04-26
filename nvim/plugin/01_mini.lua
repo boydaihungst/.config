@@ -758,85 +758,6 @@ now_if_args(function()
     vim.notify(string.format("Root:\n %s", p))
   end
 
-  -- Yank in register full path of entry under cursor
-  local yank_path = function()
-    local path = (MiniFiles.get_fs_entry() or {}).path
-    if path == nil then return vim.notify "Cursor is not on valid entry" end
-    vim.fn.setreg('"', path)
-    if vim.v.register ~= '"' then vim.fn.setreg(vim.v.register, path) end
-    MiniFiles.refresh { content = { force = true } }
-    vim.cmd "redraw"
-    vim.notify(string.format("Yanked:\n%s", path))
-  end
-
-  local yank_basename = function()
-    local name = (MiniFiles.get_fs_entry() or {}).name
-    if name == nil then return vim.notify "Cursor is not on valid entry" end
-    vim.fn.setreg(vim.v.register, name)
-    vim.fn.setreg('"', name)
-    if vim.v.register ~= '"' then vim.fn.setreg(vim.v.register, name) end
-    MiniFiles.refresh { content = { force = true } }
-    vim.cmd "redraw"
-
-    vim.notify(string.format("Yanked:\n%s", name))
-  end
-  -- Open path with system default handler (useful for non-text files)
-  local ui_open = function() vim.ui.open(MiniFiles.get_fs_entry().path) end
-  -- Add common bookmarks for every explorer. Example usage inside explorer:
-  -- - `'c` to navigate into your config directory
-  -- - `g?` to see available bookmarks
-  local home = vim.fn.expand "~"
-  local add_bookmarks = function()
-    local function setbookmark(key, path, desc)
-      local p = path
-      if vim.is_callable(path) then p = path() end
-      if vim.uv.fs_stat(p) then MiniFiles.set_bookmark(key, p, { desc }) end
-    end
-    setbookmark("c", vim.fn.stdpath "config", { desc = "~/.config" })
-    local vimpack_plugins = vim.fs.joinpath(vim.fn.stdpath "data", "site", "pack", "core", "opt")
-    setbookmark("p", vimpack_plugins, { desc = "Nvim Plugins" })
-    setbookmark("w", vim.fn.getcwd, { desc = "CWD" })
-    setbookmark("l", vim.fs.joinpath(home, ".local", "share"), { desc = "~/.local/share/" })
-    setbookmark("h", home, { desc = "~/" })
-    setbookmark("g", vim.fs.joinpath(home, "git"), { desc = "~/git/" })
-  end
-
-  -- ╭─────────────────────────────────────────────────────────╮
-  -- │                   Autocmd mini.files                    │
-  -- ╰─────────────────────────────────────────────────────────╯
-
-  local minifiles_group = vim.api.nvim_create_augroup("minifiles-custom-group", { clear = true })
-
-  Config.new_autocmd("User", "MiniFilesExplorerOpen", function(args)
-    add_bookmarks()
-    Config.new_autocmd("BufEnter", nil, function(args2)
-      local ft = vim.bo[args2.buf].filetype
-      if ft == "minifiles" and search_pattern ~= "" then
-        vim.defer_fn(function()
-          vim.cmd "nohlsearch"
-          clear_search()
-          vim.api.nvim_del_autocmd(args2.id)
-        end, 20)
-      end
-    end, "BufEnter minifiles clear search pattern at the start", minifiles_group)
-
-    ---@type uv.uv_timer_t|nil
-    local cmdchange_timer = nil
-    Config.new_autocmd("CmdlineChanged", nil, function(args)
-      local cmd_type = vim.fn.getcmdtype()
-      if cmd_type == "/" or cmd_type == "?" then
-        if cmdchange_timer then cmdchange_timer:stop() end
-        cmdchange_timer = vim.defer_fn(function()
-          search_pattern = vim.fn.getcmdline() or ""
-          MiniFiles.refresh { content = { force = true } }
-          vim.cmd "redraw"
-        end, 100)
-      end
-    end, "CmdlineChanged minifiles search pattern", minifiles_group)
-
-    Config.new_autocmd("User", "Nohlsearch", function(args) clear_search() end)
-  end, "Nohlsearch minifiles clear search pattern", minifiles_group)
-
   -- Display yanked indicators
   local ns = vim.api.nvim_create_namespace "minifiles_yank_status"
   local function normalize_yank_data(line)
@@ -849,8 +770,8 @@ now_if_args(function()
     return line
   end
 
-  Config.new_autocmd("User", "MiniFilesBufferUpdate", function(args)
-    local buf_id = args.data.buf_id
+  local function draw_yank_extmarks(buf_id)
+    -- local buf_id = args.data.buf_id
     local lines = vim.api.nvim_buf_get_lines(buf_id, 0, -1, false)
 
     local yank_data = vim.fn.getreg "0"
@@ -880,13 +801,103 @@ now_if_args(function()
         end
       end
     end
-  end, "MiniFilesBufferUpdate")
+  end
 
-  -- Trigger MiniFiles refresh on `TextYankPost` event to redraw +/added marks
-  Config.new_autocmd("TextYankPost", nil, function()
-    local event = vim.v.event
-    if event.operator == "y" then vim.schedule(function() MiniFiles.refresh { content = { force = true } } end) end
-  end, "Trigger MiniFiles refresh")
+  -- Yank in register full path of entry under cursor
+  local yank_path = function()
+    local path = (MiniFiles.get_fs_entry() or {}).path
+    if path == nil then return vim.notify "Cursor is not on valid entry" end
+    vim.fn.setreg('"', path)
+    if vim.v.register ~= '"' then vim.fn.setreg(vim.v.register, path) end
+    draw_yank_extmarks(vim.api.nvim_get_current_buf())
+    vim.notify(string.format("Yanked:\n%s", path))
+  end
+
+  local yank_basename = function()
+    local name = (MiniFiles.get_fs_entry() or {}).name
+    if name == nil then return vim.notify "Cursor is not on valid entry" end
+    vim.fn.setreg(vim.v.register, name)
+    vim.fn.setreg('"', name)
+    if vim.v.register ~= '"' then vim.fn.setreg(vim.v.register, name) end
+    draw_yank_extmarks(vim.api.nvim_get_current_buf())
+    vim.notify(string.format("Yanked:\n%s", name))
+  end
+  -- Open path with system default handler (useful for non-text files)
+  local ui_open = function() vim.ui.open(MiniFiles.get_fs_entry().path) end
+  -- Add common bookmarks for every explorer. Example usage inside explorer:
+  -- - `'c` to navigate into your config directory
+  -- - `g?` to see available bookmarks
+  local home = vim.fn.expand "~"
+  local add_bookmarks = function()
+    local function setbookmark(key, path, desc)
+      local p = path
+      if vim.is_callable(path) then p = path() end
+      if vim.uv.fs_stat(p) then MiniFiles.set_bookmark(key, p, { desc }) end
+    end
+    setbookmark("c", vim.fn.stdpath "config", { desc = "~/.config" })
+    local vimpack_plugins = vim.fs.joinpath(vim.fn.stdpath "data", "site", "pack", "core", "opt")
+    setbookmark("p", vimpack_plugins, { desc = "Nvim Plugins" })
+    setbookmark("w", vim.fn.getcwd, { desc = "CWD" })
+    setbookmark("l", vim.fs.joinpath(home, ".local", "share"), { desc = "~/.local/share/" })
+    setbookmark("h", home, { desc = "~/" })
+    setbookmark("g", vim.fs.joinpath(home, "git"), { desc = "~/git/" })
+  end
+
+  -- ╭─────────────────────────────────────────────────────────╮
+  -- │                   Autocmd mini.files                    │
+  -- ╰─────────────────────────────────────────────────────────╯
+
+  local minifiles_group = vim.api.nvim_create_augroup("minifiles-custom-group", { clear = true })
+
+  Config.new_autocmd("User", "MiniFilesExplorerOpen", function()
+    add_bookmarks()
+    Config.new_autocmd("BufEnter", nil, function(args2)
+      local ft = vim.bo[args2.buf].filetype
+      if ft == "minifiles" and search_pattern ~= "" then
+        vim.defer_fn(function()
+          vim.cmd "nohlsearch"
+          clear_search()
+          vim.api.nvim_del_autocmd(args2.id)
+        end, 20)
+      end
+    end, "BufEnter minifiles clear search pattern at the start", minifiles_group)
+
+    ---@type uv.uv_timer_t|nil
+    local cmdchange_timer = nil
+    Config.new_autocmd("CmdlineChanged", nil, function()
+      local cmd_type = vim.fn.getcmdtype()
+      if cmd_type == "/" or cmd_type == "?" then
+        if cmdchange_timer then cmdchange_timer:stop() end
+        cmdchange_timer = vim.defer_fn(function()
+          search_pattern = vim.fn.getcmdline() or ""
+          MiniFiles.refresh { content = { force = true } }
+          vim.cmd "redraw"
+        end, 100)
+      end
+    end, "CmdlineChanged minifiles search pattern", minifiles_group)
+
+    Config.new_autocmd(
+      "User",
+      "Nohlsearch",
+      function() clear_search() end,
+      "Nohlsearch minifiles clear search pattern",
+      minifiles_group
+    )
+    -- Trigger MiniFiles refresh on `TextYankPost` event to redraw +/added marks
+    Config.new_autocmd("TextYankPost", nil, function(args)
+      local event = vim.v.event
+      vim.schedule(function()
+        if event.operator == "y" and vim.api.nvim_buf_is_valid(args.buf) then draw_yank_extmarks(args.buf) end
+      end)
+    end, "Trigger MiniFiles refresh", minifiles_group)
+  end, "Nohlsearch minifiles clear search pattern", minifiles_group)
+
+  Config.new_autocmd(
+    "User",
+    "MiniFilesBufferUpdate",
+    function(args) draw_yank_extmarks(args.data.buf_id) end,
+    "MiniFilesBufferUpdate"
+  )
 
   -- Mappings
   Config.new_autocmd("User", "MiniFilesBufferCreate", function(args)
