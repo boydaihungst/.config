@@ -1,3 +1,4 @@
+---@diagnostic disable: duplicate-set-field
 -- ┌────────────────────┐
 -- │ MINI configuration │
 -- └────────────────────┘
@@ -269,7 +270,12 @@ now(function()
           for _, bufnr in ipairs(bufs) do
             if vim.api.nvim_buf_is_valid(bufnr) and not vim.bo[bufnr].buflisted then
               -- Exclude terminals to prevent breaking plugins like ToggleTerm
-              if vim.bo[bufnr].buftype ~= "terminal" then vim.api.nvim_buf_delete(bufnr, { force = true }) end
+              if
+                not vim.tbl_contains({ "terminal" }, vim.bo[bufnr].buftype)
+                and not vim.tbl_contains({ "help" }, vim.bo[bufnr].filetype)
+              then
+                vim.api.nvim_buf_delete(bufnr, { force = true })
+              end
             end
           end
         end,
@@ -785,6 +791,7 @@ now_if_args(function()
 
     local yanked_lines = {}
     for line in string.gmatch(yank_data, "[^\r\n]+") do
+      ---@diagnostic disable-next-line: redefined-local
       local line = normalize_yank_data(line)
       if line then yanked_lines[line] = true end
     end
@@ -793,6 +800,7 @@ now_if_args(function()
 
     for line_num, line_content in ipairs(lines) do
       if line_content then
+        ---@diagnostic disable-next-line: redefined-local
         local line_content = normalize_yank_data(line_content)
         if line_content then
           if yanked_lines[normalize_yank_data(line_content)] then
@@ -1751,7 +1759,7 @@ later(function()
       -- Custom loader for language-specific project-local snippets
       function(context)
         local rel_path = ".vscode/" .. context.lang .. ".code-snippets"
-        return vim.fn.filereadable(rel_path) == 1 and mini_snippets.read_file(rel_path)
+        return vim.fn.filereadable(rel_path) == 1 and snippets.read_file(rel_path)
       end,
       -- Ensure that some prefixes are not used (as there is no `body`)
       { prefix = { "bad", "prefix" } },

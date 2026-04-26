@@ -1,4 +1,4 @@
-on_event("LspAttach",function()
+on_event("LspAttach", function()
   add {
     "https://github.com/nvim-treesitter/nvim-treesitter",
     { src = "https://github.com/boydaihungst/lspsaga.nvim", version = "main" },
@@ -11,12 +11,12 @@ on_event("LspAttach",function()
     layout = "float",
     keys = {
       -- Switch between preview and lt result windows
-      shuttle = { "<BS>" },
-      edit = "<C-c>o",
-      vsplit = "<C-c>v",
-      split = "<C-c>i",
+      shuttle = { "<C-h>", "<C-l>" },
+      edit = "o",
+      vsplit = "<C-w>v",
+      split = "<C-w>s",
       tabe = "<C-c>t",
-      close = "<C-C>",
+      close = { "q", "<ESC>" },
       quit = { "q", "<ESC>" },
       go_peek = { "l", "h" },
       toggle_or_open = "<CR>",
@@ -33,10 +33,11 @@ on_event("LspAttach",function()
     height = 0.7,
     keys = {
       edit = "<C-c>o",
-      vsplit = "<C-c>v",
-      split = "<C-c>i",
+      vsplit = "<C-w>v",
+      split = "<C-w>s",
       tabe = "<C-c>t",
       quit = "q",
+      close = "<ESC>",
     },
   }
   opts.code_action = {
@@ -89,7 +90,7 @@ on_event("LspAttach",function()
     extend_relatedInformation = true,
     keys = {
       focus_code_action = "<C-c>o",
-      exec_action = "o",
+      exec_action = "<CR>",
       quit = "q",
       send_to_quickfix = "<C-q>",
       toggle_or_jump = "<CR>",
@@ -109,11 +110,11 @@ on_event("LspAttach",function()
     layout = "float",
     left_width = 0.2,
     keys = {
-      edit = "e",
-      vsplit = "s",
-      split = "i",
+      edit = "o",
+      vsplit = "v",
+      split = "s",
       tabe = "t",
-      close = "<C-c>k",
+      close = { "q", "<ESC>" },
       quit = { "q", "<ESC>" },
       shuttle = "[w",
       toggle_or_req = "u",
@@ -123,23 +124,22 @@ on_event("LspAttach",function()
     layout = "float",
     left_width = 0.2,
     keys = {
-      edit = "e",
-      vsplit = "s",
-      split = "i",
-      tabe = "t",
-      close = "<C-c>k",
+      edit = "o",
+      vsplit = "<C-w>v",
+      split = "<C-w>s",
+      tabe = "<C-t>",
+      close = { "q", "<ESC>" },
       quit = { "q", "<ESC>" },
-      shuttle = "[w",
+      shuttle = { "<C-h>", "<C-l>" },
       toggle_or_req = "u",
     },
   }
 
   opts.rename = {
     keys = {
-      quit = "<C-k>",
+      quit = "<C-q>",
       exec = "<CR>",
       select = "x",
-      confirm = "<CR>",
     },
     in_select = false,
   }
@@ -186,8 +186,8 @@ on_event("LspAttach",function()
     -- imp_sign = get_icon "",
   }
   opts.scroll_preview = {
-    scroll_down = "<C-d>",
-    scroll_up = "<C-u>",
+    scroll_down = "<C-j>",
+    scroll_up = "<C-k>",
   }
 
   require("lspsaga").setup(opts)
