@@ -84,8 +84,9 @@ later(function()
     vim.treesitter.start(buf, language)
     -- enables treesitter based indentation
     vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    vim.bo.autoindent = true
   end
-  for lang, filetype in ipairs(treesitter_map_lang_with_filetype) do
+  for lang, filetype in pairs(treesitter_map_lang_with_filetype) do
     vim.treesitter.language.register(lang, filetype)
   end
 

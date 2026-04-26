@@ -165,6 +165,9 @@ now(function()
       ["prettier.config.mts"] = { glyph = "", hl = "MiniIconsPurple" },
       ["prettier.config.ts"] = { glyph = "", hl = "MiniIconsPurple" },
     },
+    extension = {
+      csproj = { glyph = "", hl = "MiniIconsBlue" },
+    },
     -- VSCode-like icons
     lsp = {
       array = { glyph = "" },
@@ -1528,6 +1531,7 @@ later(function()
       map.gen_integration.builtin_search(),
       map.gen_integration.diff(),
       map.gen_integration.diagnostic(),
+      map.gen_integration.gitsigns,
     },
     window = {
       width = 1,
