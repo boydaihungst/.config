@@ -110,6 +110,11 @@ ya pkg add boydaihungst/simple-tag
 
     ![Recording 2025-03-29 at 23 54 55](https://github.com/user-attachments/assets/abf7ccc7-7591-4683-84f9-53e8cb9a280e)
 
+- Display on the left side:
+  <img width="545" height="154" alt="image" src="https://github.com/user-attachments/assets/ae90f44a-e6db-4918-8750-3a9be1d665ef" />
+- Display on the left and hide default icon (if only has 1 tag, the condition to hide default icon is configurable)
+  <img width="546" height="173" alt="image" src="https://github.com/user-attachments/assets/17250122-7728-4a6a-b498-92ca341dd796" />
+
 ## Configuration
 
 ### Add setup function in `yazi/init.lua`.
@@ -124,9 +129,38 @@ require("simple-tag"):setup({
   -- Disable tag key hints (popup in bottom right corner)
   hints_disabled = false, -- (Optional)
 
-  -- linemode order: adjusts icon/text position. For example, if you want icon to be on the most left of linemode then set linemode_order larger than 1000.
-  -- More info: https://github.com/sxyazi/yazi/blob/077faacc9a84bb5a06c5a8185a71405b0cb3dc8a/yazi-plugin/preset/components/linemode.lua#L4-L5
-  linemode_order = 500, -- (Optional)
+  -- Display tags on the left side or right side.
+  left_side = false, -- (Optional)
+
+  -- Entity order (if left_side = true): adjusts icon/text position.
+  -- For example, if you want icon to be on the most left of line then set render_order less than 1000.
+  -- More info about the order values: https://github.com/sxyazi/yazi/blob/a2996908deddd4fc5061d18cf77f0af9f07b0e5a/yazi-plugin/preset/components/entity.lua#L4-L9
+
+  -- Linemode order (if left_side = false, by default): adjusts icon/text position.
+  -- For example, if you want icon to be on the most right of linemode then set render_order larger than 1000 and less than 2000.
+  -- More info about the order values: https://github.com/sxyazi/yazi/blob/a2996908deddd4fc5061d18cf77f0af9f07b0e5a/yazi-plugin/preset/components/linemode.lua#L4-L5
+  -- Default is 1500 if tags is on the right side, otherwise 500 to make sure it won't conflict with default line padding left/right.
+  render_order = 500, -- (Optional).
+
+  -- Replace default yazi file/folder icons with tag icons. Only apply if left_side = true and have at least 1 tag.
+  -- Look better if it has only 1 tag. -> use function instead of boolean
+  replace_default_icon = false, -- (Optional)
+
+  -- Padding for left/right side. Default will calculate automatically based on render_order and left_side.
+  -- Unless you has custom linemode/entity render function, you mostly don't need to set these values.
+  -- padding_left = " ", -- (Optional, string only)
+  -- padding_right = " ", -- (Optional, string only)
+
+  -- Use replace_default_icon as a function instead
+
+	-- tags: list/table of tag keys
+	-- file: fs::File. https://yazi-rs.github.io/docs/plugins/context#fs-file
+
+	-- replace_default_icon = function(file, tags) -- (Optional)
+	-- 	--return tags[1] == "*" and file.is_hovered -- Only apply to file/folder with tag key * and hovered
+	-- 	return #tags == 1 -- Only apply to file/folder with only 1 tag
+	-- end,
+
 
   -- You can backup/restore this folder within the same OS (Linux, windows, or MacOS).
   -- But you can't restore backed up folder in the different OS because they use difference absolute path.

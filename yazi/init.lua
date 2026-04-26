@@ -1,6 +1,18 @@
 require("custom-dds"):setup()
 require("simple-tag"):setup({
+	left_side = true,
+	-- render_order = 1500,
 	ui_mode = "text",
+	-- padding_left = "",
+	-- padding_right = "",
+	--
+	-- replace_default_icon = true,
+	-- Replace default icon only apply if this option if nil, or a function return true
+	-- tags: list/table of tag keys
+	-- file: fs::File. https://yazi-rs.github.io/docs/plugins/context#fs-file
+	-- replace_default_icon = function(file, tags)
+	-- 	return #tags == 1
+	-- end,
 	colors = {
 		-- Default tag key = *
 		["*"] = "#bf68d9",

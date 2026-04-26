@@ -70,11 +70,11 @@
   audio = [ { run = 'mpc --host $HOME/.config/mpd/socket clear && mpc --host $HOME/.config/mpd/socket add %s && mpc play', orphan = true, desc = "Play audio via mpd", for = "linux" } ]
 
   video = [
+    { run = 'mpv %s', orphan = true, desc = "Mpv", for = "linux" },
+    { run = '$HOME/git/scripts/extract_sub.sh %s', orphan = true, desc = "Extract subtitle", for = "linux" },
     # { run = "smplayer %s", orphan = true, desc = "Smplayer", for = "linux" },
     # { run = "ya emit escape select && ya emit visual_mode && ya emit plugin simple-tag 'add-tag --key=`' && ya emit escape select && smplayer %s", orphan = true, desc = "Smplayer", for = "linux" },
-    { run = 'mpv %s', orphan = true, desc = "Mpv", for = "linux" },
-    # { run = 'vlc %s', orphan = true, desc = "Vlc", for = "linux" },
-    { run = '$HOME/git/scripts/extract_sub.sh %s', orphan = true, desc = "Extract subtitle", for = "linux" },
+    { run = 'vlc %s', orphan = true, desc = "Vlc", for = "linux" },
   ]
 
   document = [
@@ -256,6 +256,7 @@
     { url = "/run/user/*/gvfs/google-drive:host=gmail.com,user=*/**/*", run = "noop", prio = "high" },
     { url = "/run/user/*/gvfs/google-drive:host=gmail.com,user=*/**/*/", run = "noop", prio = "high" },
     { url = "*/", run = "smart-truncate" },
+    # { url = "*/", run = "folder" },
     # Do not preview these paths
     # { url = "/home/huyhoang/Media/**/*", run = "noop" },
     # Markdown

@@ -1,12 +1,12 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "034efd6"
+rev = "ac82af3"
 hash = "eff8ff12fa4e5f035a10d8aeeb4c258d"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mime-ext"
-rev = "034efd6"
-hash = "ffa64f216083fb7333afc1ebbf73cc01"
+rev = "ac82af3"
+hash = "2678c84a0b3a0b22504e918ccaf99011"
 
 [[plugin.deps]]
 use = "boydaihungst/projects"
@@ -50,12 +50,12 @@ hash = "6e3b5e58f985cc2d625e0030dc35b1b2"
 
 [[plugin.deps]]
 use = "boydaihungst/simple-tag"
-rev = "2ea3267"
-hash = "141e913818c9d5bc69357c9c081a3f3f"
+rev = "e8be031"
+hash = "50ba6725b86ae62c626d27eb5836decb"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "034efd6"
+rev = "ac82af3"
 hash = "4c0260feb50ea2437380690ffc241da7"
 
 [[plugin.deps]]
@@ -65,7 +65,7 @@ hash = "f50b733cede531d5217cc9b90d633d07"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:vcs-files"
-rev = "034efd6"
+rev = "ac82af3"
 hash = "6b141fbed3c74b45558fbc7088c805ee"
 
 [[plugin.deps]]
@@ -80,7 +80,7 @@ hash = "4bdfecaa643db1cc28ccba799463d5b8"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:types"
-rev = "034efd6"
+rev = "ac82af3"
 hash = "4161cfa043b5ba3341d82c6869007b41"
 
 [[plugin.deps]]
@@ -90,7 +90,7 @@ hash = "eed89e75671723c8f9390a2862af0e4e"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:piper"
-rev = "034efd6"
+rev = "ac82af3"
 hash = "384464b6df8cb807425c521f8cd790f3"
 
 [[plugin.deps]]
