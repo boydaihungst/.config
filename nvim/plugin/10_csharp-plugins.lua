@@ -219,6 +219,8 @@ later(function()
 
     -- Only apply if the server is Roslyn
     if client and (client.name == "roslyn" or client.name == "easy_dotnet") then
+      -- Fix indent
+      vim.bo[args.buf].indentexpr = "GetCSIndent(v:lnum)"
       local bufnr = args.buf
       -- local bufname = vim.api.nvim_buf_get_name(bufnr)
       ---@type vim.keymap.set.Opts
