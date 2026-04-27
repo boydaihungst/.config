@@ -191,6 +191,7 @@ The first time you open Neovim, it will ask you to trust `project-root/.nvim.lua
 
 ### Alot of things need to be done manually
 
+- Make sure to delete unused plugins via `<Leader>pp` after removed its `add` function.
 - Use `<Esc><Esc>` to escape snippet mode.
 - Activate AI supermaven to get inlay hint suggestion. Accept suggestion with `<C-l>`.
 - You can also use copilot-lsp, install via mason (check [./plugin/01_packages-installer.lua](./plugin/01_packages-installer.lua)), Accept suggestion with `<C-l>`, next suggestion with `<C-]>`, previous suggestion with `<C-[>`.
