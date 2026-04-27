@@ -1,11 +1,18 @@
 -- Language-based supported plugins should add to this file
 
 on_filetype("python", function()
-  if not (vim.fn.executable "fd" == 1 or vim.fn.executable "fdfind" == 1 or vim.fn.executable "fd-find" == 1) then
+  if vim.fn.executable "fd" == 1 or vim.fn.executable "fdfind" == 1 or vim.fn.executable "fd-find" == 1 then
     add {
       "https://github.com/linux-cultist/venv-selector.nvim",
     }
-    require("venv-selector").setup {}
+    require("venv-selector").setup {
+      options = {},
+    }
+    -- Add custome mini.statusline section
+    table.insert(MiniStatusline.section_extra_plugins, function()
+      if vim.bo.filetype ~= "python" then return end
+      return require("venv-selector").venv() and "(venv)"
+    end)
   end
 
   add {

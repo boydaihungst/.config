@@ -8,7 +8,71 @@ on_event("BufRead~Cargo.toml", function()
     },
     lsp = {
       enabled = true,
-      on_attach = function(client, bufnr) end,
+      on_attach = function(client, buf)
+        -- Toggle dependency versions
+        vim.keymap.set(
+          { "n" },
+          "\\p",
+          require("crates").toggle,
+          { buf = buf, silent = true, noremap = true, desc = "Toggle crates version" }
+        )
+        -- Update dependency on the line
+        vim.keymap.set(
+          { "n" },
+          "<leader>lpu",
+          require("crates").update_crate,
+          { buf = buf, silent = true, noremap = true, desc = "Update crate current line" }
+        )
+        vim.keymap.set(
+          { "n" },
+          "<leader>lpa",
+          require("crates").update_all_crates,
+          { buf = buf, silent = true, noremap = true, desc = "Update all crates" }
+        )
+        vim.keymap.set(
+          { "x" },
+          "<leader>lpu",
+          require("crates").update_crates,
+          { buf = buf, silent = true, noremap = true, desc = "Update crates selected lines" }
+        )
+
+        vim.keymap.set(
+          { "n" },
+          "<leader>lpU",
+          require("crates").upgrade_crate,
+          { buf = buf, silent = true, noremap = true, desc = "Upgrade dependency current line" }
+        )
+        vim.keymap.set(
+          { "n" },
+          "<leader>lpA",
+          require("crates").upgrade_all_crates,
+          { buf = buf, silent = true, noremap = true, desc = "Upgrade all crates" }
+        )
+        vim.keymap.set(
+          { "x" },
+          "<leader>lpU",
+          require("crates").upgrade_crates,
+          { buf = buf, silent = true, noremap = true, desc = "Upgrade dependencies selected lines" }
+        )
+
+        vim.keymap.set(
+          { "n" },
+          "<leader>lpo",
+          require("crates").open_crates_io,
+          { buf = buf, silent = true, noremap = true, desc = "Open crates.io page for current line" }
+        )
+        vim.keymap.set(
+          { "n" },
+          "<leader>lpd",
+          require("crates").open_documentation,
+          { buf = buf, silent = true, noremap = true, desc = "Open documentation for current line" }
+        )
+        if wk then
+          wk.add {
+            { "<Leader>lp", mode = "n", group = "󱘗 Crates info", buffer = buf },
+          }
+        end
+      end,
       actions = true,
       completion = true,
       hover = true,

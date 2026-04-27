@@ -514,6 +514,7 @@ now(function()
         or ""
       )
   end
+  MiniStatusline.section_extra_plugins = {}
 
   MiniStatusline.setup {
     use_icons = vim.g.icons_enabled,
@@ -597,6 +598,18 @@ now(function()
           { hl = "MiniStatuslineFiletype", strings = { " ", file_icon .. " " .. vim.bo.filetype } },
           { hl = "MiniStatuslineLocation", strings = { " ", location } },
         }
+        for _, section in ipairs(MiniStatusline.section_extra_plugins) do
+          local display_text
+          if type(section) == "function" then
+            display_text = section { trunc_width = 75 }
+          elseif type(section) == "string" then
+            display_text = section
+          end
+          if display_text then
+            -- Insert extra plugins section after LSP section
+            table.insert(right_side, 2, { hl = "MiniStatuslineExtras", strings = { " ", display_text, " " } })
+          end
+        end
 
         for _, section in ipairs(right_side) do
           table.insert(groups, section)
@@ -618,6 +631,7 @@ now(function()
   vim.api.nvim_set_hl(0, "MiniStatuslineSearch", { link = "Search" })
   vim.api.nvim_set_hl(0, "MiniStatuslineLocation", { bg = "NONE" })
   Config.extend_hl("MiniStatuslineDevinfo", { bg = "NONE" })
+  vim.api.nvim_set_hl(0, "MiniStatuslineExtras", { fg = "#E2B86B", bold = true })
 end)
 
 -- Tabline. Sets `:h 'tabline'` to show all listed buffers in a line at the top.

@@ -148,6 +148,8 @@ now(function()
         local pattern_to_hide = {
           -- Sqls LSP has to bug: https://github.com/sqls-server/sqls/issues/59
           "LSP%[sqls%] no database connection",
+          "Error detecting yarn version",
+          "Error running yarn",
         }
 
         -- Check if the message matches any of the patterns

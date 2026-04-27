@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 later(function()
   vim.g.markview_alpha = 0.4
   add { "https://github.com/OXY2DEV/markview.nvim" }
@@ -37,6 +38,13 @@ later(function()
       filetypes = allowed_ft,
     },
     markdown_inline = {
+      inline_codes = {
+        enable = true,
+        hl = "MarkviewInlineCode",
+
+        padding_left = "",
+        padding_right = "",
+      },
       tags = {
         default = {
           hl = "MarkviewCodeInfo",

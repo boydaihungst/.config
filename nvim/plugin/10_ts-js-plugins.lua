@@ -59,6 +59,59 @@ on_event("BufRead~package.json", function()
     -- provided one, if nothing  provided it will use `yarn`
     package_manager = "npm",
   }
+
+  local function add_keymaps(buf)
+    -- Toggle dependency versions
+    vim.keymap.set(
+      { "n" },
+      "\\p",
+      require("package-info").toggle,
+      { buf = buf, silent = true, noremap = true, desc = "Toggle dependencies version" }
+    )
+    -- Update dependency on the line
+    vim.keymap.set(
+      { "n" },
+      "<leader>lpu",
+      require("package-info").update,
+      { buf = buf, silent = true, noremap = true, desc = "Update dependency current line" }
+    )
+    -- Delete dependency on the line
+    vim.keymap.set(
+      { "n" },
+      "<leader>lpd",
+      require("package-info").delete,
+      { buf = buf, silent = true, noremap = true, desc = "Delete dependency current line" }
+    )
+    -- Install a new dependency
+    vim.keymap.set(
+      { "n" },
+      "<leader>lpa",
+      require("package-info").install,
+      { buf = buf, silent = true, noremap = true, desc = "Add new dependency" }
+    )
+    -- Install a different dependency version
+    vim.keymap.set(
+      { "n" },
+      "<leader>lpi",
+      require("package-info").change_version,
+      { buf = buf, silent = true, noremap = true, desc = "Install a different dependency version" }
+    )
+    if wk then wk.add {
+      { "<Leader>lp", mode = "n", group = " Package info", buffer = buf },
+    } end
+  end
+
+  Config.new_autocmd(
+    "BufRead",
+    "package.json",
+    function(args) add_keymaps(args.buf) end,
+    "add keymaps for package-info",
+    "package_info"
+  )
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    local buf_name = vim.api.nvim_buf_get_name(buf)
+    if buf_name:match "package%.json$" then add_keymaps(buf) end
+  end
 end)
 
 -- Extra command for vtsls

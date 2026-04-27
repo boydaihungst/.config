@@ -189,12 +189,6 @@ later(function()
     table.insert(require("neotest.config").adapters, require "neotest-vstest" {})
   end
 
-  if wk and MiniIcons then
-    wk.add {
-      { prefix, group = MiniIcons.get_icon("filetype", "cs") .. " Dotnet", mode = { "n" } },
-    }
-  end
-
   Config.new_autocmd("BufReadPost", "*.fsproj", function(args)
     local bufnr = args.buf
     local bufname = vim.api.nvim_buf_get_name(bufnr)
@@ -230,6 +224,12 @@ later(function()
       -- local bufname = vim.api.nvim_buf_get_name(bufnr)
       ---@type vim.keymap.set.Opts
       local key_opts = { buf = bufnr, silent = true }
+
+      if wk and MiniIcons then
+        wk.add {
+          { prefix, group = MiniIcons.get_icon("filetype", "cs") .. " Dotnet", mode = { "n" }, buffer = bufnr },
+        }
+      end
 
       -- Add Package
       vim.keymap.set(

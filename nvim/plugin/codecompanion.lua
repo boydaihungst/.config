@@ -1,34 +1,24 @@
 later(function()
   if vim.fn.executable "uv" == 1 then
     local function install_vector_deps()
-      vim.system({ "uv", "tool", "install", "vectorcode[lsp,mcp]" }, { text = true }, function(obj)
-        if obj.code == 0 then
-          vim.notify("Installed successfully: vectorcode\n" .. obj.stdout)
-        else
-          vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
-        end
-      end)
-      vim.system({ "uv", "tool", "upgrade", "vectorcode[lsp,mcp]" }, { text = true }, function(obj)
-        if obj.code == 0 then
-          vim.notify("Updated successfully: vectorcode\n" .. obj.stdout)
-        else
-          vim.notify("Error:\n" .. obj.stderr, vim.log.levels.ERROR)
-        end
-      end)
+      if vim.fn.executable "vectorcode-mcp-server" == 0 or vim.fn.executable "vectorcode-mcp-server" == 0 then
+        local result = vim.system({ "uv", "tool", "install", "vectorcode[lsp,mcp]" }, { text = true }):wait()
+        if result.code ~= 0 then vim.notify("Error:\n" .. result.stderr, vim.log.levels.ERROR) end
+      else
+        local result = vim.system({ "uv", "tool", "upgrade", "vectorcode[lsp,mcp]" }, { text = true }):wait()
+        if result.code ~= 0 then vim.notify("Error:\n" .. result.stderr, vim.log.levels.ERROR) end
+      end
     end
 
-    vim.pack.on_packchanged(
-      "VectorCode",
-      { "install", "update" },
-      function() install_vector_deps() end,
-      "VectorCode install/update"
-    )
+    vim.pack.on_packchanged("VectorCode", { "install", "update" }, install_vector_deps, "VectorCode install/update")
     add {
       "https://github.com/Davidyz/VectorCode",
     }
+    install_vector_deps()
   else
     if vim.pack.is_available "VectorCode" then vim.pack.del { "VectorCode" } end
   end
+
   add {
     "https://github.com/nvim-lua/plenary.nvim",
     "https://github.com/ravitemer/codecompanion-history.nvim",
@@ -90,24 +80,6 @@ later(function()
               -- system_prompt = nil, -- custom system prompt (string or function)
               -- format_summary = nil, -- custom function to format generated summary e.g to remove <think/> tags from summary
             },
-          },
-
-          -- Memory system (requires VectorCode CLI)
-          memory = {
-            -- Automatically index summaries when they are generated
-            auto_create_memories_on_summary_generation = true,
-            -- Path to the VectorCode executable
-            vectorcode_exe = "vectorcode",
-            -- Tool configuration
-            tool_opts = {
-              -- Default number of memories to retrieve
-              default_num = 10,
-            },
-            -- Enable notifications for indexing progress
-            notify = false,
-            -- Index all existing memories on startup
-            -- (requires VectorCode 0.6.12+ for efficient incremental indexing)
-            index_on_startup = true,
           },
         },
       },
@@ -299,6 +271,24 @@ later(function()
         },
       },
     }
+    if vim.tbl_get(opts, "extensions", "history", "opts") then
+      opts.extensions.history.opts.memory = {
+        -- Automatically index summaries when they are generated
+        auto_create_memories_on_summary_generation = true,
+        -- Path to the VectorCode executable
+        vectorcode_exe = "vectorcode",
+        -- Tool configuration
+        tool_opts = {
+          -- Default number of memories to retrieve
+          default_num = 10,
+        },
+        -- Enable notifications for indexing progress
+        notify = false,
+        -- Index all existing memories on startup
+        -- (requires VectorCode 0.6.12+ for efficient incremental indexing)
+        index_on_startup = true,
+      }
+    end
   end
   require("codecompanion").setup(opts)
   local prefix = "<Leader>A" -- or whatever your prefix variable is set to
