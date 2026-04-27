@@ -73,9 +73,9 @@ _G.Config = {
     -- The maximum size of a file in bytes. 2MB
     size = 1000 * 2000,
     -- The maximum number of lines in a file
-    lines = 10000,
+    lines = 5000,
     -- The maximum average line length in a file
-    line_length = 2000,
+    line_length = 3000,
   },
   auto_chdir_root = true,
   -- Change current working directory based on the current file path. It
@@ -348,8 +348,8 @@ function Config.extend_hl(name, data)
 end
 
 local large_buf_cache, buf_size_cache = {}, {} -- cache large buffer detection results and buffer sizes
----@class AstroCoreMaxFile
----@field enabled (boolean|fun(bufnr: integer, config: AstroCoreMaxFile):boolean|AstroCoreMaxFile?)? whether to enable large file detection
+---@class CoreMaxFile
+---@field enabled (boolean|fun(bufnr: integer, config: CoreMaxFile):boolean|CoreMaxFile?)? whether to enable large file detection
 ---@field notify boolean? whether or not to display a notification when a large file is detected
 ---@field size integer|false? the number of bytes in a file or false to disable check
 ---@field lines integer|false? the number of lines in a file or false to disable check
@@ -357,12 +357,12 @@ local large_buf_cache, buf_size_cache = {}, {} -- cache large buffer detection r
 
 --- Check if a buffer is a large buffer (always returns false if large buffer detection is disabled)
 ---@param bufnr? integer the buffer to check the size of, default to current buffer
----@param large_buf_opts? AstroCoreMaxFile large buffer parameters, default to AstroCore configuration
+---@param large_buf_opts? CoreMaxFile large buffer parameters, default configuration
 ---@return boolean is_large whether the buffer is detected as large or not
-function Config.is_large(bufnr, large_buf_opts)
+function Config.is_large(bufnr, large_buf_opts, event)
   if not bufnr then bufnr = vim.api.nvim_get_current_buf() end
   -- always return not large until buffer is loaded, do not cache decision
-  if not vim.api.nvim_buf_is_loaded(bufnr) then return false end
+  if not vim.api.nvim_buf_is_loaded(bufnr) and event ~= "BufReadPre" then return false end
   local skip_cache = large_buf_opts ~= nil -- skip cache when called manually with custom options
   if not large_buf_opts then large_buf_opts = Config.default_large_buf_opts end
   if large_buf_opts then
@@ -381,6 +381,9 @@ function Config.is_large(bufnr, large_buf_opts)
         end
         local file_size = buf_size_cache[bufnr]
         local line_count = vim.api.nvim_buf_line_count(bufnr)
+        if event == "BufReadPre" and (large_buf_opts.line_length or large_buf_opts.lines) then
+          line_count = #vim.fn.readfile(vim.api.nvim_buf_get_name(bufnr), "", large_buf_opts.line_length) -- read first line_length lines
+        end
         local too_large = large_buf_opts.size and file_size > large_buf_opts.size
         local too_long = large_buf_opts.lines and line_count > large_buf_opts.lines
         local too_wide = large_buf_opts.line_length and (file_size / line_count) - 1 > large_buf_opts.line_length
@@ -550,4 +553,52 @@ if vim.lsp.inline_completion.is_enabled() then
   end, "Set keymaps for when a lsp support ", "nvim-inline-completion")
 end
 if Config.enable_project_local_loader then require("project-local-loader").setup() end
--- vim: ts=2 sts=2 sw=2 et
+
+vim.api.nvim_create_autocmd("BufReadPre", {
+  callback = function(args)
+    if Config.is_large(args.buf, nil, "BufReadPre") then
+      -- Disable heavy features
+      if vim.fn.exists ":NoMatchParen" ~= 0 then vim.cmd [[NoMatchParen]] end
+      require("snacks").util.wo(0, { foldmethod = "manual", statuscolumn = "", conceallevel = 0 })
+
+      vim.bo.autocomplete = false
+      vim.b.completion = false
+
+      vim.b.minianimate_disable = true
+      vim.b.minihipatterns_disable = true
+      vim.b.minimap_disable = true
+      vim.diagnostic.enable(false, { bufnr = args.buf })
+      vim.lsp.inlay_hint.enable(false, { bufnr = args.buf })
+      vim.lsp.semantic_tokens.enable(false, { bufnr = args.buf })
+      vim.lsp.linked_editing_range.enable(false, { bufnr = args.buf })
+      if vim.lsp.codelens.enable then vim.lsp.codelens.enable(false, { bufnr = args.buf }) end
+      vim.lsp.inline_completion.enable(false, { bufnr = args.buf })
+      vim.lsp.on_type_formatting.enable(false, { bufnr = args.buf })
+
+      vim.opt_local.filetype = "largefile"
+      vim.opt_local.wrap = false
+      vim.opt_local.syntax = "off"
+      vim.opt_local.spell = false
+      vim.opt_local.undofile = false
+      vim.opt_local.swapfile = false
+
+      vim.opt_local.undolevels = -1
+      vim.opt_local.undoreload = 0
+      vim.opt_local.list = false
+      vim.schedule(function()
+        vim.treesitter.stop(args.buf)
+        vim.opt_local.filetype = "largefile"
+      end)
+      if Config.default_large_buf_opts.notify then
+        vim.schedule(
+          function()
+            vim.notify(
+              "Large file detected: Heavy features disabled" .. vim.api.nvim_buf_get_name(args.buf),
+              vim.log.levels.WARN
+            )
+          end
+        )
+      end
+    end
+  end,
+})

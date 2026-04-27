@@ -4,9 +4,17 @@ on_event("InsertEnter", function()
   }
 
   require("supermaven-nvim").setup {
-    ignore_filetypes = { "sql", "grug-far", "snacks_picker_input", "neo-tree-popup", "minifiles" },
+    ignore_filetypes = {
+      "sql",
+      "grug-far",
+      "snacks_picker_input",
+      "neo-tree-popup",
+      "minifiles",
+      "bigfile",
+      "largefile",
+    },
     --return true -> disable
-    condition = function() return Config.is_large(nil, { lines = 5000 }) end,
+    -- condition = function() return Config.is_large() end,
     keymaps = {
       accept_suggestion = "<C-l>",
       clear_suggestion = "<C-h>",

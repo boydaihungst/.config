@@ -1,20 +1,25 @@
 later(function()
   if vim.fn.executable "uv" == 1 then
-    local function install_vector_deps()
+    local function install_vector_deps(init)
       if vim.fn.executable "vectorcode-mcp-server" == 0 or vim.fn.executable "vectorcode-mcp-server" == 0 then
         local result = vim.system({ "uv", "tool", "install", "vectorcode[lsp,mcp]" }, { text = true }):wait()
         if result.code ~= 0 then vim.notify("Error:\n" .. result.stderr, vim.log.levels.ERROR) end
-      else
+      elseif not init then
         local result = vim.system({ "uv", "tool", "upgrade", "vectorcode[lsp,mcp]" }, { text = true }):wait()
         if result.code ~= 0 then vim.notify("Error:\n" .. result.stderr, vim.log.levels.ERROR) end
       end
     end
 
-    vim.pack.on_packchanged("VectorCode", { "install", "update" }, install_vector_deps, "VectorCode install/update")
+    vim.pack.on_packchanged(
+      "VectorCode",
+      { "install", "update" },
+      function() install_vector_deps() end,
+      "VectorCode install/update"
+    )
     add {
       "https://github.com/Davidyz/VectorCode",
     }
-    install_vector_deps()
+    install_vector_deps(true)
   else
     if vim.pack.is_available "VectorCode" then vim.pack.del { "VectorCode" } end
   end

@@ -51,6 +51,7 @@ end, "Clean up q_close_windows cache")
 
 Config.new_autocmd("BufReadPost", nil, function(args)
   local buf = args.buf
+  if Config.is_large(buf) then return end
   if vim.b[buf].last_loc_restored or vim.tbl_contains({ "gitcommit" }, vim.bo[buf].filetype) then return end
   vim.b[buf].last_loc_restored = true
   local mark = vim.api.nvim_buf_get_mark(buf, '"')

@@ -5,26 +5,6 @@ now(function()
   local get_icon = Config.get_custom_icon
   ---@type snacks.Config
   local opts = {
-    bigfile = {
-      notify = true, -- show notification when big file detected
-      size = Config.default_large_buf_opts.size,
-      line_length = Config.default_large_buf_opts.line_length, -- average line length (useful for minified files)
-      -- Enable or disable features when big file detected
-      ---@param ctx {buf: number, ft:string}
-      setup = function(ctx)
-        if vim.fn.exists ":NoMatchParen" ~= 0 then vim.cmd [[NoMatchParen]] end
-        snacks.util.wo(0, { foldmethod = "manual", statuscolumn = "", conceallevel = 0 })
-        vim.bo.undofile = false
-        vim.bo.swapfile = false
-        vim.b.completion = false
-        vim.b.minianimate_disable = true
-        vim.b.minihipatterns_disable = true
-        vim.b.minimap_disable = true
-        vim.schedule(function()
-          if vim.api.nvim_buf_is_valid(ctx.buf) then vim.bo[ctx.buf].syntax = ctx.ft end
-        end)
-      end,
-    },
     statuscolumn = {
       left = { "fold", "mark" }, -- priority of signs on the left (high to low)
       right = { "sign", "git" }, -- priority of signs on the right (high to low)
