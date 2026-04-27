@@ -17,10 +17,16 @@ on_event("BufRead~Cargo.toml", function()
 end)
 
 -- This plugin already has lazy-loading
-later(function()
+on_filetype("rust", function()
   -- Project-local config via rust-analyzer.json file
-  add { { src = "https://github.com/mrcjkb/rustaceanvim", version = vim.version.range "9.x" } }
+  add {
+    { src = "https://github.com/mrcjkb/rustaceanvim", version = vim.version.range "9.x" },
+    "https://github.com/nvim-neotest/nvim-nio",
+  }
 
+  if vim.pack.is_available "neotest" then
+    table.insert(require("neotest.config").adapters, require "rustaceanvim.neotest"())
+  end
   local adapter
   local codelldb_installed = pcall(function() return require("mason-registry").get_package "codelldb" end)
   local cfg = require "rustaceanvim.config"
@@ -78,7 +84,4 @@ later(function()
   vim.g.rustaceanvim = vim.tbl_deep_extend("force", opts, vim.g.rustaceanvim or {
     -- https://github.com/mrcjkb/rustaceanvim#gear-advanced-configuration
   })
-  if vim.pack.is_available "neotest" then
-    table.insert(require("neotest.config").adapters, require "rustaceanvim.neotest"())
-  end
 end)

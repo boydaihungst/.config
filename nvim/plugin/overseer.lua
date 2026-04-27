@@ -2,7 +2,7 @@ later(function()
   add { "https://github.com/stevearc/overseer.nvim" }
   local overseer = require "overseer"
 
-  require("overseer").setup {
+  overseer.setup {
     dap = false,
     strategy = vim.pack.is_available "toggleterm.nvim" and "toggleterm",
     task_list = {
@@ -20,6 +20,9 @@ later(function()
     },
   }
   if vim.pack.is_available "nvim-dap" then overseer.enable_dap() end
+  if vim.pack.is_available "neotest" then
+    require("neotest.consumers").overseer = require "neotest.consumers.overseer"
+  end
 
   local prefix = "<Leader>r"
   vim.keymap.set("n", prefix .. "t", "<Cmd>OverseerToggle!<CR>", { desc = "Toggle Overseer" })
@@ -32,8 +35,4 @@ later(function()
   if wk then wk.add {
     { prefix, group = Config.get_custom_icon("Overseer", 1, true) .. "Overseer" },
   } end
-
-  if vim.pack.is_available "neotest" then
-    require("neotest.consumers").overseer = require "neotest.consumers.overseer"
-  end
 end)
