@@ -433,7 +433,8 @@ end
 vim.pack.is_available = function(pkg)
   local loaded = package.loaded and package.loaded[pkg]
   if loaded then return true end
-  return pcall(vim.pack.get, pkg)
+  local result, _ = pcall(vim.pack.get, pkg)
+  return result
 end
 
 vim.pack.on_packchanged = function(plugin_name, kinds, callback, desc)
