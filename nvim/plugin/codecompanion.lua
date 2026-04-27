@@ -49,9 +49,9 @@ later(function()
           -- Number of days after which chats are automatically deleted (0 to disable)
           expiration_days = 0,
           -- Picker interface (auto resolved to a valid picker)
-          picker = vim.pack.is_available "telescope" and "telescope"
+          picker = vim.pack.is_available "telescope.nvim" and "telescope"
             or vim.pack.is_available "fzf-lua" and "fzf-lua"
-            or vim.pack.is_available "snacks" and "snacks"
+            or vim.pack.is_available "snacks.nvim" and "snacks"
             or "default", --- ("telescope", "snacks", "fzf-lua", or "default")
           ---Optional filter function to control which chats are shown when browsing
           chat_filter = nil, -- function(chat_data) return boolean end

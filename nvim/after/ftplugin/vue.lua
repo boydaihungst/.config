@@ -14,7 +14,7 @@ if vim.fn.exists ":TSC" ~= 0 then
   vim.keymap.set({ "n", "v" }, "<Leader>lt", "<cmd>TSC<cr>", { desc = "TSC: Type checking", buf = 0 })
 end
 
-if vim.pack.is_available "vtsls" then
+if vim.pack.is_available "nvim-vtsls" then
   vim.keymap.set(
     "n",
     "<Leader>lO",

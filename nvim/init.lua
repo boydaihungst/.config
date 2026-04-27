@@ -430,7 +430,11 @@ function vim.tbl_unique_extend(base, extra)
   return result
 end
 
-vim.pack.is_available = function(pkg) return package.loaded and package.loaded[pkg] end
+vim.pack.is_available = function(pkg)
+  local loaded = package.loaded and package.loaded[pkg]
+  if loaded then return true end
+  return pcall(vim.pack.get, pkg)
+end
 
 vim.pack.on_packchanged = function(plugin_name, kinds, callback, desc)
   local f = function(ev)

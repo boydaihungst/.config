@@ -12,9 +12,9 @@ later(function()
     default_to_projects_v2 = false, -- use projects v2 for the `Octo card ...` command by default. Both legacy and v2 commands are available under `Octo cardlegacy ...` and `Octo cardv2 ...` respectively.
     use_diagnostic_signs = true,
     mappings = {},
-    picker = (vim.pack.is_available "telescope" and "telescope")
+    picker = (vim.pack.is_available "telescope.nvim" and "telescope")
       or (vim.pack.is_available "fzf-lua" and "fzf-lua")
-      or (vim.pack.is_available "snacks" and "snacks")
+      or (vim.pack.is_available "snacks.nvim" and "snacks")
       or "default",
   }
 

@@ -120,7 +120,7 @@ later(function()
       }
       local command = commands[action]()
       if require("easy-dotnet.extensions").isWindows() == true then command = command .. "\r" end
-      if vim.pack.is_available "toggleterm" and _G.toggleterm then
+      if vim.pack.is_available "toggleterm.nvim" and _G.toggleterm then
         _G.toggleterm.toggle_term_cmd { cmd = command, direction = "float" }
         return
       end
@@ -130,12 +130,12 @@ later(function()
     -- Disable mappings for csproj and fsproj, when use dev-tools custom actions instead
     csproj_mappings = (function()
       if is_dev_tools_available ~= nil then return not is_dev_tools_available end
-      is_dev_tools_available = vim.pack.is_available "dev-tools"
+      is_dev_tools_available = vim.pack.is_available "dev-tools.nvim"
       return not is_dev_tools_available
     end)(),
     fsproj_mappings = (function()
       if is_dev_tools_available ~= nil then return not is_dev_tools_available end
-      is_dev_tools_available = vim.pack.is_available "dev-tools"
+      is_dev_tools_available = vim.pack.is_available "dev-tools.nvim"
       return not is_dev_tools_available
     end)(),
     auto_bootstrap_namespace = {
@@ -152,9 +152,9 @@ later(function()
     -- if no picker is specified, the plugin will determine
     -- the available one automatically with this priority:
     -- telescope -> fzf -> snacks ->  basic
-    picker = vim.pack.is_available "telescope" and "telescope"
+    picker = vim.pack.is_available "telescope.nvim" and "telescope"
       or vim.pack.is_available "fzf-lua" and "fzf"
-      or vim.pack.is_available "snacks" and "snacks"
+      or vim.pack.is_available "snacks.nvim" and "snacks"
       or "basic",
   }
   local prefix = "<leader>le"

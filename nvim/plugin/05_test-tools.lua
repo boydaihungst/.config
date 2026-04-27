@@ -50,7 +50,7 @@ later(function()
   }
   if vim.pack.is_available "rustaceanvim" then table.insert(opts.adapters, require "rustaceanvim.neotest"()) end
 
-  if vim.pack.is_available "overseer" then
+  if vim.pack.is_available "overseer.nvim" then
     opts.consumers = opts.consumers or {}
     opts.consumers.overseer = require "neotest.consumers.overseer"
   end

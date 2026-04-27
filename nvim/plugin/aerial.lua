@@ -1,6 +1,7 @@
 later(function()
   add { "https://github.com/stevearc/aerial.nvim" }
-  require("aerial").setup {
+  local aerial = require "aerial"
+  aerial.setup {
     attach_mode = "global",
     backends = { "lsp", "treesitter", "markdown", "man" },
     layout = { min_width = 28 },
@@ -21,23 +22,19 @@ later(function()
       ["[["] = false,
       ["]]"] = false,
     },
-    on_attach = function(bufnr)
-      local aerial = require "aerial"
-      vim.keymap.set("n", "]y", function() aerial.next(vim.v.count1) end, { buf = bufnr, desc = "Next symbol" })
-      vim.keymap.set("n", "[y", function() aerial.prev(vim.v.count1) end, { buf = bufnr, desc = "Previous symbol" })
-      vim.keymap.set(
-        "n",
-        "]Y",
-        function() aerial.next_up(vim.v.count1) end,
-        { buf = bufnr, desc = "Next symbol upwards" }
-      )
-      vim.keymap.set(
-        "n",
-        "[Y",
-        function() aerial.prev_up(vim.v.count1) end,
-        { buf = bufnr, desc = "Previous symbol upwards" }
-      )
-    end,
+    nav = {
+      preview = true,
+      keymaps = {
+        ["<CR>"] = "actions.jump",
+        ["o"] = "actions.jump",
+        ["<C-w>v"] = "actions.jump_vsplit",
+        ["<C-w>s"] = "actions.jump_split",
+        ["<C-h>"] = "actions.left",
+        ["<C-l>"] = "actions.right",
+        ["q"] = "actions.close",
+        ["<ESC>"] = "actions.close",
+      },
+    },
     close_automatic_events = { "unfocus", "unsupported" },
     highlight_on_hover = true,
     autojump = true,
@@ -50,4 +47,10 @@ later(function()
     -- disable aerial on files this size or larger (in bytes)
     disable_max_size = Config.default_large_buf_opts.size,
   }
+
+  vim.keymap.set("n", "]y", function() aerial.next(vim.v.count1) end, { desc = "Next symbol" })
+  vim.keymap.set("n", "[y", function() aerial.prev(vim.v.count1) end, { desc = "Previous symbol" })
+  vim.keymap.set("n", "]Y", function() aerial.next_up(vim.v.count1) end, { desc = "Next symbol upwards" })
+  vim.keymap.set("n", "[Y", function() aerial.prev_up(vim.v.count1) end, { desc = "Previous symbol upwards" })
+  vim.keymap.set("n", "<leader>lS", function() aerial.toggle { direction = "right" } end, { desc = "Symbols" })
 end)

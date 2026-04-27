@@ -3,7 +3,7 @@ local manually_start_lsp_servers = {
   "rust_analyzer", -- rustaceanvim will auto enable this lsp server
   "sqls", -- sqls-nvim instead
   "dartls",
-  not vim.pack.is_available "roslyn" and "csharp_ls", -- using rosyln.nvim instead
+  not vim.pack.is_available "roslyn.nvim" and "csharp_ls", -- using rosyln.nvim instead
 }
 
 later(function()

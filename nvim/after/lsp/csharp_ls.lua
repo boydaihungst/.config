@@ -11,6 +11,6 @@ return {
     },
   },
   on_attach = function(client, bufnr)
-    if vim.pack.is_available "csharpls_extended" then require("csharpls_extended").buf_read_cmd_bind() end
+    if vim.pack.is_available "csharpls-extended-lsp.nvim" then require("csharpls_extended").buf_read_cmd_bind() end
   end,
 }

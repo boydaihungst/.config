@@ -4,7 +4,7 @@ later(function()
 
   require("overseer").setup {
     dap = false,
-    strategy = vim.pack.is_available "toggleterm" and "toggleterm",
+    strategy = vim.pack.is_available "toggleterm.nvim" and "toggleterm",
     task_list = {
       bindings = {
         ["<C-l>"] = false,
@@ -19,7 +19,7 @@ later(function()
       },
     },
   }
-  if vim.pack.is_available "dap" then overseer.enable_dap() end
+  if vim.pack.is_available "nvim-dap" then overseer.enable_dap() end
 
   local prefix = "<Leader>r"
   vim.keymap.set("n", prefix .. "t", "<Cmd>OverseerToggle!<CR>", { desc = "Toggle Overseer" })
