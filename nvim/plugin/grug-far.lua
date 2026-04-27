@@ -3,6 +3,7 @@ later(function()
   require("grug-far").setup {
     transient = true,
   }
+  vim.api.nvim_set_hl(0, "GrugFarResultsMatch", { link = "Search" })
   local default_opts = { instanceName = "main" }
   local function grug_far_open(opts, with_visual)
     local grug_far = require "grug-far"
