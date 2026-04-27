@@ -78,4 +78,7 @@ later(function()
   vim.g.rustaceanvim = vim.tbl_deep_extend("force", opts, vim.g.rustaceanvim or {
     -- https://github.com/mrcjkb/rustaceanvim#gear-advanced-configuration
   })
+  if vim.pack.is_available "neotest" then
+    table.insert(require("neotest.config").adapters, require "rustaceanvim.neotest"())
+  end
 end)

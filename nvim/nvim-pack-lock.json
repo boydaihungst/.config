@@ -322,6 +322,10 @@
       "rev": "f06ac3d457128f9d512103399b367c4be49a2421",
       "src": "https://github.com/ThePrimeagen/refactoring.nvim"
     },
+    "roslyn.nvim": {
+      "rev": "b62d1a588765f0aa1b46ed260252c9e456408835",
+      "src": "https://github.com/seblyng/roslyn.nvim"
+    },
     "rustaceanvim": {
       "rev": "07f0900627f1bb2fc9ee8b5e39bb96fe40c2e0a1",
       "src": "https://github.com/mrcjkb/rustaceanvim",

@@ -55,6 +55,7 @@ later(function()
     { src = "https://github.com/saghen/blink.cmp", version = vim.version.range "1.x" },
     "https://github.com/nvim-lua/plenary.nvim",
     "https://github.com/mfussenegger/nvim-dap",
+    "https://github.com/Nsidorenco/neotest-vstest",
   }
 
   require("roslyn").setup {
@@ -182,6 +183,10 @@ later(function()
       score_offset = 10000,
       async = true,
     })
+  end
+
+  if vim.pack.is_available "neotest" then
+    table.insert(require("neotest.config").adapters, require "neotest-vstest" {})
   end
 
   if wk and MiniIcons then

@@ -433,7 +433,7 @@ end
 vim.pack.is_available = function(pkg)
   local loaded = package.loaded and package.loaded[pkg]
   if loaded then return true end
-  local result, _ = pcall(vim.pack.get, pkg)
+  local result, _ = pcall(vim.pack.get, { pkg })
   return result
 end
 
@@ -519,5 +519,35 @@ vim.lsp.config("*", {
   },
 })
 
+if vim.lsp.inline_completion.is_enabled() then
+  Config.new_autocmd("LspAttach", nil, function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client and client:supports_method "textDocument/inlineCompletion" then
+      vim.keymap.set(
+        "i",
+        "<C-l>",
+        function() vim.lsp.inline_completion.get() end,
+        { desc = "Accept inline completion" }
+      )
+
+      -- Switch to previous inline completion
+      vim.keymap.set(
+        "i",
+        "<C-[>",
+        function() vim.lsp.inline_completion.select { wrap = true, count = -1 } end,
+        { desc = "Switch to previous inline completion" }
+      )
+
+      -- Switch to next inline completion
+      vim.keymap.set(
+        "i",
+        "<C-]>",
+        function() vim.lsp.inline_completion.select { wrap = true, count = 1 } end,
+        { desc = "Switch to next inline completion" }
+      )
+      vim.api.nvim_del_augroup_by_name "nvim-inline-completion"
+    end
+  end, "Set keymaps for when a lsp support ", "nvim-inline-completion")
+end
 if Config.enable_project_local_loader then require("project-local-loader").setup() end
 -- vim: ts=2 sts=2 sw=2 et

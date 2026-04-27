@@ -85,7 +85,7 @@ function Config.close_buffer(bufnr, force)
       require("snacks").bufdelete { buf = bufnr, force = force }
       return
     end
-    if vim.pack.is_available "mini.nvim" then
+    if vim.pack.is_available "mini.nvim" or vim.pack.is_available "mini.bufremove" then
       mini_confirm(require("mini.bufremove").delete, bufnr, force)
       return
     end
@@ -104,7 +104,9 @@ local function wipe(bufnr, force)
     if vim.pack.is_available "snacks.nvim" then
       return require("snacks").bufdelete { buf = bufnr, force = force, wipe = true }
     end
-    if vim.pack.is_available "mini.nvim" then return mini_confirm(require("mini.bufremove").wipeout, bufnr, force) end
+    if vim.pack.is_available "mini.nvim" or vim.pack.is_available "mini.bufremove" then
+      return mini_confirm(require("mini.bufremove").wipeout, bufnr, force)
+    end
   end
   -- fallback
   local buftype = vim.bo[bufnr].buftype

@@ -32,4 +32,8 @@ later(function()
   if wk then wk.add {
     { prefix, group = Config.get_custom_icon("Overseer", 1, true) .. "Overseer" },
   } end
+
+  if vim.pack.is_available "neotest" then
+    require("neotest.consumers").overseer = require "neotest.consumers.overseer"
+  end
 end)

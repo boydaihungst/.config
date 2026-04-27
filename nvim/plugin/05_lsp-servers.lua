@@ -3,7 +3,7 @@ local manually_start_lsp_servers = {
   "rust_analyzer", -- rustaceanvim will auto enable this lsp server
   "sqls", -- sqls-nvim instead
   "dartls",
-  vim.pack.is_available "roslyn.nvim" and "csharp_ls", -- using rosyln.nvim instead
+  "csharp_ls", -- using rosyln.nvim instead
 }
 
 later(function()
@@ -28,12 +28,12 @@ later(function()
         or enabled_servers[lspconfig_name]
         or vim.tbl_contains(manually_start_lsp_servers, lspconfig_name)
       then
+        pcall(vim.lsp.enable, lspconfig_name, false)
         return
       end
 
       local ok, config = pcall(require, "mason-lspconfig.lsp." .. lspconfig_name)
       if ok then vim.lsp.config(lspconfig_name, config) end
-
       vim.lsp.enable(lspconfig_name)
       enabled_servers[lspconfig_name] = true
     end)

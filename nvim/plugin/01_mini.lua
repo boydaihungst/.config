@@ -255,8 +255,8 @@ now(function()
           if vim.pack.is_available "nvim-dap" then
             require("dap").terminate { all = true }
             require("dap").close()
-            require("dapui").close()
           end
+          if vim.pack.is_available "nvim-dap-ui" then require("dapui").close() end
           -- Terminate and close all toggleterm buffers
           if vim.pack.is_available "toggleterm.nvim" then
             local terminal_list = require("toggleterm.terminal").get_all()

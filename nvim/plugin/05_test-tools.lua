@@ -19,13 +19,7 @@ later(function()
     "https://github.com/antoinemadec/FixCursorHold.nvim",
     "https://github.com/nvim-lua/plenary.nvim",
     "https://github.com/nvim-neotest/nvim-nio",
-    "https://github.com/marilari88/neotest-vitest",
-    "https://github.com/nvim-neotest/neotest-jest",
-    "https://github.com/nvim-neotest/neotest-python",
-    "https://github.com/Nsidorenco/neotest-vstest",
-    "https://github.com/mrcjkb/rustaceanvim",
     "https://github.com/nvim-neotest/neotest",
-    "https://github.com/Issafalcon/neotest-dotnet",
   }
   local neotest = require "neotest"
   -- NOTE: We don't use virtual text (init.lua)
@@ -40,20 +34,9 @@ later(function()
 
   local opts = {
     floating = { border = vim.o.winborder },
-    adapters = {
-      require "neotest-vstest" {},
-      require "neotest-jest" {},
-      require "neotest-vitest" {},
-      require "neotest-python" {},
-      require "neotest-dotnet" {},
-    },
+    -- Add adapter and comsumer in 10_lang_pluginslua
+    adapters = {},
   }
-  if vim.pack.is_available "rustaceanvim" then table.insert(opts.adapters, require "rustaceanvim.neotest"()) end
-
-  if vim.pack.is_available "overseer.nvim" then
-    opts.consumers = opts.consumers or {}
-    opts.consumers.overseer = require "neotest.consumers.overseer"
-  end
 
   if vim.g.icons_enabled == false then
     opts.icons = {
