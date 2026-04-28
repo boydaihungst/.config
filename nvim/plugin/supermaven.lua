@@ -14,7 +14,7 @@ on_event("InsertEnter", function()
       "largefile",
     },
     --return true -> disable
-    -- condition = function() return Config.is_large() end,
+    -- condition = function() return require("largefile").is_large() end,
     keymaps = {
       accept_suggestion = "<C-l>",
       clear_suggestion = "<C-h>",

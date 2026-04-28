@@ -68,6 +68,4 @@ function M.setup()
   -- M.load_current_project_config()
 end
 
-M.setup()
-
 return M

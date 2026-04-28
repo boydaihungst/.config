@@ -51,7 +51,6 @@ later(function()
       { prefix .. "gS", desc = "Reselect last visual selection", mode = "n" },
 
       -- visual mode groups
-      { prefix, group = "Multi Cursors", mode = "v" },
       { prefix .. "a", desc = "Convert a visual selection to a VM selection", mode = "v" },
       { prefix .. "A", desc = "Select all occurrences of selection text", mode = "v" },
       { prefix .. "c", desc = "Add cursors downwards from start of visual block", mode = "v" },

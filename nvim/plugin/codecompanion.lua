@@ -12,7 +12,7 @@ later(function()
 
     vim.pack.on_packchanged(
       "VectorCode",
-      { "install", "update" },
+      { "update" },
       function() install_vector_deps() end,
       "VectorCode install/update"
     )

@@ -5,7 +5,7 @@ now_if_args(function()
   local get_icon = Config.get_custom_icon
   local gitsigns = require "gitsigns"
   local opts = {
-    max_file_length = Config.default_large_buf_opts.lines,
+    max_file_length = require("largefile").default_large_buf_opts.lines,
     gh = true,
     signs = {
       add = { text = get_icon "GitSign" },
@@ -24,7 +24,7 @@ now_if_args(function()
       untracked = { text = get_icon "GitSign" },
     },
     on_attach = function(bufnr)
-      if Config.is_large(bufnr) then return end
+      if require("largefile").is_large(bufnr) then return end
       local prefix = "<Leader>g"
       -- Normal Mode Mappings
       vim.keymap.set("n", prefix .. "l", function() gitsigns.blame_line() end, { buf = bufnr, desc = "View Git blame" })

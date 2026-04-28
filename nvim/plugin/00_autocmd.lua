@@ -51,7 +51,7 @@ end, "Clean up q_close_windows cache")
 
 Config.new_autocmd("BufReadPost", nil, function(args)
   local buf = args.buf
-  if Config.is_large(buf) then return end
+  if require("largefile").is_large(buf) then return end
   if vim.b[buf].last_loc_restored or vim.tbl_contains({ "gitcommit" }, vim.bo[buf].filetype) then return end
   vim.b[buf].last_loc_restored = true
   local mark = vim.api.nvim_buf_get_mark(buf, '"')
@@ -122,43 +122,4 @@ if Config.default_lsp_signature_help then
     if lsp_bufs[args.buf] then pcall(vim.api.nvim_del_autocmd, lsp_bufs[args.buf]) end
     lsp_bufs[args.buf] = nil
   end, "Safely remove LSP signature help providers when language servers detach")
-end
-
-if Config.auto_chdir_root then
-  vim.o.autochdir = false
-  -- The Smart Root Function
-  local function set_smart_root()
-    if not vim.bo.buflisted then return end
-    -- Check active LSP clients for the current buffer
-    local clients = vim.lsp.get_clients { bufnr = 0 }
-    local cur_buf = vim.api.nvim_buf_get_name(0)
-
-    for _, client in ipairs(clients) do
-      -- Only proceed if the LSP isn't ignored AND has a valid root_dir
-      if
-        not (Config.root_markers_lsp_servers_ignored or {})[client.name]
-        and client.root_dir
-        and cur_buf
-        and vim.fs.relpath(client.root_dir, cur_buf) -- Only change if the root_dir is a parent folder of the current buffer
-      then
-        return vim.fn.chdir(vim.fn.expand(client.root_dir))
-      end
-    end
-
-    local root = require("mini.misc").find_root(0, Config.root_markers or {})
-    if root then return vim.fn.chdir(vim.fn.expand(root)) end
-
-    -- fallback to current directory
-    local file_path = vim.api.nvim_buf_get_name(0)
-    if file_path ~= "" then return vim.fn.chdir(vim.fn.fnamemodify(file_path, ":p:h")) end
-  end
-
-  -- Autocmds to trigger the check
-  Config.new_autocmd(
-    { "BufEnter", "LspAttach" },
-    nil,
-    function() vim.schedule(set_smart_root) end,
-    "Auto change cwd based on lsp and root files",
-    "SmartRoot"
-  )
 end

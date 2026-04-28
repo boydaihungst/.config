@@ -1,7 +1,10 @@
 -- Language-based supported plugins should add to this file
 
-on_filetype("java", function()
+on_filetype({ "java", "yaml", "jproperties" }, function()
   add {
+    -- {
+    --   src = "https://github.com/JavaHello/spring-boot.nvim",
+    -- },
     "https://github.com/mfussenegger/nvim-jdtls",
   }
 
@@ -93,6 +96,9 @@ on_filetype("java", function()
     filetypes = { "java" },
     on_attach = function(client, bufnr) require("jdtls").setup_dap { hotcodereplace = "auto" } end,
   }
+
+  -- require("spring_boot").setup {}
+  -- vim.list_extend(opts.init_options.bundles, require("spring_boot").java_extensions())
   if opts.root_dir and opts.root_dir ~= "" then
     require("jdtls").start_or_attach(opts)
   else

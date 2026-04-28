@@ -36,6 +36,7 @@ local ensure_installed_pkg = {
   "vue-language-server",
   "lemminx",
   "jdtls",
+  -- "vscode-spring-boot-tools",
   "csharp-language-server",
   (not is_aarch64 and "selene") or nil,
 
@@ -54,7 +55,6 @@ local ensure_installed_pkg = {
   "shfmt",
   "stylua",
   "csharpier",
-  "nginx-config-formatter",
   "black",
   "isort",
   -- linters

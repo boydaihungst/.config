@@ -40,12 +40,7 @@ later(function()
     end
   end
 
-  vim.pack.on_packchanged(
-    "easy-dotnet.nvim",
-    { "install", "update" },
-    install_external_deps,
-    "Easy-dotnet install/update"
-  )
+  vim.pack.on_packchanged("easy-dotnet.nvim", { "update" }, install_external_deps, "Easy-dotnet install/update")
   install_external_deps()
 
   add {

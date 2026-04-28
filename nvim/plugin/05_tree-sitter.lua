@@ -95,7 +95,7 @@ later(function()
     local language = vim.treesitter.language.get_lang(filetype)
     if not language then return end
 
-    if Config.is_large(buf) then
+    if require("largefile").is_large(buf) then
       vim.treesitter.stop(args.buf)
       return
     end

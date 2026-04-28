@@ -1,3 +1,32 @@
+require "utils"
+require("largefile").setup()
+require("project-local-loader").setup()
+require("smart-root-chdir").setup {
+  root_markers = {
+    "nvim-pack-lock.json",
+    ".git",
+    "_darcs",
+    ".hg",
+    ".bzr",
+    ".svn",
+    "lua",
+    "MakeFile",
+    "package.json",
+    "lazy-lock.json",
+    "yazi.toml",
+    "hyprland.conf",
+  },
+  -- LSP took priority over root_markers above
+  -- Add the names of LSP servers you want to ignore here
+  root_markers_lsp_servers_ignored = {
+    ["copilot"] = true,
+    ["null-ls"] = true,
+    ["efm"] = true,
+    ["dev-tools"] = true,
+    ["taplo"] = true,
+  },
+}
+
 _G.STARTUP_TIME = vim.uv.hrtime()
 -- Disable unused built-in plugins
 local disabled_builtins = {
@@ -52,10 +81,6 @@ do
   end
 end
 
--- cd to project root on startup
-local project_root = vim.fs.root(0, { ".nvim.lua", ".nvimrc", ".exrc" })
-if project_root then vim.cmd.cd(project_root) end
-
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -65,49 +90,6 @@ vim.g.icons_enabled = true
 
 _G.Config = {
   default_lsp_signature_help = true,
-  default_large_buf_opts = {
-    -- Allow large files to be detected
-    enabled = true,
-    -- Notify when a large file is detected
-    notify = true,
-    -- The maximum size of a file in bytes. 2MB
-    size = 1000 * 2000,
-    -- The maximum number of lines in a file
-    lines = 5000,
-    -- The maximum average line length in a file
-    line_length = 3000,
-  },
-  auto_chdir_root = true,
-  -- Change current working directory based on the current file path. It
-  -- searches up the file tree until the first root marker ('.git' or 'Makefile')
-  -- and sets their parent directory as a current directory.
-  -- This is helpful when simultaneously dealing with files from several projects.
-  root_markers = {
-    "nvim-pack-lock.json",
-    ".git",
-    "_darcs",
-    ".hg",
-    ".bzr",
-    ".svn",
-    "lua",
-    "MakeFile",
-    "package.json",
-    "lazy-lock.json",
-    "yazi.toml",
-    "hyprland.conf",
-  },
-  -- LSP took priority over root_markers above
-  -- Add the names of LSP servers you want to ignore here
-  root_markers_lsp_servers_ignored = {
-    ["copilot"] = true,
-    ["null-ls"] = true,
-    ["efm"] = true,
-    ["dev-tools"] = true,
-    ["taplo"] = true,
-  },
-  -- auto load project-local Plugins and LSP configurations
-  enable_project_local_loader = true,
-
   -- Custom icons
   icons = {
     icons = {
@@ -291,6 +273,30 @@ Config.new_autocmd = function(event, pattern, callback, desc, gr)
   return vim.api.nvim_create_autocmd(event, opts)
 end
 
+--- Event handler for `PackChanged` event.
+---@param plugin_names string|string[] plugin names
+---@param kinds string|string[] kinds
+---@param callback function(data: vim.pack.Spec) callback
+---@param desc string description
+vim.pack.on_packchanged = function(plugin_names, kinds, callback, desc)
+  local f = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if not (vim.tbl_contains(vim.as_table(plugin_names), name) and vim.tbl_contains(vim.as_table(kinds), kind)) then
+      return
+    end
+    if not ev.data.active then vim.cmd.packadd(plugin_names) end
+    callback(ev.data)
+  end
+  Config.new_autocmd("PackChanged", nil, f, desc)
+end
+
+vim.pack.is_available = function(pkg)
+  local loaded = package.loaded and package.loaded[pkg]
+  if loaded then return true end
+  local result, _ = pcall(vim.pack.get, { pkg })
+  return result
+end
+
 --- Check if a buffer is valid
 ---@param bufnr? integer The buffer to check, default to current buffer
 ---@return boolean # Whether the buffer is valid or not
@@ -347,109 +353,6 @@ function Config.extend_hl(name, data)
   vim.api.nvim_set_hl(0, name, new_hl)
 end
 
-local large_buf_cache, buf_size_cache = {}, {} -- cache large buffer detection results and buffer sizes
----@class CoreMaxFile
----@field enabled (boolean|fun(bufnr: integer, config: CoreMaxFile):boolean|CoreMaxFile?)? whether to enable large file detection
----@field notify boolean? whether or not to display a notification when a large file is detected
----@field size integer|false? the number of bytes in a file or false to disable check
----@field lines integer|false? the number of lines in a file or false to disable check
----@field line_length integer|false? the average line length in a file or false to disable check
-
---- Check if a buffer is a large buffer (always returns false if large buffer detection is disabled)
----@param bufnr? integer the buffer to check the size of, default to current buffer
----@param large_buf_opts? CoreMaxFile large buffer parameters, default configuration
----@return boolean is_large whether the buffer is detected as large or not
-function Config.is_large(bufnr, large_buf_opts, event)
-  if not bufnr then bufnr = vim.api.nvim_get_current_buf() end
-  -- always return not large until buffer is loaded, do not cache decision
-  if not vim.api.nvim_buf_is_loaded(bufnr) and event ~= "BufReadPre" then return false end
-  local skip_cache = large_buf_opts ~= nil -- skip cache when called manually with custom options
-  if not large_buf_opts then large_buf_opts = Config.default_large_buf_opts end
-  if large_buf_opts then
-    if skip_cache or large_buf_cache[bufnr] == nil then
-      local enabled = vim.tbl_get(large_buf_opts, "enabled")
-      if type(enabled) == "function" then
-        large_buf_opts = vim.deepcopy(large_buf_opts)
-        enabled = enabled(bufnr, large_buf_opts)
-        if type(enabled) == "table" then large_buf_opts = enabled end
-      end
-      local large_buf = false
-      if vim.F.if_nil(enabled, true) then
-        if not buf_size_cache[bufnr] then
-          local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(bufnr))
-          buf_size_cache[bufnr] = ok and stats and stats.size or 0
-        end
-        local file_size = buf_size_cache[bufnr]
-        local line_count = vim.api.nvim_buf_line_count(bufnr)
-        if event == "BufReadPre" and (large_buf_opts.line_length or large_buf_opts.lines) then
-          line_count = #vim.fn.readfile(vim.api.nvim_buf_get_name(bufnr), "", large_buf_opts.line_length) -- read first line_length lines
-        end
-        local too_large = large_buf_opts.size and file_size > large_buf_opts.size
-        local too_long = large_buf_opts.lines and line_count > large_buf_opts.lines
-        local too_wide = large_buf_opts.line_length and (file_size / line_count) - 1 > large_buf_opts.line_length
-        large_buf = too_large or too_long or too_wide or false
-      end
-      if skip_cache then return large_buf end
-      large_buf_cache[bufnr] = large_buf
-    end
-    return large_buf_cache[bufnr]
-  end
-  return false
-end
-
-function vim.tbl_to_set(array)
-  local set = {}
-  for _, v in ipairs(array) do
-    local _v = tostring(v)
-    set[_v] = true
-  end
-  return set
-end
-
---- Extend string table with another string table, value is unique
----@param base table table to extend
----@param extra table table contain new values
----@return table
-function vim.tbl_unique_extend(base, extra)
-  local seen = {}
-  local result = {}
-
-  -- Mark existing items as seen
-  for _, v in ipairs(base) do
-    if not seen[v] then
-      table.insert(result, v)
-      seen[v] = true
-    end
-  end
-
-  -- Add new items only if not seen
-  for _, v in ipairs(extra) do
-    if not seen[v] then
-      table.insert(result, v)
-      seen[v] = true
-    end
-  end
-
-  return result
-end
-
-vim.pack.is_available = function(pkg)
-  local loaded = package.loaded and package.loaded[pkg]
-  if loaded then return true end
-  local result, _ = pcall(vim.pack.get, { pkg })
-  return result
-end
-
-vim.pack.on_packchanged = function(plugin_name, kinds, callback, desc)
-  local f = function(ev)
-    local name, kind = ev.data.spec.name, ev.data.kind
-    if not (name == plugin_name and vim.tbl_contains(kinds, kind)) then return end
-    if not ev.data.active then vim.cmd.packadd(plugin_name) end
-    callback(ev.data)
-  end
-  Config.new_autocmd("PackChanged", "*", f, desc)
-end
-
 vim.api.nvim_get_buffers_rel_path = function(path)
   path = vim.fn.fnamemodify(path, ":p") -- normalize to absolute path
   local matched_buffers = {}
@@ -485,8 +388,8 @@ vim.api.nvim_get_win_by_var = function(var_name)
   end
   return nil
 end
-string.to_litteral = function(str) return str and str:gsub("([%^%$%(%)%%%.%[%]%*%+%-%?])", "%%%1") end
 
+-- Configure diagnostic features
 vim.diagnostic.config {
   -- use tiny-inline-diagnostic.nvim instead
   virtual_lines = false,
@@ -504,6 +407,7 @@ vim.diagnostic.config {
   },
 }
 
+-- Configure LSP features
 vim.lsp.inlay_hint.enable(false)
 vim.lsp.semantic_tokens.enable(true)
 vim.lsp.linked_editing_range.enable(true)
@@ -522,6 +426,7 @@ vim.lsp.config("*", {
   },
 })
 
+-- Inline completion
 if vim.lsp.inline_completion.is_enabled() then
   Config.new_autocmd("LspAttach", nil, function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -552,53 +457,3 @@ if vim.lsp.inline_completion.is_enabled() then
     end
   end, "Set keymaps for when a lsp support ", "nvim-inline-completion")
 end
-if Config.enable_project_local_loader then require("project-local-loader").setup() end
-
-vim.api.nvim_create_autocmd("BufReadPre", {
-  callback = function(args)
-    if Config.is_large(args.buf, nil, "BufReadPre") then
-      -- Disable heavy features
-      if vim.fn.exists ":NoMatchParen" ~= 0 then vim.cmd [[NoMatchParen]] end
-      require("snacks").util.wo(0, { foldmethod = "manual", statuscolumn = "", conceallevel = 0 })
-
-      vim.bo.autocomplete = false
-      vim.b.completion = false
-
-      vim.b.minianimate_disable = true
-      vim.b.minihipatterns_disable = true
-      vim.b.minimap_disable = true
-      vim.diagnostic.enable(false, { bufnr = args.buf })
-      vim.lsp.inlay_hint.enable(false, { bufnr = args.buf })
-      vim.lsp.semantic_tokens.enable(false, { bufnr = args.buf })
-      vim.lsp.linked_editing_range.enable(false, { bufnr = args.buf })
-      if vim.lsp.codelens.enable then vim.lsp.codelens.enable(false, { bufnr = args.buf }) end
-      vim.lsp.inline_completion.enable(false, { bufnr = args.buf })
-      vim.lsp.on_type_formatting.enable(false, { bufnr = args.buf })
-
-      vim.opt_local.filetype = "largefile"
-      vim.opt_local.wrap = false
-      vim.opt_local.syntax = "off"
-      vim.opt_local.spell = false
-      vim.opt_local.undofile = false
-      vim.opt_local.swapfile = false
-
-      vim.opt_local.undolevels = -1
-      vim.opt_local.undoreload = 0
-      vim.opt_local.list = false
-      vim.schedule(function()
-        vim.treesitter.stop(args.buf)
-        vim.opt_local.filetype = "largefile"
-      end)
-      if Config.default_large_buf_opts.notify then
-        vim.schedule(
-          function()
-            vim.notify(
-              "Large file detected: Heavy features disabled" .. vim.api.nvim_buf_get_name(args.buf),
-              vim.log.levels.WARN
-            )
-          end
-        )
-      end
-    end
-  end,
-})

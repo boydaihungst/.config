@@ -171,7 +171,7 @@ now(function()
       indent = { char = "▏" },
       filter = function(bufnr)
         return Config.is_valid_buf(bufnr)
-          and not Config.is_large(bufnr)
+          and not require("largefile").is_large(bufnr)
           and vim.g.snacks_indent ~= false
           and vim.b[bufnr].snacks_indent ~= false
       end,
@@ -215,7 +215,7 @@ now(function()
     scope = {
       filter = function(bufnr)
         return Config.is_valid_buf(bufnr)
-          and not Config.is_large(bufnr)
+          and not require("largefile").is_large(bufnr)
           and vim.g.snacks_scope ~= false
           and vim.b[bufnr].snacks_scope ~= false
       end,
@@ -224,7 +224,7 @@ now(function()
       enabled = true,
       filter = function(bufnr)
         return Config.is_valid_buf(bufnr)
-          and not Config.is_large(bufnr)
+          and not require("largefile").is_large(bufnr)
           and vim.g.snacks_words ~= false
           and vim.b[bufnr].snacks_words ~= false
       end,

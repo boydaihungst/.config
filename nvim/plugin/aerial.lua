@@ -43,9 +43,9 @@ later(function()
     link_folds_to_tree = true,
     link_tree_to_folds = true,
     show_guides = true,
-    disable_max_lines = Config.default_large_buf_opts.lines,
+    disable_max_lines = require("largefile").default_large_buf_opts.lines,
     -- disable aerial on files this size or larger (in bytes)
-    disable_max_size = Config.default_large_buf_opts.size,
+    disable_max_size = require("largefile").default_large_buf_opts.size,
   }
 
   vim.keymap.set("n", "]y", function() aerial.next(vim.v.count1) end, { desc = "Next symbol" })

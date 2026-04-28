@@ -4,7 +4,7 @@ on_filetype({ "markdown", "markdown.mdx" }, function()
 
   vim.pack.on_packchanged(
     "markdown-preview.nvim",
-    { "update" },
+    { "update", "install" },
     function() vim.cmd "call mkdp#util#install()" end,
     ":call mkdp#util#install()"
   )
