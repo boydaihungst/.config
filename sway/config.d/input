@@ -24,6 +24,9 @@ input type:keyboard {
     repeat_delay 300
 }
 
+input 9390:4629:Rapoo_Rapoo_Gaming_Device {
+    scroll_factor 3
+}
 
 # Set keyboard layout and variant based on current system settings
 # exec_always {

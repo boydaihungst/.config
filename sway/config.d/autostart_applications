@@ -15,8 +15,9 @@ exec swayidle -w \
     timeout 600 'swaylock -f' \
     timeout 700 'swaymsg "output * power off"' \
         resume 'swaymsg "output * power on"' \
-    before-sleep 'swaylock -f'
-    # timeout 1800 'systemctl suspend-then-hibernate' \
+    before-sleep 'swaylock -f' \
+    timeout 1800 'loginctl suspend'
+    # timeout 1800 'systemctl suspend-then-hibernate'
 
 # Autotiling
 exec autotiling
@@ -31,7 +32,6 @@ exec wl-paste --watch cliphist store
 exec /usr/libexec/xdg-desktop-portal-termfilechooser
 exec /usr/local/libexec/file_manager_dbus
 exec gpgconf --launch gpg-agent
-exec sway-audio-idle-inhibit
 exec ~/.config/sway/scripts/battery-watch.sh
 exec_always swaybg -i ~/.config/sway/wallpaper -m fill
 exec mpd --no-daemon ~/.config/mpd/mpd.conf

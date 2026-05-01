@@ -24,6 +24,7 @@ require("smart-root-chdir").setup {
     ["efm"] = true,
     ["dev-tools"] = true,
     ["taplo"] = true,
+    ["termux_language_server"] = true,
   },
 }
 

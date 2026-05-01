@@ -6,7 +6,7 @@ indicator-caps-lock
 image=~/.config/sway/wallpaper
 scaling=fill
 font=Hack Nerd Font
-font-size=30
+font-size=14
 indicator-thickness=15
 
 inside-wrong-color=#e06c75

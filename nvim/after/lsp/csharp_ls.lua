@@ -1,3 +1,4 @@
+---@type vim.lsp.Config
 return {
   filetypes = { "cs", "razor" },
   get_language_id = function(_, ft)

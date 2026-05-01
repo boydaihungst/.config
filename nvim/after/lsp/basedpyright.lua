@@ -1,3 +1,4 @@
+---@type vim.lsp.Config
 return {
   before_init = function(_, c)
     if not c.settings then c.settings = {} end

@@ -1,4 +1,5 @@
 -- rename this file to sqls.lua to override the default lsp config
+---@type vim.lsp.Config
 return {
   cmd = { "sqls" },
   filetypes = { "sql", "mysql" },

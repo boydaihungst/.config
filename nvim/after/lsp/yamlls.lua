@@ -1,5 +1,6 @@
 local ok, schemastore = pcall(require, "schemastore")
 if ok then
+  ---@type vim.lsp.Config
   return {
     settings = {
       yaml = {

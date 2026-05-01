@@ -236,7 +236,7 @@ nmap_leader("lc", "<Cmd>lua vim.lsp.buf.incoming_calls<CR>", "Incoming calls")
 nmap_leader("lC", "<Cmd>lua vim.lsp.buf.outgoing_calls<CR>", "Outgoing calls")
 nmap_leader("ld", "<Cmd>Lspsaga show_buf_diagnostics ++float<CR>", "Diagnostic (buffer)")
 -- Use snacks
--- nmap_leader('lD', '<Cmd>Lspsaga show_workspace_diagnostics ++float)<CR>', 'Diagnostic (workspace)')
+nmap_leader("lD", "<Cmd>Lspsaga show_workspace_diagnostics ++float)<CR>", "Diagnostic (workspace)")
 nmap_leader("li", "<Cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation")
 nmap_leader("lh", "<Cmd>lua vim.lsp.buf.hover()<CR>", "Hover")
 nmap_leader("ll", "<Cmd>lua vim.lsp.codelens.run()<CR>", "CodeLens Run")

@@ -5,6 +5,7 @@ later(function()
       prompt_for_file_name = false,
       drag_and_drop = {
         insert_mode = true,
+        enabled = false,
       },
       use_absolute_path = vim.fn.has "win32" == 1, -- default to absolute path for windows users
     },
