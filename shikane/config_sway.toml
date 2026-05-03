@@ -1,0 +1,136 @@
+[[profile]]
+  exec = [
+    "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
+    "killall -SIGUSR2 waybar",
+  ]
+  name = "External HDMI"
+  [[profile.output]]
+    adaptive_sync = true
+    enable        = false
+    exec          = [ "swaymsg output $SHIKANE_OUTPUT_NAME color_profile icc \"~/.config/sway/scripts/color_profiles/TPLCD_2039_Native.icm\"" ]
+    mode          = "best"
+    position      = "0,1600"
+    scale         = 1.25
+    search        = [ "/eDP-[1-9]" ]
+
+
+  [[profile.output]]
+    adaptive_sync = true
+    enable = true
+    exec = [
+      "swaymsg workspace 1, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 2, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 3, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 4, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 5, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 6, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 7, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 8, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 9, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 10, move workspace to $SHIKANE_OUTPUT_NAME",
+    ]
+    mode = "best"
+    position = "0,0"
+    scale = 1
+    search = [ "/HDMI-[ABC]-[1-9]" ]
+
+[[profile]]
+  exec = [
+    "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
+    "killall -SIGUSR2 waybar",
+  ]
+  name = "External DP AOC Q27G42ZE"
+  [[profile.output]]
+    adaptive_sync = true
+    enable        = false
+    mode          = "best"
+    position      = "0,2560"
+    scale         = 1.25
+    search        = [ "/eDP-[1-9]" ]
+
+
+  [[profile.output]]
+    adaptive_sync = true
+    enable = true
+    exec = [
+      "nohup ~/.config/shikane/DP_mode.sh $SHIKANE_OUTPUT_NAME > /dev/null 2>&1 &",
+    ]
+    mode = "!2560x1440@260.002Hz"
+    position = "0,0"
+    scale = 1
+    search = [ "n/DP-[1-9]", "v=AOC", "m=Q27G42ZE" ]
+
+  [[profile.output]]
+    adaptive_sync = true
+    enable = true
+    exec = [
+      "swaymsg workspace 10, move workspace to $SHIKANE_OUTPUT_NAME",
+    ]
+    mode = "!640x480@59.940Hz"
+    position = "0,4920"
+    scale = 1
+    search = [ "n/HDMI-[ABC]-[1-9]" ]
+
+
+[[profile]]
+  exec = [
+    "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
+    "killall -SIGUSR2 waybar",
+  ]
+  name = "External DP + HDMI"
+  [[profile.output]]
+    adaptive_sync = true
+    enable        = false
+    exec          = [ "swaymsg output $SHIKANE_OUTPUT_NAME color_profile icc \"~/.config/sway/scripts/color_profiles/TPLCD_2039_Native.icm\"" ]
+    mode          = "best"
+    position      = "0,2560"
+    scale         = 1.25
+    search        = [ "/eDP-[1-9]" ]
+
+
+  [[profile.output]]
+    adaptive_sync = true
+    enable = true
+    exec = [
+      "swaymsg workspace 1, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 3, move workspace to $SHIKANE_OUTPUT_NAME",
+    ]
+    mode = "best"
+    position = "0,0"
+    scale = 1
+    search = [ "n/DP-[1-9]" ]
+
+
+  [[profile.output]]
+    adaptive_sync = true
+    enable = true
+    exec = [
+      "swaymsg workspace 2, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 4, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 5, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 6, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 7, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 8, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 9, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 10, move workspace to $SHIKANE_OUTPUT_NAME",
+    ]
+    mode = "best"
+    position = "0,0"
+    scale = 1
+    search = [ "/HDMI-[ABC]-[1-9]" ]
+
+
+[[profile]]
+  exec = [
+    "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
+    "killall -SIGUSR2 waybar",
+  ]
+  name = "Default"
+  [[profile.output]]
+    adaptive_sync = true
+    enable        = true
+    exec          = [ "swaymsg output $SHIKANE_OUTPUT_NAME color_profile icc \"~/.config/sway/scripts/color_profiles/TPLCD_2039_Native.icm\"" ]
+    mode          = "best"
+    position      = "0,0"
+    scale         = 1.25
+    search        = [ "/eDP-[1-9]" ]

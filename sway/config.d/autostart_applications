@@ -37,7 +37,7 @@ exec_always swaybg -i ~/.config/sway/wallpaper -m fill
 exec mpd --no-daemon ~/.config/mpd/mpd.conf
 exec mpd-mpris -network unix  --host ~/.config/mpd/socket
 
-exec_always shikane
+exec_always shikane --config ~/.config/shikane/config_sway.toml
 exec_always python3 ~/.config/sway/scripts/headless-ws.py
 # exec-once = waypaper-engine daemon
 

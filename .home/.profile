@@ -34,9 +34,9 @@ export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 export WLR_DRM_DEVICES=/dev/dri/amd-igpu:/dev/dri/nvidia-egpu
 export WLR_RENDERER=vulkan
 # export ENABLE_HDR_WSI=1
-export XDG_CURRENT_DESKTOP=sway
+export XDG_CURRENT_DESKTOP=Hyprland
 export XDG_SESSION_TYPE=wayland
-export XDG_SESSION_DESKTOP=sway
+export XDG_SESSION_DESKTOP=Hyprland
 # Manually export the most common ones
 export XDG_DESKTOP_DIR="$(xdg-user-dir DESKTOP)"
 export XDG_DOWNLOAD_DIR="$(xdg-user-dir DOWNLOAD)"

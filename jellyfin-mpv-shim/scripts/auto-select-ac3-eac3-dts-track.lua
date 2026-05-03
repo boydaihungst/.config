@@ -1,5 +1,4 @@
 local msg = require("mp.msg")
-
 local function select_smart_audio()
 	local track_list = mp.get_property_native("track-list")
 	-- Get alang from mpv.conf (returns a string like "jpn,eng")
@@ -50,7 +49,7 @@ local function select_smart_audio()
 		mp.commandv("af", "clr", "")
 	else
 		msg.info("No compatible AC3/DTS track found for preferred languages. Enabling AC3 encoder.")
-		mp.commandv("af", "set", "lavcac3enc=yes:640:2")
+		mp.commandv("af", "set", "lavcac3enc=yes:640:6")
 	end
 end
 
