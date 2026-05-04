@@ -405,6 +405,10 @@ local window_rules = {
   -- Fix yazi ueberzugpp
   {
     no_initial_focus = true,
+    persistent_size = false,
+    no_max_size = true,
+    stay_focused = false,
+    decorate = false,
     float = true,
     no_anim = true,
     no_focus = true,
@@ -414,7 +418,8 @@ local window_rules = {
     no_shadow = true,
     focus_on_activate = false,
     rounding = 0,
-    pseudo = false,
+    border_size = 0,
+    pseudo = true,
     match = {
       initial_title = "^ueberzugpp_.*",
     },
