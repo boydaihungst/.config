@@ -1,0 +1,47 @@
+# EditorConfig for Lua projects on Linux
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+max_line_length = 120
+
+[*.lua]
+# Lua-specific settings
+indent_style = space
+indent_size = 2
+
+# Lua comment style
+# (no specific setting, but maintaining consistency)
+
+[Makefile]
+# Makefiles require tabs
+indent_style = tab
+
+[*.{md,yml,yaml,json}]
+indent_style = space
+indent_size = 2
+
+[*.{txt,text}]
+max_line_length = off
+trim_trailing_whitespace = false
+
+[*.{sh,bash}]
+indent_style = space
+indent_size = 2
+shell_variant = bash
+
+# Ignore generated or dependency directories
+[deps/**]
+charset = unset
+end_of_line = unset
+insert_final_newline = unset
+trim_trailing_whitespace = unset
+indent_style = unset
+
+[luacov.*]
+indent_style = unset

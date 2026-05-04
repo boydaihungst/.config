@@ -1,0 +1,20 @@
+-- See https://wiki.hyprland.org/Configuring/Variables/ for more
+hl.config({
+  misc = {
+    disable_hyprland_logo = true,
+    disable_splash_rendering = true,
+    font_family = "Hack Nerd Font",
+    vrr = 1,
+    mouse_move_enables_dpms = true,
+    key_press_enables_dpms = true,
+    animate_manual_resizes = true,
+    mouse_move_focuses_monitor = true,
+    enable_swallow = false,
+    -- swallow_regex = "^(com.mitchellh.ghostty|kitty|yazi|org.wezfurlong.wezterm)$",
+    allow_session_lock_restore = true,
+    focus_on_activate = true,
+    on_focus_under_fullscreen = 2,
+    exit_window_retains_fullscreen = false,
+    -- anr_missed_pings = 10,
+  },
+})

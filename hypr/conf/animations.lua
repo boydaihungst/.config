@@ -1,0 +1,11 @@
+-- Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
+hl.curve("myBezier", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.05 } } })
+hl.animation({ leaf = "global", enabled = true, bezier = "myBezier", speed = 5 })
+hl.animation({ leaf = "windows", speed = 5, enabled = true, bezier = "myBezier" })
+hl.animation({ leaf = "windowsIn", speed = 4, enabled = true, bezier = "myBezier", style = "slide" })
+hl.animation({ leaf = "windowsOut", speed = 4, enabled = true, bezier = "myBezier", style = "slide" })
+hl.animation({ leaf = "workspaces", speed = 4, enabled = true, bezier = "default" })
+hl.animation({ leaf = "specialWorkspace", speed = 3, enabled = true, bezier = "default", style = "slidevert" })
+hl.animation({ leaf = "border", speed = 10, enabled = true, bezier = "default" })
+hl.animation({ leaf = "borderangle", speed = 8, enabled = true, bezier = "default" })
+hl.animation({ leaf = "fade", speed = 2, enabled = true, bezier = "default" })
