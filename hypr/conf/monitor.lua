@@ -21,8 +21,8 @@ hl.monitor({
 
 hl.monitor({
   output = "HDMI-A-1",
-  mode = "640x480@59.94Hz",
-  position = "0x4920",
+  mode = "4096x2160@119.88",
+  position = "0x1600",
 })
 
 -- unscale XWayland

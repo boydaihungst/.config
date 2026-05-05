@@ -36,7 +36,7 @@ hl.bind(mod .. " + Q", hl.dsp.window.close())
 -- Open app launcher
 hl.bind(mod .. " + D", hl.dsp.exec_raw(applaucher))
 -- Open power menu
-hl.bind(mod .. " + X", hl.dsp.exec_raw(powermenu))
+hl.bind(mod .. " + X", hl.dsp.exec_raw(powermenu), { locked = true })
 hl.bind(mod .. " + SHIFT + C", hl.dsp.exec_cmd("hyprctl reload"))
 
 -- Open yazi file manager

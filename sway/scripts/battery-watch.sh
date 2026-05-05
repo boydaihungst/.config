@@ -56,7 +56,10 @@ upower --monitor-detail | stdbuf -oL awk '/device changed|online:|percentage:|st
     if [[ "$status" == "discharging" ]]; then
       if [ "$cap" -le "$CRITICAL_BATTERY" ]; then
         notify-send -a battery -t 1000 -u critical -i "battery-empty" "CRITICAL BATTERY" "Only $cap% remaining!"
-        loginctl hibernate
+        if grep -qw disk /sys/power/state; then
+          loginctl hibernate
+        fi
+
       elif [ "$cap" -le "$LOW_BATTERY" ]; then
         notify-send -a battery -t 1000 -u normal -i "battery-low" "Low Battery" "Battery dropped to $cap%."
         powerprofilesctl set power-saver

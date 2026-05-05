@@ -402,6 +402,14 @@ local window_rules = {
     },
   },
 
+  {
+    float = true,
+    size = "(monitor_w*0.5) (monitor_h*0.7)",
+    match = {
+      title = "^Add Remote Torrent.*",
+    },
+  },
+
   -- Fix yazi ueberzugpp
   {
     no_initial_focus = true,
