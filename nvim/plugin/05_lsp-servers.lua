@@ -4,6 +4,7 @@ local manually_start_lsp_servers = {
   "sqls", -- sqls-nvim instead
   "dartls",
   "csharp_ls", -- using rosyln.nvim instead
+  "taplo", -- in favor of tombi
 }
 
 later(function()

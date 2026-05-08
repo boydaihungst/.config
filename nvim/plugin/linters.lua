@@ -6,9 +6,10 @@ local linters_cfg = {
     dockerfile = { "hadolint" },
     fish = { "fish" },
     kotlin = { "ktlint" },
-    -- lua = { "selene" },
+    -- lua = { "selene" }, -- prefer lsp server instead
     proto = { "buf_lint" },
     sql = { "sqlfluff" },
+    -- toml = { "tombi" }, -- prefer lsp server instead
   },
   linters = {
     -- selenne = {

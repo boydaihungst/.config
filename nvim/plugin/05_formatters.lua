@@ -1,7 +1,6 @@
 local formatters_cfg = {
   formatters_by_ft = {
     fish = { "fish_indent" },
-    toml = { "taplo" },
     markdown = { "markdown-toc", "prettierd", stop_after_first = false },
     ["markdown.mdx"] = { "markdown-toc", "prettierd", stop_after_first = false },
     cs = { "csharpier" },

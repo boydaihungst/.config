@@ -1,116 +1,204 @@
+# Special profile go first
+
+# 2 DisplayPort monitor AOC Q27G42ZE, monitor AOC Q27G4ZDP + HDMI Samsung soundbar
 [[profile]]
   exec = [
     "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
     "killall -SIGUSR2 waybar",
+    "nohup ~/.config/shikane/DP_mode_1.sh > /dev/null 2>&1 &",
   ]
-  name = "External HDMI Only"
+  name = "DP AOC Q27G42ZE + DP AOC Q27G4ZDP + Samsung soundbar"
+
   [[profile.output]]
     enable = false
-    search = [ "/eDP-[1-9]" ]
-
-  [[profile.output]]
-    adaptive_sync = true
-    enable        = true
-
-    exec = [
-      "hyprctl dispatch moveworkspacetomonitor 1 $SHIKANE_OUTPUT_NAME",
-      "hyprctl dispatch moveworkspacetomonitor 2 $SHIKANE_OUTPUT_NAME",
-      "hyprctl dispatch moveworkspacetomonitor 3 $SHIKANE_OUTPUT_NAME",
-      "hyprctl dispatch moveworkspacetomonitor 4 $SHIKANE_OUTPUT_NAME",
-      "hyprctl dispatch moveworkspacetomonitor 5 $SHIKANE_OUTPUT_NAME",
-      "hyprctl dispatch moveworkspacetomonitor 6 $SHIKANE_OUTPUT_NAME",
-      "hyprctl dispatch moveworkspacetomonitor 7 $SHIKANE_OUTPUT_NAME",
-      "hyprctl dispatch moveworkspacetomonitor 8 $SHIKANE_OUTPUT_NAME",
-      "hyprctl dispatch moveworkspacetomonitor 9 $SHIKANE_OUTPUT_NAME",
-      "hyprctl dispatch moveworkspacetomonitor 10 $SHIKANE_OUTPUT_NAME",
-    ]
-
-    mode     = "best"
-    position = "0,0"
-    scale    = 1
-    search   = [ "/HDMI-[ABC]-[1-9]" ]
-
-[[profile]]
-  exec = [
-    "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
-    "killall -SIGUSR2 waybar",
-    "nohup ~/.config/shikane/DP_mode.sh > /dev/null 2>&1 &",
-  ]
-  name = "External DP AOC Q27G42ZE"
-  [[profile.output]]
-    enable = false
-    search = [ "/eDP-[1-9]" ]
+    search = ["/eDP-[1-9]"]
 
   [[profile.output]]
     adaptive_sync = true
     enable        = true
     mode          = "!2560x1440@240.00Hz"
-    position      = "0,0"
+    position      = "2560,0"
     scale         = 1
-    search        = [ "n/DP-[1-9]", "v=AOC", "m=Q27G42ZE" ]
+    search        = ["n/DP-[1-9]", "v=AOC", "m=Q27G42ZE"]
 
   [[profile.output]]
     adaptive_sync = true
     enable        = true
-    mode          = "!4096x2160@119.88"
+    mode          = "!2560x1440@280.00Hz"
+    position      = "0,0"
+    scale         = 1
+    search        = ["n/DP-[1-9]", "v=AOC", "m=Q27G4ZDP"]
+
+  [[profile.output]]
+    adaptive_sync = true
+    enable        = true
+    mode          = "best"
     position      = "0,1600"
     scale         = 1
-    search        = [ "n/HDMI-[ABC]-[1-9]", "v=Samsung Electric Company", "m=SAMSUNG" ]
+    search        = [
+      "n/HDMI-[ABC]-[1-9]",
+      "v=Samsung Electric Company",
+      "m=SAMSUNG"
+    ]
 
-
+# 2 DisplayPort monitor AOC Q27G42ZE, monitor AOC Q27G4ZDP, when HDMI Samsung soundbar is in sleep mode/disconnected
 [[profile]]
   exec = [
     "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
     "killall -SIGUSR2 waybar",
+    "nohup ~/.config/shikane/DP_mode_2.sh > /dev/null 2>&1 &",
   ]
-  name = "External DP + HDMI"
+  name = "DP AOC Q27G42ZE + DP AOC Q27G4ZDP"
+
   [[profile.output]]
     enable = false
-    search = [ "/eDP-[1-9]" ]
-
-
-  [[profile.output]]
-    adaptive_sync = true
-    enable = true
-    exec = [
-      "hyprctl dispatch moveworkspacetomonitor 1 $SHIKANE_OUTPUT_NAME",
-      "hyprctl dispatch moveworkspacetomonitor 3 $SHIKANE_OUTPUT_NAME",
-    ]
-    mode = "best"
-    position = "0,0"
-    scale = 1
-    search = [ "n/DP-[1-9]" ]
-
+    search = ["/eDP-[1-9]"]
 
   [[profile.output]]
     adaptive_sync = true
-    enable = true
-    exec = [
-      "hyprctl dispatch moveworkspacetomonitor 2 $SHIKANE_OUTPUT_NAME",
-      "hyprctl dispatch moveworkspacetomonitor 4 $SHIKANE_OUTPUT_NAME",
-      "hyprctl dispatch moveworkspacetomonitor 5 $SHIKANE_OUTPUT_NAME",
-      "hyprctl dispatch moveworkspacetomonitor 6 $SHIKANE_OUTPUT_NAME",
-      "hyprctl dispatch moveworkspacetomonitor 7 $SHIKANE_OUTPUT_NAME",
-      "hyprctl dispatch moveworkspacetomonitor 8 $SHIKANE_OUTPUT_NAME",
-      "hyprctl dispatch moveworkspacetomonitor 9 $SHIKANE_OUTPUT_NAME",
-      "hyprctl dispatch moveworkspacetomonitor 10 $SHIKANE_OUTPUT_NAME",
+    enable        = true
+    mode          = "!2560x1440@240.00Hz"
+    position      = "2560,0"
+    scale         = 1
+    search        = ["n/DP-[1-9]", "v=AOC", "m=Q27G42ZE"]
+
+  [[profile.output]]
+    adaptive_sync = true
+    enable        = true
+    mode          = "!2560x1440@280.00Hz"
+    position      = "0,0"
+    scale         = 1
+    search        = ["n/DP-[1-9]", "v=AOC", "m=Q27G4ZDP"]
+
+# DisplayPort monitor AOC Q27G4ZDP + HDMI Samsung soundbar
+[[profile]]
+  exec = [
+    "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
+    "killall -SIGUSR2 waybar",
+    "nohup ~/.config/shikane/DP_mode_3.sh > /dev/null 2>&1 &",
+  ]
+  name = "DP AOC Q27G4ZDP + Samsung soundbar"
+
+  [[profile.output]]
+    enable = false
+    search = ["/eDP-[1-9]"]
+
+  [[profile.output]]
+    adaptive_sync = true
+    enable        = true
+    mode          = "!2560x1440@280.00Hz"
+    position      = "0,0"
+    scale         = 1
+    search        = ["n/DP-[1-9]", "v=AOC", "m=Q27G4ZDP"]
+
+  [[profile.output]]
+    adaptive_sync = true
+    enable        = true
+    mode          = "best"
+    position      = "0,1600"
+    scale         = 1
+    search        = [
+      "n/HDMI-[ABC]-[1-9]",
+      "v=Samsung Electric Company",
+      "m=SAMSUNG"
     ]
-    mode = "best"
-    scale = 1
-    search = [ "/HDMI-[ABC]-[1-9]" ]
 
-
+# Laptop monitor only
 [[profile]]
   exec = [
     "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
     "killall -SIGUSR2 waybar",
   ]
   name = "Default"
+
   [[profile.output]]
     adaptive_sync = true
     enable        = true
-    exec          = [ "hyprctl keyword monitor \"eDP-1, 2560x1440@240, auto, 1.25, bitdepth, 8, vrr, 1, cm, auto, icc, /home/huyhoang/.config/sway/scripts/color_profiles/Q27G42ZE.icm\"" ]
+    exec          = [
+      "hyprctl keyword monitor \"eDP-1, 2560x1440@240, auto, 1.25, bitdepth, 8, vrr, 1, cm, auto, icc, /home/huyhoang/.config/sway/scripts/color_profiles/Q27G42ZE.icm\""
+    ]
     mode          = "best"
     position      = "0,0"
     scale         = 1.33
-    search        = [ "/eDP-[1-9]" ]
+    search        = ["/eDP-[1-9]"]
+
+# HDMI monitor only
+[[profile]]
+  exec = [
+    "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
+    "killall -SIGUSR2 waybar",
+  ]
+  name = "HDMI Only"
+
+  [[profile.output]]
+    enable = false
+    search = ["/eDP-[1-9]"]
+
+  [[profile.output]]
+    adaptive_sync = true
+    enable        = true
+    mode          = "best"
+    position      = "0,0"
+    scale         = 1
+    search        = ["/HDMI-[ABC]-[1-9]"]
+
+# DisplayPort monitor only
+[[profile]]
+  exec = [
+    "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
+    "killall -SIGUSR2 waybar",
+  ]
+  name = "DP Only"
+
+  [[profile.output]]
+    enable = false
+    search = ["/eDP-[1-9]"]
+
+  [[profile.output]]
+    adaptive_sync = true
+    enable        = true
+    mode          = "best"
+    position      = "0,0"
+    scale         = 1
+    search        = ["n/DP-[1-9]"]
+
+# DisplayPort monitor + HDMI monitor
+[[profile]]
+  exec = [
+    "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
+    "killall -SIGUSR2 waybar",
+  ]
+  name = "DP + HDMI"
+
+  [[profile.output]]
+    enable = false
+    search = ["/eDP-[1-9]"]
+
+  [[profile.output]]
+    adaptive_sync = true
+    enable        = true
+    exec          = [
+      "hyprctl dispatch moveworkspacetomonitor 1 $SHIKANE_OUTPUT_NAME",
+      "hyprctl dispatch moveworkspacetomonitor 3 $SHIKANE_OUTPUT_NAME",
+    ]
+    mode          = "best"
+    position      = "0,0"
+    scale         = 1
+    search        = ["n/DP-[1-9]"]
+
+  [[profile.output]]
+    adaptive_sync = true
+    enable        = true
+    exec          = [
+      "hyprctl dispatch moveworkspacetomonitor 2 $SHIKANE_OUTPUT_NAME",
+      "hyprctl dispatch moveworkspacetomonitor 4 $SHIKANE_OUTPUT_NAME",
+      "hyprctl dispatch moveworkspacetomonitor 5 $SHIKANE_OUTPUT_NAME",
+      "hyprctl dispatch moveworkspacetomonitor 6 $SHIKANE_OUTPUT_NAME",
+      "hyprctl dispatch moveworkspacetomonitor 7 $SHIKANE_OUTPUT_NAME",
+      "hyprctl dispatch moveworkspacetomonitor 8 $SHIKANE_OUTPUT_NAME",
+      "hyprctl dispatch moveworkspacetomonitor 9 $SHIKANE_OUTPUT_NAME",
+      "hyprctl dispatch moveworkspacetomonitor 10 $SHIKANE_OUTPUT_NAME",
+    ]
+    mode          = "best"
+    scale         = 1
+    search        = ["/HDMI-[ABC]-[1-9]"]

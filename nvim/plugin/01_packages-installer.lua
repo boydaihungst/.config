@@ -12,7 +12,7 @@ local ensure_installed_pkg = {
   vim.fn.executable "dotnet" == 1 and "msbuild_project_tools_server" or nil,
   "roslyn",
   "sqls",
-  "taplo",
+  "tombi",
   "vtsls",
   "yaml-language-server",
   "bash-language-server",

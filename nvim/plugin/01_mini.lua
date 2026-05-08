@@ -872,9 +872,8 @@ now_if_args(function()
   -- │                   Autocmd mini.files                    │
   -- ╰─────────────────────────────────────────────────────────╯
 
-  local minifiles_group = vim.api.nvim_create_augroup("minifiles-custom-group", { clear = true })
-
   Config.new_autocmd("User", "MiniFilesExplorerOpen", function()
+    local minifiles_group = vim.api.nvim_create_augroup("minifiles-custom-group", { clear = true })
     add_bookmarks()
     Config.new_autocmd("BufEnter", nil, function(args2)
       local ft = vim.bo[args2.buf].filetype
@@ -915,7 +914,14 @@ now_if_args(function()
         if event.operator == "y" and vim.api.nvim_buf_is_valid(args.buf) then draw_yank_extmarks(args.buf) end
       end)
     end, "Trigger MiniFiles refresh", minifiles_group)
-  end, "Nohlsearch minifiles clear search pattern", minifiles_group)
+  end, "Nohlsearch minifiles clear search pattern")
+
+  Config.new_autocmd(
+    "User",
+    "MiniFilesExplorerClose",
+    function() vim.api.nvim_del_augroup_by_name "minifiles-custom-group" end,
+    "MiniFilesExplorerClose"
+  )
 
   Config.new_autocmd(
     "User",

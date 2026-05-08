@@ -1,5 +1,7 @@
 # A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config. If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
-# "$schema" = "https://yazi-rs.github.io/schemas/theme.json"# If the user's terminal is in dark mode, Yazi will use the content from `theme-base.toml` + `theme+dark.toml` as the default theme;
+#:schema https://yazi-rs.github.io/schemas/theme.json
+
+# If the user's terminal is in dark mode, Yazi will use the content from `theme-base.toml` + `theme+dark.toml` as the default theme;
 # if it's in light mode, use `theme-base.toml` + `theme+light.toml` instead.
 # Users can always override and adjust the default theme in their own `theme.toml` configuration file.
 
@@ -36,8 +38,8 @@
   count_cut      = { fg = "#080A0E", bg = "#e55561" }
   count_selected = { fg = "#080A0E", bg = "#4fa6ed" }
   # Border
-  border_style  = { fg = "#3A3E47" }
-  border_symbol = "│"
+  border_style   = { fg = "#3A3E47" }
+  border_symbol  = "│"
 
   # : }}}
 
@@ -47,7 +49,7 @@
   current = { reversed = false, bg = "#26343F" }
   padding = { open = "", close = "" }
   parent  = { reversed = false, bg = "#26343F" }
-  preview = { underline = false, bg = "#26343F" }
+  preview = { bg = "reset", underline = false }
 
   # : }}}
 
@@ -71,8 +73,8 @@
   select_alt  = { fg = "#BCC4C9", bg = "#080A0E" }
   select_main = { fg = "#1A1D23", bg = "#CC83E3", bold = true }
   # Unset mode
-  unset_alt  = { fg = "#BCC4C9", bg = "#080A0E" }
-  unset_main = { fg = "#1A1D23", bg = "#e55561", bold = true }
+  unset_alt   = { fg = "#BCC4C9", bg = "#080A0E" }
+  unset_main  = { fg = "#1A1D23", bg = "#e55561", bold = true }
 
   # : }}}
 
@@ -108,13 +110,12 @@
   title    = { fg = "#4fa6ed" }
   value    = { fg = "#BCC4C9" }
 
-
   # : Confirm {{{
 
 [confirm]
   body       = {}
   border     = { fg = "blue" }
-  btn_labels = [ "  [Y]es  ", "  (N)o  " ]
+  btn_labels = ["  [Y]es  ", "  (N)o  "]
   btn_no     = {}
   btn_yes    = { reversed = true }
   list       = { fg = "blue" }
@@ -144,8 +145,8 @@
   separator_style = { fg = "#3A3E47" }
 
 [spot]
-  border = { fg = "#4fa6ed" }
-  title  = { fg = "#4fa6ed" }
+  border   = { fg = "#4fa6ed" }
+  title    = { fg = "#4fa6ed" }
   # Table
   tbl_cell = { fg = "#4fa6ed", reversed = true }
   tbl_col  = { fg = "#4fa6ed" }
@@ -156,9 +157,9 @@
   title_info  = { fg = "#4fa6ed" }
   title_warn  = { fg = "#e2b86b" }
   # Icons
-  icon_error = ""
-  icon_info  = ""
-  icon_warn  = ""
+  icon_error  = ""
+  icon_info   = ""
+  icon_warn   = ""
 
 # Help
 [help]

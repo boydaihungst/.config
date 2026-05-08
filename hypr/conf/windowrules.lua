@@ -436,6 +436,7 @@ local window_rules = {
   {
     match = { class = "(pinentry-|gcr-prompter)(.*)" },
     pin = true,
+    focus_on_activate = true,
     stay_focused = true,
   },
 }
@@ -446,11 +447,12 @@ local workspace_rules = {
   { workspace = "2", monitor = "DP-1" },
   { workspace = "3", monitor = "DP-1" },
   { workspace = "4", monitor = "DP-1" },
-  { workspace = "5", monitor = "DP-1" },
-  { workspace = "6", monitor = "DP-1" },
-  { workspace = "7", monitor = "DP-1" },
-  { workspace = "8", monitor = "DP-1" },
-  { workspace = "9", monitor = "DP-1" },
+
+  { workspace = "5", monitor = "DP-2", default = true },
+  { workspace = "6", monitor = "DP-2" },
+  { workspace = "7", monitor = "DP-2" },
+  { workspace = "8", monitor = "DP-2" },
+  { workspace = "9", monitor = "DP-2" },
   {
     workspace = "10",
     monitor = "HDMI-A-1",
