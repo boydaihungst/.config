@@ -115,7 +115,7 @@ on_event("BufRead~package.json", function()
 end)
 
 -- Extra command for vtsls
-later(function()
+now_if_args(function()
   Config.new_autocmd("LspAttach", nil, function(args)
     if assert(vim.lsp.get_client_by_id(args.data.client_id)).name == "vtsls" then
       add { "https://github.com/yioneko/nvim-vtsls" }

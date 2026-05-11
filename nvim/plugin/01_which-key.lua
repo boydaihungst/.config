@@ -1,4 +1,4 @@
-later(function()
+now_if_args(function()
   add { "https://github.com/folke/which-key.nvim" }
 
   local config = {

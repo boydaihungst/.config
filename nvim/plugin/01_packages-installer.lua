@@ -83,7 +83,7 @@ local ensure_installed_pkg = {
   vim.fn.executable "gh" == 0 and "gh" or nil,
 }
 
-later(function()
+now_if_args(function()
   vim.pack.on_packchanged("mason.nvim", { "install", "update" }, function() vim.cmd "MasonUpdate" end, ":MasonUpdate")
   add {
     "https://github.com/mason-org/mason.nvim",

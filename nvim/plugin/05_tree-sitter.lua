@@ -61,7 +61,7 @@ local ensure_installed_treesitter = {
   "dart",
 }
 
-later(function()
+now_if_args(function()
   -- Define hook to update tree-sitter parsers after plugin  updated
   vim.pack.on_packchanged("nvim-treesitter", { "update" }, function() vim.cmd "TSUpdate" end, ":TSUpdate")
 

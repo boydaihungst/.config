@@ -1,4 +1,4 @@
-later(function()
+now_if_args(function()
   add {
     "https://github.com/mason-org/mason.nvim",
     "https://github.com/jay-babu/mason-nvim-dap.nvim",

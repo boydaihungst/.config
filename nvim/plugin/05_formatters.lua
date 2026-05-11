@@ -51,7 +51,7 @@ local formatters_cfg = {
   },
 }
 
-later(function()
+now_if_args(function()
   add { "https://github.com/stevearc/conform.nvim" }
   local conform = require "conform"
   conform.setup(vim.tbl_deep_extend("force", {

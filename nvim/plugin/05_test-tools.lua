@@ -1,4 +1,4 @@
-later(function()
+now_if_args(function()
   vim.g.neotest_vstest = {
     build_opts = {
       -- Arguments that will be added to all `dotnet build` and `dotnet msbuild` commands

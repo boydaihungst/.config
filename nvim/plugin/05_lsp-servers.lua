@@ -7,7 +7,7 @@ local manually_start_lsp_servers = {
   "taplo", -- in favor of tombi
 }
 
-later(function()
+now_if_args(function()
   add {
     "https://github.com/mason-org/mason.nvim",
     "https://github.com/mason-org/mason-lspconfig.nvim",
