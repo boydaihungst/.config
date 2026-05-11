@@ -7,7 +7,7 @@ hl.monitor({
   bitdepth = 8,
   cm = "auto",
   vrr = 1,
-  -- icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G42ZE.icm",
+  icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G42ZE.icm",
 })
 
 hl.monitor({
@@ -16,14 +16,15 @@ hl.monitor({
   scale = 1,
   position = "0x0",
   bitdepth = 10,
-  cm = "hdr",
+  cm = "auto",
   vrr = 1,
   sdr_min_luminance = 0.005,
   sdr_max_luminance = 250,
   -- min_luminance = 0.005,
   -- max_luminance = 1000,
   -- max_avg_luminance = 450,
-  -- sdrsaturation = 1.15,
+  sdrsaturation = 1.15,
+  -- icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G4ZD.icm",
 })
 
 hl.monitor({

@@ -12,7 +12,7 @@
     "memory",
     "temperature",
     "mpd",
-    "hyprland/workspaces",
+    "ext/workspaces",
     "hyprland/submap",
   ],
   "modules-center": [
@@ -185,8 +185,9 @@
       "(.*) - Aegisub (.*)": "$1",
     },
   },
-  "hyprland/workspaces": {
+  "ext/workspaces": {
     "format": "{icon}",
+    "on-click": "activate",
     "format-icons": {
       "1": "",
       "2": "",
@@ -198,7 +199,8 @@
       "empty": "󰧨",
       "special": "󰐃",
       "default": "",
-    }
+    },
+    "sort-by-name": true
   },
   "hyprland/submap": {
     "format": "{}",

@@ -2,6 +2,8 @@
 {
   "layer": "top",
   "position": "top",
+  // Prevent waybar in sound bar
+  "output":  "!HDMI-A-1",
   // If height property would be not present, it'd be calculated dynamically
   "height": 34,
   "modules-left": [

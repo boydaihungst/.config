@@ -70,6 +70,9 @@ hl.on("hyprland.start", function()
   if check_cli_app("hypridle") then
     hl.exec_cmd("hypridle -q")
   end
+  if check_cli_app("go") then
+    hl.exec_cmd("~/.config/hypr/scripts/flydigi_bs2_pro_auto_fan_speed.sh > /dev/null 2>&1")
+  end
   -- Disale touchpad at startup if there is mouse connected
   hl.exec_cmd("~/.config/hypr/scripts/disable-touchpad-startup.sh")
   -- start xdg-portal

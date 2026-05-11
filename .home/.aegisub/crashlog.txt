@@ -112,3 +112,475 @@ FTL - Beginning stack dump for "Fatal exception":
 End of stack dump.
 ----------------------------------------
 
+--- 26-04-30 11:14:26 ------------------
+VER - 3.4.2
+FTL - Beginning stack dump for "Fatal exception": 
+000 - 0x557d3ffba0b0: 
+001 - 0x7f559dbf9506: 
+002 - 0x7f559c851a90: 
+003 - 0x557d400c2164: 
+004 - 0x557d400a9439: 
+005 - 0x7f559dc32c1b: wxEvtHandler::ProcessEventIfMatchesId(wxEventTableEntryBase const&, wxEvtHandler*, wxEvent&)
+006 - 0x7f559dc330d6: wxEvtHandler::SearchDynamicEventTable(wxEvent&)
+007 - 0x7f559dc33434: wxEvtHandler::TryHereOnly(wxEvent&)
+008 - 0x7f559dc334de: wxEvtHandler::ProcessEventLocally(wxEvent&)
+009 - 0x7f559dc33601: wxEvtHandler::ProcessEvent(wxEvent&)
+010 - 0x7f559dc347cb: wxEvtHandler::SafelyProcessEvent(wxEvent&)
+011 - 0x7f559e342580: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+012 - 0x7f559e342550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+013 - 0x7f559e342550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+014 - 0x7f559e342550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+015 - 0x7f559e194833: wxFrame::SendIdleEvents(wxIdleEvent&)
+016 - 0x7f559e1f987d: wxAppBase::ProcessIdle()
+017 - 0x7f559e0efaa2: wxApp::DoIdle()
+018 - 0x7f559e0efb77: 
+019 - 0x7f5599a89c70: 
+020 - 0x7f5599a8d087: 
+021 - 0x7f5599a8daef: g_main_loop_run
+022 - 0x7f559a1f733d: gtk_main
+023 - 0x7f559e110fb5: wxGUIEventLoop::DoRun()
+024 - 0x7f559dad1dc1: wxEventLoopBase::Run()
+025 - 0x7f559e18811e: wxDialog::ShowModal()
+026 - 0x7f559e391846: wxLogGui::Flush()
+027 - 0x7f559da919e7: wxAppConsoleBase::ProcessIdle()
+028 - 0x7f559e1f9805: wxAppBase::ProcessIdle()
+029 - 0x7f559e0efaa2: wxApp::DoIdle()
+030 - 0x7f559e0efb77: 
+031 - 0x7f5599a89c70: 
+032 - 0x7f5599a8d087: 
+033 - 0x7f5599a8daef: g_main_loop_run
+034 - 0x7f559a154864: gtk_dialog_run
+035 - 0x7f559e1a55fc: wxMessageDialog::ShowModal()
+036 - 0x7f559e0ce950: wxMessageBox(wxString const&, wxString const&, long, wxWindow*, int, int)
+037 - 0x7f559e1f9447: wxGUIAppTraitsBase::SafeMessageBox(wxString const&, wxString const&)
+038 - 0x7f559db2e7b0: wxSafeShowMessage(wxString const&, wxString const&)
+039 - 0x7f559ebb9d04: 
+040 - 0x7f559ebba0e8: wxGLCanvas::Create(wxWindow*, int, wxPoint const&, wxSize const&, long, wxString const&, int const*, wxPalette const&)
+041 - 0x7f559ebba209: wxGLCanvas::wxGLCanvas(wxWindow*, int, int const*, wxPoint const&, wxSize const&, long, wxString const&, wxPalette const&)
+042 - 0x557d400c2bf7: 
+043 - 0x557d400bb196: 
+044 - 0x557d3ff97714: 
+045 - 0x557d3ff9942a: 
+046 - 0x557d3ffb6122: 
+047 - 0x557d3ffb7e01: 
+048 - 0x7f559db236f2: wxEntry(int&, wchar_t**)
+049 - 0x557d3fd4038c: main
+050 - 0x7f559c83b1bb: 
+051 - 0x7f559c83b27b: __libc_start_main
+052 - 0x557d3fd48ec5: 
+End of stack dump.
+----------------------------------------
+
+--- 26-04-30 11:14:29 ------------------
+VER - 3.4.2
+FTL - Beginning stack dump for "Fatal exception": 
+000 - 0x5600e8e780b0: 
+001 - 0x7f0bb99f9506: 
+002 - 0x7f0bb8651a90: 
+003 - 0x5600e8f80164: 
+004 - 0x5600e8f67439: 
+005 - 0x7f0bb9a32c1b: wxEvtHandler::ProcessEventIfMatchesId(wxEventTableEntryBase const&, wxEvtHandler*, wxEvent&)
+006 - 0x7f0bb9a330d6: wxEvtHandler::SearchDynamicEventTable(wxEvent&)
+007 - 0x7f0bb9a33434: wxEvtHandler::TryHereOnly(wxEvent&)
+008 - 0x7f0bb9a334de: wxEvtHandler::ProcessEventLocally(wxEvent&)
+009 - 0x7f0bb9a33601: wxEvtHandler::ProcessEvent(wxEvent&)
+010 - 0x7f0bb9a347cb: wxEvtHandler::SafelyProcessEvent(wxEvent&)
+011 - 0x7f0bba142580: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+012 - 0x7f0bba142550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+013 - 0x7f0bba142550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+014 - 0x7f0bba142550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+015 - 0x7f0bb9f94833: wxFrame::SendIdleEvents(wxIdleEvent&)
+016 - 0x7f0bb9ff987d: wxAppBase::ProcessIdle()
+017 - 0x7f0bb9eefaa2: wxApp::DoIdle()
+018 - 0x7f0bb9eefb77: 
+019 - 0x7f0bb5889c70: 
+020 - 0x7f0bb588d087: 
+021 - 0x7f0bb588daef: g_main_loop_run
+022 - 0x7f0bb5ff733d: gtk_main
+023 - 0x7f0bb9f10fb5: wxGUIEventLoop::DoRun()
+024 - 0x7f0bb98d1dc1: wxEventLoopBase::Run()
+025 - 0x7f0bb9f8811e: wxDialog::ShowModal()
+026 - 0x7f0bba191846: wxLogGui::Flush()
+027 - 0x7f0bb98919e7: wxAppConsoleBase::ProcessIdle()
+028 - 0x7f0bb9ff9805: wxAppBase::ProcessIdle()
+029 - 0x7f0bb9eefaa2: wxApp::DoIdle()
+030 - 0x7f0bb9eefb77: 
+031 - 0x7f0bb5889c70: 
+032 - 0x7f0bb588d087: 
+033 - 0x7f0bb588daef: g_main_loop_run
+034 - 0x7f0bb5f54864: gtk_dialog_run
+035 - 0x7f0bb9fa55fc: wxMessageDialog::ShowModal()
+036 - 0x7f0bb9ece950: wxMessageBox(wxString const&, wxString const&, long, wxWindow*, int, int)
+037 - 0x7f0bb9ff9447: wxGUIAppTraitsBase::SafeMessageBox(wxString const&, wxString const&)
+038 - 0x7f0bb992e7b0: wxSafeShowMessage(wxString const&, wxString const&)
+039 - 0x7f0bbaa24d04: 
+040 - 0x7f0bbaa250e8: wxGLCanvas::Create(wxWindow*, int, wxPoint const&, wxSize const&, long, wxString const&, int const*, wxPalette const&)
+041 - 0x7f0bbaa25209: wxGLCanvas::wxGLCanvas(wxWindow*, int, int const*, wxPoint const&, wxSize const&, long, wxString const&, wxPalette const&)
+042 - 0x5600e8f80bf7: 
+043 - 0x5600e8f79196: 
+044 - 0x5600e8e55714: 
+045 - 0x5600e8e5742a: 
+046 - 0x5600e8e74122: 
+047 - 0x5600e8e75e01: 
+048 - 0x7f0bb99236f2: wxEntry(int&, wchar_t**)
+049 - 0x5600e8bfe38c: main
+050 - 0x7f0bb863b1bb: 
+051 - 0x7f0bb863b27b: __libc_start_main
+052 - 0x5600e8c06ec5: 
+End of stack dump.
+----------------------------------------
+
+--- 26-04-30 11:14:31 ------------------
+VER - 3.4.2
+FTL - Beginning stack dump for "Fatal exception": 
+000 - 0x55dc27c710b0: 
+001 - 0x7fe46b3f9506: 
+002 - 0x7fe46a051a90: 
+003 - 0x55dc27d79164: 
+004 - 0x55dc27d60439: 
+005 - 0x7fe46b432c1b: wxEvtHandler::ProcessEventIfMatchesId(wxEventTableEntryBase const&, wxEvtHandler*, wxEvent&)
+006 - 0x7fe46b4330d6: wxEvtHandler::SearchDynamicEventTable(wxEvent&)
+007 - 0x7fe46b433434: wxEvtHandler::TryHereOnly(wxEvent&)
+008 - 0x7fe46b4334de: wxEvtHandler::ProcessEventLocally(wxEvent&)
+009 - 0x7fe46b433601: wxEvtHandler::ProcessEvent(wxEvent&)
+010 - 0x7fe46b4347cb: wxEvtHandler::SafelyProcessEvent(wxEvent&)
+011 - 0x7fe46bb42580: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+012 - 0x7fe46bb42550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+013 - 0x7fe46bb42550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+014 - 0x7fe46bb42550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+015 - 0x7fe46b994833: wxFrame::SendIdleEvents(wxIdleEvent&)
+016 - 0x7fe46b9f987d: wxAppBase::ProcessIdle()
+017 - 0x7fe46b8efaa2: wxApp::DoIdle()
+018 - 0x7fe46b8efb77: 
+019 - 0x7fe467289c70: 
+020 - 0x7fe46728d087: 
+021 - 0x7fe46728daef: g_main_loop_run
+022 - 0x7fe4679f733d: gtk_main
+023 - 0x7fe46b910fb5: wxGUIEventLoop::DoRun()
+024 - 0x7fe46b2d1dc1: wxEventLoopBase::Run()
+025 - 0x7fe46b98811e: wxDialog::ShowModal()
+026 - 0x7fe46bb91846: wxLogGui::Flush()
+027 - 0x7fe46b2919e7: wxAppConsoleBase::ProcessIdle()
+028 - 0x7fe46b9f9805: wxAppBase::ProcessIdle()
+029 - 0x7fe46b8efaa2: wxApp::DoIdle()
+030 - 0x7fe46b8efb77: 
+031 - 0x7fe467289c70: 
+032 - 0x7fe46728d087: 
+033 - 0x7fe46728daef: g_main_loop_run
+034 - 0x7fe467954864: gtk_dialog_run
+035 - 0x7fe46b9a55fc: wxMessageDialog::ShowModal()
+036 - 0x7fe46b8ce950: wxMessageBox(wxString const&, wxString const&, long, wxWindow*, int, int)
+037 - 0x7fe46b9f9447: wxGUIAppTraitsBase::SafeMessageBox(wxString const&, wxString const&)
+038 - 0x7fe46b32e7b0: wxSafeShowMessage(wxString const&, wxString const&)
+039 - 0x7fe46c3fad04: 
+040 - 0x7fe46c3fb0e8: wxGLCanvas::Create(wxWindow*, int, wxPoint const&, wxSize const&, long, wxString const&, int const*, wxPalette const&)
+041 - 0x7fe46c3fb209: wxGLCanvas::wxGLCanvas(wxWindow*, int, int const*, wxPoint const&, wxSize const&, long, wxString const&, wxPalette const&)
+042 - 0x55dc27d79bf7: 
+043 - 0x55dc27d72196: 
+044 - 0x55dc27c4e714: 
+045 - 0x55dc27c5042a: 
+046 - 0x55dc27c6d122: 
+047 - 0x55dc27c6ee01: 
+048 - 0x7fe46b3236f2: wxEntry(int&, wchar_t**)
+049 - 0x55dc279f738c: main
+050 - 0x7fe46a03b1bb: 
+051 - 0x7fe46a03b27b: __libc_start_main
+052 - 0x55dc279ffec5: 
+End of stack dump.
+----------------------------------------
+
+--- 26-04-30 11:14:33 ------------------
+VER - 3.4.2
+FTL - Beginning stack dump for "Fatal exception": 
+000 - 0x55ddd35910b0: 
+001 - 0x7f65f29f9506: 
+002 - 0x7f65f1651a90: 
+003 - 0x55ddd3699164: 
+004 - 0x55ddd3680439: 
+005 - 0x7f65f2a32c1b: wxEvtHandler::ProcessEventIfMatchesId(wxEventTableEntryBase const&, wxEvtHandler*, wxEvent&)
+006 - 0x7f65f2a330d6: wxEvtHandler::SearchDynamicEventTable(wxEvent&)
+007 - 0x7f65f2a33434: wxEvtHandler::TryHereOnly(wxEvent&)
+008 - 0x7f65f2a334de: wxEvtHandler::ProcessEventLocally(wxEvent&)
+009 - 0x7f65f2a33601: wxEvtHandler::ProcessEvent(wxEvent&)
+010 - 0x7f65f2a347cb: wxEvtHandler::SafelyProcessEvent(wxEvent&)
+011 - 0x7f65f3142580: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+012 - 0x7f65f3142550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+013 - 0x7f65f3142550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+014 - 0x7f65f3142550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+015 - 0x7f65f2f94833: wxFrame::SendIdleEvents(wxIdleEvent&)
+016 - 0x7f65f2ff987d: wxAppBase::ProcessIdle()
+017 - 0x7f65f2eefaa2: wxApp::DoIdle()
+018 - 0x7f65f2eefb77: 
+019 - 0x7f65ee889c70: 
+020 - 0x7f65ee88d087: 
+021 - 0x7f65ee88daef: g_main_loop_run
+022 - 0x7f65eeff733d: gtk_main
+023 - 0x7f65f2f10fb5: wxGUIEventLoop::DoRun()
+024 - 0x7f65f28d1dc1: wxEventLoopBase::Run()
+025 - 0x7f65f2f8811e: wxDialog::ShowModal()
+026 - 0x7f65f3191846: wxLogGui::Flush()
+027 - 0x7f65f28919e7: wxAppConsoleBase::ProcessIdle()
+028 - 0x7f65f2ff9805: wxAppBase::ProcessIdle()
+029 - 0x7f65f2eefaa2: wxApp::DoIdle()
+030 - 0x7f65f2eefb77: 
+031 - 0x7f65ee889c70: 
+032 - 0x7f65ee88d087: 
+033 - 0x7f65ee88daef: g_main_loop_run
+034 - 0x7f65eef54864: gtk_dialog_run
+035 - 0x7f65f2fa55fc: wxMessageDialog::ShowModal()
+036 - 0x7f65f2ece950: wxMessageBox(wxString const&, wxString const&, long, wxWindow*, int, int)
+037 - 0x7f65f2ff9447: wxGUIAppTraitsBase::SafeMessageBox(wxString const&, wxString const&)
+038 - 0x7f65f292e7b0: wxSafeShowMessage(wxString const&, wxString const&)
+039 - 0x7f65f39d3d04: 
+040 - 0x7f65f39d40e8: wxGLCanvas::Create(wxWindow*, int, wxPoint const&, wxSize const&, long, wxString const&, int const*, wxPalette const&)
+041 - 0x7f65f39d4209: wxGLCanvas::wxGLCanvas(wxWindow*, int, int const*, wxPoint const&, wxSize const&, long, wxString const&, wxPalette const&)
+042 - 0x55ddd3699bf7: 
+043 - 0x55ddd3692196: 
+044 - 0x55ddd356e714: 
+045 - 0x55ddd357042a: 
+046 - 0x55ddd358d122: 
+047 - 0x55ddd358ee01: 
+048 - 0x7f65f29236f2: wxEntry(int&, wchar_t**)
+049 - 0x55ddd331738c: main
+050 - 0x7f65f163b1bb: 
+051 - 0x7f65f163b27b: __libc_start_main
+052 - 0x55ddd331fec5: 
+End of stack dump.
+----------------------------------------
+
+--- 26-04-30 11:14:36 ------------------
+VER - 3.4.2
+FTL - Beginning stack dump for "Fatal exception": 
+000 - 0x55b2239a10b0: 
+001 - 0x7fb0765f9506: 
+002 - 0x7fb075251a90: 
+003 - 0x55b223aa9164: 
+004 - 0x55b223a90439: 
+005 - 0x7fb076632c1b: wxEvtHandler::ProcessEventIfMatchesId(wxEventTableEntryBase const&, wxEvtHandler*, wxEvent&)
+006 - 0x7fb0766330d6: wxEvtHandler::SearchDynamicEventTable(wxEvent&)
+007 - 0x7fb076633434: wxEvtHandler::TryHereOnly(wxEvent&)
+008 - 0x7fb0766334de: wxEvtHandler::ProcessEventLocally(wxEvent&)
+009 - 0x7fb076633601: wxEvtHandler::ProcessEvent(wxEvent&)
+010 - 0x7fb0766347cb: wxEvtHandler::SafelyProcessEvent(wxEvent&)
+011 - 0x7fb076d42580: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+012 - 0x7fb076d42550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+013 - 0x7fb076d42550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+014 - 0x7fb076d42550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+015 - 0x7fb076b94833: wxFrame::SendIdleEvents(wxIdleEvent&)
+016 - 0x7fb076bf987d: wxAppBase::ProcessIdle()
+017 - 0x7fb076aefaa2: wxApp::DoIdle()
+018 - 0x7fb076aefb77: 
+019 - 0x7fb0723d0c70: 
+020 - 0x7fb0723d4087: 
+021 - 0x7fb0723d4aef: g_main_loop_run
+022 - 0x7fb0729f733d: gtk_main
+023 - 0x7fb076b10fb5: wxGUIEventLoop::DoRun()
+024 - 0x7fb0764d1dc1: wxEventLoopBase::Run()
+025 - 0x7fb076b8811e: wxDialog::ShowModal()
+026 - 0x7fb076d91846: wxLogGui::Flush()
+027 - 0x7fb0764919e7: wxAppConsoleBase::ProcessIdle()
+028 - 0x7fb076bf9805: wxAppBase::ProcessIdle()
+029 - 0x7fb076aefaa2: wxApp::DoIdle()
+030 - 0x7fb076aefb77: 
+031 - 0x7fb0723d0c70: 
+032 - 0x7fb0723d4087: 
+033 - 0x7fb0723d4aef: g_main_loop_run
+034 - 0x7fb072954864: gtk_dialog_run
+035 - 0x7fb076ba55fc: wxMessageDialog::ShowModal()
+036 - 0x7fb076ace950: wxMessageBox(wxString const&, wxString const&, long, wxWindow*, int, int)
+037 - 0x7fb076bf9447: wxGUIAppTraitsBase::SafeMessageBox(wxString const&, wxString const&)
+038 - 0x7fb07652e7b0: wxSafeShowMessage(wxString const&, wxString const&)
+039 - 0x7fb0771f7d04: 
+040 - 0x7fb0771f80e8: wxGLCanvas::Create(wxWindow*, int, wxPoint const&, wxSize const&, long, wxString const&, int const*, wxPalette const&)
+041 - 0x7fb0771f8209: wxGLCanvas::wxGLCanvas(wxWindow*, int, int const*, wxPoint const&, wxSize const&, long, wxString const&, wxPalette const&)
+042 - 0x55b223aa9bf7: 
+043 - 0x55b223aa2196: 
+044 - 0x55b22397e714: 
+045 - 0x55b22398042a: 
+046 - 0x55b22399d122: 
+047 - 0x55b22399ee01: 
+048 - 0x7fb0765236f2: wxEntry(int&, wchar_t**)
+049 - 0x55b22372738c: main
+050 - 0x7fb07523b1bb: 
+051 - 0x7fb07523b27b: __libc_start_main
+052 - 0x55b22372fec5: 
+End of stack dump.
+----------------------------------------
+
+--- 26-04-30 11:14:38 ------------------
+VER - 3.4.2
+FTL - Beginning stack dump for "Fatal exception": 
+000 - 0x5594476730b0: 
+001 - 0x7feecc7f9506: 
+002 - 0x7feecb451a90: 
+003 - 0x55944777b164: 
+004 - 0x559447762439: 
+005 - 0x7feecc832c1b: wxEvtHandler::ProcessEventIfMatchesId(wxEventTableEntryBase const&, wxEvtHandler*, wxEvent&)
+006 - 0x7feecc8330d6: wxEvtHandler::SearchDynamicEventTable(wxEvent&)
+007 - 0x7feecc833434: wxEvtHandler::TryHereOnly(wxEvent&)
+008 - 0x7feecc8334de: wxEvtHandler::ProcessEventLocally(wxEvent&)
+009 - 0x7feecc833601: wxEvtHandler::ProcessEvent(wxEvent&)
+010 - 0x7feecc8347cb: wxEvtHandler::SafelyProcessEvent(wxEvent&)
+011 - 0x7feeccf42580: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+012 - 0x7feeccf42550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+013 - 0x7feeccf42550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+014 - 0x7feeccf42550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+015 - 0x7feeccd94833: wxFrame::SendIdleEvents(wxIdleEvent&)
+016 - 0x7feeccdf987d: wxAppBase::ProcessIdle()
+017 - 0x7feecccefaa2: wxApp::DoIdle()
+018 - 0x7feecccefb77: 
+019 - 0x7feec8689c70: 
+020 - 0x7feec868d087: 
+021 - 0x7feec868daef: g_main_loop_run
+022 - 0x7feec8df733d: gtk_main
+023 - 0x7feeccd10fb5: wxGUIEventLoop::DoRun()
+024 - 0x7feecc6d1dc1: wxEventLoopBase::Run()
+025 - 0x7feeccd8811e: wxDialog::ShowModal()
+026 - 0x7feeccf91846: wxLogGui::Flush()
+027 - 0x7feecc6919e7: wxAppConsoleBase::ProcessIdle()
+028 - 0x7feeccdf9805: wxAppBase::ProcessIdle()
+029 - 0x7feecccefaa2: wxApp::DoIdle()
+030 - 0x7feecccefb77: 
+031 - 0x7feec8689c70: 
+032 - 0x7feec868d087: 
+033 - 0x7feec868daef: g_main_loop_run
+034 - 0x7feec8d54864: gtk_dialog_run
+035 - 0x7feeccda55fc: wxMessageDialog::ShowModal()
+036 - 0x7feecccce950: wxMessageBox(wxString const&, wxString const&, long, wxWindow*, int, int)
+037 - 0x7feeccdf9447: wxGUIAppTraitsBase::SafeMessageBox(wxString const&, wxString const&)
+038 - 0x7feecc72e7b0: wxSafeShowMessage(wxString const&, wxString const&)
+039 - 0x7feecd8e1d04: 
+040 - 0x7feecd8e20e8: wxGLCanvas::Create(wxWindow*, int, wxPoint const&, wxSize const&, long, wxString const&, int const*, wxPalette const&)
+041 - 0x7feecd8e2209: wxGLCanvas::wxGLCanvas(wxWindow*, int, int const*, wxPoint const&, wxSize const&, long, wxString const&, wxPalette const&)
+042 - 0x55944777bbf7: 
+043 - 0x559447774196: 
+044 - 0x559447650714: 
+045 - 0x55944765242a: 
+046 - 0x55944766f122: 
+047 - 0x559447670e01: 
+048 - 0x7feecc7236f2: wxEntry(int&, wchar_t**)
+049 - 0x5594473f938c: main
+050 - 0x7feecb43b1bb: 
+051 - 0x7feecb43b27b: __libc_start_main
+052 - 0x559447401ec5: 
+End of stack dump.
+----------------------------------------
+
+--- 26-04-30 11:14:39 ------------------
+VER - 3.4.2
+FTL - Beginning stack dump for "Fatal exception": 
+000 - 0x55a2b62830b0: 
+001 - 0x7ff06e1f9506: 
+002 - 0x7ff06ce51a90: 
+003 - 0x55a2b638b164: 
+004 - 0x55a2b6372439: 
+005 - 0x7ff06e232c1b: wxEvtHandler::ProcessEventIfMatchesId(wxEventTableEntryBase const&, wxEvtHandler*, wxEvent&)
+006 - 0x7ff06e2330d6: wxEvtHandler::SearchDynamicEventTable(wxEvent&)
+007 - 0x7ff06e233434: wxEvtHandler::TryHereOnly(wxEvent&)
+008 - 0x7ff06e2334de: wxEvtHandler::ProcessEventLocally(wxEvent&)
+009 - 0x7ff06e233601: wxEvtHandler::ProcessEvent(wxEvent&)
+010 - 0x7ff06e2347cb: wxEvtHandler::SafelyProcessEvent(wxEvent&)
+011 - 0x7ff06e942580: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+012 - 0x7ff06e942550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+013 - 0x7ff06e942550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+014 - 0x7ff06e942550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+015 - 0x7ff06e794833: wxFrame::SendIdleEvents(wxIdleEvent&)
+016 - 0x7ff06e7f987d: wxAppBase::ProcessIdle()
+017 - 0x7ff06e6efaa2: wxApp::DoIdle()
+018 - 0x7ff06e6efb77: 
+019 - 0x7ff069fd0c70: 
+020 - 0x7ff069fd4087: 
+021 - 0x7ff069fd4aef: g_main_loop_run
+022 - 0x7ff06a5f733d: gtk_main
+023 - 0x7ff06e710fb5: wxGUIEventLoop::DoRun()
+024 - 0x7ff06e0d1dc1: wxEventLoopBase::Run()
+025 - 0x7ff06e78811e: wxDialog::ShowModal()
+026 - 0x7ff06e991846: wxLogGui::Flush()
+027 - 0x7ff06e0919e7: wxAppConsoleBase::ProcessIdle()
+028 - 0x7ff06e7f9805: wxAppBase::ProcessIdle()
+029 - 0x7ff06e6efaa2: wxApp::DoIdle()
+030 - 0x7ff06e6efb77: 
+031 - 0x7ff069fd0c70: 
+032 - 0x7ff069fd4087: 
+033 - 0x7ff069fd4aef: g_main_loop_run
+034 - 0x7ff06a554864: gtk_dialog_run
+035 - 0x7ff06e7a55fc: wxMessageDialog::ShowModal()
+036 - 0x7ff06e6ce950: wxMessageBox(wxString const&, wxString const&, long, wxWindow*, int, int)
+037 - 0x7ff06e7f9447: wxGUIAppTraitsBase::SafeMessageBox(wxString const&, wxString const&)
+038 - 0x7ff06e12e7b0: wxSafeShowMessage(wxString const&, wxString const&)
+039 - 0x7ff06f17bd04: 
+040 - 0x7ff06f17c0e8: wxGLCanvas::Create(wxWindow*, int, wxPoint const&, wxSize const&, long, wxString const&, int const*, wxPalette const&)
+041 - 0x7ff06f17c209: wxGLCanvas::wxGLCanvas(wxWindow*, int, int const*, wxPoint const&, wxSize const&, long, wxString const&, wxPalette const&)
+042 - 0x55a2b638bbf7: 
+043 - 0x55a2b6384196: 
+044 - 0x55a2b6260714: 
+045 - 0x55a2b626242a: 
+046 - 0x55a2b627f122: 
+047 - 0x55a2b6280e01: 
+048 - 0x7ff06e1236f2: wxEntry(int&, wchar_t**)
+049 - 0x55a2b600938c: main
+050 - 0x7ff06ce3b1bb: 
+051 - 0x7ff06ce3b27b: __libc_start_main
+052 - 0x55a2b6011ec5: 
+End of stack dump.
+----------------------------------------
+
+--- 26-04-30 15:47:30 ------------------
+VER - 9844-feature-9bfd5008d
+FTL - Beginning stack dump for "Fatal exception": 
+000 - 0x55798db0b70b: 
+001 - 0x7faaf9df9506: 
+002 - 0x7faaf8651a90: 
+003 - 0x55798dc33664: 
+004 - 0x55798dc19b19: 
+005 - 0x7faaf9e32c1b: wxEvtHandler::ProcessEventIfMatchesId(wxEventTableEntryBase const&, wxEvtHandler*, wxEvent&)
+006 - 0x7faaf9e330d6: wxEvtHandler::SearchDynamicEventTable(wxEvent&)
+007 - 0x7faaf9e33434: wxEvtHandler::TryHereOnly(wxEvent&)
+008 - 0x7faaf9e334de: wxEvtHandler::ProcessEventLocally(wxEvent&)
+009 - 0x7faaf9e33601: wxEvtHandler::ProcessEvent(wxEvent&)
+010 - 0x7faaf9e347cb: wxEvtHandler::SafelyProcessEvent(wxEvent&)
+011 - 0x7faafa542580: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+012 - 0x7faafa542550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+013 - 0x7faafa542550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+014 - 0x7faafa542550: wxWindowBase::SendIdleEvents(wxIdleEvent&)
+015 - 0x7faafa394833: wxFrame::SendIdleEvents(wxIdleEvent&)
+016 - 0x7faafa3f987d: wxAppBase::ProcessIdle()
+017 - 0x7faafa2efaa2: wxApp::DoIdle()
+018 - 0x7faafa2efb77: 
+019 - 0x7faaf5889c70: 
+020 - 0x7faaf588d087: 
+021 - 0x7faaf588daef: g_main_loop_run
+022 - 0x7faaf5ff733d: gtk_main
+023 - 0x7faafa310fb5: wxGUIEventLoop::DoRun()
+024 - 0x7faaf9cd1dc1: wxEventLoopBase::Run()
+025 - 0x7faafa38811e: wxDialog::ShowModal()
+026 - 0x7faafa591846: wxLogGui::Flush()
+027 - 0x7faaf9c919e7: wxAppConsoleBase::ProcessIdle()
+028 - 0x7faafa3f9805: wxAppBase::ProcessIdle()
+029 - 0x7faafa2efaa2: wxApp::DoIdle()
+030 - 0x7faafa2efb77: 
+031 - 0x7faaf5889c70: 
+032 - 0x7faaf588d087: 
+033 - 0x7faaf588daef: g_main_loop_run
+034 - 0x7faaf5f54864: gtk_dialog_run
+035 - 0x7faafa3a55fc: wxMessageDialog::ShowModal()
+036 - 0x7faafa2ce950: wxMessageBox(wxString const&, wxString const&, long, wxWindow*, int, int)
+037 - 0x7faafa3f9447: wxGUIAppTraitsBase::SafeMessageBox(wxString const&, wxString const&)
+038 - 0x7faaf9d2e7b0: wxSafeShowMessage(wxString const&, wxString const&)
+039 - 0x7faafad89d04: 
+040 - 0x7faafad8a0e8: wxGLCanvas::Create(wxWindow*, int, wxPoint const&, wxSize const&, long, wxString const&, int const*, wxPalette const&)
+041 - 0x7faafad8a209: wxGLCanvas::wxGLCanvas(wxWindow*, int, int const*, wxPoint const&, wxSize const&, long, wxString const&, wxPalette const&)
+042 - 0x55798dc348ad: 
+043 - 0x55798dc2da78: 
+044 - 0x55798dae5801: 
+045 - 0x55798dae7d51: 
+046 - 0x55798db08f22: 
+047 - 0x55798db0cf77: 
+048 - 0x7faaf9d236f2: wxEntry(int&, wchar_t**)
+049 - 0x55798d821c7c: main
+050 - 0x7faaf863b1bb: 
+051 - 0x7faaf863b27b: __libc_start_main
+052 - 0x55798d823985: 
+End of stack dump.
+----------------------------------------
+

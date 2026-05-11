@@ -673,6 +673,8 @@ now_if_args(function()
   local hide_by_pattern = { "%.git/" }
   local search_pattern = ""
 
+  local trash_info_dir = vim.fs.joinpath(vim.fn.stdpath "data", "mini.files", "trash_info")
+  local trash_dir = vim.fs.joinpath(vim.fn.stdpath "data", "mini.files", "trash")
   -- local always_show = { '.env', '__pycache__' }
   -- local always_show_by_pattern = { '%.env.*' }
   -- Never show, even if show_hidden = true
@@ -849,6 +851,56 @@ now_if_args(function()
   end
   -- Open path with system default handler (useful for non-text files)
   local ui_open = function() vim.ui.open(MiniFiles.get_fs_entry().path) end
+
+  local clear_trash_bin = function()
+    vim.fs.rm(trash_info_dir, { force = true, recursive = true })
+    vim.fs.rm(trash_dir, { force = true, recursive = true })
+    vim.fn.mkdir(trash_info_dir, "p")
+    vim.fn.mkdir(trash_dir, "p")
+    vim.notify "Cleared trash bin"
+    MiniFiles.refresh { content = { force = true } }
+  end
+  local restore_trashed_item = function()
+    local cur_hovered_path = (MiniFiles.get_fs_entry() or {}).path
+    if not cur_hovered_path then return end
+    if not vim.fs.relpath(trash_dir, cur_hovered_path) then return end
+    local list_restore_files = {}
+    if vim.fn.mode() ~= "V" then
+      list_restore_files = { cur_hovered_path }
+    else
+      -- Schedule actions because they are not allowed inside expression mapping
+      local line_1, line_2 = vim.fn.line "v", vim.fn.line "."
+      local from_line, to_line = math.min(line_1, line_2), math.max(line_1, line_2)
+      local current_buf = vim.api.nvim_get_current_buf()
+      for i = from_line, to_line, 1 do
+        local path = (MiniFiles.get_fs_entry(current_buf, i) or {}).path
+        if path then table.insert(list_restore_files, path) end
+      end
+    end
+
+    local file_mover = require "file-mover"
+    local count_restored_items = 0
+    for _, file in ipairs(list_restore_files) do
+      if file and vim.loop.fs_stat(file) == nil then goto continue end
+      local f_info_path = vim.fs.joinpath(trash_info_dir, vim.fs.basename(file))
+      local f_info_data = vim.fn.readfile(f_info_path, "", 1)
+      local orig_path = f_info_data and #f_info_data > 0 and f_info_data[1] or nil
+      if orig_path and vim.loop.fs_stat(orig_path) ~= nil then
+        local confirm_res =
+          vim.fn.confirm("Overwrite existed files/folders?\n" .. orig_path, "&Yes\n&No\n&Cancel", 1, "Question")
+        if confirm_res == 3 then return false end
+      end
+      file_mover.move_sync(file, orig_path, true)
+      if vim.loop.fs_stat(f_info_path) then vim.fs.rm(f_info_path, { force = true }) end
+      count_restored_items = count_restored_items + 1
+      ::continue::
+    end
+    if count_restored_items > 0 then
+      vim.notify("Restored " .. count_restored_items .. " items")
+      MiniFiles.refresh { content = { force = true } }
+    end
+  end
+
   -- Add common bookmarks for every explorer. Example usage inside explorer:
   -- - `'c` to navigate into your config directory
   -- - `g?` to see available bookmarks
@@ -857,20 +909,43 @@ now_if_args(function()
     local function setbookmark(key, path, desc)
       local p = path
       if vim.is_callable(path) then p = path() end
-      if vim.uv.fs_stat(p) then MiniFiles.set_bookmark(key, p, { desc }) end
+      if vim.uv.fs_stat(p) then MiniFiles.set_bookmark(key, p, vim.as_table(desc)) end
     end
     setbookmark("c", vim.fn.stdpath "config", { desc = "~/.config" })
     local vimpack_plugins = vim.fs.joinpath(vim.fn.stdpath "data", "site", "pack", "core", "opt")
     setbookmark("p", vimpack_plugins, { desc = "Nvim Plugins" })
     setbookmark("w", vim.fn.getcwd, { desc = "CWD" })
-    setbookmark("l", vim.fs.joinpath(home, ".local", "share"), { desc = "~/.local/share/" })
-    setbookmark("h", home, { desc = "~/" })
+    setbookmark("l", vim.fs.joinpath(home, ".local", "share"), { desc = "~/.local/share" })
+    setbookmark("h", home, { desc = "~" })
     setbookmark("g", vim.fs.joinpath(home, "git"), { desc = "~/git/" })
+    setbookmark("t", vim.fs.joinpath(vim.fn.stdpath "data", "mini.files", "trash"), { desc = "Trash folder" })
+    setbookmark("r", "/", { desc = "Root" })
   end
 
   -- ╭─────────────────────────────────────────────────────────╮
   -- │                   Autocmd mini.files                    │
   -- ╰─────────────────────────────────────────────────────────╯
+
+  Config.new_autocmd("User", "MiniFilesActionDelete", function(args)
+    vim.schedule(function() vim.notify("Deleted: " .. args.data.from) end)
+    -- Auto close deleted buffers under deleted path
+    local closed_buffers = vim.api.nvim_get_buffers_rel_path(args.data.from)
+    if #closed_buffers > 0 then
+      for _, closed_buf in ipairs(closed_buffers) do
+        Config.close_buffer(closed_buf, true)
+      end
+    end
+    vim.fn.mkdir(trash_info_dir, "p")
+
+    if args.data.to then
+      local f_info_path = vim.fs.joinpath(trash_info_dir, vim.fs.basename(args.data.to))
+      if vim.fs.relpath(trash_info_dir, args.data.from) then
+        vim.fs.rm(args.data.to, { force = true })
+      else
+        vim.fn.writefile({ tostring(args.data.from) }, f_info_path, "s")
+      end
+    end
+  end, "Hook on file/folder deleted")
 
   Config.new_autocmd("User", "MiniFilesExplorerOpen", function()
     local minifiles_group = vim.api.nvim_create_augroup("minifiles-custom-group", { clear = true })
@@ -938,6 +1013,13 @@ now_if_args(function()
     vim.keymap.set("n", "<F3>", toggle_dim, { buf = buf_id, desc = "Toggle dim" })
     vim.keymap.set("n", ".", set_cwd, { buf = buf_id, desc = "Set cwd" })
     vim.keymap.set("n", "gx", ui_open, { buf = buf_id, desc = "OS open" })
+    vim.keymap.set(
+      { "n", "o" },
+      "du",
+      restore_trashed_item,
+      { buf = buf_id, desc = "Restore hovered items (in trash folder)" }
+    )
+    vim.keymap.set({ "n", "o" }, "dc", clear_trash_bin, { buf = buf_id, desc = "Clear trash folder" })
     vim.keymap.set("n", "yp", yank_path, { buf = buf_id, desc = "Yank path" })
     vim.keymap.set("n", "yn", yank_basename, { buf = buf_id, desc = "Yank name" })
     vim.keymap.set("n", "<M-h>", "<Left>", { buf = buf_id })
@@ -985,7 +1067,8 @@ now_if_args(function()
   require("mini.files").setup {
     options = {
       use_as_default_explorer = true,
-      permanant_delete = false,
+      permanent_delete = false, -- path of trash folder: vim.fn.stdpath('data') .. 'mini.files/trash'
+      lsp_timeout = 3000,
     },
     windows = {
       max_number = 3,

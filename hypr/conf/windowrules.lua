@@ -304,6 +304,14 @@ local window_rules = {
   },
   {
     float = true,
+    move = "(1000) (800)",
+    match = {
+      class = "^aegisub$",
+      title = "^Automation Manager$",
+    },
+  },
+  {
+    float = true,
     match = {
       class = "^aegisub$",
       title = "^Open subtitles file|Automation Manager|Preferences$",
