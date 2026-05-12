@@ -50,10 +50,10 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("dex -a")
   end
   -- keyring
-  if check_cli_app("gnome-keyring-daemon") then
-    hl.exec_cmd("export $(gnome-keyring-daemon)")
-    hl.exec_cmd("gnome-keyring-daemon --start --components=secrets")
-  end
+  -- if check_cli_app("gnome-keyring-daemon") then
+  --   hl.exec_cmd("export $(gnome-keyring-daemon)")
+  --   hl.exec_cmd("gnome-keyring-daemon --start --components=secrets")
+  -- end
   -- open file manager and hover corect file from browser
   if check_cli_app("/usr/local/libexec/file_manager_dbus") then
     hl.exec_cmd("/usr/local/libexec/file_manager_dbus")
@@ -80,7 +80,8 @@ hl.on("hyprland.start", function()
   -- watch laptop battery and show notification when battery is low. hibernate if battery is critical
   hl.exec_cmd("~/.config/sway/scripts/battery-watch.sh")
   -- Start gpg-agent which is also use as ssh-agent
-  hl.exec_cmd("gpg-connect-agent reloadagent /bye")
+  hl.exec_cmd("gpgconf --launch gpg-agent")
+  hl.exec_cmd("export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)")
 end)
 
 -- exec-once = waypaper-engine daemon

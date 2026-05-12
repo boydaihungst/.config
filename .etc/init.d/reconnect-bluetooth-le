@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+
+description="Runs a command once after Bluetooth is ready"
+command="/home/huyhoang/.config/hypr/scripts/reconnect_bluetooth_le.sh"
+command_user="huyhoang"
+
+# This is the key: it tells OpenRC not to expect a long-running process
+# and to treat the exit of the script as a successful start.
+type="oneshot"
+
+depend() {
+    # Tells OpenRC to start after bluetooth and D-Bus
+    after bluetooth dbus
+    # Optional: this service needs dbus to run
+	need dbus localmount hostname
+}
+start() {
+    ebegin "Reconnecting Bluetooth LE device"
+    # Execute the command
+    $command
+    eend $?
+}

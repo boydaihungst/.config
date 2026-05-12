@@ -92,7 +92,7 @@ local window_rules = {
   {
     workspace = "6",
     match = {
-      class = "^(calibre-ebook-viewer|calibre)$",
+      class = "^(calibre-ebook-viewer|calibre|calibre-gui)$",
     },
   },
   {

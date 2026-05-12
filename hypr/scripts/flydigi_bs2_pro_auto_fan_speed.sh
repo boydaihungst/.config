@@ -6,7 +6,6 @@
 CHECK_INTERVAL=10 # How often to check temperatures (in seconds)
 CURRENT_GEAR=-1   # Initialize to -1 so it forces a run on startup
 
-SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 # ==========================================
 # Functions to fetch temperatures
 # ==========================================
@@ -65,8 +64,9 @@ apply_gear() {
   # Only execute if the gear is actually changing
   if [[ "$CURRENT_GEAR" != "$target_gear" ]]; then
     echo "$(date '+%H:%M:%S') | Temp: ${current_max_temp}°C | Shifting to gear ${target_gear}..."
+    pushd "/home/huyhoang/.config/hypr/scripts" &>/dev/null || exit
     # Run your command
-    echo "gear ${target_gear} 3" | go run "$SCRIPT_DIR/hid_controller.go"
+    echo "gear ${target_gear} 3" | go run "hid_controller.go"
     # Update current state
     CURRENT_GEAR=$target_gear
   fi
@@ -75,21 +75,6 @@ apply_gear() {
 echo "Starting Temperature Watcher..."
 
 while true; do
-  FOUND_BS2PRO=0
-  for mac in $(bluetoothctl devices Connected | cut -d ' ' -f 2); do
-    info=$(bluetoothctl info "$mac")
-    name=$(echo "$info" | grep "Name:" | cut -d ' ' -f 2-)
-    alias=$(echo "$info" | grep "Alias:" | cut -d ' ' -f 2-)
-    if [[ "$name $alias" =~ BS2PRO ]]; then
-      FOUND_BS2PRO=1
-      break
-    fi
-  done
-  if [ $FOUND_BS2PRO -eq 0 ]; then
-    # sleep 60 if BS2PRO is not found
-    sleep "60"
-    continue
-  fi
   cpu=$(get_cpu_temp)
   gpu=$(get_gpu_temp)
 
