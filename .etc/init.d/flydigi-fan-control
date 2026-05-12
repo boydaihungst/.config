@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+
+name="FlyDigi Fan Control"
+description="Controls fan speed based on temperature when FlyDigi BS2PRO is connected"
+command="/home/huyhoang/.config/hypr/scripts/flydigi_bs2_pro_auto_fan_speed.sh"
+command_background=true
+command_user="huyhoang"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+depend() {
+    need localmount
+    after bluetooth
+}

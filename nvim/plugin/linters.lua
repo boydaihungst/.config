@@ -17,6 +17,10 @@ local linters_cfg = {
     --     return #vim.fs.find("selene.toml", { path = ctx.filename, upward = true, type = "file" }) > 0
     --   end,
     -- },
+    shellcheck = {
+      -- Ignore ebuild files
+      condition = function(ctx) return not ctx.filename:match "%.ebuild$" end,
+    },
   },
 }
 
