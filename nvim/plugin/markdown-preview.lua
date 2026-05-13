@@ -9,7 +9,11 @@ on_filetype({ "markdown", "markdown.mdx" }, function()
     ":call mkdp#util#install()"
   )
   add { "https://github.com/iamcco/markdown-preview.nvim" }
-  vim.cmd "call mkdp#util#install()"
+  local mkdp = vim.pack.get { "markdown-preview.nvim" }
+  local mkdp_root_dir = #mkdp > 0 and vim.pack.get({ "markdown-preview.nvim" })[1].path or nil
+  if mkdp_root_dir == nil then return vim.notify("markdown-preview.nvim install failed", vim.log.levels.ERROR) end
+  local mkdp_server_script = mkdp_root_dir .. "/app/bin/markdown-preview-" .. vim.fn["mkdp#util#get_platform"]()
+  if vim.fn.executable(mkdp_server_script) == 0 then vim.cmd "call mkdp#util#install()" end
 
   Config.new_autocmd("Filetype", { "markdown", "markdown.mdx" }, function(args)
     local prefix = "<leader>M"
