@@ -79,9 +79,6 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("~/.config/hypr/scripts/xdg-portal-hyprland.sh")
   -- watch laptop battery and show notification when battery is low. hibernate if battery is critical
   hl.exec_cmd("~/.config/sway/scripts/battery-watch.sh")
-  -- Start gpg-agent which is also use as ssh-agent
-  hl.exec_cmd("gpgconf --launch gpg-agent")
-  hl.exec_cmd("export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)")
 end)
 
 -- exec-once = waypaper-engine daemon
