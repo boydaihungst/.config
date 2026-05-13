@@ -18,7 +18,7 @@ on_event("InsertEnter", function()
     keymaps = {
       accept_suggestion = "<C-l>",
       clear_suggestion = "<C-h>",
-      accept_word = "<C-w>",
+      accept_word = "<C-.>",
     },
     log_level = "off",
     disable_inline_completion = false, -- disables inline completion for use with cmp

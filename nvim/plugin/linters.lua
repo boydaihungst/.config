@@ -1,6 +1,6 @@
 local linters_cfg = {
   linters_by_ft = {
-    sh = { "shellcheck" },
+    -- sh = { "shellcheck" },
     zsh = { "shellcheck" },
     ansible = { "ansible_lint" },
     dockerfile = { "hadolint" },
