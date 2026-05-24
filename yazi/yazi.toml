@@ -97,7 +97,7 @@
     { run = "gthumb %s", orphan = true, desc = "Gthumb", for = "linux" },
     { run = "gimp %s", orphan = true, desc = "Gimp", for = "linux" },
     { run = "inkscape %s", orphan = true, desc = "Inkscape", for = "linux" },
-    { run = "cp %s1 $HOME/.config/hypr/wallpaper && systemctl restart --user hyprpaper.service", orphan = false, block = false, desc = "Set as wallpaper", for = "linux" },
+    { run = "cp %s1 $HOME/.config/hypr/wallpaper && killall hyprpaper && hyprctl eval 'hl.exec_cmd(\"hyprpaper\")'", orphan = false, block = false, desc = "Set as wallpaper (hyprland)", for = "linux" },
   ]
 
   terminal = [
@@ -201,7 +201,10 @@
 
     # Empty file
     { mime = "inode/empty", use = ["edit"] },
-    { mime = "application/executable", use = ["execute", "edit"] },
+    { mime = "application/{executable,pie-executable}", use = [
+      "execute",
+      "edit"
+    ] },
 
     # Fallback
     { url = "*", use = ["open", "edit"] },
@@ -280,6 +283,7 @@
     { mime = "text/markdown", run = 'enhance-piper --cache-max-lines=1000000 --cache-limit=1000 -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
     # Code
     { mime = "text/*", run = 'enhance-piper  --cache-max-lines=1000000 --cache-limit=1000 -- bat -p --color=always --theme=base16 "$1"' },
+    { mime = "application/gentoo.ebuild", run = 'enhance-piper  --cache-max-lines=1000000 --cache-limit=1000 -- bat -p --color=always --theme=base16 "$1"' },
     # Torrent
     { mime = "application/bittorrent", run = 'enhance-piper -- transmission-show "$1" --no-header | CLICOLOR_FORCE=1 glow -w=$w -s=dark -' },
     # Do not preview these paths except text file

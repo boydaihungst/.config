@@ -764,7 +764,7 @@ now_if_args(function()
 
   local toggle_hidden = function()
     show_hidden = not show_hidden
-    MiniFiles.gitignore.state = show_hidden
+    if MiniFiles.gitignore then MiniFiles.gitignore.state = show_hidden end
     MiniFiles.show_hidden = show_hidden
     MiniFiles.refresh { content = { force = true } }
   end
@@ -1105,7 +1105,15 @@ now_if_args(function()
     },
     content = {
       filter = function(fs_entry) return show_hidden and filter_show(fs_entry) or filter_hide(fs_entry) end,
-      sort = function(fs_entries) return MiniFiles.gitignore:sort_entries(smart_hlsearch(fs_entries)) end,
+      sort = function(fs_entries)
+        local ft = vim.bo.filetype
+        local row = vim.api.nvim_win_get_cursor(0)[1]
+
+        local explorer_state = ((ft == "minifiles" and row >= 1 and MiniFiles) and MiniFiles.get_explorer_state())
+        local cur_focused_path = explorer_state and explorer_state.branch[explorer_state.depth_focus]
+        if cur_focused_path == "/" then return fs_entries end
+        return MiniFiles.gitignore:sort_entries(smart_hlsearch(fs_entries))
+      end,
       highlight = function(fs_entry)
         local path = fs_entry.path
         -- If dimming is off, use default highlighting

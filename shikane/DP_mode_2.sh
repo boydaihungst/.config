@@ -27,12 +27,9 @@ SHIKANE_OUTPUT_NAME="$1"
         mode = "2560x1440@280",
         scale = 1,
         position = "0x0",
-        bitdepth = 10,
         cm = "auto",
         vrr = 1,
-        sdr_min_luminance = 0.005,
-        sdr_max_luminance = 250,
-        sdrsaturation = 1.15,
+        icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G4ZD.icm",
       })
     '
 

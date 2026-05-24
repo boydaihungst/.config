@@ -513,7 +513,7 @@ local _load_config = ya.sync(function(state, opts)
 		end
 	end
 	if state.last.update_before_quit then
-		ps.sub("key-quit", function(body)
+		local function _quit(body)
 			local projects = _get_projects()
 			local current_project = _get_current_project()
 			projects.last = current_project
@@ -525,7 +525,9 @@ local _load_config = ya.sync(function(state, opts)
 
 			ya.emit("quit", {})
 			return body
-		end)
+		end
+		ps.sub("key-quit", _quit)
+		ps.sub("key-close", _quit)
 	end
 
 	state.merge = {

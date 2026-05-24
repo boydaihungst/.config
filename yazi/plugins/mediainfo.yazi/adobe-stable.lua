@@ -1,8 +1,33 @@
---- @since 26.1.22
+--- @since 26.5.6
 
 local M = {}
 local const = require(".const")
 local utils = require(".utils")
+
+local function image_layer_count(job)
+	local cache = ya.file_cache({ file = job.file, skip = 0 })
+	if not cache then
+		return 0
+	end
+	local layer_count = utils.get_state("f" .. tostring(cache))
+	if layer_count then
+		return layer_count
+	end
+	local output, err = Command("identify")
+		:arg({ tostring(job.file.path or job.file.cache or job.file.url.path or job.file.url) })
+		:output()
+	if err or not output then
+		return 0
+	end
+	layer_count = 0
+	for line in output.stdout:gmatch("[^\r\n]+") do
+		if line:match("%S") then
+			layer_count = layer_count + 1
+		end
+	end
+	utils.set_state("f" .. tostring(cache), layer_count)
+	return layer_count
+end
 
 function M:peek(job)
 	local preload_status, preload_err = self:preload(job)
@@ -11,17 +36,13 @@ function M:peek(job)
 		return
 	end
 
-	local cache_img_url = ya.file_cache({
-		skip = 0,
-		args = job.args,
-		file = job.file,
-		area = job.area,
-	})
+	local cache_img_url = ya.file_cache(job)
 
 	local cache_img_url_no_skip = ya.file_cache({ file = job.file, skip = 0 })
 
 	local no_metadata = job.args.no_metadata
 	local mediainfo_job_skip = job.skip
+	::recalc_mediainfo_job_skip::
 	local mediainfo_height = 0
 	local lines = {}
 	local limit = job.area.h
@@ -122,16 +143,44 @@ function M:peek(job)
 		mediainfo_height = math.min(limit, last_line)
 	end
 
-	if not no_metadata and EOF_mediainfo and #lines == 0 and job.skip > 0 then
-		ya.emit("peek", {
-			math.max(0, (job.skip - (utils.get_state(const.STATE_KEY.units) or 0))),
-			only_if = job.file.url,
-			upper_bound = true,
-		})
-		return
+	if not no_metadata then
+		if EOF_mediainfo and #lines == 0 and mediainfo_job_skip > 0 then
+			if
+				image_layer_count(job)
+				< (
+					1
+					+ math.floor(
+						math.max(
+							0,
+							utils.get_state(const.STATE_KEY.units)
+									and (math.abs(job.skip / utils.get_state(const.STATE_KEY.units)))
+								or 0
+						)
+					)
+				)
+			then
+				ya.emit("peek", {
+					math.max(0, (job.skip - (utils.get_state(const.STATE_KEY.units) or 0))),
+					only_if = job.file.url,
+					upper_bound = true,
+				})
+				return
+			else
+				local last_valid_mediainfo_skip = utils.get_state(const.STATE_KEY.last_valid_mediainfo_skip)
+				mediainfo_job_skip = last_valid_mediainfo_skip
+						and last_valid_mediainfo_skip[tostring(cache_img_url_no_skip)]
+					or math.max(0, mediainfo_job_skip - (utils.get_state(const.STATE_KEY.units) or 0))
+
+				goto recalc_mediainfo_job_skip
+			end
+		else
+			utils.set_state(
+				const.STATE_KEY.last_valid_mediainfo_skip,
+				{ [tostring(cache_img_url_no_skip)] = mediainfo_job_skip }
+			)
+		end
 	end
 
-	utils.force_render()
 	-- NOTE: Hacky way to prevent image overlap with old metadata area
 	if utils.get_state(const.STATE_KEY.prev_metadata_area) then
 		local old_metadata_area = utils.get_state(const.STATE_KEY.prev_metadata_area)
@@ -151,6 +200,7 @@ function M:peek(job)
 			})
 		end
 	end
+	utils.force_render()
 
 	local rendered_img_rect = cache_img_url
 			and fs.cha(cache_img_url)
@@ -202,48 +252,46 @@ function M:preload(job)
 
 	-- NOTE: Preload image
 
-	local mime = job.mime:match(".*/(.*)$")
-	local is_svg = mime == "svg+xml"
-	local is_magick = const.magick_image_mimes[mime]
-	local no_skip_job = { skip = 0, file = job.file, args = job.args, area = job.area }
-	local cache_img_url = ya.file_cache(no_skip_job)
+	local cache_img_url = ya.file_cache(job)
 	local cache_img_url_cha = cache_img_url and fs.cha(cache_img_url)
 
 	-- NOTE: Only generate preview image when cache image is not exist
 	if not cache_img_url_cha or cache_img_url_cha.len <= 0 then
 		local cache_img_status, image_preload_err
-		if not is_valid_utf8_path then
-			-- NOTE: Case not valid utf8 path, use trick to generate preview image
-			if is_svg then
-				local cache_img_url_tmp = Url(cache_img_url .. ".tmp")
-				if fs.cha(cache_img_url_tmp) then
-					fs.remove("file", cache_img_url_tmp)
-				end
-				local tmp_file_path, _ = type(fs.unique) == "function" and fs.unique("file", cache_img_url_tmp)
-					or fs.unique_name(cache_img_url_tmp)
-				-- svg under invalid utf8 path
-				cache_img_status, image_preload_err = require("magick")
-					.with_limit()
-					:arg({
-						"-background",
-						"none",
-						tostring(job.file.path or job.file.cache or job.file.url.path or job.file.url),
-						"-auto-orient",
-						"-strip",
-						string.format("%dx%d>", rt.preview.max_width, rt.preview.max_height),
-						"-quality",
-						rt.preview.image_quality,
-						string.format("PNG32:%s", tostring(tmp_file_path)),
-					})
-					:status()
-				if cache_img_status then
-					os.rename(tostring(tmp_file_path), tostring(cache_img_url))
-				end
+		local layer_index = 0
+		local units = utils.get_state(const.STATE_KEY.units)
+		if units ~= nil then
+			local max_layer = image_layer_count(job)
+			layer_index = math.floor(math.max(0, math.abs(job.skip / units)))
+			if layer_index + 1 > max_layer then
+				layer_index = math.max(0, max_layer - 1)
 			end
-		else
-			-- NOTE: Case valid utf8 path, use image, svg, or magick module
-			local image_module = is_svg and "svg" or (is_magick and "magick" or "image")
-			cache_img_status, image_preload_err = require(image_module):preload(no_skip_job)
+		end
+		local cache_img_url_tmp = Url(cache_img_url .. ".tmp")
+		if fs.cha(cache_img_url_tmp) then
+			fs.remove("file", cache_img_url_tmp)
+		end
+		local tmp_file_path, _ = type(fs.unique) == "function" and fs.unique("file", cache_img_url_tmp)
+			or fs.unique_name(cache_img_url_tmp)
+		cache_img_status, image_preload_err = require("magick")
+			.with_limit()
+			:arg({
+				"-background",
+				"none",
+				tostring(job.file.path or job.file.cache or job.file.url.path or job.file.url) .. "[" .. tostring(
+					layer_index
+				) .. "]",
+				"-auto-orient",
+				"-strip",
+				"-resize",
+				string.format("%dx%d>", rt.preview.max_width, rt.preview.max_height),
+				"-quality",
+				rt.preview.image_quality,
+				string.format("PNG32:%s", tostring(tmp_file_path)),
+			})
+			:status()
+		if cache_img_status then
+			os.rename(tostring(tmp_file_path), tostring(cache_img_url))
 		end
 
 		if not cache_img_status and image_preload_err then

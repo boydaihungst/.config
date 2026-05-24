@@ -32,7 +32,7 @@
   [[profile.output]]
     adaptive_sync = true
     enable        = true
-    mode          = "best"
+    mode          = "1920x1080@60.00Hz"
     position      = "0,1600"
     scale         = 1
     search        = [
@@ -86,7 +86,7 @@
   [[profile.output]]
     adaptive_sync = true
     enable        = true
-    mode          = "!2560x1440@280.00Hz"
+    mode          = "2560x1440@280.00Hz"
     position      = "0,0"
     scale         = 1
     search        = ["n/DP-[1-9]", "v=AOC", "m=Q27G4ZDP"]
@@ -94,7 +94,7 @@
   [[profile.output]]
     adaptive_sync = true
     enable        = true
-    mode          = "best"
+    mode          = "1920x1080@60.00Hz"
     position      = "0,1600"
     scale         = 1
     search        = [

@@ -266,11 +266,11 @@ function M:preload(job)
 				audio_preload_output
 				and audio_preload_output.stderr ~= nil
 				and audio_preload_output.stderr ~= ""
-				and not audio_preload_output.stderr:find("Output file does not contain any stream")
+				and not audio_preload_output.stderr:find("Output file.*does not contain any stream")
 			) or audio_preload_err
 		then
 			ya.dbg("mediainfo", audio_preload_err)
-			ya.dbg("mediainfo", audio_preload_output.stderr)
+			ya.dbg("mediainfo", audio_preload_output and audio_preload_output.stderr)
 			err_msg = err_msg
 				.. string.format("Failed to start `%s`.\n Do you have `%s` installed?\n", "ffmpeg", "ffmpeg")
 		else
@@ -286,8 +286,11 @@ function M:preload(job)
 						string.format("PNG32:%s", cache_img_url),
 					})
 					:output()
-				if (audio_preload_output.stderr ~= nil and audio_preload_output.stderr ~= "") or audio_preload_err then
-					ya.dbg("mediainfo", image_preload_err)
+				if
+					(audio_preload_output and audio_preload_output.stderr ~= nil and audio_preload_output.stderr ~= "")
+					or audio_preload_err
+				then
+					ya.dbg("mediainfo", audio_preload_err or (audio_preload_output and audio_preload_output.stderr))
 					err_msg = err_msg
 						.. string.format("Failed to start `%s`.\n Do you have `%s` installed?\n", "magick", "magick")
 				end

@@ -246,7 +246,7 @@
     { on = ["g", "c"], run = "close", desc = "Close Tab" },
     { on = ["g", "n"], run = "tab_create --current", desc = "Create new Tab" },
     # { on = [ "t" ], run = "tab_create --current", desc = "Create new Tab" },
-    { on = "<BackTab>", run = "tab_switch -1 --relative", desc = "Go to tab on the Left" },
+    { on = "<S-Tab>", run = "tab_switch -1 --relative", desc = "Go to tab on the Left" },
     { on = "<Tab>", run = "tab_switch 1 --relative", desc = "Go to tab on the Right" },
     { on = "H", run = "tab_switch -1 --relative", desc = "Go to tab on the Left" },
     { on = "L", run = "tab_switch 1 --relative", desc = "Go to tab on the Right" },

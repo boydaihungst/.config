@@ -444,6 +444,8 @@ local window_rules = {
   {
     match = { class = "(pinentry-|gcr-prompter)(.*)" },
     pin = true,
+    float = true,
+    pseudo = true,
     focus_on_activate = true,
     stay_focused = true,
   },

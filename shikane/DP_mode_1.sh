@@ -16,7 +16,7 @@ SHIKANE_OUTPUT_NAME="$1"
         position = "2560x0",
         bitdepth = 8,
         vrr = 1,
-        cm = "auto",
+        icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G4ZD.icm",
       })
     '
     # icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G42ZE.icm",
@@ -27,19 +27,16 @@ SHIKANE_OUTPUT_NAME="$1"
         mode = "2560x1440@280",
         scale = 1,
         position = "0x0",
-        bitdepth = 10,
         cm = "auto",
         vrr = 1,
-        sdr_min_luminance = 0.005,
-        sdr_max_luminance = 250,
-        sdrsaturation = 1.15,
+        icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G4ZD.icm",
       })
     '
 
     hyprctl eval '
       hl.monitor({
         output = "HDMI-A-1",
-        mode = "preferred",
+        mode = "1920x1080@60",
         position = "5120x1440",
         scale = 1,
         bitdepth = 8,

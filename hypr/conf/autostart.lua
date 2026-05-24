@@ -32,6 +32,7 @@ hl.on("hyprland.start", function()
   -- change font to Hack Nerd Font for gtk apps
   if check_cli_app("gsettings") then
     hl.exec_cmd("gsettings set org.gnome.desktop.interface font-name 'Hack Nerd Font 16'")
+    hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")
   end
   -- Need this for xdg portal to works
   if check_cli_app("dbus-update-activation-environment") then
@@ -79,6 +80,8 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("~/.config/hypr/scripts/xdg-portal-hyprland.sh")
   -- watch laptop battery and show notification when battery is low. hibernate if battery is critical
   hl.exec_cmd("~/.config/sway/scripts/battery-watch.sh")
+  hl.exec_cmd("~/.config/hypr/scripts/reconnect_bluetooth_le.sh")
+  hl.exec_cmd('ddcutil --sn="AWBS39A000221" setvcp d6 1 && /home/huyhoang/git/Monitor_Mode_AOC/monitor_mode -l 80')
 end)
 
 -- exec-once = waypaper-engine daemon
