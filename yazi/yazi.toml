@@ -129,8 +129,8 @@
   execute = [{ run = "%s1", desc = "Run", for = "linux" }]
 
   archive  = [
-    { run = "ya pub extract --list %s", desc = "Extract to dir", for = "unix" },
-    { run = "ya pub extract --list %*", desc = "Extract to dir", for = "windows" },
+    { run = "ya pub extract --list %s", desc = "Extract here", for = "unix" },
+    { run = "ya pub extract --list %*", desc = "Extract here", for = "windows" },
     { run = "file-roller %s", orphan = true, desc = "File-roller", for = "linux" },
     { run = "7zFM %s", orphan = true, desc = "7z GUI", for = "linux" },
   ]

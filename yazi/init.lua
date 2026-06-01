@@ -1,3 +1,4 @@
+-- require("test"):setup()
 require("custom-dds"):setup()
 require("simple-tag"):setup({
 	left_side = true,

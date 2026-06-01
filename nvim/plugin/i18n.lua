@@ -17,7 +17,7 @@ on_filetype(
       usage = {
         -- Popup provider used when choosing between multiple usage locations
         -- Available values: 'vim_ui', 'telescope', 'fzf-lua', 'snacks'
-        popup_type = "vim_ui",
+        popup_type = "snacks",
         notify_no_key = false,
         max_file_size = 0, -- 0 = no limit
         scan_on_startup = true,
@@ -35,7 +35,7 @@ on_filetype(
         -- { pattern = "src/views/{bu}/locales/lang/{locales}/{module}.ts", prefix = "{bu}.{module}." },
       },
       i18n_keys = {
-        popup_type = "vim_ui",
+        popup_type = "snacks",
       },
 
       -- Enable namespace resolution

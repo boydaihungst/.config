@@ -527,7 +527,12 @@ local _load_config = ya.sync(function(state, opts)
 			return body
 		end
 		ps.sub("key-quit", _quit)
-		ps.sub("key-close", _quit)
+		ps.sub("key-close", function(body)
+			if #cx.tabs <= 1 then
+				return _quit(body)
+			end
+			return body
+		end)
 	end
 
 	state.merge = {
