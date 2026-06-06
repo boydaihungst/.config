@@ -65,11 +65,22 @@ later(function()
     external_terminal = nil,
     lsp = {
       enabled = false, -- we use c_sharp_ls or roslyn instead
+      set_fold_expr = false,
       preload_roslyn = true, -- Start loading roslyn before any buffer is opened
       roslynator_enabled = true, -- Automatically enable roslynator analyzer
       easy_dotnet_analyzer_enabled = true, -- Enable roslyn analyzer from easy-dotnet-server
+      restart_roslyn_on_branch_change = false, -- Restart Roslyn when Git HEAD changes
       auto_refresh_codelens = true,
+      suggest_updates = true, -- Periodically suggest roslyn-language-server updates
       analyzer_assemblies = {}, -- Any additional roslyn analyzers you might use like SonarAnalyzer.CSharp
+      razor = {
+        enabled = true,
+        html = {
+          enabled = true,
+          cmd = nil, -- Auto-detect project node_modules/.bin/vscode-html-language-server, then PATH
+          request_timeout = 5000,
+        },
+      },
       config = {},
     },
     debugger = {
@@ -123,17 +134,9 @@ later(function()
       vim.cmd "vsplit"
       vim.cmd("term " .. command)
     end,
-    -- Disable mappings for csproj and fsproj, when use dev-tools custom actions instead
-    csproj_mappings = (function()
-      if is_dev_tools_available ~= nil then return not is_dev_tools_available end
-      is_dev_tools_available = vim.pack.is_available "dev-tools.nvim"
-      return not is_dev_tools_available
-    end)(),
-    fsproj_mappings = (function()
-      if is_dev_tools_available ~= nil then return not is_dev_tools_available end
-      is_dev_tools_available = vim.pack.is_available "dev-tools.nvim"
-      return not is_dev_tools_available
-    end)(),
+    -- Disable mappings for csproj and fsproj, using different mappings below
+    csproj_mappings = false,
+    fsproj_mappings = false,
     auto_bootstrap_namespace = {
       --block_scoped, file_scoped
       type = "block_scoped",
@@ -189,10 +192,16 @@ later(function()
     local bufname = vim.api.nvim_buf_get_name(bufnr)
     ---@type vim.keymap.set.Opts
     local key_opts = { buf = bufnr, silent = true }
+    wk.add {
+      { prefix, group = MiniIcons.get_icon("filetype", "cs") .. " Dotnet", mode = { "n" }, buffer = bufnr },
+    }
+
     -- Entity framework
     vim.keymap.set("n", prefix .. "r", function()
       local easy_dotnet_proj = require "easy-dotnet.fsproj-mappings"
-      coroutine.wrap(function() easy_dotnet_proj.add_project_reference(bufname) end)()
+      coroutine.wrap(function()
+        easy_dotnet_proj.add_project_reference(bufname, function() vim.cmd "checktime" end)
+      end)()
     end, vim.tbl_extend("force", key_opts, { desc = "Add project reference" }))
   end, ".NET mappings fsproj")
 
@@ -201,10 +210,16 @@ later(function()
     local bufname = vim.api.nvim_buf_get_name(bufnr)
     ---@type vim.keymap.set.Opts
     local key_opts = { buf = bufnr, silent = true }
+    wk.add {
+      { prefix, group = MiniIcons.get_icon("filetype", "cs") .. " Dotnet", mode = { "n" }, buffer = bufnr },
+    }
+
     -- Entity framework
     vim.keymap.set("n", prefix .. "r", function()
       local easy_dotnet_proj = require "easy-dotnet.csproj-mappings"
-      coroutine.wrap(function() easy_dotnet_proj.add_project_reference(bufname) end)()
+      coroutine.wrap(function()
+        easy_dotnet_proj.add_project_reference(bufname, function() vim.cmd "checktime" end)
+      end)()
     end, vim.tbl_extend("force", key_opts, { desc = "Add project reference" }))
   end, ".NET mappings csproj")
 

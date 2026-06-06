@@ -3,7 +3,8 @@ local manually_start_lsp_servers = {
   "rust_analyzer", -- rustaceanvim will auto enable this lsp server
   "sqls", -- sqls-nvim instead
   "dartls",
-  "csharp_ls", -- using rosyln.nvim instead
+  "csharp_ls", -- using easydotnet.nvim built-in rosyln or roslyn.nvim instead
+  -- "rosyln", -- enable this if using easydotnet.nvim built-in rosyln instead
   "taplo", -- in favor of tombi
 }
 
