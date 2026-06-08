@@ -1,3 +1,5 @@
+-- Make sure add HDRCmd.exe parent folder to PATH environment first.
+-- Get HDRCmd.exe from https://github.com/res2k/HDRTray/releases
 local utils = require "mp.utils"
 local is_windows = package.config:sub(1, 1) == "\\"
 
