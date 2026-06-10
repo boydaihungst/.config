@@ -10,15 +10,19 @@ on_filetype({
 }, function()
   add {
     "https://github.com/dmmulroy/ts-error-translator.nvim",
-    "https://github.com/marilari88/neotest-vitest",
-    "https://github.com/nvim-neotest/neotest-jest",
   }
   ---@diagnostic disable-next-line: missing-fields
   require("ts-error-translator").setup {}
-  if vim.pack.is_available "neotest" then
-    table.insert(require("neotest.config").adapters, require "neotest-jest" {})
-    table.insert(require("neotest.config").adapters, require "neotest-vitest" {})
-  end
+  later(function()
+    if vim.pack.is_available "neotest" then
+      add {
+        "https://github.com/marilari88/neotest-vitest",
+        "https://github.com/nvim-neotest/neotest-jest",
+      }
+      table.insert(require("neotest.config").adapters, require "neotest-jest" {})
+      table.insert(require("neotest.config").adapters, require "neotest-vitest" {})
+    end
+  end)
 end)
 
 on_event("BufRead~package.json", function()

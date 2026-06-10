@@ -3,8 +3,12 @@ on_filetype({ "dart" }, function()
     "https://github.com/nvim-lua/plenary.nvim",
     "https://github.com/akinsho/flutter-tools.nvim",
   }
-  require("flutter-tools").setup {
-    lsp = vim.lsp.config["dartls"] or {},
-    debugger = { enabled = true },
-  }
+  later(
+    function()
+      require("flutter-tools").setup {
+        lsp = vim.lsp.config["dartls"] or {},
+        debugger = { enabled = true },
+      }
+    end
+  )
 end)

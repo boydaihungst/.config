@@ -19,12 +19,14 @@ on_filetype("python", function()
     "https://github.com/mfussenegger/nvim-dap-python",
     "https://github.com/nvim-neotest/neotest-python",
   }
-  local path = vim.fn.exepath "debugpy-adapter"
-  if path == "" then path = vim.fn.exepath "uv" end
-  if path == "" then path = vim.fn.exepath "python" end
-  require("dap-python").setup(path, {})
+  later(function()
+    local path = vim.fn.exepath "debugpy-adapter"
+    if path == "" then path = vim.fn.exepath "uv" end
+    if path == "" then path = vim.fn.exepath "python" end
+    require("dap-python").setup(path, {})
 
-  if vim.pack.is_available "neotest" then
-    table.insert(require("neotest.config").adapters, require "neotest-python" {})
-  end
+    if vim.pack.is_available "neotest" then
+      table.insert(require("neotest.config").adapters, require "neotest-python" {})
+    end
+  end)
 end)

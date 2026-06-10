@@ -10,7 +10,6 @@ later(function()
   setup_dotnet_tools()
 
   local is_dotnet_available = vim.fn.executable "dotnet" == 1
-  local is_dev_tools_available
   local is_ef_cli_available = vim.fn.executable "dotnet-ef" == 1
   local is_easydotnet_cli_available = vim.fn.executable "dotnet-easydotnet" == 1
 
@@ -197,7 +196,7 @@ later(function()
     }
 
     -- Entity framework
-    vim.keymap.set("n", prefix .. "r", function()
+    vim.keymap.set("n", prefix .. "R", function()
       local easy_dotnet_proj = require "easy-dotnet.fsproj-mappings"
       coroutine.wrap(function()
         easy_dotnet_proj.add_project_reference(bufname, function() vim.cmd "checktime" end)
@@ -215,7 +214,7 @@ later(function()
     }
 
     -- Entity framework
-    vim.keymap.set("n", prefix .. "r", function()
+    vim.keymap.set("n", prefix .. "R", function()
       local easy_dotnet_proj = require "easy-dotnet.csproj-mappings"
       coroutine.wrap(function()
         easy_dotnet_proj.add_project_reference(bufname, function() vim.cmd "checktime" end)
@@ -227,7 +226,10 @@ later(function()
     local client = vim.lsp.get_client_by_id(args.data.client_id)
 
     -- Only apply if the server is Roslyn
-    if client and (client.name == "roslyn" or client.name == "easy_dotnet") then
+    if
+      client
+      and (client.name == "roslyn" or client.name == "easy_dotnet" or client.name == "msbuild_project_tools_server")
+    then
       -- Fix indent
       vim.bo[args.buf].indentexpr = "GetCSIndent(v:lnum)"
       local bufnr = args.buf
@@ -241,6 +243,13 @@ later(function()
         }
       end
 
+      -- New project file
+      vim.keymap.set(
+        "n",
+        prefix .. "n",
+        "<cmd>Dotnet createfile<cr>",
+        vim.tbl_extend("force", key_opts, { desc = "Create new project file" })
+      )
       -- Add Package
       vim.keymap.set(
         "n",
