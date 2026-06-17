@@ -442,7 +442,7 @@ if vim.lsp.inline_completion.is_enabled() then
       -- Switch to previous inline completion
       vim.keymap.set(
         "i",
-        "<C-[>",
+        "<C-,>",
         function() vim.lsp.inline_completion.select { wrap = true, count = -1 } end,
         { desc = "Switch to previous inline completion" }
       )
@@ -450,7 +450,7 @@ if vim.lsp.inline_completion.is_enabled() then
       -- Switch to next inline completion
       vim.keymap.set(
         "i",
-        "<C-]>",
+        "<C-.>",
         function() vim.lsp.inline_completion.select { wrap = true, count = 1 } end,
         { desc = "Switch to next inline completion" }
       )
