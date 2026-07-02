@@ -7,8 +7,9 @@ return {
 		local selected_items = cx.active.selected
 		if #selected_items >= 1 then
 			local selected_urls = ""
-			for _, v in pairs(selected_items) do
-				local is_virtual = v.scheme and v.scheme.is_virtual
+			for _, u in pairs(selected_items) do
+				local u = f.url or f
+				local is_virtual = u.scheme and u.scheme.is_virtual
 				if is_virtual then
 					ya.dbg("thunar-bulk-rename", "Thunar rename doesn't support virtual file system")
 					ya.emit("rename", { hovered = false, cursor = "before_ext" })

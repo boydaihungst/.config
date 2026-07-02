@@ -1,17 +1,17 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "ac82af3"
-hash = "eff8ff12fa4e5f035a10d8aeeb4c258d"
+rev = "65559fd"
+hash = "7b625412411be411153886894d9acaf"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mime-ext"
-rev = "ac82af3"
+rev = "65559fd"
 hash = "2678c84a0b3a0b22504e918ccaf99011"
 
 [[plugin.deps]]
 use = "boydaihungst/projects"
-rev = "1913bad"
-hash = "ade475fc0a2bdbc68c02dd6dc295dc4a"
+rev = "7c6110b"
+hash = "13dbc7c414894831a4535792a1c69fdc"
 
 [[plugin.deps]]
 use = "boydaihungst/restore"
@@ -20,8 +20,8 @@ hash = "e4d7c06510b4fe5f64ae31fbb4e017d6"
 
 [[plugin.deps]]
 use = "boydaihungst/fuse-archive"
-rev = "5dc3449"
-hash = "141bfd952a2ff21c92de5be7c0e78086"
+rev = "f618260"
+hash = "55cacc8fbf5d925bdc70e04426383360"
 
 [[plugin.deps]]
 use = "boydaihungst/file-extra-metadata"
@@ -45,8 +45,8 @@ hash = "cb389a36241ada4893796d89dd5da7a0"
 
 [[plugin.deps]]
 use = "boydaihungst/mediainfo"
-rev = "49f5ab7"
-hash = "6e3b5e58f985cc2d625e0030dc35b1b2"
+rev = "a6d30a1"
+hash = "7d4dd1afcb7ecbd3609c29a82d6dbc5c"
 
 [[plugin.deps]]
 use = "boydaihungst/simple-tag"
@@ -55,8 +55,8 @@ hash = "50ba6725b86ae62c626d27eb5836decb"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "ac82af3"
-hash = "4c0260feb50ea2437380690ffc241da7"
+rev = "65559fd"
+hash = "15e5b67a241172cbb86b8fbf9e63692"
 
 [[plugin.deps]]
 use = "boydaihungst/compress"
@@ -65,8 +65,8 @@ hash = "f50b733cede531d5217cc9b90d633d07"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:vcs-files"
-rev = "ac82af3"
-hash = "6b141fbed3c74b45558fbc7088c805ee"
+rev = "65559fd"
+hash = "bc5da419b4337d0122ac531e705fa7b6"
 
 [[plugin.deps]]
 use = "boydaihungst/smart-truncate"
@@ -80,8 +80,8 @@ hash = "4bdfecaa643db1cc28ccba799463d5b8"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:types"
-rev = "ac82af3"
-hash = "4161cfa043b5ba3341d82c6869007b41"
+rev = "65559fd"
+hash = "9105494e98299f392aee95340066da9f"
 
 [[plugin.deps]]
 use = "boydaihungst/gvfs"
@@ -90,8 +90,8 @@ hash = "eed89e75671723c8f9390a2862af0e4e"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:piper"
-rev = "ac82af3"
-hash = "384464b6df8cb807425c521f8cd790f3"
+rev = "65559fd"
+hash = "12126fca34f9f1802bb57b88292f57af"
 
 [[plugin.deps]]
 use = "boydaihungst/enhance-piper"

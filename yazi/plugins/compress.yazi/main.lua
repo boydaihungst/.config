@@ -49,7 +49,9 @@ end)
 
 local selected_files = ya.sync(function()
 	local tab, raw_urls = cx.active, {}
-	for _, u in pairs(tab.selected) do
+	for _, f in pairs(tab.selected) do
+		-- TODO: remove this after next yazi released
+		local u = f.url or f
 		local is_virtual = u.scheme and u.scheme.is_virtual
 		local u_real = is_virtual and Url(u.scheme.cache .. tostring(u.path)) or u.path or u
 		raw_urls[#raw_urls + 1] = { path = tostring(u_real), is_virtual = is_virtual }

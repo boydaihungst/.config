@@ -596,10 +596,10 @@
 
 [help]
   keymap = [
-    { on = "<Esc>", run = "escape", desc = "Clear the filter, or hide the help" },
-    { on = "<C-[>", run = "escape", desc = "Clear the filter, or hide the help" },
-    { on = "q", run = "close", desc = "Exit the process" },
-    # { on = "<C-c>", run = "close",  desc = "Hide the help" },
+    { on = "<Esc>", run = "escape", desc = "Enter normal mode, or hide help menu" },
+    { on = "<C-[>", run = "escape", desc = "Enter normal mode, or hide help menu" },
+    # { on = "<C-c>",   run = "close",          desc = "Close help menu" },
+    { on = "<Enter>", run = "close --submit", desc = "Close help menu and run selected action(s)" },
 
     # Navigation
     { on = "k", run = "arrow prev", desc = "Move cursor up" },
@@ -614,7 +614,7 @@
     { on = "<C-b>", run = "arrow -100%", desc = "Move cursor Up one page" },
     { on = "<C-f>", run = "arrow 100%", desc = "Move cursor Down one page" },
 
-    # Filtering
-    { on = "f", run = "filter", desc = "Apply a filter for the help items" },
+    { on = "<C-p>", run = "arrow prev", desc = "Previous line" },
+    { on = "<C-n>", run = "arrow next", desc = "Next line" },
     { on = "/", run = "filter", desc = "Apply a filter for the help items" },
   ]

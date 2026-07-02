@@ -163,7 +163,10 @@
 
 # Help
 [help]
-  footer  = { fg = "#9B9FA9", bg = "#1A1D23" }
+  # footer  = { fg = "#9B9FA9", bg = "#1A1D23" }
+  border  = { fg = "blue" }
+  chord   = { fg = "cyan" }
+  action  = {}
   hovered = { bg = "#26343F" }
   on      = { fg = "#8ebd6b" }
   run     = { fg = "#CC83E3" }
