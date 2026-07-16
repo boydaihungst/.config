@@ -2,8 +2,8 @@
 local path_sep = package.config:sub(1, 1)
 
 local get_hovered_path = ya.sync(function(_)
-	local is_virtual = Url(cx.active.current.hovered.url).scheme
-		and Url(cx.active.current.hovered.url).scheme.is_virtual
+	local is_virtual = (Url(cx.active.current.hovered.url).spec and Url(cx.active.current.hovered.url).spec.is_virtual)
+		or (not Url(cx.active.current.hovered.url).spec and Url(cx.active.current.hovered.url).scheme.is_virtual)
 
 	local h = cx.active.current.hovered
 	if h then

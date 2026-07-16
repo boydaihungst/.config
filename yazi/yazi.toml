@@ -240,7 +240,7 @@
     { url = "/home/huyhoang/Media/**/*", run = "noop", prio = "high" },
     # Audio + Video + Image
     { url = "*.{ai,eps,ait}", run = "mediainfo" },
-    { mime = "{audio,video,image}/*", run = "mediainfo" },
+    # { mime = "{audio,video,image}/*", run = "mediainfo" },
     # PDF
     { mime = "application/pdf", run = "pdf" },
     # Font

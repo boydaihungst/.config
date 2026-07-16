@@ -334,7 +334,8 @@ function Status:name()
 		return ui.Line({})
 	end
 
-	local icon = h:icon()
+	local icon = th.icon:match(h, { hovered = h.is_hovered })
+
 	local file_name = h.name
 	local tail = h.cha.is_dir and "" or (h.url.ext and ("." .. h.url.ext) or "")
 

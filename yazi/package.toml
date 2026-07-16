@@ -1,12 +1,12 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "65559fd"
+rev = "bb758e2"
 hash = "7b625412411be411153886894d9acaf"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mime-ext"
-rev = "65559fd"
-hash = "2678c84a0b3a0b22504e918ccaf99011"
+rev = "bb758e2"
+hash = "b32d06923a619e353fca3cacf2ebe9cd"
 
 [[plugin.deps]]
 use = "boydaihungst/projects"
@@ -25,13 +25,13 @@ hash = "55cacc8fbf5d925bdc70e04426383360"
 
 [[plugin.deps]]
 use = "boydaihungst/file-extra-metadata"
-rev = "044274c"
+rev = "611d0ed"
 hash = "14006064a6a53a1770fbdcefb97a8347"
 
 [[plugin.deps]]
 use = "boydaihungst/thunar-bulk-rename"
-rev = "75e9eaa"
-hash = "c9def7878c94aa9b2171965c13f986c2"
+rev = "6c36ea9"
+hash = "aa5f450ad8ac3f06a63dbfd11fcb0cee"
 
 [[plugin.deps]]
 use = "boydaihungst/pref-by-location"
@@ -45,27 +45,27 @@ hash = "cb389a36241ada4893796d89dd5da7a0"
 
 [[plugin.deps]]
 use = "boydaihungst/mediainfo"
-rev = "a6d30a1"
-hash = "7d4dd1afcb7ecbd3609c29a82d6dbc5c"
+rev = "e079a00"
+hash = "8dd8bc3484547390ba50dfa58d7436b0"
 
 [[plugin.deps]]
 use = "boydaihungst/simple-tag"
-rev = "e8be031"
-hash = "50ba6725b86ae62c626d27eb5836decb"
+rev = "c3045b5"
+hash = "f3ef82045a83fc54d96d06040a95b58a"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "65559fd"
+rev = "bb758e2"
 hash = "15e5b67a241172cbb86b8fbf9e63692"
 
 [[plugin.deps]]
 use = "boydaihungst/compress"
-rev = "2621bd5"
-hash = "f50b733cede531d5217cc9b90d633d07"
+rev = "0b46f6c"
+hash = "5fbcc0b08b372af7005a2ddac228c76a"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:vcs-files"
-rev = "65559fd"
+rev = "bb758e2"
 hash = "bc5da419b4337d0122ac531e705fa7b6"
 
 [[plugin.deps]]
@@ -80,7 +80,7 @@ hash = "4bdfecaa643db1cc28ccba799463d5b8"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:types"
-rev = "65559fd"
+rev = "bb758e2"
 hash = "9105494e98299f392aee95340066da9f"
 
 [[plugin.deps]]
@@ -90,8 +90,8 @@ hash = "eed89e75671723c8f9390a2862af0e4e"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:piper"
-rev = "65559fd"
-hash = "12126fca34f9f1802bb57b88292f57af"
+rev = "bb758e2"
+hash = "e0d59bd47866a6a574c74574097e5070"
 
 [[plugin.deps]]
 use = "boydaihungst/enhance-piper"

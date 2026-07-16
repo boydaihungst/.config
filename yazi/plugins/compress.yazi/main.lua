@@ -52,8 +52,11 @@ local selected_files = ya.sync(function()
 	for _, f in pairs(tab.selected) do
 		-- TODO: remove this after next yazi released
 		local u = f.url or f
-		local is_virtual = u.scheme and u.scheme.is_virtual
-		local u_real = is_virtual and Url(u.scheme.cache .. tostring(u.path)) or u.path or u
+		local is_virtual = (u.spec and u.spec.is_virtual) or (not u.spec and u.scheme.is_virtual)
+		local u_real = is_virtual
+				and Url(((u.spec and u.spec.cache) or (not u.spec and u.scheme.cache)) .. tostring(u.path))
+			or u.path
+			or u
 		raw_urls[#raw_urls + 1] = { path = tostring(u_real), is_virtual = is_virtual }
 	end
 	return raw_urls
@@ -63,8 +66,15 @@ local selected_or_hovered_files = ya.sync(function()
 	local tab, raw_urls = cx.active, selected_files()
 	if #raw_urls == 0 and tab.current.hovered then
 		local hovered_url = tab.current.hovered.url
-		local is_virtual = hovered_url.scheme and hovered_url.scheme.is_virtual
-		hovered_url = is_virtual and Url(hovered_url.scheme.cache .. tostring(hovered_url.path))
+		local is_virtual = (hovered_url.spec and hovered_url.spec.is_virtual)
+			or (not hovered_url.spec and hovered_url.scheme.is_virtual)
+		hovered_url = is_virtual
+				and Url(
+					(
+						(hovered_url.spec and hovered_url.spec.cache)
+						or (not hovered_url.spec and hovered_url.scheme.cache)
+					) .. tostring(hovered_url.path)
+				)
 			or hovered_url.path
 			or hovered_url
 		raw_urls[1] = { path = tostring(hovered_url), is_virtual = is_virtual }
@@ -178,16 +188,23 @@ return {
 		end
 
 		local cwd = get_cwd()
-		if cwd.is_search then
+		-- TODO: remove cwd.is_search after next yazi released
+		if (cwd.spec and cwd.spec.is_search) or (not cwd.spec and cwd.is_search) then
 			cwd = cwd.path
 		end
 
 		local path_separator = package.config:sub(1, 1)
 		local output_url_maybe_vfs = Url(cwd .. path_separator .. output_name)
-		local output_path_is_virtual = output_url_maybe_vfs.scheme and output_url_maybe_vfs.scheme.is_virtual
+		local output_path_is_virtual = (output_url_maybe_vfs.spec and output_url_maybe_vfs.spec.is_virtual)
+			or (not output_url_maybe_vfs.spec and output_url_maybe_vfs.scheme.is_virtual)
 
 		local output_path_cache = output_path_is_virtual
-				and Url(output_url_maybe_vfs.scheme.cache .. tostring(cwd.path .. path_separator .. output_name))
+				and Url(
+					(
+						(output_url_maybe_vfs.spec and output_url_maybe_vfs.spec.cache)
+						or (not output_url_maybe_vfs.spec and output_url_maybe_vfs.scheme.cache)
+					) .. tostring(cwd.path .. path_separator .. output_name)
+				)
 			or output_url_maybe_vfs
 		local output_path_cha, _ = fs.cha(output_path_cache)
 		local output_path_cha_vfs, _ = fs.cha(output_url_maybe_vfs)
