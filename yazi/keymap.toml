@@ -235,7 +235,7 @@
     { on = ["g", "o"], run = "cd /opt", desc = "cd /opt" },
     { on = ["g", "u"], run = "cd /usr", desc = "cd /usr" },
     { on = ["g", "h"], run = "cd ~", desc = "cd ~" },
-    { on = ["g", "t"], run = "cd ~/.local/share/Trash/files", desc = "Go to Trash" },
+    { on = ["g", "t"], run = "plugin trash", desc = "Go to trash bin" },
     # { on = [ "g", "c" ],       run = "cd ~/.config",     desc = "Go to the config directory" },
     # { on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Go to the downloads directory" },
     { on = ["g", "<Space>"], run = "cd --interactive", desc = "Go to a directory interactively" },

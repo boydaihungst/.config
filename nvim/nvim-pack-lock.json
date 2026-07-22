@@ -162,6 +162,10 @@
       "rev": "fb84d87285698f7055f618083c351984449119b8",
       "src": "https://github.com/nvim-neotest/neotest"
     },
+    "neotest-python": {
+      "rev": "1b56ca4ba51c6014f986d6548ee629bdc95589d1",
+      "src": "https://github.com/nvim-neotest/neotest-python"
+    },
     "neotest-vstest": {
       "rev": "8588c3c988c7ed49879dddf937b42681cfa7ce30",
       "src": "https://github.com/Nsidorenco/neotest-vstest"
@@ -177,6 +181,10 @@
     "nvim-dap": {
       "rev": "9e848e09a697ee95302a3ef2dd43fd6eb709e570",
       "src": "https://github.com/mfussenegger/nvim-dap"
+    },
+    "nvim-dap-python": {
+      "rev": "1808458eba2b18f178f990e01376941a42c7f93b",
+      "src": "https://github.com/mfussenegger/nvim-dap-python"
     },
     "nvim-dap-repl-highlights": {
       "rev": "f31deba47fe3ee6ff8d2f13d9dbd06b2d1ae06b5",
@@ -293,6 +301,10 @@
     "undotree": {
       "rev": "6fa6b57cda8459e1e4b2ca34df702f55242f4e4d",
       "src": "https://github.com/mbbill/undotree"
+    },
+    "venv-selector.nvim": {
+      "rev": "cc4bb3975de8835291f9bb45889e96c6b2795fc4",
+      "src": "https://github.com/linux-cultist/venv-selector.nvim"
     },
     "vim-suda": {
       "rev": "c492741b4679b3cdd4d9e34138209784e061d916",

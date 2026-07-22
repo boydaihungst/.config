@@ -2,6 +2,8 @@
 ---@type vim.lsp.Config
 return {
   root_markers = { "tombi.toml", "pyproject.toml", ".git", "Cargo.toml" },
+  cmd = { "tombi", "lsp" },
+  filetypes = { "toml" },
   settings = {
     tombi = {
       lsp = {

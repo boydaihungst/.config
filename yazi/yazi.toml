@@ -138,9 +138,16 @@
     { run = "ya emit download --open %S", desc = "Download and open" },
     { run = "ya emit download %S", desc = "Download" },
   ]
+  trash    = [
+    { run = "ya pub trash-restore --list %S", desc = "Restore selected files" },
+    { run = "ya pub trash-empty --list %S", desc = "Empty trash bin" },
+  ]
 
 [open]
   rules = [
+    # Trash
+    { url = "trash://*", use = ["open", "trash"] },
+    { url = "trash://*/", use = ["edit", "trash"] },
     { mime = "image/xcursor", use = ["edit"] },
     { mime = "application/mbox", use = ["edit"] },
     { mime = "text/shellscript", use = ["execute", "edit"] },
@@ -228,6 +235,7 @@
     # { id = "mime", url = "/run/user/*/gvfs/google-drive:host=gmail.com,user=*/**/*/", run = "mime.dir", prio = "high" },
     { url = "*/", run = "mime.dir", prio = "high", group = "mime" },
     { url = "local://*", run = "mime-ext.local", prio = "high", group = "mime" },
+    { url = "trash://*", run = "mime.local", prio = "high", group = "mime" },
     { url = "remote://*", run = "mime-ext.remote", prio = "high", group = "mime" },
     { url = "*", run = "simple-tag", group = "simple-tag" },
     { url = "*/", run = "simple-tag", group = "simple-tag" },
