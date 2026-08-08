@@ -1,0 +1,11 @@
+[Unit]
+Description=Empty trash after 7 day
+Wants=trash-empty.timer
+
+[Service]
+Type=oneshot
+StandardOutput=journal
+ExecStart=/usr/bin/trash-empty -f 7
+
+[Install]
+WantedBy=default.target

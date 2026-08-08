@@ -18,8 +18,8 @@ end
 -- Usage: `yiw` to yank a word and `]p` to put it on the next line.
 nmap("[p", '<Cmd>exe "iput! " . v:register<CR>', "Paste Above")
 nmap("]p", '<Cmd>exe "iput "  . v:register<CR>', "Paste Below")
-nmap("H", '<Cmd>lua MiniBracketed.buffer("backward")<CR>', "Prev buffer")
-nmap("L", '<Cmd>lua MiniBracketed.buffer("forward")<CR>', "Next buffer")
+nmap("H", "<Cmd>bprevious<CR>", "Prev buffer")
+nmap("L", "<Cmd>bnext<CR>", "Next buffer")
 nmap("gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", "Add Comment Below")
 nmap("gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", "Add Comment Above")
 
@@ -272,13 +272,13 @@ nmap("\\z", "<Cmd>lua MiniMisc.zoom()<CR>", "Zoom toggle")
 -- - `<Leader>sn` - start new session
 -- - `<Leader>sr` - read previously started session
 -- - `<Leader>sR` - restart Neovim preserving current session
-local session_new = 'vim.ui.input({ prompt = "Session name: " }, MiniSessions.write)'
+local session_new =
+  'vim.ui.input({ prompt = "Session name: " }, function(session_name) vim.cmd("AutoSession save ".. session_name) end)'
 
-nmap_leader("Sd", '<Cmd>lua MiniSessions.select("delete")<CR>', "Delete")
+nmap_leader("Sd", "<Cmd>AutoSession deletePicker<CR>", "Delete")
 nmap_leader("Sn", "<Cmd>lua " .. session_new .. "<CR>", "New")
-nmap_leader("Sr", '<Cmd>lua MiniSessions.select("read")<CR>', "Read")
-nmap_leader("SR", "<Cmd>lua MiniSessions.restart()<CR>", "Restart")
-nmap_leader("Sw", "<Cmd>lua MiniSessions.write()<CR>", "Write current")
+nmap_leader("Sr", "<Cmd>AutoSession search<CR>", "Restore")
+nmap_leader("Sw", "<Cmd>AutoSession save<CR>", "Save current")
 
 -- other key maps
 nmap_leader("h", function()

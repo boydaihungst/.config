@@ -223,101 +223,101 @@ end)
 -- - `<Leader>sn` - start new session
 -- - `<Leader>sr` - read previously started session
 -- - `<Leader>sd` - delete previously started session
-local global_session_name = "latest"
-now(function()
-  require("mini.sessions").setup {
-    -- Whether to read default session if Neovim opened without file arguments
-    autoread = false,
-
-    -- Whether to write currently read session before leaving it
-    autowrite = true,
-
-    -- Directory where global sessions are stored (use `''` to disable)
-    directory = vim.fs.joinpath(vim.fn.stdpath "data", "session"), --<"session" subdir of user data directory from |stdpath()|>,
-
-    -- File for local session (use `''` to disable)
-    file = "Session.vim",
-
-    -- Whether to force possibly harmful actions (meaning depends on function)
-    force = { read = false, write = true, delete = true },
-
-    -- Hook functions for actions. Default `nil` means 'do nothing'.
-    -- Takes table with active session data as argument.
-    hooks = {
-      -- Before successful action
-      -- pre = { read = nil, write = nil, delete = nil },
-      -- After successful action
-      -- post = { read = nil, write = nil, delete = nil },
-      -- Before saving a session
-      pre = {
-        write = function()
-          -- Terminate and close all dap
-          if vim.pack.is_available "nvim-dap" then
-            require("dap").terminate { all = true }
-            require("dap").close()
-          end
-          if vim.pack.is_available "nvim-dap-ui" then require("dapui").close() end
-          -- Terminate and close all toggleterm buffers
-          if vim.pack.is_available "toggleterm.nvim" then
-            local terminal_list = require("toggleterm.terminal").get_all()
-            for _, term in ipairs(terminal_list) do
-              term:shutdown() -- Kills the process and closes the buffer
-            end
-          end
-
-          -- Close all unlisted buffers
-          local bufs = vim.api.nvim_list_bufs()
-          for _, bufnr in ipairs(bufs) do
-            if vim.api.nvim_buf_is_valid(bufnr) and not vim.bo[bufnr].buflisted then
-              -- Exclude terminals to prevent breaking plugins like ToggleTerm
-              if
-                not vim.tbl_contains({ "terminal" }, vim.bo[bufnr].buftype)
-                and not vim.tbl_contains({ "help" }, vim.bo[bufnr].filetype)
-              then
-                vim.api.nvim_buf_delete(bufnr, { force = true })
-              end
-            end
-          end
-        end,
-        read = function() end,
-      },
-      -- After reading a session
-      post = {
-        read = function() end,
-      },
-    },
-
-    -- Whether to print session path after action
-    verbose = { read = false, write = false, delete = true },
-  }
-end)
+-- local global_session_name = "latest"
+-- now(function()
+--   require("mini.sessions").setup {
+--     -- Whether to read default session if Neovim opened without file arguments
+--     autoread = false,
+--
+--     -- Whether to write currently read session before leaving it
+--     autowrite = true,
+--
+--     -- Directory where global sessions are stored (use `''` to disable)
+--     directory = vim.fs.joinpath(vim.fn.stdpath "data", "session"), --<"session" subdir of user data directory from |stdpath()|>,
+--
+--     -- File for local session (use `''` to disable)
+--     file = "Session.vim",
+--
+--     -- Whether to force possibly harmful actions (meaning depends on function)
+--     force = { read = false, write = true, delete = true },
+--
+--     -- Hook functions for actions. Default `nil` means 'do nothing'.
+--     -- Takes table with active session data as argument.
+--     hooks = {
+--       -- Before successful action
+--       -- pre = { read = nil, write = nil, delete = nil },
+--       -- After successful action
+--       -- post = { read = nil, write = nil, delete = nil },
+--       -- Before saving a session
+--       pre = {
+--         write = function()
+--           -- Terminate and close all dap
+--           if vim.pack.is_available "nvim-dap" then
+--             require("dap").terminate { all = true }
+--             require("dap").close()
+--           end
+--           if vim.pack.is_available "nvim-dap-ui" then require("dapui").close() end
+--           -- Terminate and close all toggleterm buffers
+--           if vim.pack.is_available "toggleterm.nvim" then
+--             local terminal_list = require("toggleterm.terminal").get_all()
+--             for _, term in ipairs(terminal_list) do
+--               term:shutdown() -- Kills the process and closes the buffer
+--             end
+--           end
+--
+--           -- Close all unlisted buffers
+--           local bufs = vim.api.nvim_list_bufs()
+--           for _, bufnr in ipairs(bufs) do
+--             if vim.api.nvim_buf_is_valid(bufnr) and not vim.bo[bufnr].buflisted then
+--               -- Exclude terminals to prevent breaking plugins like ToggleTerm
+--               if
+--                 not vim.tbl_contains({ "terminal" }, vim.bo[bufnr].buftype)
+--                 and not vim.tbl_contains({ "help" }, vim.bo[bufnr].filetype)
+--               then
+--                 vim.api.nvim_buf_delete(bufnr, { force = true })
+--               end
+--             end
+--           end
+--         end,
+--         read = function() end,
+--       },
+--       -- After reading a session
+--       post = {
+--         read = function() end,
+--       },
+--     },
+--
+--     -- Whether to print session path after action
+--     verbose = { read = false, write = false, delete = true },
+--   }
+-- end)
 
 -- Auto save local and global sessions before leaving
-later(function()
-  Config.new_autocmd("BufEnter", nil, function(args)
-    local bufnr = args.buf
-
-    if vim.bo[bufnr].buflisted then
-      vim.g.allow_save_global_session = true
-      vim.api.nvim_del_autocmd(args.id)
-    end
-  end, "Allow to save global session only after opened a buffer")
-
-  Config.new_autocmd("VimLeavePre", nil, function()
-    local global_session_path = vim.fs.joinpath(MiniSessions.config.directory, global_session_name)
-    -- Save local session first
-    if
-      vim.v.this_session ~= nil
-      and vim.v.this_session ~= ""
-      and vim.v.this_session ~= global_session_path
-      and MiniSessions
-    then
-      MiniSessions.write(vim.v.this_session, { force = true })
-    end
-    -- This saves to your global directory with the name 'latest'
-    if vim.g.allow_save_global_session then MiniSessions.write(global_session_name, { force = true }) end
-  end, "Auto save global session before leaving")
-end)
+-- later(function()
+--   Config.new_autocmd("BufEnter", nil, function(args)
+--     local bufnr = args.buf
+--
+--     if vim.bo[bufnr].buflisted then
+--       vim.g.allow_save_global_session = true
+--       vim.api.nvim_del_autocmd(args.id)
+--     end
+--   end, "Allow to save global session only after opened a buffer")
+--
+--   Config.new_autocmd("VimLeavePre", nil, function()
+--     local global_session_path = vim.fs.joinpath(MiniSessions.config.directory, global_session_name)
+--     -- Save local session first
+--     if
+--       vim.v.this_session ~= nil
+--       and vim.v.this_session ~= ""
+--       and vim.v.this_session ~= global_session_path
+--       and MiniSessions
+--     then
+--       MiniSessions.write(vim.v.this_session, { force = true })
+--     end
+--     -- This saves to your global directory with the name 'latest'
+--     if vim.g.allow_save_global_session then MiniSessions.write(global_session_name, { force = true }) end
+--   end, "Auto save global session before leaving")
+-- end)
 
 -- Start screen. This is what is shown when you open Neovim like `nvim`.
 -- Example usage:
@@ -356,62 +356,76 @@ now(function()
         -- { name = 'Files', action = 'lua require("snacks").picker.files()', section = 'Actions' },
         { name = "Projects", action = 'lua require("snacks").picker.projects()', section = "Actions" },
         { name = "Quit Neovim", action = "qall", section = "Actions" },
+
+        {
+          name = "Last",
+          action = function()
+            local autosessionLib = require "auto-session.lib"
+            local AutoSession = require "auto-session"
+            local last_session_name = autosessionLib.get_latest_session(AutoSession.get_root_dir())
+            if last_session_name then
+              if AutoSession.auto_restore_session(last_session_name, true) then return true end
+            end
+          end,
+          section = "Sessions",
+        },
+        { name = "Sessions", action = "AutoSession search", section = "Sessions" },
       },
       -- Modified MiniStarter.sections.sessions to always showing "latest" session
-      function()
-        -- Number of session items. Default: 5.
-        local n = 5
-        -- Whether to show recent sessions (instead of alphabetically by name). Default: true.
-        local recent = true
-
-        if _G.MiniSessions == nil then
-          return { { name = [['mini.sessions' is not set up]], action = "", section = "Sessions" } }
-        end
-
-        local items = {}
-        for session_name, session in pairs(_G.MiniSessions.detected) do
-          if session_name ~= global_session_name then
-            table.insert(items, {
-              _session = session,
-              name = ("%s%s"):format(session_name, session.type == "local" and " (local)" or ""),
-              action = ([[lua _G.MiniSessions.read('%s')]]):format(session_name),
-              section = "Sessions",
-            })
-          end
-        end
-
-        local sort_fun
-        if recent then
-          sort_fun = function(a, b)
-            local a_time = a._session.type == "local" and math.huge or a._session.modify_time
-            local b_time = b._session.type == "local" and math.huge or b._session.modify_time
-            return a_time > b_time
-          end
-        else
-          sort_fun = function(a, b)
-            local a_name = a._session.type == "local" and "" or a.name
-            local b_name = b._session.type == "local" and "" or b.name
-            return a_name < b_name
-          end
-        end
-        table.sort(items, sort_fun)
-
-        -- Add "latest" session
-        table.insert(items, 1, {
-          _session = vim.v.this_session,
-          name = global_session_name,
-          action = ([[lua _G.MiniSessions.read('%s')]]):format(global_session_name),
-          section = "Sessions",
-        })
-        if vim.tbl_count(items) == 0 then
-          return { { name = [[There are no detected sessions in 'mini.sessions']], action = "", section = "Sessions" } }
-        end
-        -- Take only first `n` elements and remove helper fields
-        return vim.tbl_map(function(x)
-          x._session = nil
-          return x
-        end, vim.list_slice(items, 1, n))
-      end,
+      -- function()
+      --   -- Number of session items. Default: 5.
+      --   local n = 5
+      --   -- Whether to show recent sessions (instead of alphabetically by name). Default: true.
+      --   local recent = true
+      --
+      --   if _G.MiniSessions == nil then
+      --     return { { name = [['mini.sessions' is not set up]], action = "", section = "Sessions" } }
+      --   end
+      --
+      --   local items = {}
+      --   for session_name, session in pairs(_G.MiniSessions.detected) do
+      --     if session_name ~= global_session_name then
+      --       table.insert(items, {
+      --         _session = session,
+      --         name = ("%s%s"):format(session_name, session.type == "local" and " (local)" or ""),
+      --         action = ([[lua _G.MiniSessions.read('%s')]]):format(session_name),
+      --         section = "Sessions",
+      --       })
+      --     end
+      --   end
+      --
+      --   local sort_fun
+      --   if recent then
+      --     sort_fun = function(a, b)
+      --       local a_time = a._session.type == "local" and math.huge or a._session.modify_time
+      --       local b_time = b._session.type == "local" and math.huge or b._session.modify_time
+      --       return a_time > b_time
+      --     end
+      --   else
+      --     sort_fun = function(a, b)
+      --       local a_name = a._session.type == "local" and "" or a.name
+      --       local b_name = b._session.type == "local" and "" or b.name
+      --       return a_name < b_name
+      --     end
+      --   end
+      --   table.sort(items, sort_fun)
+      --
+      --   -- Add "latest" session
+      --   table.insert(items, 1, {
+      --     _session = vim.v.this_session,
+      --     name = global_session_name,
+      --     action = ([[lua _G.MiniSessions.read('%s')]]):format(global_session_name),
+      --     section = "Sessions",
+      --   })
+      --   if vim.tbl_count(items) == 0 then
+      --     return { { name = [[There are no detected sessions in 'mini.sessions']], action = "", section = "Sessions" } }
+      --   end
+      --   -- Take only first `n` elements and remove helper fields
+      --   return vim.tbl_map(function(x)
+      --     x._session = nil
+      --     return x
+      --   end, vim.list_slice(items, 1, n))
+      -- end,
       -- MiniStarter.sections.pick(),
       MiniStarter.sections.recent_files(5, false),
     },

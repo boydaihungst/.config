@@ -1,0 +1,13 @@
+[Unit]
+Description=FlyDigi Fan Control
+After=graphical-session.target bluetooth.target
+Wants=bluetooth.target
+
+[Service]
+Type=simple
+ExecStart=thrm-core --autostart
+Restart=on-failure
+RestartSec=5
+
+WorkingDirectory=/home/huyhoang
+Environment=HOME=/home/huyhoang

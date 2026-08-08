@@ -1,0 +1,7 @@
+[Service]
+Type=oneshot
+RemainAfterExit=true
+StandardOutput=journal
+ExecStart=pactl load-module module-switch-on-connect
+[Install]
+WantedBy=default.target

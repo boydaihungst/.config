@@ -1,0 +1,12 @@
+# FlyDigi BS2PRO Bluetooth HID device
+KERNEL=="hidraw*", KERNELS=="*37[dD]7:1002*", MODE="0666", GROUP="plugdev"
+
+ACTION=="add", KERNEL=="0005:37D7:*", SUBSYSTEM=="hid", RUN+="/usr/local/bin/flydigi-udev-helper.sh add"
+ACTION=="remove", KERNEL=="0005:37D7:*", SUBSYSTEM=="hid", RUN+="/usr/local/bin/flydigi-udev-helper.sh remove"
+
+# Using the hid subsystem (HID_NAME is available here)
+# ACTION=="add", SUBSYSTEM=="hid", ENV{HID_NAME}=="FlyDigi BS2PRO", RUN+="/usr/local/bin/flydigi-udev-helper.sh add"
+# ACTION=="remove", SUBSYSTEM=="hid", ENV{HID_NAME}=="FlyDigi BS2PRO", RUN+="/usr/local/bin/flydigi-udev-helper.sh remove"
+#
+# ACTION=="add", SUBSYSTEM=="hid", ENV{HID_UNIQ}=="de:04:5a:5d:f7:52", RUN+="/usr/local/bin/flydigi-udev-helper.sh add"
+# ACTION=="remove", SUBSYSTEM=="hid", ENV{HID_UNIQ}=="de:04:5a:5d:f7:52", RUN+="/usr/local/bin/flydigi-udev-helper.sh remove"

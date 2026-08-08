@@ -1,0 +1,14 @@
+[Unit]
+Description=Reconnect Bluetooth LE device flydigi-bs2pro
+After=bluetooth.service local-fs.target
+Requires=bluetooth.service
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/sleep 5
+ExecStart=/usr/local/bin/reconnect_bluetooth_le
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

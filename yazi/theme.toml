@@ -136,6 +136,7 @@
 
 # Which
 [which]
+  border          = { fg = "#3A3E47" }
   cand            = { fg = "#48b0bd" }
   cols            = 2
   desc            = { fg = "#bf68d9" }

@@ -78,7 +78,7 @@
   ]
 
   video = [
-    { run = "mpv %s", orphan = true, desc = "Mpv", for = "linux" },
+    { run = "killall mpv; mpv %s", orphan = true, desc = "Mpv", for = "linux" },
     { run = "$HOME/git/scripts/extract_sub.sh %s", orphan = true, desc = "Extract subtitle", for = "linux" },
     # { run = "smplayer %s", orphan = true, desc = "Smplayer", for = "linux" },
     # { run = "ya emit escape select && ya emit visual_mode && ya emit plugin simple-tag 'add-tag --key=`' && ya emit escape select && smplayer %s", orphan = true, desc = "Smplayer", for = "linux" },
@@ -258,6 +258,11 @@
   spotters = [
     # Multi-file
     { mime = "multi/*", run = "multi" },
+
+    # Trash
+    { url = "trash://*", run = "trash" },
+    { url = "trash://*/", run = "trash" },
+    # Folder
     { url = "*/", run = "folder" },
     { url = "/mnt/**/*", run = "file-extra-metadata", prio = "high" },
     # Code

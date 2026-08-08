@@ -50,24 +50,7 @@ vim.g.health = { style = "float" }
 -- Use osc52 on ssh terminals. Disable osc 52 pasting, not supported by weztern
 if os.getenv "SSH_TTY" then
   vim.o.clipboard = "unnamedplus"
-  local function paste()
-    return {
-      vim.fn.split(vim.fn.getreg "", "\n"),
-      vim.fn.getregtype "",
-    }
-  end
-
-  vim.g.clipboard = {
-    name = "OSC 52",
-    copy = {
-      ["+"] = require("vim.ui.clipboard.osc52").copy "+",
-      ["*"] = require("vim.ui.clipboard.osc52").copy "*",
-    },
-    paste = {
-      ["+"] = paste,
-      ["*"] = paste,
-    },
-  }
+  vim.g.clipboard = "osc52"
 else
   -- Sync clipboard between OS and Neovim.
   --  Schedule the setting after `UiEnter` because it can increase startup-time.
@@ -86,7 +69,7 @@ vim.opt.whichwrap = "lh" -- allow horizontal and vertical movement
 vim.opt.list = true
 -- Tab chars for indentation: check mini.indentscope
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣", extends = "»", precedes = "«" }
-
+--
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
 
@@ -99,7 +82,7 @@ vim.opt.completeopt = { "menu", "menuone", "noselect", "fuzzy", "nosort" } -- Op
 vim.opt.confirm = true -- raise a dialog asking if you wish to save the current file(s)
 vim.opt.copyindent = true -- copy the previous indentation on autoindenting
 vim.opt.cursorline = true -- highlight the text line of the cursor
-vim.opt.diffopt = vim.list_extend(vim.opt.diffopt:get(), { "algorithm:histogram", "linematch:60" }) -- enable linematch diff algorithm
+vim.opt.diffopt = vim.tbl_deep_extend("force", vim.opt.diffopt:get(), { algorithm = "histogram", linematch = 60 }) -- enable linematch diff algorithm
 vim.opt.expandtab = true -- enable the use of space in tab
 vim.opt.fillchars = {
   eob = " ",

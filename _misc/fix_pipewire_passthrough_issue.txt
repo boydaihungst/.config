@@ -1,0 +1,2 @@
+https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/Performance-tuning
+https://gitlab.freedesktop.org/pipewire/pipewire/-/wikis/Troubleshooting#stuttering-audio-in-virtual-machine

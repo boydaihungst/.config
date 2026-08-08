@@ -88,7 +88,9 @@ later(function()
           },
         },
       },
-      spinner = {},
+      spinner = {
+        text = "AI is cooking...", -- text displayed next to the spinner
+      },
     },
     language = "English",
     adapters = {

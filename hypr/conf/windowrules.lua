@@ -442,23 +442,20 @@ local window_rules = {
   },
   -- Fix pinentry losing focus
   {
-    match = { class = "(pinentry-|gcr-prompter)(.*)" },
+    match = { class = "^(pinentry-|gcr-prompter)$" },
     pin = true,
     float = true,
     pseudo = true,
     focus_on_activate = true,
     stay_focused = true,
+    no_focus = false,
   },
 }
 
 -- Workspace to monitor assignments (separate from window rules)
 local workspace_rules = {
-  { workspace = "1", monitor = "DP-1", default = true },
-  { workspace = "2", monitor = "DP-1" },
-  { workspace = "3", monitor = "DP-1" },
-  { workspace = "4", monitor = "DP-1" },
 
-  { workspace = "5", monitor = "DP-2", default = true },
+  { workspace = "5", monitor = "DP-2" },
   { workspace = "6", monitor = "DP-2" },
   { workspace = "7", monitor = "DP-2" },
   { workspace = "8", monitor = "DP-2" },
@@ -466,12 +463,16 @@ local workspace_rules = {
   {
     workspace = "10",
     monitor = "HDMI-A-1",
-    default = true,
+    -- default = true,
     no_border = true,
     no_shadow = true,
     no_rounding = true,
     decorate = false,
   },
+  { workspace = "1", monitor = "DP-1", default = true },
+  { workspace = "2", monitor = "DP-1" },
+  { workspace = "3", monitor = "DP-1" },
+  { workspace = "4", monitor = "DP-1" },
 }
 
 for _, win_rule in ipairs(window_rules) do

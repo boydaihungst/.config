@@ -4,17 +4,17 @@
 # exec /usr/libexec/polkit-gnome-authentication-agent-1
 
 exec --no-startup-id dbus-update-activation-environment --all
-exec gnome-keyring-daemon --start --components=secrets
-exec export $(gnome-keyring-daemon)
-exec dex -a
+# exec gnome-keyring-daemon --start --components=secrets
+# exec export $(gnome-keyring-daemon)
+exec dex-autostart -a
 
 # Idle configuration
 exec swayidle -w \
-    timeout 300 'brightnessctl -s set 50%; brightnessctl -sd platform::kbd_backlight set 0' \
-        resume 'brightnessctl -r; brightnessctl -rd platform::kbd_backlight' \
-    timeout 600 'swaylock -f' \
-    timeout 700 'swaymsg "output * power off"' \
-        resume 'swaymsg "output * power on"' \
+    timeout 150 'brightnessctl -s set 10; brightnessctl -sd platform::kbd_backlight set 0; /home/huyhoang/git/Monitor_Mode_AOC/monitor_mode -l 10' \
+        resume 'brightnessctl -r; brightnessctl -rd platform::kbd_backlight; ddcutil --sn="AWBS39A000221" setvcp d6 1 && /home/huyhoang/git/Monitor_Mode_AOC/monitor_mode -l 100' \
+    timeout 300 'swaylock -f' \
+    timeout 360 'swaymsg "output * power off"' \
+        resume 'swaymsg "output * power on"; brightnessctl -r; brightnessctl -rd platform::kbd_backlight; ddcutil --sn="AWBS39A000221" setvcp d6 1 && /home/huyhoang/git/Monitor_Mode_AOC/monitor_mode -l 100' \
     before-sleep 'swaylock -f' \
     timeout 1800 'loginctl suspend'
     # timeout 1800 'systemctl suspend-then-hibernate'
@@ -25,12 +25,9 @@ exec autotiling
 # cliphist
 exec wl-paste --watch cliphist store
 
-# (run via dex):
-# TODO: Remove later gentoo pipewire
-# exec gentoo-pipewire-launcher restart &
-
-exec /usr/libexec/xdg-desktop-portal-termfilechooser
-exec /usr/local/libexec/file_manager_dbus
+# TODO: Check xdg-portal
+# exec /usr/libexec/xdg-desktop-portal-termfilechooser
+# exec /usr/local/libexec/file_manager_dbus
 exec gpgconf --launch gpg-agent
 exec ~/.config/sway/scripts/battery-watch.sh
 exec_always swaybg -i ~/.config/sway/wallpaper -m fill
@@ -39,6 +36,7 @@ exec mpd-mpris -network unix  --host ~/.config/mpd/socket
 
 exec_always shikane --config ~/.config/shikane/config_sway.toml
 exec_always python3 ~/.config/sway/scripts/headless-ws.py
+exec ddcutil --sn="AWBS39A000221" setvcp d6 1 && /home/huyhoang/git/Monitor_Mode_AOC/monitor_mode -l 100
 # exec-once = waypaper-engine daemon
 
 # exec-once = ibus start --type wayland

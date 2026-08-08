@@ -7,19 +7,21 @@ set $down j
 set $up k
 set $right l
 
+set $terminal kitty
+set $browser vivaldi
 set $powermenu ~/.config/rofi/powermenu/type-2/powermenu.sh
 set $applaucher ~/.config/rofi/launchers/type-1/launcher.sh
 set $powerprofiles ~/.config/sway/scripts/power-profiles
-set $volumectl ~/.config/hypr/scripts/volumectl
-set $brightnesschange ~/.config/hypr/scripts/brightness-change.sh
-set $toggle_gemini ~/.config/hypr/scripts/toggle_gemini.sh
+set $volumectl ~/.config/sway/scripts/volumectl
+set $brightnesschange ~/.config/sway/scripts/brightness-change.sh
+set $toggle_gemini ~/.config/sway/scripts/toggle_gemini.sh
 
 ### Key bindings
 #
 # Basics:
 #
     # Launch the terminal
-    bindsym $mod+Return exec kitty
+    bindsym $mod+Return exec $terminal
 
     # Open the power menu
     bindsym $mod+x exec $powermenu
@@ -61,7 +63,6 @@ set $toggle_gemini ~/.config/hypr/scripts/toggle_gemini.sh
         $mod+Shift+$down move down
         $mod+Shift+$up move up
         $mod+Shift+$right move right
-            
         # Move focused window to the monitor in the specified direction
         $mod+Left move container to output left
         $mod+Right move container to output right
@@ -106,9 +107,7 @@ set $toggle_gemini ~/.config/hypr/scripts/toggle_gemini.sh
     }
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-    
 
-  
 #
 # Layout stuff:
 #
@@ -203,6 +202,7 @@ set $toggle_gemini ~/.config/hypr/scripts/toggle_gemini.sh
         # Touchpad
         XF86TouchpadOff input "type:touchpad" events disabled
         XF86TouchpadOn input "type:touchpad" events enabled
+        XF86Calculator exec speedcrunch
 
         # Lenovo Legion 5 copilot AI button
         $mod+Shift+XF86TouchpadOff exec $toggle_gemini
@@ -212,14 +212,14 @@ set $toggle_gemini ~/.config/hypr/scripts/toggle_gemini.sh
 # App shortcuts
 #
     # Launch the file explorer
-    bindsym $mod+n exec kitty --app-id 'yazi' -- yazi
-    bindsym $mod+Shift+n exec YAZI_LOG=debug kitty --app-id 'yazi' -- yazi
+    bindsym $mod+n exec $terminal --app-id 'yazi' -- yazi
+    bindsym $mod+Shift+n exec YAZI_LOG=debug $terminal --app-id 'yazi' -- yazi
 
     # Launch the text editor
-    bindsym $mod+e exec kitty --app-id 'nvim' -- nvim
+    bindsym $mod+e exec $terminal --app-id 'nvim' -- nvim
 
     # Launch the browser
-    bindsym $mod+w exec zen-browser
+    bindsym $mod+w exec $browser
 
     # Launch color picker
     bindsym $mod+z exec hyprpicker -a -f hex -r -q

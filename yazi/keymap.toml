@@ -88,7 +88,7 @@
       "plugin pref-by-location -- save"
     ], desc = "Toggle the visibility of hidden files" },
     { on = "s", run = "search --via=fd", desc = "Search files by name using fd" },
-    { on = "S", run = "search --via=rga", desc = "Search files by content using ripgrep-all" },
+    { on = "S", run = "search --via=rg", desc = "Search files by content using ripgrep-all" },
     { on = "<C-s>", run = "search none", desc = "Cancel the ongoing search" },
     { on = "z", run = "plugin zoxide", desc = "Jump to a directory using zoxide" },
     { on = "Z", run = "plugin fzf", desc = "Jump to a directory or reveal a file using fzf" },
@@ -137,9 +137,9 @@
 				shell -- bash $(CLIPBOARD=$( (command -v clipboard &>/dev/null && echo "cat %h | clipboard" ) || (command -v wl-copy &>/dev/null && echo "wl-copy < %h") || (command -v xclip &>/dev/null && echo "xclip -selection clipboard  < %h") || (command -v xsel &>/dev/null && echo "xsel --clipboard --input  < %h") ) && ( ([[ "$CLIPBOARD" == *"xclip"* ]] || [[ "$CLIPBOARD" == *"xsel"* ]]) && [[ -z "$DISPLAY" ]]) && exit || eval "$CLIPBOARD")
 		''',
     ], desc = "Copy hovered file content to clipboard" },
-    { on = ["y", "d"], run = '''
-        shell 'dragon-drop -x -a -T %s >/dev/null' --orphan
-    ''', desc = "Drag and drop via dragon-drop" },
+    # { on = ["y", "d"], run = '''
+    #     shell 'dragon-drop -x -a -T %s >/dev/null' --orphan
+    # ''', desc = "Drag and drop via dragon-drop" },
     # { on = [ "y", "d" ], run = "copy dirname", desc = "Copy the directory name" },
     { on = ["y", "n"], run = "copy filename", desc = "Copy the filename" },
     { on = ["y", "."], run = "copy name_without_ext", desc = "Copy the filename without extension" },

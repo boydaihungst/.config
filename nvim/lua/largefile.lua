@@ -40,19 +40,21 @@ function M.is_large(bufnr, large_buf_opts, event)
         if type(enabled) == "table" then large_buf_opts = enabled end
       end
       local large_buf = false
-      if vim.F.if_nil(enabled, true) then
+      if vim.nonnil(enabled, true) then
         if not buf_size_cache[bufnr] then
           local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(bufnr))
           buf_size_cache[bufnr] = ok and stats and stats.size or 0
         end
         local file_size = buf_size_cache[bufnr]
         local line_count = vim.api.nvim_buf_line_count(bufnr)
-        if event == "BufReadPre" and (large_buf_opts.line_length or large_buf_opts.lines) then
-          line_count = #vim.fn.readfile(vim.api.nvim_buf_get_name(bufnr), "", large_buf_opts.lines + 1) -- read first line_length lines
+        local fpath = vim.api.nvim_buf_get_name(bufnr)
+        if fpath ~= "" and vim.uv.fs_stat(fpath) and (large_buf_opts.line_length or large_buf_opts.lines) then
+          line_count = #vim.fn.readfile(fpath, "", large_buf_opts.lines + 1) -- read first line_length lines
         end
         local too_large = large_buf_opts.size and file_size > large_buf_opts.size
         local too_long = large_buf_opts.lines and line_count > large_buf_opts.lines
-        local too_wide = large_buf_opts.line_length and (file_size / line_count) - 1 > large_buf_opts.line_length
+        local too_wide = large_buf_opts.line_length and ((file_size / line_count) - 1 > large_buf_opts.line_length)
+          or false
         large_buf = too_large or too_long or too_wide or false
       end
       if skip_cache then return large_buf end

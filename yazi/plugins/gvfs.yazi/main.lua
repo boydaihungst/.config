@@ -64,6 +64,7 @@ local PASSWORD_VAULT = {
 local DEVICE_CONNECT_STATUS = {
 	MOUNTED = 1,
 	NOT_MOUNTED = 2,
+	BOTH = 3,
 }
 
 ---@enum SCHEME
@@ -158,6 +159,7 @@ local ACTION = {
 ---@field scheme SCHEME
 ---@field bus integer?
 ---@field device integer?
+---@field drive string?
 ---@field uuid string?
 ---@field encrypted_uuid string?
 ---@field service_domain string?
@@ -169,6 +171,7 @@ local ACTION = {
 ---@field can_mount "1"|"0"|nil
 ---@field can_unmount "1"|"0"
 ---@field can_eject "1"|"0"
+---@field can_stop "1"|"0"
 ---@field should_automount "1"|"0"
 ---@field remote_path string?
 
@@ -1028,6 +1031,7 @@ local function parse_devices(raw_input)
 		end
 	end
 
+	local hard_drive_path = nil
 	for line in raw_input:gmatch("[^\r\n]+") do
 		local clean_line = line:match("^%s*(.-)%s*$")
 
@@ -1036,13 +1040,15 @@ local function parse_devices(raw_input)
 		if line:match("^Drive%(%d+%):") then
 			current_mount = nil
 			current_volume = nil
+			hard_drive_path = nil
 		elseif volume_name then
 			current_mount = nil
-			current_volume = { name = volume_name, mounts = {} }
+			current_volume = { name = volume_name, mounts = {}, drive = hard_drive_path }
 			table.insert(volumes, current_volume)
 
 		-- Match mount(0)
 		elseif clean_line:match("^Mount%(%d+%):") then
+			hard_drive_path = nil
 			current_mount = nil
 			local mount_indent, mount_name, mount_uri = line:match("^(%s*)Mount%(%d+%):%s*(.-)%s*->%s*(.+)$")
 			if not mount_name then
@@ -1103,6 +1109,9 @@ local function parse_devices(raw_input)
 				key, value = clean_line:match("^(%S+)%s*:%s*'(.-)'$")
 				if key == "uuid" and value then
 					current_volume.encrypted_uuid = value
+				end
+				if not hard_drive_path and key == "unix-device" and value then
+					hard_drive_path = value
 				end
 			end
 			if key and value then
@@ -1528,10 +1537,11 @@ local function list_gvfs_device_by_status(status, filter)
 		end
 		local mounted = is_mounted(d)
 
-		if status == DEVICE_CONNECT_STATUS.MOUNTED and mounted then
+		if status == DEVICE_CONNECT_STATUS.BOTH then
 			table.insert(devices_filtered, d)
-		end
-		if status == DEVICE_CONNECT_STATUS.NOT_MOUNTED and not mounted then
+		elseif status == DEVICE_CONNECT_STATUS.MOUNTED and mounted then
+			table.insert(devices_filtered, d)
+		elseif status == DEVICE_CONNECT_STATUS.NOT_MOUNTED and not mounted then
 			table.insert(devices_filtered, d)
 		end
 		::continue::
@@ -1552,12 +1562,21 @@ local function unmount_gvfs(device, eject, force, max_retry, retries)
 	retries = retries or 0
 
 	local unmount_method = "-u"
-	if eject then
+	if eject and device.drive then
+		unmount_method = "-t"
+	elseif eject then
 		unmount_method = "-e"
 	end
-	for _, mount in ipairs(device.mounts ~= nil and device.mounts or { device }) do
-		local cmd_err, res =
-			run_command("gio", tbl_remove_empty({ "mount", unmount_method, force and "-f" or nil, mount.uri }))
+	for _, mount in ipairs((device.mounts ~= nil and not eject) and device.mounts or { device }) do
+		local cmd_err, res = run_command(
+			"gio",
+			tbl_remove_empty({
+				"mount",
+				force and "-f" or nil,
+				unmount_method,
+				not eject and mount.uri or (mount.drive or mount["unix-device"]),
+			})
+		)
 		if cmd_err or (res and not res.status.success) then
 			if eject and res and res.stderr:find("mount doesn.*t implement .*eject.* or .*eject_with_operation.*") then
 				return unmount_gvfs(device, false, force)
@@ -1909,22 +1928,28 @@ local function unmount_action(device, eject, force)
 	if not device then
 		local root_mountpoint = get_state(STATE_KEY.ROOT_MOUNTPOINT)
 
-		local list_devices = list_gvfs_device_by_status(DEVICE_CONNECT_STATUS.MOUNTED, function(d)
-			if d.scheme == SCHEME.FILE then
-				return (
-					d.mounts
-					and #d.mounts >= 1
-					and d.mounts[1].uri
-					and (
-						d.mounts[1].uri:match("^" .. is_literal_string("file://" .. root_mountpoint) .. "(.+)$")
-						or d.mounts[1].uri:match(
-							"^" .. is_literal_string("file://" .. GVFS_ROOT_MOUNTPOINT_FILE) .. "(.+)$"
+		local list_devices = list_gvfs_device_by_status(
+			eject and DEVICE_CONNECT_STATUS.BOTH or DEVICE_CONNECT_STATUS.MOUNTED,
+			function(d)
+				if d.scheme == SCHEME.FILE then
+					if eject then
+						return d.drive ~= nil
+					end
+					return (
+						d.mounts
+						and #d.mounts >= 1
+						and d.mounts[1].uri
+						and (
+							d.mounts[1].uri:match("^" .. is_literal_string("file://" .. root_mountpoint) .. "(.+)$")
+							or d.mounts[1].uri:match(
+								"^" .. is_literal_string("file://" .. GVFS_ROOT_MOUNTPOINT_FILE) .. "(.+)$"
+							)
 						)
 					)
-				)
+				end
+				return not eject
 			end
-			return true
-		end)
+		)
 		-- NOTE: Automatically select the first device if there is only one device
 		selected_device = #list_devices == 1 and list_devices[1] or nil
 		if not selected_device then
@@ -1940,7 +1965,9 @@ local function unmount_action(device, eject, force)
 			return
 		end
 		--NOTE: Fall-safe x-gvfs-show
-		if selected_device then
+		if
+			selected_device and (selected_device.uri or (#selected_device.mounts > 0 and selected_device.mounts[1].uri))
+		then
 			local status, err = Command(SHELL)
 				:arg({
 					"-c",

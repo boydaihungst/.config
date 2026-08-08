@@ -25,7 +25,8 @@ input type:keyboard {
 }
 
 input 9390:4629:Rapoo_Rapoo_Gaming_Device {
-    scroll_factor 3
+    scroll_factor 2
+    accel_profile flat
 }
 
 # Set keyboard layout and variant based on current system settings

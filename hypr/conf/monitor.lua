@@ -5,7 +5,7 @@ hl.monitor({
   scale = 1,
   position = "auto-right",
   cm = "auto",
-  vrr = 1,
+  vrr = 0,
   icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G42ZE.icm",
 })
 
@@ -15,8 +15,9 @@ hl.monitor({
   scale = 1,
   position = "0x0",
   cm = "auto",
-  vrr = 1,
-  icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G4ZD.icm",
+  bitdepth = 10,
+  vrr = 0,
+  icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G4ZDP.icm",
 })
 
 hl.monitor({
@@ -24,7 +25,7 @@ hl.monitor({
   mode = "2560x1600@240",
   scale = 1.33,
   position = "auto-right",
-  vrr = 1,
+  vrr = 0,
   icc = "/home/huyhoang/.config/sway/scripts/color_profiles/TPLCD_2039_Default.icm",
 })
 

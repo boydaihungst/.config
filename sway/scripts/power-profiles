@@ -135,9 +135,9 @@ typeset -A menu
 # Menu with keys/commands
 
 menu=(
-  [ Performance]="$preferred_power_manager set performance"
-  [󰗑 Balanced]="$preferred_power_manager set balanced"
-  [ Power Saver]="$preferred_power_manager set power-saver"
+  [ Performance]="powerprofilesctl set performance"
+  [󰗑 Balanced]="powerprofilesctl set balanced"
+  [ Power Saver]="powerprofilesctl set power-saver"
   [ Cancel]=""
 )
 
