@@ -9,7 +9,7 @@
   - [Usage](#usage)
   <!--toc:end-->
 
-A Yazi plugin that compresses selected files to an archive. Supporting yazi versions 25.5.31 and up.
+A Yazi plugin that compresses selected files to an archive. Supporting yazi versions 26.5.6 and up.
 
 ## Supported file types
 
@@ -57,3 +57,13 @@ ya pkg add boydaihungst/compress
 - Type a name for the new file and password (Optional).
 - The file extention must match one of the supported filetype extentions.
 - The desired archive/compression command must be installed on your system.
+
+> [!IMPORTANT]
+> Doesn't support creating archives from remote vfs files.
+> Because it makes no sense to download files from vfs to local cache folder,
+> then upload compressed file back to vfs. You should create archives directly in vfs via ssh session instead.
+>
+> But you can create archives from local files and select the output path to be a remote vfs file.
+> By selecting files you want to archive from local paths,
+> then go to any vfs folder and use "plugin compress" to create archives.
+> After the archive file is created, it will automatically upload to correct remote vfs folder.

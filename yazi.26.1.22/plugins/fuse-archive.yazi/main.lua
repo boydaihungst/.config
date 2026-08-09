@@ -1,4 +1,4 @@
---- @since 25.5.31
+--- @since 26.5.6
 
 local shell = os.getenv("SHELL") or ""
 ---@enum FUSE_ARCHIVE_RETURN_CODE
@@ -88,7 +88,7 @@ local is_mount_point = ya.sync(function(state)
 	local dir = cx.active.current.cwd.name
 	local cwd = tostring(cx.active.current.cwd.path or cx.active.current.cwd)
 	local mount_root_dir = get_state("global", "mount_root_dir")
-	local match_pattern = "^" .. is_literal_string(mount_root_dir .. "/yazi/fuse-archive") .. "/[^/]+%.tmp%.[^/]+$"
+	local match_pattern = "^" .. is_literal_string(mount_root_dir) .. "/[^/]+%.tmp%.[^/]+$"
 
 	for archive, _ in pairs(state) do
 		if archive == dir and string.match(cwd, match_pattern) then
@@ -134,9 +134,31 @@ end
 ---@return integer|nil, Output|nil
 local function run_command(cmd, args, _stdin)
 	local cwd = current_dir()
-	cwd = tostring(
-		cwd.scheme and cwd.scheme.is_virtual and Url(cwd.scheme.cache .. tostring(cwd.path)).parent or cwd.path or cwd
-	)
+	if not cwd.spec then
+		-- NOTE: yazi <= v26.5.6
+		cwd = tostring(
+			(cwd.scheme and cwd.scheme.is_virtual)
+					and Url((cwd.scheme and cwd.scheme.cache) .. tostring(cwd.path)).parent
+				or cwd.path
+				or cwd
+		)
+	else
+		-- NOTE: yazi > v26.5.6
+		local is_trash = cwd.spec.scheme == "trash"
+		if is_trash then
+			local hovered_file, _ = current_file()
+			if not hovered_file then
+				return Error.other("Cannot find hovered file")
+			end
+			local trash_file = require("trash"):provide({ op = "File", url = Url(tostring(hovered_file)) })
+			if not trash_file then
+				return Error.other("Cannot find trashed file")
+			end
+			cwd = tostring(trash_file.path.parent)
+		else
+			cwd = tostring(cwd.spec.is_virtual and fs.cwd() or cwd.path or cwd)
+		end
+	end
 
 	local stdin = _stdin or Command.PIPED
 	local child, cmd_err =
@@ -156,6 +178,17 @@ local function run_command(cmd, args, _stdin)
 	end
 end
 
+local function run_command_raw(cmd, cwd)
+	if cwd then
+		cmd = string.format('cd "%s" && %s', cwd, cmd)
+	end
+
+	local handle = io.popen(cmd .. " 2>&1")
+	local output = handle:read("*a")
+	local success, exit_type, exit_code = handle:close()
+	return output, success, exit_type, exit_code
+end
+
 local is_mounted = function(dir_path)
 	local cmd_err_code, res = run_command(shell, { "-c", "mountpoint -q " .. path_quote(dir_path) })
 	if cmd_err_code or res == nil or res.status.code ~= 0 then
@@ -168,8 +201,7 @@ end
 ---Get the fuse mount point
 ---@return string|nil
 local fuse_dir = function()
-	local mount_root_dir = get_state("global", "mount_root_dir")
-	local fuse_mount_point = mount_root_dir .. "/yazi/fuse-archive"
+	local fuse_mount_point = get_state("global", "mount_root_dir")
 	local _, _, exit_code = os.execute("mkdir -p " .. ya.quote(fuse_mount_point))
 	if exit_code ~= 0 then
 		error("Cannot create mount point %s", fuse_mount_point)
@@ -275,32 +307,31 @@ end
 
 local redirect_mounted_tab_to_home = ya.sync(function(state, _)
 	local mount_root_dir = get_state("global", "mount_root_dir")
-	local match_pattern = "^" .. is_literal_string(mount_root_dir .. "/yazi/fuse-archive") .. "/[^/]+%.tmp%.[^/]+$"
+	local match_pattern = "^" .. is_literal_string(mount_root_dir) .. "/[^/]+%.tmp%..+$"
 	local HOME = os.getenv("HOME")
+	local redirect_tabs = {}
 
 	for _, tab in ipairs(cx.tabs) do
-		local dir = tab.current.cwd.name
 		local cwd = tostring(tab.current.cwd)
-
-		for archive, _ in pairs(state) do
-			if archive == dir and string.match(cwd, match_pattern) then
-				ya.emit("cd", {
-					HOME,
-					tab = (type(tab.id) == "number" or type(tab.id) == "string") and tab.id or tab.id.value,
-					raw = true,
-				})
-				goto continue
-			end
+		if string.match(cwd, match_pattern) then
+			table.insert(redirect_tabs, {
+				HOME,
+				tab = (type(tab.id) == "number" or type(tab.id) == "string") and tab.id or tab.id.value,
+				raw = true,
+			})
+			break
 		end
-		::continue::
 	end
+	return redirect_tabs
 end)
 
 ---mount fuse
----@param opts {archive_path: Url, fuse_mount_point: Url, mount_options: string[], passphrase?: string, max_retry?: integer, retries?: integer}
+---@param opts {archive_path: Url, archive_vfs?: Url, fuse_mount_point: Url, mount_options: string[], passphrase?: string, max_retry?: integer, retries?: integer}
 ---@return boolean
 local function mount_fuse(opts)
 	local archive_path = opts.archive_path
+	local archive_vfs = opts.archive_vfs
+	local archive_ext = opts.archive_vfs and opts.archive_vfs.ext or archive_path.ext
 	local fuse_mount_point = opts.fuse_mount_point
 	local mount_options = opts.mount_options or {}
 	local passphrase = opts.passphrase
@@ -313,6 +344,18 @@ local function mount_fuse(opts)
 		return true
 	end
 	local _mount_opts = tbl_unique_strings({ "auto_unmount", table.unpack(mount_options) })
+	local fuse_version = get_state("global", "fuse-archive-version")
+	if fuse_version and fuse_version >= 1.20 then
+		local blacklisted_opts = { "notrim", "nomerge" }
+		for i = #blacklisted_opts, 1, -1 do
+			for _, opt in ipairs(_mount_opts) do
+				if opt == blacklisted_opts[i] then
+					table.remove(blacklisted_opts, i)
+				end
+			end
+		end
+		_mount_opts = tbl_unique_strings({ table.unpack(blacklisted_opts), table.unpack(_mount_opts) })
+	end
 
 	local res, _ = Command(shell)
 		:arg({
@@ -381,7 +424,7 @@ local function mount_fuse(opts)
 		if FUSE_ARCHIVE_MOUNT_ERROR_MSG[fuse_mount_res_code] then
 			if fuse_mount_res_code == FUSE_ARCHIVE_RETURN_CODE.ARCHIVE_READ_PERMISSION_INVALID then
 				if
-					archive_path.ext == "rar"
+					archive_ext == "rar"
 					and fuse_mount_res_msg
 					and fuse_mount_res_msg:find("encrypted data is not currently supported", 1, true)
 				then
@@ -400,6 +443,7 @@ local function mount_fuse(opts)
 	retries = retries + 1
 	return mount_fuse({
 		archive_path = archive_path,
+		archive_vfs = archive_vfs,
 		fuse_mount_point = fuse_mount_point,
 		mount_options = mount_options,
 		passphrase = passphrase,
@@ -411,8 +455,8 @@ end
 ---Mount path using inode (unique for each files)
 ---@param file_url Url
 ---@return string|nil
-local function tmp_file_name(file_url)
-	local fname = file_url.name
+local function tmp_file_name(file_url, file_name)
+	local fname = file_name or file_url.name
 	local cmd_err_code, res = run_command(shell, { "-c", "xxh128sum -q " .. path_quote(file_url) })
 	if cmd_err_code or res == nil or res.status.code ~= 0 then
 		error("Cannot create unique path of file %s", fname)
@@ -423,23 +467,78 @@ local function tmp_file_name(file_url)
 end
 
 local function unmount_on_quit()
-	redirect_mounted_tab_to_home()
-	local mount_root_dir = get_state("global", "mount_root_dir")
-	local unmount_script =
-		path_quote(os.getenv("HOME") .. "/.config/yazi/plugins/fuse-archive.yazi/assets/unmount_on_quit.sh")
-	os.execute("chmod +x " .. unmount_script)
-	os.execute(unmount_script .. " " .. path_quote(mount_root_dir))
+	ya.async(function()
+		local redirect_tabs = redirect_mounted_tab_to_home()
+		local mount_root_dir = get_state("global", "mount_root_dir")
+		for _, tab in ipairs(redirect_tabs) do
+			ya.exec("cd", tab)
+		end
+		local yazi_instance_count, yazi_instance_count_success, _, _ =
+			run_command_raw("pgrep -c -x -u " .. ya.user_name() .. " yazi")
+		if not yazi_instance_count_success then
+			error("Cannot check if there is any other yazi instance running")
+			ya.dbg("Cannot check if there is any other yazi instance running")
+			return
+		end
+
+		if yazi_instance_count and yazi_instance_count_success and tonumber(yazi_instance_count) <= 1 then
+			local fuse_archive_mnt_points, fuse_archive_mnt_points_success, _, _ = run_command_raw(
+				"findmnt --output TARGET --noheadings --list | grep '^" .. path_quote(mount_root_dir) .. "' | sort -r"
+			)
+
+			if not fuse_archive_mnt_points_success then
+				error("Cannot get fuse-archive mount points to unmount: %s", fuse_archive_mnt_points or "")
+				ya.dbg(
+					string.format("Cannot get fuse-archive mount points to unmount: %s", fuse_archive_mnt_points or "")
+				)
+				return
+			end
+			for mnt_point in fuse_archive_mnt_points:gmatch("[^\r\n]+") do
+				if mnt_point ~= "" then
+					local unmount_result, unmount_result_success, _, _ =
+						run_command_raw("umount -l " .. path_quote(mnt_point))
+
+					if not unmount_result_success then
+						error("Cannot unmount fuse-archive mount point %s: %s", mnt_point, unmount_result or "")
+						ya.dbg(
+							string.format(
+								"Cannot unmount fuse-archive mount point %s: %s",
+								mnt_point,
+								unmount_result or ""
+							)
+						)
+						return
+					end
+				end
+			end
+		end
+		ya.exec("quit", {})
+	end)
+end
+
+local function fuse_archive_version()
+	local cmd_err_code, res = run_command(shell, { "-c", "fuse-archive --version" })
+	if cmd_err_code or res == nil or res.status.code ~= 0 then
+		error("Cannot read fuse-archive version")
+		return nil
+	end
+	local version = res.stdout:match("%s*fuse%-archive%s*([%d%.]+)")
+	return tonumber(version)
 end
 
 local function setup(_, opts)
 	set_state(
 		"global",
 		"mount_root_dir",
-		opts
+		(
+			opts
 				and opts.mount_root_dir
 				and type(opts.mount_root_dir) == "string"
 				and path_remove_trailing_slash(opts.mount_root_dir)
-			or "/tmp"
+			or "/tmp/yazi/fuse-archive"
+		)
+			.. "/"
+			.. ya.uid()
 	)
 	local fuse = fuse_dir()
 	set_state("global", "fuse_dir", fuse)
@@ -496,18 +595,26 @@ local function setup(_, opts)
 	end
 	set_state("global", "valid_extensions", SET_ALLOWED_EXTENSIONS)
 
+	ya.emit("plugin", { "fuse-archive", "version" })
 	-- trigger unmount on quit
 	ps.sub("key-quit", function(args)
 		unmount_on_quit()
+		return nil
+	end)
+	ps.sub("key-close", function(args)
+		if #cx.tabs <= 1 then
+			unmount_on_quit()
+			return nil
+		end
 		return args
 	end)
 	ps.sub("emit-quit", function(args)
 		unmount_on_quit()
-		return args
+		return nil
 	end)
 	ps.sub("emit-ind-quit", function(args)
 		unmount_on_quit()
-		return args
+		return nil
 	end)
 end
 
@@ -515,6 +622,7 @@ local unsub_download = ya.sync(function()
 	ps.unsub("download")
 end)
 
+-- Wait for file to download to cache folder then mount afterwards
 local sub_download = ya.sync(function(_, url)
 	unsub_download()
 	ps.sub("download", function(body)
@@ -529,7 +637,6 @@ local sub_download = ya.sync(function(_, url)
 		end
 	end)
 end)
-
 return {
 	entry = function(_, job)
 		local action = job.args[1]
@@ -537,6 +644,7 @@ return {
 			return
 		end
 
+		-- Cancel any left over handler download
 		unsub_download()
 		if action == "mount" then
 			local hovered_url, is_dir = job.args.url and Url(job.args.url), false
@@ -551,16 +659,39 @@ return {
 				enter(hovered_url, is_dir)
 				return
 			end
-			local is_virtual = hovered_url.scheme and hovered_url.scheme.is_virtual
-			local hovered_url_cached = is_virtual and Url(hovered_url.scheme.cache .. tostring(hovered_url.path))
-				or hovered_url.path
-				or hovered_url
+
+			-- Handle virtual file
+			local is_virtual = false
+			local hovered_url_cached
+			if not hovered_url.spec then
+				-- NOTE: yazi <= v26.5.6
+				is_virtual = hovered_url.scheme and hovered_url.scheme.is_virtual
+				hovered_url_cached = is_virtual
+						and Url((hovered_url.scheme and hovered_url.scheme.cache) .. tostring(hovered_url.path))
+					or hovered_url.path
+					or hovered_url
+			else
+				-- NOTE: yazi > v26.5.6
+				is_virtual = hovered_url.spec.is_virtual
+				hovered_url_cached = is_virtual and Url(fs.cwd():join(hovered_url:hash(true)))
+					or hovered_url.path
+					or hovered_url
+
+				local is_trash = hovered_url.spec.scheme == "trash"
+				if is_trash then
+					local trash_file = require("trash"):provide({ op = "File", url = Url(tostring(hovered_url)) })
+					hovered_url_cached = Url(tostring(trash_file.path))
+				end
+			end
+
+			-- Start download remote file to cache folder
 			if is_virtual and not fs.cha(hovered_url_cached) then
-				sub_download(tostring(hovered_url), job)
-				ya.emit("download", { tostring(hovered_url) })
+				sub_download(tostring(hovered_url))
+				ya.exec("download", { tostring(hovered_url) })
 				return
 			end
-			local tmp_fname = tmp_file_name(hovered_url_cached)
+
+			local tmp_fname = tmp_file_name(hovered_url_cached, hovered_url.name)
 			if not tmp_fname then
 				return
 			end
@@ -569,6 +700,7 @@ return {
 			if tmp_file_url then
 				local success = mount_fuse({
 					archive_path = hovered_url_cached,
+					archive_vfs = hovered_url,
 					fuse_mount_point = tmp_file_url,
 					mount_options = get_state("global", "mount_options"),
 				})
@@ -588,8 +720,8 @@ return {
 			local file = current_dir_name()
 			ya.emit("cd", { get_state(file, "cwd"), raw = true })
 			return
-		elseif action == "unmount" then
-			unmount_on_quit()
+		elseif action == "version" then
+			set_state("global", "fuse-archive-version", fuse_archive_version())
 		end
 	end,
 	setup = setup,

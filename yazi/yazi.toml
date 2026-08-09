@@ -146,8 +146,7 @@
 [open]
   rules = [
     # Trash
-    { url = "trash://*", use = ["open", "trash"] },
-    { url = "trash://*/", use = ["edit", "trash"] },
+    { mime = "trash/**", use = ["open", "trash"] },
     { mime = "image/xcursor", use = ["edit"] },
     { mime = "application/mbox", use = ["edit"] },
     { mime = "text/shellscript", use = ["execute", "edit"] },
@@ -234,9 +233,9 @@
     # { id = "mime", url = "/run/user/*/gvfs/google-drive:host=gmail.com,user=*/**/*", run = "mime-ext.local", prio = "high" },
     # { id = "mime", url = "/run/user/*/gvfs/google-drive:host=gmail.com,user=*/**/*/", run = "mime.dir", prio = "high" },
     { url = "*/", run = "mime.dir", prio = "high", group = "mime" },
-    { url = "local://*", run = "mime-ext.local", prio = "high", group = "mime" },
-    { url = "trash://*", run = "mime.local", prio = "high", group = "mime" },
-    { url = "remote://*", run = "mime-ext.remote", prio = "high", group = "mime" },
+    { url = "local://*", run = "mime.local", prio = "high", group = "mime" },
+    { url = "trash://*", run = "mime.trash", prio = "high", group = "mime" },
+    { url = "remote://*", run = "mime.remote", prio = "high", group = "mime" },
     { url = "*", run = "simple-tag", group = "simple-tag" },
     { url = "*/", run = "simple-tag", group = "simple-tag" },
   ]
@@ -253,6 +252,9 @@
     { mime = "application/pdf", run = "pdf" },
     # Font
     { mime = "{font/*,application/ms-opentype}", run = "better-font" },
+
+    # Trash
+    { mime = "trash/**", run = "trash" },
   ]
 
   spotters = [
@@ -260,8 +262,7 @@
     { mime = "multi/*", run = "multi" },
 
     # Trash
-    { url = "trash://*", run = "trash" },
-    { url = "trash://*/", run = "trash" },
+    { mime = "trash/**", run = "trash" },
     # Folder
     { url = "*/", run = "folder" },
     { url = "/mnt/**/*", run = "file-extra-metadata", prio = "high" },
@@ -327,6 +328,8 @@
     { mime = "inode/empty", run = "empty" },
     # Virtual file system
     { mime = "vfs/*", run = "vfs" },
+    # Trash
+    { mime = "trash/**", run = "trash" },
     # Error
     { mime = "null/*", run = "null" },
     # Fallback

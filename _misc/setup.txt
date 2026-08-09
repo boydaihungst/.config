@@ -1,0 +1,40 @@
+dpitunnel -> done
+chmod + chmod hdd hdd2 home/* -> done
+bacula -> done
+
+dockers + docker rootless -> done
+pihole -> done
+bookorbit -> done
+cronjob auto update compose -> done
+immich -> done
+palworld -> done
+
+
+jellyfin -> done
+recycle -> done
+bazarr -> done
+sonarr -> done
+radarr -> done
+lidarr -> done
+prowlarr -> done
+qbittorrent-nox@qbittorrent + qbt_manage -> done
+syncthing -> done
+gitea -> done
+anubis@gitea -> done
+cloudflare ddns + nginx script to proxy list -> done
+fail2ban get currentip script -> done
+nginx -> done
+cronjob, update sub + assfonts chua xong -> done
+fail2ban, check lai jail.local file -> done
+
+webmin -> almost -> add monitor services + smartd disk
+
+
+dnf in postgresql-server-devel
+
+# Check extension installed
+SELECT * FROM pg_available_extensions
+WHERE name = 'pg_trgm';
+
+# install extension
+CREATE EXTENSION uuid-ossp CASCADE;

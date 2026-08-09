@@ -1,6 +1,6 @@
 [sftp.home]
   host           = "home"
-  key_file       = "~/.ssh/id_ecdsa"
+  # key_file       = "~/.ssh/id_ecdsa"
   key_passphrase = ""
   port           = 22
   user           = ""
@@ -8,6 +8,6 @@
 [sftp.arm]
   host           = ""
   key_file       = "~/.ssh/id_ecdsa"
-  key_passphrase = "@"
+  key_passphrase = ""
   port           = 22
   user           = ""
