@@ -6,7 +6,7 @@ now(function()
       -- Saving / restoring
       enabled = true, -- Enables/disables auto creating, saving and restoring
       auto_save = true, -- Enables/disables auto saving session on exit
-      auto_restore = true, -- Enables/disables auto restoring session on start
+      auto_restore = false, -- Enables/disables auto restoring session on start
       auto_create = true, -- Enables/disables auto creating new session files. Can be a function that returns true if a new session file should be allowed
       -- Use mini.starter option instead
       auto_restore_last_session = false, -- On startup, loads the last saved session if session for cwd does not exist

@@ -1120,12 +1120,10 @@ now_if_args(function()
     content = {
       filter = function(fs_entry) return show_hidden and filter_show(fs_entry) or filter_hide(fs_entry) end,
       sort = function(fs_entries)
-        local ft = vim.bo.filetype
-        local row = vim.api.nvim_win_get_cursor(0)[1]
-
-        local explorer_state = ((ft == "minifiles" and row >= 1 and MiniFiles) and MiniFiles.get_explorer_state())
-        local cur_focused_path = explorer_state and explorer_state.branch[explorer_state.depth_focus]
-        if cur_focused_path == "/" then return fs_entries end
+        -- Ignore root folder, because it's too large
+        for _, entry in ipairs(fs_entries) do
+          if vim.fn.fnamemodify(entry.path, ":h") == "/" then return fs_entries end
+        end
         return MiniFiles.gitignore:sort_entries(smart_hlsearch(fs_entries))
       end,
       highlight = function(fs_entry)
@@ -1951,9 +1949,6 @@ later(function()
     },
   }
 end)
-
--- Surround actions: add/delete/replace/find/highlight. Working with surroundings
--- is surprisingly common: surround word with quotes, replace `)` with `]`, etc.
 -- This module comes with many built-in surroundings, each identified by a single
 -- character. It searches only for surrounding that covers cursor and comes with
 -- a special "next" / "last" versions of actions to search forward or backward
