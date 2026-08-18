@@ -49,8 +49,7 @@
     { on = "<F5>", run = "refresh", desc = "Refresh" },
     { on = "T", run = "shell --confirm -- \"$HOME/.config/yazi/rofi-preview-images.sh\"", desc = "Preview all images in the current directory with rofi" },
     # Navigation
-    # { on = "h", run = "plugin fuse-archive -- leave", desc = "Go back to the parent directory" },
-    { on = "h", run = "plugin test", desc = "Go back to the parent directory" },
+    { on = "h", run = "plugin fuse-archive -- leave", desc = "Go back to the parent directory" },
     { on = "l", run = "plugin fuse-archive -- mount", desc = "Enter dir or open files" },
     { on = "<Left>", run = "plugin fuse-archive -- leave", desc = "Go back to the parent directory" },
     { on = "<Right>", run = "plugin fuse-archive -- mount", desc = "Enter dir or open files" },
@@ -84,10 +83,7 @@
     #     ''', desc = "Rename selected file(s) via vimv" },
     { on = ";", run = "shell --interactive", desc = "Run a shell command" },
     { on = ":", run = "shell --block --interactive", desc = "Run a shell command (block until finishes)" },
-    { on = "<Backspace>", run = [
-      "hidden toggle",
-      "plugin pref-by-location -- save"
-    ], desc = "Toggle the visibility of hidden files" },
+    { on = "<Backspace>", run = ["hidden toggle", "plugin pref-by-location -- save"], desc = "Toggle the visibility of hidden files" },
     { on = "s", run = "search --via=fd", desc = "Search files by name using fd" },
     { on = "S", run = "search --via=rg", desc = "Search files by content using ripgrep-all" },
     { on = "<C-s>", run = "search none", desc = "Cancel the ongoing search" },
@@ -97,34 +93,13 @@
     { on = "I", run = "plugin toggle-pane min-preview", desc = "Toggle preview" },
 
     # Linemode (u = UI)
-    { on = ["u", "s"], run = [
-      "linemode size",
-      "plugin pref-by-location -- save"
-    ], desc = "Show Size" },
-    { on = ["u", "S"], run = [
-      "linemode size_and_mtime",
-      "plugin pref-by-location -- save"
-    ], desc = "Show Size and Modified time" },
-    { on = ["u", "c"], run = [
-      "linemode btime",
-      "plugin pref-by-location -- save"
-    ], desc = "Show Created time" },
-    { on = ["u", "m"], run = [
-      "linemode mtime",
-      "plugin pref-by-location -- save"
-    ], desc = "Show Modified time" },
-    { on = ["u", "o"], run = [
-      "linemode owner",
-      "plugin pref-by-location -- save"
-    ], desc = "Show Owner" },
-    { on = ["u", "p"], run = [
-      "linemode permissions",
-      "plugin pref-by-location -- save"
-    ], desc = "Show Permissions" },
-    { on = ["u", "n"], run = [
-      "linemode none",
-      "plugin pref-by-location -- save"
-    ], desc = "Hide linemode" },
+    { on = ["u", "s"], run = ["linemode size", "plugin pref-by-location -- save"], desc = "Show Size" },
+    { on = ["u", "S"], run = ["linemode size_and_mtime", "plugin pref-by-location -- save"], desc = "Show Size and Modified time" },
+    { on = ["u", "c"], run = ["linemode btime", "plugin pref-by-location -- save"], desc = "Show Created time" },
+    { on = ["u", "m"], run = ["linemode mtime", "plugin pref-by-location -- save"], desc = "Show Modified time" },
+    { on = ["u", "o"], run = ["linemode owner", "plugin pref-by-location -- save"], desc = "Show Owner" },
+    { on = ["u", "p"], run = ["linemode permissions", "plugin pref-by-location -- save"], desc = "Show Permissions" },
+    { on = ["u", "n"], run = ["linemode none", "plugin pref-by-location -- save"], desc = "Hide linemode" },
 
     # Copy, Yank, Paste, Remove Files
     { on = ["y", "y"], run = [
@@ -173,60 +148,18 @@
     { on = ["o", "t"], run = "plugin pref-by-location -- toggle", desc = "Toggle auto-save preferences" },
     { on = ["o", "d"], run = "plugin pref-by-location -- disable", desc = "Disable auto-save preferences" },
     { on = ["o", "r"], run = "plugin pref-by-location -- reset", desc = "Reset preference of cwd" },
-    { on = ["o", "a"], run = [
-      "sort alphabetical --reverse=no",
-      "plugin pref-by-location -- save"
-    ], desc = "Sort alphabetically" },
-    { on = ["o", "A"], run = [
-      "sort alphabetical --reverse",
-      "plugin pref-by-location -- save"
-    ], desc = "Sort alphabetically (reverse)" },
-    { on = ["o", "c"], run = [
-      "sort btime --reverse=no",
-      "linemode btime",
-      "plugin pref-by-location -- save"
-    ], desc = "Sort by created time" },
-    { on = ["o", "C"], run = [
-      "sort btime --reverse",
-      "linemode btime",
-      "plugin pref-by-location -- save"
-    ], desc = "Sort by created time (reverse)" },
-    { on = ["o", "e"], run = [
-      "sort extension --reverse=no",
-      "plugin pref-by-location -- save"
-    ], desc = "Sort by extension" },
-    { on = ["o", "E"], run = [
-      "sort extension --reverse",
-      "plugin pref-by-location -- save"
-    ], desc = "Sort by extension (reverse)" },
-    { on = ["o", "m"], run = [
-      "sort mtime --reverse=no",
-      "linemode mtime",
-      "plugin pref-by-location -- save"
-    ], desc = "Sort by modified time" },
-    { on = ["o", "M"], run = [
-      "sort mtime --reverse",
-      "linemode mtime",
-      "plugin pref-by-location -- save"
-    ], desc = "Sort by modified time (reverse)" },
-    { on = ["o", "n"], run = [
-      "sort natural --reverse=no",
-      "plugin pref-by-location -- save"
-    ], desc = "Sort naturally" },
-    { on = ["o", "N"], run = [
-      "sort natural --reverse",
-      "plugin pref-by-location -- save"
-    ], desc = "Sort naturally (reverse)" },
-    { on = ["o", "s"], run = [
-      "sort size --reverse=no",
-      "linemode size",
-      "plugin pref-by-location -- save"
-    ], desc = "Sort by size" },
-    { on = ["o", "S"], run = [
-      "sort size --reverse",
-      "linemode size",
-      "plugin pref-by-location -- save"
-    ], desc = "Sort by size (reverse)" },
+    { on = ["o", "a"], run = ["sort alphabetical --reverse=no", "plugin pref-by-location -- save"], desc = "Sort alphabetically" },
+    { on = ["o", "A"], run = ["sort alphabetical --reverse", "plugin pref-by-location -- save"], desc = "Sort alphabetically (reverse)" },
+    { on = ["o", "c"], run = ["sort btime --reverse=no", "linemode btime", "plugin pref-by-location -- save"], desc = "Sort by created time" },
+    { on = ["o", "C"], run = ["sort btime --reverse", "linemode btime", "plugin pref-by-location -- save"], desc = "Sort by created time (reverse)" },
+    { on = ["o", "e"], run = ["sort extension --reverse=no", "plugin pref-by-location -- save"], desc = "Sort by extension" },
+    { on = ["o", "E"], run = ["sort extension --reverse", "plugin pref-by-location -- save"], desc = "Sort by extension (reverse)" },
+    { on = ["o", "m"], run = ["sort mtime --reverse=no", "linemode mtime", "plugin pref-by-location -- save"], desc = "Sort by modified time" },
+    { on = ["o", "M"], run = ["sort mtime --reverse", "linemode mtime", "plugin pref-by-location -- save"], desc = "Sort by modified time (reverse)" },
+    { on = ["o", "n"], run = ["sort natural --reverse=no", "plugin pref-by-location -- save"], desc = "Sort naturally" },
+    { on = ["o", "N"], run = ["sort natural --reverse", "plugin pref-by-location -- save"], desc = "Sort naturally (reverse)" },
+    { on = ["o", "s"], run = ["sort size --reverse=no", "linemode size", "plugin pref-by-location -- save"], desc = "Sort by size" },
+    { on = ["o", "S"], run = ["sort size --reverse", "linemode size", "plugin pref-by-location -- save"], desc = "Sort by size (reverse)" },
 
     # Goto
     { on = ["g", "r"], run = "cd /", desc = "cd /" },
@@ -533,12 +466,7 @@
     { on = "c", run = "delete --cut --insert", desc = "Cut selected characters, and enter insert mode" },
     { on = "C", run = ["delete --cut --insert", "move eol"], desc = "Cut until EOL, and enter insert mode" },
     { on = "s", run = ["delete --cut --insert", "move 1"], desc = "Cut current character, and enter insert mode" },
-    { on = "S", run = [
-      "move bol",
-      "delete --cut --insert",
-      "move eol",
-      "kill bol"
-    ], desc = "Cut from BOL until EOL, and enter insert mode" },
+    { on = "S", run = ["move bol", "delete --cut --insert", "move eol", "kill bol"], desc = "Cut from BOL until EOL, and enter insert mode" },
     { on = "x", run = ["delete --cut", "move 1 --in-operating"], desc = "Cut current character" },
     { on = "y", run = "yank", desc = "Copy selected characters" },
     { on = "p", run = "paste", desc = "Paste copied characters after the cursor" },
