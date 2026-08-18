@@ -15,8 +15,9 @@ SHIKANE_OUTPUT_NAME="$1"
         scale = 1,
         position = "2560x0",
         bitdepth = 8,
-        vrr = 1,
+        vrr = 0,
         cm = "auto",
+        icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G42ZE.icm",
       })
     '
     # icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G42ZE.icm",
@@ -28,8 +29,9 @@ SHIKANE_OUTPUT_NAME="$1"
         scale = 1,
         position = "0x0",
         cm = "auto",
-        vrr = 1,
-        icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G4ZD.icm",
+        vrr = 0,
+        bitdepth = 10,
+        icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G4ZDP.icm",
       })
     '
 

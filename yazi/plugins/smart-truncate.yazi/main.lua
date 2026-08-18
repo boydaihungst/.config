@@ -647,8 +647,10 @@ function M:init_default_callbacks(always_show_patterns)
 
 				-- Matched segment
 				local matched_segment_text = shortened_name:sub(match_start_byte, match_end_byte_after - 1)
-				local styled_matched_segment = ui.Span(matched_segment_text):style(th.mgr.find_keyword)
-				table.insert(result_with_matched_highlighted, p and p(styled_matched_segment) or styled_matched_segment)
+				table.insert(
+					result_with_matched_highlighted,
+					ui.Span(p and p(matched_segment_text) or styled_matched_segment):style(th.mgr.find_keyword)
+				)
 
 				current_byte_cursor = match_end_byte_after -- Move cursor to position after current match
 			end

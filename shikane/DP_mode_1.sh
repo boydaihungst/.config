@@ -15,11 +15,10 @@ SHIKANE_OUTPUT_NAME="$1"
         scale = 1,
         position = "2560x0",
         bitdepth = 8,
-        vrr = 1,
-        icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G4ZD.icm",
+        vrr = 0,
+        icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G42ZE.icm",
       })
     '
-    # icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G42ZE.icm",
 
     hyprctl eval '
       hl.monitor({
@@ -28,8 +27,9 @@ SHIKANE_OUTPUT_NAME="$1"
         scale = 1,
         position = "0x0",
         cm = "auto",
-        vrr = 1,
-        icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G4ZD.icm",
+        vrr = 0,
+        bitdepth = 10,
+        icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G4ZDP.icm",
       })
     '
 
@@ -57,18 +57,6 @@ SHIKANE_OUTPUT_NAME="$1"
     for i in {4..9}; do
       hyprctl dispatch moveworkspacetomonitor "$i" "DP-2" >/dev/null 2>&1 &
     done
-
-  elif [[ "$XDG_SESSION_DESKTOP" == "Sway" ]]; then
-    # 2. Set the color profile
-    # Removed the outer quotes so bash actually executes the command
-    swaymsg output "$SHIKANE_OUTPUT_NAME" color_profile icc "$HOME/.config/sway/scripts/color_profiles/Q27G42ZE.icm" >/dev/null 2>&1 &
-
-    # 3. Move workspaces 1 through 9
-    for i in {1..9}; do
-      swaymsg "workspace $i, move workspace to $SHIKANE_OUTPUT_NAME" >/dev/null 2>&1 &
-    done
-    swaymsg workspace number 1
-
   fi
 ) &
 

@@ -49,12 +49,13 @@
     { on = "<F5>", run = "refresh", desc = "Refresh" },
     { on = "T", run = "shell --confirm -- \"$HOME/.config/yazi/rofi-preview-images.sh\"", desc = "Preview all images in the current directory with rofi" },
     # Navigation
-    { on = "h", run = "plugin fuse-archive -- leave", desc = "Go back to the parent directory" },
+    # { on = "h", run = "plugin fuse-archive -- leave", desc = "Go back to the parent directory" },
+    { on = "h", run = "plugin test", desc = "Go back to the parent directory" },
     { on = "l", run = "plugin fuse-archive -- mount", desc = "Enter dir or open files" },
     { on = "<Left>", run = "plugin fuse-archive -- leave", desc = "Go back to the parent directory" },
     { on = "<Right>", run = "plugin fuse-archive -- mount", desc = "Enter dir or open files" },
     #
-    { on = "J", run = "back", desc = "Go back to the previous directory" },
+    { on = "J", run = "plugin custom-dds", desc = "Go back to the previous directory" },
     { on = "K", run = "forward", desc = "Go forward to the next directory" },
 
     # Scroll preview tab

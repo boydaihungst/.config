@@ -1,5 +1,5 @@
 -- require("test"):setup()
-require("custom-dds"):setup()
+require("custom-back"):setup()
 require("simple-tag"):setup({
 	left_side = true,
 	-- render_order = 1500,
@@ -54,7 +54,7 @@ require("pref-by-location"):setup({
 		{
 			location = ".*/Downloads",
 			sort = { "btime", reverse = true, dir_first = true },
-			linemode = "btime",
+			linemode = "size_and_mtime",
 			show_hidden = false,
 		},
 	},
@@ -266,7 +266,7 @@ function Linemode:size_and_mtime()
 	end
 
 	local size = self._file:size()
-	return ui.Line(string.format("%s - %s", size and ("[" .. ya.readable_size(size) .. "]") or "", time))
+	return ui.Line(string.format("  %s %s", size and ("[" .. ya.readable_size(size) .. "]") or "", time))
 end
 
 --hostname + username before url

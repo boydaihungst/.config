@@ -22,7 +22,7 @@ host=$(hostname)
 shutdown=''
 reboot=''
 lock=''
-hibernate=''
+suspend=''
 logout=''
 yes=''
 no=''
@@ -32,7 +32,7 @@ rofi_cmd() {
 	rofi -dmenu \
 		-p "Uptime: $uptime" \
 		-mesg "Uptime: $uptime" \
-		-theme ${dir}/${theme}.rasi
+		-theme "${dir}"/${theme}.rasi
 }
 
 # Confirmation CMD
@@ -45,7 +45,7 @@ confirm_cmd() {
 		-dmenu \
 		-p 'Confirmation' \
 		-mesg 'Are you Sure?' \
-		-theme ${dir}/${theme}.rasi
+		-theme "${dir}"/${theme}.rasi
 }
 
 # Ask for confirmation
@@ -55,7 +55,7 @@ confirm_exit() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	echo -e "$lock\n$hibernate\n$logout\n$reboot\n$shutdown" | rofi_cmd
+	echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | rofi_cmd
 }
 
 # Execute Command
@@ -64,17 +64,13 @@ run_cmd() {
 	selected=$yes
 	if [[ "$selected" == "$yes" ]]; then
 		if [[ $1 == '--shutdown' ]]; then
-			loginctl poweroff
+			loginctl poweroff || systemctl poweroff
 		elif [[ $1 == '--reboot' ]]; then
-			loginctl reboot
-		elif [[ $1 == '--hibernate' ]]; then
+			loginctl reboot || systemctl reboot
+		elif [[ $1 == '--suspend' ]]; then
 			playerctl pause
 			# amixer set Master mute
-			if grep -qw disk /sys/power/state; then
-				loginctl suspend-then-hibernate
-			else
-				loginctl suspend
-			fi
+			systemctl suspend-then-hibernate || systemctl suspend || loginctl suspend-then-hibernate || loginctl suspend
 			# loginctl suspend-then-hibernate
 		elif [[ $1 == '--logout' ]]; then
 			if command -v uwsm &>/dev/null; then
@@ -116,8 +112,8 @@ $lock)
 		pidof i3lock || i3lock
 	fi
 	;;
-$hibernate)
-	run_cmd --hibernate
+$suspend)
+	run_cmd --suspend
 	;;
 $logout)
 	run_cmd --logout

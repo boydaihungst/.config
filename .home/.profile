@@ -1,4 +1,3 @@
-export QT_QPA_PLATFORMTHEME=qt5ct
 export MOZ_USE_XINPUT2=1
 # export GDK_DPI_SCALE=1
 export GTK_USE_PORTAL=1
@@ -21,7 +20,6 @@ export COLORTERM=truecolor
 export USE_CCACHE=1
 export CCACHE_COMPRESS=1
 export CCACHE_MAXSIZE=50G # 50 GB
-export CUDAToolkit_ROOT=/opt/cuda
 export GPG_TTY=$(tty)
 
 export XCURSOR_SIZE=24
@@ -31,12 +29,15 @@ export ELECTRON_OZONE_PLATFORM_HINT=wayland
 export GDK_DEBUG=portals
 export QT_QPA_PLATFORMTHEME=qt6ct
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
-export WLR_DRM_DEVICES=/dev/dri/amd-igpu:/dev/dri/nvidia-egpu
-export WLR_RENDERER=vulkan
+# export WLR_DRM_DEVICES=/dev/dri/amd-igpu:/dev/dri/nvidia-egpu
+# export WLR_RENDERER=vulkan
+# export DXVK_HDR=1
 # export ENABLE_HDR_WSI=1
-export XDG_CURRENT_DESKTOP=Hyprland
-export XDG_SESSION_TYPE=wayland
-export XDG_SESSION_DESKTOP=Hyprland
+# export GAMESCOPE_HDR_ENABLED=1
+# export PROTON_ENABLE_HDR=1
+# export XDG_CURRENT_DESKTOP=sway
+# export XDG_SESSION_TYPE=wayland
+# export XDG_SESSION_DESKTOP=sway
 # Manually export the most common ones
 export XDG_DESKTOP_DIR="$(xdg-user-dir DESKTOP)"
 export XDG_DOWNLOAD_DIR="$(xdg-user-dir DOWNLOAD)"
@@ -47,6 +48,6 @@ export XDG_MUSIC_DIR="$(xdg-user-dir MUSIC)"
 export XDG_PICTURES_DIR="$(xdg-user-dir PICTURES)"
 export XDG_VIDEOS_DIR="$(xdg-user-dir VIDEOS)"
 export XDG_CONFIG_HOME="$(xdg-user-dir CONFIG_HOME)"
-unset SSH_AGENT_PID
-export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 export MPD_HOST=$HOME/.config/mpd/socket
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"

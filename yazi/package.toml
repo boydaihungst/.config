@@ -1,12 +1,12 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "0be29a9"
-hash = "7b625412411be411153886894d9acaf"
+rev = "6f26ae0"
+hash = "f281261ff04ad7ec867c3f802a50835f"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mime-ext"
-rev = "0be29a9"
-hash = "a7bf2e1ae72ff22eb21700e12416508e"
+rev = "6f26ae0"
+hash = "94d994483dd84ddb2a47a52b59feaae6"
 
 [[plugin.deps]]
 use = "boydaihungst/projects"
@@ -50,13 +50,13 @@ hash = "8dd8bc3484547390ba50dfa58d7436b0"
 
 [[plugin.deps]]
 use = "boydaihungst/simple-tag"
-rev = "d7a4d7b"
-hash = "d8731da90b25964efcf370ac5a2a87b9"
+rev = "d019de3"
+hash = "c1c9aaf057e2347942361b7155a0308c"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "0be29a9"
-hash = "15e5b67a241172cbb86b8fbf9e63692"
+rev = "6f26ae0"
+hash = "5b2fbef7d1513ce38ff72623a071a5e"
 
 [[plugin.deps]]
 use = "boydaihungst/compress"
@@ -65,13 +65,13 @@ hash = "7363584b3dd5c501911881f305a8c9f3"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:vcs-files"
-rev = "0be29a9"
-hash = "b97710d0734c380d0a1f58c13dab0da2"
+rev = "6f26ae0"
+hash = "853240b2454c93a93fd03fc9fd7e06e8"
 
 [[plugin.deps]]
 use = "boydaihungst/smart-truncate"
-rev = "f46f293"
-hash = "56ecaa9ccb55aae71e3d44245a9c6975"
+rev = "5a30325"
+hash = "2cc81692e44f22bac6b0dfef27e1bbd4"
 
 [[plugin.deps]]
 use = "boydaihungst/save-clipboard-to-file"
@@ -80,8 +80,8 @@ hash = "eee76f9c3c2bf1d23c3d3b5e830527c7"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:types"
-rev = "0be29a9"
-hash = "9105494e98299f392aee95340066da9f"
+rev = "6f26ae0"
+hash = "ff056b5acd05d915dc3a3936cb0cfd3e"
 
 [[plugin.deps]]
 use = "boydaihungst/gvfs"
@@ -90,8 +90,8 @@ hash = "69c24ef7e0a591864c76ac6e6dedc805"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:piper"
-rev = "0be29a9"
-hash = "f23ecc89ce0f9eeefdd4cea14e2a9ba7"
+rev = "6f26ae0"
+hash = "45a533508a9840cc5a10cf6129f63e6a"
 
 [[plugin.deps]]
 use = "boydaihungst/enhance-piper"

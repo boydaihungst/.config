@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=THRM
+Comment=Flydigi BS Series Fan Controller
+Exec="/home/huyhoang/.local/bin/thrm-core" --autostart
+Icon=thrm
+Terminal=false
+Hidden=true
+StartupWMClass=thrm
+X-GNOME-Autostart-enabled=true

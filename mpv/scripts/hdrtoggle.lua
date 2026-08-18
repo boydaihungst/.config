@@ -2,7 +2,7 @@ local utils = require("mp.utils")
 local platform = mp.get_property_native("platform")
 local HDR_MONITOR_SWAY = "Q27G4ZDP"
 local MONITOR_SDR_ICC_PROFILE = "~/.config/sway/scripts/color_profiles/Q27G4ZDP.icm"
-local MONITOR_HDR_COLOR_PROFILE = "gamma22"
+local MONITOR_HDR_COLOR_PROFILE = "srgb"
 
 mp.msg.info("HDR detecting.")
 local hdrcmd_on
@@ -95,7 +95,7 @@ elseif platform == "linux" then
 			hdrcmd_off[#hdrcmd_off + 1] = "icc"
 			hdrcmd_off[#hdrcmd_off + 1] = MONITOR_SDR_ICC_PROFILE
 		end
-		mp.command_native({
+		mp.command_native_async({
 			args = { "pkill", "-RTMIN+10", "waybar" },
 			name = "subprocess",
 			playback_only = false,
@@ -118,14 +118,14 @@ local function check_hdr_and_toggle()
 
 	local is_hdr = primaries ~= "bt.709"
 	if is_hdr then
-		mp.command_native({
+		mp.command_native_async({
 			args = hdrcmd_on,
 			name = "subprocess",
 			playback_only = false,
 		})
 		mp.msg.info("HDR video detected. Enabling HDR.")
 	else
-		mp.command_native({
+		mp.command_native_async({
 			args = hdrcmd_off,
 			name = "subprocess",
 			playback_only = false,

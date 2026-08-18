@@ -1,0 +1,16 @@
+[Unit]
+Description=Reconnect Bluetooth LE device flydigi-bs2pro
+After=bluetooth.target bluetooth.target graphical-session.target
+Requires=bluetooth.target
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/sleep 5
+ExecStart=/home/huyhoang/bin/reconnect_bluetooth_le
+Restart=on-failure
+RestartSec=5
+WorkingDirectory=/home/huyhoang
+Environment=HOME=/home/huyhoang
+
+[Install]
+WantedBy=default.target

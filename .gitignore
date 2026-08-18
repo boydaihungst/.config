@@ -1,2 +1,6 @@
 jellyfin-mpv-shim/cred.json
+jellyfin-mpv-shim/users.json
+jellyfin-mpv-shim/offline
+jellyfin-mpv-shim/offline/*
+jellyfin-mpv-shim/instance.lock*
 vfs.toml

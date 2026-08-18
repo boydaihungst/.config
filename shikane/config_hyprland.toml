@@ -14,7 +14,7 @@
     search = ["/eDP-[1-9]"]
 
   [[profile.output]]
-    adaptive_sync = true
+    adaptive_sync = false
     enable        = true
     mode          = "!2560x1440@240.00Hz"
     position      = "2560,0"
@@ -22,7 +22,7 @@
     search        = ["n/DP-[1-9]", "v=AOC", "m=Q27G42ZE"]
 
   [[profile.output]]
-    adaptive_sync = true
+    adaptive_sync = false
     enable        = true
     mode          = "!2560x1440@280.00Hz"
     position      = "0,0"
@@ -30,7 +30,7 @@
     search        = ["n/DP-[1-9]", "v=AOC", "m=Q27G4ZDP"]
 
   [[profile.output]]
-    adaptive_sync = true
+    adaptive_sync = false
     enable        = true
     mode          = "1920x1080@60.00Hz"
     position      = "0,1600"
@@ -55,7 +55,7 @@
     search = ["/eDP-[1-9]"]
 
   [[profile.output]]
-    adaptive_sync = true
+    adaptive_sync = false
     enable        = true
     mode          = "!2560x1440@240.00Hz"
     position      = "2560,0"
@@ -63,7 +63,7 @@
     search        = ["n/DP-[1-9]", "v=AOC", "m=Q27G42ZE"]
 
   [[profile.output]]
-    adaptive_sync = true
+    adaptive_sync = false
     enable        = true
     mode          = "!2560x1440@280.00Hz"
     position      = "0,0"
@@ -84,7 +84,7 @@
     search = ["/eDP-[1-9]"]
 
   [[profile.output]]
-    adaptive_sync = true
+    adaptive_sync = false
     enable        = true
     mode          = "2560x1440@280.00Hz"
     position      = "0,0"
@@ -92,7 +92,7 @@
     search        = ["n/DP-[1-9]", "v=AOC", "m=Q27G4ZDP"]
 
   [[profile.output]]
-    adaptive_sync = true
+    adaptive_sync = false
     enable        = true
     mode          = "1920x1080@60.00Hz"
     position      = "0,1600"
@@ -112,10 +112,10 @@
   name = "Default"
 
   [[profile.output]]
-    adaptive_sync = true
+    adaptive_sync = false
     enable        = true
     exec          = [
-      "hyprctl keyword monitor \"eDP-1, 2560x1440@240, auto, 1.25, bitdepth, 8, vrr, 1, cm, auto, icc, /home/huyhoang/.config/sway/scripts/color_profiles/Q27G42ZE.icm\""
+      "hyprctl keyword monitor \"eDP-1, 2560x1440@240, auto, 1, bitdepth, 8, vrr, 0, cm, auto, icc, /home/huyhoang/.config/sway/scripts/color_profiles/Q27G42ZE.icm\""
     ]
     mode          = "best"
     position      = "0,0"
@@ -135,7 +135,7 @@
     search = ["/eDP-[1-9]"]
 
   [[profile.output]]
-    adaptive_sync = true
+    adaptive_sync = false
     enable        = true
     mode          = "best"
     position      = "0,0"
@@ -155,7 +155,7 @@
     search = ["/eDP-[1-9]"]
 
   [[profile.output]]
-    adaptive_sync = true
+    adaptive_sync = false
     enable        = true
     mode          = "best"
     position      = "0,0"
@@ -175,7 +175,7 @@
     search = ["/eDP-[1-9]"]
 
   [[profile.output]]
-    adaptive_sync = true
+    adaptive_sync = false
     enable        = true
     exec          = [
       "hyprctl dispatch moveworkspacetomonitor 1 $SHIKANE_OUTPUT_NAME",
@@ -187,7 +187,7 @@
     search        = ["n/DP-[1-9]"]
 
   [[profile.output]]
-    adaptive_sync = true
+    adaptive_sync = false
     enable        = true
     exec          = [
       "hyprctl dispatch moveworkspacetomonitor 2 $SHIKANE_OUTPUT_NAME",

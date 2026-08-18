@@ -1,0 +1,105 @@
+; Copyright 2026 AOC International (Europe) GmbH
+; This is a Setup information file for monitors with ICM file.
+
+
+[Version]
+signature="$CHICAGO$"
+Class=Monitor
+ClassGuid={4D36E96E-E325-11CE-BFC1-08002BE10318}
+Provider=%AOC%
+Catalogfile= Q27G4ZDP.cat
+DriverVer=01/21/2026,1.0.0.0
+Pnplockdown=1
+
+[ControlFlags]
+ExcludeFromSelect.nt=Monitor\AOCB454
+
+
+[DestinationDirs]
+DefaultDestDir=11
+B454_Hdmi.CopyFiles=23
+B454_DP.CopyFiles=23
+
+[SourceDisksNames]
+1=%DiskName%,,,
+
+[SourceDisksFiles]
+ Q27G4ZDP.ICM=1
+
+[Monitor_Service.Install]
+DisplayName    = %Monitor.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\monitor.sys
+
+
+[Manufacturer]
+%AOC%=AOC, NTx86,ntamd64
+
+[AOC]
+%B454_Hdmi%=B454_Hdmi.Install, Monitor\AOCB454
+%B454_DP%=B454_DP.Install, Monitor\AOCB454
+
+[AOC.NTx86]
+%B454_Hdmi%=B454_Hdmi.Install, Monitor\AOCB454
+%B454_DP%=B454_DP.Install, Monitor\AOCB454
+
+[AOC.ntamd64]
+%B454_Hdmi%=B454_Hdmi.Install, Monitor\AOCB454
+%B454_DP%=B454_DP.Install, Monitor\AOCB454
+
+[B454_Hdmi.Install]
+DelReg=DEL_CURRENT_REG
+AddReg=B454_Hdmi.AddReg
+Copyfiles=B454_Hdmi.CopyFiles
+
+[B454_DP.Install]
+DelReg=DEL_CURRENT_REG
+AddReg=B454_DP.AddReg
+Copyfiles=B454_DP.CopyFiles
+
+
+[B454_Hdmi.Install.Services]
+AddService = monitor, %SPSVCINST_ASSOCSERVICE%,Monitor_Service.Install
+
+
+[B454_DP.Install.Services]
+AddService = monitor, %SPSVCINST_ASSOCSERVICE%,Monitor_Service.Install
+
+[DEL_CURRENT_REG]
+HKR,MODES
+HKR,,MaxResolution
+HKR,,DPMS
+HKR,,ICMProfile
+
+
+[B454_Hdmi.AddReg]
+HKR,"MODES\2560,1440",Mode1,,"30.0-450.0,48.0-280.0,+,+"
+HKR,,MaxResolution,,"2560,1440"
+HKR,,DPMS,,1
+HKR,,ICMProfile,0," Q27G4ZDP.icm"
+HKR,,DisplayHdrLevel, %REG_MULTI_SZ_APPEND%,  E55026B6-496B-4ACC-B371-A1211D829ABD, E7E7349F-EF0A-4EF7-A561-C8F633F27463
+
+[B454_DP.AddReg]
+HKR,"MODES\2560,1440",Mode1,,"450.0-450.0,48.0-280.0,+,+"
+HKR,,MaxResolution,,"2560,1440"
+HKR,,DPMS,,1
+HKR,,ICMProfile,0," Q27G4ZDP.icm"
+HKR,,DisplayHdrLevel, %REG_MULTI_SZ_APPEND%,  E55026B6-496B-4ACC-B371-A1211D829ABD, E7E7349F-EF0A-4EF7-A561-C8F633F27463
+
+[B454_Hdmi.CopyFiles]
+ Q27G4ZDP.icm
+[B454_DP.CopyFiles]
+ Q27G4ZDP.icm
+
+[Strings]
+SPSVCINST_ASSOCSERVICE = 0x00000002
+Monitor.SVCDESC = "Microsoft Monitor Class Function Driver Service"
+
+AOC="AOC International (Europe) GmbH"
+DiskName="AOC Monitor Installation Disk"
+REG_MULTI_SZ_APPEND=0x00010008
+
+B454_Hdmi="AOC  Q27G4ZDP"
+B454_DP="AOC  Q27G4ZDP"

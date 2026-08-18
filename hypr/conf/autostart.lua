@@ -81,7 +81,7 @@ hl.on("hyprland.start", function()
   -- watch laptop battery and show notification when battery is low. hibernate if battery is critical
   hl.exec_cmd("~/.config/sway/scripts/battery-watch.sh")
   -- hl.exec_cmd("~/.config/hypr/scripts/reconnect_bluetooth_le.sh")
-  hl.exec_cmd('ddcutil --sn="AWBS39A000221" setvcp d6 1 && /home/huyhoang/git/Monitor_Mode_AOC/monitor_mode -l 100')
+  hl.exec_cmd('ddcutil --sn="AWBS39A000221" setvcp d6 1 && /home/huyhoang/git/Monitor_Mode_AOC/monitor_mode -l 70')
 end)
 
 -- exec-once = waypaper-engine daemon

@@ -1,23 +1,127 @@
+# 2 DisplayPort monitor AOC Q27G42ZE, monitor AOC Q27G4ZDP + HDMI Samsung soundbar
 [[profile]]
   exec = [
     "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
     "killall -SIGUSR2 waybar",
   ]
-  name = "External HDMI"
-  [[profile.output]]
-    adaptive_sync = true
-    enable        = false
-    exec          = [ "swaymsg output $SHIKANE_OUTPUT_NAME color_profile icc \"~/.config/sway/scripts/color_profiles/TPLCD_2039_Native.icm\"" ]
-    mode          = "best"
-    position      = "0,1600"
-    scale         = 1.25
-    search        = [ "/eDP-[1-9]" ]
-
+  name = "DP AOC Q27G42ZE + DP AOC Q27G4ZDP + Samsung soundbar"
 
   [[profile.output]]
-    adaptive_sync = true
-    enable = true
-    exec = [
+    enable = false
+    search = ["/eDP-[1-9]"]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    mode          = "!2560x1440@240.00Hz"
+    position      = "2560,0"
+    scale         = 1
+    search        = ["n/DP-[1-9]", "v=AOC", "m=Q27G42ZE"]
+    exec          = [
+      "swaymsg output $SHIKANE_OUTPUT_NAME hdr off render_bit_depth 8 color_profile icc \"~/.config/sway/scripts/color_profiles/Q27G42ZE.icm\" bg \"~/.config/sway/wallpaper\" fill",
+      "swaymsg workspace 4, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 5, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 6, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 7, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 8, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 9, move workspace to $SHIKANE_OUTPUT_NAME",
+    ]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    mode          = "!2560x1440@280.00Hz"
+    position      = "0,0"
+    scale         = 1
+    search        = ["n/DP-[1-9]", "v=AOC", "m=Q27G4ZDP"]
+    exec          = [
+      "swaymsg output $SHIKANE_OUTPUT_NAME render_bit_depth 10 color_profile icc \"~/.config/sway/scripts/color_profiles/Q27G4ZDP.icm\" bg \"~/.config/sway/wallpaper\" fill",
+      "swaymsg workspace 1, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 2, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 3, move workspace to $SHIKANE_OUTPUT_NAME",
+    ]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    mode          = "1920x1080@60.00Hz"
+    position      = "5120,1440"
+    scale         = 1
+    search        = [
+      "n/HDMI-[ABC]-[1-9]",
+      "v=Samsung Electric Company",
+      "m=SAMSUNG"
+    ]
+    exec          = [
+      "swaymsg output $SHIKANE_OUTPUT_NAME hdr off",
+      "swaymsg workspace 10, move workspace to $SHIKANE_OUTPUT_NAME"
+    ]
+
+# 2 DisplayPort monitor AOC Q27G42ZE, monitor AOC Q27G4ZDP, when HDMI Samsung soundbar is in sleep mode/disconnected
+[[profile]]
+  exec = [
+    "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
+    "killall -SIGUSR2 waybar",
+  ]
+  name = "DP AOC Q27G42ZE + DP AOC Q27G4ZDP"
+
+  [[profile.output]]
+    enable = false
+    search = ["/eDP-[1-9]"]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    mode          = "!2560x1440@240.00Hz"
+    position      = "2560,0"
+    scale         = 1
+    search        = ["n/DP-[1-9]", "v=AOC", "m=Q27G42ZE"]
+    exec          = [
+      "swaymsg output $SHIKANE_OUTPUT_NAME hdr off render_bit_depth 8 color_profile icc \"~/.config/sway/scripts/color_profiles/Q27G42ZE.icm\" bg \"~/.config/sway/wallpaper\" fill",
+      "swaymsg workspace 4, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 5, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 6, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 7, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 8, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 9, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 10, move workspace to $SHIKANE_OUTPUT_NAME"
+    ]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    mode          = "!2560x1440@280.00Hz"
+    position      = "0,0"
+    scale         = 1
+    search        = ["n/DP-[1-9]", "v=AOC", "m=Q27G4ZDP"]
+    exec          = [
+      "swaymsg output $SHIKANE_OUTPUT_NAME render_bit_depth 10 color_profile icc \"~/.config/sway/scripts/color_profiles/Q27G4ZDP.icm\" bg \"~/.config/sway/wallpaper\" fill",
+      "swaymsg workspace 1, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 2, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 3, move workspace to $SHIKANE_OUTPUT_NAME",
+    ]
+
+# DisplayPort monitor AOC Q27G4ZDP + HDMI Samsung soundbar
+[[profile]]
+  exec = [
+    "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
+    "killall -SIGUSR2 waybar",
+  ]
+  name = "DP AOC Q27G4ZDP + Samsung soundbar"
+
+  [[profile.output]]
+    enable = false
+    search = ["/eDP-[1-9]"]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    mode          = "2560x1440@280.00Hz"
+    position      = "0,0"
+    scale         = 1
+    search        = ["n/DP-[1-9]", "v=AOC", "m=Q27G4ZDP"]
+    exec          = [
+      "swaymsg output $SHIKANE_OUTPUT_NAME render_bit_depth 10 color_profile icc \"~/.config/sway/scripts/color_profiles/Q27G4ZDP.icm\" bg \"~/.config/sway/wallpaper\" fill",
       "swaymsg workspace 1, move workspace to $SHIKANE_OUTPUT_NAME",
       "swaymsg workspace 2, move workspace to $SHIKANE_OUTPUT_NAME",
       "swaymsg workspace 3, move workspace to $SHIKANE_OUTPUT_NAME",
@@ -27,110 +131,120 @@
       "swaymsg workspace 7, move workspace to $SHIKANE_OUTPUT_NAME",
       "swaymsg workspace 8, move workspace to $SHIKANE_OUTPUT_NAME",
       "swaymsg workspace 9, move workspace to $SHIKANE_OUTPUT_NAME",
-      "swaymsg workspace 10, move workspace to $SHIKANE_OUTPUT_NAME",
     ]
-    mode = "best"
-    position = "0,0"
-    scale = 1
-    search = [ "/HDMI-[ABC]-[1-9]" ]
-
-[[profile]]
-  exec = [
-    "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
-    "killall -SIGUSR2 waybar",
-  ]
-  name = "External DP AOC Q27G42ZE"
-  [[profile.output]]
-    adaptive_sync = true
-    enable        = false
-    mode          = "best"
-    position      = "0,2560"
-    scale         = 1.25
-    search        = [ "/eDP-[1-9]" ]
-
 
   [[profile.output]]
-    adaptive_sync = true
-    enable = true
-    exec = [
-      "nohup ~/.config/shikane/DP_mode.sh $SHIKANE_OUTPUT_NAME > /dev/null 2>&1 &",
+    adaptive_sync = false
+    enable        = true
+    mode          = "1920x1080@60.00Hz"
+    position      = "2560,1440"
+    scale         = 1
+    search        = [
+      "n/HDMI-[ABC]-[1-9]",
+      "v=Samsung Electric Company",
+      "m=SAMSUNG"
     ]
-    mode = "!2560x1440@260.002Hz"
-    position = "0,0"
-    scale = 1
-    search = [ "n/DP-[1-9]", "v=AOC", "m=Q27G42ZE" ]
-
-  [[profile.output]]
-    adaptive_sync = true
-    enable = true
-    exec = [
-      "swaymsg workspace 10, move workspace to $SHIKANE_OUTPUT_NAME",
+    exec          = [
+      "swaymsg output $SHIKANE_OUTPUT_NAME hdr off",
+      "swaymsg workspace 10, move workspace to $SHIKANE_OUTPUT_NAME"
     ]
-    mode = "!640x480@59.940Hz"
-    position = "0,4920"
-    scale = 1
-    search = [ "n/HDMI-[ABC]-[1-9]" ]
 
-
-[[profile]]
-  exec = [
-    "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
-    "killall -SIGUSR2 waybar",
-  ]
-  name = "External DP + HDMI"
-  [[profile.output]]
-    adaptive_sync = true
-    enable        = false
-    exec          = [ "swaymsg output $SHIKANE_OUTPUT_NAME color_profile icc \"~/.config/sway/scripts/color_profiles/TPLCD_2039_Native.icm\"" ]
-    mode          = "best"
-    position      = "0,2560"
-    scale         = 1.25
-    search        = [ "/eDP-[1-9]" ]
-
-
-  [[profile.output]]
-    adaptive_sync = true
-    enable = true
-    exec = [
-      "swaymsg workspace 1, move workspace to $SHIKANE_OUTPUT_NAME",
-      "swaymsg workspace 3, move workspace to $SHIKANE_OUTPUT_NAME",
-    ]
-    mode = "best"
-    position = "0,0"
-    scale = 1
-    search = [ "n/DP-[1-9]" ]
-
-
-  [[profile.output]]
-    adaptive_sync = true
-    enable = true
-    exec = [
-      "swaymsg workspace 2, move workspace to $SHIKANE_OUTPUT_NAME",
-      "swaymsg workspace 4, move workspace to $SHIKANE_OUTPUT_NAME",
-      "swaymsg workspace 5, move workspace to $SHIKANE_OUTPUT_NAME",
-      "swaymsg workspace 6, move workspace to $SHIKANE_OUTPUT_NAME",
-      "swaymsg workspace 7, move workspace to $SHIKANE_OUTPUT_NAME",
-      "swaymsg workspace 8, move workspace to $SHIKANE_OUTPUT_NAME",
-      "swaymsg workspace 9, move workspace to $SHIKANE_OUTPUT_NAME",
-      "swaymsg workspace 10, move workspace to $SHIKANE_OUTPUT_NAME",
-    ]
-    mode = "best"
-    position = "0,0"
-    scale = 1
-    search = [ "/HDMI-[ABC]-[1-9]" ]
-
-
+# Laptop monitor only
 [[profile]]
   exec = [
     "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
     "killall -SIGUSR2 waybar",
   ]
   name = "Default"
+
   [[profile.output]]
-    adaptive_sync = true
+    adaptive_sync = false
     enable        = true
-    exec          = [ "swaymsg output $SHIKANE_OUTPUT_NAME color_profile icc \"~/.config/sway/scripts/color_profiles/TPLCD_2039_Native.icm\"" ]
+    exec          = [
+      "output eDP-1 mode 2560x1600@240Hz scale 1.25 render_bit_depth 10 color_profile icc \"~/.config/sway/scripts/color_profiles/TPLCD_2039_Native.icm\" bg \"~/.config/sway/wallpaper\" fill"
+    ]
     mode          = "best"
     position      = "0,0"
     scale         = 1.25
-    search        = [ "/eDP-[1-9]" ]
+    search        = ["/eDP-[1-9]"]
+
+# HDMI monitor only
+[[profile]]
+  exec = [
+    "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
+    "killall -SIGUSR2 waybar",
+  ]
+  name = "HDMI Only"
+
+  [[profile.output]]
+    enable = false
+    search = ["/eDP-[1-9]"]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    mode          = "best"
+    position      = "0,0"
+    scale         = 1
+    search        = ["/HDMI-[ABC]-[1-9]"]
+
+# DisplayPort monitor only
+[[profile]]
+  exec = [
+    "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
+    "killall -SIGUSR2 waybar",
+  ]
+  name = "DP Only"
+
+  [[profile.output]]
+    enable = false
+    search = ["/eDP-[1-9]"]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    mode          = "best"
+    position      = "0,0"
+    scale         = 1
+    search        = ["n/DP-[1-9]"]
+
+# DisplayPort monitor + HDMI monitor
+[[profile]]
+  exec = [
+    "notify-send -a monitor-mode -i disper \"$SHIKANE_PROFILE_NAME\"",
+    "killall -SIGUSR2 waybar",
+  ]
+  name = "DP + HDMI"
+
+  [[profile.output]]
+    enable = false
+    search = ["/eDP-[1-9]"]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    exec          = [
+      "swaymsg workspace 1, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 3, move workspace to $SHIKANE_OUTPUT_NAME",
+    ]
+    mode          = "best"
+    position      = "0,0"
+    scale         = 1
+    search        = ["n/DP-[1-9]"]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    exec          = [
+      "swaymsg workspace 2, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 4, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 5, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 6, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 7, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 8, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 9, move workspace to $SHIKANE_OUTPUT_NAME",
+      "swaymsg workspace 10, move workspace to $SHIKANE_OUTPUT_NAME",
+    ]
+    mode          = "best"
+    scale         = 1
+    search        = ["/HDMI-[ABC]-[1-9]"]

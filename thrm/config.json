@@ -1,0 +1,402 @@
+{
+  "legionFnQ": {
+    "enabled": false,
+    "takeOverFan": false,
+    "modeMapping": {
+      "Balance": {
+        "gear": "标准",
+        "level": "中"
+      },
+      "Extreme": {
+        "gear": "超频",
+        "level": "中"
+      },
+      "GodMode": {
+        "gear": "超频",
+        "level": "高"
+      },
+      "Performance": {
+        "gear": "强劲",
+        "level": "中"
+      },
+      "Quiet": {
+        "gear": "静音",
+        "level": "中"
+      }
+    }
+  },
+  "legionFnQSupport": {
+    "checked": true,
+    "supported": false
+  },
+  "autoControl": true,
+  "manualGearToggleHotkey": "",
+  "autoControlToggleHotkey": "Ctrl+Alt+Shift+A",
+  "curveProfileToggleHotkey": "",
+  "manualGearLevels": {
+    "强劲": "中",
+    "标准": "中",
+    "超频": "中",
+    "静音": "中"
+  },
+  "manualGearRpm": {
+    "强劲": {
+      "中": 3000,
+      "低": 2800,
+      "高": 3300
+    },
+    "标准": {
+      "中": 2400,
+      "低": 2100,
+      "高": 2700
+    },
+    "超频": {
+      "中": 3700,
+      "低": 3500,
+      "高": 4000
+    },
+    "静音": {
+      "中": 1700,
+      "低": 1300,
+      "高": 1900
+    }
+  },
+  "fanCurve": [
+    {
+      "temperature": 30,
+      "rpm": 1000
+    },
+    {
+      "temperature": 35,
+      "rpm": 1200
+    },
+    {
+      "temperature": 40,
+      "rpm": 1400
+    },
+    {
+      "temperature": 45,
+      "rpm": 1600
+    },
+    {
+      "temperature": 50,
+      "rpm": 1800
+    },
+    {
+      "temperature": 55,
+      "rpm": 2000
+    },
+    {
+      "temperature": 60,
+      "rpm": 2300
+    },
+    {
+      "temperature": 65,
+      "rpm": 2600
+    },
+    {
+      "temperature": 70,
+      "rpm": 2900
+    },
+    {
+      "temperature": 75,
+      "rpm": 3200
+    },
+    {
+      "temperature": 80,
+      "rpm": 3500
+    },
+    {
+      "temperature": 85,
+      "rpm": 3800
+    },
+    {
+      "temperature": 90,
+      "rpm": 4000
+    },
+    {
+      "temperature": 95,
+      "rpm": 4000
+    },
+    {
+      "temperature": 100,
+      "rpm": 4000
+    },
+    {
+      "temperature": 105,
+      "rpm": 4000
+    },
+    {
+      "temperature": 110,
+      "rpm": 4000
+    }
+  ],
+  "fanCurveProfiles": [
+    {
+      "id": "default",
+      "name": "Defaul",
+      "curve": [
+        {
+          "temperature": 30,
+          "rpm": 1000
+        },
+        {
+          "temperature": 35,
+          "rpm": 1200
+        },
+        {
+          "temperature": 40,
+          "rpm": 1400
+        },
+        {
+          "temperature": 45,
+          "rpm": 1600
+        },
+        {
+          "temperature": 50,
+          "rpm": 1800
+        },
+        {
+          "temperature": 55,
+          "rpm": 2000
+        },
+        {
+          "temperature": 60,
+          "rpm": 2300
+        },
+        {
+          "temperature": 65,
+          "rpm": 2600
+        },
+        {
+          "temperature": 70,
+          "rpm": 2900
+        },
+        {
+          "temperature": 75,
+          "rpm": 3200
+        },
+        {
+          "temperature": 80,
+          "rpm": 3500
+        },
+        {
+          "temperature": 85,
+          "rpm": 3800
+        },
+        {
+          "temperature": 90,
+          "rpm": 4000
+        },
+        {
+          "temperature": 95,
+          "rpm": 4000
+        },
+        {
+          "temperature": 100,
+          "rpm": 4000
+        },
+        {
+          "temperature": 105,
+          "rpm": 4000
+        },
+        {
+          "temperature": 110,
+          "rpm": 4000
+        }
+      ]
+    }
+  ],
+  "activeFanCurveProfileId": "default",
+  "gearLight": false,
+  "powerOnStart": true,
+  "windowsAutoStart": false,
+  "themeMode": "system",
+  "smartStartStop": "delayed",
+  "brightness": 100,
+  "tempUpdateRate": 2,
+  "tempSampleCount": 1,
+  "tempSource": "max",
+  "temperatureHistoryRetentionHours": 1,
+  "disableGpuMonitoring": false,
+  "gpuDevice": "auto",
+  "cpuSensor": "auto",
+  "cpuSensors": null,
+  "gpuSensor": "auto",
+  "windowBlur": "auto",
+  "configPath": "/home/huyhoang/.config/thrm/config.json",
+  "manualGear": "静音",
+  "manualLevel": "中",
+  "debugMode": false,
+  "guiMonitoring": true,
+  "customSpeedEnabled": false,
+  "customSpeedRPM": 2000,
+  "ignoreDeviceOnReconnect": true,
+  "lastDeviceTransport": "hid",
+  "rtss": {
+    "enabled": false,
+    "updateIntervalMs": 1000,
+    "positionMode": "anchor",
+    "positionX": 0,
+    "positionY": 0
+  },
+  "speedAvoidance": {
+    "enabled": false,
+    "minRpm": 1900,
+    "maxRpm": 2200,
+    "marginRpm": 100,
+    "emergencyBypassTemp": 80
+  },
+  "timeCurveSchedule": {
+    "enabled": false,
+    "rules": []
+  },
+  "smartControl": {
+    "enabled": true,
+    "learning": true,
+    "predictiveBoost": true,
+    "learningBias": "cooling",
+    "filterTransientSpike": true,
+    "laptopFanGuard": true,
+    "targetTemp": 68,
+    "aggressiveness": 5,
+    "hysteresis": 2,
+    "minRpmChange": 50,
+    "rampUpLimit": 220,
+    "rampDownLimit": 160,
+    "learnRate": 3,
+    "learnWindow": 8,
+    "learnDelay": 3,
+    "overheatWeight": 8,
+    "rpmDeltaWeight": 5,
+    "noiseWeight": 4,
+    "trendGain": 5,
+    "maxLearnOffset": 300,
+    "learnedOffsets": [
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      9,
+      21,
+      36,
+      57,
+      79,
+      70,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "learnedOffsetsByProfile": {
+      "default": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        2,
+        9,
+        21,
+        36,
+        57,
+        79,
+        70,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "targetTempByProfile": {
+      "default": 68
+    },
+    "learningBiasByProfile": {
+      "default": "cooling"
+    },
+    "learnedOffsetsHeat": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "learnedOffsetsCool": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "learnedRateHeat": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "learnedRateCool": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "noiseProfile": null,
+    "noiseProfileUpdatedAt": 0
+  },
+  "lightStrip": {
+    "mode": "off",
+    "speed": "medium",
+    "brightness": 100,
+    "colors": [
+      {
+        "r": 255,
+        "g": 0,
+        "b": 0
+      },
+      {
+        "r": 0,
+        "g": 255,
+        "b": 0
+      },
+      {
+        "r": 0,
+        "g": 128,
+        "b": 255
+      }
+    ]
+  }
+}

@@ -21,6 +21,7 @@
   "modules-right": [
     "pulseaudio",
     "backlight",
+    "custom/hdr",
     "network",
     "bluetooth",
     "custom/rapoo",
@@ -167,21 +168,6 @@
     "on-scroll-up": "playerctl previous",
     "on-scroll-down": "playerctl next",
   },
-  "hyprland/workspaces": {
-    "format": "{icon}",
-    "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "6": "",
-      "7": "󰺵",
-      "active": "󰧨",
-      "special": "󰐃",
-      "default": "",
-    }
-  },
   "sway/mode": {
     "format": "{}",
     "tooltip": false
@@ -311,7 +297,7 @@
     "signal": 30,
     "format": "󰌌 {text}",
   },
-    "custom/rapoo": {
+  "custom/rapoo": {
     "exec": "rapoo-battery --waybar",
     "return-type": "json",
     "format": "󰦋 {percentage}%",
@@ -322,6 +308,14 @@
         "warning": 30,
         "critical": 15
     }
-}
-
+  },
+  "custom/hdr": {
+    "exec": "~/.config/waybar/scripts/sway-hdr.sh",
+    "return-type": "json",
+    "on-click": "~/.config/waybar/scripts/sway-hdr-toggle.sh",
+    "exec-on-event": false,
+    "interval": "once",
+    "signal": 10,
+    "format": " 󰧨 {text}"
+  }
 }
