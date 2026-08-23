@@ -1,0 +1,13 @@
+
+module my-systemdsleep 1.0;
+
+require {
+	type tmp_t;
+	type systemd_sleep_t;
+	class file { open write };
+}
+
+#============= systemd_sleep_t ==============
+
+#!!!! This avc is allowed in the current policy
+allow systemd_sleep_t tmp_t:file { open write };

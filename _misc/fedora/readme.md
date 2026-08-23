@@ -1,3 +1,11 @@
+Fix nvidia:
+enable all nvidia systemd services, except nvidia-fallback.service
+
+```bash
+sudo dnf in akmod-nvidia
+semodule -X 300 -i my-systemdsleep.pp
+```
+
 ```bash
 systemctl --user enable --now \
           gpg-agent.socket \

@@ -3,7 +3,8 @@ exec bwrap \
   --bind / / \
   --ro-bind "$HOME/.config/aegisub/fontconfig/fonts.conf" /etc/fonts/fonts.conf \
   --ro-bind "$HOME/.local/share/vietnamese-font" /usr/share/fonts \
-  --bind "$HOME/.local/aegisub-fontcache" /tmp/aegisub-fontcache \
+  --bind "$HOME/.local/aegisub-fontcache/var/cache" /tmp/aegisub-fontcache \
+  --bind "/mnt/remote" /mnt/remote \
   --dev-bind /dev /dev \
   --proc /proc \
   --setenv HOME "$HOME" \
@@ -14,3 +15,16 @@ exec bwrap \
   --setenv PULSE_SERVER "unix:$XDG_RUNTIME_DIR/pulse/native" \
   --bind "$XDG_RUNTIME_DIR" "$XDG_RUNTIME_DIR" \
   /usr/bin/aegisub "$@"
+
+# # 1. Set up the sysroot structure
+#SYSROOT="/home/huyhoang/.local/aegisub-fontcache"
+#mkdir -p "$SYSROOT"/{etc/fonts,usr/share,var/cache/fontconfig}
+
+# 2. Copy (or symlink) the system fontconfig configuration
+#cp /etc/fonts/fonts.conf "$SYSROOT/etc/fonts/"
+
+# 3. Link your font folder into the sysroot
+#ln -s "/home/huyhoang/.local/share/vietnamese-font" "$SYSROOT/usr/share/fonts"
+
+# 4. Run fc-cache with sysroot and force rebuild
+#fc-cache -rfv -y "$SYSROOT" /usr/share/fonts
