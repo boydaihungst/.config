@@ -1,5 +1,14 @@
 # enhance-piper.yazi
 
+> [!IMPORTANT]
+> This repository is deprecated  
+> This project is no longer actively maintained,  
+> and there will be no more updates to this repository.  
+> If you've made a fork or a newer, actively maintained version of this project,  
+> feel free to share it in the Issues page.  
+> This way, newcomers can easily find an up-to-date alternative.
+> Forks, improvements, and alternative implementations are always welcome!
+
 `Piper.yazi` is a plugin that runs any shell command as a previewer.
 And this `enhance-piper.yazi` is a wrapper that caches `Piper` command outputs in RAM for better performance.
 When scrolling or re-rendering the previewer, the shell command will not run again.
@@ -8,7 +17,7 @@ When scrolling or re-rendering the previewer, the shell command will not run aga
 
 > [!IMPORTANT]
 >
-> - Minimum version: yazi v25.5.31.
+> - yazi v25.5.31 and <= v26.9.1
 > - Requires piper.yazi.
 
 ```sh

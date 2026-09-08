@@ -1,5 +1,14 @@
 # mediainfo.yazi (fork)
 
+> [!IMPORTANT]
+> This repository is deprecated  
+> This project is no longer actively maintained,  
+> and there will be no more updates to this repository.  
+> If you've made a fork or a newer, actively maintained version of this project,  
+> feel free to share it in the Issues page.  
+> This way, newcomers can easily find an up-to-date alternative.
+> Forks, improvements, and alternative implementations are always welcome!
+
 <!--toc:start-->
 
 - [mediainfo.yazi (fork)](#mediainfoyazi-fork)
@@ -13,7 +22,7 @@ This is a Yazi plugin for previewing media files. The preview shows thumbnail
 using `ffmpeg` if available and media metadata using `mediainfo`.
 
 > [!IMPORTANT]
-> Minimum version: yazi v26.1.22.
+> yazi v26.5.6 and <= v26.9.1
 > Check it via command `yazi --debug`
 
 ## Preview
@@ -132,7 +141,7 @@ Create `.../yazi/yazi.toml` and add:
 
 ```
 
-## Custom theme
+## (Optional) Custom theme
 
 Using the same style with spotter windows. [Read more](https://github.com/sxyazi/yazi/pull/2391)
 
@@ -147,6 +156,38 @@ title = { fg = "green" }
 # Value style.
 # Example: `Format: FLAC` with blue color in preview images above
 tbl_col = { fg = "blue" }
+```
+
+## (Optional) Hide labels or section labels
+
+This `setup` function and all of its options are optional.
+Modify your `~/.config/yazi/init.lua` to include:
+
+```lua
+require("mediainfo"):setup({
+  -- Auto hide the lines with these labels
+  -- Labels are the text with white color in preview images above (without colon ":")
+	-- Example: To hide `Format: FLAC` => "Format"
+  -- Default value:
+	skip_labels = {
+	  "Complete name",
+	  "CompleteName_Last",
+	  "Unique ID",
+	  "File size",
+	  "Format/Info",
+	  "Codec ID/Info",
+	  "MD5 of the unencoded content"
+	  -- "Format" -- Hide all lines with "Format" label
+	},
+	-- skip_labels = false, -- Disable auto hide labels
+
+
+  -- Auto hide the section labels
+  -- Section labels are the text with green color in preview images above
+	-- Example: To hide `Image` => "Image"
+	-- Default value: {}
+	skip_section_labels = { "General", "Image", "Text" },
+})
 ```
 
 ## (Optional) Keymaps to toggle/show/hide/reset metadata and preview image

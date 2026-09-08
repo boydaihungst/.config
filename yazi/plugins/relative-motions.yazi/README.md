@@ -1,5 +1,14 @@
 # relative-motions.yazi (fork)
 
+> [!IMPORTANT]
+> This repository is deprecated  
+> This project is no longer actively maintained,  
+> and there will be no more updates to this repository.  
+> If you've made a fork or a newer, actively maintained version of this project,  
+> feel free to share it in the Issues page.  
+> This way, newcomers can easily find an up-to-date alternative.
+> Forks, improvements, and alternative implementations are always welcome!
+
 <!--toc:start-->
 
 - [relative-motions.yazi (fork)](#relative-motionsyazi-fork)
@@ -19,7 +28,7 @@ https://github.com/dedukun/relative-motions.yazi/assets/25795432/04fb186a-5efe-4
 
 ## Requirements
 
-- [Yazi](https://github.com/sxyazi/yazi) >= v25.5.31
+- [yazi >= v25.5.31 and <= v26.9.1](https://github.com/sxyazi/yazi)
 - [Smart-truncate.yazi](https://github.com/boydaihungst/smart-truncate.yazi): If you want to use smart truncate feature. Which is now disabled by default.
 
 ## Installation

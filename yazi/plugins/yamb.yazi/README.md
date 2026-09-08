@@ -1,5 +1,14 @@
 # Yet another bookmarks
 
+> [!IMPORTANT]
+> This repository is deprecated  
+> This project is no longer actively maintained,  
+> and there will be no more updates to this repository.  
+> If you've made a fork or a newer, actively maintained version of this project,  
+> feel free to share it in the Issues page.  
+> This way, newcomers can easily find an up-to-date alternative.
+> Forks, improvements, and alternative implementations are always welcome!
+
 A [Yazi](https://github.com/sxyazi/yazi) plugin for bookmark management, supporting the following features
 
 - Persistent bookmarks. No bookmarks are lost after you close yazi.
@@ -10,10 +19,10 @@ A [Yazi](https://github.com/sxyazi/yazi) plugin for bookmark management, support
 ## Installation
 
 > [!NOTE]
-> Yazi >= 25.6.11
+> Yazi >= 25.6.11 and <= v26.9.1
 
 ```sh
-ya pkg add h-hg/yamb
+ya pkg add boydaihungst/yamb
 ```
 
 ## Usage

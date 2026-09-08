@@ -54,7 +54,7 @@
     { on = "<Left>", run = "plugin fuse-archive -- leave", desc = "Go back to the parent directory" },
     { on = "<Right>", run = "plugin fuse-archive -- mount", desc = "Enter dir or open files" },
     #
-    { on = "J", run = "plugin custom-dds", desc = "Go back to the previous directory" },
+    { on = "J", run = "plugin custom-back", desc = "Go back to the previous directory" },
     { on = "K", run = "forward", desc = "Go forward to the next directory" },
 
     # Scroll preview tab
@@ -316,7 +316,7 @@
     { on = ["M", "R"], run = "plugin gvfs -- remount-current-cwd-device", desc = "Re-mount current GVFS" },
     { on = ["M", "t"], run = "plugin gvfs -- automount-when-cd", desc = "Enable automount when cd" },
     { on = ["M", "T"], run = "plugin gvfs -- automount-when-cd --disabled", desc = "Disable automount when cd" },
-    { on = ["M", "u"], run = "plugin gvfs -- select-then-unmount", desc = "Unmount GVFS" },
+    { on = ["M", "u"], run = "plugin gvfs -- select-then-unmount --force", desc = "Unmount GVFS" },
     { on = ["M", "U"], run = "plugin gvfs -- select-then-unmount --eject --force", desc = "Unmount GVFS (Force)" },
     { on = ["M", "a"], run = "plugin gvfs -- add-mount", desc = "Add a GVFS mount URI" },
     { on = ["M", "e"], run = "plugin gvfs -- edit-mount", desc = "Edit a GVFS mount URI" },

@@ -1,3 +1,4 @@
+# For Yazi 26.5.6 only
 # A TOML linter such as https://github.com/tombi-toml/tombi can use this schema to validate your config.
 # If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
 
@@ -19,14 +20,14 @@
 
 [preview]
   cache_dir       = "~/.cache/yazi/"
-  image_delay     = 10
+  image_delay     = 0
   image_filter    = "lanczos3"
   image_quality   = 75
   max_height      = 1600
   max_width       = 2560
   tab_size        = 2
-  ueberzug_offset = [47, 12, 0, 0]
-  ueberzug_scale  = 1.5
+  ueberzug_offset = [0.5, 0.5, -0.5, -0.5]
+  ueberzug_scale  = 1
   wrap            = "yes"
 
 [opener]
@@ -67,15 +68,11 @@
     { run = "torrent-file-editor %s1", desc = "Torrent file editor", orphan = true, for = "linux" },
   ]
 
-  manpage = [
-    { run = "man %s1", orphan = true, desc = "Manpage", for = "linux" }
-  ]
+  manpage = [{ run = "man %s1", orphan = true, desc = "Manpage", for = "linux" }]
 
   wine = [{ run = "wine64 %s1", orphan = true, desc = "Wine64", for = "linux" }]
 
-  audio = [
-    { run = "mpc --host $HOME/.config/mpd/socket clear && mpc --host $HOME/.config/mpd/socket add %s && mpc play", orphan = true, desc = "Play audio via mpd", for = "linux" }
-  ]
+  audio = [{ run = "mpc --host $HOME/.config/mpd/socket clear && mpc --host $HOME/.config/mpd/socket add %s && mpc play", orphan = true, desc = "Play audio via mpd", for = "linux" }]
 
   video = [
     { run = "killall mpv; mpv %s", orphan = true, desc = "Mpv", for = "linux" },
@@ -110,7 +107,8 @@
   ]
 
   edit = [
-    { run = 'kitty --app-id "nvim" -- nvim %s', orphan = true, desc = "Nvim", for = "linux" },
+    { run = 'kitty --app-id "$EDITOR" -- $EDITOR %s', orphan = true, desc = "Edit", for = "linux" },
+    # { run = "$EDITOR %s", block = true, desc = "Edit (block)", for = "linux" },
     # { run = 'wezterm start --class "nvim" -- nvim %s', orphan = true, desc = "Nvim", for = "linux" },
     { run = "xed %s", desc = "Xed", orphan = true, for = "linux" },
   ]
@@ -138,22 +136,20 @@
     { run = "ya emit download --open %S", desc = "Download and open" },
     { run = "ya emit download %S", desc = "Download" },
   ]
-  trash    = [
-    { run = "ya pub trash-restore --list %S", desc = "Restore selected files" },
-    { run = "ya pub trash-empty --list %S", desc = "Empty trash bin" },
-  ]
+  # trash    = [
+  #   { run = "ya pub trash-restore --list %S", desc = "Restore selected files" },
+  #   { run = "ya pub trash-empty --list %S", desc = "Empty trash bin" },
+  # ]
 
 [open]
   rules = [
-    # Trash
-    { mime = "trash/**", use = ["open", "trash"] },
     { mime = "image/xcursor", use = ["edit"] },
     { mime = "application/mbox", use = ["edit"] },
     { mime = "text/shellscript", use = ["execute", "edit"] },
     { url = "bulk-rename.txt", use = ["bulk-rename"], block = true },
     # Folder
     { url = "/mnt/remote/", use = ["mount_remote", "terminal"] },
-    { url = "*/", use = ["terminal", "lazygit", "subtitle_processor_folder"] },
+    { mime = "folder/*", use = ["terminal", "lazygit", "subtitle_processor_folder"] },
 
     # subtitle
     { url = "*.ass", use = ["edit", "subtitle_editor_ass"] },
@@ -161,6 +157,8 @@
     { url = "*.vtt", use = ["edit", "subtitle_editor_vtt"] },
     # Virtual file system
     { mime = "vfs/{absent,stale}", use = "download" },
+    # Trash
+    # { mime = "trash/**", use = ["open", "trash"] },
 
     # Torrent files
     { url = "*.{torrent}", use = ["torrent_editor", "edit"] },
@@ -181,13 +179,8 @@
     { mime = "video/*", use = ["video"] },
     # Document
     { url = "*.pdf", use = ["open"] },
-    { url = "*.{pttx,ptt,odd,odf,odg,odp,ods,odt,doc,docx,sxc,xls,xlsx,xtl,gnm,gnumeric,csv}", use = [
-      "open",
-      "document"
-    ] },
-    { url = "*.{azw,cbc,cbr,cbz,epub,fb2,htm,html,lit,lrf,mobi,opf,rb,pdb,pdf,pml,pmlz,prc,recipe,rtf,shtm,shtml,tcr}", use = [
-      "ebook-viewer"
-    ] },
+    { url = "*.{pttx,ptt,odd,odf,odg,odp,ods,odt,doc,docx,sxc,xls,xlsx,xtl,gnm,gnumeric,csv}", use = ["open", "document"] },
+    { url = "*.{azw,cbc,cbr,cbz,epub,fb2,htm,html,lit,lrf,mobi,opf,rb,pdb,pdf,pml,pmlz,prc,recipe,rtf,shtm,shtml,tcr}", use = ["ebook-viewer"] },
     # Text
     { mime = "text/*", use = ["edit"] },
 
@@ -196,21 +189,14 @@
     { url = "*.xcf", use = ["image"] },
     { mime = "application/gentoo.ebuild", use = ["edit"] },
     # Archive
-    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [
-      "archive"
-    ] },
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = ["archive"] },
 
     # JSON
-    { mime = "application/{json,ndjson,javascript,wine-extension-ini}", use = [
-      "edit"
-    ] },
+    { mime = "application/{json,ndjson,javascript,wine-extension-ini}", use = ["edit"] },
 
     # Empty file
     { mime = "inode/empty", use = ["edit"] },
-    { mime = "application/{executable,pie-executable}", use = [
-      "execute",
-      "edit"
-    ] },
+    { mime = "application/{executable,pie-executable}", use = ["execute", "edit"] },
 
     # Fallback
     { url = "*", use = ["open", "edit"] },
@@ -233,9 +219,9 @@
     # { id = "mime", url = "/run/user/*/gvfs/google-drive:host=gmail.com,user=*/**/*", run = "mime-ext.local", prio = "high" },
     # { id = "mime", url = "/run/user/*/gvfs/google-drive:host=gmail.com,user=*/**/*/", run = "mime.dir", prio = "high" },
     { url = "*/", run = "mime.dir", prio = "high", group = "mime" },
-    { url = "local://*", run = "mime-ext.local", prio = "high", group = "mime" },
-    { url = "trash://*", run = "mime.trash", prio = "high", group = "mime" },
-    { url = "remote://*", run = "mime-ext.remote", prio = "high", group = "mime" },
+    { url = "local://*", run = "mime.local", prio = "high", group = "mime" },
+    # { url = "trash://*", run = "mime.trash", prio = "high", group = "mime" },
+    { url = "remote://*", run = "mime.remote", prio = "high", group = "mime" },
     { url = "*", run = "simple-tag", group = "simple-tag" },
     { url = "*/", run = "simple-tag", group = "simple-tag" },
   ]
@@ -247,14 +233,14 @@
     { url = "/home/huyhoang/Media/**/*", run = "noop", prio = "high" },
     # Audio + Video + Image
     { url = "*.{ai,eps,ait}", run = "mediainfo" },
-    # { mime = "{audio,video,image}/*", run = "mediainfo" },
+    { mime = "{audio,video,image}/*", run = "mediainfo" },
     # PDF
     { mime = "application/pdf", run = "pdf" },
     # Font
     { mime = "{font/*,application/ms-opentype}", run = "better-font" },
 
     # Trash
-    { mime = "trash/**", run = "trash" },
+    # { mime = "trash/**", run = "trash" },
   ]
 
   spotters = [
@@ -262,9 +248,9 @@
     { mime = "multi/*", run = "multi" },
 
     # Trash
-    { mime = "trash/**", run = "trash" },
+    # { mime = "trash/**", run = "trash" },
     # Folder
-    { url = "*/", run = "folder" },
+    { mime = "folder/*", run = "folder" },
     { url = "/mnt/**/*", run = "file-extra-metadata", prio = "high" },
     # Code
     # { mime = "text/*", run = "code" },
@@ -283,12 +269,13 @@
     # Fallback
     # { url = "*", run = "file" },
     { url = "*", run = "file-extra-metadata" },
+    { url = "*/", run = "file" },
   ]
 
   previewers = [
     { url = "/run/user/*/gvfs/google-drive:host=gmail.com,user=*/**/*", run = "noop", prio = "high" },
     { url = "/run/user/*/gvfs/google-drive:host=gmail.com,user=*/**/*/", run = "noop", prio = "high" },
-    { url = "*/", run = "smart-truncate" },
+    { mime = "folder/*", run = "smart-truncate" },
     # { url = "*/", run = "folder" },
     # Do not preview these paths
     # { url = "/home/huyhoang/Media/**/*", run = "noop" },
@@ -329,7 +316,7 @@
     # Virtual file system
     { mime = "vfs/*", run = "vfs" },
     # Trash
-    { mime = "trash/**", run = "trash" },
+    # { mime = "trash/**", run = "trash" },
     # Error
     { mime = "null/*", run = "null" },
     # Fallback

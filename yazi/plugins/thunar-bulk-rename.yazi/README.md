@@ -1,5 +1,14 @@
 # thunar-bulk-rename.yazi
 
+> [!IMPORTANT]
+> This repository is deprecated  
+> This project is no longer actively maintained,  
+> and there will be no more updates to this repository.  
+> If you've made a fork or a newer, actively maintained version of this project,  
+> feel free to share it in the Issues page.  
+> This way, newcomers can easily find an up-to-date alternative.
+> Forks, improvements, and alternative implementations are always welcome!
+
 <!--toc:start-->
 
 - [thunar-bulk-rename.yazi](#thunar-bulk-renameyazi)
@@ -18,7 +27,7 @@ It will show this in thunar. Not really what we want.
 
 ## Requirements
 
-- [yazi >= v25.5.31](https://github.com/sxyazi/yazi)
+- [yazi >= v25.5.31 and <= v26.9.1](https://github.com/sxyazi/yazi)
 - [Thunar](https://archlinux.org/packages/extra/x86_64/thunar/)
 
 ## Installation

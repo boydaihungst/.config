@@ -1,5 +1,13 @@
+-- For Yazi 26.5.6 only
 -- require("test"):setup()
 require("custom-back"):setup()
+require("mediainfo"):setup({
+	-- skip_labels = {
+	-- 	"Format",
+	-- },
+	skip_section_labels = { "General" },
+	-- skip_labels = false,
+})
 require("simple-tag"):setup({
 	left_side = true,
 	-- render_order = 1500,
@@ -334,7 +342,8 @@ function Status:name()
 		return ui.Line({})
 	end
 
-	local icon = th.icon:match(h, { hovered = h.is_hovered })
+	local icon = h:icon()
+	-- local icon = th.icon:match(h, { hovered = h.is_hovered })
 
 	local file_name = h.name
 	local tail = h.cha.is_dir and "" or (h.url.ext and ("." .. h.url.ext) or "")
