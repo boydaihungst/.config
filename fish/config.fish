@@ -50,13 +50,21 @@ else
     set fzf_variables_opts --no-multi --bind 'tab:down,btab:up'
 end
 
+fish_add_path -aP ~/bin ~/.local/bin ~/.cargo/bin $GEM_HOME/bin ~/.local/share/neovim/bin /usr/local/go/bin ~/android_root/platform-tools /usr/include/vapoursynth ~/go/bin ~/.cache/.bun/bin ~/.dotnet/tools
+
+# ASDF configuration code
+if set -q ASDF_DATA_DIR
+    fish_add_path -p "$ASDF_DATA_DIR/shims"
+else
+    fish_add_path -p "$HOME/.asdf/shims"
+end
+
 if not type -q safe-rm
     echo "safe-rm not found. Install through package manager!"
 else
+    set SAFE_RM_OPTIONS_ANYWHERE yes
     alias rm='safe-rm'
 end
-fish_add_path -p /usr/lib/safe-rm
-fish_add_path -aP ~/bin ~/.local/bin ~/.cargo/bin $GEM_HOME/bin ~/.local/share/neovim/bin /usr/local/go/bin ~/android_root/platform-tools /usr/include/vapoursynth ~/go/bin ~/.cache/.bun/bin ~/.dotnet/tools
 
 if type -q nvim
     set EDITOR nvim
@@ -85,23 +93,14 @@ if test -x /usr/local/bin/advcp
     alias mv='/usr/local/bin/advmv -g'
 end
 
+alias ll='ls -alFh'
+alias la='ls -Ah'
+alias l='ls -CFh'
+
 fish_vi_key_bindings
 bind yy fish_clipboard_copy
 bind p fish_clipboard_paste
 
-# ASDF configuration code
-if set -q ASDF_DATA_DIR
-    set _asdf_shims "$ASDF_DATA_DIR/shims"
-else
-    set _asdf_shims "$HOME/.asdf/shims"
-end
-
-# Do not use fish_add_path (added in Fish 3.2) because it
-# potentially changes the order of items in PATH
-if not contains $_asdf_shims $PATH
-    set -gx --prepend PATH $_asdf_shims
-end
-set --erase _asdf_shims
 if type -q thefuck
     thefuck --alias | source
 end
@@ -111,6 +110,5 @@ end
 if type -q zoxide
     zoxide init fish | source
 end
-set -x DOCKER_HOST unix://$XDG_RUNTIME_DIR/docker.sock
-set -gx SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
-set -gx GPG_TTY (tty)
+export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+set SSH_AUTH_SOCK $(gpgconf --list-dirs agent-ssh-socket)
