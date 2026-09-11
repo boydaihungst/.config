@@ -19,7 +19,7 @@
   sort_translit  = false
 
 [preview]
-  cache_dir       = "~/.cache/yazi/"
+  cache_dir       = "~/.cache/yazi/$USER"
   image_delay     = 0
   image_filter    = "lanczos3"
   image_quality   = 75
