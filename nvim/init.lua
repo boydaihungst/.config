@@ -48,30 +48,7 @@ vim.lsp.log.set_level(vim.log.levels.ERROR)
 
 -- User new ui2 to prevent error request for press enter to continue
 local ui2_exist, ui2 = pcall(require, "vim._core.ui2")
-if ui2_exist then
-  ui2.enable {
-    enable = true,
-    msg = {
-      -- Options related to the message module.
-      ---@type 'cmd'|'msg' Default message target, either in the
-      ---cmdline or in a separate ephemeral message window.
-      ---@type string|table<string, 'cmd'|'msg'|'pager'> Default message target
-      ---or table mapping |ui-messages| kinds and triggers to a target.
-      targets = "cmd",
-      cmd = { -- Options related to messages in the cmdline window.
-        height = 0.5,
-      }, -- Maximum height while expanded for messages beyond 'cmdheight'.
-      dialog = { -- Options related to dialog window.
-        height = 0.5,
-      }, -- Maximum height.
-      msg = {
-        height = 0.5, -- Maximum height.
-        timeout = 5000, -- Time a message is visible in the message window.
-      },
-      pager = { height = 0.5 }, -- Maximum height.
-    },
-  }
-end
+if ui2_exist then ui2.enable() end
 
 -- Import full environment from login shell. Useful for codecompanion to read API key from env
 do
