@@ -145,7 +145,7 @@
   rules = [
     { mime = "image/xcursor", use = ["edit"] },
     { mime = "application/mbox", use = ["edit"] },
-    { mime = "text/shellscript", use = ["execute", "edit"] },
+    { mime = "text/shellscript", use = ["edit", "execute"] },
     { url = "bulk-rename.txt", use = ["bulk-rename"], block = true },
     # Folder
     { url = "/mnt/remote/", use = ["mount_remote", "terminal"] },
@@ -196,7 +196,7 @@
 
     # Empty file
     { mime = "inode/empty", use = ["edit"] },
-    { mime = "application/{executable,pie-executable}", use = ["execute", "edit"] },
+    { mime = "application/{executable,pie-executable}", use = ["edit", "execute"] },
 
     # Fallback
     { url = "*", use = ["open", "edit"] },
@@ -281,17 +281,17 @@
     # { url = "/home/huyhoang/Media/**/*", run = "noop" },
     # Markdown
     # { mime = "text/plain", run = 'custom-code' },
-    { mime = "text/markdown", run = 'enhance-piper --cache-max-lines=1000000 --cache-limit=1000 -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
+    { mime = "text/markdown", run = 'enhance-piper --cache-max-lines=1000 --cache-limit=100 -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"' },
     # Code
-    { mime = "text/*", run = 'enhance-piper  --cache-max-lines=1000000 --cache-limit=1000 -- bat -p --color=always --theme=base16 "$1"' },
+    { mime = "text/*", run = 'enhance-piper  --cache-max-lines=1000 --cache-limit=100 -- bat -p --color=always --theme=base16 "$1"' },
     # Torrent
-    { mime = "application/bittorrent", run = 'enhance-piper -- transmission-show "$1" --no-header | CLICOLOR_FORCE=1 glow -w=$w -s=dark -' },
+    { mime = "application/bittorrent", run = 'enhance-piper --cache-max-lines=1000 --cache-limit=100 -- transmission-show "$1" --no-header | CLICOLOR_FORCE=1 glow -w=$w -s=dark -' },
     # Do not preview these paths except text file
 
-    { mime = "application/{mbox,javascript,wine-extension-ini,subrip,apple.mpegurl,xml,xhtml+xml,gentoo.ebuild}", run = 'enhance-piper -- bat -p --color=always --theme=base16 "$1"' },
+    { mime = "application/{mbox,javascript,wine-extension-ini,subrip,apple.mpegurl,xml,xhtml+xml,gentoo.ebuild}", run = 'enhance-piper --cache-max-lines=1000 --cache-limit=100 -- bat -p --color=always --theme=base16 "$1"' },
     { url = "/mnt/**/*", run = "noop" },
     # Xresources linux
-    { mime = "image/xcursor", run = 'enhance-piper -- bat -p --color=always --theme=base16 "$1"' },
+    { mime = "image/xcursor", run = 'enhance-piper --cache-max-lines=1000 --cache-limit=100 -- bat -p --color=always --theme=base16 "$1"' },
     # JSON
     # Audio + Video + Image
     { url = "*.{ai,eps,ait}", run = "mediainfo" },

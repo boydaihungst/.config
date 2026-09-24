@@ -4,10 +4,12 @@ on_filetype("lua", function()
     { src = "https://github.com/saghen/blink.cmp", version = vim.version.range "1.x" },
     -- 'https://github.com/DrKJeff16/wezterm-types',
   }
+  local HOME = os.getenv "HOME"
   require("lazydev").setup {
     library = {
       { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-      { path = os.getenv "HOME" .. "/.config/yazi/plugins/types.yazi", words = { "ya%.", "ui%." } },
+      { path = HOME .. "/.config/xplr/plugin/types", words = { "xplr%." } },
+      -- { path = HOME .. "/.config/yazi/plugins/types.yazi", words = { "ya%.", "ui%." } },
       -- { path = "wezterm-types", mods = { "wezterm" } },
     },
   }
