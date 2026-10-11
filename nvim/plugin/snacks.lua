@@ -569,7 +569,7 @@ now(function()
   end
   -- Grep (requires ripgrep)
   if vim.fn.executable "rg" == 1 then
-    vim.keymap.set("n", "<Leader>fw", function() snacks.picker.grep() end, { desc = "Find words" })
+    vim.keymap.set("n", "<Leader>fw", function() snacks.picker.grep { buffers = true } end, { desc = "Find words" })
     vim.keymap.set(
       "n",
       "<Leader>fW",

@@ -40,8 +40,9 @@ hl.bind(mod .. " + X", hl.dsp.exec_raw(powermenu), { locked = true })
 hl.bind(mod .. " + SHIFT + C", hl.dsp.exec_cmd("hyprctl reload"))
 
 -- Open yazi file manager
-hl.bind(mod .. " + N", hl.dsp.exec_raw(terminal .. " --app-id 'yazi' -- yazi"))
-hl.bind(mod .. " + SHIFT + N", hl.dsp.exec_raw("YAZI_LOG=debug " .. terminal .. " --app-id 'yazi' -- yazi"))
+hl.bind(mod .. " + N", hl.dsp.exec_raw(terminal .. " --app-id 'yazi' -- fish -c yazi"))
+-- hl.bind(mod .. " + SHIFT + N", hl.dsp.exec_raw("YAZI_LOG=debug " .. terminal .. " --app-id 'yazi' -- yazi"))
+hl.bind(mod .. " + SHIFT + N", hl.dsp.exec_raw(terminal .. " --app-id 'xplr' -- xplr"))
 
 -- Open nvim editor
 hl.bind(mod .. " + E", hl.dsp.exec_raw(terminal .. " --app-id 'nvim' -- nvim"))
