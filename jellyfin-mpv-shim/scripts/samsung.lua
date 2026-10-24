@@ -1,5 +1,4 @@
 local platform = mp.get_property_native("platform")
-local DEVICE_ID = "209542ab-9c82-1967-9806-82a8323cbb55"
 local VOLUME_LEVEL_ON_SHUTDOWN = "9"
 local VOLUME_LEVEL_ON_STARTUP = "12"
 
@@ -9,10 +8,8 @@ local function reduce_volume_on_shutdown()
 			args = {
 				"cmd",
 				"/c",
-				"smartthings",
-				"devices:commands",
-				DEVICE_ID,
-				"audioVolume:setVolume(" .. VOLUME_LEVEL_ON_SHUTDOWN .. ")",
+				"C:\Users\boyda\Downloads\BluetoothDevicePairing\soundbar-volume.bat",
+				"VOLUME_LEVEL_ON_SHUTDOWN",
 			},
 			name = "subprocess",
 			playback_only = false,
@@ -36,10 +33,8 @@ if platform == "windows" then
 		args = {
 			"cmd",
 			"/c",
-			"smartthings",
-			"devices:commands",
-			DEVICE_ID,
-			"audioVolume:setVolume(" .. VOLUME_LEVEL_ON_STARTUP .. ")",
+			"C:\Users\boyda\Downloads\BluetoothDevicePairing\soundbar-volume.bat",
+			"VOLUME_LEVEL_ON_STARTUP",
 		},
 		name = "subprocess",
 		playback_only = false,
