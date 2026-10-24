@@ -8,8 +8,8 @@ local function reduce_volume_on_shutdown()
 			args = {
 				"cmd",
 				"/c",
-				"C:\Users\boyda\Downloads\BluetoothDevicePairing\soundbar-volume.bat",
-				"VOLUME_LEVEL_ON_SHUTDOWN",
+				"C:\\Users\\boyda\\Downloads\\BluetoothDevicePairing\\soundbar-volume.bat",
+				VOLUME_LEVEL_ON_SHUTDOWN,
 			},
 			name = "subprocess",
 			playback_only = false,
@@ -33,8 +33,8 @@ if platform == "windows" then
 		args = {
 			"cmd",
 			"/c",
-			"C:\Users\boyda\Downloads\BluetoothDevicePairing\soundbar-volume.bat",
-			"VOLUME_LEVEL_ON_STARTUP",
+			"C:\\Users\\boyda\\Downloads\\BluetoothDevicePairing\\soundbar-volume.bat",
+			VOLUME_LEVEL_ON_STARTUP,
 		},
 		name = "subprocess",
 		playback_only = false,
