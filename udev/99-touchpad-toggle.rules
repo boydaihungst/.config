@@ -1,0 +1,2 @@
+ACTION=="add", SUBSYSTEM=="input", KERNEL=="event*", ENV{ID_INPUT_MOUSE}=="1", TAG+="power-switch", ENV{DISPLAY}=":0", RUN+="/usr/local/bin/touchpad-toggle.sh"
+ACTION=="remove", SUBSYSTEM=="input", KERNEL=="event*", ENV{ID_INPUT_MOUSE}=="1", TAG+="power-switch", ENV{DISPLAY}=":0", RUN+="/usr/local/bin/touchpad-toggle.sh"

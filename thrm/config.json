@@ -31,7 +31,7 @@
   },
   "autoControl": true,
   "manualGearToggleHotkey": "",
-  "autoControlToggleHotkey": "Ctrl+Alt+Shift+A",
+  "autoControlToggleHotkey": "",
   "curveProfileToggleHotkey": "",
   "manualGearLevels": {
     "强劲": "中",
@@ -211,11 +211,13 @@
   "gearLight": false,
   "powerOnStart": true,
   "windowsAutoStart": false,
+  "disableSystemTray": false,
   "themeMode": "system",
+  "uiLanguage": "en-US",
   "smartStartStop": "delayed",
   "brightness": 100,
   "tempUpdateRate": 2,
-  "tempSampleCount": 1,
+  "tempSampleCount": 3,
   "tempSource": "max",
   "temperatureHistoryRetentionHours": 1,
   "disableGpuMonitoring": false,
@@ -233,19 +235,13 @@
   "customSpeedRPM": 2000,
   "ignoreDeviceOnReconnect": true,
   "lastDeviceTransport": "hid",
+  "flydigiCompat": false,
   "rtss": {
     "enabled": false,
     "updateIntervalMs": 1000,
     "positionMode": "anchor",
     "positionX": 0,
     "positionY": 0
-  },
-  "speedAvoidance": {
-    "enabled": false,
-    "minRpm": 1900,
-    "maxRpm": 2200,
-    "marginRpm": 100,
-    "emergencyBypassTemp": 80
   },
   "timeCurveSchedule": {
     "enabled": false,
@@ -254,10 +250,8 @@
   "smartControl": {
     "enabled": true,
     "learning": true,
-    "predictiveBoost": true,
     "learningBias": "cooling",
     "filterTransientSpike": true,
-    "laptopFanGuard": true,
     "targetTemp": 68,
     "aggressiveness": 5,
     "hysteresis": 2,
@@ -270,21 +264,20 @@
     "overheatWeight": 8,
     "rpmDeltaWeight": 5,
     "noiseWeight": 4,
-    "trendGain": 5,
     "maxLearnOffset": 300,
     "learnedOffsets": [
       0,
       0,
       0,
-      0,
       1,
       2,
-      9,
-      21,
-      36,
-      57,
-      79,
-      70,
+      8,
+      22,
+      40,
+      63,
+      88,
+      122,
+      73,
       0,
       0,
       0,
@@ -296,15 +289,15 @@
         0,
         0,
         0,
-        0,
         1,
         2,
-        9,
-        21,
-        36,
-        57,
-        79,
-        70,
+        8,
+        22,
+        40,
+        63,
+        88,
+        122,
+        73,
         0,
         0,
         0,
@@ -377,6 +370,7 @@
     "noiseProfile": null,
     "noiseProfileUpdatedAt": 0
   },
+  "coolingBenefit": {},
   "lightStrip": {
     "mode": "off",
     "speed": "medium",
@@ -397,6 +391,21 @@
         "g": 128,
         "b": 255
       }
-    ]
+    ],
+    "smartTempBands": [
+      {
+        "minTemp": 0,
+        "preset": 1
+      },
+      {
+        "minTemp": 71,
+        "preset": 2
+      },
+      {
+        "minTemp": 81,
+        "preset": 3
+      }
+    ],
+    "smartTempHysteresis": 0
   }
 }

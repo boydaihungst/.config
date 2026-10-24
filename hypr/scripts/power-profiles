@@ -64,8 +64,10 @@ enable_confirmation=false
 # Preferred launcher if both are available
 preferred_launcher="rofi"
 
-preferred_power_manager="powerprofilesctl"
+max_temperature=90
 
+# preferred_power_manager="powerprofilesctl"
+preferred_power_manager="/usr/local/bin/set-platform-profile"
 usage="$(basename "$0") [-h] [-c] [-p name] -- display a menu for shutdown, reboot, lock etc.
 
 where:
@@ -134,18 +136,35 @@ typeset -A menu
 
 # Menu with keys/commands
 
+# menu=(
+#   [ Performance]="powerprofilesctl set performance"
+#   [󰗑 Balanced]="powerprofilesctl set balanced"
+#   [ Power Saver]="powerprofilesctl set power-saver"
+#   [ Cancel]=""
+# )
+#
+# order=(
+#   " Cancel"
+#   " Power Saver"
+#   "󰗑 Balanced"
+#   " Performance"
+# )
 menu=(
-  [ Performance]="powerprofilesctl set performance"
-  [󰗑 Balanced]="powerprofilesctl set balanced"
-  [ Power Saver]="powerprofilesctl set power-saver"
+  [ Performance]="$preferred_power_manager performance"
+  [󰗑 Balanced]="$preferred_power_manager balanced"
+  [ Low Power]="$preferred_power_manager low-power"
+  [󰾅 Max Power]="$preferred_power_manager max-power"
+  [⚙ Custom]="$preferred_power_manager custom"
   [ Cancel]=""
 )
 
 order=(
   " Cancel"
-  " Power Saver"
+  " Low Power"
   "󰗑 Balanced"
   " Performance"
+  "󰾅 Max Power"
+  "⚙ Custom"
 )
 
 menu_nrows=${#menu[@]}
@@ -187,35 +206,8 @@ fi
 launcher=(${launcher_exe} "${launcher_options[@]}")
 selection="$(printf '%s\n' "${order[@]}" | "${launcher[@]}")"
 
-function ask_confirmation() {
-  if [ "${launcher_exe}" == "rofi" ]; then
-    confirmed=$(echo -e "Yes\nNo" | rofi -dmenu -i -lines 2 -p "${selection}?" \
-      "${rofi_colors}" "${ROFI_OPTIONS[@]}")
-    [ "${confirmed}" == "Yes" ] && confirmed=0
-  elif [ "${launcher_exe}" == "zenity" ]; then
-    zenity --question --text "Are you sure you want to ${selection,,}?"
-    confirmed=$?
-  fi
-
-  if [ "${confirmed}" == 0 ]; then
-	  if [[ "$XDG_CURRENT_DESKTOP" == sway* ]]; then
-		  swaymsg exec "${menu[${selection}]}"
-	  elif [[ "$XDG_CURRENT_DESKTOP" == Hyprland* ]]; then
-      hyprctl dispatch exec "${menu[${selection}]}"
-    fi
-  fi
-}
-
 if [[ $? -eq 0 && -n ${selection} ]]; then
-  if [[ "${enable_confirmation}" = true && \
-        ${menu_confirm} =~ (^|[[:space:]])"${selection}"($|[[:space:]]) ]]; then
-    ask_confirmation
-  else
-    if [[ "$XDG_CURRENT_DESKTOP" == sway* ]]; then
-		  swaymsg exec "${menu[${selection}]}"
-	  elif [[ "$XDG_CURRENT_DESKTOP" == Hyprland* ]]; then
-      hyprctl dispatch exec "${menu[${selection}]}"
-    fi
-
-  fi
+  command_selected="${menu[${selection}]}"
+  [[ -z "$command_selected" ]] && return 0
+  bash -c "sudo $command_selected && sudo ryzenadj --tctl-temp=$max_temperature"
 fi

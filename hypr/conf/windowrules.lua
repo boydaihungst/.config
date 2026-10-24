@@ -409,6 +409,12 @@ local window_rules = {
       title = "^Vivaldi Settings: General - Vivaldi$",
     },
   },
+  {
+    float = true,
+    match = {
+      title = "^Bitwarden - Vivaldi$",
+    },
+  },
 
   {
     float = true,

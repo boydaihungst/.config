@@ -300,7 +300,7 @@
     "format": "󰦋 {percentage}%",
     "format-charging": "󱕑 {percentage}%",
     "format-critical": "󱕐 {percentage}%",
-    "interval": 60,
+    "interval": 300,
     "states": {
         "warning": 30,
         "critical": 15

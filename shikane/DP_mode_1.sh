@@ -58,6 +58,7 @@ SHIKANE_OUTPUT_NAME="$1"
       hyprctl dispatch moveworkspacetomonitor "$i" "DP-2" >/dev/null 2>&1 &
     done
   fi
+  /usr/local/bin/switch-surround.sh
 ) &
 
 # Disown the entire subshell group so it persists after this script exits

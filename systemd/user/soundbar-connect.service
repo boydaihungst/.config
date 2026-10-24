@@ -1,0 +1,13 @@
+[Unit]
+Description=Switch on Soundbar on Network Connect
+After=graphical-session.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/huyhoang
+Environment=HOME=/home/huyhoang
+ExecStartPre=/usr/bin/sleep 5
+ExecStart=/home/huyhoang/bin/soundbar-on.sh
+
+[Install]
+WantedBy=default.target

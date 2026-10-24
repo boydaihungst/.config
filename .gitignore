@@ -3,4 +3,5 @@ jellyfin-mpv-shim/users.json
 jellyfin-mpv-shim/offline
 jellyfin-mpv-shim/offline/*
 jellyfin-mpv-shim/instance.lock*
+jellyfin-mpv-shim/log.txt
 vfs.toml

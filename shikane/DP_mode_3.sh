@@ -65,6 +65,7 @@ SHIKANE_OUTPUT_NAME="$1"
     swaymsg workspace number 1
 
   fi
+  /usr/local/bin/switch-surround.sh
 ) &
 
 # Disown the entire subshell group so it persists after this script exits
