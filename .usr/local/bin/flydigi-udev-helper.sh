@@ -1,15 +1,22 @@
 #!/bin/sh
-# This script is called by udev and must exit quickly
+
+USER_NAME="huyhoang"
+USER_ID="$(id -u "$USER_NAME")"
 
 case "$1" in
-    add)
-        # Start the service if not already running
-        rc-service flydigi-fan-control start
-        ;;
-    remove)
-        # Stop the service when controller disconnects
-        rc-service flydigi-fan-control stop
-        ;;
+add)
+    sudo -u huyhoang \
+        XDG_RUNTIME_DIR=/run/user/"$USER_ID" \
+        DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/"$USER_ID"/bus \
+        systemctl --user restart flydigi-fan-control.service
+    ;;
+
+remove)
+    sudo -u huyhoang \
+        XDG_RUNTIME_DIR=/run/user/"$USER_ID" \
+        DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/"$USER_ID"/bus \
+        systemctl --user stop flydigi-fan-control.service
+    ;;
 esac
 
 exit 0

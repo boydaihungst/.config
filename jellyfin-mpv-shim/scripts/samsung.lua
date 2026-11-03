@@ -1,5 +1,5 @@
 local platform = mp.get_property_native("platform")
-local VOLUME_LEVEL_ON_SHUTDOWN = "9"
+local VOLUME_LEVEL_ON_SHUTDOWN = "8"
 local VOLUME_LEVEL_ON_STARTUP = "12"
 
 local function reduce_volume_on_shutdown()

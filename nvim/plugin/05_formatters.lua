@@ -60,7 +60,9 @@ now_if_args(function()
       lsp_format = "fallback",
     },
     format_on_save = function(bufnr)
-      if vim.F.if_nil(vim.b[bufnr].autoformat, vim.g.autoformat, true) then return { lsp_format = "fallback" } end
+      if vim.fn.filewritable(vim.fn.expand "%:p") == 1 then
+        if vim.F.if_nil(vim.b[bufnr].autoformat, vim.g.autoformat, true) then return { lsp_format = "fallback" } end
+      end
     end,
     -- Set the log level. Use `:ConformInfo` to see the location of the log file.
     log_level = vim.log.levels.OFF,
@@ -79,7 +81,8 @@ now_if_args(function()
         ["end"] = { args.line2, end_line:len() },
       }
     end
-    conform.format { async = true, range = range }
+    local file = vim.fn.expand "%"
+    if file and vim.fn.filewritable(file) == 1 then conform.format { async = true, range = range } end
   end, { desc = "Format buffer", range = true })
 
   vim.keymap.set("n", "<Leader>lC", "<Cmd>ConformInfo<CR>", { desc = "Formatter information" })

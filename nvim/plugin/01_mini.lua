@@ -1305,9 +1305,9 @@ later(function()
     undo = { suffix = "", options = {} },
     file = { suffix = "", options = {} },
     jump = { suffix = "", options = {} },
-    buffer = { suffix = "b", options = {} },
-    comment = { suffix = "c", options = {} },
     conflict = { suffix = "x", options = {} },
+    buffer = { suffix = "", options = {} },
+    comment = { suffix = "", options = {} },
     -- NOTE: Use lspsaga instead
     diagnostic = { suffix = "", options = {} },
     indent = { suffix = "i", options = {} },

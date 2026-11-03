@@ -1,0 +1,10 @@
+#!/bin/sh
+case "$1" in
+low-power | balanced | performance | max-power | custom)
+    echo "$1" | sudo tee /sys/class/platform-profile/platform-profile-0/profile
+    ;;
+*)
+    echo "Usage: set-platform-profile {low-power|balanced|performance|max-power|custom}" >&2
+    exit 2
+    ;;
+esac

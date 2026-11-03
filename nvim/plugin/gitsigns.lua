@@ -59,7 +59,14 @@ now_if_args(function()
         function() gitsigns.stage_buffer() end,
         { buf = bufnr, desc = "Stage Git buffer" }
       )
-      vim.keymap.set("n", prefix .. "d", function() gitsigns.diffthis() end, { buf = bufnr, desc = "View Git diff" })
+      vim.keymap.set(
+        "n",
+        prefix .. "d",
+        function() gitsigns.diffthis() end,
+        { buf = bufnr, desc = "View Git diff (buffer)" }
+      )
+
+      vim.keymap.set("n", prefix .. "D", function() gitsigns.diff() end, { buf = bufnr, desc = "View Git diff all" })
 
       -- Visual Mode Mappings (Range specific)
       vim.keymap.set(
