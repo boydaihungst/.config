@@ -1,0 +1,63 @@
+#:schema ../umbriel.schema.v5.json
+
+# ==============================================================================
+# Outputs
+# Outputs are machine-specific. Run `umbriel outputs` to find names and modes.
+# https://docs.noctalia.dev/umbriel/outputs/
+#
+[output.eDP-1]
+  mode              = "2560x1600@240"
+  scale             = 1.25
+  vrr               = "disabled"
+  position          = [2560, 1440]
+  hdr               = "auto"
+  sdr_transfer      = "srgb"           # Or "srgb" for piecewise SDR decoding in HDR.
+  sdr_white         = 203
+  bit_depth         = 10
+  focus_at_startup  = false
+  min_workspaces    = 1
+  cyclic_workspaces = true
+  # icc = "/home/huyhoang/.config/sway/scripts/color_profiles/TPLCD_2039_Default.icm",
+
+[output."AOC Q27G4ZDP AWBS39A000221"]
+  mode              = "2560x1440@240"
+  scale             = 1
+  position          = [0, 0]
+  vrr               = "disabled"
+  hdr               = "auto"
+  sdr_transfer      = "srgb"            # Or "srgb" for piecewise SDR decoding in HDR.
+  sdr_white         = 203
+  workspaces        = ["Term", "File"]
+  # min_workspaces    = 1
+  bit_depth         = 10
+  focus_at_startup  = true
+  cyclic_workspaces = true
+  # icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G4ZDP.icm",
+
+[output."AOC Q27G42ZE 1322131231233"]
+  mode              = "2560x1440@240"
+  scale             = 1
+  position          = [2560, 0]
+  vrr               = "disabled"
+  hdr               = "off"
+  sdr_transfer      = "srgb"                                # Or "srgb" for piecewise SDR decoding in HDR.
+  sdr_white         = 203
+  bit_depth         = 8
+  focus_at_startup  = false
+  workspaces        = ["Browser", "Chat", "EBook", "Game"]
+  # min_workspaces    = 1
+  cyclic_workspaces = true
+  # icc = "/home/huyhoang/.config/sway/scripts/color_profiles/Q27G42ZE.icm",
+
+[output."Samsung Electric Company SAMSUNG 0x16780800"]
+  mode              = "1920x1080@60"
+  scale             = 1
+  position          = [5120, 1440]
+  vrr               = "disabled"
+  hdr               = "off"
+  sdr_transfer      = "srgb"          # Or "srgb" for piecewise SDR decoding in HDR.
+  sdr_white         = 203
+  bit_depth         = 8
+  focus_at_startup  = false
+  min_workspaces    = 1
+  cyclic_workspaces = true

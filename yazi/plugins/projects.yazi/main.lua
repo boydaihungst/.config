@@ -533,6 +533,14 @@ local _load_config = ya.sync(function(state, opts)
 			end
 			return body
 		end)
+		ps.sub("emit-quit", function(body)
+			_quit(body)
+			return body
+		end)
+		ps.sub("emit-ind-quit", function(body)
+			_quit(body)
+			return body
+		end)
 	end
 
 	state.merge = {

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>lineedit_history_connect-to-folder</key>
+	<array>
+		<string>/home/huyhoang</string>
+	</array>
+	<key>lineedit_history_xpath_edit_opt_chapter</key>
+	<array>
+		<string>//*[((name()='h1' or name()='h2') and re:test(., '\s*((chapter|book|section|part)\s+)|((prolog|prologue|epilogue)(\s+|$))', 'i')) or @class = 'chapter']</string>
+		<string>//*[((name()='h1' or name()='h2' or name()='h3') and re:test(., '\s*((chapter|book|section|part)\s+)|((prolog|prologue|epilogue)(\s+|$))', 'i')) or @class = 'chapter']</string>
+	</array>
+	<key>lineedit_history_xpath_edit_opt_level1_toc</key>
+	<array/>
+	<key>lineedit_history_xpath_edit_opt_page_breaks_before</key>
+	<array>
+		<string>/</string>
+	</array>
+	<key>lineedit_history_xpath_edit_opt_start_reading_at</key>
+	<array/>
+</dict>
+</plist>

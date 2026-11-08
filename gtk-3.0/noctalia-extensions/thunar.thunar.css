@@ -1,0 +1,402 @@
+/* Base Window */
+window.thunar,
+.thunar {
+    background-color: #000000;
+    color: #e9f2fd;
+}
+
+/* Sidebar */
+.thunar .sidebar,
+.thunar .sidebar .view,
+.thunar .sidebar treeview.view {
+    background-color: #000000;
+    color: #e9f2fd;
+}
+
+.thunar .sidebar treeview.view:hover:not(:selected) {
+    background-color: #000000;
+    color: #e9f2fd;
+}
+
+.thunar .sidebar treeview.view:selected,
+.thunar .sidebar treeview.view:selected:hover,
+.thunar .sidebar treeview.view:selected label,
+.thunar .sidebar treeview.view:selected:hover label {
+    background-color: #ffe0cd;
+    color: #000000;
+}
+
+.thunar .sidebar treeview.view:selected:backdrop,
+.thunar .sidebar treeview.view:selected:backdrop label {
+    background-color: #000000;
+    color: #e9f2fd;
+}
+
+/* Main File View (Icon, Compact, and Detailed List Views) */
+.thunar .standard-view,
+.thunar .standard-view .view,
+.thunar .standard-view exo-icon-view,
+.thunar .standard-view treeview.view {
+    background-color: #000000;
+    color: #e9f2fd;
+}
+
+/* Detailed List View Column Headers (Ctrl+2) */
+.thunar .standard-view treeview.view header button {
+    background-color: #000000;
+    color: #e9f2fd;
+    border-color: #ffb785;
+}
+
+.thunar .standard-view treeview.view header button label {
+    color: #e9f2fd;
+}
+
+.thunar .standard-view treeview.view header button:hover {
+    background-color: #000000;
+    color: #e9f2fd;
+}
+
+.thunar .standard-view treeview.view header button:hover label {
+    color: #e9f2fd;
+}
+
+/* File Selection (Excludes .rubberband so drag-selection doesn't turn solid) */
+.thunar .standard-view exo-icon-view:selected:not(.rubberband),
+.thunar .standard-view treeview.view:selected:not(.rubberband),
+.thunar .standard-view .view:selected:not(.rubberband),
+.thunar .standard-view exo-icon-view:selected:hover:not(.rubberband),
+.thunar .standard-view treeview.view:selected:hover:not(.rubberband),
+.thunar .standard-view .view:selected:hover:not(.rubberband) {
+    background-color: #ffe0cd;
+    color: #000000;
+}
+
+/* Unfocused Window / Inactive Split Pane (F3) Selection */
+.thunar .standard-view exo-icon-view:selected:backdrop:not(.rubberband),
+.thunar .standard-view treeview.view:selected:backdrop:not(.rubberband),
+.thunar .standard-view .view:selected:backdrop:not(.rubberband) {
+    background-color: #000000;
+    color: #e9f2fd;
+}
+
+/* Drag-Selection Box (Rubberband) - Subtle 10% tint + solid border */
+.thunar rubberband,
+.thunar .rubberband,
+.thunar .standard-view rubberband,
+.thunar .standard-view .rubberband,
+.thunar .standard-view .view .rubberband,
+.thunar .standard-view .view.rubberband,
+.thunar .standard-view exo-icon-view.rubberband,
+.thunar .standard-view exo-icon-view.view.rubberband,
+.thunar .standard-view exo-icon-view.view.rubberband:selected,
+.thunar .standard-view treeview.view rubberband {
+    background-color: alpha(#ffe0cd, 0.10);
+    border-color: #ffe0cd;
+}
+
+/* Text Selection (Location Entry) */
+.thunar selection,
+.thunar entry selection {
+    background-color: #ffe0cd;
+    color: #000000;
+}
+
+/* Split-Pane & Sidebar Divider */
+.thunar paned > separator {
+    background-color: #ffb785;
+}
+
+/* Menubar (Ctrl+M) & Toolbars */
+.thunar menubar,
+window.thunar toolbar,
+.thunar toolbar,
+window.thunar toolbar#location-toolbar {
+    background-color: #000000;
+    color: #e9f2fd;
+    border-color: #ffb785;
+}
+
+.thunar menubar > menuitem:hover,
+.thunar menubar > menuitem:hover > label,
+.thunar menubar > menuitem:hover > box > label {
+    background-color: #ffe0cd;
+    color: #000000;
+}
+
+.thunar toolbar button:hover {
+    background-color: #000000;
+    background-image: none;
+    box-shadow: none;
+    color: #e9f2fd;
+}
+
+.thunar toolbar button:hover label,
+.thunar toolbar button:hover image {
+    color: #e9f2fd;
+}
+
+.thunar toolbar button:disabled,
+.thunar toolbar button:disabled label,
+.thunar toolbar button:disabled image {
+    color: #ffb785;
+}
+
+/* Path Bar Container */
+.thunar toolbar .path-bar,
+.thunar .path-bar {
+    background-color: #000000;
+    background-image: none;
+    border-color: #ffb785;
+}
+
+/* Path Bar - Base & Inactive Buttons (Rest) */
+.thunar toolbar .path-bar button,
+.thunar toolbar .path-bar button.path-bar-button,
+.thunar toolbar .path-bar button.location-button,
+.thunar toolbar .path-bar button.path-bar-button:not(:checked),
+.thunar toolbar .path-bar button.location-button:not(:checked),
+window.thunar toolbar#location-toolbar > toolitem > widget > widget.linked.path-bar > button,
+window.thunar toolbar#location-toolbar > toolitem > widget > widget.linked.path-bar > button.path-bar-button:not(:checked) {
+    background-color: #000000;
+    background-image: none;
+    box-shadow: none;
+    border-color: #ffb785;
+    color: #e9f2fd;
+}
+
+.thunar toolbar .path-bar button label,
+.thunar toolbar .path-bar button image,
+.thunar toolbar .path-bar button.path-bar-button label,
+.thunar toolbar .path-bar button.path-bar-button image,
+.thunar toolbar .path-bar button.location-button label,
+.thunar toolbar .path-bar button.location-button image,
+.thunar toolbar .path-bar button.path-bar-button:not(:checked) label,
+.thunar toolbar .path-bar button.path-bar-button:not(:checked) image,
+.thunar toolbar .path-bar button.location-button:not(:checked) label,
+.thunar toolbar .path-bar button.location-button:not(:checked) image {
+    color: #e9f2fd;
+}
+
+/* Path Bar - Inactive Buttons (Hover) */
+.thunar toolbar .path-bar button:hover:not(:checked),
+.thunar toolbar .path-bar button.path-bar-button:hover:not(:checked),
+.thunar toolbar .path-bar button.location-button:hover:not(:checked),
+window.thunar toolbar#location-toolbar > toolitem > widget > widget.linked.path-bar > button:hover:not(:checked),
+window.thunar toolbar#location-toolbar > toolitem > widget > widget.linked.path-bar > button.path-bar-button:hover:not(:checked) {
+    background-color: #000000;
+    background-image: none;
+    box-shadow: none;
+    border-color: #ffb785;
+    color: #e9f2fd;
+}
+
+.thunar toolbar .path-bar button:hover:not(:checked) label,
+.thunar toolbar .path-bar button:hover:not(:checked) image,
+.thunar toolbar .path-bar button.path-bar-button:hover:not(:checked) label,
+.thunar toolbar .path-bar button.path-bar-button:hover:not(:checked) image,
+.thunar toolbar .path-bar button.location-button:hover:not(:checked) label,
+.thunar toolbar .path-bar button.location-button:hover:not(:checked) image {
+    color: #e9f2fd;
+}
+
+/* Path Bar - Active Directory Button (:checked and :checked:hover) */
+.thunar toolbar .path-bar button:checked,
+.thunar toolbar .path-bar button:checked:hover,
+.thunar toolbar .path-bar button.path-bar-button:checked,
+.thunar toolbar .path-bar button.path-bar-button:checked:hover,
+.thunar toolbar .path-bar button.location-button:checked,
+.thunar toolbar .path-bar button.location-button:checked:hover,
+window.thunar toolbar#location-toolbar > toolitem > widget > widget.linked.path-bar > button:checked,
+window.thunar toolbar#location-toolbar > toolitem > widget > widget.linked.path-bar > button.toggle.path-bar-button:checked,
+window.thunar toolbar#location-toolbar > toolitem > widget > widget.linked.path-bar > button.toggle.path-bar-button:checked:hover {
+    background-color: #ffe0cd;
+    background-image: none;
+    box-shadow: none;
+    border-color: #ffe0cd;
+    color: #000000;
+}
+
+.thunar toolbar .path-bar button:checked label,
+.thunar toolbar .path-bar button:checked image,
+.thunar toolbar .path-bar button:checked:hover label,
+.thunar toolbar .path-bar button:checked:hover image,
+.thunar toolbar .path-bar button.path-bar-button:checked label,
+.thunar toolbar .path-bar button.path-bar-button:checked image,
+.thunar toolbar .path-bar button.path-bar-button:checked:hover label,
+.thunar toolbar .path-bar button.path-bar-button:checked:hover image,
+.thunar toolbar .path-bar button.location-button:checked label,
+.thunar toolbar .path-bar button.location-button:checked image,
+.thunar toolbar .path-bar button.location-button:checked:hover label,
+.thunar toolbar .path-bar button.location-button:checked:hover image,
+window.thunar toolbar#location-toolbar > toolitem > widget > widget.linked.path-bar > button:checked label,
+window.thunar toolbar#location-toolbar > toolitem > widget > widget.linked.path-bar > button:checked:hover label,
+window.thunar toolbar#location-toolbar > toolitem > widget > widget.linked.path-bar > button.toggle.path-bar-button:checked label,
+window.thunar toolbar#location-toolbar > toolitem > widget > widget.linked.path-bar > button.toggle.path-bar-button:checked:hover label {
+    color: #000000;
+}
+
+/* Entries (Location Bar) */
+.thunar entry {
+    background-color: #000000;
+    background-image: none;
+    box-shadow: none;
+    color: #e9f2fd;
+    border-color: #ffb785;
+}
+
+.thunar entry:focus {
+    background-color: #000000;
+    background-image: none;
+    box-shadow: none;
+    border-color: #ffe0cd;
+}
+
+/* Tabs (Notebook) */
+.thunar notebook,
+.thunar notebook header {
+    background-color: #000000;
+    border-color: #ffb785;
+}
+
+.thunar notebook tab {
+    background-color: #000000;
+    color: #e9f2fd;
+    border-color: transparent;
+}
+
+.thunar notebook tab label,
+.thunar notebook tab button image {
+    color: #e9f2fd;
+}
+
+.thunar notebook tab:hover:not(:checked) {
+    background-color: #000000;
+    color: #e9f2fd;
+    border-color: #ffb785;
+}
+
+.thunar notebook tab:hover:not(:checked) label,
+.thunar notebook tab:hover:not(:checked) button image {
+    color: #e9f2fd;
+}
+
+.thunar notebook tab:checked {
+    background-color: #000000;
+    color: #e9f2fd;
+    border-color: #ffb785;
+}
+
+.thunar notebook tab:checked label,
+.thunar notebook tab:checked button image {
+    color: #e9f2fd;
+}
+
+.thunar notebook tab button:hover image {
+    color: #ffe0cd;
+}
+
+/* Statusbar */
+.thunar statusbar,
+.thunar statusbar label {
+    background-color: #000000;
+    color: #e9f2fd;
+    border-color: #ffb785;
+}
+
+/* Scrollbars */
+.thunar scrollbar {
+    background-color: #000000;
+}
+
+.thunar scrollbar slider {
+    background-color: #ffb785;
+}
+
+.thunar scrollbar slider:hover {
+    background-color: #e9f2fd;
+}
+
+.thunar scrollbar slider:active {
+    background-color: #ffe0cd;
+}
+
+/* Attached Thunar Menus (e.g., Ctrl+M Menubar Dropdowns & Submenus) */
+.thunar menu,
+.thunar .menu {
+    background-color: #000000;
+    border-color: #ffb785;
+    color: #e9f2fd;
+}
+
+.thunar menu menuitem,
+.thunar .menu menuitem {
+    background-color: transparent;
+    color: #e9f2fd;
+}
+
+.thunar menu menuitem:not(:hover):not(:disabled) > label,
+.thunar menu menuitem:not(:hover):not(:disabled) > box > label,
+.thunar menu menuitem:not(:hover):not(:disabled) > arrow,
+.thunar menu menuitem:not(:hover):not(:disabled) > image,
+.thunar .menu menuitem:not(:hover):not(:disabled) > label,
+.thunar .menu menuitem:not(:hover):not(:disabled) > box > label {
+    color: #e9f2fd;
+}
+
+.thunar menu menuitem:not(:hover):not(:disabled) > accelerator,
+.thunar menu menuitem:not(:hover):not(:disabled) > box > accelerator {
+    color: #e9f2fd;
+}
+
+.thunar menu menuitem:hover:not(:disabled),
+.thunar .menu menuitem:hover:not(:disabled) {
+    background-color: #ffe0cd;
+    color: #000000;
+}
+
+.thunar menu menuitem:hover:not(:disabled) > label,
+.thunar menu menuitem:hover:not(:disabled) > box > label,
+.thunar menu menuitem:hover:not(:disabled) > accelerator,
+.thunar menu menuitem:hover:not(:disabled) > box > accelerator,
+.thunar menu menuitem:hover:not(:disabled) > arrow,
+.thunar menu menuitem:hover:not(:disabled) > image,
+.thunar .menu menuitem:hover:not(:disabled) > label,
+.thunar .menu menuitem:hover:not(:disabled) > box > label,
+.thunar .menu menuitem:hover:not(:disabled) > arrow,
+.thunar .menu menuitem:hover:not(:disabled) > image {
+    color: #000000;
+}
+
+.thunar menu menuitem:disabled,
+.thunar menu menuitem:disabled > label,
+.thunar menu menuitem:disabled > box > label,
+.thunar menu menuitem:disabled > accelerator,
+.thunar menu menuitem:disabled > arrow,
+.thunar menu menuitem:disabled > image,
+.thunar .menu menuitem:disabled,
+.thunar .menu menuitem:disabled > label {
+    color: #ffb785;
+}
+
+.thunar menu menuitem > check,
+.thunar menu menuitem > radio {
+    color: #e9f2fd;
+}
+
+.thunar menu menuitem > check:checked,
+.thunar menu menuitem > radio:checked {
+    color: #ffe0cd;
+}
+
+.thunar menu menuitem:hover:not(:disabled) > check,
+.thunar menu menuitem:hover:not(:disabled) > radio,
+.thunar menu menuitem:hover:not(:disabled) > check:checked,
+.thunar menu menuitem:hover:not(:disabled) > radio:checked {
+    color: #000000;
+}
+
+.thunar menu separator,
+.thunar .menu separator {
+    background-color: #ffb785;
+}

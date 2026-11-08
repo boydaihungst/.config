@@ -1,0 +1,6 @@
+[environment]
+  ELECTRON_OZONE_PLATFORM_HINT = "auto"
+  SDL_VIDEODRIVER              = "wayland"
+  ENABLE_HDR_WSI               = "1"
+  WLR_RENDERER                 = "vulkan"
+  WLR_DRM_DEVICES              = "/dev/dri/amd-igpu:/dev/dri/nvidia-egpu"

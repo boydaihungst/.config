@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Secret Portal
+# TRANSLATORS: Don't translate this text (this is icon name)
+Icon=applications-system-symbolic
+Exec=/usr/libexec/oo7-portal
+NoDisplay=true

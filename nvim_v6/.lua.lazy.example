@@ -1,5 +1,0 @@
--- This file should be in project-local folder
----@type LazySpec
-return {
-    -- Add local plugins here
-}

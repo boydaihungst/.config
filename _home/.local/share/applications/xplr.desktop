@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=System;FileTools;FileManager;ConsoleOnly
+Comment=Terminal file explorer
+Exec=xplr
+Icon=xplr
+Keywords=File;Manager;Management;Explorer;Launcher
+MimeType=inode/directory
+Name=xplr
+Terminal=true
+Type=Application

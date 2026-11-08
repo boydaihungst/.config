@@ -1,0 +1,587 @@
+[accessibility]
+high_contrast = true
+
+[audio]
+enable_screenshot_sounds = false
+sound_volume = 0.69999998435378075
+spectrum_frame_rate = 120
+
+[bar.default]
+background_opacity = 0.79999998211860657
+center = [ "active_window", "wallpaper" ]
+color = "primary"
+end = [
+    "status",
+    "widget",
+    "brightness",
+    "network",
+    "bluetooth",
+    "rapoo_battery",
+    "volume",
+    "input_volume",
+    "battery",
+    "tray",
+    "group:g5"
+]
+font_family = "Hack Nerd Font"
+font_weight = 700
+margin_ends = 0
+padding = 16
+panel_overlap = 0
+radius = 0
+shadow = false
+start = [ "group:g2", "group:g1", "group:g3", "media", "taskbar" ]
+widget_spacing = 10
+
+    [[bar.default.capsule_group]]
+    accordion = true
+    accordion_direction = "start"
+    border_width = 1.0
+    enabled = true
+    fill = "on_primary"
+    id = "g2"
+    members = [ "clock", "date" ]
+    opacity = 0.0
+    padding = 0.0
+
+    [[bar.default.capsule_group]]
+    accordion = true
+    accordion_direction = "end"
+    border_width = 1.0
+    enabled = true
+    fill = "on_primary"
+    id = "g1"
+    members = [ "temp", "cpu" ]
+    opacity = 0.0
+    padding = 0.0
+
+    [[bar.default.capsule_group]]
+    accordion = true
+    accordion_direction = "end"
+    border_width = 1.0
+    enabled = true
+    fill = "on_primary"
+    id = "g3"
+    members = [ "ram", "sysmon" ]
+    opacity = 0.0
+    padding = 0.0
+
+    [[bar.default.capsule_group]]
+    accordion = true
+    accordion_direction = "start"
+    border_width = 1.0
+    enabled = true
+    fill = "surface_container"
+    id = "g5"
+    members = [ "notifications", "current", "usb", "recorder", "caffeine" ]
+    opacity = 1.0
+    padding = 0.0
+
+[bluetooth]
+connect_when_enabled = true
+connection_notifications = true
+
+[brightness]
+enable_ddcutil = true
+
+[calendar]
+dedupe_events = true
+
+[control_center]
+show_avatar_border = false
+
+    [control_center.calendar]
+    show_events_card = false
+
+    [control_center.media]
+    show_visualizer = false
+
+    [[control_center.shortcuts]]
+    type = "power_profile"
+
+    [[control_center.shortcuts]]
+    type = "wallpaper"
+
+    [[control_center.shortcuts]]
+    type = "noctalia/screen_recorder:toggle"
+
+    [[control_center.shortcuts]]
+    type = "notification"
+
+    [[control_center.shortcuts]]
+    type = "screen_time"
+
+    [[control_center.shortcuts]]
+    type = "nightlight"
+
+[desktop_widgets]
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
+
+[dock]
+background_opacity = 0.69999998435378075
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+
+    [idle.behavior.lock]
+    action = "screen_off"
+    enabled = true
+    timeout = 300.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = true
+    timeout = 900.0
+
+    [idle.behavior.screen-off]
+    action = "lock"
+    enabled = true
+    timeout = 315.0
+
+[keybinds]
+cancel = [ "escape" ]
+copy = [ "ctrl+c" ]
+delete = [ "del" ]
+down = [ "ctrl+j", "tab", "down" ]
+left = [ "left" ]
+right = [ "right" ]
+save = [ "ctrl+s" ]
+tab_next = [ "ctrl+l" ]
+tab_previous = [ "ctrl+h" ]
+up = [ "ctrl+k", "shift+tab", "shift+iso_left_tab", "up" ]
+validate = [ "return", "kp_enter" ]
+
+[location]
+auto_locate = true
+
+[lockscreen]
+fingerprint = false
+transition = [ "fade" ]
+transition_duration = 2000
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [
+    "lockscreen-login-box@WL-1",
+    "lockscreen-login-box@DP-2",
+    "lockscreen-login-box@DP-1",
+    "lockscreen-login-box@HDMI-A-1",
+    "lockscreen-login-box@eDP-1"
+]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1280.0
+    cy = 1258.0
+    output = "DP-1"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_media_controls = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-2"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1280.0
+    cy = 1258.0
+    output = "DP-2"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-2".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_media_controls = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "HDMI-A-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_media_controls = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@WL-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 634.0
+    cy = 1242.0
+    output = "WL-1"
+    placement_height = 1424.0
+    placement_width = 1267.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@WL-1".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_media_controls = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1024.0
+    cy = 1098.0
+    output = "eDP-1"
+    placement_height = 1280.0
+    placement_width = 2048.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_media_controls = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[notification]
+background_opacity = 0.59999998658895493
+follow_focused_output = true
+history_retention_hours = 48
+layer = "overlay"
+max_visible = 3
+offset_x = 40
+offset_y = 40
+position = "bottom_right"
+
+[osd]
+background_opacity = 0.79999998211860657
+hide_delay_ms = 2000
+offset_y = 0
+
+[plugin_settings."aristides/udiskie"]
+auto_open_filemanager = true
+
+[plugin_settings."noctalia/screen_recorder"]
+copy_to_clipboard = true
+glyph_idle = "video-plus"
+glyph_pending = "capture"
+glyph_recording = "capture-filled"
+glyph_unavailable = "camera-exclamation"
+video_bitrate_mode = "vbr"
+video_quality = "high"
+
+[plugin_settings."strob3/dnf-updater"]
+check_interval = 120
+include_flatpak_runtimes = true
+show_widget_when_clean = false
+
+[plugin_settings."umedbazarov/crashes"]
+poll_seconds = 60
+
+[plugins]
+auto_update = "all"
+enabled = [
+    "aristides/udiskie",
+    "noctalia/screen_recorder",
+    "strob3/dnf-updater",
+    "thaer99ob/default-apps",
+    "umedbazarov/crashes",
+    "yangkx/usbeehive",
+    "boydaihungst/rapoo-battery"
+]
+
+    [[plugins.source]]
+    kind = "git"
+    location = ""
+    name = "official"
+
+    [[plugins.source]]
+    kind = "git"
+    location = ""
+    name = "community"
+
+    [[plugins.source]]
+    kind = "path"
+    location = "~/.config/noctalia/plugins"
+    name = "my-plugins"
+
+[shell]
+avatar_path = "/home/huyhoang/.icons/avatar.jpg"
+card_borders = false
+clipboard_auto_paste = "off"
+external_ip_enabled = true
+font_family = "Hack Nerd Font"
+password_style = "random"
+polkit_agent = true
+screen_time_enabled = true
+settings_expand_all_groups = true
+settings_window_translucent = true
+umbriel_overview_close_on_launch_enabled = true
+
+    [shell.greeter_sync]
+    auto_sync = true
+
+    [shell.launcher]
+    auto_paste = "off"
+    categories = false
+    category_icons_only = true
+    fetch_exchange_rates = false
+    layout = "simple"
+    search_position = "top"
+    show_session_button = false
+    show_settings_button = false
+    width = 1100
+
+    [shell.panel]
+    border_width = 2.0
+    open_near_click_control_center = true
+    session_placement = "floating"
+    session_position = "center_right"
+    transparency_mode = "soft"
+
+    [shell.screenshot]
+    confirm_region = true
+    directory = "/home/huyhoang/Pictures/Screenshots"
+    filename_pattern = "%Y-%m-%d--%H-%M-%S"
+    show_cursor = true
+
+    [shell.session]
+    grid = true
+    grid_columns = 1
+    show_shortcuts = false
+
+    [shell.shadow]
+    direction = "center"
+
+[system.monitor]
+cpu_temp_activity_threshold = 70
+
+[theme]
+builtin = "Nord"
+community_palette = "GitHub Dark"
+custom_palette = "MyTheme"
+source = "custom"
+wallpaper_scheme = "m3-rainbow"
+
+    [theme.templates]
+    builtin_ids = [ "btop", "foot", "gtk3", "gtk4", "kcolorscheme", "kitty", "qt", "sway", "umbriel", "wezterm" ]
+    community_ids = [
+        "chromium-based",
+        "discord",
+        "telegram",
+        "gimp",
+        "inkscape",
+        "libreoffice",
+        "obsidian",
+        "vscode",
+        "steam",
+        "fuzzel",
+        "rofi",
+        "fastfetch",
+        "speedcrunch",
+        "fcitx5",
+        "papirus-icons",
+        "thunar",
+        "bat",
+        "fzf",
+        "glow",
+        "lazygit"
+    ]
+
+[wallpaper]
+transition = [ "diamond", "disc", "golden", "vortex" ]
+transition_on_startup = true
+
+    [wallpaper.automation]
+    pause_on_fullscreen = true
+
+    [wallpaper.default]
+    path = "/home/huyhoang/Pictures/wallpaper.png"
+
+    [wallpaper.last]
+    path = "/home/huyhoang/Pictures/wallpaper.png"
+
+    [wallpaper.monitors.DP-1]
+    path = "/home/huyhoang/Pictures/wallpaper.png"
+
+    [wallpaper.monitors.DP-2]
+    path = "/home/huyhoang/Pictures/wallpaper.png"
+
+    [wallpaper.monitors.HDMI-A-1]
+    path = "/home/huyhoang/Pictures/wallpaper.png"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/huyhoang/Pictures/wallpaper.png"
+
+[widget.active_window]
+icon_size = 20
+max_length = 800
+title_scroll = "on_hover"
+
+[widget.audio_visualizer]
+bands = 8
+color_2 = "error"
+
+[widget.bluetooth]
+show_label = true
+
+[widget.clock]
+format = "{:%H:%M:%S}"
+
+[widget.control-center]
+enabled = false
+
+[widget.cpu]
+visualization = "none"
+
+[widget.current]
+type = "thaer99ob/default-apps:current"
+
+[widget.date]
+format = " {:%a %d %b %Y}"
+
+[widget.media]
+hide_when_idle = true
+hide_when_no_media = true
+show_progress = true
+title_scroll = "on_hover"
+
+[widget.notifications]
+hide_when_no_unread = true
+
+[widget.ram]
+visualization = "none"
+
+[widget.rapoo_battery]
+type = "boydaihungst/rapoo-battery:rapoo_battery"
+
+[widget.recorder]
+type = "noctalia/screen_recorder:recorder"
+
+[widget.session]
+enabled = false
+
+[widget.status]
+glyph = "usb"
+hide_when_empty = true
+type = "aristides/udiskie:status"
+
+[widget.sysmon]
+stat = "swap_pct"
+visualization = "none"
+
+[widget.taskbar]
+empty_color = "on_surface"
+group_by_workspace = true
+group_single_icon_per_app = false
+inactive_opacity = 0.5
+minimal = true
+workspace_group_capsule = false
+workspace_label_placement = "inside"
+
+[widget.temp]
+custom_label = ""
+show_glyph = false
+visualization = "none"
+
+[widget.tray]
+drawer = true
+pinned = [ "jellyfin-mpv-shim", "Fcitx" ]
+
+[widget.usb]
+type = "yangkx/usbeehive:usb"
+
+[widget.wallpaper]
+enabled = false
+
+[widget.widget]
+glyph = "refresh"
+type = "strob3/dnf-updater:widget"
+
+[widget.workspaces]
+enabled = false

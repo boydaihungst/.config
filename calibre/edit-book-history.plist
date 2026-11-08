@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>lineedit_history_tweak_book_find_edit</key>
+	<array>
+		<string>cover</string>
+		<string>cover.jpg</string>
+		<string>../stylesheet.css</string>
+		<string>2062</string>
+		<string>../Styles/stylesheet.css</string>
+		<string>984</string>
+		<string>id-1949</string>
+		<string>style</string>
+		<string>href="../Styles/stylesheet.css"</string>
+		<string>../styles/stylesheet.css</string>
+		<string>Styles/stylesheet.css</string>
+		<string>nav</string>
+		<string>dtv-ebook-tien</string>
+	</array>
+	<key>lineedit_history_tweak_book_replace_edit</key>
+	<array>
+		<string>stylesheet.css</string>
+		<string>../stylesheet.css</string>
+		<string>href="stylesheet.css"</string>
+		<string>styles/stylesheet.css</string>
+		<string>info</string>
+	</array>
+</dict>
+</plist>

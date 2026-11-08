@@ -1,0 +1,208 @@
+{
+  "geometry-of-main_window_geometry": {
+    "frame_geometry": {
+      "height": 684,
+      "width": 1261,
+      "x": 0,
+      "y": 0
+    },
+    "full_screened": false,
+    "geometry": {
+      "height": 684,
+      "width": 1261,
+      "x": 0,
+      "y": 0
+    },
+    "maximized": true,
+    "normal_geometry": {
+      "height": 684,
+      "width": 1261,
+      "x": 0,
+      "y": 0
+    },
+    "qt": {
+      "__class__": "bytearray",
+      "__value__": "AdnQywADAAAAAAAAAAAAAAAABOwAAAKrAAAAAAAAAAAAAATsAAACqwAAAAACAAAACgAAAAAAAAAAAAAABOwAAAKr"
+    },
+    "screen": {
+      "depth": 32,
+      "device_pixel_ratio": 1.0,
+      "geometry_in_logical_pixels": {
+        "height": 1440,
+        "width": 2560,
+        "x": 0,
+        "y": 0
+      },
+      "index_in_screens_list": 0,
+      "manufacturer": "AOC",
+      "model": "Q27G4ZDP",
+      "name": "DP-1",
+      "serial": "",
+      "size_in_logical_pixels": {
+        "height": 1440,
+        "width": 2560
+      },
+      "virtual_geometry": {
+        "height": 2680,
+        "width": 2560,
+        "x": 0,
+        "y": 0
+      }
+    }
+  },
+  "local_storage": {
+    "simple_input_history_net_search_url": [
+      "https://google.com/search?q={q}"
+    ]
+  },
+  "main_window_state": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAH9AAAAAgAAAAAAAAEHAAACrPwCAAAAAvsAAAAQAHQAbwBjAC0AZABvAGMAawEAAAAAAAACrAAAAJMA////+wAAABYAcwBlAGEAcgBjAGgALQBkAG8AYwBrAAAAAAD/////AAAAqAD///8AAAABAAAAAAAAAAD8AgAAAAT7AAAAFgBsAG8AbwBrAHUAcAAtAGQAbwBjAGsAAAAAAP////8AAAC4AP////sAAAAcAGIAbwBvAGsAbQBhAHIAawBzAC0AZABvAGMAawAAAAAA/////wAAAQ8A////+wAAABwAaQBuAHMAcABlAGMAdABvAHIALQBkAG8AYwBrAAAAAAD/////AAAAGAD////7AAAAHgBoAGkAZwBoAGwAaQBnAGgAdABzAC0AZABvAGMAawAAAAAA/////wAAAOoA////AAAD4AAAAqwAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAAAAAAAAQAAAB4AYQBjAHQAaQBvAG4AcwBfAHQAbwBvAGwAYgBhAHICAAAAAP////8AAAAAAAAAAA=="
+  },
+  "old_prefs_migrated": true,
+  "session_data": {
+    "base_font_size": 34,
+    "controls_footer": {
+      "left": "empty",
+      "middle": "empty",
+      "right": "progress"
+    },
+    "controls_help_shown_count": 2,
+    "current_color_scheme": "system",
+    "footer": {
+      "left": "title",
+      "middle": "pages-progress",
+      "right": "progress"
+    },
+    "gesture_overrides": {},
+    "header": {
+      "left": "menu-icon-on-hover",
+      "middle": "empty",
+      "right": "section"
+    },
+    "keyboard_shortcuts": {
+      "left": [],
+      "pagedown": [
+        {
+          "altKey": false,
+          "ctrlKey": false,
+          "key": " ",
+          "metaKey": false,
+          "shiftKey": false
+        },
+        {
+          "altKey": false,
+          "ctrlKey": false,
+          "key": "PageDown",
+          "metaKey": false,
+          "shiftKey": false
+        },
+        {
+          "altKey": false,
+          "ctrlKey": false,
+          "key": "ArrowDown",
+          "metaKey": false,
+          "shiftKey": false
+        },
+        {
+          "altKey": false,
+          "ctrlKey": false,
+          "key": "ArrowRight",
+          "metaKey": false,
+          "shiftKey": false
+        }
+      ],
+      "pageup": [
+        {
+          "altKey": false,
+          "ctrlKey": false,
+          "key": "PageUp",
+          "metaKey": false,
+          "shiftKey": false
+        },
+        {
+          "altKey": false,
+          "ctrlKey": false,
+          "key": " ",
+          "metaKey": false,
+          "shiftKey": true
+        },
+        {
+          "altKey": false,
+          "ctrlKey": false,
+          "key": "ArrowLeft",
+          "metaKey": false,
+          "shiftKey": false
+        },
+        {
+          "altKey": false,
+          "ctrlKey": false,
+          "key": "ArrowUp",
+          "metaKey": false,
+          "shiftKey": false
+        }
+      ],
+      "right": [],
+      "start_of_book": []
+    },
+    "left-margin": {
+      "left": "empty",
+      "middle": "empty",
+      "right": "empty"
+    },
+    "margin_bottom": 50,
+    "margin_left": 50,
+    "margin_right": 50,
+    "margin_top": 50,
+    "right-margin": {
+      "left": "empty",
+      "middle": "empty",
+      "right": "empty"
+    },
+    "standalone_font_settings": {
+      "mono_family": "Google Sans",
+      "sans_family": "Google Sans",
+      "serif_family": "Google Sans"
+    },
+    "standalone_misc_settings": {},
+    "standalone_recently_opened": [
+      {
+        "authors": [
+          "truyen.thichcode.net"
+        ],
+        "key": "/home/huyhoang/Calibre Library/truyen.thichcode.net/Su Huynh A Su Huynh (10)/Su Huynh A Su Huynh - truyen.thichcode.net.epub",
+        "pathtoebook": "/home/huyhoang/Calibre Library/truyen.thichcode.net/Su Huynh A Su Huynh (10)/Su Huynh A Su Huynh - truyen.thichcode.net.epub",
+        "timestamp": "2026-09-03T15:55:59.207Z",
+        "title": "Sư Huynh A Sư Huynh"
+      },
+      {
+        "authors": [
+          "Thán Khí Vô Thanh"
+        ],
+        "key": "/home/huyhoang/Calibre Library/Than Khi Vo Thanh/Do nhi cho hoang, da co vi su! (9)/Do nhi cho hoang, da co vi su! - Than Khi Vo Thanh.epub",
+        "pathtoebook": "/home/huyhoang/Calibre Library/Than Khi Vo Thanh/Do nhi cho hoang, da co vi su! (9)/Do nhi cho hoang, da co vi su! - Than Khi Vo Thanh.epub",
+        "timestamp": "2026-08-13T09:38:09.538Z",
+        "title": "Đồ nhi chớ hoảng, đã có vi sư!"
+      },
+      {
+        "authors": [
+          "Phẫn Nộ Đích Ô Tặc"
+        ],
+        "key": "/home/huyhoang/Calibre Library/Phan No Dich O Tac/Ta Mo Phong Con Duong Truong Sinh (6)/Ta Mo Phong Con Duong Truong Sinh - Phan No Dich O Tac.epub",
+        "pathtoebook": "/home/huyhoang/Calibre Library/Phan No Dich O Tac/Ta Mo Phong Con Duong Truong Sinh (6)/Ta Mo Phong Con Duong Truong Sinh - Phan No Dich O Tac.epub",
+        "timestamp": "2026-06-10T13:24:23.058Z",
+        "title": "Ta Mô Phỏng Con Đường Trường Sinh"
+      },
+      {
+        "authors": [
+          "Phẫn Nộ Đích Ô Tặc"
+        ],
+        "key": "/home/huyhoang/Calibre Library/Phan No Dich O Tac/Ta Mo Phong Con Duong Truong Sinh (2)/Ta Mo Phong Con Duong Truong Sinh - Phan No Dich O Tac.epub",
+        "pathtoebook": "/home/huyhoang/Calibre Library/Phan No Dich O Tac/Ta Mo Phong Con Duong Truong Sinh (2)/Ta Mo Phong Con Duong Truong Sinh - Phan No Dich O Tac.epub",
+        "timestamp": "2026-05-11T12:53:29.649Z",
+        "title": "Ta Mô Phỏng Con Đường Trường Sinh"
+      }
+    ],
+    "user_stylesheet": "\nbody {\ntext-align:justify;\nline-spacing:1.8;\ntext-indent:3em;\nfont-weight:bold;\n}\n\nh1, h2, h3, h4, h5, h6\n{\ntext-align:center;\nfont-style:italic;\nfont-weight:bold;\n}"
+  }
+}

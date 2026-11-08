@@ -1,28 +1,6 @@
 # @fish-lsp-disable 2002
 if status is-interactive
 
-    if not functions -q set_onedark
-        echo "onedark theme not found. Install with command: fisher install rkbk60/onedark-fish"
-    else
-        set -l onedark_options -b
-
-        if set -q VIM
-            # Using from vim/neovim.
-            set onedark_options -256
-            # else if test -n "$SSH_TTY"
-            #     # function fish_title
-            #     #     echo (whoami)@(hostname)":"(basename (pwd))" - "(status current-command)
-            #     # end
-            #     # Using from emacs.
-            #     set onedark_options -256
-        end
-        set_onedark_color black 080A0E current
-        set_onedark_color white BCC4C9 current
-        set_onedark_color red A24F5F current
-        set_onedark_color green 98c379 current
-        set_onedark_color blue 597A9A current
-        set_onedark $onedark_options # Commands to run in interactive sessions can go here
-    end
 end
 # Emulates vim's cursor shape behavior
 # Set the normal and visual mode cursors to a block
@@ -36,7 +14,8 @@ set fish_cursor_replace_one underscore
 set fish_cursor_visual block
 
 set fzf_fd_opts --hidden --follow --exclude .gi --exclude .git --exclude .svn --exclude .hg --exclude .bzr --exclude _darcs --exclude-dir .DS_Store --exclude-dir .git --exclude-dir .hg --exclude-dir .svn --exclude-dir .bundle --exclude-dir .tox --exclude-dir __pycache__ --exclude-dir node_modules --exclude-dir .next --exclude-dir .nuxt --exclude-dir dist --max-depth 5
-set FZF_DEFAULT_OPTS "--preview-window=wrap --no-multi --bind 'tab:down,btab:up,alt-tab:toggle+down,alt-btab:toggle+up' --marker="*" --cycle --layout=reverse --border --height=40% --color 'bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8,fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc,marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#8EBD6B'"
+set FZF_DEFAULT_OPTS "--preview-window=wrap --no-multi --bind 'tab:down,btab:up,alt-tab:toggle+down,alt-btab:toggle+up' --marker="*" --cycle --layout=reverse --border --height=40%"
+source "$HOME/.config/fzf/themes/noctalia.fish"
 
 if not functions -q fzf_configure_bindings
     echo "fzf_configure_bindings not found. Install with command: fisher install patrickf1/fzf.fish"

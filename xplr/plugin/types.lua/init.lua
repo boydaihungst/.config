@@ -1,0 +1,1182 @@
+---@meta
+-- xplr.lua — Lua LSP type definitions for xplr
+-- Derived from https://xplr.dev/en/print (the xplr book).
+
+---@class Xplr
+---@field config XplrConfig # Static configuration tree (general, node_types, layouts, modes).
+---@field fn XplrFn # Dynamic function registry (builtin and custom).
+---@field util XplrUtil # Utility / helper functions exposed to Lua config.
+xplr = {}
+
+-- ============================================================================
+-- Top-level config
+-- ============================================================================
+
+--- Example:
+--- ```lua
+--- xplr.config.general.show_hidden = true
+--- xplr.config.general.initial_mode = "default"
+--- ```
+---@class XplrConfig
+---@field general XplrGeneralConfig # General behaviour, UI, logs, panels, key bindings.
+---@field node_types XplrNodeTypesConfig # Styling and metadata for node categories.
+---@field layouts XplrLayoutsConfig # Builtin + custom UI layouts.
+---@field modes XplrModesConfig # Builtin + custom modes.
+xplr.config = {}
+
+-- ============================================================================
+-- xplr.config.general
+-- ============================================================================
+
+--- Example:
+--- ```lua
+--- xplr.config.general.show_hidden = true
+--- xplr.config.general.enable_mouse = true
+--- xplr.config.general.scroll_padding = 3
+--- ```
+---@class XplrGeneralConfig
+---@field disable_debug_error_mode boolean # If true, startup errors don't switch to debug_error mode (still logged). Example: `xplr.config.general.disable_debug_error_mode = true`
+---@field enable_mouse boolean # If true, enable mouse scrolling. Example: `xplr.config.general.enable_mouse = true`
+---@field show_hidden boolean # If true, show hidden files by default. Example: `xplr.config.general.show_hidden = true`
+---@field read_only boolean # If true, forbid commands / write operations on the filesystem. Example: `xplr.config.general.read_only = true`
+---@field enable_recover_mode boolean # If true, switch to a safety "recover" mode on invalid input. Example: `xplr.config.general.enable_recover_mode = true`
+---@field hide_remaps_in_help_menu boolean # If true, hide remaps in the help menu. Example: `xplr.config.general.hide_remaps_in_help_menu = true`
+---@field paginated_scrolling boolean # If true, scroll by full pages; else vim-like continuous scrolling. Example: `xplr.config.general.paginated_scrolling = true`
+---@field scroll_padding integer # Padding (in rows) around the focus when paginated_scrolling = false. Example: `xplr.config.general.scroll_padding = 5`
+---@field enforce_bounded_index_navigation boolean # If true, cursor stays put at first/last instead of rotating. Example: `xplr.config.general.enforce_bounded_index_navigation = true`
+---@field prompt XplrPromptConfig # Prompt shown for the input buffer.
+---@field logs XplrLogsConfig # Styles / formats for the four log levels.
+---@field table XplrTableConfig # Files table header, rows and tree.
+---@field selection XplrSelectionConfig # How selected items are rendered in the selection panel.
+---@field search XplrSearchConfig # Default search algorithm / ordering / rank criteria.
+---@field default_ui XplrUiConfig # Prefix/suffix/style for ordinary rows.
+---@field focus_ui XplrUiConfig # Prefix/suffix/style for the focused row.
+---@field selection_ui XplrUiConfig # Prefix/suffix/style for selected rows.
+---@field focus_selection_ui XplrUiConfig # Prefix/suffix/style for the selected row that also has focus.
+---@field sort_and_filter_ui XplrSortAndFilterUiConfig # Sort & Filter panel identifiers.
+---@field panel_ui XplrPanelUiConfig # Per-panel titles, styles and borders.
+---@field initial_sorting XplrNodeSorterApplicable[]|nil # Sorters applied to the node list at startup. Example: `{ { sorter = "ByCanonicalIsDir", reverse = true }, { sorter = "ByIRelativePath", reverse = false } }`
+---@field initial_mode string|nil # Mode to start in (name of a mode). Example: `xplr.config.general.initial_mode = "default"`
+---@field initial_layout string|nil # Layout to start with (name of a layout). Example: `xplr.config.general.initial_layout = "default"`
+---@field start_fifo string|nil # FIFO path to start automatically when xplr loads. Example: `xplr.config.general.start_fifo = "/tmp/xplr.fifo"`
+---@field global_key_bindings XplrKeyBindings # Key bindings inherited by every mode.
+xplr.config.general = {}
+
+--- Example:
+--- ```lua
+--- xplr.config.general.prompt.format = "→ "
+--- xplr.config.general.prompt.style.fg = "Red"
+--- ```
+---@class XplrPromptConfig
+---@field format string|nil # Prompt string (e.g. "→ "). Nullable to hide. Example: `xplr.config.general.prompt.format = "> "`
+---@field style XplrStyle # Style of the prompt. Example: `xplr.config.general.prompt.style = { fg = "Blue", add_modifiers = { "Bold" } }`
+xplr.config.general.prompt = {}
+
+---@class XplrLogsConfig
+---@field info XplrLogLevelConfig # Info-level log format/style.
+---@field success XplrLogLevelConfig # Success-level log format/style.
+---@field warning XplrLogLevelConfig # Warning-level log format/style.
+---@field error XplrLogLevelConfig # Error-level log format/style.
+xplr.config.general.logs = {}
+
+--- Example:
+--- ```lua
+--- xplr.config.general.logs.info.format = "Info: "
+--- xplr.config.general.logs.info.style.fg = "Blue"
+--- ```
+---@class XplrLogLevelConfig
+---@field format string|nil # Prefix used to indicate this log level. Example: `xplr.config.general.logs.error.format = "Error: "`
+---@field style XplrStyle # Style for this log level. Example: `xplr.config.general.logs.error.style.fg = "Red"`
+
+--- Example:
+--- ```lua
+--- xplr.config.general.table.header.cols = { { format = "  path" } }
+--- xplr.config.general.table.row.cols = { { format = "custom.fmt_simple_column" } }
+--- xplr.config.general.table.col_widths = { { Percentage = 100 } }
+--- ```
+---@class XplrTableConfig
+---@field header XplrTableHeaderConfig # Table header configuration.
+---@field row XplrTableRowConfig # Table row configuration.
+---@field style XplrStyle # Default style of the table.
+---@field tree XplrFormatStyle|nil # Tree component (format/style) rendered before each node. Example: `{ format = "  " }`
+---@field col_spacing integer|nil # Spacing between columns. Example: `xplr.config.general.table.col_spacing = 2`
+---@field col_widths XplrConstraint[]|nil # Column width constraints. Example: `{ { Percentage = 20 }, { Percentage = 80 } }`
+xplr.config.general.table = {}
+
+---@class XplrTableHeaderConfig
+---@field cols XplrFormatStyle[]|nil # Columns displayed in the table header. Example: `{ { format = "  path" } }`
+---@field style XplrStyle # Style of the table header. Example: `xplr.config.general.table.header.style.add_modifiers = { "Bold" }`
+---@field height integer|nil # Height of the table header. Example: `xplr.config.general.table.header.height = 1`
+xplr.config.general.table.header = {}
+
+---@class XplrTableRowConfig
+---@field cols XplrFormatStyle[]|nil # Columns displayed in each row (each may point at a renderer fn). Example: `{ { format = "xplr.fn.builtin.fmt_general_table_row_cols_0" } }`
+---@field style XplrStyle # Default style of table rows.
+---@field height integer|nil # Height of each row.
+xplr.config.general.table.row = {}
+
+--- Example:
+--- ```lua
+--- xplr.config.general.selection.item.format = "  %s"
+--- xplr.config.general.selection.item.style.fg = "Green"
+--- ```
+---@class XplrSelectionConfig
+---@field item XplrFormatStyle # Renderer/style for each item in the selection list.
+xplr.config.general.selection = {}
+
+--- Example:
+--- ```lua
+--- xplr.config.general.search.algorithm = "Fuzzy" -- or "Regex"
+--- xplr.config.general.search.unordered = false
+--- xplr.config.general.search.rank_criteria = { "Score", "Begin", "End", "Length" }
+--- ```
+---@class XplrSearchConfig
+---@field algorithm XplrSearchAlgorithm|nil # Default search algorithm. Example: `xplr.config.general.search.algorithm = "Regex"`
+---@field unordered boolean # Default search ordering (true = unordered). Example: `xplr.config.general.search.unordered = true`
+---@field exact_mode boolean # Fuzzy-search exact mode. Example: `xplr.config.general.search.exact_mode = true`
+---@field rank_criteria XplrRankCriteria[]|nil # Fuzzy-search rank criteria. Example: `{ "Score", "Begin", "End", "Length" }`
+xplr.config.general.search = {}
+
+--- Example:
+--- ```lua
+--- xplr.config.general.focus_ui.prefix = "▸ "
+--- xplr.config.general.focus_ui.style.fg = "Red"
+--- xplr.config.general.selection_ui.prefix = "[x] "
+--- ```
+---@class XplrUiConfig
+---@field prefix string|nil # Content placed before the item name. Example: `xplr.config.general.focus_ui.prefix = "▸ "`
+---@field suffix string|nil # Content appended after the item name. Example: `xplr.config.general.focus_ui.suffix = " <"`
+---@field style XplrStyle # Style for the row. Example: `xplr.config.general.focus_ui.style.add_modifiers = { "Bold" }`
+
+--- Example:
+--- ```lua
+--- xplr.config.general.sort_and_filter_ui.separator.format = " › "
+--- xplr.config.general.sort_and_filter_ui.sort_direction_identifiers.forward.format = "↑"
+--- xplr.config.general.sort_and_filter_ui.sorter_identifiers = {
+---   BySize = { format = "size", style = { fg = "Blue" } },
+--- }
+--- ```
+---@class XplrSortAndFilterUiConfig
+---@field separator XplrFormatStyle # Separator between identifiers in the Sort & Filter panel. Example: `{ format = " › " }`
+---@field default_identifier XplrFormatStyle # Default identifier for unsorted / unfiltered pipeline entries.
+---@field sort_direction_identifiers XplrSortDirectionIdentifiers # Forward/reverse indicators for sorters.
+---@field sorter_identifiers table<XplrSorter, XplrFormatStyle>|nil # Identifier per sorter. Example: `{ BySize = { format = "size" } }`
+---@field filter_identifiers table<XplrFilter, XplrFormatStyle>|nil # Identifier per filter. Example: `{ RelativePathDoesContain = { format = "rel~" } }`
+---@field search_identifiers XplrFormatStyle # Identifier for the active search input. Example: `{ format = "search" }`
+---@field search_direction_identifiers XplrSearchDirectionIdentifiers # Ordered/unordered indicators for search.
+xplr.config.general.sort_and_filter_ui = {}
+
+---@class XplrSortDirectionIdentifiers
+---@field forward XplrFormatStyle # Indicator for a forward (ascending) sorter. Example: `{ format = "↑" }`
+---@field reverse XplrFormatStyle # Indicator for a reverse (descending) sorter. Example: `{ format = "↓" }`
+
+---@class XplrSearchDirectionIdentifiers
+---@field ordered XplrFormatStyle # Indicator when search results are rank-ordered. Example: `{ format = "↓" }`
+---@field unordered XplrFormatStyle # Indicator when search results are not ordered. Example: `{ format = "-" }`
+
+---@class XplrFormatStyle
+---@field format string|nil # Text/format string. Example: `{ format = "size" }`
+---@field style XplrStyle # Style applied to the format. Example: `{ style = { fg = "Blue" } }`
+
+--- Example:
+--- ```lua
+--- xplr.config.general.panel_ui.default.borders = { "Top", "Right", "Bottom", "Left" }
+--- xplr.config.general.panel_ui.default.border_type = "Thick"
+--- xplr.config.general.panel_ui.default.border_style.fg = "Black"
+--- xplr.config.general.panel_ui.default.border_style.bg = "Gray"
+--- ```
+---@class XplrPanelUiConfig
+---@field default XplrPanelStyleConfig # Defaults inherited by all panels.
+---@field table XplrPanelStyleConfig # Files table panel.
+---@field help_menu XplrPanelStyleConfig # Help menu panel.
+---@field input_and_logs XplrPanelStyleConfig # Input & logs panel.
+---@field selection XplrPanelStyleConfig # Selection panel.
+---@field sort_and_filter XplrPanelStyleConfig # Sort & Filter panel.
+xplr.config.general.panel_ui = {}
+
+--- Example:
+--- ```lua
+--- xplr.config.general.panel_ui.table.title.format = " Files "
+--- xplr.config.general.panel_ui.table.border_type = "Rounded"
+--- ```
+---@class XplrPanelStyleConfig
+---@field title XplrFormatStyle # Panel title. Example: `{ format = " Files " }`
+---@field style XplrStyle # Style of the panel body.
+---@field borders XplrBorder[]|nil # Which borders to render. Example: `{ "Top", "Bottom" }`
+---@field border_type XplrBorderType|nil # Shape of the borders. Example: `xplr.config.general.panel_ui.table.border_type = "Rounded"`
+---@field border_style XplrStyle # Style of the borders. Example: `xplr.config.general.panel_ui.table.border_style.fg = "DarkGray"`
+
+-- ============================================================================
+-- xplr.config.node_types
+-- ============================================================================
+
+--- Example:
+--- ```lua
+--- xplr.config.node_types.extension.md = { meta = { icon = "" }, style = { fg = "Blue" } }
+--- xplr.config.node_types.extension.rs = { meta = { icon = "🦀" } }
+--- xplr.config.node_types.special["Cargo.toml"] = { meta = { icon = "" } }
+--- xplr.config.node_types.mime_essence = {
+---   application = {
+---     ["*"] = { meta = { icon = "a" } },
+---     pdf = { meta = { icon = "" }, style = { fg = "Blue" } },
+---     zip = { meta = { icon = "" } },
+---   },
+--- }
+--- ```
+---@class XplrNodeTypesConfig
+---@field directory XplrNodeType # Style/meta for directory nodes.
+---@field file XplrNodeType # Style/meta for file nodes.
+---@field symlink XplrNodeType # Style/meta for symlink nodes.
+---@field mime_essence table<string, table<string, XplrNodeType>>|nil # Style/meta keyed by MIME type then subtype ("*" wildcard allowed). Example: `{ application = { pdf = { meta = { icon = "" } } } }`
+---@field extension table<string, XplrNodeType>|nil # Style/meta keyed by file extension. Example: `{ rs = { meta = { icon = "🦀" } } }`
+---@field special table<string, XplrNodeType>|nil # Style/meta keyed by special file name. Example: `{ ["Cargo.toml"] = { meta = { icon = "" } } }`
+xplr.config.node_types = {}
+
+--- Example:
+--- ```lua
+--- xplr.config.node_types.file = { meta = { icon = "f", foo = "bar" } }
+--- xplr.config.node_types.directory.style = { fg = "Blue" }
+--- ```
+---@class XplrNodeType
+---@field style XplrStyle|nil # Style applied to nodes of this type. Example: `{ fg = "Blue", add_modifiers = { "Bold" } }`
+---@field meta table<string, string>|nil # Arbitrary metadata (e.g. icon) exposed to renderers. Example: `{ icon = "", foo = "bar" }`
+
+-- ============================================================================
+-- xplr.config.layouts
+-- ============================================================================
+
+--- Example:
+--- ```lua
+--- xplr.config.layouts.custom.example = "Nothing"
+--- xplr.config.general.initial_layout = "example"
+--- ```
+---@class XplrLayoutsConfig
+---@field builtin XplrBuiltinLayouts # Overridable built-in layouts.
+---@field custom table<string, XplrLayout>|nil # User-defined layouts. Example: `xplr.config.layouts.custom.example = "Nothing"`
+xplr.config.layouts = {}
+
+---@class XplrBuiltinLayouts
+---@field default XplrLayout # Default layout (table + help + selection + input).
+---@field no_help XplrLayout # Layout without the help menu.
+---@field no_selection XplrLayout # Layout without the selection panel.
+---@field no_help_no_selection XplrLayout # Layout without help menu or selection panel.
+
+--- Example:
+--- ```lua
+--- xplr.config.layouts.builtin.default = {
+---   Horizontal = {
+---     config = {
+---       margin = 1,
+---       constraints = { { Percentage = 50 }, { Percentage = 50 } },
+---     },
+---     splits = { "Table", "HelpMenu" },
+---   },
+--- }
+--- ```
+---@alias XplrLayout
+---| "Nothing" # Blank panel.
+---| "Table" # Files table panel.
+---| "InputAndLogs" # Input prompt & logs panel.
+---| "Selection" # Selection list panel.
+---| "HelpMenu" # Real-time help menu panel.
+---| "SortAndFilter" # Sort & Filter pipeline panel.
+---| { Static: XplrCustomPanel } # Render a fixed custom panel. Example: `{ Static = { CustomParagraph = { body = "hi" } } }`
+---| { Dynamic: string } # Render a custom panel via a Lua content renderer fn name. Example: `{ Dynamic = "custom.render_layout" }`
+---| { Horizontal: XplrSplitConfig } # Split into left/right sub-layouts.
+---| { Vertical: XplrSplitConfig } # Split into top/bottom sub-layouts.
+
+---@class XplrSplitConfig
+---@field config XplrLayoutConfig # Margin + constraints for this split.
+---@field splits XplrLayout[] # Child layouts laid out along the split axis. Example: `{ "Table", "HelpMenu" }`
+
+---@class XplrLayoutConfig
+---@field margin integer|nil # Margin applied on all four sides. Example: `{ margin = 1 }`
+---@field horizontal_margin integer|nil # Horizontal margin (overrides margin). Example: `{ horizontal_margin = 2 }`
+---@field vertical_margin integer|nil # Vertical margin (overrides margin). Example: `{ vertical_margin = 1 }`
+---@field constraints XplrConstraint[]|nil # Per-child constraints; must match the splits count. Example: `{ { Percentage = 50 }, { Percentage = 50 } }`
+
+--- Example:
+--- ```lua
+--- { Percentage = 50 }         -- half of parent
+--- { Ratio = { 1, 3 } }        -- one third
+--- { Length = 20 }             -- 20 cells
+--- { Min = 5 }                 -- at least 5
+--- { Max = 40 }                -- at most 40
+--- ```
+---@alias XplrConstraint
+---| { Percentage: integer } # Percentage of the parent area. Example: `{ Percentage = 50 }`
+---| { Ratio: integer[] } # Ratio of the parent area (numerator/denominator). Example: `{ Ratio = { 1, 3 } }`
+---| { Length: integer } # Exact number of cells. Example: `{ Length = 20 }`
+---| { LengthLessThanScreenHeight: integer } # Length, capped by screen height.
+---| { LengthLessThanScreenWidth: integer } # Length, capped by screen width.
+---| { LengthLessThanLayoutHeight: integer } # Length, capped by layout height.
+---| { LengthLessThanLayoutWidth: integer } # Length, capped by layout width.
+---| { Max: integer } # At most N cells. Example: `{ Max = 40 }`
+---| { MaxLessThanScreenHeight: integer } # Max, capped by screen height.
+---| { MaxLessThanScreenWidth: integer } # Max, capped by screen width.
+---| { MaxLessThanLayoutHeight: integer } # Max, capped by layout height.
+---| { MaxLessThanLayoutWidth: integer } # Max, capped by layout width.
+---| { Min: integer } # At least N cells. Example: `{ Min = 5 }`
+---| { MinLessThanScreenHeight: integer } # Min, capped by screen height.
+---| { MinLessThanScreenWidth: integer } # Min, capped by screen width.
+---| { MinLessThanLayoutHeight: integer } # Min, capped by layout height.
+---| { MinLessThanLayoutWidth: integer } # Min, capped by layout width.
+
+--- Example:
+--- ```lua
+--- { CustomParagraph = { ui = { title = { format = " title " } }, body = "hello" } }
+--- { CustomList = { body = { "1", "2", "3" } } }
+--- { CustomTable = { widths = { { Percentage = 50 }, { Percentage = 50 } }, body = { { "a", "b" } } } }
+--- { CustomLayout = { Horizontal = { config = { constraints = { { Percentage = 50 }, { Percentage = 50 } } }, splits = { "Table", "HelpMenu" } } } }
+--- ```
+---@alias XplrCustomPanel
+---| { CustomParagraph: { ui: XplrPanelUiConfig|nil, body: string } } # A single styled paragraph.
+---| { CustomList: { ui: XplrPanelUiConfig|nil, body: string[] } } # A list of strings.
+---| { CustomTable: { ui: XplrPanelUiConfig|nil, widths: XplrConstraint[], col_spacing: integer|nil, body: string[][] } } # Table of strings.
+---| { CustomLayout: XplrLayout } # A nested layout (used for dynamic structural changes).
+
+-- ============================================================================
+-- xplr.config.modes
+-- ============================================================================
+
+--- Example:
+--- ```lua
+--- xplr.config.modes.custom.example = {
+---   name = "example",
+---   key_bindings = {
+---     on_key = {
+---       enter = {
+---         help = "default mode",
+---         messages = { "PopMode", { SwitchModeBuiltin = "default" } },
+---       },
+---     },
+---   },
+--- }
+--- xplr.config.general.initial_mode = "example"
+--- ```
+---@class XplrModesConfig
+---@field builtin XplrBuiltinModes # Overridable built-in modes.
+---@field custom table<string, XplrMode> # User-defined modes. Example: `xplr.config.modes.custom.fzxplr = { name = "fzxplr", key_bindings = {} }`
+xplr.config.modes = {}
+
+---@class XplrBuiltinModes
+---@field default XplrMode # Default navigation mode.
+---@field debug_error XplrMode # Mode shown on startup errors.
+---@field recover XplrMode # Safety mode entered on invalid input.
+---@field go_to_path XplrMode # Read a path from input and go to / focus it.
+---@field move_to XplrMode # Read a path and move focused/selected items there.
+---@field copy_to XplrMode # Read a path and copy focused/selected items there.
+---@field selection_ops XplrMode # Operations on the current selection.
+---@field create XplrMode # Choose what to create (file/dir/conditional).
+---@field create_directory XplrMode # Read a name and create a directory.
+---@field create_file XplrMode # Read a name and create a file.
+---@field create_conditional XplrMode # Create dir if input ends with "/", else create file.
+---@field number XplrMode # Jump to index or move relative.
+---@field go_to XplrMode # Jump shortcuts (top, initial $PWD, follow symlink, etc.).
+---@field rename XplrMode # Rename focused node.
+---@field duplicate_as XplrMode # Duplicate focused node under a new name.
+---@field delete XplrMode # Delete focused/selected nodes.
+---@field action XplrMode # Overarching "do something" menu.
+---@field quit XplrMode # Choose how to quit (with/without printing).
+---@field search XplrMode # Search input mode.
+---@field filter XplrMode # Filter entry mode.
+---@field relative_path_does_match_regex XplrMode # Add a regex filter (relative path matches).
+---@field relative_path_does_not_match_regex XplrMode # Add a regex filter (relative path doesn't match).
+---@field sort XplrMode # Sorter management menu.
+---@field switch_layout XplrMode # Layout switching menu.
+---@field vroot XplrMode # Virtual root management menu.
+---@field edit_permissions XplrMode # Interactive file permission editing.
+
+--- Example:
+--- ```lua
+--- xplr.config.modes.custom.greet = {
+---   name = "greet",
+---   help = "custom help text",
+---   key_bindings = {
+---     on_key = {
+---       ["?"] = {
+---         help = "say hi",
+---         messages = { { LogSuccess = "hi!" } },
+---       },
+---     },
+---   },
+--- }
+--- ```
+---@class XplrMode
+---@field name string # Display name in the help menu. Example: `name = "default"`
+---@field help string|nil # Override the auto-generated help summary. Example: `help = "custom help text"`
+---@field extra_help string|nil # Extra help text shown alongside the auto-generated menu.
+---@field key_bindings XplrKeyBindings # Key bindings active in this mode.
+---@field layout XplrLayout|nil # Mode-specific layout override. Example: `layout = "Table"`
+---@field prompt string|nil # Prompt string to show for the input buffer in this mode. Example: `prompt = "→ "`
+
+--- Example:
+--- ```lua
+--- on_key = {
+---   ["q"] = { help = "quit", messages = { "Quit" } },
+---   ["g"] = { help = "go to", messages = { { SwitchModeBuiltin = "go_to" } } },
+--- },
+--- on_alphabet = { messages = { "BufferInputFromKey" } },
+--- default = { messages = { { LogError = "unknown key" } } },
+--- ```
+---@class XplrKeyBindings
+---@field on_key table<string, XplrAction>|nil # Exact-key bindings. Example: `{ ["q"] = { messages = { "Quit" } } }`
+---@field on_alphabet XplrAction|nil # Fallback for any alphabetic key not in on_key. Example: `{ messages = { "BufferInputFromKey" } }`
+---@field on_number XplrAction|nil # Fallback for any numeric key not in on_key. Example: `{ messages = { "BufferInputFromKey" } }`
+---@field on_alphanumeric XplrAction|nil # Fallback for alphanumeric keys not matched above.
+---@field on_special_character XplrAction|nil # Fallback for special characters not in on_key.
+---@field on_character XplrAction|nil # Fallback for any character not matched above.
+---@field on_navigation XplrAction|nil # Fallback for navigation keys not in on_key.
+---@field on_function XplrAction|nil # Fallback for function keys not in on_key.
+---@field default XplrAction|nil # Final fallback action.
+
+--- Example:
+--- ```lua
+--- {
+---   help = "search",
+---   messages = {
+---     { BashExec = "fzf" },
+---     "PopMode",
+---   },
+--- }
+--- ```
+---@class XplrAction
+---@field help string|nil # Help description (omit to hide from help menu). Example: `help = "search"`
+---@field messages XplrMessage[] # Messages dispatched when the action fires. Example: `{ "Quit" }` or `{ { FocusPath = "/tmp" } }`
+
+-- ============================================================================
+-- xplr.fn
+-- ============================================================================
+
+--- Example:
+--- ```lua
+--- xplr.fn.custom.greet = function(app)
+---   return { { LogSuccess = "hi " .. (app.focused_node or {}).relative_path } }
+--- end
+--- xplr.config.modes.builtin.default.key_bindings.on_key.space = {
+---   help = "greet",
+---   messages = { { CallLua = "custom.greet" } },
+--- }
+--- ```
+---@class XplrFn
+---@field builtin XplrBuiltinFn # Built-in renderers and helpers (overridable).
+---@field custom table<string, any> # User-defined functions (arbitrary nesting allowed). Example: `xplr.fn.custom.my_plugin.my_function = function(ctx) ... end`
+xplr.fn = {}
+
+--- Example:
+--- ```lua
+--- xplr.fn.builtin.fmt_general_table_row_cols_0 = function(m)
+---   return m.prefix .. m.relative_path .. m.suffix
+--- end
+--- ```
+---@class XplrBuiltinFn
+---@field fmt_general_table_row_cols_0 fun(m: XplrTableRendererArgument): string # Render the first column. Example: returns `m.prefix .. m.relative_path .. m.suffix`
+---@field fmt_general_table_row_cols_1 fun(m: XplrTableRendererArgument): string # Render the second column.
+---@field fmt_general_table_row_cols_2 fun(m: XplrTableRendererArgument): string # Render the third column.
+---@field fmt_general_table_row_cols_3 fun(m: XplrTableRendererArgument): string # Render the fourth column.
+---@field fmt_general_table_row_cols_4 fun(m: XplrTableRendererArgument): string # Render the fifth column.
+---@field try_complete_path fun(ctx: XplrLuaContext): XplrMessage[]|nil # Deprecated: use the `TryCompletePath` message instead.
+xplr.fn.builtin = {}
+
+-- ============================================================================
+-- xplr.util
+-- ============================================================================
+
+--- Example:
+--- ```lua
+--- xplr.util.version()          -- { major = 0, minor = 21, patch = 10 }
+--- xplr.util.shorten("/home/me/.config")  -- "~/.config"
+--- xplr.util.node("./bar")      -- { parent = "/pwd", relative_path = "bar", ... }
+--- xplr.util.paint("hi", { fg = "Red" })
+--- xplr.util.to_yaml({ foo = "bar" })
+--- ```
+---@class XplrUtil
+---@field version fun(): { major: integer, minor: integer, patch: integer } # Get xplr's version components. Example: `xplr.util.version()` → `{ major = 0, minor = 21, patch = 10 }`
+---@field debug fun(value: any): string # Print & return a string representation (debugging). Example: `xplr.util.debug({ foo = "bar" })`
+---@field clone fun(value: any): any # Deep-copy a Lua value (not for functions). Example: `local b = xplr.util.clone(a)`
+---@field exists fun(path: string): boolean # True if the path exists. Example: `xplr.util.exists("/tmp")`
+---@field is_dir fun(path: string): boolean # True if the path is a directory. Example: `xplr.util.is_dir("/tmp")`
+---@field is_file fun(path: string): boolean # True if the path is a file. Example: `xplr.util.is_file("/etc/hosts")`
+---@field is_symlink fun(path: string): boolean # True if the path is a symlink. Example: `xplr.util.is_symlink("/etc/localtime")`
+---@field is_absolute fun(path: string): boolean # True if the path is absolute. Example: `xplr.util.is_absolute("/foo")`
+---@field path_split fun(path: string): string[] # Split a path into components. Example: `xplr.util.path_split("/foo/bar")` → `{ "/", "foo", "bar" }`
+---@field node fun(path: string): XplrNode|nil # Node metadata for a path. Example: `xplr.util.node("./bar")` → `{ parent = "/pwd", relative_path = "bar", ... }`
+---@field node_type fun(node: XplrNode, config: XplrNodeTypesConfig|nil): XplrNodeType # Resolve the configured Node Type for a node. Example: `xplr.util.node_type(app.focused_node)`
+---@field dirname fun(path: string): string|nil # Directory portion of the path. Example: `xplr.util.dirname("/foo/bar")` → `"/foo"`
+---@field basename fun(path: string): string|nil # Base name portion of the path. Example: `xplr.util.basename("/foo/bar")` → `"bar"`
+---@field absolute fun(path: string): string # Make a path absolute relative to $PWD. Example: `xplr.util.absolute("foo")` → `"/pwd/foo"`
+---@field relative_to fun(path: string, options: XplrRelativeOptions|nil): string # Compute a relative path. Example: `xplr.util.relative_to("/pwd/foo", { with_prefix_dots = true })` → `"./foo"`
+---@field shorten fun(path: string, options: XplrRelativeOptions|nil): string # Shorten a path using $HOME / $PWD rules. Example: `xplr.util.shorten("/home/me/.config")` → `"~/.config"`
+---@field explore fun(path: string, config: XplrExplorerConfig|nil): XplrNode[] # Explore a directory with the given explorer config. Example: `xplr.util.explore("/tmp", app.explorer_config)`
+---@field shell_execute fun(program: string, args: string[]|nil): { stdout: string, stderr: string, returncode: integer|nil } # Safely run a program and capture output. Example: `xplr.util.shell_execute("pwd")`
+---@field shell_quote fun(s: string): string # Shell-quote a string. Example: `xplr.util.shell_quote("a'b")` → `'a'"'"'b'`
+---@field shell_escape fun(s: string): string # Shell-escape a string. Example: `xplr.util.shell_escape("a'b")`
+---@field from_json fun(s: string): any # Parse a JSON string into a Lua value. Example: `xplr.util.from_json([[{"foo":"bar"}]])`
+---@field to_json fun(value: any): string # Serialize a Lua value to JSON. Example: `xplr.util.to_json({ foo = "bar" })`
+---@field from_yaml fun(s: string): any # Parse a YAML (or JSON) string into a Lua value. Example: `xplr.util.from_yaml("foo: bar")`
+---@field to_yaml fun(value: any): string # Serialize a Lua value to YAML. Example: `xplr.util.to_yaml({ foo = "bar" })`
+---@field lscolor fun(path: string): XplrStyle # Style for a path based on $LS_COLORS. Example: `xplr.util.lscolor("Desktop")`
+---@field paint fun(s: string, style: XplrStyle|nil): string # Wrap a string with the ANSI escapes for a style. Example: `xplr.util.paint("hi", { fg = "Red" })`
+---@field style_mix fun(styles: XplrStyle[]): XplrStyle # Merge multiple styles into one. Example: `xplr.util.style_mix({{ fg = "Red" }, { bg = "Blue" }})`
+---@field textwrap fun(s: string, options: integer|XplrTextwrapOptions): string[] # Word-wrap a string to a width. Example: `xplr.util.textwrap("this will be cut off", 11)`
+---@field layout_replace fun(layout: XplrLayout, target: XplrLayout, replacement: XplrLayout): XplrLayout # Swap `target` for `replacement` in `layout`. Example: `xplr.util.layout_replace(layout, "Table", "Selection")`
+---@field permissions_rwx fun(perm: XplrPermission): string # Convert a permission object to rwxrwxrwx form. Example: `xplr.util.permissions_rwx(app.focused_node.permissions)` → `"rwxrwsrwT"`
+---@field permissions_octal fun(perm: XplrPermission): integer[] # Convert a permission object to octal digits. Example: `xplr.util.permissions_octal(perm)` → `{ 0, 7, 5, 4 }`
+xplr.util = {}
+
+--- Example:
+--- ```lua
+--- xplr.util.relative_to("/pwd/foo", { base = "/pwd", with_prefix_dots = true })
+--- ```
+---@class XplrRelativeOptions
+---@field base string|nil # Compute the path relative to this base (defaults to $PWD).
+---@field with_prefix_dots boolean|nil # Always prefix with `.`/`..` components.
+---@field without_suffix_dots boolean|nil # Show the basename instead of the trailing `.`/`..`.
+
+--- Example:
+--- ```lua
+--- xplr.util.textwrap("...", { width = 12, initial_indent = "", subsequent_indent = "    ", break_words = false })
+--- ```
+---@class XplrTextwrapOptions
+---@field width integer # Target width in cells.
+---@field initial_indent string|nil # Prefix for the first line.
+---@field subsequent_indent string|nil # Prefix for subsequent lines.
+---@field break_words boolean|nil # Allow breaking inside words.
+
+-- ============================================================================
+-- Style / Color / Modifier / Border
+-- ============================================================================
+
+--- Example:
+--- ```lua
+--- xplr.config.general.prompt.style = {
+---   fg = "Red",
+---   bg = { Rgb = { 100, 150, 200 } },
+---   add_modifiers = { "Bold", "Italic" },
+---   sub_modifiers = { "Hidden" },
+--- }
+--- ```
+---@class XplrStyle
+---@field fg XplrColor|nil # Foreground color. Example: `fg = "Red"` or `fg = { Rgb = { 255, 0, 0 } }`
+---@field bg XplrColor|nil # Background color. Example: `bg = "Black"` or `bg = { Indexed = 234 }`
+---@field add_modifiers XplrModifier[]|nil # Modifiers to add. Example: `add_modifiers = { "Bold", "Italic" }`
+---@field sub_modifiers XplrModifier[]|nil # Modifiers to remove. Example: `sub_modifiers = { "Hidden" }`
+
+--- Example:
+--- ```lua
+--- fg = "Red"
+--- fg = { Rgb = { 255, 128, 0 } }
+--- fg = { Indexed = 208 }
+--- ```
+---@alias XplrColor
+---| "Reset" # Reset to terminal default.
+---| "Black" # Named black.
+---| "Red" # Named red.
+---| "Green" # Named green.
+---| "Yellow" # Named yellow.
+---| "Blue" # Named blue.
+---| "Magenta" # Named magenta.
+---| "Cyan" # Named cyan.
+---| "Gray" # Named gray.
+---| "DarkGray" # Named dark gray.
+---| "LightRed" # Named light red.
+---| "LightGreen" # Named light green.
+---| "LightYellow" # Named light yellow.
+---| "LightBlue" # Named light blue.
+---| "LightMagenta" # Named light magenta.
+---| "LightCyan" # Named light cyan.
+---| "White" # Named white.
+---| { Rgb: integer[] } # True-color (RGB) value. Example: `{ Rgb = { 255, 128, 0 } }`
+---| { Indexed: integer } # 256-color palette index. Example: `{ Indexed = 208 }`
+
+---@alias XplrModifier
+---| "Bold" # Bold text.
+---| "Dim" # Dimmed text.
+---| "Italic" # Italic text.
+---| "Underlined" # Underlined text.
+---| "SlowBlink" # Slow-blinking text.
+---| "RapidBlink" # Rapid-blinking text.
+---| "Reversed" # Swap fg/bg.
+---| "Hidden" # Hidden text.
+---| "CrossedOut" # Struck-through text.
+
+--- Example:
+--- ```lua
+--- xplr.config.general.panel_ui.default.borders = { "Top", "Right", "Bottom", "Left" }
+--- ```
+---@alias XplrBorder
+---| "Top" # Top border.
+---| "Right" # Right border.
+---| "Bottom" # Bottom border.
+---| "Left" # Left border.
+
+--- Example:
+--- ```lua
+--- xplr.config.general.panel_ui.default.border_type = "Thick"
+--- ```
+---@alias XplrBorderType
+---| "Plain" # Plain single-line border.
+---| "Rounded" # Rounded corner border.
+---| "Double" # Double-line border.
+---| "Thick" # Thick border.
+
+-- ============================================================================
+-- Node & related structures
+-- ============================================================================
+
+--- Example (from inside a CallLua function):
+--- ```lua
+--- local n = app.focused_node
+--- if n then print(n.relative_path, n.human_size) end
+--- ```
+---@class XplrNode
+---@field parent string # Parent path. Example: `"/home/me"`
+---@field relative_path string # Path relative to the parent. Example: `"Desktop"`
+---@field absolute_path string # Absolute path (without resolving symlinks). Example: `"/home/me/Desktop"`
+---@field extension string # File extension. Example: `"rs"`
+---@field is_symlink boolean # True if the node is a symlink.
+---@field is_broken boolean # True if the symlink is broken.
+---@field is_dir boolean # True if the node is a directory.
+---@field is_file boolean # True if the node is a file.
+---@field is_readonly boolean # True if the node is read-only.
+---@field mime_essence string # MIME type. Example: `"inode/directory"`, `"text/markdown"`
+---@field size integer # Size in bytes (directories not recursed).
+---@field human_size string # Human-readable size. Example: `"4.2K"`
+---@field permissions XplrPermission # Permission bits.
+---@field created integer|nil # Creation time (ns since UNIX epoch).
+---@field last_modified integer|nil # Last modification time (ns since UNIX epoch).
+---@field uid integer # Owner user ID.
+---@field gid integer # Owner group ID.
+---@field canonical XplrResolvedNodeMetadata|nil # Symlink-resolved metadata (or actual node's, if not a symlink).
+---@field symlink XplrResolvedNodeMetadata|nil # Symlink-resolved metadata; nil if the node isn't a symlink or is broken.
+
+---@class XplrResolvedNodeMetadata
+---@field absolute_path string # Absolute path of the resolved node.
+---@field extension string # Extension of the resolved node.
+---@field is_dir boolean # True if the resolved node is a directory.
+---@field is_file boolean # True if the resolved node is a file.
+---@field is_readonly boolean # True if the resolved node is read-only.
+---@field mime_essence string # MIME type of the resolved node.
+---@field size integer # Size of the resolved node.
+---@field human_size string # Human-readable size of the resolved node.
+---@field created integer|nil # Creation time of the resolved node.
+---@field last_modified integer|nil # Last modification time of the resolved node.
+---@field uid integer # Owner UID of the resolved node.
+---@field gid integer # Owner GID of the resolved node.
+
+--- Example:
+--- ```lua
+--- xplr.util.permissions_rwx({ user_read = true })       -- "r--------"
+--- xplr.util.permissions_octal({ user_read = true })     -- { 0, 4, 0, 0 }
+--- ```
+---@class XplrPermission
+---@field user_read boolean # User read bit.
+---@field user_write boolean # User write bit.
+---@field user_execute boolean # User execute bit.
+---@field group_read boolean # Group read bit.
+---@field group_write boolean # Group write bit.
+---@field group_execute boolean # Group execute bit.
+---@field other_read boolean # Other read bit.
+---@field other_write boolean # Other write bit.
+---@field other_execute boolean # Other execute bit.
+---@field sticky boolean # Sticky bit.
+---@field setgid boolean # Set-group-ID bit.
+---@field setuid boolean # Set-user-ID bit.
+
+--- Example:
+--- ```lua
+--- xplr.fn.custom.fmt_simple_column = function(m)
+---   return m.prefix .. m.relative_path .. m.suffix
+--- end
+--- ```
+---@class XplrTableRendererArgument
+---@field parent string # Parent path of the node.
+---@field relative_path string # Path relative to the parent.
+---@field absolute_path string # Absolute path of the node.
+---@field extension string # File extension.
+---@field is_symlink boolean # True if the node is a symlink.
+---@field is_broken boolean # True if the symlink is broken.
+---@field is_dir boolean # True if the node is a directory.
+---@field is_file boolean # True if the node is a file.
+---@field is_readonly boolean # True if the node is read-only.
+---@field mime_essence string # MIME type.
+---@field size integer # Size in bytes.
+---@field human_size string # Human-readable size.
+---@field permissions XplrPermission # Permission bits.
+---@field created integer|nil # Creation time (ns since epoch).
+---@field last_modified integer|nil # Last modification time (ns since epoch).
+---@field uid integer # Owner UID.
+---@field gid integer # Owner GID.
+---@field canonical XplrResolvedNodeMetadata|nil # Symlink-resolved metadata.
+---@field symlink XplrResolvedNodeMetadata|nil # Symlink target metadata (nil if not a symlink / broken).
+---@field index integer # Zero-based index in the visible list.
+---@field relative_index integer # Index relative to the focused node.
+---@field is_before_focus boolean # True if the node is before the focused node.
+---@field is_after_focus boolean # True if the node is after the focused node.
+---@field tree string # Precomputed tree component.
+---@field prefix string # Prefix configured for this node.
+---@field suffix string # Suffix configured for this node.
+---@field is_selected boolean # True if the node is selected.
+---@field is_focused boolean # True if the node is currently focused.
+---@field total integer # Total number of nodes.
+---@field style XplrStyle # Style resolved for this node.
+---@field meta table<string, string> # Metadata resolved for this node. Example: `meta.icon`
+
+-- ============================================================================
+-- Lua context (CallLua / CallLuaSilently / LuaEval)
+-- ============================================================================
+
+--- Example:
+--- ```lua
+--- xplr.fn.custom.ask_name = function(app)
+---   print("What's your name?")
+---   local name = io.read()
+---   return { { LogSuccess = "Hello " .. name .. " in " .. app.pwd } }
+--- end
+--- ```
+---@class XplrLuaContext
+---@field version string # xplr version string.
+---@field pwd string # Present working directory.
+---@field initial_pwd string # Working directory when xplr started.
+---@field vroot string|nil # Current virtual root (nil if unset).
+---@field focused_node XplrNode|nil # Node under focus, if any.
+---@field directory_buffer XplrDirectoryBuffer|nil # The rendered directory buffer.
+---@field selection XplrNode[] # Currently selected nodes.
+---@field mode XplrMode # Current mode.
+---@field layout XplrLayout # Current layout.
+---@field input_buffer string|nil # Current input buffer content.
+---@field pid integer # xplr process ID.
+---@field session_path string # Session path (holds pipes and session data).
+---@field explorer_config XplrExplorerConfig # Explorer pipeline (filters/sorters/searcher).
+---@field history XplrHistory # Visited path history.
+---@field last_modes XplrMode[] # Mode stack not yet popped.
+
+---@class XplrDirectoryBuffer
+---@field parent string # Parent path of the buffer.
+---@field nodes XplrNode[] # Visible nodes.
+---@field total integer # Node count.
+---@field focus integer # Focus index (0 even when the buffer is empty).
+
+---@class XplrHistory
+---@field loc integer # Index of the current path within `paths`.
+---@field paths string[] # Visited paths.
+
+--- Example:
+--- ```lua
+--- xplr.util.explore("/tmp", {
+---   filters = { { filter = "RelativePathDoesStartWith", input = "." } },
+---   sorters = { { sorter = "ByRelativePath", reverse = false } },
+---   searcher = { pattern = "foo" },
+--- })
+--- ```
+---@class XplrExplorerConfig
+---@field filters XplrNodeFilterApplicable[] # Filters to apply when exploring.
+---@field sorters XplrNodeSorterApplicable[] # Sorters to apply to the node list.
+---@field searcher XplrNodeSearcherApplicable|nil # Optional search configuration.
+
+-- ============================================================================
+-- Content renderer argument (Dynamic layouts)
+-- ============================================================================
+
+--- Example:
+--- ```lua
+--- xplr.fn.custom.render_layout = function(ctx)
+---   return { CustomParagraph = {
+---     ui = { title = { format = ctx.app.pwd } },
+---     body = tostring(ctx.layout_size.height),
+---   } }
+--- end
+--- xplr.config.layouts.builtin.default = { Dynamic = "custom.render_layout" }
+--- ```
+---@class XplrContentRendererArgument
+---@field layout_size XplrSize # Size of the layout cell being rendered.
+---@field screen_size XplrSize # Size of the whole terminal screen.
+---@field scrolltop integer # Index of the first visible node in the table.
+---@field app XplrContentRendererApp # Lightweight app state (heavy fields omitted).
+
+---@class XplrSize
+---@field x integer # X origin (column). Example: `0`
+---@field y integer # Y origin (row). Example: `0`
+---@field height integer # Height in cells. Example: `24`
+---@field width integer # Width in cells. Example: `80`
+
+---@class XplrContentRendererApp
+---@field version string # xplr version string.
+---@field pwd string # Present working directory.
+---@field initial_pwd string # Initial working directory.
+---@field vroot string|nil # Current virtual root.
+---@field focused_node XplrNode|nil # Node under focus.
+---@field selection XplrNode[] # Currently selected nodes.
+---@field mode XplrMode # Current mode.
+---@field layout XplrLayout # Current layout.
+---@field input_buffer string|nil # Current input buffer.
+---@field pid integer # xplr process ID.
+---@field session_path string # Session path.
+---@field explorer_config XplrExplorerConfig # Explorer pipeline.
+
+-- ============================================================================
+-- Sorters, filters, search
+-- ============================================================================
+
+--- Example:
+--- ```lua
+--- xplr.config.general.initial_sorting = {
+---   { sorter = "ByCanonicalIsDir", reverse = true },
+---   { sorter = "ByIRelativePath", reverse = false },
+--- }
+--- ```
+---@alias XplrSorter
+---| "ByRelativePath" # By relative path.
+---| "ByIRelativePath" # By case-insensitive relative path.
+---| "ByExtension" # By extension.
+---| "ByIsDir" # By is_dir flag.
+---| "ByIsFile" # By is_file flag.
+---| "ByIsSymlink" # By is_symlink flag.
+---| "ByIsBroken" # By is_broken flag.
+---| "ByIsReadonly" # By is_readonly flag.
+---| "ByMimeEssence" # By MIME type.
+---| "BySize" # By size.
+---| "ByCreated" # By creation time.
+---| "ByLastModified" # By last modification time.
+---| "ByCanonicalAbsolutePath" # By resolved node's absolute path.
+---| "ByICanonicalAbsolutePath" # By resolved node's case-insensitive absolute path.
+---| "ByCanonicalExtension" # By resolved node's extension.
+---| "ByCanonicalIsDir" # By resolved node's is_dir.
+---| "ByCanonicalIsFile" # By resolved node's is_file.
+---| "ByCanonicalIsReadonly" # By resolved node's is_readonly.
+---| "ByCanonicalMimeEssence" # By resolved node's MIME type.
+---| "ByCanonicalSize" # By resolved node's size.
+---| "ByCanonicalCreated" # By resolved node's creation time.
+---| "ByCanonicalLastModified" # By resolved node's last modification time.
+---| "BySymlinkAbsolutePath" # By symlink target's absolute path.
+---| "ByISymlinkAbsolutePath" # By symlink target's case-insensitive absolute path.
+---| "BySymlinkExtension" # By symlink target's extension.
+---| "BySymlinkIsDir" # By symlink target's is_dir.
+---| "BySymlinkIsFile" # By symlink target's is_file.
+---| "BySymlinkIsReadonly" # By symlink target's is_readonly.
+---| "BySymlinkMimeEssence" # By symlink target's MIME type.
+---| "BySymlinkSize" # By symlink target's size.
+---| "BySymlinkCreated" # By symlink target's creation time.
+---| "BySymlinkLastModified" # By symlink target's last modification time.
+
+--- Example:
+--- ```lua
+--- { sorter = "ByIRelativePath", reverse = false }
+--- ```
+---@class XplrNodeSorterApplicable
+---@field sorter XplrSorter # Which sorter to apply. Example: `sorter = "BySize"`
+---@field reverse boolean # True to sort in reverse order. Example: `reverse = true`
+
+--- Example:
+--- ```lua
+--- { filter = "RelativePathDoesStartWith", input = "foo" }
+--- { filter = "AbsolutePathDoesNotContain", input = "tmp" }
+--- ```
+---@alias XplrFilter
+---| "RelativePathIs" # Relative path equals input.
+---| "RelativePathIsNot" # Relative path does not equal input.
+---| "IRelativePathIs" # Case-insensitive relative path equals input.
+---| "IRelativePathIsNot" # Case-insensitive relative path does not equal input.
+---| "RelativePathDoesStartWith" # Relative path starts with input.
+---| "RelativePathDoesNotStartWith" # Relative path does not start with input.
+---| "IRelativePathDoesStartWith" # Case-insensitive relative path starts with input.
+---| "IRelativePathDoesNotStartWith" # Case-insensitive relative path does not start with input.
+---| "RelativePathDoesContain" # Relative path contains input.
+---| "RelativePathDoesNotContain" # Relative path does not contain input.
+---| "IRelativePathDoesContain" # Case-insensitive relative path contains input.
+---| "IRelativePathDoesNotContain" # Case-insensitive relative path does not contain input.
+---| "RelativePathDoesEndWith" # Relative path ends with input.
+---| "RelativePathDoesNotEndWith" # Relative path does not end with input.
+---| "IRelativePathDoesEndWith" # Case-insensitive relative path ends with input.
+---| "IRelativePathDoesNotEndWith" # Case-insensitive relative path does not end with input.
+---| "RelativePathDoesMatchRegex" # Relative path matches regex.
+---| "RelativePathDoesNotMatchRegex" # Relative path does not match regex.
+---| "IRelativePathDoesMatchRegex" # Case-insensitive relative path matches regex.
+---| "IRelativePathDoesNotMatchRegex" # Case-insensitive relative path does not match regex.
+---| "AbsolutePathIs" # Absolute path equals input.
+---| "AbsolutePathIsNot" # Absolute path does not equal input.
+---| "IAbsolutePathIs" # Case-insensitive absolute path equals input.
+---| "IAbsolutePathIsNot" # Case-insensitive absolute path does not equal input.
+---| "AbsolutePathDoesStartWith" # Absolute path starts with input.
+---| "AbsolutePathDoesNotStartWith" # Absolute path does not start with input.
+---| "IAbsolutePathDoesStartWith" # Case-insensitive absolute path starts with input.
+---| "IAbsolutePathDoesNotStartWith" # Case-insensitive absolute path does not start with input.
+---| "AbsolutePathDoesContain" # Absolute path contains input.
+---| "AbsolutePathDoesNotContain" # Absolute path does not contain input.
+---| "IAbsolutePathDoesContain" # Case-insensitive absolute path contains input.
+---| "IAbsolutePathDoesNotContain" # Case-insensitive absolute path does not contain input.
+---| "AbsolutePathDoesEndWith" # Absolute path ends with input.
+---| "AbsolutePathDoesNotEndWith" # Absolute path does not end with input.
+---| "IAbsolutePathDoesEndWith" # Case-insensitive absolute path ends with input.
+---| "IAbsolutePathDoesNotEndWith" # Case-insensitive absolute path does not end with input.
+---| "AbsolutePathDoesMatchRegex" # Absolute path matches regex.
+---| "AbsolutePathDoesNotMatchRegex" # Absolute path does not match regex.
+---| "IAbsolutePathDoesMatchRegex" # Case-insensitive absolute path matches regex.
+---| "IAbsolutePathDoesNotMatchRegex" # Case-insensitive absolute path does not match regex.
+
+--- Example:
+--- ```lua
+--- { filter = "RelativePathDoesStartWith", input = "foo" }
+--- ```
+---@class XplrNodeFilterApplicable
+---@field filter XplrFilter # Which filter to apply. Example: `filter = "RelativePathDoesNotStartWith"`
+---@field input string # Input for the filter. Example: `input = "."`
+
+---@alias XplrSearchAlgorithm
+---| "Fuzzy" # Fuzzy matching (e.g. skim v2).
+---| "Regex" # Regular-expression matching.
+
+---@alias XplrRankCriteria
+---| "Score" # Higher score first.
+---| "NegScore" # Lower score first.
+---| "Begin" # Earlier match position first.
+---| "NegBegin" # Later match position first.
+---| "End" # Earlier end position first.
+---| "NegEnd" # Later end position first.
+---| "Length" # Longer match first.
+---| "NegLength" # Shorter match first.
+---| "Index" # Higher index first.
+---| "NegIndex" # Lower index first.
+
+--- Example:
+--- ```lua
+--- {
+---   pattern = "foo",
+---   recoverable_focus = "/home/me",
+---   algorithm = "Fuzzy",
+---   unordered = false,
+---   exact_mode = false,
+---   rank_criteria = { "Score", "Begin", "End", "Length" },
+--- }
+--- ```
+---@class XplrNodeSearcherApplicable
+---@field pattern string # Pattern to search for. Example: `pattern = "foo"`
+---@field recoverable_focus string|nil # Path to focus if search is cancelled. Example: `recoverable_focus = "/home/me"`
+---@field algorithm XplrSearchAlgorithm|nil # Algorithm to use. Example: `algorithm = "Regex"`
+---@field unordered boolean|nil # If true, skip rank-based ordering. Example: `unordered = true`
+---@field exact_mode boolean|nil # If true, exact match mode. Example: `exact_mode = true`
+---@field rank_criteria XplrRankCriteria[]|nil # Rank criteria to use. Example: `{ "Score", "Begin", "End" }`
+
+-- ============================================================================
+-- Input operations
+-- ============================================================================
+
+--- Example:
+--- ```lua
+--- { UpdateInputBuffer = "GoToPreviousWord" }
+--- { UpdateInputBuffer = { SetCursor = 0 } }
+--- { UpdateInputBuffer = { InsertCharacter = "x" } }
+--- ```
+---@alias XplrInputOperation
+---| "GoToPreviousCharacter" # Move cursor to previous character.
+---| "GoToNextCharacter" # Move cursor to next character.
+---| "GoToPreviousWord" # Move cursor to previous word.
+---| "GoToNextWord" # Move cursor to next word.
+---| "GoToStart" # Move cursor to start of input.
+---| "GoToEnd" # Move cursor to end of input.
+---| "DeletePreviousCharacter" # Delete character before cursor.
+---| "DeleteNextCharacter" # Delete character after cursor.
+---| "DeletePreviousWord" # Delete word before cursor.
+---| "DeleteNextWord" # Delete word after cursor.
+---| "DeleteLine" # Delete the entire line.
+---| "DeleteTillEnd" # Delete from cursor to end of line.
+---| { SetCursor: integer } # Move cursor to an absolute position. Example: `{ SetCursor = 0 }`
+---| { InsertCharacter: string } # Insert a character at cursor. Example: `{ InsertCharacter = "a" }`
+
+-- ============================================================================
+-- Messages
+-- ============================================================================
+
+--- Example:
+--- ```lua
+--- "Quit"
+--- { FocusPath = "/path/to/file" }
+--- { Call = { command = "bash", args = { "-c", "read -p test" } } }
+--- ```
+---@alias XplrMessage
+-- Exploring
+---| "ExplorePwd" # Synchronously explore $PWD.
+---| "ExplorePwdAsync" # Asynchronously explore $PWD.
+---| "ExploreParentsAsync" # Asynchronously explore $PWD and its parents.
+---| "TryCompletePath" # Complete the path currently in the input buffer.
+-- Screen
+---| "ClearScreen" # Clear the screen.
+---| "Refresh" # Refresh the UI (does not re-explore $PWD).
+-- Navigation
+---| "FocusNext" # Focus the next node.
+---| "FocusNextSelection" # Focus the next selected node.
+---| { FocusNextByRelativeIndex: integer } # Focus the nth node after the current focus. Example: `{ FocusNextByRelativeIndex = 2 }`
+---| "FocusNextByRelativeIndexFromInput" # Same, but n comes from the input buffer.
+---| "FocusPrevious" # Focus the previous node.
+---| "FocusPreviousSelection" # Focus the previous selected node.
+---| { FocusPreviousByRelativeIndex: integer } # Focus the nth node before the current focus. Example: `{ FocusPreviousByRelativeIndex = 2 }`
+---| "FocusPreviousByRelativeIndexFromInput" # Same, but n comes from the input buffer.
+---| "FocusFirst" # Focus the first node.
+---| "FocusLast" # Focus the last node.
+---| { FocusPath: string } # Focus the given path. Example: `{ FocusPath = "/tmp/foo" }`
+---| "FocusPathFromInput" # Focus the path in the input buffer.
+---| { FocusByIndex: integer } # Focus the absolute nth node. Example: `{ FocusByIndex = 5 }`
+---| "FocusByIndexFromInput" # Focus absolute nth node from input buffer.
+---| { FocusByFileName: string } # Focus by file name in $PWD. Example: `{ FocusByFileName = "a.txt" }`
+---| "ScrollUp" # Scroll up one page.
+---| "ScrollDown" # Scroll down one page.
+---| "ScrollUpHalf" # Scroll up half a page.
+---| "ScrollDownHalf" # Scroll down half a page.
+---| { ChangeDirectory: string } # Change $PWD. Example: `{ ChangeDirectory = "/tmp" }`
+---| "Enter" # Enter the focused directory (if any).
+---| "Back" # Go to the parent directory.
+---| "LastVisitedPath" # Go to the previously visited path.
+---| "NextVisitedPath" # Go to the next visited path.
+---| "PreviousVisitedDeepBranch" # Go to the previous deep branch.
+---| "NextVisitedDeepBranch" # Go to the next deep branch.
+---| "FollowSymlink" # Follow the focused symlink to its target.
+-- Virtual root
+---| { SetVroot: string } # Set a temporary virtual root. Example: `{ SetVroot = "/tmp" }`
+---| "UnsetVroot" # Temporarily unset the virtual root.
+---| "ToggleVroot" # Cycle vroot between unset/initial/$PWD.
+---| "ResetVroot" # Reset the virtual root to its initial value.
+-- Reading input
+---| { SetInputPrompt: string } # Set the input prompt until the buffer is reset. Example: `{ SetInputPrompt = "→" }`
+---| { UpdateInputBuffer: XplrInputOperation } # Apply a cursor-based input operation. Example: `{ UpdateInputBuffer = "GoToPreviousWord" }`
+---| "UpdateInputBufferFromKey" # Apply the last key as an input operation.
+---| { BufferInput: string } # Append a string to the input buffer. Example: `{ BufferInput = "foo" }`
+---| "BufferInputFromKey" # Append the last key as text.
+---| { SetInputBuffer: string } # Replace the input buffer content. Example: `{ SetInputBuffer = "foo" }`
+---| "RemoveInputBufferLastCharacter" # Remove the last character from the buffer.
+---| "RemoveInputBufferLastWord" # Remove the last word from the buffer.
+---| "ResetInputBuffer" # Reset the buffer to nil (hidden).
+-- Switching mode
+---| { SwitchMode: string } # Switch to the named mode. Example: `{ SwitchMode = "default" }`
+---| { SwitchModeKeepingInputBuffer: string } # Same, but keep the input buffer.
+---| { SwitchModeBuiltin: string } # Switch to a builtin mode. Example: `{ SwitchModeBuiltin = "create_file" }`
+---| { SwitchModeBuiltinKeepingInputBuffer: string } # Builtin mode, keep input buffer.
+---| { SwitchModeCustom: string } # Switch to a custom mode. Example: `{ SwitchModeCustom = "my_mode" }`
+---| { SwitchModeCustomKeepingInputBuffer: string } # Custom mode, keep input buffer.
+---| "PopMode" # Pop the last mode from history.
+---| "PopModeKeepingInputBuffer" # Same, but keep the input buffer.
+-- Switching layout
+---| { SwitchLayout: string } # Switch to the named layout. Example: `{ SwitchLayout = "default" }`
+---| { SwitchLayoutBuiltin: string } # Switch to a builtin layout. Example: `{ SwitchLayoutBuiltin = "no_help" }`
+---| { SwitchLayoutCustom: string } # Switch to a custom layout. Example: `{ SwitchLayoutCustom = "example" }`
+-- Executing commands
+---| { Call: { command: string, args: string[] } } # Run a command (newline-delimited pipes).
+---| { Call0: { command: string, args: string[] } } # Run a command (null-delimited pipes). Example: `{ Call0 = { command = "bash", args = { "-c", "read -p test" } } }`
+---| { CallSilently: { command: string, args: string[] } } # Run a command with IO nulled (newline pipes).
+---| { CallSilently0: { command: string, args: string[] } } # Run a command with IO nulled (null pipes). Example: `{ CallSilently0 = { command = "tput", args = { "bell" } } }`
+---| { BashExec: string } # `bash -c <string>` (newline pipes). Example: `{ BashExec = "read -p test" }`
+---| { BashExec0: string } # `bash -c <string>` (null pipes).
+---| { BashExecSilently: string } # `bash -c <string>` with IO nulled (newline pipes).
+---| { BashExecSilently0: string } # `bash -c <string>` with IO nulled (null pipes). Example: `{ BashExecSilently0 = "tput bell" }`
+-- Calling Lua functions
+---| { CallLua: string } # Call a Lua function; may return messages. Example: `{ CallLua = "custom.greet" }`
+---| { CallLuaSilently: string } # Same, but non-interactive / no flicker.
+---| { LuaEval: string } # Evaluate Lua code; may return messages. Example: `{ LuaEval = [[return { { LogInfo = "hi" } }]] }`
+---| { LuaEvalSilently: string } # Same, but non-interactive / no flicker.
+-- Select operations
+---| "Select" # Select the focused node.
+---| "SelectAll" # Select all visible nodes.
+---| { SelectPath: string } # Select the given path. Example: `{ SelectPath = "/tmp/foo" }`
+---| "UnSelect" # Unselect the focused node.
+---| "UnSelectAll" # Unselect all visible nodes.
+---| { UnSelectPath: string } # Unselect the given path.
+---| "ToggleSelection" # Toggle selection on the focused node.
+---| "ToggleSelectAll" # Toggle between select-all and unselect-all.
+---| { ToggleSelectionByPath: string } # Toggle selection of a specific path.
+---| "ClearSelection" # Clear the selection.
+-- Filter operations
+---| { AddNodeFilter: XplrNodeFilterApplicable } # Add a node filter to the pipeline. Example: `{ AddNodeFilter = { filter = "RelativePathDoesStartWith", input = "foo" } }`
+---| { RemoveNodeFilter: XplrNodeFilterApplicable } # Remove a matching node filter.
+---| { ToggleNodeFilter: XplrNodeFilterApplicable } # Add or remove a node filter. Example: `{ ToggleNodeFilter = { filter = "RelativePathDoesNotStartWith", input = "." } }`
+---| { AddNodeFilterFromInput: XplrFilter } # Add a filter using the input buffer. Example: `{ AddNodeFilterFromInput = "RelativePathDoesStartWith" }`
+---| { RemoveNodeFilterFromInput: XplrFilter } # Remove a filter using the input buffer.
+---| "RemoveLastNodeFilter" # Remove the last filter in the pipeline.
+---| "ResetNodeFilters" # Reset filters to the default configuration.
+---| "ClearNodeFilters" # Clear all filters.
+-- Sort operations
+---| { AddNodeSorter: XplrNodeSorterApplicable } # Add a sorter to the pipeline. Example: `{ AddNodeSorter = { sorter = "ByRelativePath", reverse = false } }`
+---| { RemoveNodeSorter: XplrSorter } # Remove a sorter from the pipeline. Example: `{ RemoveNodeSorter = "ByRelativePath" }`
+---| { ReverseNodeSorter: XplrSorter } # Reverse a sorter's direction.
+---| { ToggleNodeSorter: XplrNodeSorterApplicable } # Add or remove a sorter.
+---| "ReverseNodeSorters" # Reverse all sorters.
+---| "RemoveLastNodeSorter" # Remove the last sorter.
+---| "ResetNodeSorters" # Reset sorters to the default configuration.
+---| "ClearNodeSorters" # Clear all sorters.
+-- Search operations
+---| { Search: string } # Search using the configured algorithm. Example: `{ Search = "foo" }`
+---| "SearchFromInput" # Search using the input buffer.
+---| { SearchFuzzy: string } # Fuzzy search (rank-ordered). Example: `{ SearchFuzzy = "foo" }`
+---| "SearchFuzzyFromInput" # Fuzzy search using the input buffer.
+---| { SearchFuzzyUnordered: string } # Fuzzy search without rank-ordered results.
+---| "SearchFuzzyUnorderedFromInput" # Same, using the input buffer.
+---| { SearchRegex: string } # Regex search (rank-ordered). Example: `{ SearchRegex = "^foo" }`
+---| "SearchRegexFromInput" # Regex search using the input buffer.
+---| { SearchRegexUnordered: string } # Regex search without rank-ordered results.
+---| "SearchRegexUnorderedFromInput" # Same, using the input buffer.
+---| "ToggleSearchAlgorithm" # Toggle between Fuzzy and Regex search.
+---| "EnableSearchOrder" # Turn on rank-ordered search.
+---| "DisableSearchOrder" # Turn off rank-ordered search.
+---| "ToggleSearchOrder" # Toggle rank-ordered search.
+---| "AcceptSearch" # Commit the current search (keeps focus).
+---| "CancelSearch" # Cancel the current search (restores pre-search focus).
+-- Mouse operations
+---| "EnableMouse" # Enable mouse support.
+---| "DisableMouse" # Disable mouse support.
+---| "ToggleMouse" # Toggle mouse support.
+-- Fifo operations
+---| { StartFifo: string } # Start piping the focused path into a FIFO. Example: `{ StartFifo = "/tmp/xplr.fifo" }`
+---| "StopFifo" # Stop piping into the FIFO.
+---| { ToggleFifo: string } # Start or stop the FIFO.
+-- Logging
+---| { LogInfo: string } # Log an info message. Example: `{ LogInfo = "launching satellite" }`
+---| { LogSuccess: string } # Log a success message. Example: `{ LogSuccess = "done" }`
+---| { LogWarning: string } # Log a warning message. Example: `{ LogWarning = "heating up" }`
+---| { LogError: string } # Log an error message. Example: `{ LogError = "crashed" }`
+-- Debugging
+---| { Debug: string } # Dump the app state to a file. Example: `{ Debug = "/tmp/xplr-state.yaml" }`
+-- Quit options
+---| "Quit" # Quit with success and no output.
+---| "PrintPwdAndQuit" # Print $PWD then quit.
+---| "PrintFocusPathAndQuit" # Print the focused path then quit.
+---| "PrintSelectionAndQuit" # Print the selection then quit.
+---| "PrintResultAndQuit" # Print the selection if non-empty, else the focused path.
+---| "PrintAppStateAndQuit" # Print the app state as YAML then quit.
+---| "Terminate" # Quit with a non-zero exit code.
+
+-- ============================================================================
+-- Hooks returned from a config file
+-- ============================================================================
+
+--- Example:
+--- ```lua
+--- return {
+---   on_load = {
+---     { LogSuccess = "Configuration successfully loaded!" },
+---     { CallLuaSilently = "custom.some_plugin_with_hooks.on_load" },
+---   },
+---   on_directory_change = { { LogSuccess = "Changed directory" } },
+---   on_focus_change = { { LogSuccess = "Changed focus" } },
+---   on_mode_switch = { { LogSuccess = "Switched mode" } },
+---   on_layout_switch = { { LogSuccess = "Switched layout" } },
+---   on_selection_change = { { LogSuccess = "Selection changed" } },
+--- }
+--- ```
+---@class XplrHooks
+---@field on_load XplrMessage[]|nil # Messages sent when xplr loads. Example: `{ { LogSuccess = "loaded" } }`
+---@field on_directory_change XplrMessage[]|nil # Messages sent when the directory changes. Example: `{ { LogSuccess = "cd" } }`
+---@field on_focus_change XplrMessage[]|nil # Messages sent when the focus changes. Example: `{ { LogSuccess = "focus" } }`
+---@field on_mode_switch XplrMessage[]|nil # Messages sent when the mode is switched. Example: `{ { LogSuccess = "mode" } }`
+---@field on_layout_switch XplrMessage[]|nil # Messages sent when the layout is switched. Example: `{ { LogSuccess = "layout" } }`
+---@field on_selection_change XplrMessage[]|nil # Messages sent when the selection changes. Example: `{ { LogSuccess = "selection" } }`
+
+-- ============================================================================
+-- Config file top-level globals
+-- ============================================================================
+
+--- Example:
+--- ```lua
+--- version = "0.21.0"
+--- -- or, once xplr v1 is out:
+--- version = "1.0.0"
+--- ```
+---@type string
+version = ""

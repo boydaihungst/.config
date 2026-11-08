@@ -9,11 +9,7 @@
 
 # : Flavor {{{
 
-[flavor]
-  dark  = ""
-  light = ""
-
-  # : }}}
+# : }}}
 
 # : Manager {{{
 [mgr]
@@ -24,19 +20,19 @@
 
   # Find
   find_keyword  = { fg = "#1A1D23", bg = "#bf68d9", bold = true }
-  find_position = { fg = "#4fa6ed", bg = "#26343F", bold = true }
+  find_position = { fg = "#ffe0cd", bg = "#26343F", bold = true }
 
   # Marker
   marker_copied   = { fg = "#8ebd6b", bg = "#8ebd6b" }
   marker_cut      = { fg = "#e55561", bg = "#e55561" }
   marker_marked   = { fg = "#CC83E3", bg = "#CC83E3" }
-  marker_selected = { fg = "#4fa6ed", bg = "#4fa6ed" }
+  marker_selected = { fg = "#ffe0cd", bg = "#ffe0cd" }
   marker_symbol   = "│"
 
   # Count
   count_copied   = { fg = "#080A0E", bg = "#8ebd6b" }
   count_cut      = { fg = "#080A0E", bg = "#e55561" }
-  count_selected = { fg = "#080A0E", bg = "#4fa6ed" }
+  count_selected = { fg = "#080A0E", bg = "#ffe0cd" }
   # Border
   border_style   = { fg = "#3A3E47" }
   border_symbol  = "│"
@@ -57,7 +53,7 @@
 
 [tabs]
   # Tab
-  active   = { fg = "#ADB0BB", bg = "#1A1D23" }
+  active   = { fg = "#ffe0cd", bg = "#1A1D23" }
   inactive = { fg = "#494D56", bg = "#111317" }
 
   # Separator
@@ -68,7 +64,7 @@
 
 [mode]
   normal_alt  = { fg = "#BCC4C9", bg = "#080A0E" }
-  normal_main = { fg = "#1A1D23", bg = "#4fa6ed", bold = true }
+  normal_main = { fg = "#1A1D23", bg = "#ffe0cd", bold = true }
   # Select mode
   select_alt  = { fg = "#BCC4C9", bg = "#080A0E" }
   select_main = { fg = "#1A1D23", bg = "#CC83E3", bold = true }
@@ -105,34 +101,34 @@
 # : }}}
 # Input
 [input]
-  border   = { fg = "#4fa6ed" }
+  border   = { fg = "#ffe0cd" }
   selected = { bg = "#26343F" }
-  title    = { fg = "#4fa6ed" }
+  title    = { fg = "#ffe0cd" }
   value    = { fg = "#BCC4C9" }
 
   # : Confirm {{{
 
 [confirm]
   body       = {}
-  border     = { fg = "blue" }
+  border     = { fg = "#ffe0cd" }
   btn_labels = ["  [Y]es  ", "  (N)o  "]
   btn_no     = {}
   btn_yes    = { reversed = true }
-  list       = { fg = "blue" }
-  title      = { fg = "blue" }
+  list       = { fg = "#ffe0cd" }
+  title      = { fg = "#ffe0cd" }
 
 # : }}}
 # Completion
 [completion]
   active   = { fg = "#9B9FA9", bg = "#26343F" }
-  border   = { fg = "#4fa6ed" }
+  border   = { fg = "#ffe0cd" }
   inactive = { fg = "#494D56" }
 
 # Tasks
 [tasks]
   border  = { fg = "#3A3E47" }
   hovered = { fg = "#9B9FA9", bg = "#26343F" }
-  title   = { fg = "#4fa6ed" }
+  title   = { fg = "#ffe0cd" }
 
 # Which
 [which]
@@ -140,22 +136,22 @@
   cand            = { fg = "#48b0bd" }
   cols            = 2
   desc            = { fg = "#bf68d9" }
-  mask            = { bg = "#080A0E" }
+  mask            = { bg = "reset" }
   rest            = { fg = "#3A3E47" }
   separator       = "  "
   separator_style = { fg = "#3A3E47" }
 
 [spot]
-  border   = { fg = "#4fa6ed" }
-  title    = { fg = "#4fa6ed" }
+  border   = { fg = "#ffe0cd" }
+  title    = { fg = "#ffe0cd" }
   # Table
-  tbl_cell = { fg = "#4fa6ed", reversed = true }
-  tbl_col  = { fg = "#4fa6ed" }
+  tbl_cell = { fg = "#ffe0cd", reversed = true }
+  tbl_col  = { fg = "#ffe0cd" }
 
 # Notify
 [notify]
   title_error = { fg = "#e55561" }
-  title_info  = { fg = "#4fa6ed" }
+  title_info  = { fg = "#ffe0cd" }
   title_warn  = { fg = "#e2b86b" }
   # Icons
   icon_error  = ""
@@ -165,12 +161,12 @@
 # Help
 [help]
   # footer  = { fg = "#9B9FA9", bg = "#1A1D23" }
-  border  = { fg = "blue" }
+  border  = { fg = "#ffe0cd" }
   chord   = { fg = "cyan" }
   action  = {}
   hovered = { bg = "#26343F" }
-  on      = { fg = "#8ebd6b" }
-  run     = { fg = "#CC83E3" }
+  # on      = { fg = "#8ebd6b" }
+  # run     = { fg = "#CC83E3" }
 
 [filetype]
   rules = [
@@ -205,5 +201,45 @@
     { url = "*/", is = "dummy", bg = "red" },
 
     # Fallback
-    { url = "*/", fg = "#5EB7FF" },
+    { url = "*/", fg = "#ffe0cd" },
   ]
+
+[icon]
+  dirs = [
+    { name = ".config", text = "", fg = "#ffe0cd" },
+    { name = ".git", text = "", fg = "#ffe0cd" },
+    { name = "git", text = "", fg = "#ffe0cd" },
+    { name = ".github", text = "", fg = "#ffe0cd" },
+    { name = ".npm", text = "", fg = "#ffe0cd" },
+    { name = "Desktop", text = "", fg = "#ffe0cd" },
+    { name = "Development", text = "", fg = "#ffe0cd" },
+    { name = "Documents", text = "", fg = "#ffe0cd" },
+    { name = "Downloads", text = "", fg = "#ffe0cd" },
+    { name = "Library", text = "", fg = "#ffe0cd" },
+    { name = "Movies", text = "", fg = "#ffe0cd" },
+    { name = "Music", text = "", fg = "#ffe0cd" },
+    { name = "Pictures", text = "", fg = "#ffe0cd" },
+    { name = "Public", text = "", fg = "#ffe0cd" },
+    { name = "Videos", text = "", fg = "#ffe0cd" },
+  ]
+
+  conds = [
+    # Special files
+    { if = "orphan", text = "", fg = "#ffe0cd" },
+    { if = "link", text = "", fg = "#ffe0cd" },
+    { if = "block", text = "", fg = "#ffe0cd" },
+    { if = "char", text = "", fg = "#ffe0cd" },
+    { if = "fifo", text = "", fg = "#ffe0cd" },
+    { if = "sock", text = "", fg = "#ffe0cd" },
+    { if = "sticky", text = "", fg = "#ffe0cd" },
+    { if = "dummy", text = "", fg = "#ffe0cd" },
+
+    # Fallback
+    { if = "dir", text = "", fg = "#ffe0cd" },
+    { if = "exec", text = "", fg = "#ffe0cd" },
+    { if = "!dir", text = "", fg = "#ffe0cd" },
+  ]
+
+[flavor]
+  dark  = "noctalia"
+  light = "noctalia"

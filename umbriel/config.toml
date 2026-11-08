@@ -1,0 +1,43 @@
+# Umbriel starting configuration
+#
+# Copy this file to ~/.config/umbriel/config.toml. Most changes apply when the
+# file is saved. Check edits with `umbriel config validate`.
+#
+# Complete reference: https://docs.noctalia.dev/umbriel/
+#
+# Commented settings below are examples, not built-in defaults.
+
+# ==============================================================================
+# Includes
+
+# Optional split configuration
+# https://docs.noctalia.dev/umbriel/configuration/#include
+#:schema ./umbriel.schema.v5.json
+
+[include]
+  files = [
+    # "/usr/share/umbriel/effects/animation/reveal/effect.toml",
+    # "/usr/share/umbriel/effects/animation/squash/effect.toml",
+    # "/usr/share/umbriel/effects/animation/workspace_wipe/effect.toml",
+    # "/usr/share/umbriel/effects/border/audio/effect.toml",
+    # "/usr/share/umbriel/effects/border/pulse/effect.toml",
+    "/usr/share/umbriel/effects/cursor/glow/effect.toml",
+    "/usr/share/umbriel/effects/cursor/trail-path/effect.toml",
+    "/usr/share/umbriel/effects/cursor/trail/effect.toml",
+    # "/usr/share/umbriel/effects/screen/vignette/effect.toml",
+    # "/usr/share/umbriel/effects/window/scanlines/effect.toml",
+    "conf/gerenal.toml",
+    "conf/environment.toml",
+    "conf/events.toml",
+    "conf/keybinds.toml",
+    "conf/output.toml",
+    "conf/screencast.toml",
+    "conf/input.toml",
+    "conf/appearance.toml",
+    "conf/animation.toml",
+    "conf/layout.toml",
+    "conf/windowrules.toml"
+  ]
+
+  [include.optional]
+    files = ["noctalia.toml"]

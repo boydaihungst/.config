@@ -1,0 +1,34 @@
+id          = "boydaihungst/rapoo-battery"
+name        = "Rapoo Battery"
+description = "Displays Rapoo gaming mouse battery percentage and status"
+version     = "1.0.0"
+plugin_api  = 3
+author      = "Huy Hoang"
+
+[[widget]]
+  id    = "rapoo_battery"
+  entry = "widget.luau"
+
+  [[widget.setting]]
+    key       = "glyph"
+    type      = "glyph"
+    default   = "mouse"
+    label_key = "settings.glyph.label"
+
+  [[widget.setting]]
+    key       = "glyph_charging"
+    type      = "glyph"
+    default   = "recharging"
+    label_key = "settings.glyph.label"
+
+  [[widget.setting]]
+    key       = "device"
+    type      = "string"
+    default   = ""
+    label_key = "settings.device.label"
+
+  [[widget.setting]]
+    key       = "interval"
+    type      = "int"
+    default   = 120
+    label_key = "settings.interval.label"

@@ -157,4 +157,5 @@ wezterm.on("mux-is-process-stateful", function(proc)
 	---@diagnostic disable-next-line: redundant-return-value
 	return should_prompt_on_quit(proc)
 end)
+config.color_scheme = "Noctalia"
 return config

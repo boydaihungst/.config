@@ -1,0 +1,386 @@
+{
+  "add-cover-wizard-splitter-state": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAEAAAACAAABGAAAASwB/////wEAAAABAA=="
+  },
+  "auto_link_stylesheets": true,
+  "check-book-splitter-state": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAEAAAACAAAARgAAAEYA/////wEAAAABAA=="
+  },
+  "css-editor-state": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAD9AAAAAAAAAhMAAATEAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAUAGEAYwB0AGkAbwBuAF8AYgBhAHIBAAAAAP////8AAAAAAAAAAAAAABIAdABvAG8AbABzAF8AYgBhAHIBAAAA3f////8AAAAAAAAAAA=="
+  },
+  "custom_colors_for_color_dialog": [
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ]
+  ],
+  "file-list-bulk-rename-prefix": {
+    "misc": "OEBPS_Text_"
+  },
+  "find-widget-state": {
+    "case_sensitive": false,
+    "direction": "down",
+    "dot_all": false,
+    "mode": "normal",
+    "where": "current",
+    "wrap": true
+  },
+  "folders_for_types": {
+    "audio": "audio",
+    "font": "fonts",
+    "image": "images",
+    "opf": "",
+    "style": "styles",
+    "text": "text",
+    "toc": "",
+    "video": "video"
+  },
+  "geometry-of-add-cover-wizard-geometry": {
+    "frame_geometry": {
+      "height": 529,
+      "width": 602,
+      "x": 960,
+      "y": 390
+    },
+    "full_screened": false,
+    "geometry": {
+      "height": 529,
+      "width": 602,
+      "x": 960,
+      "y": 390
+    },
+    "maximized": true,
+    "normal_geometry": {
+      "height": 529,
+      "width": 602,
+      "x": 960,
+      "y": 390
+    },
+    "qt": {
+      "__class__": "bytearray",
+      "__value__": "AdnQywADAAAAAAPAAAABhgAABhkAAAOWAAADwAAAAYYAAAYZAAADlgAAAAECAAAACgAAAAPAAAABhgAABhkAAAOW"
+    },
+    "screen": {
+      "depth": 32,
+      "device_pixel_ratio": 1.0,
+      "geometry_in_logical_pixels": {
+        "height": 1440,
+        "width": 2560,
+        "x": 0,
+        "y": 0
+      },
+      "index_in_screens_list": 1,
+      "manufacturer": "AOC",
+      "model": "Q27G4ZDP",
+      "name": "DP-1",
+      "serial": "",
+      "size_in_logical_pixels": {
+        "height": 1440,
+        "width": 2560
+      },
+      "virtual_geometry": {
+        "height": 2680,
+        "width": 2560,
+        "x": 0,
+        "y": 0
+      }
+    }
+  },
+  "geometry-of-main_window_geometry": {
+    "frame_geometry": {
+      "height": 684,
+      "width": 2538,
+      "x": 647,
+      "y": 26
+    },
+    "full_screened": false,
+    "geometry": {
+      "height": 684,
+      "width": 2538,
+      "x": 647,
+      "y": 26
+    },
+    "maximized": true,
+    "normal_geometry": {
+      "height": 1388,
+      "width": 2542,
+      "x": 647,
+      "y": 26
+    },
+    "qt": {
+      "__class__": "bytearray",
+      "__value__": "AdnQywADAAAAAAKHAAAAGgAADHAAAALFAAAChwAAABoAAAx0AAAFhQAAAAACAAAACgAAAAKHAAAAGgAADHAAAALF"
+    },
+    "screen": {
+      "depth": 32,
+      "device_pixel_ratio": 1.0,
+      "geometry_in_logical_pixels": {
+        "height": 1440,
+        "width": 2560,
+        "x": 0,
+        "y": 0
+      },
+      "index_in_screens_list": 0,
+      "manufacturer": "AOC",
+      "model": "Q27G4ZDP",
+      "name": "DP-1",
+      "serial": "",
+      "size_in_logical_pixels": {
+        "height": 1440,
+        "width": 2560
+      },
+      "virtual_geometry": {
+        "height": 2680,
+        "width": 2560,
+        "x": 0,
+        "y": 0
+      }
+    }
+  },
+  "geometry-of-rationalize-folders-geometry": {
+    "frame_geometry": {
+      "height": 506,
+      "width": 541,
+      "x": 0,
+      "y": 0
+    },
+    "full_screened": false,
+    "geometry": {
+      "height": 506,
+      "width": 541,
+      "x": 0,
+      "y": 0
+    },
+    "maximized": true,
+    "normal_geometry": {
+      "height": 506,
+      "width": 541,
+      "x": 0,
+      "y": 0
+    },
+    "qt": {
+      "__class__": "bytearray",
+      "__value__": "AdnQywADAAAAAAAAAAAAAAAAAhwAAAH5AAAAAAAAAAAAAAIcAAAB+QAAAAACAAAACgAAAAAAAAAAAAAAAhwAAAH5"
+    },
+    "screen": {
+      "depth": 32,
+      "device_pixel_ratio": 1.0,
+      "geometry_in_logical_pixels": {
+        "height": 1440,
+        "width": 2560,
+        "x": 0,
+        "y": 0
+      },
+      "index_in_screens_list": 0,
+      "manufacturer": "AOC",
+      "model": "Q27G4ZDP",
+      "name": "DP-1",
+      "serial": "",
+      "size_in_logical_pixels": {
+        "height": 1440,
+        "width": 2560
+      },
+      "virtual_geometry": {
+        "height": 2680,
+        "width": 2560,
+        "x": 0,
+        "y": 0
+      }
+    }
+  },
+  "geometry-of-toc_editor_window_geom": {
+    "frame_geometry": {
+      "height": 746,
+      "width": 1198,
+      "x": 0,
+      "y": 0
+    },
+    "full_screened": false,
+    "geometry": {
+      "height": 746,
+      "width": 1198,
+      "x": 0,
+      "y": 0
+    },
+    "maximized": true,
+    "normal_geometry": {
+      "height": 630,
+      "width": 950,
+      "x": 0,
+      "y": 0
+    },
+    "qt": {
+      "__class__": "bytearray",
+      "__value__": "AdnQywADAAAAAAAAAAAAAAAABK0AAALpAAAAAAAAAAAAAAO1AAACdQAAAAECAAAACgAAAAAAAAAAAAAABK0AAALp"
+    },
+    "screen": {
+      "depth": 32,
+      "device_pixel_ratio": 1.0,
+      "geometry_in_logical_pixels": {
+        "height": 1440,
+        "width": 2560,
+        "x": 0,
+        "y": 0
+      },
+      "index_in_screens_list": 1,
+      "manufacturer": "AOC",
+      "model": "Q27G4ZDP",
+      "name": "DP-1",
+      "serial": "",
+      "size_in_logical_pixels": {
+        "height": 1440,
+        "width": 2560
+      },
+      "virtual_geometry": {
+        "height": 2680,
+        "width": 2560,
+        "x": 0,
+        "y": 0
+      }
+    }
+  },
+  "html-editor-state": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAD9AAAAAAAAArcAAAIIAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAMAAAAUAGEAYwB0AGkAbwBuAF8AYgBhAHIBAAAAAP////8AAAAAAAAAAAAAABIAdABvAG8AbABzAF8AYgBhAHIBAAAA3f////8AAAAAAAAAAAAAAB4AaAB0AG0AbABfAGYAbwByAG0AYQB0AF8AYgBhAHIBAAABv/////8AAAAAAAAAAA=="
+  },
+  "main_window_state": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAD9AAAABAAAAAAAAAIwAAACTfwCAAAABfsAAAAkAGYAaQBsAGUAcwAtAGIAcgBvAHcAcwBlAHIALQBkAG8AYwBrAQAAAEMAAAFOAAAAXgD////7AAAAHgB0AG8AYwAtAHYAaQBlAHcAZQByAC0AZABvAGMAawEAAAGXAAAAXgAAAF4A////+wAAACAAdABlAHgAdAAtAHMAZQBhAHIAYwBoAC0AZABvAGMAawgAAAT4AAAAjQAAAJAA////+wAAACAAYwBoAGUAYwBrAHAAbwBpAG4AdABzAC0AZABvAGMAawEAAAH7AAAAlQAAAJUA////+wAAACYAcwBhAHYAZQBkAC0AcwBlAGEAcgBjAGgAZQBzAC0AZABvAGMAawgAAAAA/////wAAAl4A////AAAAAQAAARYAAAUJ/AIAAAAC+wAAABgAcAByAGUAdgBpAGUAdwAtAGQAbwBjAGsIAAAAQwAABQkAAABcAP////sAAAAaAGwAaQB2AGUALQBjAHMAcwAtAGQAbwBjAGsIAAAAAP////8AAABeAP///wAAAAIAAAnuAAAA2PwBAAAAAfsAAAAeAGMAaABlAGMAawAtAGIAbwBvAGsALQBkAG8AYwBrCAAAAAAAAAnuAAAAkAD///8AAAADAAAKAAAAAnD8AQAAAAH7AAAAHABpAG4AcwBwAGUAYwB0AG8AcgAtAGQAbwBjAGsIAAAAAAAACgAAAAA5AP///wAAB7QAAAJNAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAMAAAAUAGcAbABvAGIAYQBsAC0AYgBhAHIBAAAAAP////8AAAAAAAAAAAAAABIAdABvAG8AbABzAC0AYgBhAHIBAAABJv////8AAAAAAAAAAAAAABYAcABsAHUAZwBpAG4AcwAtAGIAYQByAAAAAAD/////AAAAAAAAAAA="
+  },
+  "recent-books": [
+    "/home/huyhoang/Calibre Library/Vong Ky Xuyen Ma Giap/Tu Tien_ Khi Nguoi Lam Mot Viec Den Cuc Han (127)/Tu Tien_ Khi Nguoi Lam Mot Viec Den Cuc Ha - Vong Ky Xuyen Ma Giap.epub",
+    "/home/huyhoang/Calibre Library/Toi Bach Dich O Nha/Ai Bao Han Tu Tien (129)/Ai Bao Han Tu Tien - Toi Bach Dich O Nha.epub",
+    "/home/huyhoang/Calibre Library/Toi Bach Dich O Nha/Ai Bao Han Tu Tien (128)/Ai Bao Han Tu Tien - Toi Bach Dich O Nha.epub",
+    "/home/huyhoang/Calibre Library/Ngon Quy Chinh Truyen/Su Huynh Ta Thuc Qua On Trong (126)/Su Huynh Ta Thuc Qua On Trong - Ngon Quy Chinh Truyen.epub",
+    "/home/huyhoang/Calibre Library/Phan No Dich O Tac/Ta Mo Phong Con Duong Truong Sinh (6)/Ta Mo Phong Con Duong Truong Sinh - Phan No Dich O Tac.epub",
+    "/home/huyhoang/Calibre Library/truyen.thichcode.net/Su Huynh A Su Huynh (11)/Su Huynh A Su Huynh - truyen.thichcode.net.epub",
+    "/home/huyhoang/Calibre Library/truyen.thichcode.net/Su Huynh A Su Huynh (10)/Su Huynh A Su Huynh - truyen.thichcode.net.epub",
+    "/home/huyhoang/Calibre Library/Than Khi Vo Thanh/Do nhi cho hoang, da co vi su! (9)/Do nhi cho hoang, da co vi su! - Than Khi Vo Thanh.epub",
+    "/home/huyhoang/Calibre Library/Than Khi Vo Thanh/Do Nhi Cho Hoang So, Vi Su O Day! (8)/Do Nhi Cho Hoang So, Vi Su O Day! - Than Khi Vo Thanh.epub",
+    "/home/huyhoang/Calibre Library/Phan No Dich O Tac/Ta Mo Phong Con Duong Truong Sinh (7)/Ta Mo Phong Con Duong Truong Sinh - Phan No Dich O Tac.epub"
+  ],
+  "remove_ncx": true,
+  "reports-ui-state": {},
+  "saved_seaches_state": {
+    "direction": "down",
+    "where": "current",
+    "wrap": true
+  },
+  "search-panel-visible": true,
+  "text-editor-state": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAD9AAAAAAAABgoAAAT8AAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAUAGEAYwB0AGkAbwBuAF8AYgBhAHIBAAAAAP////8AAAAAAAAAAAAAABIAdABvAG8AbABzAF8AYgBhAHIAAAAAAP////8AAAAAAAAAAA=="
+  },
+  "text_search_widget_state": {
+    "case_sensitive": false,
+    "dot_all": true,
+    "mode": "normal",
+    "where": "current"
+  },
+  "toc_edit_splitter_state": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAEAAAADAAABAAAAAiEAAAIIAP////8AAAAAAQE="
+  },
+  "toc_from_headings_prefer_title": false,
+  "toc_from_headings_remove_duplicates": true,
+  "xml-editor-state": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAD9AAAAAAAAB7QAAAGZAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAUAGEAYwB0AGkAbwBuAF8AYgBhAHIBAAAAAP////8AAAAAAAAAAAAAABIAdABvAG8AbABzAF8AYgBhAHIBAAAA3f////8AAAAAAAAAAA=="
+  }
+}

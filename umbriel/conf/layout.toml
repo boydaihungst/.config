@@ -1,0 +1,49 @@
+[layout]
+  mode                 = "scrolling"
+  gap                  = 6
+  extent_presets       = [0.333, 0.5, 1]
+  new_exits_fullscreen = [
+
+  ]                                       # "tiled", "floating", "pinned", "all", or an array such as ["tiled", "floating"]
+  client_maximize      = "column"         # or "edges"
+
+  # [layout.struts]
+  #   left   = 5
+  #   right  = 5
+  #   top    = 5
+  #   bottom = 5
+
+  [layout.scrolling]
+    # When default_extent_fraction is unset, applications choose their initial extent. Set window rules or leave it
+    default_extent_fraction   = 0.5
+    center_underfull_strip    = true
+    center_focused            = "never"
+    center_on_overview_select = false
+
+  [layout.dwindle]
+    preserve_split    = true
+    new_toward_cursor = false
+
+[[workspace]]
+  name   = "Term"
+  output = "DP-1"
+
+[[workspace]]
+  name   = "File"
+  output = "DP-1"
+
+[[workspace]]
+  name   = "Browser"
+  output = "DP-2"
+
+[[workspace]]
+  name   = "Chat"
+  output = "DP-2"
+
+[[workspace]]
+  name   = "EBook"
+  output = "DP-2"
+
+[[workspace]]
+  name   = "Game"
+  output = "DP-2"

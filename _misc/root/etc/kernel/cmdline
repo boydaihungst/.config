@@ -1,0 +1,1 @@
+root=UUID=b702a60f-0fb0-48d0-ad80-e34a4df44855 ro rootflags=subvol=swap_vol nvme_load=YES nowatchdog rw rd.luks.uuid=luks-3f2238db-1fe6-4b53-9a4e-0663f8f3b5d2 rhgb quite rd.driver.blacklist=nouveau,nova_core modprobe.blacklist=nouveau,nova_core nvidia_drm.modeset=1 gpiolib_acpi.ignore_interrupt=AMDI0030:00@4,AMDI0030:00@89 

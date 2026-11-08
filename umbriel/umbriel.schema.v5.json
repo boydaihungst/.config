@@ -1,0 +1,1776 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Umbriel Configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "animation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "beziers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": { "type": "number" }
+          },
+          "description": "Custom bezier curves mapping"
+        },
+        "border": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "curve": { "type": "string" },
+            "duration_ms": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            },
+            "effect": { "type": "string", "default": "" },
+            "enabled": { "type": "boolean", "default": true }
+          }
+        },
+        "curve": { "type": "string" },
+        "dialogs": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "curve": { "type": "string" },
+            "dim": {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 1.0,
+              "default": 0.3
+            },
+            "duration_ms": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000,
+              "default": 250
+            },
+            "enabled": { "type": "boolean", "default": true }
+          }
+        },
+        "dim_unfocused": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "curve": { "type": "string" },
+            "dim": {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 1.0,
+              "default": 0.0
+            },
+            "duration_ms": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000,
+              "default": 250
+            },
+            "effect": { "type": "string", "default": "" },
+            "enabled": { "type": "boolean", "default": false }
+          }
+        },
+        "duration_ms": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000,
+          "default": 250
+        },
+        "enabled": { "type": "boolean", "default": true },
+        "layers": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "curve": { "type": "string" },
+            "duration_ms": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000,
+              "default": 250
+            },
+            "effect": { "type": "string", "default": "" },
+            "enabled": { "type": "boolean", "default": false }
+          }
+        },
+        "overview": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "curve": { "type": "string" },
+            "duration_ms": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            },
+            "effect": { "type": "string", "default": "" },
+            "enabled": { "type": "boolean", "default": true },
+            "workspace_curve": { "type": "string" }
+          }
+        },
+        "scratchpad": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "blur": { "type": "boolean", "default": false },
+            "curve": { "type": "string" },
+            "dim": {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 1.0,
+              "default": 0.8
+            },
+            "duration_ms": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            },
+            "effect": { "type": "string", "default": "" },
+            "enabled": { "type": "boolean", "default": true }
+          }
+        },
+        "springs": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "damping": { "type": "number", "minimum": 0.01, "maximum": 5.0 },
+              "stiffness": {
+                "type": "number",
+                "minimum": 1.0,
+                "maximum": 10000.0
+              }
+            }
+          }
+        },
+        "windows_drag": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "coupling": {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 10000.0,
+              "default": 100.0
+            },
+            "damping": {
+              "type": "number",
+              "minimum": 1.0,
+              "maximum": 100.0,
+              "default": 6.5
+            },
+            "max_displacement_px": {
+              "type": "number",
+              "minimum": 1.0,
+              "maximum": 4000.0,
+              "default": 200.0
+            },
+            "physics": { "type": "boolean", "default": false },
+            "pointer_response": {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 10.0,
+              "default": 2.0
+            },
+            "settle_after_pause_s": {
+              "type": "number",
+              "minimum": 0.1,
+              "maximum": 5.0,
+              "default": 0.25
+            },
+            "stiffness": {
+              "type": "number",
+              "minimum": 1.0,
+              "maximum": 10000.0,
+              "default": 36.0
+            }
+          }
+        },
+        "windows_in": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "curve": { "type": "string" },
+            "duration_ms": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            },
+            "effect": { "type": "string", "default": "" },
+            "enabled": { "type": "boolean", "default": true },
+            "scale": {
+              "type": "number",
+              "minimum": 0.1,
+              "maximum": 1.0,
+              "default": 0.5
+            },
+            "style": {
+              "type": "string",
+              "enum": ["popin", "zoom", "slide", "fade", "none"],
+              "default": "popin"
+            }
+          }
+        },
+        "windows_move": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "curve": { "type": "string" },
+            "duration_ms": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            },
+            "effect": { "type": "string", "default": "" },
+            "enabled": { "type": "boolean", "default": true }
+          }
+        },
+        "windows_opacity": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "curve": { "type": "string" },
+            "duration_ms": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            },
+            "enabled": { "type": "boolean", "default": true }
+          }
+        },
+        "windows_out": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "curve": { "type": "string" },
+            "duration_ms": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            },
+            "effect": { "type": "string", "default": "" },
+            "enabled": { "type": "boolean", "default": true },
+            "scale": {
+              "type": "number",
+              "minimum": 0.1,
+              "maximum": 1.0,
+              "default": 0.8
+            },
+            "style": {
+              "type": "string",
+              "enum": ["fade", "slide", "popin", "zoom"],
+              "default": "popin"
+            }
+          }
+        },
+        "windows_resize": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "curve": { "type": "string" },
+            "duration_ms": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            },
+            "enabled": { "type": "boolean", "default": true }
+          }
+        },
+        "workspaces": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "curve": { "type": "string" },
+            "duration_ms": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            },
+            "effect": { "type": "string", "default": "" },
+            "enabled": { "type": "boolean", "default": true },
+            "style": {
+              "type": "string",
+              "enum": ["slide", "reveal"],
+              "default": "slide"
+            }
+          }
+        }
+      }
+    },
+    "appearance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "blur": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "brightness": {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 2.0,
+              "default": 0.9
+            },
+            "contrast": {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 2.0,
+              "default": 0.9
+            },
+            "enabled": { "type": "boolean", "default": true },
+            "noise": {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 1.0,
+              "default": 0.02
+            },
+            "optimized": { "type": "boolean", "default": true },
+            "passes": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 8,
+              "default": 2
+            },
+            "radius": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100,
+              "default": 5
+            },
+            "saturation": {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 2.0,
+              "default": 1.1
+            }
+          }
+        },
+        "border_width": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "default": 2
+        },
+        "corner_radius": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "default": 10
+        },
+        "drag_opacity": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "default": 0.75
+        },
+        "opaque_fullscreen": { "type": "boolean", "default": true },
+        "outer_border_width": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "default": 0
+        },
+        "prefer_no_csd": { "type": "boolean", "default": true },
+        "shadow": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "offset_x": {
+              "type": "integer",
+              "minimum": -200,
+              "maximum": 200,
+              "default": 2
+            },
+            "offset_y": {
+              "type": "integer",
+              "minimum": -200,
+              "maximum": 200,
+              "default": 2
+            },
+            "softness": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 200,
+              "default": 10
+            }
+          }
+        },
+        "tab_bar": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "corner_radius": {
+              "type": "integer",
+              "minimum": -1,
+              "maximum": 100,
+              "default": -1
+            },
+            "font": { "type": "string", "default": "sans 10" },
+            "gap": {
+              "type": "integer",
+              "minimum": -1,
+              "maximum": 500,
+              "default": -1
+            },
+            "height": {
+              "type": "integer",
+              "minimum": 2,
+              "maximum": 400,
+              "default": 24
+            },
+            "hide_when_single": { "type": "boolean", "default": false },
+            "max_tabs": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 64,
+              "default": 0
+            },
+            "overflow": {
+              "type": "string",
+              "enum": ["scroll", "shrink"],
+              "default": "scroll"
+            },
+            "padding": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 64,
+              "default": 8
+            },
+            "position": {
+              "type": "string",
+              "enum": ["top", "bottom", "left", "right"],
+              "default": "top"
+            },
+            "style": {
+              "type": "string",
+              "enum": ["titles", "indicator"],
+              "default": "titles"
+            },
+            "tab_gap": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 64,
+              "default": 2
+            },
+            "title_align": {
+              "type": "string",
+              "enum": ["left", "center", "right"],
+              "default": "center"
+            },
+            "title_format": { "type": "string", "default": "{title}" },
+            "visible": { "type": "boolean", "default": true }
+          }
+        },
+        "title_bar": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "button_background": { "type": "boolean", "default": true },
+            "button_corner_radius": {
+              "type": "integer",
+              "minimum": -1,
+              "maximum": 100,
+              "default": -1
+            },
+            "button_glyph": {
+              "type": "string",
+              "enum": ["always", "hover", "never"],
+              "default": "hover"
+            },
+            "button_position": {
+              "type": "string",
+              "enum": ["left", "right"],
+              "default": "right"
+            },
+            "buttons": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["minimize", "maximize", "close"]
+              },
+              "default": ["minimize", "maximize", "close"]
+            },
+            "font": { "type": "string", "default": "sans 10" },
+            "height": {
+              "type": "integer",
+              "minimum": 16,
+              "maximum": 128,
+              "default": 28
+            },
+            "mode": {
+              "type": "string",
+              "enum": ["forced", "off", "on", "negotiated"],
+              "default": "off"
+            }
+          }
+        }
+      }
+    },
+    "colors": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "accent_primary": { "type": "string", "default": "#7aa3ffff" },
+        "accent_secondary": { "type": "string", "default": "#f5c96bff" },
+        "backdrop": { "type": "string", "default": "#000000ff" },
+        "background": { "type": "string", "default": "#141419ff" },
+        "border": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "focused": { "type": "string", "default": "#7aa3ffff" },
+            "outer": { "type": "string", "default": "#1a1a1fff" },
+            "unfocused": { "type": "string", "default": "#292933ff" }
+          }
+        },
+        "error": { "type": "string", "default": "#ff6b6bff" },
+        "insert_hint": { "type": "string", "default": "#7fc8ff80" },
+        "overview": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "background_tint": { "type": "string", "default": "#10101430" },
+            "badge": { "type": "string", "default": "#7aa3ffff" },
+            "workspace_background": { "type": "string", "default": "#00000044" }
+          }
+        },
+        "shadow": { "type": "string", "default": "#0000007f" },
+        "tab_bar": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "active": { "type": "string", "default": "#7aa3ffff" },
+            "active_text": { "type": "string", "default": "#141419ff" },
+            "active_unfocused": { "type": "string", "default": "#292933ff" },
+            "active_unfocused_text": {
+              "type": "string",
+              "default": "#e8e8eaff"
+            },
+            "background": { "type": "string", "default": "#1a1a1fff" },
+            "text": { "type": "string", "default": "#8a8a92ff" },
+            "urgent": { "type": "string", "default": "#ff6b6bff" },
+            "urgent_text": { "type": "string", "default": "#141419ff" }
+          }
+        },
+        "text_muted": { "type": "string", "default": "#8a8a92ff" },
+        "text_primary": { "type": "string", "default": "#e8e8eaff" },
+        "title_bar": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "background": { "type": "string", "default": "#292933ff" },
+            "background_unfocused": {
+              "type": "string",
+              "default": "#1a1a1fff"
+            },
+            "close": { "type": "string", "default": "#ff6b6bff" },
+            "close_glyph": { "type": "string", "default": "#141419ff" },
+            "close_glyph_hover": { "type": "string", "default": "#141419ff" },
+            "maximize": { "type": "string", "default": "#7aa3ffff" },
+            "maximize_glyph": { "type": "string", "default": "#141419ff" },
+            "maximize_glyph_hover": {
+              "type": "string",
+              "default": "#141419ff"
+            },
+            "minimize": { "type": "string", "default": "#ffd166ff" },
+            "minimize_glyph": { "type": "string", "default": "#141419ff" },
+            "minimize_glyph_hover": {
+              "type": "string",
+              "default": "#141419ff"
+            },
+            "text": { "type": "string", "default": "#e8e8eaff" },
+            "text_unfocused": { "type": "string", "default": "#8a8a92ff" }
+          }
+        },
+        "warning": { "type": "string", "default": "#f5c96bff" }
+      }
+    },
+    "drm": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ignored_devices": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "ignored_pci_addresses": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "border": { "type": "string", "default": "" },
+        "cursor": { "type": "string", "default": "" },
+        "in_capture": { "type": "boolean", "default": false },
+        "max_fps": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 240,
+          "default": 0
+        },
+        "pool": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "choose": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "kind": {
+                "type": "string",
+                "enum": ["border", "window", "screen", "cursor"]
+              },
+              "selection": {
+                "type": "string",
+                "enum": ["unused_first", "round_robin", "random"],
+                "default": "unused_first"
+              }
+            }
+          }
+        },
+        "preset": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "animated": { "type": "boolean" },
+              "kind": {
+                "type": "string",
+                "enum": ["animation", "border", "window", "screen", "cursor"]
+              },
+              "light": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "intensity": {
+                    "type": "number",
+                    "minimum": 0.0,
+                    "maximum": 4.0
+                  },
+                  "spread": { "type": "integer", "minimum": 1, "maximum": 256 },
+                  "threshold": {
+                    "type": "number",
+                    "minimum": 0.0,
+                    "maximum": 1.0
+                  }
+                }
+              },
+              "overlay": { "type": "string" },
+              "padding": { "type": "integer", "minimum": 0, "maximum": 1024 },
+              "palette": { "type": "boolean" },
+              "radius": { "type": "integer", "minimum": 0, "maximum": 4096 },
+              "shader": { "type": "string" },
+              "speed": { "type": "number", "minimum": 0.0, "maximum": 10.0 }
+            }
+          }
+        },
+        "screen": { "type": "string", "default": "" },
+        "window": { "type": "string", "default": "" }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "events": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "lid_close": { "type": "string", "default": "" },
+        "lid_open": { "type": "string", "default": "" }
+      }
+    },
+    "general": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "attach_modal_dialogs": { "type": "boolean", "default": true },
+        "autostart": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": []
+        },
+        "focus_on_activate": { "type": "boolean", "default": false },
+        "honor_restored_maximize": { "type": "boolean", "default": false },
+        "mod_key": {
+          "type": "string",
+          "enum": ["Super", "Alt", "Ctrl", "Shift"]
+        },
+        "nvidia_sync_workaround": { "type": "boolean", "default": true },
+        "show_cheatsheet": { "type": "boolean", "default": true },
+        "xwayland": { "type": "boolean", "default": true },
+        "xwayland_native_resolution": { "type": "boolean", "default": false },
+        "xwayland_primary_output": { "type": "string", "default": "" },
+        "xwayland_xsettings": { "type": "boolean", "default": true }
+      }
+    },
+    "hot_corners": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bottom_left": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "action": { "type": "string" },
+            "delay_ms": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10000,
+              "default": 500
+            },
+            "enabled": { "type": "boolean", "default": false }
+          }
+        },
+        "bottom_right": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "action": { "type": "string" },
+            "delay_ms": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10000,
+              "default": 500
+            },
+            "enabled": { "type": "boolean", "default": false }
+          }
+        },
+        "top_left": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "action": { "type": "string" },
+            "delay_ms": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10000,
+              "default": 500
+            },
+            "enabled": { "type": "boolean", "default": false }
+          }
+        },
+        "top_right": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "action": { "type": "string" },
+            "delay_ms": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10000,
+              "default": 500
+            },
+            "enabled": { "type": "boolean", "default": false }
+          }
+        }
+      }
+    },
+    "include": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "files": { "type": "array", "items": { "type": "string" } },
+        "optional": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "files": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "client_window_drag": { "type": "boolean", "default": true },
+        "cursor": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "follows_focus": { "type": "boolean", "default": false },
+            "hardware_cursor": { "type": "boolean", "default": true },
+            "hide_timeout_ms": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 3600000,
+              "default": 0
+            },
+            "hide_when_typing": { "type": "boolean", "default": false },
+            "size": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 512,
+              "default": 24
+            },
+            "theme": { "type": "string", "default": "" }
+          }
+        },
+        "device": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "accel_profile": {
+                "type": "string",
+                "enum": ["flat", "adaptive"]
+              },
+              "click_method": {
+                "type": "string",
+                "enum": ["button_areas", "clickfinger"]
+              },
+              "disable_while_typing": { "type": "boolean" },
+              "drag_lock": {
+                "type": "string",
+                "enum": ["off", "timeout", "sticky"]
+              },
+              "enabled": { "type": "boolean" },
+              "layout": { "type": "string" },
+              "left_handed": { "type": "boolean" },
+              "model": { "type": "string" },
+              "name": { "type": "string" },
+              "natural_scroll": { "type": "boolean" },
+              "options": { "type": "string" },
+              "repeat_delay": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 10000
+              },
+              "repeat_rate": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000
+              },
+              "scroll_button": {
+                "type": "string",
+                "enum": [
+                  "MouseLeft",
+                  "MouseRight",
+                  "MouseMiddle",
+                  "MouseBack",
+                  "MouseForward"
+                ]
+              },
+              "scroll_button_lock": { "type": "boolean" },
+              "scroll_method": {
+                "type": "string",
+                "enum": ["two_finger", "edge", "none"]
+              },
+              "sensitivity": {
+                "type": "number",
+                "minimum": -1.0,
+                "maximum": 1.0
+              },
+              "tap": { "type": "boolean" },
+              "tap_and_drag": { "type": "boolean" },
+              "tap_button_map": {
+                "type": "string",
+                "enum": ["left_right_middle", "left_middle_right"]
+              },
+              "variant": { "type": "string" }
+            }
+          }
+        },
+        "drag_edge_scroll": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "delay_ms": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10000,
+              "default": 100
+            },
+            "enabled": { "type": "boolean", "default": true },
+            "max_speed": {
+              "type": "number",
+              "minimum": 1.0,
+              "maximum": 100000.0,
+              "default": 1500.0
+            },
+            "trigger_zone": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000,
+              "default": 30
+            }
+          }
+        },
+        "focus": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "follows_mouse": { "type": "boolean", "default": false },
+            "follows_mouse_max_scroll": {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 100.0
+            },
+            "hover_raises": { "type": "boolean", "default": true }
+          }
+        },
+        "keyboard": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "layout": { "type": "string", "default": "" },
+            "model": { "type": "string", "default": "" },
+            "numlock_toggle": { "type": "boolean", "default": false },
+            "options": { "type": "string", "default": "" },
+            "repeat_delay": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10000,
+              "default": 600
+            },
+            "repeat_rate": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1000,
+              "default": 25
+            },
+            "track_layout": {
+              "type": "string",
+              "enum": ["global", "window"],
+              "default": "global"
+            },
+            "variant": { "type": "string", "default": "" }
+          }
+        },
+        "middle_click_paste": { "type": "boolean", "default": true },
+        "mod_right_double_click": {
+          "type": "string",
+          "enum": ["none", "maximize"],
+          "default": "none"
+        },
+        "mouse": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "accel_profile": { "type": "string", "enum": ["flat", "adaptive"] },
+            "left_handed": { "type": "boolean" },
+            "natural_scroll": { "type": "boolean" },
+            "scroll_button": {
+              "type": "string",
+              "enum": [
+                "MouseLeft",
+                "MouseRight",
+                "MouseMiddle",
+                "MouseBack",
+                "MouseForward"
+              ]
+            },
+            "scroll_button_lock": { "type": "boolean" },
+            "scroll_wheel_step": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000,
+              "default": 60
+            },
+            "sensitivity": {
+              "type": "number",
+              "minimum": -1.0,
+              "maximum": 1.0,
+              "default": 0.0
+            }
+          }
+        },
+        "tablet": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "calibration_matrix": {
+              "type": "array",
+              "items": { "type": "number" }
+            },
+            "enabled": { "type": "boolean", "default": true },
+            "left_handed": { "type": "boolean", "default": false },
+            "map_to_focused_output": { "type": "boolean", "default": false },
+            "map_to_focused_window": { "type": "boolean", "default": false },
+            "map_to_output": { "type": "string", "default": "" }
+          }
+        },
+        "touch": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "map_to_output": { "type": "string", "default": "" }
+          }
+        },
+        "touchpad": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "accel_profile": { "type": "string", "enum": ["flat", "adaptive"] },
+            "click_method": {
+              "type": "string",
+              "enum": ["button_areas", "clickfinger"]
+            },
+            "disable_on_external_mouse": { "type": "boolean" },
+            "disable_while_typing": { "type": "boolean" },
+            "drag_lock": {
+              "type": "string",
+              "enum": ["off", "timeout", "sticky"]
+            },
+            "enabled": { "type": "boolean", "default": true },
+            "left_handed": { "type": "boolean" },
+            "natural_scroll": { "type": "boolean" },
+            "scroll_factor": {
+              "oneOf": [
+                { "type": "number", "minimum": 0.1, "maximum": 10.0 },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "horizontal": {
+                      "type": "number",
+                      "minimum": 0.1,
+                      "maximum": 10.0
+                    },
+                    "vertical": {
+                      "type": "number",
+                      "minimum": 0.1,
+                      "maximum": 10.0
+                    }
+                  }
+                }
+              ]
+            },
+            "scroll_method": {
+              "type": "string",
+              "enum": ["two_finger", "edge", "none"]
+            },
+            "sensitivity": {
+              "type": "number",
+              "minimum": -1.0,
+              "maximum": 1.0
+            },
+            "tap": { "type": "boolean", "default": true },
+            "tap_and_drag": { "type": "boolean" },
+            "tap_button_map": {
+              "type": "string",
+              "enum": ["left_right_middle", "left_middle_right"]
+            }
+          }
+        },
+        "window_drag_toggle": {
+          "type": "string",
+          "enum": ["none", "floating", "pinned"],
+          "default": "none"
+        }
+      }
+    },
+    "keybinds": {
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          { "type": "string" },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "action": { "type": "string" },
+              "allow_when_inhibited": { "type": "boolean", "default": false },
+              "allow_when_locked": { "type": "boolean", "default": false },
+              "cooldown_ms": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 3600000,
+                "default": 0
+              },
+              "repeat": { "type": "boolean", "default": true },
+              "submap": { "type": "string", "default": "" }
+            }
+          }
+        ]
+      }
+    },
+    "layer_rule": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "blur": { "type": "boolean" },
+          "blur_ignore_alpha": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "blur_optimized": { "type": "boolean" },
+          "blur_popups": { "type": "boolean" },
+          "match": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "at_startup": { "type": "boolean" },
+              "layer": {
+                "type": "string",
+                "enum": ["background", "bottom", "top", "overlay"]
+              },
+              "namespace": {
+                "oneOf": [
+                  { "type": "string" },
+                  { "type": "array", "items": { "type": "string" } }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "layout": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "client_maximize": {
+          "type": "string",
+          "enum": ["column", "edges"],
+          "default": "column"
+        },
+        "dwindle": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "new_toward_cursor": { "type": "boolean", "default": false },
+            "preserve_split": { "type": "boolean", "default": false }
+          }
+        },
+        "extent_presets": {
+          "type": "array",
+          "items": { "type": "number", "minimum": 0.1, "maximum": 4.0 },
+          "default": [0.3333333333333333, 0.5, 0.6666666666666666]
+        },
+        "gap": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 500,
+          "default": 8
+        },
+        "master": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "default_width_fraction": {
+              "type": "number",
+              "minimum": 0.1,
+              "maximum": 0.9,
+              "default": 0.55
+            },
+            "new_becomes_master": { "type": "boolean", "default": false },
+            "new_on_top": { "type": "boolean", "default": true },
+            "position": {
+              "type": "string",
+              "enum": ["left", "right", "center"],
+              "default": "left"
+            }
+          }
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["scrolling", "dwindle", "master", "stacking"],
+          "default": "scrolling"
+        },
+        "new_exits_fullscreen": {
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": ["tiled", "floating", "pinned", "all"]
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["tiled", "floating", "pinned", "all"]
+              }
+            }
+          ],
+          "default": []
+        },
+        "scrolling": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "center_focused": {
+              "type": "string",
+              "enum": ["never", "always", "on_overflow"],
+              "default": "never"
+            },
+            "center_on_overview_select": {
+              "type": "boolean",
+              "default": false
+            },
+            "center_underfull_strip": { "type": "boolean", "default": true },
+            "default_extent_fraction": {
+              "type": "number",
+              "minimum": 0.1,
+              "maximum": 4.0
+            }
+          }
+        },
+        "stacking": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "drop_zones": { "type": "boolean", "default": true }
+          }
+        },
+        "struts": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "bottom": {
+              "type": "integer",
+              "minimum": -65535,
+              "maximum": 65535,
+              "default": 0
+            },
+            "left": {
+              "type": "integer",
+              "minimum": -65535,
+              "maximum": 65535,
+              "default": 0
+            },
+            "right": {
+              "type": "integer",
+              "minimum": -65535,
+              "maximum": 65535,
+              "default": 0
+            },
+            "top": {
+              "type": "integer",
+              "minimum": -65535,
+              "maximum": 65535,
+              "default": 0
+            }
+          }
+        },
+        "tabs": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "default_display": {
+              "type": "string",
+              "enum": ["normal", "tabbed"],
+              "default": "normal"
+            },
+            "middle_click_closes": { "type": "boolean", "default": false },
+            "new_tab_position": {
+              "type": "string",
+              "enum": ["end", "after_active"],
+              "default": "end"
+            },
+            "scroll_switches_tabs": { "type": "boolean", "default": true },
+            "wrap_focus": { "type": "boolean", "default": true }
+          }
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "bit_depth": {
+            "type": "integer",
+            "minimum": 8,
+            "maximum": 10,
+            "default": 8
+          },
+          "cyclic_workspaces": { "type": "boolean", "default": false },
+          "direct_scanout": { "type": "boolean", "default": true },
+          "enabled": { "type": "boolean", "default": true },
+          "focus_at_startup": { "type": "boolean", "default": false },
+          "hdr": {
+            "type": "string",
+            "enum": ["off", "on", "auto", "fullscreen"],
+            "default": "off"
+          },
+          "layout": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "scrolling": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "default_extent_fraction": {
+                    "type": "number",
+                    "minimum": 0.1,
+                    "maximum": 4.0
+                  }
+                }
+              }
+            }
+          },
+          "min_workspaces": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 64,
+            "default": 1
+          },
+          "mode": { "type": "string" },
+          "position": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": -100000,
+              "maximum": 100000
+            }
+          },
+          "scale": { "type": "number", "minimum": 0.25, "maximum": 4.0 },
+          "screen_effect": { "type": "string" },
+          "sdr_transfer": {
+            "type": "string",
+            "enum": ["gamma22", "srgb"],
+            "default": "gamma22"
+          },
+          "sdr_white": {
+            "type": "number",
+            "minimum": 80.0,
+            "maximum": 1000.0,
+            "default": 203.0
+          },
+          "tearing": { "type": "boolean", "default": false },
+          "transform": {
+            "type": "string",
+            "enum": [
+              "normal",
+              "90",
+              "180",
+              "270",
+              "flipped",
+              "flipped-90",
+              "flipped-180",
+              "flipped-270"
+            ]
+          },
+          "vrr": {
+            "type": "string",
+            "enum": ["disabled", "always", "fullscreen"],
+            "default": "disabled"
+          },
+          "workspace_axis": {
+            "type": "string",
+            "enum": ["vertical", "horizontal"],
+            "default": "vertical"
+          },
+          "workspaces": {
+            "oneOf": [
+              { "type": "integer", "minimum": 1, "maximum": 64 },
+              { "type": "array", "items": { "type": "string" } }
+            ],
+            "default": "dynamic"
+          }
+        }
+      }
+    },
+    "overview": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "background_blur": { "type": "boolean", "default": true },
+        "scroll_factor_horizontal": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 10.0,
+          "default": 1.0
+        },
+        "scroll_factor_vertical": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 10.0,
+          "default": 1.0
+        },
+        "shortcut_keys": { "type": "string", "default": "1234567890" },
+        "shortcuts": { "type": "boolean", "default": true },
+        "workspace_wallpaper": { "type": "boolean", "default": true },
+        "zoom": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 0.75,
+          "default": 0.5
+        }
+      }
+    },
+    "scratchpad": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "proportional_size": { "type": "boolean", "default": false },
+          "spawn_when_empty": { "type": "string", "default": "" }
+        }
+      }
+    },
+    "screencast": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "disable_dynamic_confirmation": { "type": "boolean", "default": false }
+      }
+    },
+    "security_context_rule": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "allow_globals": {
+            "type": "array",
+            "items": { "type": "string" },
+            "default": []
+          },
+          "match": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "app_id": {
+                "oneOf": [
+                  { "type": "string" },
+                  { "type": "array", "items": { "type": "string" } }
+                ]
+              },
+              "sandbox_engine": {
+                "oneOf": [
+                  { "type": "string" },
+                  { "type": "array", "items": { "type": "string" } }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "window_rule": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "allow_shortcuts_inhibit": { "type": "boolean" },
+          "attach_to_parent": { "type": "boolean" },
+          "background_render": { "type": "boolean" },
+          "block_capture": { "type": "boolean" },
+          "blur": { "type": "boolean" },
+          "blur_ignore_alpha": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0
+          },
+          "blur_optimized": { "type": "boolean" },
+          "blur_popups": { "type": "boolean" },
+          "border_color_focused": { "type": "string" },
+          "border_color_outer": { "type": "string" },
+          "border_color_unfocused": { "type": "string" },
+          "border_effect": { "type": "string" },
+          "border_width": { "type": "integer", "minimum": 0, "maximum": 100 },
+          "confine_pointer": { "type": "boolean" },
+          "corner_radius": { "type": "integer", "minimum": 0, "maximum": 100 },
+          "default_column_display": {
+            "type": "string",
+            "enum": ["normal", "tabbed"]
+          },
+          "default_floating": { "type": "boolean" },
+          "default_floating_size": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "height": { "type": "number", "minimum": 0.1, "maximum": 1.0 },
+              "width": { "type": "number", "minimum": 0.1, "maximum": 1.0 }
+            }
+          },
+          "default_floating_size_px": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "height": { "type": "integer", "minimum": 1, "maximum": 100000 },
+              "width": { "type": "integer", "minimum": 1, "maximum": 100000 }
+            }
+          },
+          "default_focused": { "type": "boolean" },
+          "default_fullscreen": { "type": "boolean" },
+          "default_maximize": { "type": "boolean" },
+          "default_maximize_to_edges": { "type": "boolean" },
+          "default_output": { "type": "string" },
+          "default_pinned": { "type": "boolean" },
+          "default_position": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "anchor": {
+                "type": "string",
+                "enum": [
+                  "top_left",
+                  "top_right",
+                  "bottom_left",
+                  "bottom_right",
+                  "top",
+                  "bottom",
+                  "left",
+                  "right",
+                  "center"
+                ],
+                "default": "center"
+              },
+              "x": { "type": "integer", "minimum": -100000, "maximum": 100000 },
+              "y": { "type": "integer", "minimum": -100000, "maximum": 100000 }
+            }
+          },
+          "default_scratchpad": { "type": "string" },
+          "default_scrolling_column": { "type": "string" },
+          "default_scrolling_column_order": {
+            "type": "integer",
+            "minimum": -2147483648,
+            "maximum": 2147483647
+          },
+          "default_scrolling_extent": {
+            "type": "number",
+            "minimum": 0.1,
+            "maximum": 4.0
+          },
+          "default_scrolling_extent_px": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100000
+          },
+          "default_workspace": {
+            "oneOf": [
+              { "type": "integer", "minimum": 1, "maximum": 64 },
+              { "type": "string" }
+            ]
+          },
+          "focus_on_activate": { "type": "boolean" },
+          "hdr": {
+            "type": "string",
+            "enum": ["off", "on", "auto", "fullscreen"]
+          },
+          "match": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "app_id": {
+                "oneOf": [
+                  { "type": "string" },
+                  { "type": "array", "items": { "type": "string" } }
+                ]
+              },
+              "at_startup": { "type": "boolean" },
+              "content_type": {
+                "type": "string",
+                "enum": ["none", "photo", "video", "game"]
+              },
+              "is_alone": { "type": "boolean" },
+              "is_cast_target": { "type": "boolean" },
+              "is_dialog": { "type": "boolean" },
+              "is_floating": { "type": "boolean" },
+              "is_focused": { "type": "boolean" },
+              "is_maximized_to_edges": { "type": "boolean" },
+              "is_only_window": { "type": "boolean" },
+              "is_pinned": { "type": "boolean" },
+              "is_scratchpad": { "type": "boolean" },
+              "title": {
+                "oneOf": [
+                  { "type": "string" },
+                  { "type": "array", "items": { "type": "string" } }
+                ]
+              },
+              "xdg_tag": {
+                "oneOf": [
+                  { "type": "string" },
+                  { "type": "array", "items": { "type": "string" } }
+                ]
+              }
+            }
+          },
+          "opacity": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+          "outer_border_width": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "shadow": { "type": "boolean" },
+          "tearing": { "type": "boolean" },
+          "title_bar": {
+            "type": "string",
+            "enum": ["on", "negotiated", "forced", "off"]
+          },
+          "title_bar_buttons": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["minimize", "maximize", "close"]
+            }
+          },
+          "vrr": {
+            "type": "string",
+            "enum": ["disabled", "always", "fullscreen"]
+          },
+          "window_effect": { "type": "string" }
+        }
+      }
+    },
+    "workspace": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "index": { "type": "integer", "minimum": 1, "maximum": 64 },
+          "layout": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "client_maximize": {
+                "type": "string",
+                "enum": ["column", "edges"]
+              },
+              "dwindle": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "new_toward_cursor": { "type": "boolean" },
+                  "preserve_split": { "type": "boolean" }
+                }
+              },
+              "extent_presets": {
+                "type": "array",
+                "items": { "type": "number", "minimum": 0.1, "maximum": 4.0 }
+              },
+              "gap": { "type": "integer", "minimum": 0, "maximum": 500 },
+              "master": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "default_width_fraction": {
+                    "type": "number",
+                    "minimum": 0.1,
+                    "maximum": 0.9
+                  },
+                  "new_becomes_master": { "type": "boolean" },
+                  "new_on_top": { "type": "boolean" },
+                  "position": {
+                    "type": "string",
+                    "enum": ["left", "right", "center"]
+                  }
+                }
+              },
+              "mode": {
+                "type": "string",
+                "enum": ["scrolling", "dwindle", "master", "stacking"]
+              },
+              "new_exits_fullscreen": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "enum": ["tiled", "floating", "pinned", "all"]
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": ["tiled", "floating", "pinned", "all"]
+                    }
+                  }
+                ]
+              },
+              "scrolling": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "center_focused": {
+                    "type": "string",
+                    "enum": ["never", "always", "on_overflow"]
+                  },
+                  "center_on_overview_select": { "type": "boolean" },
+                  "center_underfull_strip": { "type": "boolean" },
+                  "default_extent_fraction": {
+                    "type": "number",
+                    "minimum": 0.1,
+                    "maximum": 4.0
+                  }
+                }
+              },
+              "stacking": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "drop_zones": { "type": "boolean" }
+                }
+              },
+              "struts": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "bottom": {
+                    "type": "integer",
+                    "minimum": -65535,
+                    "maximum": 65535
+                  },
+                  "left": {
+                    "type": "integer",
+                    "minimum": -65535,
+                    "maximum": 65535
+                  },
+                  "right": {
+                    "type": "integer",
+                    "minimum": -65535,
+                    "maximum": 65535
+                  },
+                  "top": {
+                    "type": "integer",
+                    "minimum": -65535,
+                    "maximum": 65535
+                  }
+                }
+              },
+              "tabs": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "default_display": {
+                    "type": "string",
+                    "enum": ["normal", "tabbed"]
+                  },
+                  "middle_click_closes": { "type": "boolean" },
+                  "new_tab_position": {
+                    "type": "string",
+                    "enum": ["end", "after_active"]
+                  },
+                  "scroll_switches_tabs": { "type": "boolean" },
+                  "wrap_focus": { "type": "boolean" }
+                }
+              }
+            }
+          },
+          "name": { "type": "string" },
+          "output": { "type": "string" }
+        }
+      }
+    },
+    "workspaces": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "back_and_forth": { "type": "boolean", "default": false },
+        "empty_above": { "type": "boolean", "default": false }
+      }
+    }
+  }
+}

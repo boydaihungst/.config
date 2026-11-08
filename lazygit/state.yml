@@ -1,29 +1,39 @@
 lastupdatecheck: 1693140212
 recentrepos:
-    - /home/huyhoang/.local/share/nvim/lazy/lspsaga.nvim
+    - /home/huyhoang/git/fuse-archive.yazi
     - /home/huyhoang/git/config
+    - /home/huyhoang/git/BS2PRO-Controller
+    - /home/huyhoang/git/AnimeSubtitles
+    - /home/huyhoang/git/plugins
+    - /home/huyhoang/git/yamb.yazi
+    - /home/huyhoang/git/enhance-piper.yazi
     - /home/huyhoang/git/gvfs.yazi
+    - /home/huyhoang/git/save-clipboard-to-file.yazi
+    - /home/huyhoang/git/smart-truncate.yazi
+    - /home/huyhoang/git/compress.yazi
+    - /home/huyhoang/git/simple-tag.yazi
     - /home/huyhoang/git/mediainfo.yazi
+    - /home/huyhoang/git/relative-motions.yazi
+    - /home/huyhoang/git/pref-by-location.yazi
+    - /home/huyhoang/git/file-extra-metadata.yazi
+    - /home/huyhoang/git/thunar-bulk-rename.yazi
+    - /home/huyhoang/git/restore.yazi
+    - /home/huyhoang/.config/yazi/plugins/mediainfo.yazi
+    - /home/huyhoang/git/palworld-server-docker
+    - /home/huyhoang/.local/share/nvim/site/pack/core/opt/lspsaga.nvim
+    - /home/huyhoang/git/xdg-desktop-portal-termfilechooser-boydaihungst-git
+    - /home/huyhoang/git/projects.yazi
+    - /home/huyhoang/git/jellyfin
+    - /home/huyhoang/git/assfonts
+    - /home/huyhoang/git/subtitle-signs-transfer
+    - /home/huyhoang/git/rapoo_battery
+    - /home/huyhoang/git/mason-registry
+    - /home/huyhoang/git/learn-csharp
     - /home/huyhoang/git/org.freedesktop.FileManager1.common
     - /home/huyhoang/git/xdg-desktop-portal-termfilechooser
-    - /home/huyhoang/git/pref-by-location.yazi
-    - /home/huyhoang/git/thunar-bulk-rename.yazi
-    - /home/huyhoang/git/subtitle-signs-transfer
-    - /home/huyhoang/git/restore.yazi
-    - /home/huyhoang/git/enhance-piper.yazi
-    - /home/huyhoang/git/fuse-archive.yazi
-    - /home/huyhoang/git/hover-after-moved.yazi
-    - /home/huyhoang/git/smart-truncate.yazi
-    - /home/huyhoang/git/simple-tag.yazi
-    - /home/huyhoang/git/file-extra-metadata.yazi
-    - /home/huyhoang/git/compress.yazi
-    - /home/huyhoang/git/relative-motions.yazi
-    - /home/huyhoang/git/save-clipboard-to-file.yazi
     - /home/huyhoang/git/shonenmagazine-downloader
-    - /home/huyhoang/git/xdg-desktop-portal-termfilechooser-boydaihungst-git
 startuppopupversion: 5
-didshowhunkstaginghint: true
-lastversion: 0.60.0
+lastversion: 0.66.2
 customcommandshistory:
     - 'TS: Ep 62'
 hidecommandlog: false

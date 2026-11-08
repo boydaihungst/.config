@@ -1,0 +1,460 @@
+{
+	"file" : "../aegisub-3.4.2/libaegisub/common/option.cpp",
+	"func" : "Options",
+	"line" : 179,
+	"message" : "New Options object",
+	"sec" : 12922,
+	"section" : "agi/options",
+	"severity" : 4,
+	"usec" : 427193954
+}{
+	"file" : "../aegisub-3.4.2/src/utils.cpp",
+	"func" : "operator()",
+	"line" : 167,
+	"message" : "cleaning \"/home/huyhoang/.aegisub/log/*.json\"",
+	"sec" : 12922,
+	"section" : "utils/clean_cache",
+	"severity" : 4,
+	"usec" : 427210576
+}{
+	"file" : "../aegisub-3.4.2/src/utils.cpp",
+	"func" : "operator()",
+	"line" : 178,
+	"message" : "cache does not need cleaning (maxsize=10485760, cursize=136696, maxfiles=100, numfiles=12), exiting",
+	"sec" : 12922,
+	"section" : "utils/clean_cache",
+	"severity" : 4,
+	"usec" : 427362552
+}{
+	"file" : "../aegisub-3.4.2/libaegisub/common/io.cpp",
+	"func" : "Open",
+	"line" : 28,
+	"message" : "\"/home/huyhoang/.aegisub/config.json\"",
+	"sec" : 12922,
+	"section" : "agi/io/open/file",
+	"severity" : 4,
+	"usec" : 427735369
+}{
+	"file" : "../aegisub-3.4.2/src/command/command.cpp",
+	"func" : "init_builtin_commands",
+	"line" : 81,
+	"message" : "Populating command map",
+	"sec" : 12922,
+	"section" : "command/init",
+	"severity" : 4,
+	"usec" : 428362271
+}{
+	"file" : "../aegisub-3.4.2/libaegisub/common/hotkey.cpp",
+	"func" : "Hotkey",
+	"line" : 92,
+	"message" : "Generating hotkeys.",
+	"sec" : 12922,
+	"section" : "hotkey/init",
+	"severity" : 4,
+	"usec" : 428459631
+}{
+	"file" : "../aegisub-3.4.2/libaegisub/common/io.cpp",
+	"func" : "Open",
+	"line" : 28,
+	"message" : "\"/home/huyhoang/.aegisub/hotkey.json\"",
+	"sec" : 12922,
+	"section" : "agi/io/open/file",
+	"severity" : 4,
+	"usec" : 428465567
+}{
+	"file" : "../aegisub-3.4.2/libaegisub/common/mru.cpp",
+	"func" : "MRUManager",
+	"line" : 69,
+	"message" : "Loading MRU List",
+	"sec" : 12922,
+	"section" : "agi/mru",
+	"severity" : 4,
+	"usec" : 428934556
+}{
+	"file" : "../aegisub-3.4.2/libaegisub/common/io.cpp",
+	"func" : "Open",
+	"line" : 28,
+	"message" : "\"/home/huyhoang/.aegisub/mru.json\"",
+	"sec" : 12922,
+	"section" : "agi/io/open/file",
+	"severity" : 4,
+	"usec" : 428945242
+}{
+	"file" : "../aegisub-3.4.2/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "libass API version: 0x1704000",
+	"sec" : 12922,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 437863160
+}{
+	"file" : "../aegisub-3.4.2/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "libass source: tarball: 0.17.4",
+	"sec" : 12922,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 437886906
+}{
+	"file" : "../aegisub-3.4.2/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Raster: FreeType 2.14.3",
+	"sec" : 12922,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 437960520
+}{
+	"file" : "../aegisub-3.4.2/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Shaper: FriBidi 1.0.16 (SIMPLE) HarfBuzz-ng 12.3.2 (COMPLEX)",
+	"sec" : 12922,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 438220541
+}{
+	"file" : "../aegisub-3.4.2/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Initialized",
+	"sec" : 12922,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 438226478
+}{
+	"file" : "../aegisub-3.4.2/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Using font provider fontconfig",
+	"sec" : 12922,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 484835687
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 100,
+	"message" : "Entering FrameMain constructor",
+	"sec" : 12922,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 902158840
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 111,
+	"message" : "Initializing context controls",
+	"sec" : 12922,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 902171901
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 118,
+	"message" : "Initializing context frames",
+	"sec" : 12922,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 902174275
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 122,
+	"message" : "Apply saved Maximized state",
+	"sec" : 12922,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 902175463
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 125,
+	"message" : "Initialize toolbar",
+	"sec" : 12922,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 902177837
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 130,
+	"message" : "Initialize menu bar",
+	"sec" : 12922,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 906487788
+}{
+	"file" : "../aegisub-3.4.2/src/menu.cpp",
+	"func" : "process_menu_item",
+	"line" : 392,
+	"message" : "Skipping command app/updates: 'app/updates' is not a valid command name",
+	"sec" : 12922,
+	"section" : "menu/command/not_found",
+	"severity" : 2,
+	"usec" : 912208268
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 133,
+	"message" : "Create status bar",
+	"sec" : 12922,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 912617892
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 136,
+	"message" : "Set icon",
+	"sec" : 12922,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 920153775
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 145,
+	"message" : "Create views and inner main window controls",
+	"sec" : 12922,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 920260634
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 185,
+	"message" : "Create background panel",
+	"sec" : 12922,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 920265383
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 188,
+	"message" : "Create subtitles grid",
+	"sec" : 12922,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 920293878
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 191,
+	"message" : "Create video box",
+	"sec" : 12922,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 931446321
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 194,
+	"message" : "Create audio box",
+	"sec" : 12923,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 12514952
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 197,
+	"message" : "Create subtitle editing box",
+	"sec" : 12923,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 17391252
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 200,
+	"message" : "Arrange main sizers",
+	"sec" : 12923,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 35628399
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 213,
+	"message" : "Perform layout",
+	"sec" : 12923,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 35662831
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 215,
+	"message" : "Leaving InitContents",
+	"sec" : 12923,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 38290357
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 149,
+	"message" : "Set up drag/drop target",
+	"sec" : 12923,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 38295106
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 152,
+	"message" : "Load default file",
+	"sec" : 12923,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 38301043
+}{
+	"file" : "../aegisub-3.4.2/libaegisub/common/io.cpp",
+	"func" : "Open",
+	"line" : 28,
+	"message" : "\"/home/huyhoang/.aegisub/catalog/Default.sty\"",
+	"sec" : 12923,
+	"section" : "agi/io/open/file",
+	"severity" : 4,
+	"usec" : 38329539
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 155,
+	"message" : "Display main window",
+	"sec" : 12923,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 39211713
+}{
+	"file" : "../aegisub-3.4.2/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 160,
+	"message" : "Leaving FrameMain constructor",
+	"sec" : 12923,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 48940566
+}{
+	"file" : "../aegisub-3.4.2/src/utils.cpp",
+	"func" : "operator()",
+	"line" : 167,
+	"message" : "cleaning \"/home/huyhoang/.aegisub/autosave/*.AUTOSAVE.ass\"",
+	"sec" : 12923,
+	"section" : "utils/clean_cache",
+	"severity" : 4,
+	"usec" : 48964312
+}{
+	"file" : "../aegisub-3.4.2/src/utils.cpp",
+	"func" : "operator()",
+	"line" : 178,
+	"message" : "cache does not need cleaning (maxsize=104857600, cursize=0, maxfiles=1000, numfiles=0), exiting",
+	"sec" : 12923,
+	"section" : "utils/clean_cache",
+	"severity" : 4,
+	"usec" : 48977373
+}{
+	"file" : "../aegisub-3.4.2/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 12928,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 854134371
+}{
+	"file" : "../aegisub-3.4.2/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 12928,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 854141495
+}{
+	"file" : "../aegisub-3.4.2/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 12928,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 854143869
+}{
+	"file" : "../aegisub-3.4.2/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 12928,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 854146244
+}{
+	"file" : "../aegisub-3.4.2/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 12928,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 854147431
+}{
+	"file" : "../aegisub-3.4.2/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 12928,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 854149806
+}{
+	"file" : "../aegisub-3.4.2/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 12928,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 885880780
+}{
+	"file" : "../aegisub-3.4.2/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 12928,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 885886716
+}{
+	"file" : "../aegisub-3.4.2/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 12928,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 886532615
+}{
+	"file" : "../aegisub-3.4.2/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 12928,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 886537364
+}{
+	"file" : "../aegisub-3.4.2/libaegisub/common/io.cpp",
+	"func" : "Save",
+	"line" : 43,
+	"message" : "\"/home/huyhoang/.aegisub/config.json\"",
+	"sec" : 13240,
+	"section" : "agi/io/save/file",
+	"severity" : 4,
+	"usec" : 648704997
+}

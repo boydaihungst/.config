@@ -1,0 +1,117 @@
+{
+  "document": {
+    "block_prefix": "\n",
+    "block_suffix": "\n",
+    "color": "#e9f2fd",
+    "margin": 2
+  },
+  "block_quote": {
+    "indent": 1,
+    "indent_token": "│ ",
+    "color": "#e9f2fd"
+  },
+  "list": {
+    "level_indent": 2
+  },
+  "heading": {
+    "block_suffix": "\n",
+    "color": "#ffe0cd",
+    "bold": true
+  },
+  "h1": {
+    "prefix": " ",
+    "suffix": " ",
+    "color": "#000000",
+    "background_color": "#ffe0cd",
+    "bold": true
+  },
+  "h2": {
+    "prefix": "## "
+  },
+  "h3": {
+    "prefix": "### "
+  },
+  "h4": {
+    "prefix": "#### "
+  },
+  "h5": {
+    "prefix": "##### "
+  },
+  "h6": {
+    "prefix": "###### ",
+    "color": "#ffffff",
+    "bold": false
+  },
+  "strikethrough": {
+    "crossed_out": true
+  },
+  "emph": {
+    "italic": true
+  },
+  "strong": {
+    "bold": true
+  },
+  "hr": {
+    "color": "#ffb785",
+    "format": "\n--------\n"
+  },
+  "item": {
+    "block_prefix": "• "
+  },
+  "enumeration": {
+    "block_prefix": ". "
+  },
+  "task": {
+    "ticked": "[✓] ",
+    "unticked": "[ ] "
+  },
+  "link": {
+    "color": "#ffc6b1",
+    "underline": true
+  },
+  "link_text": {
+    "color": "#ffe0cd",
+    "bold": true
+  },
+  "image": {
+    "color": "#ffc6b1",
+    "underline": true
+  },
+  "image_text": {
+    "color": "#ffb785"
+  },
+  "code": {
+    "prefix": " ",
+    "suffix": " ",
+    "color": "#ffc6b1",
+    "background_color": "#000000"
+  },
+  "code_block": {
+    "color": "#e9f2fd",
+    "margin": 2,
+    "chroma": {
+      "text": { "color": "#e9f2fd" },
+      "error": {
+        "color": "#e9f2fd",
+        "background_color": "#ff9290"
+      },
+      "comment": { "color": "#ffb785" },
+      "keyword": { "color": "#ffe0cd" },
+      "keyword_reserved": { "color": "#ffc6b1" },
+      "keyword_type": { "color": "#ffc6b1" },
+      "operator": { "color": "#ffc6b1" },
+      "punctuation": { "color": "#e9f2fd" },
+      "name": { "color": "#e9f2fd" },
+      "name_builtin": { "color": "#ffffff" },
+      "name_function": { "color": "#ffe0cd" },
+      "literal_number": { "color": "#fff0eb" },
+      "literal_string": { "color": "#ffc6b1" },
+      "generic_deleted": { "color": "#ff9290" },
+      "generic_inserted": { "color": "#fff0eb" },
+      "background": { "background_color": "#000000" }
+    }
+  },
+  "definition_description": {
+    "block_prefix": "\n🠶 "
+  }
+}

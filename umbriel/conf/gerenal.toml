@@ -1,0 +1,33 @@
+#:schema ../umbriel.schema.v5.json
+# ==============================================================================
+# General
+# Optional session examples. XWayland support is enabled by default.
+# https://docs.noctalia.dev/umbriel/configuration/#general
+#
+
+[general]
+  autostart = [
+    "noctalia",
+    "shikane --config ~/.config/shikane/config_umbriel.toml --timeout 2"
+  ]
+
+  # NOTE: Use brightness backend ddcutil
+  # , 'ddcutil --sn="AWBS39A000221" setvcp d6 1 && /home/huyhoang/git/Monitor_Mode_AOC/monitor_mode -l 70'
+  # "dbus-update-activation-environment --all",
+  xwayland                   = true
+  mod_key                    = "Super"
+  # Sharp X11 apps and games on scaled outputs; they see physical resolutions.
+  xwayland_native_resolution = true
+  # Umbriel announces the X11 interface scale and cursor theme through XSETTINGS.
+  # Turn this off to run your own manager, such as xsettingsd.
+  xwayland_xsettings         = true
+  # Select the monitor X11 games use as primary, using a connector or monitor identity from `umbriel outputs`.
+  # xwayland_primary_output = ""
+  # NVIDIA outputs without explicit synchronization wait for GPU rendering by default.
+  # Disable this workaround if it causes stuttering or frame drops.
+  # nvidia_sync_workaround = false
+  show_cheatsheet            = false
+  # Modal dialogs hang on their parent window and follow it. Turn this off to keep them ordinary windows.
+  focus_on_activate          = true
+  attach_modal_dialogs       = true
+  honor_restored_maximize    = true

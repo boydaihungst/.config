@@ -6,12 +6,12 @@
   keymap = [
     { on = "<Esc>", run = "escape", desc = "Exit visual mode, clear selected, or cancel search" },
     { on = "<F9>", run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"', desc = "Toggle media previewer metadata" },
-    { on = "+", run = "plugin mediainfo -- toggle-metadata", desc = "Toggle media previewer metadata" },
-    { on = "=", run = "plugin mediainfo -- toggle-preview", desc = "Toggle media previewer image" },
-    { on = "-", run = "plugin mediainfo -- reset", desc = "Toggle media previewer image" },
-    { on = "-", run = "plugin vcs-files", desc = "plugin vcs-files" },
+    # { on = "+", run = "plugin mediainfo -- toggle-metadata", desc = "Toggle media previewer metadata" },
+    # { on = "=", run = "plugin mediainfo -- toggle-preview", desc = "Toggle media previewer image" },
+    # { on = "-", run = "plugin mediainfo -- reset", desc = "Toggle media previewer image" },
+    # { on = "-", run = "plugin vcs-files", desc = "plugin vcs-files" },
     { on = "q", run = [
-      "plugin fuse-archive -- unmount",
+      # "plugin fuse-archive -- unmount",
       "quit",
     ], desc = "Exit but save project" },
     { on = "Q", run = "quit --no-cwd-file", desc = "Exit the process without writing cwd-file" },
@@ -83,7 +83,10 @@
     #     ''', desc = "Rename selected file(s) via vimv" },
     { on = ";", run = "shell --interactive", desc = "Run a shell command" },
     { on = ":", run = "shell --block --interactive", desc = "Run a shell command (block until finishes)" },
-    { on = "<Backspace>", run = ["hidden toggle", "plugin pref-by-location -- save"], desc = "Toggle the visibility of hidden files" },
+    { on = "<Backspace>", run = [
+      "hidden toggle",
+      "plugin pref-by-location -- save"
+    ], desc = "Toggle the visibility of hidden files" },
     { on = "s", run = "search --via=fd", desc = "Search files by name using fd" },
     { on = "S", run = "search --via=rg", desc = "Search files by content using ripgrep-all" },
     { on = "<C-s>", run = "search none", desc = "Cancel the ongoing search" },
@@ -93,13 +96,34 @@
     { on = "I", run = "plugin toggle-pane min-preview", desc = "Toggle preview" },
 
     # Linemode (u = UI)
-    { on = ["u", "s"], run = ["linemode size", "plugin pref-by-location -- save"], desc = "Show Size" },
-    { on = ["u", "S"], run = ["linemode size_and_mtime", "plugin pref-by-location -- save"], desc = "Show Size and Modified time" },
-    { on = ["u", "c"], run = ["linemode btime", "plugin pref-by-location -- save"], desc = "Show Created time" },
-    { on = ["u", "m"], run = ["linemode mtime", "plugin pref-by-location -- save"], desc = "Show Modified time" },
-    { on = ["u", "o"], run = ["linemode owner", "plugin pref-by-location -- save"], desc = "Show Owner" },
-    { on = ["u", "p"], run = ["linemode permissions", "plugin pref-by-location -- save"], desc = "Show Permissions" },
-    { on = ["u", "n"], run = ["linemode none", "plugin pref-by-location -- save"], desc = "Hide linemode" },
+    { on = ["u", "s"], run = [
+      "linemode size",
+      "plugin pref-by-location -- save"
+    ], desc = "Show Size" },
+    { on = ["u", "S"], run = [
+      "linemode size_and_mtime",
+      "plugin pref-by-location -- save"
+    ], desc = "Show Size and Modified time" },
+    { on = ["u", "c"], run = [
+      "linemode btime",
+      "plugin pref-by-location -- save"
+    ], desc = "Show Created time" },
+    { on = ["u", "m"], run = [
+      "linemode mtime",
+      "plugin pref-by-location -- save"
+    ], desc = "Show Modified time" },
+    { on = ["u", "o"], run = [
+      "linemode owner",
+      "plugin pref-by-location -- save"
+    ], desc = "Show Owner" },
+    { on = ["u", "p"], run = [
+      "linemode permissions",
+      "plugin pref-by-location -- save"
+    ], desc = "Show Permissions" },
+    { on = ["u", "n"], run = [
+      "linemode none",
+      "plugin pref-by-location -- save"
+    ], desc = "Hide linemode" },
 
     # Copy, Yank, Paste, Remove Files
     { on = ["y", "y"], run = [
@@ -148,18 +172,60 @@
     { on = ["o", "t"], run = "plugin pref-by-location -- toggle", desc = "Toggle auto-save preferences" },
     { on = ["o", "d"], run = "plugin pref-by-location -- disable", desc = "Disable auto-save preferences" },
     { on = ["o", "r"], run = "plugin pref-by-location -- reset", desc = "Reset preference of cwd" },
-    { on = ["o", "a"], run = ["sort alphabetical --reverse=no", "plugin pref-by-location -- save"], desc = "Sort alphabetically" },
-    { on = ["o", "A"], run = ["sort alphabetical --reverse", "plugin pref-by-location -- save"], desc = "Sort alphabetically (reverse)" },
-    { on = ["o", "c"], run = ["sort btime --reverse=no", "linemode btime", "plugin pref-by-location -- save"], desc = "Sort by created time" },
-    { on = ["o", "C"], run = ["sort btime --reverse", "linemode btime", "plugin pref-by-location -- save"], desc = "Sort by created time (reverse)" },
-    { on = ["o", "e"], run = ["sort extension --reverse=no", "plugin pref-by-location -- save"], desc = "Sort by extension" },
-    { on = ["o", "E"], run = ["sort extension --reverse", "plugin pref-by-location -- save"], desc = "Sort by extension (reverse)" },
-    { on = ["o", "m"], run = ["sort mtime --reverse=no", "linemode mtime", "plugin pref-by-location -- save"], desc = "Sort by modified time" },
-    { on = ["o", "M"], run = ["sort mtime --reverse", "linemode mtime", "plugin pref-by-location -- save"], desc = "Sort by modified time (reverse)" },
-    { on = ["o", "n"], run = ["sort natural --reverse=no", "plugin pref-by-location -- save"], desc = "Sort naturally" },
-    { on = ["o", "N"], run = ["sort natural --reverse", "plugin pref-by-location -- save"], desc = "Sort naturally (reverse)" },
-    { on = ["o", "s"], run = ["sort size --reverse=no", "linemode size", "plugin pref-by-location -- save"], desc = "Sort by size" },
-    { on = ["o", "S"], run = ["sort size --reverse", "linemode size", "plugin pref-by-location -- save"], desc = "Sort by size (reverse)" },
+    { on = ["o", "a"], run = [
+      "sort alphabetical --reverse=no",
+      "plugin pref-by-location -- save"
+    ], desc = "Sort alphabetically" },
+    { on = ["o", "A"], run = [
+      "sort alphabetical --reverse",
+      "plugin pref-by-location -- save"
+    ], desc = "Sort alphabetically (reverse)" },
+    { on = ["o", "c"], run = [
+      "sort btime --reverse=no",
+      "linemode btime",
+      "plugin pref-by-location -- save"
+    ], desc = "Sort by created time" },
+    { on = ["o", "C"], run = [
+      "sort btime --reverse",
+      "linemode btime",
+      "plugin pref-by-location -- save"
+    ], desc = "Sort by created time (reverse)" },
+    { on = ["o", "e"], run = [
+      "sort extension --reverse=no",
+      "plugin pref-by-location -- save"
+    ], desc = "Sort by extension" },
+    { on = ["o", "E"], run = [
+      "sort extension --reverse",
+      "plugin pref-by-location -- save"
+    ], desc = "Sort by extension (reverse)" },
+    { on = ["o", "m"], run = [
+      "sort mtime --reverse=no",
+      "linemode mtime",
+      "plugin pref-by-location -- save"
+    ], desc = "Sort by modified time" },
+    { on = ["o", "M"], run = [
+      "sort mtime --reverse",
+      "linemode mtime",
+      "plugin pref-by-location -- save"
+    ], desc = "Sort by modified time (reverse)" },
+    { on = ["o", "n"], run = [
+      "sort natural --reverse=no",
+      "plugin pref-by-location -- save"
+    ], desc = "Sort naturally" },
+    { on = ["o", "N"], run = [
+      "sort natural --reverse",
+      "plugin pref-by-location -- save"
+    ], desc = "Sort naturally (reverse)" },
+    { on = ["o", "s"], run = [
+      "sort size --reverse=no",
+      "linemode size",
+      "plugin pref-by-location -- save"
+    ], desc = "Sort by size" },
+    { on = ["o", "S"], run = [
+      "sort size --reverse",
+      "linemode size",
+      "plugin pref-by-location -- save"
+    ], desc = "Sort by size (reverse)" },
 
     # Goto
     { on = ["g", "r"], run = "cd /", desc = "cd /" },
@@ -195,37 +261,44 @@
     { on = "w", run = "tasks:show", desc = "Show task manager" },
 
     # Chmod
-    # { on = [ "-" ], run = 'plugin chmod', desc = "Change chmod" },
-    # { on = [ "+" ], run = 'plugin chmod', desc = "Change chmod" },
+    { on = ["-", "r"], run = "shell --block -- chmod -r %s", desc = "chmod -r" },
+    { on = ["-", "w"], run = "shell --block -- chmod -w %s", desc = "chmod -w" },
+    { on = ["-", "x"], run = "shell --block -- chmod -x %s", desc = "chmod -x" },
+    { on = ["-", "X"], run = "shell --block -- chmod -X %s", desc = "chmod -X" },
+
+    { on = ["=", "r"], run = "shell --block -- chmod +r %s", desc = "chmod +r" },
+    { on = ["=", "w"], run = "shell --block -- chmod +w %s", desc = "chmod +w" },
+    { on = ["=", "x"], run = "shell --block -- chmod +x %s", desc = "chmod +x" },
+    { on = ["=", "X"], run = "shell --block -- chmod +X %s", desc = "chmod +X" },
     ### User
-    # { on = ["-", "X"], run = 'shell --block chmod u-X %s', desc = "chmod u-X" },
-    # { on = ["-", "r"], run = 'shell --block chmod u-r %s', desc = "chmod u-r" },
-    # { on = ["-", "s"], run = 'shell --block chmod u-s %s', desc = "chmod u-s" },
-    # { on = ["-", "t"], run = 'shell --block chmod u-t %s', desc = "chmod u-t" },
-    # { on = ["-", "w"], run = 'shell --block chmod u-w %s', desc = "chmod u-w" },
-    # { on = ["-", "x"], run = 'shell --block chmod u-x %s', desc = "chmod u-x" },
-    #
-    # { on = ["+", "X"], run = 'shell --block chmod u+X %s', desc = "chmod u+X" },
-    # { on = ["+", "r"], run = 'shell --block chmod u+r %s', desc = "chmod u+r" },
-    # { on = ["+", "s"], run = 'shell --block chmod u+s %s', desc = "chmod u+s" },
-    # { on = ["+", "t"], run = 'shell --block chmod u+t %s', desc = "chmod u+t" },
-    # { on = ["+", "w"], run = 'shell --block chmod u+w %s', desc = "chmod u+w" },
-    # { on = ["+", "x"], run = 'shell --block chmod u+x %s', desc = "chmod u+x" },
+    { on = ["-", "u", "X"], run = "shell --block -- chmod u-X %s", desc = "chmod u-X" },
+    { on = ["-", "u", "r"], run = "shell --block -- chmod u-r %s", desc = "chmod u-r" },
+    { on = ["-", "u", "s"], run = "shell --block -- chmod u-s %s", desc = "chmod u-s" },
+    { on = ["-", "u", "t"], run = "shell --block -- chmod u-t %s", desc = "chmod u-t" },
+    { on = ["-", "u", "w"], run = "shell --block -- chmod u-w %s", desc = "chmod u-w" },
+    { on = ["-", "u", "x"], run = "shell --block -- chmod u-x %s", desc = "chmod u-x" },
+
+    { on = ["=", "u", "X"], run = "shell --block -- chmod u+X %s", desc = "chmod u+X" },
+    { on = ["=", "u", "r"], run = "shell --block -- chmod u+r %s", desc = "chmod u+r" },
+    { on = ["=", "u", "s"], run = "shell --block -- chmod u+s %s", desc = "chmod u+s" },
+    { on = ["=", "u", "t"], run = "shell --block -- chmod u+t %s", desc = "chmod u+t" },
+    { on = ["=", "u", "w"], run = "shell --block -- chmod u+w %s", desc = "chmod u+w" },
+    { on = ["=", "u", "x"], run = "shell --block -- chmod u+x %s", desc = "chmod u+x" },
 
     ### group
-    # { on = ["-", "g", "X"], run = 'shell --block chmod g-X %s', desc = "chmod g-X" },
-    # { on = ["-", "g", "r"], run = 'shell --block chmod g-r %s', desc = "chmod g-r" },
-    # { on = ["-", "g", "s"], run = 'shell --block chmod g-s %s', desc = "chmod g-s" },
-    # { on = ["-", "g", "t"], run = 'shell --block chmod g-t %s', desc = "chmod g-t" },
-    # { on = ["-", "g", "w"], run = 'shell --block chmod g-w %s', desc = "chmod g-w" },
-    # { on = ["-", "g", "x"], run = 'shell --block chmod g-x %s', desc = "chmod g-x" },
-    #
-    # { on = ["+", "g", "X"], run = 'shell --block chmod g+X %s', desc = "chmod g+X" },
-    # { on = ["+", "g", "r"], run = 'shell --block chmod g+r %s', desc = "chmod g+r" },
-    # { on = ["+", "g", "s"], run = 'shell --block chmod g+s %s', desc = "chmod g+s" },
-    # { on = ["+", "g", "t"], run = 'shell --block chmod g+t %s', desc = "chmod g+t" },
-    # { on = ["+", "g", "w"], run = 'shell --block chmod g+w %s', desc = "chmod g+w" },
-    # { on = ["+", "g", "x"], run = 'shell --block chmod g+x %s', desc = "chmod g+x" },
+    { on = ["-", "g", "X"], run = "shell --block -- chmod g-X %s", desc = "chmod g-X" },
+    { on = ["-", "g", "r"], run = "shell --block -- chmod g-r %s", desc = "chmod g-r" },
+    { on = ["-", "g", "s"], run = "shell --block -- chmod g-s %s", desc = "chmod g-s" },
+    { on = ["-", "g", "t"], run = "shell --block -- chmod g-t %s", desc = "chmod g-t" },
+    { on = ["-", "g", "w"], run = "shell --block -- chmod g-w %s", desc = "chmod g-w" },
+    { on = ["-", "g", "x"], run = "shell --block -- chmod g-x %s", desc = "chmod g-x" },
+
+    { on = ["=", "g", "X"], run = "shell --block -- chmod g+X %s", desc = "chmod g+X" },
+    { on = ["=", "g", "r"], run = "shell --block -- chmod g+r %s", desc = "chmod g+r" },
+    { on = ["=", "g", "s"], run = "shell --block -- chmod g+s %s", desc = "chmod g+s" },
+    { on = ["=", "g", "t"], run = "shell --block -- chmod g+t %s", desc = "chmod g+t" },
+    { on = ["=", "g", "w"], run = "shell --block -- chmod g+w %s", desc = "chmod g+w" },
+    { on = ["=", "g", "x"], run = "shell --block -- chmod g+x %s", desc = "chmod g+x" },
 
     # Projects plugin
     { on = ["P", "s"], run = "plugin projects -- save", desc = "Save current project" },
@@ -466,7 +539,12 @@
     { on = "c", run = "delete --cut --insert", desc = "Cut selected characters, and enter insert mode" },
     { on = "C", run = ["delete --cut --insert", "move eol"], desc = "Cut until EOL, and enter insert mode" },
     { on = "s", run = ["delete --cut --insert", "move 1"], desc = "Cut current character, and enter insert mode" },
-    { on = "S", run = ["move bol", "delete --cut --insert", "move eol", "kill bol"], desc = "Cut from BOL until EOL, and enter insert mode" },
+    { on = "S", run = [
+      "move bol",
+      "delete --cut --insert",
+      "move eol",
+      "kill bol"
+    ], desc = "Cut from BOL until EOL, and enter insert mode" },
     { on = "x", run = ["delete --cut", "move 1 --in-operating"], desc = "Cut current character" },
     { on = "y", run = "yank", desc = "Copy selected characters" },
     { on = "p", run = "paste", desc = "Paste copied characters after the cursor" },

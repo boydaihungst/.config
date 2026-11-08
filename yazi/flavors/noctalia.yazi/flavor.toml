@@ -1,0 +1,134 @@
+# : Manager [[[
+
+[mgr]
+  cwd = { fg = "#e9f2fd" }
+
+  # Find
+  find_keyword  = { fg = "#ff9290", bold = true, italic = true, underline = true }
+  find_position = { fg = "#ff9290", bold = true, italic = true }
+
+  # Marker
+  marker_copied   = { fg = "#010000", bg = "#010000" }
+  marker_cut      = { fg = "#010000", bg = "#010000" }
+  marker_marked   = { fg = "#ff9290", bg = "#ff9290" }
+  marker_selected = { fg = "#ffc6b1", bg = "#ffc6b1" }
+
+  # Count
+  count_copied   = { fg = "#ffc6b1", bg = "#010000" }
+  count_cut      = { fg = "#ffc6b1", bg = "#010000" }
+  count_selected = { fg = "#000000", bg = "#ffc6b1" }
+
+  # Border
+  border_style = { fg = "#ffe0cd" }
+
+  # : ]]]
+
+  # : Status [[[
+
+[status]
+  overall   = { fg = "#ffe0cd" }
+  sep_left  = { open = "", close = "" }
+  sep_right = { open = "", close = "" }
+
+  # Progress
+  progress_label  = { bold = true }
+  progress_normal = { fg = "#ffe0cd", bg = "#000000" }
+  progress_error  = { fg = "#ff9290", bg = "#000000" }
+
+  # Permissions
+  perm_type  = { fg = "#ffc6b1" }
+  perm_write = { fg = "#ffc6b1" }
+  perm_exec  = { fg = "#ff9290" }
+  perm_read  = { fg = "#010000" }
+  perm_sep   = { fg = "#140500" }
+
+  # : ]]]
+
+  # : Mode [[[
+
+[mode]
+  normal_main = { bg = "#ffe0cd", fg = "#000000", bold = true }
+  normal_alt  = { bg = "#000000", fg = "#e9f2fd" }
+
+  select_main = { bg = "#ffc6b1", fg = "#000000", bold = true }
+  select_alt  = { bg = "#000000", fg = "#e9f2fd" }
+
+  unset_main = { bg = "#ffc6b1", fg = "#000000", bold = true }
+  unset_alt  = { bg = "#000000", fg = "#e9f2fd" }
+
+  # : ]]]
+
+  # : Input [[[
+
+[input]
+  border   = { fg = "#ffe0cd" }
+  title    = {}
+  value    = { fg = "#e9f2fd" }
+  selected = { reversed = true }
+
+  # : ]]]
+
+  # : Tabs [[[
+
+[tabs]
+  active    = { fg = "#000000", bold = true, bg = "#ffe0cd" }
+  inactive  = { fg = "#ffc6b1", bg = "#000000" }
+  sep_inner = { open = "", close = "" }
+
+  # : ]]]
+
+  # : Completion [[[
+
+[cmp]
+  border = { fg = "#ffe0cd", bg = "#000000" }
+
+  # : ]]]
+
+  # : Tasks [[[
+
+[tasks]
+  border  = { fg = "#ffe0cd" }
+  title   = {}
+  hovered = { fg = "#010000", underline = true }
+
+  # : ]]]
+
+  # : Which [[[
+
+[which]
+  cols            = 3
+  mask            = { bg = "#000000" }
+  cand            = { fg = "#ffe0cd" }
+  rest            = { fg = "#000000" }
+  desc            = { fg = "#e9f2fd" }
+  separator       = " ▶ "
+  separator_style = { fg = "#e9f2fd" }
+
+  # : ]]]
+
+  # : Spotter [[[
+
+[spot]
+  border   = { fg = "#ffe0cd" }
+  title    = { fg = "#ffe0cd" }
+  tbl_col  = { fg = "#e9f2fd" }
+  tbl_cell = { fg = "#e9f2fd", bg = "#000000" }
+
+  # : ]]]
+
+  # : Help [[[
+
+[help]
+  on      = { fg = "#e9f2fd" }
+  run     = { fg = "#e9f2fd" }
+  hovered = { reversed = true, bold = true }
+  footer  = { fg = "#000000", bg = "#ffc6b1" }
+
+  # : ]]]
+
+  # : Notify [[[
+
+[notify]
+  title_info  = { fg = "#ffc6b1" }
+  title_warn  = { fg = "#ffe0cd" }
+  title_error = { fg = "#ff9290" }

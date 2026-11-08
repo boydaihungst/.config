@@ -1,0 +1,5293 @@
+{
+	"file" : "../aegisub-9999/libaegisub/common/option.cpp",
+	"func" : "Options",
+	"line" : 179,
+	"message" : "New Options object",
+	"sec" : 17023,
+	"section" : "agi/options",
+	"severity" : 4,
+	"usec" : 312999314
+}{
+	"file" : "../aegisub-9999/src/utils.cpp",
+	"func" : "operator()",
+	"line" : 175,
+	"message" : "cleaning \"/home/huyhoang/.aegisub/log/*.json\"",
+	"sec" : 17023,
+	"section" : "utils/clean_cache",
+	"severity" : 4,
+	"usec" : 313006438
+}{
+	"file" : "../aegisub-9999/src/utils.cpp",
+	"func" : "operator()",
+	"line" : 186,
+	"message" : "cache does not need cleaning (maxsize=10485760, cursize=422326, maxfiles=100, numfiles=26), exiting",
+	"sec" : 17023,
+	"section" : "utils/clean_cache",
+	"severity" : 4,
+	"usec" : 313249837
+}{
+	"file" : "../aegisub-9999/libaegisub/common/io.cpp",
+	"func" : "Open",
+	"line" : 28,
+	"message" : "\"/home/huyhoang/.aegisub/config.json\"",
+	"sec" : 17023,
+	"section" : "agi/io/open/file",
+	"severity" : 4,
+	"usec" : 313537167
+}{
+	"file" : "../aegisub-9999/src/command/command.cpp",
+	"func" : "init_builtin_commands",
+	"line" : 94,
+	"message" : "Populating command map",
+	"sec" : 17023,
+	"section" : "command/init",
+	"severity" : 4,
+	"usec" : 314198501
+}{
+	"file" : "../aegisub-9999/libaegisub/common/hotkey.cpp",
+	"func" : "Hotkey",
+	"line" : 92,
+	"message" : "Generating hotkeys.",
+	"sec" : 17023,
+	"section" : "hotkey/init",
+	"severity" : 4,
+	"usec" : 314298235
+}{
+	"file" : "../aegisub-9999/libaegisub/common/io.cpp",
+	"func" : "Open",
+	"line" : 28,
+	"message" : "\"/home/huyhoang/.aegisub/hotkey.json\"",
+	"sec" : 17023,
+	"section" : "agi/io/open/file",
+	"severity" : 4,
+	"usec" : 314304172
+}{
+	"file" : "../aegisub-9999/libaegisub/common/mru.cpp",
+	"func" : "MRUManager",
+	"line" : 69,
+	"message" : "Loading MRU List",
+	"sec" : 17023,
+	"section" : "agi/mru",
+	"severity" : 4,
+	"usec" : 314687674
+}{
+	"file" : "../aegisub-9999/libaegisub/common/io.cpp",
+	"func" : "Open",
+	"line" : 28,
+	"message" : "\"/home/huyhoang/.aegisub/mru.json\"",
+	"sec" : 17023,
+	"section" : "agi/io/open/file",
+	"severity" : 4,
+	"usec" : 314693610
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "libass API version: 0x1704000",
+	"sec" : 17023,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 323672075
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "libass source: tarball: 0.17.4",
+	"sec" : 17023,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 323697009
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Raster: FreeType 2.14.3",
+	"sec" : 17023,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 323770622
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Shaper: FriBidi 1.0.16 (SIMPLE) HarfBuzz-ng 12.3.2 (COMPLEX)",
+	"sec" : 17023,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 323962967
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Initialized",
+	"sec" : 17023,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 323967716
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Using font provider fontconfig",
+	"sec" : 17023,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 443537310
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 100,
+	"message" : "Entering FrameMain constructor",
+	"sec" : 17037,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 939398024
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 113,
+	"message" : "Initializing context controls",
+	"sec" : 17037,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 939427707
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 120,
+	"message" : "Initializing context frames",
+	"sec" : 17037,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 939431269
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 124,
+	"message" : "Apply saved Maximized state",
+	"sec" : 17037,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 939433644
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 127,
+	"message" : "Initialize toolbar",
+	"sec" : 17037,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 939434831
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 132,
+	"message" : "Initialize menu bar",
+	"sec" : 17037,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 948285066
+}{
+	"file" : "../aegisub-9999/src/menu.cpp",
+	"func" : "process_menu_item",
+	"line" : 392,
+	"message" : "Skipping command app/updates: 'app/updates' is not a valid command name",
+	"sec" : 17037,
+	"section" : "menu/command/not_found",
+	"severity" : 2,
+	"usec" : 964905080
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 135,
+	"message" : "Create status bar",
+	"sec" : 17037,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 965568788
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 138,
+	"message" : "Set icon",
+	"sec" : 17037,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 973583155
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 147,
+	"message" : "Create views and inner main window controls",
+	"sec" : 17037,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 973681702
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 187,
+	"message" : "Create background panel",
+	"sec" : 17037,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 973686451
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 190,
+	"message" : "Create subtitles grid",
+	"sec" : 17037,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 973714946
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 193,
+	"message" : "Create video box",
+	"sec" : 17037,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 983228890
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 196,
+	"message" : "Create audio box",
+	"sec" : 17038,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 78388505
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 199,
+	"message" : "Create subtitle editing box",
+	"sec" : 17038,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 88347691
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 202,
+	"message" : "Arrange main sizers",
+	"sec" : 17038,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 114115956
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 215,
+	"message" : "Perform layout",
+	"sec" : 17038,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 114161074
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 217,
+	"message" : "Leaving InitContents",
+	"sec" : 17038,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 117844120
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 151,
+	"message" : "Set up drag/drop target",
+	"sec" : 17038,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 117851244
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 154,
+	"message" : "Load default file",
+	"sec" : 17038,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 117859555
+}{
+	"file" : "../aegisub-9999/libaegisub/common/io.cpp",
+	"func" : "Open",
+	"line" : 28,
+	"message" : "\"/home/huyhoang/.aegisub/catalog/Default.sty\"",
+	"sec" : 17038,
+	"section" : "agi/io/open/file",
+	"severity" : 4,
+	"usec" : 117903486
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 157,
+	"message" : "Display main window",
+	"sec" : 17038,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 119059929
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 162,
+	"message" : "Leaving FrameMain constructor",
+	"sec" : 17038,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 131862731
+}{
+	"file" : "../aegisub-9999/src/utils.cpp",
+	"func" : "operator()",
+	"line" : 175,
+	"message" : "cleaning \"/home/huyhoang/.aegisub/autosave/*.AUTOSAVE.ass\"",
+	"sec" : 17038,
+	"section" : "utils/clean_cache",
+	"severity" : 4,
+	"usec" : 131907849
+}{
+	"file" : "../aegisub-9999/src/utils.cpp",
+	"func" : "operator()",
+	"line" : 186,
+	"message" : "cache does not need cleaning (maxsize=104857600, cursize=0, maxfiles=1000, numfiles=0), exiting",
+	"sec" : 17038,
+	"section" : "utils/clean_cache",
+	"severity" : 4,
+	"usec" : 131924471
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialog",
+	"line" : 391,
+	"message" : "creating LuaDialoug, addr: 0x7fef4afe42c0",
+	"sec" : 17161,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 199144066
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialogControl",
+	"line" : 134,
+	"message" : "created control: '', (0,0)(1,1), ",
+	"sec" : 17161,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 199158314
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialogControl",
+	"line" : 134,
+	"message" : "created control: 'macro', (1,0)(1,1), ",
+	"sec" : 17161,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 199165438
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialogControl",
+	"line" : 134,
+	"message" : "created control: '', (0,1)(1,1), ",
+	"sec" : 17161,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 199172562
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialogControl",
+	"line" : 134,
+	"message" : "created control: 'module', (1,1)(1,1), ",
+	"sec" : 17161,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 199174936
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialogControl",
+	"line" : 134,
+	"message" : "created control: 'exhaustive', (0,2)(1,1), ",
+	"sec" : 17161,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 199180873
+}{
+	"file" : "../aegisub-9999/libaegisub/common/hotkey.cpp",
+	"func" : "Scan",
+	"line" : 128,
+	"message" : "Found: Escape  Context: Subtitle Edit Box  Command: ",
+	"sec" : 17189,
+	"section" : "agi/hotkey/found",
+	"severity" : 4,
+	"usec" : 49072907
+}{
+	"file" : "../aegisub-9999/libaegisub/common/hotkey.cpp",
+	"func" : "Scan",
+	"line" : 128,
+	"message" : "Found: Escape  Context: Subtitle Edit Box  Command: ",
+	"sec" : 17189,
+	"section" : "agi/hotkey/found",
+	"severity" : 4,
+	"usec" : 49082406
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialog",
+	"line" : 391,
+	"message" : "creating LuaDialoug, addr: 0x7fef497e12c0",
+	"sec" : 17195,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 271400628
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialogControl",
+	"line" : 134,
+	"message" : "created control: '', (0,0)(1,1), ",
+	"sec" : 17195,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 271413688
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialogControl",
+	"line" : 134,
+	"message" : "created control: 'macro', (1,0)(1,1), ",
+	"sec" : 17195,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 271420812
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialogControl",
+	"line" : 134,
+	"message" : "created control: '', (0,1)(1,1), ",
+	"sec" : 17195,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 271430311
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialogControl",
+	"line" : 134,
+	"message" : "created control: 'module', (1,1)(1,1), ",
+	"sec" : 17195,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 271432685
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17200,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 271642171
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930330283
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930342156
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930345718
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930348093
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930350467
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930352842
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930356404
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930357591
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930361153
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930363528
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930365902
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930369464
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930373026
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930375401
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930377775
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930381337
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930384899
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930387274
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930389648
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930392023
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930395585
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930397960
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930399147
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930402709
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930406271
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930409833
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930412207
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930415769
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930418144
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930421706
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930424080
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930426455
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930428830
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930432392
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930434766
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930437141
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930440703
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930443077
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930446639
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930449014
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930452576
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930454950
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930457325
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930459700
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930463262
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930465636
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930468011
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930470385
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930473947
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930477509
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930478697
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930482259
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930484633
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 930487008
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935869083
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935873833
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935877395
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935880957
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935883331
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935885706
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935889268
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935891642
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935895204
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935898766
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935901141
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935903515
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935907077
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935909452
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935910639
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935914201
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935916576
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935918950
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935922512
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935924887
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935927262
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935930824
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935932011
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935935573
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935939135
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935941509
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935943884
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935946259
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935949821
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935952195
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935954570
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935956944
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935959319
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935962881
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935965256
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935967630
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935970005
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935972379
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935974754
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935977129
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935980691
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935983065
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935985440
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935987814
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935990189
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935992564
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935996126
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 935998500
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 936000875
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 936003249
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 936005624
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 936007999
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 936010373
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 936012748
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943534356
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943540293
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943541480
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943545042
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943548604
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943550978
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943553353
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943555728
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943559289
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943561664
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943564039
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943565226
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943568788
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943571163
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943573537
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943575912
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943579474
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943581848
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943584223
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943585410
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943588972
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943591347
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943593721
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943596096
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943599658
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943602033
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943604407
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943606782
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943610344
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943612718
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943615093
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943617468
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943621030
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943623404
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943625779
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943628153
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943630528
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943632903
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943635277
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943637652
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943641214
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943643588
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943645963
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943648338
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943651900
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943654274
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943656649
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943659024
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943661398
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943663773
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943666147
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943668522
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943670897
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943673271
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943675646
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943678020
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943680395
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943682770
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943685144
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943687519
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943689894
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943692268
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943694643
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943698205
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943700579
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943702954
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943705329
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943708891
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943710078
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943712452
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943714827
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 943717202
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945487481
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945491043
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945493417
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945496979
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945500541
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945502916
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945505290
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945507665
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945511227
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945514789
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945515976
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945519538
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945521913
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945525475
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945527849
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945530224
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945532598
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945534973
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945537348
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945539722
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945543284
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945545659
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945546846
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945549221
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945552783
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945555157
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945557532
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945559907
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945563469
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945565843
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945568218
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945570592
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945574154
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945576529
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945577716
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945580091
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945583653
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945586027
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945588402
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945590777
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945594339
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945596713
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945599088
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945601462
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945603837
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945606212
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945608586
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945610961
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945613336
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945615710
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945619272
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945620459
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945624021
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945626396
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945629958
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945631145
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945633520
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945637082
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945640644
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945641831
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945644206
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945647768
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945650142
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945652517
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945654891
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945657266
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945659641
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945662015
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945664390
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945667952
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945669139
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945671514
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945673888
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945677450
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945678638
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945681012
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945683387
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945685761
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945688136
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945691698
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945694073
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945696447
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945698822
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945701196
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945703571
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945704758
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945705946
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945708320
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945710695
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945713070
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945715444
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945717819
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945719006
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945721381
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945723755
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945726130
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945728505
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945730879
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945733254
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945735628
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945738003
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945740378
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945742752
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945743940
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945747502
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945748689
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945751063
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945753438
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945755813
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945758187
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945760562
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945762937
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945765311
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945767686
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945768873
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945771248
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945773622
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945775997
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945778372
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945780746
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945783121
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945785495
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945787870
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945789057
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945791432
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17204,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 945793807
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 6997256
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 7006754
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 7009129
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 7013878
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 7016253
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 7018627
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 7022189
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 7024564
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 7028126
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 7031688
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 7034063
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 7036437
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 7039999
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 7042374
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 7044748
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 7048310
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 7050685
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 7053059
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 9392060
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 12627479
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 12639352
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 12641727
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 12645289
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 12648851
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 12651226
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 12654787
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 12658349
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 12661911
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 12664286
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 12666661
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 12667848
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 12670222
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 12673784
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 12676159
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 12679721
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 12682096
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 12684470
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 13377859
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 13383796
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 13386170
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 13388545
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 13390920
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 13393294
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 13398043
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 13399231
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 13401605
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 13405167
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 13407542
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 13408729
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 13411104
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 13412291
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 13415853
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 13418228
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 13419415
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17205,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 13420602
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialog",
+	"line" : 391,
+	"message" : "creating LuaDialoug, addr: 0x7fef537f52c0",
+	"sec" : 17255,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 958712045
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialogControl",
+	"line" : 134,
+	"message" : "created control: '', (0,0)(1,1), ",
+	"sec" : 17255,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 958728667
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialogControl",
+	"line" : 134,
+	"message" : "created control: 'macro', (1,0)(1,1), ",
+	"sec" : 17255,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 958736978
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialogControl",
+	"line" : 134,
+	"message" : "created control: '', (0,1)(1,1), ",
+	"sec" : 17255,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 958748851
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialogControl",
+	"line" : 134,
+	"message" : "created control: 'module', (1,1)(1,1), ",
+	"sec" : 17255,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 958751226
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialog",
+	"line" : 391,
+	"message" : "creating LuaDialoug, addr: 0x7fef52ff42c0",
+	"sec" : 17285,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 110723013
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialogControl",
+	"line" : 134,
+	"message" : "created control: '', (0,0)(1,1), ",
+	"sec" : 17285,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 110740823
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialogControl",
+	"line" : 134,
+	"message" : "created control: 'macro', (1,0)(1,1), ",
+	"sec" : 17285,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 110751508
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialogControl",
+	"line" : 134,
+	"message" : "created control: '', (0,1)(1,1), ",
+	"sec" : 17285,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 110763382
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialogControl",
+	"line" : 134,
+	"message" : "created control: 'module', (1,1)(1,1), ",
+	"sec" : 17285,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 110766943
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17297,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 698477789
+}{
+	"file" : "../aegisub-9999/libaegisub/common/io.cpp",
+	"func" : "Save",
+	"line" : 43,
+	"message" : "\"/home/huyhoang/.aegisub/config.json\"",
+	"sec" : 17433,
+	"section" : "agi/io/save/file",
+	"severity" : 4,
+	"usec" : 353548208
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362123436
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362132935
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362135310
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362138872
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362142434
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362144809
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362149558
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362151933
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362155495
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362157870
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362160245
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362162620
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362167369
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362168556
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362172119
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362175681
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362178055
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362180430
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362183992
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362186367
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362189929
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362193491
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362194679
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 362197053
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370196404
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370205903
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370209465
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370214215
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370218964
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370222526
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370227276
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370232025
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370236775
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370240337
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370243899
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370247461
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370252211
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370254585
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370258147
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370262897
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370266459
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370270021
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370273583
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370277145
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370281895
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370285457
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370289019
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 370292581
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 378937864
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 378947363
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 378950925
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 378954487
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 378959237
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 378963986
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 378967549
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 378969923
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 378973485
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 378978235
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 378980610
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 378984172
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 378988921
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 378992483
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 378994858
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 378998420
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 379001983
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 379004357
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 379007919
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 379010294
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 379015044
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 379018606
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 379316637
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 379321387
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 379324949
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 379327323
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 379329698
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 379333260
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 379336822
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 379339197
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 379342759
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 379345134
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383662432
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383669557
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383671931
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383675493
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383679056
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383681430
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383683805
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383687367
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383690929
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383693304
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383695679
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383699241
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383703990
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383705178
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383707553
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383712302
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383714677
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383717052
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383719426
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383722989
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383725363
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383727738
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383730113
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383733675
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383736050
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383738424
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383740799
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383743174
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383745549
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383747923
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383750298
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383752673
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383756235
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383758610
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383760985
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383763359
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383765734
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383769296
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383771671
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383775233
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383777608
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383781170
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383782357
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383785919
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383788294
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383790669
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383794231
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383796606
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383798981
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383801355
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383804917
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383808480
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383810854
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383813229
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383815604
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 383819166
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 455562784
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 455573470
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 455577032
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 455580594
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 455585344
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 455587719
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 455592468
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 455596030
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 458563282
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 464351739
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 464358863
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 464362426
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 464365988
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 464368362
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 464371925
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 464375487
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 464377861
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 465118784
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 465124721
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 465127096
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 465130658
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 465134220
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 465136595
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 465140157
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 17433,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 465142531
+}

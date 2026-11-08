@@ -25,7 +25,7 @@ OffsetMode=THUNAR_SBR_OFFSET_MODE_RIGHT
 
 [ThunarSbrNumberRenamer]
 TextMode=THUNAR_SBR_TEXT_MODE_TN
-Text=Devils Line S01E
+Text=S01E
 Mode=THUNAR_SBR_NUMBER_MODE_010203
 Start=1
 

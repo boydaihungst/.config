@@ -1,0 +1,57 @@
+# noctalia-greeter sync.toml (UI + Sync; not managed by Nix)
+# [session] last, [session.power] suspend/reboot/shutdown, [[session.actions]] action/command/label/glyph
+# [appearance] scheme, theme_mode, corner_radius_scale, font_family
+# [appearance.palette] full color role table, [appearance.wallpaper]/[appearance.wallpapers.<connector>]
+# [output] layout/transforms/scales
+
+[appearance]
+corner_radius_scale = 1.0
+font_family = "Hack Nerd Font"
+scheme = "Synced"
+theme_mode = "dark"
+
+    [appearance.palette]
+    error = "#FF9290"
+    hover = "#000000"
+    on_error = "#E9F2FD"
+    on_hover = "#E9F2FD"
+    on_primary = "#000000"
+    on_secondary = "#000000"
+    on_surface = "#E9F2FD"
+    on_surface_variant = "#E9F2FD"
+    on_tertiary = "#000000"
+    outline = "#FFB785"
+    primary = "#FFE0CD"
+    secondary = "#FFC6B1"
+    shadow = "#000000"
+    surface = "#000000"
+    surface_variant = "#000000"
+    tertiary = "#FFC6B1"
+
+    [appearance.wallpaper]
+    fill_mode = "crop"
+    path = "/var/lib/noctalia-greeter/wallpaper.png"
+
+    [appearance.wallpapers.DP-1]
+    fill_mode = "crop"
+    path = "/var/lib/noctalia-greeter/wallpaper-DP-1.png"
+
+    [appearance.wallpapers.DP-2]
+    fill_mode = "crop"
+    path = "/var/lib/noctalia-greeter/wallpaper-DP-2.png"
+
+    [appearance.wallpapers.HDMI-A-1]
+    fill_mode = "crop"
+    path = "/var/lib/noctalia-greeter/wallpaper-HDMI-A-1.png"
+
+    [appearance.wallpapers.eDP-1]
+    fill_mode = "crop"
+    path = "/var/lib/noctalia-greeter/wallpaper-eDP-1.png"
+
+[output]
+layout = "DP-1:0,0; HDMI-A-1:0,1600"
+scales = "DP-1:1.000; HDMI-A-1:1.000"
+transforms = "DP-1:normal; HDMI-A-1:normal"
+
+[session]
+last = "Umbriel"

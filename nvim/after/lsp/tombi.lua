@@ -11,12 +11,14 @@ return {
           enabled = true,
         },
       },
+      -- https://tombi-toml.github.io/tombi/docs/configuration#format-rules
       format = {
         rules = {
           ["indent-sub-tables"] = true,
           ["indent-table-key-value-pairs"] = true,
           ["key-value-equals-sign-alignment"] = true,
           ["trailing-comment-alignment"] = true,
+          ["line-width"] = 80,
         },
       },
     },

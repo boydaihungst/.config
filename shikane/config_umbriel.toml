@@ -1,0 +1,236 @@
+# Special profile go first
+
+# 2 DisplayPort monitor AOC Q27G42ZE, monitor AOC Q27G4ZDP + HDMI Samsung soundbar
+[[profile]]
+  exec = [
+    "noctalia msg osd-show device-desktop \"$SHIKANE_PROFILE_NAME\"",
+    "/usr/local/bin/switch-stereo.sh"
+  ]
+  name = "DP AOC Q27G42ZE + DP AOC Q27G4ZDP + Samsung soundbar"
+
+  [[profile.output]]
+    enable = false
+    search = ["/eDP-[1-9]"]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    mode          = "best"
+    position      = "2560,0"
+    scale         = 1
+    search        = ["n/DP-[1-9]", "v=AOC", "m=Q27G42ZE"]
+    # exec          = [
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 2",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 4",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 5",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 6",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 7",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 8",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 9",
+    # ]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    mode          = "best"
+    position      = "0,0"
+    scale         = 1
+    search        = ["n/DP-[1-9]", "v=AOC", "m=Q27G4ZDP"]
+    # exec          = [
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 1",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 3",
+    # ]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    mode          = "1920x1080@60.00Hz"
+    position      = "0,1600"
+    scale         = 1
+    search        = [
+      "n/HDMI-[ABC]-[1-9]",
+      "v=Samsung Electric Company",
+      "m=SAMSUNG"
+    ]
+    # exec          = ["/usr/local/bin/switch-stereo.sh"]
+
+# 2 DisplayPort monitor AOC Q27G42ZE, monitor AOC Q27G4ZDP, when HDMI Samsung soundbar is in sleep mode/disconnected
+[[profile]]
+  exec = [
+    "noctalia msg osd-show device-desktop \"$SHIKANE_PROFILE_NAME\"",
+  ]
+  name = "DP AOC Q27G42ZE + DP AOC Q27G4ZDP"
+
+  [[profile.output]]
+    enable = false
+    search = ["/eDP-[1-9]"]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    mode          = "best"
+    position      = "2560,0"
+    scale         = 1
+    search        = ["n/DP-[1-9]", "v=AOC", "m=Q27G42ZE"]
+    # exec          = [
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 2",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 4",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 5",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 6",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 7",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 8",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 9",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 10",
+    # ]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    mode          = "best"
+    position      = "0,0"
+    scale         = 1
+    search        = ["n/DP-[1-9]", "v=AOC", "m=Q27G4ZDP"]
+    # exec          = [
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 1",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 3",
+    # ]
+
+# DisplayPort monitor AOC Q27G4ZDP + HDMI Samsung soundbar
+[[profile]]
+  exec = [
+    "noctalia msg osd-show device-desktop \"$SHIKANE_PROFILE_NAME\"",
+    "/usr/local/bin/switch-stereo.sh"
+  ]
+  name = "DP AOC Q27G4ZDP + Samsung soundbar"
+
+  [[profile.output]]
+    enable = false
+    search = ["/eDP-[1-9]"]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    mode          = "best"
+    position      = "0,0"
+    scale         = 1
+    search        = ["n/DP-[1-9]", "v=AOC", "m=Q27G4ZDP"]
+    # exec          = [
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 1",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 2",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 3",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 4",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 5",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 6",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 7",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 8",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 9",
+    # ]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    mode          = "1920x1080@60.00Hz"
+    position      = "0,1600"
+    scale         = 1
+    search        = [
+      "n/HDMI-[ABC]-[1-9]",
+      "v=Samsung Electric Company",
+      "m=SAMSUNG"
+    ]
+    # exec          = ["/usr/local/bin/switch-stereo.sh"]
+    # exec          = [
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 10",
+    # ]
+
+# Laptop monitor only
+[[profile]]
+  exec = [
+    "noctalia msg osd-show device-desktop \"$SHIKANE_PROFILE_NAME\"",
+  ]
+  name = "Default"
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    mode          = "best"
+    position      = "0,0"
+    scale         = 1.25
+    search        = ["/eDP-[1-9]"]
+
+# HDMI monitor only
+[[profile]]
+  exec = [
+    "noctalia msg osd-show device-desktop \"$SHIKANE_PROFILE_NAME\"",
+  ]
+  name = "HDMI Only"
+
+  [[profile.output]]
+    enable = false
+    search = ["/eDP-[1-9]"]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    mode          = "best"
+    position      = "0,0"
+    scale         = 1
+    search        = ["/HDMI-[ABC]-[1-9]"]
+
+# DisplayPort monitor only
+[[profile]]
+  exec = [
+    "noctalia msg osd-show device-desktop \"$SHIKANE_PROFILE_NAME\"",
+  ]
+  name = "DP Only"
+
+  [[profile.output]]
+    enable = false
+    search = ["/eDP-[1-9]"]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    mode          = "best"
+    position      = "0,0"
+    scale         = 1
+    search        = ["n/DP-[1-9]"]
+
+# DisplayPort monitor + HDMI monitor
+[[profile]]
+  exec = [
+    "noctalia msg osd-show device-desktop \"$SHIKANE_PROFILE_NAME\"",
+  ]
+  name = "DP + HDMI"
+
+  [[profile.output]]
+    enable = false
+    search = ["/eDP-[1-9]"]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    # exec          = [
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 1",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 3",
+    # ]
+    mode          = "best"
+    position      = "0,0"
+    scale         = 1
+    search        = ["n/DP-[1-9]"]
+
+  [[profile.output]]
+    adaptive_sync = false
+    enable        = true
+    # exec          = [
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 2",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 4",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 5",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 6",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 7",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 8",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 9",
+    #   "umbriel msg workspace-move-to-output $SHIKANE_OUTPUT_NAME 10",
+    # ]
+    mode          = "best"
+    scale         = 1
+    search        = ["/HDMI-[ABC]-[1-9]"]

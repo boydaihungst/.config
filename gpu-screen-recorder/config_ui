@@ -1,0 +1,249 @@
+{
+  "main": {
+    "config_file_version": 3,
+    "exclude_metadata": true,
+    "hotkeys_enable_option": "enable_hotkeys",
+    "joystick_hotkeys_enable_option": "disable_hotkeys",
+    "language": "",
+    "notification_speed": "fast",
+    "show_hide_hotkey": {
+      "key": 0,
+      "modifiers": 0
+    },
+    "software_encoding_warning_shown": false,
+    "tint_color": "intel",
+    "wayland_warning_shown": true
+  },
+  "record": {
+    "container": "mp4",
+    "name_after_captured_application": "no",
+    "name_video_file_after_game": false,
+    "organize_into_folders": "no",
+    "pause_unpause_hotkey": {
+      "key": 0,
+      "modifiers": 0
+    },
+    "record_options": {
+      "advanced_view": true,
+      "audio_codec": "opus",
+      "audio_track_item": [],
+      "change_video_resolution": true,
+      "codec": "h264",
+      "color_range": "limited",
+      "enable_vulkan_video_encoding": false,
+      "fps": 60,
+      "framerate_mode": "auto",
+      "low_power_mode": false,
+      "overclock": false,
+      "record_area_height": 1080,
+      "record_area_option": "focused_monitor",
+      "record_area_width": 1920,
+      "record_cursor": true,
+      "restore_portal_session": true,
+      "show_notifications": true,
+      "use_led_indicator": true,
+      "video_bitrate": 40000,
+      "video_height": 1080,
+      "video_quality": "medium",
+      "video_width": 1920,
+      "webcam_camera_fps": 0,
+      "webcam_camera_height": 0,
+      "webcam_camera_width": 0,
+      "webcam_flip_horizontally": false,
+      "webcam_height": 30,
+      "webcam_source": "",
+      "webcam_video_format": "auto",
+      "webcam_width": 30,
+      "webcam_x": 0,
+      "webcam_y": 0
+    },
+    "save_directory": "\/home\/huyhoang\/Videos",
+    "save_video_in_game_folder": false,
+    "start_stop_hotkey": {
+      "key": 102,
+      "modifiers": 64
+    },
+    "start_stop_region_hotkey": {
+      "key": 0,
+      "modifiers": 0
+    },
+    "start_stop_window_hotkey": {
+      "key": 0,
+      "modifiers": 0
+    }
+  },
+  "replay": {
+    "container": "mp4",
+    "name_after_captured_application": "no",
+    "name_video_file_after_game": false,
+    "only_start_replay_if_power_supply_connected": false,
+    "organize_into_folders": "no",
+    "record_options": {
+      "advanced_view": true,
+      "audio_codec": "opus",
+      "audio_track_item": [
+        {
+          "application_audio_invert": false,
+          "audio_inputs": [
+            "device:default_output"
+          ],
+          "name": ""
+        }
+      ],
+      "change_video_resolution": false,
+      "codec": "auto",
+      "color_range": "full",
+      "enable_vulkan_video_encoding": false,
+      "fps": 60,
+      "framerate_mode": "auto",
+      "low_power_mode": false,
+      "overclock": false,
+      "record_area_height": 1080,
+      "record_area_option": "focused_monitor",
+      "record_area_width": 1920,
+      "record_cursor": true,
+      "restore_portal_session": true,
+      "show_notifications": true,
+      "use_led_indicator": true,
+      "video_bitrate": 40000,
+      "video_height": 1080,
+      "video_quality": "custom",
+      "video_width": 1920,
+      "webcam_camera_fps": 0,
+      "webcam_camera_height": 0,
+      "webcam_camera_width": 0,
+      "webcam_flip_horizontally": false,
+      "webcam_height": 30,
+      "webcam_source": "",
+      "webcam_video_format": "auto",
+      "webcam_width": 30,
+      "webcam_x": 0,
+      "webcam_y": 0
+    },
+    "replay_storage": "ram",
+    "restart_replay_on_save": false,
+    "save_10_min_hotkey": {
+      "key": 0,
+      "modifiers": 0
+    },
+    "save_1_min_hotkey": {
+      "key": 0,
+      "modifiers": 0
+    },
+    "save_directory": "\/home\/huyhoang\/Videos",
+    "save_hotkey": {
+      "key": 0,
+      "modifiers": 0
+    },
+    "save_video_in_game_folder": false,
+    "start_stop_hotkey": {
+      "key": 0,
+      "modifiers": 0
+    },
+    "time": 60,
+    "turn_on_replay_automatically_mode": "dont_turn_on_automatically"
+  },
+  "screenshot": {
+    "change_image_resolution": false,
+    "custom_script": "",
+    "image_format": "jpg",
+    "image_height": 1080,
+    "image_quality": "very_high",
+    "image_width": 1920,
+    "name_after_captured_application": "no",
+    "name_screenshot_file_after_game": false,
+    "organize_into_folders": "no",
+    "record_area_option": "focused_monitor",
+    "record_cursor": true,
+    "restore_portal_session": true,
+    "save_directory": "\/home\/huyhoang\/Pictures\/Screenshots",
+    "save_screenshot_in_game_folder": false,
+    "save_screenshot_to_clipboard": true,
+    "save_screenshot_to_disk": true,
+    "show_notifications": true,
+    "take_screenshot_hotkey": {
+      "key": 0,
+      "modifiers": 0
+    },
+    "take_screenshot_region_hotkey": {
+      "key": 0,
+      "modifiers": 0
+    },
+    "take_screenshot_window_hotkey": {
+      "key": 0,
+      "modifiers": 0
+    },
+    "use_led_indicator": false
+  },
+  "streaming": {
+    "custom": {
+      "container": "flv",
+      "key": "",
+      "url": ""
+    },
+    "kick": {
+      "key": "",
+      "url": ""
+    },
+    "record_options": {
+      "advanced_view": false,
+      "audio_codec": "opus",
+      "audio_track_item": [
+        {
+          "application_audio_invert": false,
+          "audio_inputs": [
+            "device:default_output"
+          ],
+          "name": ""
+        }
+      ],
+      "change_video_resolution": false,
+      "codec": "auto",
+      "color_range": "limited",
+      "enable_vulkan_video_encoding": false,
+      "fps": 60,
+      "framerate_mode": "auto",
+      "low_power_mode": false,
+      "overclock": false,
+      "record_area_height": 1080,
+      "record_area_option": "focused_monitor",
+      "record_area_width": 1920,
+      "record_cursor": true,
+      "restore_portal_session": true,
+      "show_notifications": true,
+      "use_led_indicator": false,
+      "video_bitrate": 8000,
+      "video_height": 1080,
+      "video_quality": "custom",
+      "video_width": 1920,
+      "webcam_camera_fps": 0,
+      "webcam_camera_height": 0,
+      "webcam_camera_width": 0,
+      "webcam_flip_horizontally": false,
+      "webcam_height": 30,
+      "webcam_source": "",
+      "webcam_video_format": "auto",
+      "webcam_width": 30,
+      "webcam_x": 0,
+      "webcam_y": 0
+    },
+    "rumble": {
+      "key": ""
+    },
+    "service": "twitch",
+    "start_stop_hotkey": {
+      "key": 0,
+      "modifiers": 0
+    },
+    "twitch": {
+      "key": ""
+    },
+    "whip": {
+      "bearer_token": "",
+      "url": ""
+    },
+    "youtube": {
+      "key": ""
+    }
+  }
+}

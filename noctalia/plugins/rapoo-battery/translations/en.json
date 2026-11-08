@@ -1,0 +1,6 @@
+{
+  "settings.glyph.label": "Glyph Icon",
+  "settings.glyph_charging.label": "Glyph Icon (charging)",
+  "settings.device.label": "Device Path (e.g. /dev/hidraw7)",
+  "settings.interval.label": "Update Interval (seconds, min 10s)"
+}

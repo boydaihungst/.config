@@ -1,0 +1,351 @@
+#:schema ../umbriel.schema.v5.json
+
+[[layer_rule]]
+  match.namespace   = "^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd|desktop-widget-[^\"]*)$"
+  blur              = true
+  blur_ignore_alpha = 0.5
+  blur_popups       = true
+
+# Panels, the dock, notifications and OSDs open over windows, so they blur the
+# live content behind them. The bar and desktop widgets sit on the wallpaper and
+# keep the cached wallpaper blur.
+[[layer_rule]]
+  match.namespace = "^noctalia-(notification|dock|panel)$"
+  blur_optimized  = false
+
+  # [[layer_rule]]
+  #   match.namespace = "^noctalia-(attached-panel|osd)$"
+  #   blur_optimized  = false
+
+  # =============================================================================
+  # Window Rules
+  # =============================================================================
+
+[[window_rule]]
+  blur              = true
+  blur_ignore_alpha = 0.5
+
+[[window_rule]]
+  match.is_floating = true
+  blur_optimized    = false
+
+[[window_rule]]
+  match.app_id          = "^dev.noctalia.Noctalia$"
+  default_floating      = true
+  default_floating_size = { width = 0.6, height = 0.8 }
+
+[[window_rule]]
+  match.app_id          = "^dev.noctalia.UmbrielSharePicker$"
+  default_floating      = true
+  default_floating_size = { width = 0.6, height = 0.8 }
+
+[[window_rule]]
+  match.title      = "^(Picture-in-Picture|Picture in picture)$"
+  default_floating = true
+  default_maximize = false
+  default_pinned   = true
+  default_position = { x = 20, y = 20, anchor = "bottom_right" }
+
+[[window_rule]]
+  match.app_id    = "^steam_app_.*$"
+  confine_pointer = true
+  tearing         = true
+  # -----------------------------------------------------------------------------
+  # Single tiled window - no border
+  # -----------------------------------------------------------------------------
+
+[[window_rule]]
+  match.is_only_window = true
+  border_width         = 0
+
+[[window_rule]]
+  match.is_alone   = true
+  default_maximize = true
+
+# DP-1 / Workspace 1 - Terminals
+[[window_rule]]
+  match.app_id      = "^(btop|htop|kitty|lvim|vim|nvim|org\\.wezfurlong\\.wezterm|com\\.mitchellh\\.ghostty)$"
+  default_output    = "DP-1"
+  default_workspace = "Term"
+
+# DP-1 / Workspace 3 - File managers
+[[window_rule]]
+  match.app_id      = "^(thunar|ranger|lfcd|lf|vifm|yazi)$"
+  default_output    = "DP-1"
+  default_workspace = "File"
+
+# DP-2 / Workspace 1 - Browsers
+[[window_rule]]
+  match.app_id      = "^(waterfox-default|waterfox|firefox|firefox-default|vivaldi|vivaldi-stable)$"
+  default_output    = "DP-2"
+  default_workspace = "Browser"
+
+# DP-2 / Workspace 2 - Communication / Graphics
+[[window_rule]]
+  match.app_id      = "^(org\\.telegram\\.desktop|pidgin|discord|blender|gimp|org\\.inkscape\\.Inkscape)$"
+  default_output    = "DP-2"
+  default_workspace = "Chat"
+
+# DP-2 / Workspace 3 - Calibre
+[[window_rule]]
+  match.app_id      = "^(calibre-ebook-viewer|calibre|calibre-gui)$"
+  default_output    = "DP-2"
+  default_workspace = "EBook"
+
+# DP-2 / Workspace 4 - Gaming
+[[window_rule]]
+  match.app_id      = "^(bottles|steam|lutris|steam_app_[0-9]+)$"
+  default_output    = "DP-2"
+  default_workspace = "Game"
+
+  # -----------------------------------------------------------------------------
+  # Floating applications
+  # -----------------------------------------------------------------------------
+
+# Yazi
+[[window_rule]]
+  match.app_id     = "^yazi$"
+  default_floating = false
+
+[[window_rule]]
+  match.app_id          = "^yazi-selector$"
+  default_floating      = true
+  default_floating_size = { width = 0.8, height = 0.9 }
+
+# YAD
+[[window_rule]]
+  match.app_id     = "^yad$"
+  default_floating = true
+
+# Calculators
+[[window_rule]]
+  match.app_id     = "^(galculator|org\\.speedcrunch\\.SpeedCrunch)$"
+  default_floating = true
+
+# Blueman
+[[window_rule]]
+  match.app_id     = "^blueman-manager$"
+  default_floating = true
+
+# XSane
+[[window_rule]]
+  match.app_id     = "^xsane$"
+  default_floating = true
+
+# Pavucontrol
+[[window_rule]]
+  match.app_id     = "^org\\.pulseaudio\\.pavucontrol$"
+  default_floating = true
+  opacity          = 0.8
+
+# Bluetuith
+[[window_rule]]
+  match.app_id          = "^bluetuith$"
+  default_floating      = true
+  default_floating_size = { width = 0.8, height = 0.8 }
+
+# Qt settings
+[[window_rule]]
+  match.app_id     = "^(qt5ct|qt6ct)$"
+  default_floating = true
+
+# Bluetooth
+[[window_rule]]
+  match.app_id     = "^bluetooth-sendto$"
+  default_floating = true
+
+# Pamac
+[[window_rule]]
+  match.app_id          = "^pamac-manager$"
+  default_floating      = true
+  default_floating_size = { width = 0.8, height = 0.7 }
+
+# LXAppearance
+[[window_rule]]
+  match.app_id     = "^Lxappearance$"
+  default_floating = true
+
+# nmtui
+[[window_rule]]
+  match.app_id          = "^nmtui$"
+  default_floating      = true
+  default_floating_size = { width = 0.3, height = 0.7 }
+
+# btop
+[[window_rule]]
+  match.app_id          = "^btop$"
+  default_floating      = true
+  default_floating_size = { width = 0.8, height = 0.9 }
+
+# Waydroid
+[[window_rule]]
+  match.app_id             = "^waydroid.*$"
+  default_floating         = true
+  default_floating_size_px = { width = 576, height = 1024 }
+
+  # -----------------------------------------------------------------------------
+  # Special windows / dialogs
+  # -----------------------------------------------------------------------------
+
+# File operation progress
+[[window_rule]]
+  match.title      = "^File Operation Progress$"
+  default_floating = true
+
+# Show Me The Key
+[[window_rule]]
+  match.title      = "^Floating Window - Show Me The Key$"
+  default_floating = true
+  default_pinned   = true
+
+# Save File
+[[window_rule]]
+  match.title      = "^Save File$"
+  default_floating = true
+  default_pinned   = true
+
+# Ripdrag
+[[window_rule]]
+  match.app_id     = "^it\\.catboy\\.ripdrag$"
+  default_floating = true
+
+# Dragon Drop
+[[window_rule]]
+  match.app_id     = "^dragon-drop$"
+  default_floating = true
+  default_pinned   = true
+
+# Thunar bulk rename
+[[window_rule]]
+  match.title           = "^Bulk Rename - Rename Multiple Files$"
+  default_floating      = true
+  default_floating_size = { width = 0.7, height = 0.9 }
+
+  # -----------------------------------------------------------------------------
+  # Aegisub dialogs
+  # -----------------------------------------------------------------------------
+
+[[window_rule]]
+  match.title      = "^Styling Assistant$"
+  default_floating = true
+  default_position = { x = 1012, y = 576, anchor = "top_left" }
+
+[[window_rule]]
+  match.title      = "^Select Color$"
+  default_floating = true
+  default_position = { x = 1022, y = 376, anchor = "top_left" }
+
+[[window_rule]]
+  match.title      = "^Styles Manager$"
+  default_floating = true
+
+[[window_rule]]
+  match.title      = "^Style Editor$"
+  default_floating = true
+  default_position = { x = 793, y = 727, anchor = "top_left" }
+
+[[window_rule]]
+  match.title      = "^Automation Manager$"
+  default_floating = true
+  default_position = { x = 1000, y = 800, anchor = "top_left" }
+
+[[window_rule]]
+  match.title      = "^(Open subtitles file|Preferences)$"
+  default_floating = true
+
+[[window_rule]]
+  match.title      = "^Choose font$"
+  default_floating = true
+
+# Inkscape
+[[window_rule]]
+  match.title      = "^Convert to ASS$"
+  default_floating = true
+
+# Tiled dialogs
+[[window_rule]]
+  match.title      = "^Batch convert$"
+  default_floating = false
+
+[[window_rule]]
+  match.title      = "^Open subtitle\\.\\.\\.$"
+  default_floating = false
+
+  # -----------------------------------------------------------------------------
+  # Browser dialogs
+  # -----------------------------------------------------------------------------
+
+[[window_rule]]
+  match.app_id          = "^(waterfox-default|waterfox)$"
+  match.title           = "^Library$"
+  default_floating      = true
+  default_floating_size = { width = 0.6, height = 0.6 }
+
+[[window_rule]]
+  match.title           = ".*DownThemAll! Manager -.*$"
+  default_floating      = true
+  default_floating_size = { width = 0.6, height = 0.6 }
+
+  # -----------------------------------------------------------------------------
+  # Special applications
+  # -----------------------------------------------------------------------------
+
+[[window_rule]]
+  match.app_id          = "^floating_shell_portrait$"
+  default_floating      = true
+  default_floating_size = { width = 0.6, height = 0.6 }
+
+[[window_rule]]
+  match.app_id             = "^showmethekey-gtk$"
+  default_floating         = true
+  default_floating_size_px = { width = 651, height = 70 }
+
+  # -----------------------------------------------------------------------------
+  # Vivaldi
+  # -----------------------------------------------------------------------------
+
+[[window_rule]]
+  match.title           = "^Vivaldi Settings: .* - Vivaldi$"
+  default_floating      = true
+  default_floating_size = { width = 0.5, height = 0.7 }
+
+[[window_rule]]
+  match.title      = "^Bitwarden - Vivaldi$"
+  default_floating = true
+
+  # -----------------------------------------------------------------------------
+  # Torrent dialogs
+  # -----------------------------------------------------------------------------
+
+[[window_rule]]
+  match.title           = "^Add Remote Torrent.*"
+  default_floating      = true
+  default_floating_size = { width = 0.5, height = 0.7 }
+
+  # -----------------------------------------------------------------------------
+  # Pinentry
+  # -----------------------------------------------------------------------------
+
+[[window_rule]]
+  match.app_id      = "^(pinentry-|gcr-prompter)"
+  default_floating  = true
+  default_pinned    = true
+  default_focused   = true
+  focus_on_activate = true
+  block_capture     = true
+
+[[window_rule]]
+  match.app_id      = "^ueberzugpp_.*"
+  default_floating  = true
+  default_pinned    = false
+  default_focused   = false
+  focus_on_activate = false
+  blur              = false
+
+[[window_rule]]
+  match.app_id  = "^(mpv|com\\.github\\.iwalton3\\.jellyfin-mpv-shim)$"
+  border_effect = "off"
+
+  # -----------------------------------------------------------------------------
+  # Application workspace assignments
+  # -----------------------------------------------------------------------------

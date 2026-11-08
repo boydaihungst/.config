@@ -39,8 +39,8 @@ now(function()
   require("mini.base16").setup {
     palette = {
       -- UI / Backgrounds
-      base00 = "#080A0E", -- base (background)
-      base01 = "#080A0E", -- tool / float / prompt
+      base00 = "#000000", -- base (background)
+      base01 = "#000000", -- tool / float / prompt
       base02 = "#26343F", -- inactive_base, tab, status bg, visual selection
       base03 = "#3A3E47", -- split / subtle fg, inactive line number
       base04 = "#ADB0BB", -- active line number
@@ -63,21 +63,22 @@ now(function()
       ["nvim-mini/mini.nvim"] = true,
     },
   }
+  local hi = function(group, opts) vim.api.nvim_set_hl(0, group, opts) end
   Config.extend_hl("Comment", { italic = true })
   Config.extend_hl("StatusLine", { bg = "NONE" })
-  Config.extend_hl("WinSeparator", { bg = "#080A0E", fg = "#BCC4C9" })
-  Config.extend_hl("FloatBorder", { bg = "#080A0E", fg = "#BCC4C9" })
+  Config.extend_hl("WinSeparator", { bg = "#000000", fg = "#BCC4C9" })
+  Config.extend_hl("FloatBorder", { bg = "#000000", fg = "#BCC4C9" })
   Config.extend_hl("Folded", { bg = "#282C34", fg = "#BCC4C9" })
   Config.extend_hl("Search", { fg = "#111317", bg = "#4fa6ed" })
   Config.extend_hl("CurSearch", { fg = "#111317", bg = "#5C88B0" })
-  vim.api.nvim_set_hl(0, "IncSearch", { link = "Search" })
-  -- vim.api.nvim_set_hl(0, 'CurSearch', { link = 'Search' })
-  vim.api.nvim_set_hl(0, "CursorLine", { bg = "#1E222A" })
-  vim.api.nvim_set_hl(0, "CursorColumn", { bg = "#1E222A" })
-  vim.api.nvim_set_hl(0, "NonText", { fg = "#3A3E47" })
-  vim.api.nvim_set_hl(0, "TreesitterContext", { link = "CursorLine" })
-  vim.api.nvim_set_hl(0, "WinBar", { fg = "#797D87" })
-  vim.api.nvim_set_hl(0, "SignColumn", { bg = "#080A0E", fg = "#BCC4C9" })
+  hi("IncSearch", { link = "Search" })
+  -- hi('CurSearch', { link = 'Search' })
+  hi("CursorLine", { bg = "#1E222A" })
+  hi("CursorColumn", { bg = "#1E222A" })
+  hi("NonText", { fg = "#3A3E47" })
+  hi("TreesitterContext", { link = "CursorLine" })
+  hi("WinBar", { fg = "#797D87" })
+  hi("SignColumn", { bg = "#000000", fg = "#BCC4C9" })
 end)
 
 -- You can try these other 'mini.hues'-based color schemes (uncomment with `gcc`):
@@ -1499,8 +1500,18 @@ later(function()
       todo = hi_words({ "TODO", "Todo", "todo" }, "MiniHipatternsTodo"),
       note = hi_words({ "NOTE", "Note", "note" }, "MiniHipatternsNote"),
 
-      -- Highlight hex color string (#aabbcc) with that color as a background
-      hex_color = hipatterns.gen_highlighter.hex_color(),
+      -- Highlight hex color string (#aabbcc, #aabbccff) with that color as a background
+      hex_color = {
+        pattern = "#%x+",
+        group = function(_, match)
+          -- # + 6 hex chars = length 7; # + 8 hex chars = length 9
+          if #match ~= 7 and #match ~= 9 then return nil end
+          -- If it's 8 digits (length 9), strip the alpha channel (last 2 characters) for the background
+          local hex = #match == 9 and match:sub(1, 7) or match
+          return hipatterns.compute_hex_color_group(hex, "bg")
+        end,
+      },
+      -- hex_color = hipatterns.gen_highlighter.hex_color(),
     },
   }
 end)

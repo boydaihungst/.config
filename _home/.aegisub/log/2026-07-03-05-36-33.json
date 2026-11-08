@@ -1,0 +1,5626 @@
+{
+	"file" : "../aegisub-9999/libaegisub/common/option.cpp",
+	"func" : "Options",
+	"line" : 179,
+	"message" : "New Options object",
+	"sec" : 480,
+	"section" : "agi/options",
+	"severity" : 4,
+	"usec" : 858104213
+}{
+	"file" : "../aegisub-9999/src/utils.cpp",
+	"func" : "operator()",
+	"line" : 175,
+	"message" : "cleaning \"/home/huyhoang/.aegisub/log/*.json\"",
+	"sec" : 480,
+	"section" : "utils/clean_cache",
+	"severity" : 4,
+	"usec" : 858120835
+}{
+	"file" : "../aegisub-9999/src/utils.cpp",
+	"func" : "operator()",
+	"line" : 186,
+	"message" : "cache does not need cleaning (maxsize=10485760, cursize=10247264, maxfiles=100, numfiles=36), exiting",
+	"sec" : 480,
+	"section" : "utils/clean_cache",
+	"severity" : 4,
+	"usec" : 858357110
+}{
+	"file" : "../aegisub-9999/libaegisub/common/io.cpp",
+	"func" : "Open",
+	"line" : 28,
+	"message" : "\"/home/huyhoang/.aegisub/config.json\"",
+	"sec" : 480,
+	"section" : "agi/io/open/file",
+	"severity" : 4,
+	"usec" : 858507899
+}{
+	"file" : "../aegisub-9999/src/command/command.cpp",
+	"func" : "init_builtin_commands",
+	"line" : 94,
+	"message" : "Populating command map",
+	"sec" : 480,
+	"section" : "command/init",
+	"severity" : 4,
+	"usec" : 859003008
+}{
+	"file" : "../aegisub-9999/libaegisub/common/hotkey.cpp",
+	"func" : "Hotkey",
+	"line" : 92,
+	"message" : "Generating hotkeys.",
+	"sec" : 480,
+	"section" : "hotkey/init",
+	"severity" : 4,
+	"usec" : 859086120
+}{
+	"file" : "../aegisub-9999/libaegisub/common/io.cpp",
+	"func" : "Open",
+	"line" : 28,
+	"message" : "\"/home/huyhoang/.aegisub/hotkey.json\"",
+	"sec" : 480,
+	"section" : "agi/io/open/file",
+	"severity" : 4,
+	"usec" : 859090869
+}{
+	"file" : "../aegisub-9999/libaegisub/common/mru.cpp",
+	"func" : "MRUManager",
+	"line" : 69,
+	"message" : "Loading MRU List",
+	"sec" : 480,
+	"section" : "agi/mru",
+	"severity" : 4,
+	"usec" : 859361576
+}{
+	"file" : "../aegisub-9999/libaegisub/common/io.cpp",
+	"func" : "Open",
+	"line" : 28,
+	"message" : "\"/home/huyhoang/.aegisub/mru.json\"",
+	"sec" : 480,
+	"section" : "agi/io/open/file",
+	"severity" : 4,
+	"usec" : 859366325
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "libass API version: 0x1704000",
+	"sec" : 480,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 865720819
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "libass source: tarball: 0.17.4",
+	"sec" : 480,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 865748128
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Raster: FreeType 2.14.3",
+	"sec" : 480,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 865802744
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Shaper: FriBidi 1.0.16 (SIMPLE) HarfBuzz-ng 12.3.2 (COMPLEX)",
+	"sec" : 480,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 866028333
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Initialized",
+	"sec" : 480,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 866033082
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Using font provider fontconfig",
+	"sec" : 481,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 521842506
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 100,
+	"message" : "Entering FrameMain constructor",
+	"sec" : 483,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 887581905
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 113,
+	"message" : "Initializing context controls",
+	"sec" : 483,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 887609213
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 120,
+	"message" : "Initializing context frames",
+	"sec" : 483,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 887613962
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 124,
+	"message" : "Apply saved Maximized state",
+	"sec" : 483,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 887615150
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 127,
+	"message" : "Initialize toolbar",
+	"sec" : 483,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 887617524
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 132,
+	"message" : "Initialize menu bar",
+	"sec" : 483,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 893903154
+}{
+	"file" : "../aegisub-9999/src/menu.cpp",
+	"func" : "process_menu_item",
+	"line" : 392,
+	"message" : "Skipping command app/updates: 'app/updates' is not a valid command name",
+	"sec" : 483,
+	"section" : "menu/command/not_found",
+	"severity" : 2,
+	"usec" : 906545653
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 135,
+	"message" : "Create status bar",
+	"sec" : 483,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 907011079
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 138,
+	"message" : "Set icon",
+	"sec" : 484,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 217361382
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 147,
+	"message" : "Create views and inner main window controls",
+	"sec" : 484,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 217462304
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 187,
+	"message" : "Create background panel",
+	"sec" : 484,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 217464678
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 190,
+	"message" : "Create subtitles grid",
+	"sec" : 484,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 217519295
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 193,
+	"message" : "Create video box",
+	"sec" : 484,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 687142758
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 196,
+	"message" : "Create audio box",
+	"sec" : 484,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 759844248
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 199,
+	"message" : "Create subtitle editing box",
+	"sec" : 484,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 767149779
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 202,
+	"message" : "Arrange main sizers",
+	"sec" : 485,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 88703558
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 215,
+	"message" : "Perform layout",
+	"sec" : 485,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 88799731
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 217,
+	"message" : "Leaving InitContents",
+	"sec" : 485,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 91830938
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 151,
+	"message" : "Set up drag/drop target",
+	"sec" : 485,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 91835687
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 154,
+	"message" : "Load default file",
+	"sec" : 485,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 91846373
+}{
+	"file" : "../aegisub-9999/libaegisub/common/io.cpp",
+	"func" : "Open",
+	"line" : 28,
+	"message" : "\"/home/huyhoang/.aegisub/catalog/Default.sty\"",
+	"sec" : 485,
+	"section" : "agi/io/open/file",
+	"severity" : 4,
+	"usec" : 91889116
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 157,
+	"message" : "Display main window",
+	"sec" : 485,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 93037247
+}{
+	"file" : "../aegisub-9999/src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 162,
+	"message" : "Leaving FrameMain constructor",
+	"sec" : 485,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 108345261
+}{
+	"file" : "../aegisub-9999/src/utils.cpp",
+	"func" : "operator()",
+	"line" : 175,
+	"message" : "cleaning \"/home/huyhoang/.aegisub/autosave/*.AUTOSAVE.ass\"",
+	"sec" : 485,
+	"section" : "utils/clean_cache",
+	"severity" : 4,
+	"usec" : 108386817
+}{
+	"file" : "../aegisub-9999/src/utils.cpp",
+	"func" : "operator()",
+	"line" : 186,
+	"message" : "cache does not need cleaning (maxsize=104857600, cursize=0, maxfiles=1000, numfiles=0), exiting",
+	"sec" : 485,
+	"section" : "utils/clean_cache",
+	"severity" : 4,
+	"usec" : 108405814
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "libass API version: 0x1704000",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 325582495
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "libass source: tarball: 0.17.4",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 325596743
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Raster: FreeType 2.14.3",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 325672731
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Shaper: FriBidi 1.0.16 (SIMPLE) HarfBuzz-ng 12.3.2 (COMPLEX)",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 325757030
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Initialized",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 325760592
+}{
+	"file" : "../aegisub-9999/src/video_provider_manager.cpp",
+	"func" : "GetProvider",
+	"line" : 74,
+	"message" : "Dummy: opened \"?dummy:24000/1001:10000:1920:1080:47:163:254:\"",
+	"sec" : 508,
+	"section" : "manager/video/provider",
+	"severity" : 3,
+	"usec" : 327793270
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340613866
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340625739
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340630488
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340632863
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340636425
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340638799
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340641174
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340643549
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340648298
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340650672
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340653047
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340656609
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340658984
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340661358
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340663733
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340666107
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340673231
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Using font provider fontconfig",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 504179158
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "fontselect: (UVN Sach Vo, 700, 0) -> /usr/share/fonts/uvn/uvn sach vo bold.ttf, 0, UVNSachVoBold",
+	"sec" : 508,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 639332073
+}{
+	"file" : "../aegisub-9999/src/video_out_gl.cpp",
+	"func" : "InitTextures",
+	"line" : 112,
+	"message" : "Video size: 1920x1080",
+	"sec" : 508,
+	"section" : "video/out/gl",
+	"severity" : 3,
+	"usec" : 641895480
+}{
+	"file" : "../aegisub-9999/src/video_out_gl.cpp",
+	"func" : "TestTexture",
+	"line" : 74,
+	"message" : "VideoOutGL::TestTexture: 64x64",
+	"sec" : 508,
+	"section" : "video/out/gl",
+	"severity" : 3,
+	"usec" : 641921601
+}{
+	"file" : "../aegisub-9999/src/video_out_gl.cpp",
+	"func" : "TestTexture",
+	"line" : 74,
+	"message" : "VideoOutGL::TestTexture: 16384x16384",
+	"sec" : 508,
+	"section" : "video/out/gl",
+	"severity" : 3,
+	"usec" : 641925163
+}{
+	"file" : "../aegisub-9999/src/video_out_gl.cpp",
+	"func" : "DetectOpenGLCapabilities",
+	"line" : 92,
+	"message" : "Maximum texture size is 16384x16384",
+	"sec" : 508,
+	"section" : "video/out/gl",
+	"severity" : 3,
+	"usec" : 641926350
+}{
+	"file" : "../aegisub-9999/src/video_out_gl.cpp",
+	"func" : "TestTexture",
+	"line" : 74,
+	"message" : "VideoOutGL::TestTexture: 16384x8192",
+	"sec" : 508,
+	"section" : "video/out/gl",
+	"severity" : 3,
+	"usec" : 641928725
+}{
+	"file" : "../aegisub-9999/src/video_out_gl.cpp",
+	"func" : "InitTextures",
+	"line" : 240,
+	"message" : "Using texture size: 2048x2048",
+	"sec" : 508,
+	"section" : "video/out/gl",
+	"severity" : 3,
+	"usec" : 642023710
+}{
+	"file" : "../aegisub-9999/libaegisub/common/hotkey.cpp",
+	"func" : "Scan",
+	"line" : 132,
+	"message" : "Found: Ctrl-V  Context (req/found): Subtitle Edit Box/Default   Command: edit/line/paste",
+	"sec" : 511,
+	"section" : "agi/hotkey/found",
+	"severity" : 4,
+	"usec" : 338440194
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 511,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340627223
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 511,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340635534
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 511,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340639096
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 511,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340641470
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 511,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340643845
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 511,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340647407
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 511,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340649781
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 511,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340652156
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 511,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340655718
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 511,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340658093
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 511,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340660467
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 511,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340662842
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 511,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340665217
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 511,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340667591
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 511,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340669966
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 511,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340672340
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 511,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 340678277
+}{
+	"file" : "../aegisub-9999/libaegisub/common/hotkey.cpp",
+	"func" : "Scan",
+	"line" : 132,
+	"message" : "Found: Ctrl-1  Context (req/found): Subtitle Edit Box/Default   Command: automation/lua/FontCycler/Font Cycler/Font Cycler: Previous",
+	"sec" : 513,
+	"section" : "agi/hotkey/found",
+	"severity" : 4,
+	"usec" : 409587294
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 513,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 547297680
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 513,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 547795163
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 513,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 547799913
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 513,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 547804662
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 513,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 547808224
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 513,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 547810599
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 513,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 547814160
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 513,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 547817722
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 513,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 547821284
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 513,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 547823659
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 513,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 547827221
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 513,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 547830783
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 513,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 547833157
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 513,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 547836719
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 513,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 547840281
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 513,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 548312831
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 513,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 548334203
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "fontselect: (SVN-Bradley Hand, 700, 0) -> /usr/share/fonts/svn/svn-bradley hand.ttf, 0, SVN-BradleyHand",
+	"sec" : 513,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 550134168
+}{
+	"file" : "../aegisub-9999/libaegisub/common/hotkey.cpp",
+	"func" : "Scan",
+	"line" : 132,
+	"message" : "Found: Ctrl-1  Context (req/found): Subtitle Edit Box/Default   Command: automation/lua/FontCycler/Font Cycler/Font Cycler: Previous",
+	"sec" : 517,
+	"section" : "agi/hotkey/found",
+	"severity" : 4,
+	"usec" : 604481793
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 517,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 625213448
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 517,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 646104203
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 517,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 646118451
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 517,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 646125575
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 517,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 646130324
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 517,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 646135073
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 517,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 646139822
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 517,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 646143384
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 517,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 646146946
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 517,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 646151695
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 517,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 646155257
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 517,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 646158819
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 517,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 646163569
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 517,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 646168318
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 517,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 646171880
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 517,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 646176629
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 517,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 646180191
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 517,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 646189689
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "fontselect: (000 BackIssue BB, 700, 0) -> /usr/share/fonts/000/000backissuebbregular.ttf, 0, 000BackIssueBB-Regular",
+	"sec" : 517,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 648024086
+}{
+	"file" : "../aegisub-9999/libaegisub/common/hotkey.cpp",
+	"func" : "Scan",
+	"line" : 132,
+	"message" : "Found: Ctrl-C  Context (req/found): Subtitle Edit Box/Default   Command: edit/line/copy",
+	"sec" : 524,
+	"section" : "agi/hotkey/found",
+	"severity" : 4,
+	"usec" : 730717895
+}{
+	"file" : "../aegisub-9999/libaegisub/common/hotkey.cpp",
+	"func" : "Scan",
+	"line" : 132,
+	"message" : "Found: Ctrl-2  Context (req/found): Subtitle Edit Box/Default   Command: automation/lua/FontCycler/Font Cycler/Font Cycler: Next",
+	"sec" : 548,
+	"section" : "agi/hotkey/found",
+	"severity" : 4,
+	"usec" : 405863384
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 548,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 425083591
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 548,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 443635341
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 548,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 443647214
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 548,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 443653151
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 548,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 443657900
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 548,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 443662650
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 548,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 443668586
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 548,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 443673335
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 548,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 443679272
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 548,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 443685208
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 548,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 443687583
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 548,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 443692332
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 548,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 443695894
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 548,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 443699456
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 548,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 443705393
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 548,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 443710142
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 548,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 443714891
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 548,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 443725577
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialog",
+	"line" : 391,
+	"message" : "creating LuaDialoug, addr: 0x7fc0009fb2e0",
+	"sec" : 560,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 957393565
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialogControl",
+	"line" : 134,
+	"message" : "created control: '', (0,0)(1,1), ",
+	"sec" : 560,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 957413749
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialogControl",
+	"line" : 134,
+	"message" : "created control: '', (0,1)(1,1), ",
+	"sec" : 560,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 957420873
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_dialog.cpp",
+	"func" : "LuaDialogControl",
+	"line" : 134,
+	"message" : "created control: 'font_list_box', (0,2)(2,20), ",
+	"sec" : 560,
+	"section" : "automation/lua/dialog",
+	"severity" : 4,
+	"usec" : 957425622
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 564,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 542240020
+}{
+	"file" : "../aegisub-9999/libaegisub/common/hotkey.cpp",
+	"func" : "Scan",
+	"line" : 128,
+	"message" : "Found: Escape  Context: Subtitle Edit Box  Command: ",
+	"sec" : 564,
+	"section" : "agi/hotkey/found",
+	"severity" : 4,
+	"usec" : 838239283
+}{
+	"file" : "../aegisub-9999/libaegisub/common/hotkey.cpp",
+	"func" : "Scan",
+	"line" : 128,
+	"message" : "Found: Escape  Context: Subtitle Edit Box  Command: ",
+	"sec" : 564,
+	"section" : "agi/hotkey/found",
+	"severity" : 4,
+	"usec" : 838247594
+}{
+	"file" : "../aegisub-9999/libaegisub/common/hotkey.cpp",
+	"func" : "Scan",
+	"line" : 132,
+	"message" : "Found: Ctrl-V  Context (req/found): Subtitle Edit Box/Default   Command: edit/line/paste",
+	"sec" : 566,
+	"section" : "agi/hotkey/found",
+	"severity" : 4,
+	"usec" : 488874895
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491001371
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491021555
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491027492
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491032241
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491036990
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491040552
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491047676
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491051238
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491054800
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491058362
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491061924
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491065486
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491069048
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491072610
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491074984
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491079734
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491095169
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491739879
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491748190
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491752940
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491756501
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491761251
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491766000
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491769562
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491774311
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491779060
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491781435
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491784997
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491788559
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491792121
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491795683
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491799245
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491802807
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 491809931
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "fontselect: (45, 700, 0) -> /usr/share/fonts/z-font-chua-viet-hoa-hoac-viet-hoa-mot-phan-hoac-viet-hoa-ko-phai-unicode/sawarabigothic-regular.ttf, 0, SawarabiGothic-Regular",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 632663131
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Glyph 0x1EEF not found, selecting one more font for (45, 700, 0)",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 632766427
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "fontselect: (45, 700, 0) -> /usr/share/fonts/tong-hop/cascadiacode.ttf, 393216, CascadiaCodeRoman-Bold",
+	"sec" : 566,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 635855813
+}{
+	"file" : "../aegisub-9999/libaegisub/common/hotkey.cpp",
+	"func" : "Scan",
+	"line" : 132,
+	"message" : "Found: Ctrl-V  Context (req/found): Subtitle Edit Box/Default   Command: edit/line/paste",
+	"sec" : 579,
+	"section" : "agi/hotkey/found",
+	"severity" : 4,
+	"usec" : 306991886
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310213033
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310224906
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310229656
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310234405
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310236779
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310241529
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310243903
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310248652
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310252214
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310254589
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310259338
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310262900
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310265275
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310268837
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310272398
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310275960
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310284271
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310723573
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310730697
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310734258
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310737820
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310741382
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310744944
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310748506
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310750881
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310754443
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310758005
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310760379
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310763941
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310767503
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310769878
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310773439
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310775814
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 310780563
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "fontselect: (LEHN044, 700, 0) -> /usr/share/fonts/z-font-chua-viet-hoa-hoac-viet-hoa-mot-phan-hoac-viet-hoa-ko-phai-unicode/lehn044.ttf, 0, CamdensHand-Plain",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 313877044
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Glyph 0x1EBF not found, selecting one more font for (LEHN044, 700, 0)",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 316182783
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "fontselect: (LEHN044, 700, 0) -> /usr/share/fonts/z-font-chua-viet-hoa-hoac-viet-hoa-mot-phan-hoac-viet-hoa-ko-phai-unicode/sawarabigothic-regular.ttf, 0, SawarabiGothic-Regular",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 320459440
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Glyph 0x1EEF not found, selecting one more font for (LEHN044, 700, 0)",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 320572234
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "fontselect: (LEHN044, 700, 0) -> /usr/share/fonts/tong-hop/cascadiacode.ttf, 393216, CascadiaCodeRoman-Bold",
+	"sec" : 579,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 323508429
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 137356389
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 137371824
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 137377760
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 137381322
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 137386071
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 137389633
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 137393195
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 137396757
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 137400319
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 137403881
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 137407443
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 137411005
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 137414566
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 137418128
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 137421690
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 137425252
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 137433563
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 329407065
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 329420125
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 329426062
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 329430811
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 329435560
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 329439122
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 329443871
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 329447433
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 329452183
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 329455745
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 329459306
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 329462868
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 329467618
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 329471179
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 329474741
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 329479491
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 581,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 329488989
+}{
+	"file" : "../aegisub-9999/libaegisub/common/hotkey.cpp",
+	"func" : "Scan",
+	"line" : 132,
+	"message" : "Found: Ctrl-V  Context (req/found): Subtitle Edit Box/Default   Command: edit/line/paste",
+	"sec" : 588,
+	"section" : "agi/hotkey/found",
+	"severity" : 4,
+	"usec" : 654996883
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659014710
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659025396
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659030145
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659033707
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659037269
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659040830
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659044392
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659047954
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659051516
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659055078
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659058640
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659062202
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659065764
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659068138
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659071700
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659075262
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659083573
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659918246
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659924182
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659927744
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659931306
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659936055
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659939617
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659958614
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659962176
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659965738
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659969300
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659972862
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659975236
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659977611
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659979986
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659982360
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659984735
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 659991859
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "fontselect: (hillBelly W05, 700, 0) -> /usr/share/fonts/z-font-chua-viet-hoa-hoac-viet-hoa-mot-phan-hoac-viet-hoa-ko-phai-unicode/sawarabigothic-regular.ttf, 0, SawarabiGothic-Regular",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 667234394
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Glyph 0x1EEF not found, selecting one more font for (hillBelly W05, 700, 0)",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 667362623
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "fontselect: (hillBelly W05, 700, 0) -> /usr/share/fonts/tong-hop/cascadiacode.ttf, 393216, CascadiaCodeRoman-Bold",
+	"sec" : 588,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 670733370
+}{
+	"file" : "../aegisub-9999/libaegisub/common/hotkey.cpp",
+	"func" : "Scan",
+	"line" : 132,
+	"message" : "Found: Ctrl-V  Context (req/found): Subtitle Edit Box/Default   Command: edit/line/paste",
+	"sec" : 606,
+	"section" : "agi/hotkey/found",
+	"severity" : 4,
+	"usec" : 519307318
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522086790
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522102225
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522108161
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522111723
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522116472
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522120034
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522123596
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522125971
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522129533
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522133095
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522136656
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522141406
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522143780
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522148530
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522152091
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522155653
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522163964
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522490472
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522496409
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522499971
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522503532
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522507094
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522510656
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522514218
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522516593
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522520155
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522523717
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522527279
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522529653
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522533215
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522536777
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522540339
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522542713
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 522547463
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "fontselect: (UVN remind, 700, 0) -> /usr/share/fonts/uvn/uvn remind.ttf, 0, UVNremind",
+	"sec" : 606,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 525461099
+}{
+	"file" : "../aegisub-9999/libaegisub/common/hotkey.cpp",
+	"func" : "Scan",
+	"line" : 132,
+	"message" : "Found: Ctrl-V  Context (req/found): Subtitle Edit Box/Default   Command: edit/line/paste",
+	"sec" : 634,
+	"section" : "agi/hotkey/found",
+	"severity" : 4,
+	"usec" : 7905534
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10334771
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10346644
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10352581
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10356143
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10360892
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10364454
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10368016
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10371578
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10376327
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10379889
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10383451
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10387013
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10390575
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10395324
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10398886
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10402448
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10410759
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10937925
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10943861
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10948611
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10950985
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10954547
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10958109
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10961671
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10964046
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10967608
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10971170
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10973544
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10977106
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10979481
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10983043
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10985417
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10991354
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 10996103
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "fontselect: (UTM Alberta Heavy, 700, 0) -> /usr/share/fonts/utm/utm alberta heavy regular.ttf, 0, UTMAlbertaHeavy",
+	"sec" : 634,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 13509640
+}{
+	"file" : "../aegisub-9999/libaegisub/common/hotkey.cpp",
+	"func" : "Scan",
+	"line" : 132,
+	"message" : "Found: Ctrl-V  Context (req/found): Subtitle Edit Box/Default   Command: edit/line/paste",
+	"sec" : 638,
+	"section" : "agi/hotkey/found",
+	"severity" : 4,
+	"usec" : 974569382
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977123287
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977135160
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977142284
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977145846
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977150595
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977155344
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977158906
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977163655
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977168405
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977171967
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977175529
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977179090
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977182652
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977187402
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977190964
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977194525
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977204024
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977572090
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977578027
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977581589
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977585151
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977588713
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977591087
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977594649
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977597024
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977600586
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977602960
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977606522
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977610084
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977613646
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977616021
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977619583
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977623145
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 977626707
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "fontselect: (000 CCPascualFerry [TeddyBear], 700, 0) -> /usr/share/fonts/tong-hop/ccpascualferry-regular.ttf, 0, 000CCPascualFerryTeddyBear",
+	"sec" : 638,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 980135494
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 641,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 423580312
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 641,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 423604059
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 641,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 423612370
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 641,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 423618306
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 641,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 423623056
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 641,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 423628992
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 641,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 423633741
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 641,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 423638491
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 641,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 423644427
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 641,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 423649176
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 641,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 423653926
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 641,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 423658675
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 641,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 423663424
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 641,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 423668173
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 641,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 423672923
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 641,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 423677672
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 641,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 423693107
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: 5-normal,UVN Sach Vo,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,5,10,10,10,1",
+	"sec" : 642,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 385693700
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Default,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 642,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 385719821
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Lines,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 642,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 385726945
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Basic,UVN Giong Song,72,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 642,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 385732881
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Sign - Onscreen text,UVN Giong Song,80,&H00181C18,&H00000000,&H00000000,&HC3000000,-1,0,0,0,100,100,0,0,1,0,10,8,0,0,0,1",
+	"sec" : 642,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 385738818
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Song,UVN remind,68,&H00FFFFFF,&H00000000,&H00645020,&H00000000,0,0,0,0,100,100,0,0,1,3,0,9,90,90,45,1",
+	"sec" : 642,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 385743567
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Title,Times New Roman,100,&H00FFFFFF,&HFF000000,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,8,0,0,0,1",
+	"sec" : 642,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 385749504
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Top,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 642,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 385754253
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: sign,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,1,0,1,3,0,2,60,60,50,1",
+	"sec" : 642,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 385759002
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Disclaimer,Georgia,57,&H00FFFFFF,&H0000FFFF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,12,12,9,60,60,60,1",
+	"sec" : 642,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 385763751
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: Preview,Times New Roman,60,&H00DCB128,&H008B3081,&H47FFFFFF,&HA8000000,-1,0,0,0,110,100,0,0,1,6,0,7,75,90,135,1",
+	"sec" : 642,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 385768501
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: [Hunn - TS],Noto Serif JP,90,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,-1,0,0,0,100,100,0,0,1,0,0,2,0,0,0,1",
+	"sec" : 642,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 385773250
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: credit,Times New Roman,40,&H14F7E8E1,&H000000FF,&H96000000,&H00000000,0,0,0,0,100,100,0,0,1,2,0,8,60,60,80,1",
+	"sec" : 642,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 385777999
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultItalics,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,-1,0,0,80,100,0,0,1,3,3,2,60,60,50,1",
+	"sec" : 642,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 385782748
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "[0x7fbfd47ea110] Style: DefaultTop,UVN Sach Vo,81,&H00FFFFFF,&H00000000,&H4D000000,&HBC000000,-1,0,0,0,80,100,0,0,1,3,3,8,60,60,50,1",
+	"sec" : 642,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 385787498
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "No event format found, using fallback",
+	"sec" : 642,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 385793434
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Added subtitle file: <memory> (16 styles, 1 events)",
+	"sec" : 642,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 385807682
+}{
+	"file" : "../aegisub-9999/libaegisub/common/io.cpp",
+	"func" : "Save",
+	"line" : 43,
+	"message" : "\"/home/huyhoang/.aegisub/config.json\"",
+	"sec" : 644,
+	"section" : "agi/io/save/file",
+	"severity" : 4,
+	"usec" : 365270520
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373010598
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373017722
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373020096
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373022471
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373023658
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373024846
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373028408
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373033157
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373035531
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373037906
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373040281
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373041468
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373043843
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373046217
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373049779
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373052154
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373054528
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373056903
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373059278
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373060465
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373062840
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373066401
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373068776
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 373071151
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381470186
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381476122
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381478497
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381480872
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381483246
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381485621
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381487995
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381493932
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381497494
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381498681
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381501056
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381504618
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381506992
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381509367
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381515304
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381517678
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381520053
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381522427
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381524802
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381525989
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381528364
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381533113
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381535488
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 381537862
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391849655
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391854404
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391856779
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391859153
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391861528
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391863903
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391865090
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391872214
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391876963
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391879338
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391880525
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391882900
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391885274
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391887649
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391894773
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391897147
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391900709
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391903084
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391905459
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391907833
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391910208
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391919706
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391922081
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391924455
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391929205
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391931579
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391933954
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391936329
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391942265
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391944640
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391947014
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 391948202
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395030460
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395035209
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395037584
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395039958
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395041146
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395047082
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395049457
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395050644
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395054206
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395056581
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395057768
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395058955
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395064892
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395066079
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395068454
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395069641
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395073203
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395075578
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395076765
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395082702
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395085076
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395087451
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395088638
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395091013
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395094575
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395096949
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395104073
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395106448
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395107635
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395110010
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395111197
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395113572
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395117134
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395121883
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395124258
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395125445
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395127819
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395130194
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395132569
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395133756
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395140880
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395143254
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395144442
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395146816
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395148004
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395150378
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395152753
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395157502
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395159877
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395162251
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395163439
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395165813
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395168188
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395169375
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395175312
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 395176499
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 466295216
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 466305902
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 466309464
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 466313026
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 466316588
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 466320150
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 466323711
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 466330835
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 466336772
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 466340334
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 466343896
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 466346270
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 466349832
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 466354582
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 466364080
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 466367642
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 477074809
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 480189124
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 480195061
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 480197436
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 480200998
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 480204560
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 480206934
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 480209309
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 480216433
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 490078234
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 490084171
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 490086546
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 490090107
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 490093669
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 490096044
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 490097231
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 490103168
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 490739566
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 490744316
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 490745503
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 490747878
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 490750252
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 490752627
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 490755001
+}{
+	"file" : "../aegisub-9999/src/auto4_lua_assfile.cpp",
+	"func" : "ObjectGarbageCollect",
+	"line" : 619,
+	"message" : "Garbage collected LuaAssFile",
+	"sec" : 644,
+	"section" : "automation/lua",
+	"severity" : 4,
+	"usec" : 490759751
+}

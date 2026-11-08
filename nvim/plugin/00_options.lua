@@ -1,6 +1,7 @@
 vim.filetype.add {
   extension = {
     rasi = "rasi",
+    luau = "lua",
     rofi = "rasi",
     wofi = "rasi",
     props = "msbuild",

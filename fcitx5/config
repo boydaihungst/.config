@@ -1,18 +1,20 @@
 [Hotkey]
 # Enumerate when holding modifier of Toggle key
-EnumerateWithTriggerKeys=True
+# EnumerateWithTriggerKeys=True
 # Activate Input Method
 ActivateKeys=
 # Deactivate Input Method
 DeactivateKeys=
+# Consume redundant Activate/Deactivate key
+# ConsumeRedundantActivateKeys=False
 # Temporarily Toggle Input Method
 AltTriggerKeys=
 # Enumerate Input Method Forward
-EnumerateForwardKeys=
+# EnumerateForwardKeys=
 # Enumerate Input Method Backward
-EnumerateBackwardKeys=
+# EnumerateBackwardKeys=
 # Skip first input method while enumerating
-EnumerateSkipFirst=False
+# EnumerateSkipFirst=False
 # Enumerate Input Method Group Forward
 EnumerateGroupForwardKeys=
 # Enumerate Input Method Group Backward
@@ -28,7 +30,7 @@ NextCandidate=
 # Toggle embedded preedit
 TogglePreedit=
 # Time limit in milliseconds for triggering modifier key shortcuts
-ModifierOnlyKeyTimeout=250
+# ModifierOnlyKeyTimeout=250
 
 [Hotkey/TriggerKeys]
 0=Control+Shift+space
@@ -37,35 +39,35 @@ ModifierOnlyKeyTimeout=250
 # Activate input method by default
 ActiveByDefault=True
 # Reset state on Focus In
-resetStateWhenFocusIn=No
+# resetStateWhenFocusIn=No
 # Share Input State
 ShareInputState=All
 # Show preedit in application
-PreeditEnabledByDefault=True
+# PreeditEnabledByDefault=True
 # Show Input Method Information when switch input method
-ShowInputMethodInformation=True
+# ShowInputMethodInformation=True
 # Show Input Method Information when changing focus
-showInputMethodInformationWhenFocusIn=False
+# showInputMethodInformationWhenFocusIn=False
 # Show compact input method information
-CompactInputMethodInformation=True
+# CompactInputMethodInformation=True
 # Show first input method information
-ShowFirstInputMethodInformation=True
+# ShowFirstInputMethodInformation=True
 # Default Candidates per page
-DefaultPageSize=5
+# DefaultPageSize=5
 # Override XKB Option
-OverrideXkbOption=False
+# OverrideXkbOption=False
 # Custom XKB Option
-CustomXkbOption=
+# CustomXkbOption=
 # Force Enabled Addons
-EnabledAddons=
+# EnabledAddons=
 # Force Disabled Addons
-DisabledAddons=
+# DisabledAddons=
 # Preload input method to be used by default
-PreloadInputMethod=True
+# PreloadInputMethod=True
 # Allow input method in the password field
-AllowInputMethodForPassword=False
+# AllowInputMethodForPassword=False
 # Show preedit text when typing password
-ShowPreeditForPassword=False
+# ShowPreeditForPassword=False
 # Interval of saving user data in minutes
-AutoSavePeriod=30
+# AutoSavePeriod=30
 

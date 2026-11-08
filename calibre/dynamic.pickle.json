@@ -1,0 +1,36 @@
+{
+  "Select Device Folder": "/home/huyhoang",
+  "add books dialog dir": "/home/huyhoang",
+  "add books dialog dir-last-used-filter-spec-all-files": false,
+  "add formats dialog dir": "/home/huyhoang/Documents/chapters",
+  "add formats dialog dir-last-used-filter-spec-all-files": false,
+  "change cover dialog": "/home/huyhoang",
+  "choose-data-files-to-add": "/home/huyhoang",
+  "library_delete_books_again": true,
+  "notified-version-updates": {
+    "__class__": "set",
+    "__value__": [
+      "9.8",
+      "9.9"
+    ]
+  },
+  "recursive book import root dir dialog": "/home/huyhoang/test/Ta Mô Phỏng Con Đường Trường Sinh - Phẫn Nộ Đích Ô Tặc.epub_1",
+  "save to disk dialog": "/home/huyhoang",
+  "sort_history": [
+    [
+      "title",
+      false
+    ],
+    [
+      "timestamp",
+      false
+    ],
+    [
+      "timestamp",
+      false
+    ]
+  ],
+  "systray_msg": true,
+  "welcome_wizard_device": "default",
+  "welcome_wizard_was_run": true
+}

@@ -1,0 +1,136 @@
+{
+	"file" : "../aegisub-9999/libaegisub/common/option.cpp",
+	"func" : "Options",
+	"line" : 179,
+	"message" : "New Options object",
+	"sec" : 3358,
+	"section" : "agi/options",
+	"severity" : 4,
+	"usec" : 259703302
+}{
+	"file" : "../aegisub-9999/src/utils.cpp",
+	"func" : "operator()",
+	"line" : 175,
+	"message" : "cleaning \"/home/huyhoang/.aegisub/log/*.json\"",
+	"sec" : 3358,
+	"section" : "utils/clean_cache",
+	"severity" : 4,
+	"usec" : 259713988
+}{
+	"file" : "../aegisub-9999/libaegisub/common/io.cpp",
+	"func" : "Open",
+	"line" : 28,
+	"message" : "\"/home/huyhoang/.aegisub/config.json\"",
+	"sec" : 3358,
+	"section" : "agi/io/open/file",
+	"severity" : 4,
+	"usec" : 260231655
+}{
+	"file" : "../aegisub-9999/src/command/command.cpp",
+	"func" : "init_builtin_commands",
+	"line" : 94,
+	"message" : "Populating command map",
+	"sec" : 3358,
+	"section" : "command/init",
+	"severity" : 4,
+	"usec" : 261041401
+}{
+	"file" : "../aegisub-9999/libaegisub/common/hotkey.cpp",
+	"func" : "Hotkey",
+	"line" : 92,
+	"message" : "Generating hotkeys.",
+	"sec" : 3358,
+	"section" : "hotkey/init",
+	"severity" : 4,
+	"usec" : 261142322
+}{
+	"file" : "../aegisub-9999/libaegisub/common/io.cpp",
+	"func" : "Open",
+	"line" : 28,
+	"message" : "\"/home/huyhoang/.aegisub/hotkey.json\"",
+	"sec" : 3358,
+	"section" : "agi/io/open/file",
+	"severity" : 4,
+	"usec" : 261149446
+}{
+	"file" : "../aegisub-9999/libaegisub/common/mru.cpp",
+	"func" : "MRUManager",
+	"line" : 69,
+	"message" : "Loading MRU List",
+	"sec" : 3358,
+	"section" : "agi/mru",
+	"severity" : 4,
+	"usec" : 261706294
+}{
+	"file" : "../aegisub-9999/libaegisub/common/io.cpp",
+	"func" : "Open",
+	"line" : 28,
+	"message" : "\"/home/huyhoang/.aegisub/mru.json\"",
+	"sec" : 3358,
+	"section" : "agi/io/open/file",
+	"severity" : 4,
+	"usec" : 261712231
+}{
+	"file" : "../aegisub-9999/src/utils.cpp",
+	"func" : "operator()",
+	"line" : 186,
+	"message" : "cache does not need cleaning (maxsize=10485760, cursize=9515827, maxfiles=100, numfiles=34), exiting",
+	"sec" : 3358,
+	"section" : "utils/clean_cache",
+	"severity" : 4,
+	"usec" : 261975814
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "libass API version: 0x1704000",
+	"sec" : 3358,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 299836764
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "libass source: tarball: 0.17.4",
+	"sec" : 3358,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 299862885
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Raster: FreeType 2.14.3",
+	"sec" : 3358,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 299926999
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Shaper: FriBidi 1.0.16 (SIMPLE) HarfBuzz-ng 12.3.2 (COMPLEX)",
+	"sec" : 3358,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 300109845
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Initialized",
+	"sec" : 3358,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 300114594
+}{
+	"file" : "../aegisub-9999/src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 75,
+	"message" : "Using font provider fontconfig",
+	"sec" : 3359,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 46501761
+}

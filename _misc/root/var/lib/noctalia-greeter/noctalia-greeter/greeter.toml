@@ -1,0 +1,39 @@
+# noctalia-greeter greeter.toml (declarative; Nix-safe; UI and Sync never write this)
+# Last-used session lives in sync.toml; UI/Sync also fall back to sync.toml for scheme.
+# Output layout/transforms/scales fall back to sync.toml when not set here and
+# output.use_synced_settings is true (default). Session power actions/menu entries are
+# Sync-only (sync.toml [session.power]/[[session.actions]]) and are not settable here.
+# [session] default, [user] default
+# [appearance] scheme, password_style, hide_logo, power_buttons_position, scheme_selector_position, theme_mode, corner_radius_scale, font_family
+# [appearance.palette] full color role table, [appearance.wallpaper] path/fill_mode/fill_color
+# [appearance.wallpapers.<connector>] per-output wallpaper overrides
+# [output] name/use_synced_settings/layout/scale/scales/width/height/refresh_rate/transforms, [idle] timeout, [cursor] theme/size/path
+# [keyboard] layout/variant/options/numlock
+# [auth] allow_empty_password (bool), request_timeout (0-3600 seconds; default 60, 0 disables)
+# [clock] enabled/position/time_format/date_format
+
+[session]
+  default = "Umbriel"
+
+[user]
+  default = "huyhoang"
+
+[clock]
+  enabled        = true
+  position       = "above-panel"
+  time_format    = "{:%H:%M}"
+  date_format    = "%A, %x"
+  time_font_size = 48
+  date_font_size = 16
+
+[appearance]
+  # Password mask: "default" (filled circles) or "random" (cycled glyph shapes).
+  password_style = "random"
+  hide_logo      = true
+
+[output]
+  use_synced_settings = true
+  refresh_rate        = "DP-1:240; eDP-1:240"
+  layout              = "DP-1:0,0; eDP-1:2560,1440"
+  scales              = "DP-1:1.000; eDP-1:1.250"
+  transforms          = "DP-1:normal; eDP-1:normal"

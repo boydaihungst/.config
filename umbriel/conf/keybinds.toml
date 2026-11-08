@@ -1,0 +1,174 @@
+#:schema ../umbriel.schema.v5.json
+# ==============================================================================
+# Keybinds
+# Defining this table replaces the built-in bind set, so every active bind that
+# should remain available is listed here.
+# Syntax: https://docs.noctalia.dev/umbriel/keybinds/
+# Actions: https://docs.noctalia.dev/umbriel/actions/
+
+[keybinds]
+  # Basic keybindings
+  "Mod+Return"  = { action = "spawn kitty", repeat = false }
+  "Mod+Q"       = { action = "window-close", repeat = false }
+  "Mod+D"       = { action = "spawn noctalia msg panel-toggle launcher", repeat = false }
+  "Mod+X"       = { action = "spawn noctalia msg panel-toggle session", allow_when_locked = true, repeat = false }
+  "Mod+Shift+C" = { action = "config-reload", repeat = false }
+
+  # File managers
+  "Mod+N"       = { action = "spawn kitty --app-id yazi -- fish -c yazi", repeat = false }
+  "Mod+Shift+N" = { action = "spawn kitty --app-id xplr -- xplr", repeat = false }
+
+  # Editor
+  "Mod+E" = { action = "spawn kitty --app-id nvim -- nvim", repeat = false }
+
+  # Browser
+  "Mod+W" = { action = "spawn vivaldi --password-store=gnome --proxy-auto-detect", repeat = false }
+
+  # Color picker
+  "Mod+Z" = { action = "spawn hyprpicker -a -f hex -r -q", repeat = false }
+
+  # Quit session
+  "Mod+Escape" = "session-quit"
+  # Toggle shortcuts inhibition for the focused surface
+  # "Mod+Shift+Escape" = { action = "shortcuts-inhibit-toggle", allow_when_inhibited = true, repeat = false }
+
+  # Screenshot focused screen
+  "Print" = { action = "spawn noctalia msg screenshot-fullscreen", allow_when_locked = true, repeat = false }
+
+  # Screenshot area
+  "Mod+Shift+S" = { action = "spawn noctalia msg screenshot-region", allow_when_locked = true, repeat = false }
+
+  # Power profiles
+  "Mod+Shift+P" = { action = "spawn ~/.config/hypr/scripts/power-profiles", allow_when_locked = true, repeat = false }
+
+  # Clipboard
+  "Mod+C" = { action = "spawn noctalia msg panel-toggle clipboard", repeat = false }
+  "Mod+V" = { action = "spawn noctalia msg panel-toggle clipboard", repeat = false }
+
+  # Media, volume and brightness keys from any input device, routed through the
+  # Noctalia shell so its OSDs show. Safe while the session is locked.
+  # https://docs.noctalia.dev/noctalia/compositor-settings/umbriel
+  "XF86AudioRaiseVolume" = { action = "spawn noctalia msg volume-up", allow_when_locked = true }
+  "XF86AudioLowerVolume" = { action = "spawn noctalia msg volume-down", allow_when_locked = true }
+  "XF86AudioMute"        = { action = "spawn noctalia msg volume-mute", allow_when_locked = true, repeat = false }
+  "XF86AudioPlay"        = { action = "spawn noctalia msg media toggle", allow_when_locked = true, repeat = false }
+  "XF86AudioStop"        = { action = "spawn noctalia msg media stop", allow_when_locked = true, repeat = false }
+  "XF86AudioPause"       = { action = "spawn noctalia msg media pause", allow_when_locked = true, repeat = false }
+  "XF86AudioNext"        = { action = "spawn noctalia msg media next", allow_when_locked = true }
+  "XF86AudioPrev"        = { action = "spawn noctalia msg media previous", allow_when_locked = true }
+  "XF86AudioMicMute"     = { action = "spawn wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle", allow_when_locked = true }
+
+  "XF86WLAN" = { action = "spawn nmcli radio wifi toggle", allow_when_locked = false }
+
+  # AI key. won't ever use I guess
+  # "Mod+Shift+XF86TouchpadOff" = { action = "spawn ...", allow_when_locked = false }
+
+  # Open some thing to send/receive to/from phone I guess. No use yet.
+  "XF86Phone" = { action = "spawn notify-send 'Phone'", allow_when_locked = false }
+
+  # Use this to switch output preset. No use yet, use shikane is better
+  "Mod+P" = { action = "spawn notify-send 'Switch Video Mode key pressed'", allow_when_locked = false }
+
+  "XF86MonBrightnessUp"   = { action = "spawn noctalia msg brightness-up", allow_when_locked = true }
+  "XF86MonBrightnessDown" = { action = "spawn noctalia msg brightness-down", allow_when_locked = true }
+
+  # Open calculator app
+  "XF86Calculator" = { action = "spawn speedcrunch", repeat = false }
+
+  # Focus and movement
+  "Mod+Left"  = "window-move-to-output-left"
+  "Mod+Down"  = "window-move-to-output-down"
+  "Mod+Up"    = "window-move-to-output-up"
+  "Mod+Right" = "window-move-to-output-right"
+
+  "Mod+H" = "window-focus-or-output-left"
+  "Mod+J" = "window-focus-or-workspace-down"
+  "Mod+K" = "window-focus-or-workspace-up"
+  "Mod+L" = "window-focus-or-output-right"
+
+  "Mod+Shift+H" = "window-move-or-output-left"
+  "Mod+Shift+J" = "window-move-or-workspace-down"
+  "Mod+Shift+K" = "window-move-or-workspace-up"
+  "Mod+Shift+L" = "window-move-or-output-right"
+
+  # "Mod+F1"          = "window-focus-next"
+  "Mod+Shift+Left"  = "window-move-or-output-left"
+  "Mod+Shift+Down"  = "window-move-or-output-down"
+  "Mod+Shift+Up"    = "window-move-or-output-up"
+  "Mod+Shift+Right" = "window-move-or-output-right"
+
+  # Window state and layout
+  "Mod+T"         = "window-focus-switch-floating"
+  "Mod+Shift+F"   = { action = "window-toggle-floating", repeat = false }
+  # "Mod+Shift+T"     = { action = "window-focus-switch-floating", repeat = false }
+  # "Mod+P"           = { action = "window-toggle-pinned", repeat = false }
+  "Mod+F"         = { action = "window-toggle-maximize-to-edges", repeat = false }
+  "Mod+M"         = { action = "window-toggle-fullscreen", repeat = false }
+  # "Mod+Ctrl+F"      = { action = "window-toggle-maximize", repeat = false }
+  "Mod+Equal"     = "window-cycle-primary-extent"
+  "Mod+Minus"     = "window-cycle-primary-extent-back"
+  "Mod+Comma"     = "output-focus-left"
+  "Mod+Period"    = "output-focus-right"
+  # "Mod+Ctrl+Comma"  = "window-consume-from-left"
+  # "Mod+Ctrl+Period" = "window-consume-from-right"
+  # Needs layout.mode = "dwindle".
+  # "Mod+Alt+T" = "layout-toggle-split"
+  # "Mod+W"           = { action = "column-toggle-tabbed", repeat = false }
+  # "Mod+Alt+Right"   = "column-focus-tab-next"
+  # "Mod+Alt+Left"    = "column-focus-tab-previous"
+  "Mod+WheelUp"   = "window-focus-left"
+  "Mod+WheelDown" = "window-focus-right"
+  "Mod+O"         = { action = "overview-toggle", repeat = false }
+
+  # Workspaces
+  # Move the whole workspace, retaining its name, layout, and windows.
+  # "Mod+Ctrl+Page_Down" = "workspace-move-to-output-next"
+  # "Mod+Ctrl+Page_Up" = "workspace-move-to-output-previous"
+  # "Mod+Ctrl+W" = "workspace-move-to-output current WEB --output DP-1"
+  "Mod+Tab"       = "workspace-next"
+  "Mod+Shift+Tab" = "workspace-previous"
+  "Mod+1"         = "workspace-switch Term"
+  "Mod+2"         = "workspace-switch Browser"
+  "Mod+3"         = "workspace-switch File"
+  "Mod+4"         = "workspace-switch Chat"
+  "Mod+5"         = "workspace-switch EBook"
+  "Mod+6"         = "workspace-switch Game"
+  "Mod+7"         = "workspace-switch 7"
+  "Mod+8"         = "workspace-switch 8"
+  "Mod+9"         = "workspace-switch 9"
+  "Mod+Shift+1"   = "window-move-to-workspace-silent Term"
+  "Mod+Shift+2"   = "window-move-to-workspace-silent Browser"
+  "Mod+Shift+3"   = "window-move-to-workspace-silent File"
+  "Mod+Shift+4"   = "window-move-to-workspace-silent Chat"
+  "Mod+Shift+5"   = "window-move-to-workspace-silent EBook"
+  "Mod+Shift+6"   = "window-move-to-workspace-silent Game"
+  "Mod+Shift+7"   = "window-move-to-workspace-silent 7"
+  "Mod+Shift+8"   = "window-move-to-workspace-silent 8"
+  "Mod+Shift+9"   = "window-move-to-workspace-silent 9"
+
+  # Scratchpad
+  "Mod+Shift+Space" = { action = "window-move-to-scratchpad", repeat = false }
+  "Mod+Space"       = "scratchpad-toggle"
+  "Mod+Ctrl+Space"  = { action = "window-restore-from-scratchpad", repeat = false }
+  # "Mod+Tab"         = "scratchpad-focus-next"
+
+  # ============================================================
+  # Resize mode
+  # ============================================================
+
+  "Mod+R" = { action = "submap Resize", repeat = false }
+
+  # Resize mode: adjust primary/secondary extent
+  "submap[Resize],H" = { action = "window-modify-width-right -0.05", repeat = true }
+  "submap[Resize],L" = { action = "window-modify-width-right 0.05", repeat = true }
+  "submap[Resize],K" = { action = "window-modify-height-down 0.05", repeat = true }
+  "submap[Resize],J" = { action = "window-modify-height-down -0.05", repeat = true }
+
+  "submap[Resize],Left"  = { action = "window-modify-width-right -0.05", repeat = true }
+  "submap[Resize],Right" = { action = "window-modify-width-right 0.05", repeat = true }
+  "submap[Resize],Up"    = { action = "window-modify-height-down 0.05", repeat = true }
+  "submap[Resize],Down"  = { action = "window-modify-height-down -0.05", repeat = true }
+
+  # Exit resize mode
+  "submap[Resize],Escape" = "submap reset"
+  "submap[Resize],Return" = "submap reset"

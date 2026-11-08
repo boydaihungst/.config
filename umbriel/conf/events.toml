@@ -1,0 +1,10 @@
+# ==============================================================================
+# Lid events
+# Remove the laptop panel from the desktop while the lid is closed, then
+# restore it when the lid opens. Replace eDP-1 with the name from
+# `umbriel outputs`.
+# https://docs.noctalia.dev/umbriel/configuration/#events
+#
+# [events]
+#   lid_close = "umbriel msg output-disable eDP-1"
+#   lid_open  = "umbriel msg output-enable eDP-1"

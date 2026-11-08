@@ -7,6 +7,7 @@ local formatters_cfg = {
     sh = { "shfmt", "shellcheck" },
     zsh = { "shfmt", "shellcheck" },
     lua = { "stylua", stop_after_first = false },
+    luau = { "stylua", stop_after_first = false },
     nginx = { "nginxfmt" },
 
     javascript = { "prettierd" },
@@ -60,14 +61,14 @@ now_if_args(function()
       lsp_format = "fallback",
     },
     format_on_save = function(bufnr)
-      if vim.fn.filewritable(vim.fn.expand "%:p") == 1 then
-        if vim.F.if_nil(vim.b[bufnr].autoformat, vim.g.autoformat, true) then return { lsp_format = "fallback" } end
-      end
+      -- if vim.fn.filewritable(vim.fn.expand "%:p") == 1 then
+      if vim.F.if_nil(vim.b[bufnr].autoformat, vim.g.autoformat, true) then return { lsp_format = "fallback" } end
+      -- end
     end,
     -- Set the log level. Use `:ConformInfo` to see the location of the log file.
     log_level = vim.log.levels.OFF,
     -- Conform will notify you when a formatter errors
-    notify_on_error = true,
+    notify_on_error = false,
     -- Conform will notify you when no formatters are available for the buffer
     notify_no_formatters = true,
   }, formatters_cfg))
@@ -81,8 +82,10 @@ now_if_args(function()
         ["end"] = { args.line2, end_line:len() },
       }
     end
-    local file = vim.fn.expand "%"
-    if file and vim.fn.filewritable(file) == 1 then conform.format { async = true, range = range } end
+    -- local file = vim.fn.expand "%"
+    -- if file and vim.fn.filewritable(file) == 1 then
+    conform.format { async = true, range = range }
+    -- end
   end, { desc = "Format buffer", range = true })
 
   vim.keymap.set("n", "<Leader>lC", "<Cmd>ConformInfo<CR>", { desc = "Formatter information" })

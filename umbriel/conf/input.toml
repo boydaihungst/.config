@@ -1,0 +1,49 @@
+#:schema ../umbriel.schema.v5.json
+
+[input]
+  middle_click_paste     = false
+  client_window_drag     = true
+  window_drag_toggle     = "none"
+  mod_right_double_click = "none"
+
+  [input.focus]
+    follows_mouse            = true
+    follows_mouse_max_scroll = 0.5
+    hover_raises             = true
+
+  [input.keyboard]
+    layout         = ""
+    variant        = ""
+    options        = ""
+    model          = ""
+    repeat_rate    = 80
+    repeat_delay   = 300
+    numlock_toggle = false
+    track_layout   = "global"
+
+  [input.touchpad]
+    enabled                   = true
+    tap                       = true
+    tap_and_drag              = false
+    # drag_lock = "sticky"
+    natural_scroll            = true
+    left_handed               = false
+    accel_profile             = "adaptive"
+    # sensitivity = 0.5
+    # scroll_factor = 1.5
+    disable_while_typing      = true
+    disable_on_external_mouse = true
+    scroll_method             = "two_finger"
+    # click_method = "clickfinger"
+    tap_button_map            = "left_middle_right"
+
+  [input.mouse]
+    natural_scroll    = false
+    left_handed       = false
+    accel_profile     = "flat"
+    # Pointer speed from -1.0 to 1.0.
+    sensitivity       = 0.0
+    scroll_wheel_step = 60
+
+    # scroll_button = "MouseBack"
+    # scroll_button_lock = false

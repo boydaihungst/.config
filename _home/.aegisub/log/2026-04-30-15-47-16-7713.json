@@ -1,0 +1,253 @@
+{
+	"file" : "../libaegisub/common/option.cpp",
+	"func" : "Options",
+	"line" : 189,
+	"message" : "New Options object",
+	"sec" : 19199,
+	"section" : "agi/options",
+	"severity" : 4,
+	"usec" : 928725884
+}{
+	"file" : "../src/utils.cpp",
+	"func" : "operator()",
+	"line" : 168,
+	"message" : "cleaning \"/home/huyhoang/.aegisub/log/*.json\"",
+	"sec" : 19199,
+	"section" : "utils/clean_cache",
+	"severity" : 4,
+	"usec" : 928743694
+}{
+	"file" : "../src/utils.cpp",
+	"func" : "operator()",
+	"line" : 179,
+	"message" : "cache does not need cleaning (maxsize=10485760, cursize=353527, maxfiles=100, numfiles=22), exiting",
+	"sec" : 19199,
+	"section" : "utils/clean_cache",
+	"severity" : 4,
+	"usec" : 928960972
+}{
+	"file" : "../libaegisub/common/io.cpp",
+	"func" : "Open",
+	"line" : 34,
+	"message" : "\"/home/huyhoang/.aegisub/config.json\"",
+	"sec" : 19199,
+	"section" : "agi/io/open/file",
+	"severity" : 4,
+	"usec" : 929353973
+}{
+	"file" : "../src/command/command.cpp",
+	"func" : "init_builtin_commands",
+	"line" : 93,
+	"message" : "Populating command map",
+	"sec" : 19199,
+	"section" : "command/init",
+	"severity" : 4,
+	"usec" : 930054488
+}{
+	"file" : "../libaegisub/common/hotkey.cpp",
+	"func" : "Hotkey",
+	"line" : 91,
+	"message" : "Generating hotkeys.",
+	"sec" : 19199,
+	"section" : "hotkey/init",
+	"severity" : 4,
+	"usec" : 930174407
+}{
+	"file" : "../libaegisub/common/io.cpp",
+	"func" : "Open",
+	"line" : 34,
+	"message" : "\"/home/huyhoang/.aegisub/hotkey.json\"",
+	"sec" : 19199,
+	"section" : "agi/io/open/file",
+	"severity" : 4,
+	"usec" : 930180344
+}{
+	"file" : "../libaegisub/common/mru.cpp",
+	"func" : "MRUManager",
+	"line" : 67,
+	"message" : "Loading MRU List",
+	"sec" : 19199,
+	"section" : "agi/mru",
+	"severity" : 4,
+	"usec" : 930573345
+}{
+	"file" : "../libaegisub/common/io.cpp",
+	"func" : "Open",
+	"line" : 34,
+	"message" : "\"/home/huyhoang/.aegisub/mru.json\"",
+	"sec" : 19199,
+	"section" : "agi/io/open/file",
+	"severity" : 4,
+	"usec" : 930578094
+}{
+	"file" : "../src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 76,
+	"message" : "libass API version: 0x1704000",
+	"sec" : 19199,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 939360655
+}{
+	"file" : "../src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 76,
+	"message" : "libass source: tarball: 0.17.4",
+	"sec" : 19199,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 939378465
+}{
+	"file" : "../src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 76,
+	"message" : "Raster: FreeType 2.14.3",
+	"sec" : 19199,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 939428332
+}{
+	"file" : "../src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 76,
+	"message" : "Shaper: FriBidi 1.0.16 (SIMPLE) HarfBuzz-ng 12.3.2 (COMPLEX)",
+	"sec" : 19199,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 939676480
+}{
+	"file" : "../src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 76,
+	"message" : "Initialized",
+	"sec" : 19199,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 939681230
+}{
+	"file" : "../src/subtitles_provider_libass.cpp",
+	"func" : "msg_callback",
+	"line" : 76,
+	"message" : "Using font provider fontconfig",
+	"sec" : 19200,
+	"section" : "subtitle/provider/libass",
+	"severity" : 4,
+	"usec" : 88336495
+}{
+	"file" : "../src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 100,
+	"message" : "Entering FrameMain constructor",
+	"sec" : 19214,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 158588327
+}{
+	"file" : "../src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 111,
+	"message" : "Initializing context controls",
+	"sec" : 19214,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 158601387
+}{
+	"file" : "../src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 118,
+	"message" : "Initializing context frames",
+	"sec" : 19214,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 158604949
+}{
+	"file" : "../src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 122,
+	"message" : "Apply saved Maximized state",
+	"sec" : 19214,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 158607324
+}{
+	"file" : "../src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 125,
+	"message" : "Initialize toolbar",
+	"sec" : 19214,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 158609698
+}{
+	"file" : "../src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 130,
+	"message" : "Initialize menu bar",
+	"sec" : 19214,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 162927959
+}{
+	"file" : "../src/menu.cpp",
+	"func" : "process_menu_item",
+	"line" : 393,
+	"message" : "Skipping command app/updates: 'app/updates' is not a valid command name",
+	"sec" : 19214,
+	"section" : "menu/command/not_found",
+	"severity" : 2,
+	"usec" : 170003163
+}{
+	"file" : "../src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 133,
+	"message" : "Create status bar",
+	"sec" : 19214,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 170455529
+}{
+	"file" : "../src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 136,
+	"message" : "Set icon",
+	"sec" : 19214,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 178206315
+}{
+	"file" : "../src/frame_main.cpp",
+	"func" : "FrameMain",
+	"line" : 145,
+	"message" : "Create views and inner main window controls",
+	"sec" : 19214,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 178308424
+}{
+	"file" : "../src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 185,
+	"message" : "Create background panel",
+	"sec" : 19214,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 178311986
+}{
+	"file" : "../src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 188,
+	"message" : "Create subtitles grid",
+	"sec" : 19214,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 178340481
+}{
+	"file" : "../src/frame_main.cpp",
+	"func" : "InitContents",
+	"line" : 191,
+	"message" : "Create video box",
+	"sec" : 19214,
+	"section" : "frame_main/init",
+	"severity" : 3,
+	"usec" : 185292204
+}

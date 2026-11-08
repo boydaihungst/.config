@@ -113,3 +113,5 @@ menu menuitem:hover, .menu menuitem:hover, .context-menu menuitem:hover { backgr
 button { animation: none; }
 
 #xfwm-tabwin { border-radius: 5px; }
+
+@import url("noctalia.css");

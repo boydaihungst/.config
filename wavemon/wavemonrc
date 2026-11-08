@@ -1,10 +1,10 @@
-interface = wlo1
+interface = wlp4s0
 cisco_mac = off
 sort_order = chan/sig
 sort_ascending = off
-scan_filter_band = 5ghz
+scan_filter_band = both
 scan_hidden_essids = on
-stat_updates = 100
+stat_updates = 200
 lhist_slot_size = 4
 meter_smoothness = 0
 info_updates = 10

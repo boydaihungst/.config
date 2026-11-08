@@ -1,5 +1,5 @@
 # style name or JSON path (default "auto")
-style: "dark"
+style: "~/.config/glow/noctalia.json"
 # show local files only; no network (TUI-mode only)
 # mouse support (TUI-mode only)
 # use pager to display markdown

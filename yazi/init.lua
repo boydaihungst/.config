@@ -15,7 +15,7 @@ require("simple-tag"):setup({
 	-- padding_left = "",
 	-- padding_right = "",
 	--
-	-- replace_default_icon = true,
+	replace_default_icon = true,
 	-- Replace default icon only apply if this option if nil, or a function return true
 	-- tags: list/table of tag keys
 	-- file: fs::File. https://yazi-rs.github.io/docs/plugins/context#fs-file
@@ -78,10 +78,10 @@ require("restore"):setup({
 	-- position = { "center", w = 120, h = 40 },
 	show_confirm = true,
 	theme = {
-		title = "blue",
+		title = "#ffe0cd",
 		header = "green",
 		header_warning = "red",
-		list_item = { odd = "blue", even = "cyan" },
+		list_item = { odd = "#ffe0cd", even = "cyan" },
 	},
 })
 
@@ -204,7 +204,7 @@ require("yamb"):setup({
 require("projects"):setup({
 	save = {
 		method = "yazi", -- yazi | lua
-		lua_save_path = "~/.config/yazi/state/projects.json", -- windows: "%APPDATA%/yazi/state/projects.json", unix: "~/.config/yazi/state/projects.json"
+		lua_save_path = os.getenv("HOME") .. "/.config/yazi/projects.json", -- windows: "%APPDATA%/yazi/state/projects.json", unix: "~/.config/yazi/state/projects.json"
 	},
 	last = {
 		update_after_save = true,
@@ -260,8 +260,20 @@ Header:children_add(function()
 			spans[#spans + 1] = ui.Span(" " .. name .. " "):style(th.tabs.inactive)
 		end
 	end
+	spans[#spans + 1] = ui.Span(" "):fg("reset")
 	return ui.Line(spans)
 end, 9000, Header.RIGHT)
+
+--hostname + username before url
+Header:children_add(function()
+	if ya.target_family() ~= "unix" then
+		return ui.Line({})
+	end
+	return ui.Span(" " .. ya.user_name() .. "@" .. ya.host_name() .. ":")
+		:style(ui.Style():fg("#ffe0cd"):bg("reset"):bold())
+end, 500, Header.LEFT)
+
+--------------------------------- Components -----------------------------------------
 
 function Linemode:size_and_mtime()
 	local time = math.floor(self._file.cha.mtime or 0)
@@ -277,15 +289,6 @@ function Linemode:size_and_mtime()
 	return ui.Line(string.format("  %s %s", size and ("[" .. ya.readable_size(size) .. "]") or "", time))
 end
 
---hostname + username before url
-Header:children_add(function()
-	if ya.target_family() ~= "unix" then
-		return ui.Line({})
-	end
-	return ui.Span(ya.user_name() .. "@" .. ya.host_name() .. ":"):style(ui.Style():fg("cyan"):bg("#080A0E"):bold())
-end, 500, Header.LEFT)
-
---------------------------------- Components -----------------------------------------
 function Status:file_size_and_folder_childs()
 	local h = self._tab.current.hovered
 	if not h or h.cha.is_link then
@@ -370,7 +373,7 @@ function Status:name()
 	return ui.Line({
 		ui.Span(" " .. (icon and icon.text or "")):style(icon and icon.style or ui.Style()):bg("#26343F"),
 		ui.Span(" " .. (ui.printable(file_name)) .. " "):fg(style.alt:fg()):bg("#26343F"),
-		ui.Span(""):fg("#26343F"):bg(style.alt:bg()),
+		ui.Span(""):fg("#26343F"):bg("reset"),
 	})
 end
 
